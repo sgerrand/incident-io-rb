@@ -10,6 +10,9 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
   s.required_ruby_version = ">= 1.9"
 
+  s.cert_chain  = ['certs/sgerrand.pem']
+  s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
+
   s.files         = Dir['Gemfile', 'README.md', 'lib/**/*.rb']
   s.test_files    = Dir['spec/**/*.rb']
   s.executables   = []
