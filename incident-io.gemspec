@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.email       = ["incident-io+rubygems@sgerrand.dev"]
   s.homepage    = "https://github.com/sgerrand/incident-io"
   s.summary     = "incident.io Ruby API client"
-  s.description = "This is the Ruby API client for the incident.io API."
+  s.description = "A Ruby API client for interacting with the incident.io API."
   s.license     = "MIT"
   s.required_ruby_version = ">= 1.9"
 
