@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "incident-io"
-  s.version     = "0.0.0-alpha"
+  s.version     = "0.0.0-omega"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Sasha Gerrand"]
   s.email       = ["incident-io+rubygems@sgerrand.dev"]
