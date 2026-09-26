@@ -48,4 +48,47 @@ RSpec.describe IncidentIoGenerator::Types do
     expect(described_class.rbs_optional("Array[A | B]")).to eq("Array[A | B]?")
     expect(described_class.rbs_optional("untyped")).to eq("untyped")
   end
+
+  it "maps more schemas to YARD types" do
+    expect(described_class.yard_type({"type" => "string", "format" => "date"})).to eq("Date")
+    expect(described_class.yard_type({"type" => "number"})).to eq("Float")
+    expect(described_class.yard_type({"type" => "boolean"})).to eq("Boolean")
+    expect(described_class.yard_type({"type" => "object"})).to eq("Hash")
+    expect(described_class.yard_type({})).to eq("Object")
+  end
+
+  it "maps more schemas to RBS types" do
+    expect(described_class.rbs_type({"type" => "string", "format" => "date"}, input: true)).to eq("Date | String")
+    expect(described_class.rbs_type({"type" => "string", "format" => "date"})).to eq("Date")
+    expect(described_class.rbs_type({"type" => "number"})).to eq("Float")
+    expect(described_class.rbs_type({"type" => "integer"})).to eq("Integer")
+    expect(described_class.rbs_type({"type" => "object"})).to eq("Hash[String, untyped]")
+    expect(described_class.rbs_type({"type" => "array", "items" => {"type" => "string"}})).to eq("Array[String]")
+  end
+
+  it "maps results to RBS return types" do
+    expect(described_class.rbs_result(nil)).to eq("untyped")
+    expect(described_class.rbs_result({"$ref" => "#/c/X"})).to eq("Models::X")
+    expect(described_class.rbs_result({"type" => "array", "items" => {"$ref" => "#/c/X"}})).to eq("Array[Models::X]")
+    expect(described_class.rbs_result({"type" => "string"})).to eq("untyped")
+    expect(described_class.result_type(nil)).to be_nil
+  end
+
+  it "makes sample values for tests" do
+    samples = {
+      {"$ref" => "#/c/X"} => {},
+      {"type" => "string"} => "n-value",
+      {"type" => "string", "enum" => %w[a b]} => "a",
+      {"type" => "string", "format" => "date-time"} => "2024-01-01T00:00:00Z",
+      {"type" => "string", "format" => "date"} => "2024-01-01",
+      {"type" => "integer"} => 1,
+      {"type" => "number"} => 1.5,
+      {"type" => "boolean"} => true,
+      {"type" => "array", "items" => {"type" => "integer"}} => [1],
+      {"type" => "object"} => {"one_of" => ["n-value"]},
+      {} => "n-value"
+    }
+
+    samples.each { |schema, sample| expect(described_class.sample_value(schema, "n")).to eq(sample) }
+  end
 end

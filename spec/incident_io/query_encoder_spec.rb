@@ -39,6 +39,10 @@ RSpec.describe IncidentIo::QueryEncoder do
     expect(decode(query)).to eq([["created_at[gte]", "2024-05-01T12:00:00Z"], %w[on 2024-05-01], %w[flag true]])
   end
 
+  it "formats DateTimes" do
+    expect(decode(described_class.encode(at: DateTime.new(2024, 5, 1, 12)))).to eq([%w[at 2024-05-01T12:00:00Z]])
+  end
+
   it "returns an empty string for nil or empty params" do
     expect(described_class.encode(nil)).to eq("")
     expect(described_class.encode({})).to eq("")

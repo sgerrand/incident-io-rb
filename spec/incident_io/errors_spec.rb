@@ -82,6 +82,10 @@ RSpec.describe IncidentIo::APIError do
       expect(error.retry_after).to be_within(1.5).of(10)
     end
 
+    it "ignores a Retry-After header it can't read" do
+      expect(described_class.from_response(response(429, nil, "retry-after" => "soon")).retry_after).to be_nil
+    end
+
     it "is never negative" do
       body = {"rate_limit" => {"retry_after" => "2020-01-01T00:00:00Z"}}
 

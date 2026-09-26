@@ -115,7 +115,6 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
       .to include(%(["widget.deleted", 2] => :AuditLogsWidgetDeletedV2\n))
     expect(generated("sig/incident_io/audit_log_entries.rbs")).to include("type entry = Models::AuditLogsWidgetDeletedV2")
   end
-
   it "writes a manifest of what each resource method should do" do
     described_class.new(api, @dir).write
     manifest = JSON.parse(generated("spec/fixtures/operations.json")).to_h { |op| [op["method"], op] }
@@ -133,5 +132,67 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
     expect(manifest["show"]).to include("path" => "/v2/widgets/{id}", "path_args" => ["id-value"])
     expect(manifest["destroy"]).to include("deprecated" => true, "body" => false, "result" => include("kind" => "none"))
     expect(manifest["export"]["result"]).to include("kind" => "text")
+  end
+
+  describe "helpers" do
+    let(:writer) { described_class.new(api, @dir) }
+    let(:ops) { api.resources.first.operations.to_h { |op| [op.method_name, op] } }
+
+    it "documents scopes, deprecations and endpoints without an API key" do
+      no_auth = ops["show"].with(scopes: [], no_auth: true, deprecated: true, replacement: "client.widgets.find")
+
+      docs = writer.method_docs(no_auth, 0)
+
+      expect(docs).not_to include("Scopes:")
+      expect(docs).to include("Does not use your API key")
+      expect(docs).to include("@deprecated Use `client.widgets.find` instead.")
+      expect(writer.method_docs(ops["destroy"], 0)).to include("@deprecated incident.io has deprecated this endpoint.")
+    end
+
+    it "splits long signatures and hashes over several lines" do
+      long = ops["list"].with(method_name: "a_method_with_a_very_long_name_that_goes_on_and_on_and_on_and_on")
+
+      expect(writer.signature(long, 8)).to include("(\n")
+      expect(writer.hash_expression(ops["create"].body_params, 90)).to start_with("{\n")
+      expect(writer.hash_expression([], 0)).to eq("{}")
+    end
+
+    it "writes paginated calls without a query or model, and bodies without fields" do
+      bare_list = ops["list"].with(query_params: [], result: ops["list"].result.with(model: nil))
+      empty_body = ops["create"].with(body_params: [])
+
+      expect(writer.call(bare_list, 0)).not_to include("query:", "model:")
+      expect(writer.call(empty_body, 0)).to include("body: {},")
+      expect(writer.call(ops["list"].with(result: ops["show"].result), 0)).to include("query: {page_size:, after:, kind:}")
+    end
+
+    it "handles sentences" do
+      expect(writer.sentence("Done.")).to eq("Done.")
+      expect(writer.sentence("Done")).to eq("Done.")
+      expect(writer.first_sentence(nil)).to be_nil
+    end
+  end
+
+  describe "IncidentIoGenerator.generate" do
+    it "reads the spec and overrides from files and writes to a root" do
+      spec_path = File.join(@dir, "spec.json")
+      overrides_path = File.join(@dir, "overrides.yml")
+      File.write(spec_path, JSON.generate(mini_spec))
+      File.write(overrides_path, {"operations" => {"Widgets V2#Export" => {"method" => "export_csv"}}}.to_yaml)
+
+      files = IncidentIoGenerator.generate(root: File.join(@dir, "out"), spec_path:, overrides_path:)
+
+      expect(files).to include("lib/incident_io/resources/v2/widgets.rb")
+      expect(File.read(File.join(@dir, "out/lib/incident_io/resources/v2/widgets.rb"))).to include("def export_csv(")
+    end
+
+    it "works without an overrides file" do
+      spec_path = File.join(@dir, "spec.json")
+      File.write(spec_path, JSON.generate(mini_spec))
+
+      api = IncidentIoGenerator.load_api(spec_path:, overrides_path: File.join(@dir, "missing.yml"))
+
+      expect(api.resources.first.operations.map(&:method_name)).to include("export")
+    end
   end
 end

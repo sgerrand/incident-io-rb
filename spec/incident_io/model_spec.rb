@@ -87,6 +87,23 @@ RSpec.describe IncidentIo::Model do
   it "can be built by hand and rejects unknown keywords" do
     expect(severity.new(id: "s").name).to be_nil
     expect { severity.new(nope: 1) }.to raise_error(ArgumentError, "unknown keyword: nope")
+    expect { severity.new(nope: 1, nah: 2) }.to raise_error(ArgumentError, "unknown keywords: nope, nah")
+  end
+
+  it "has no raw payload when built by hand" do
+    expect(severity.new(id: "s")[:id]).to be_nil
+  end
+
+  it "returns a model it is given unchanged" do
+    expect(incident.from_api(model)).to be(model)
+  end
+
+  it "keeps floats as they are" do
+    expect(incident.from_api("score" => 2.5).score).to eq(2.5)
+  end
+
+  it "keeps a bad date string rather than failing" do
+    expect(incident.from_api("due_on" => "not a date").due_on).to eq("not a date")
   end
 
   it "keeps a bad time string rather than failing" do

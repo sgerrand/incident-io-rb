@@ -38,4 +38,26 @@ RSpec.describe IncidentIo::Resource do
 
     expect(resource.list.map(&:id)).to eq(["1"])
   end
+
+  it "hides the client in #inspect" do
+    expect(resource.inspect).to start_with("#<")
+    expect(resource.inspect).not_to include("k")
+  end
+
+  describe "deprecation warnings" do
+    around do |example|
+      before = Warning[:deprecated]
+      Warning[:deprecated] = true
+      example.run
+    ensure
+      Warning[:deprecated] = before
+    end
+
+    it "warns once per name" do
+      name = "client.test.#{rand(1_000_000)}"
+
+      expect { resource.send(:deprecated!, name) }.to output(/#{name} is deprecated by incident\.io\n/).to_stderr
+      expect { resource.send(:deprecated!, name) }.not_to output.to_stderr
+    end
+  end
 end

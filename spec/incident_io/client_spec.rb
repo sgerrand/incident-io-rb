@@ -99,6 +99,14 @@ RSpec.describe IncidentIo::Client do
     it "rejects unknown per-request options" do
       expect { client.request(:get, "/x", request_options: {nope: 1}) }
         .to raise_error(ArgumentError, "unknown request option: nope")
+      expect { client.request(:get, "/x", request_options: {nope: 1, nah: 2}) }
+        .to raise_error(ArgumentError, "unknown request options: nope, nah")
+    end
+
+    it "rejects a base URL that isn't HTTP" do
+      client = described_class.new(api_key: "k", base_url: "ftp://example.com")
+
+      expect { client.request(:get, "/v1/identity") }.to raise_error(ArgumentError, %r{not an HTTP URL: ftp://})
     end
 
     it "raises a typed error with the API's details" do
@@ -194,6 +202,26 @@ RSpec.describe IncidentIo::Client do
       expect(client).not_to have_received(:sleep_for)
     end
 
+    it "backs off when rate limited without a hint" do
+      limited = json_response(error_body(status: 429, type: "rate_limit_reached"), status: 429)
+      stub_request(:get, url).to_return(limited, ok)
+      delays = []
+      allow(client).to receive(:sleep_for) { |s| delays << s }
+
+      client.request(:get, "/v2/incidents")
+
+      expect(delays.first).to be_between(0.375, 0.5)
+    end
+
+    it "waits as long as asked after a server error with Retry-After" do
+      unavailable = json_response(error_body(status: 503, type: "unavailable"), status: 503, headers: {"Retry-After" => "1"})
+      stub_request(:get, url).to_return(unavailable, ok)
+
+      client.request(:get, "/v2/incidents")
+
+      expect(client).to have_received(:sleep_for).with(1.0)
+    end
+
     it "uses exponential backoff when the API gives no hint" do
       stub_request(:get, url).to_return(server_error, server_error, ok)
       delays = []
@@ -232,6 +260,17 @@ RSpec.describe IncidentIo::Client do
       expect(io.string).to include("POST #{BASE_URL}/v2/alert_events/http/src?token=[REDACTED] -> 202")
       expect(io.string).not_to include("very-secret")
       expect(io.string).not_to include("secret-key")
+    end
+  end
+
+  describe "sleeping between retries" do
+    it "sleeps for the given time" do
+      client = described_class.new(api_key: "k")
+      allow(client).to receive(:sleep)
+
+      client.send(:sleep_for, 0.25)
+
+      expect(client).to have_received(:sleep).with(0.25)
     end
   end
 end

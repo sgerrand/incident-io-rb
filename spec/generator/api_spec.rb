@@ -113,4 +113,82 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
 
     expect(described_class.new(spec).latest_resources.transform_values(&:version)).to eq("widgets" => "V3")
   end
+
+  describe "validation" do
+    {
+      "two schemas with the same file name" => [/models share a file name: widget_v2/, ->(s) {
+        s["components"]["schemas"]["Widget_V2"] = {"type" => "object"}
+      }],
+      "a webhook without a response schema" => [/no response schema/, ->(s) {
+        s["x-webhooks"]["/x-webhooks/public_widget.created_v1"]["get"]["responses"] = {"200" => {}}
+      }],
+      "a webhook body without its payload" => [/body has no public_widget.created_v1 payload/, ->(s) {
+        s["components"]["schemas"]["WidgetCreatedBody"]["properties"].delete("public_widget.created_v1")
+      }],
+      "a resource named like a Client method" => [/resource name request clashes with a Client method/, ->(s) {
+        s["paths"]["/v1/request"] = {"get" => operation("Request V1#Show", "WidgetsShowResultV2")}
+      }],
+      "a resource named like a version accessor" => [/resource name v2 clashes with a version accessor/, ->(s) {
+        s["paths"]["/v1/v2"] = {"get" => operation("V2 V1#Show", "WidgetsShowResultV2")}
+      }],
+      "a tag without a version" => [/tag has no version: "Things"/, ->(s) {
+        s["paths"]["/v1/things"] = {"get" => operation("Things#Show", "WidgetsShowResultV2")}
+      }],
+      "an operation without a 2xx response" => [/Widgets V2#List: no 2xx response/, ->(s) {
+        s["paths"]["/v2/widgets"]["get"]["responses"] = {"400" => {"description" => "Bad"}}
+      }],
+      "a paginated response without exactly one array" => [/needs exactly one array/, ->(s) {
+        s["components"]["schemas"]["WidgetsListResultV2"]["properties"]["others"] = {"type" => "array"}
+      }],
+      "a reserved parameter name" => [/"request_options" is reserved/, ->(s) {
+        s["paths"]["/v2/widgets/{id}"]["get"]["parameters"] << {"in" => "query", "name" => "request_options", "schema" => {}}
+      }],
+      "a parameter used twice" => [/parameter names used twice: name/, ->(s) {
+        s["paths"]["/v2/widgets"]["post"]["parameters"] = [{"in" => "query", "name" => "name", "schema" => {}}]
+      }]
+    }.each do |problem, (message, change)|
+      it "rejects #{problem}" do
+        spec = mini_spec
+        instance_exec(spec, &change)
+
+        expect { described_class.new(spec) }.to raise_error(IncidentIoGenerator::Error, message)
+      end
+    end
+
+    it "rejects a method named like a Resource helper" do
+      expect { described_class.new(mini_spec, "operations" => {"Widgets V2#Show" => {"method" => "request"}}) }
+        .to raise_error(IncidentIoGenerator::Error, /clashes with a Resource helper/)
+    end
+  end
+
+  it "ignores path item keys that aren't HTTP methods" do
+    spec = mini_spec
+    spec["paths"]["/v2/widgets"]["parameters"] = []
+
+    expect(described_class.new(spec).resources.first.operations.size).to eq(5)
+  end
+
+  it "points deprecated operations at the newest resource when it lacks the method" do
+    spec = mini_spec
+    spec["paths"]["/v3/widgets"] = {"get" => operation("Widgets V3#Search", "WidgetsShowResultV2")}
+    destroy = described_class.new(spec).resources.first.operations.find { |o| o.method_name == "destroy" }
+
+    expect(destroy.replacement).to eq("client.widgets")
+  end
+
+  it "reads inline request bodies and returns whole results with several fields" do
+    spec = mini_spec
+    spec["components"]["schemas"]["WidgetsPairResultV2"] = {
+      "type" => "object", "properties" => {"a" => {"type" => "string"}, "b" => {"type" => "string"}}
+    }
+    op = operation("Widgets V2#Pair", "WidgetsPairResultV2")
+    op["requestBody"] = {"content" => {"application/json" => {"schema" => {
+      "type" => "object", "properties" => {"note" => {"type" => "string"}}
+    }}}}
+    spec["paths"]["/v2/widgets/pair"] = {"post" => op}
+    pair = described_class.new(spec).resources.first.operations.find { |o| o.method_name == "pair" }
+
+    expect(pair.body_params.map(&:name)).to eq(["note"])
+    expect(pair.result).to have_attributes(kind: :json, unwrap: nil, model: "Models::WidgetsPairResultV2")
+  end
 end
