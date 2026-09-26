@@ -63,6 +63,66 @@ module IncidentIoGenerator
       end
     end
 
+    # RBS type for a schema. With input: true, the type accepted as a method
+    # argument: models also take a Hash, times and dates also take a String
+    # and objects take any Hash.
+    def rbs_type(schema, namespace: "Models::", input: false)
+      if (ref = ref_name(schema))
+        return input ? "#{namespace}#{ref} | Hash[untyped, untyped]" : "#{namespace}#{ref}"
+      end
+
+      case schema["type"]
+      when "string"
+        case schema["format"]
+        when "date-time" then input ? "Time | String" : "Time"
+        when "date" then input ? "Date | String" : "Date"
+        else "String"
+        end
+      when "integer" then "Integer"
+      when "number" then input ? "Numeric" : "Float"
+      when "boolean" then "bool"
+      when "array" then "Array[#{rbs_type(schema["items"] || {}, namespace:, input:)}]"
+      when "object"
+        extra = schema["additionalProperties"]
+        if input then "Hash[untyped, untyped]"
+        elsif extra.is_a?(Hash) && !extra.empty? then "Hash[String, #{rbs_type(extra, namespace:)}]"
+        else "Hash[String, untyped]"
+        end
+      else "untyped"
+      end
+    end
+
+    # Makes an RBS type nilable: "String" => "String?", "A | B" => "(A | B)?".
+    def rbs_optional(type)
+      return type if type == "untyped"
+
+      top_level_union?(type) ? "(#{type})?" : "#{type}?"
+    end
+
+    # True for "A | B" but not "Array[A | B]".
+    def top_level_union?(type)
+      depth = 0
+      type.each_char.with_index do |char, i|
+        depth += 1 if char == "["
+        depth -= 1 if char == "]"
+        return true if depth.zero? && type[i, 3] == " | "
+      end
+      false
+    end
+
+    # RBS return type for a resource call's `model:`, or untyped for raw data.
+    def rbs_result(schema)
+      return "untyped" if schema.nil?
+
+      if (ref = ref_name(schema))
+        "Models::#{ref}"
+      elsif schema["type"] == "array" && ref_name(schema["items"] || {})
+        "Array[#{rbs_result(schema["items"])}]"
+      else
+        "untyped"
+      end
+    end
+
     def string_type(schema)
       case schema["format"]
       when "date-time" then ":time"

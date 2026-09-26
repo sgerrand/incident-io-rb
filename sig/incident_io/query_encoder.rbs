@@ -1,0 +1,9 @@
+module IncidentIo
+  module QueryEncoder
+    def self?.encode: (Hash[untyped, untyped]? params) -> String
+
+    def self?.append: (Array[[String, String]] pairs, String key, untyped value) -> void
+
+    def self?.scalar: (untyped value) -> String
+  end
+end

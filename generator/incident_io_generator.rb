@@ -16,7 +16,6 @@ module IncidentIoGenerator
   ROOT = File.expand_path("..", __dir__)
   SPEC_PATH = File.join(ROOT, "openapi", "openapi.json")
   OVERRIDES_PATH = File.join(__dir__, "overrides.yml")
-  OUT_DIR = File.join(ROOT, "lib", "incident_io")
 
   module_function
 
@@ -26,8 +25,8 @@ module IncidentIoGenerator
     Api.new(spec, overrides)
   end
 
-  # Writes the generated files and returns their paths.
-  def generate(out_dir: OUT_DIR, **options)
-    Writer.new(load_api(**options), out_dir).write
+  # Writes the generated files and returns their paths relative to root.
+  def generate(root: ROOT, **options)
+    Writer.new(load_api(**options), root).write
   end
 end

@@ -1,0 +1,20 @@
+<%= header %>
+
+module IncidentIo
+  module Resources
+    module <%= resource.version %>
+      class <%= resource.class_name %> < Resource
+<% resource.operations.each_with_index do |op, i| -%>
+<% if i > 0 -%>
+
+<% end -%>
+        # <%= helpers.first_sentence((op.description || op.summary).to_s.strip.lines.first.to_s.strip) %>
+<% if op.deprecated -%>
+        # @deprecated<%= " Use `#{op.replacement}` instead." if op.replacement %>
+<% end -%>
+        <%= helpers.rbs_def(op.method_name, helpers.rbs_params(op), op.result.rbs, 8) %>
+<% end -%>
+      end
+    end
+  end
+end

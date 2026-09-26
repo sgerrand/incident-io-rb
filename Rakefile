@@ -37,7 +37,7 @@ task :generate do
   require_relative "generator/incident_io_generator"
 
   files = IncidentIoGenerator.generate
-  puts "Generated #{files.size} files in lib/incident_io."
+  puts "Generated #{files.size} files in lib/incident_io and sig/incident_io."
 end
 
 namespace :generate do
@@ -48,22 +48,22 @@ namespace :generate do
     require_relative "generator/incident_io_generator"
 
     Dir.mktmpdir do |dir|
-      files = IncidentIoGenerator.generate(out_dir: dir)
+      root = IncidentIoGenerator::ROOT
+      files = IncidentIoGenerator.generate(root: dir)
       committed = IncidentIoGenerator::Writer::GENERATED.flat_map do |path|
-        full = File.join(IncidentIoGenerator::OUT_DIR, path)
-        File.directory?(full) ? Dir.glob("#{path}/**/*.rb", base: IncidentIoGenerator::OUT_DIR) : [path]
+        File.directory?(File.join(root, path)) ? Dir.glob("#{path}/**/*.{rb,rbs}", base: root) : [path]
       end
 
       stale = files.reject do |path|
-        committed_path = File.join(IncidentIoGenerator::OUT_DIR, path)
+        committed_path = File.join(root, path)
         File.exist?(committed_path) && File.read(committed_path) == File.read(File.join(dir, path))
       end
       extra = committed - files
 
       if stale.any? || extra.any?
         warn "Generated code is out of date. Run `rake generate`."
-        stale.first(20).each { |path| warn "  changed: lib/incident_io/#{path}" }
-        extra.first(20).each { |path| warn "  not generated: lib/incident_io/#{path}" }
+        stale.first(20).each { |path| warn "  changed: #{path}" }
+        extra.first(20).each { |path| warn "  not generated: #{path}" }
         abort
       end
 

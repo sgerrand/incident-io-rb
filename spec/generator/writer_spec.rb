@@ -20,33 +20,40 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
   it "writes index, model and resource files" do
     files = described_class.new(api, @dir).write
 
+    models = %w[part_v2 pagination_meta_result_v2 widget_v2 widgets_create_payload_v2 widgets_list_result_v2
+                widgets_show_result_v2]
+
     expect(files).to contain_exactly(
-      "models.rb", "models/part_v2.rb", "models/pagination_meta_result_v2.rb", "models/widget_v2.rb",
-      "models/widgets_create_payload_v2.rb", "models/widgets_list_result_v2.rb", "models/widgets_show_result_v2.rb",
-      "resources.rb", "resources/v2/widgets.rb"
+      "lib/incident_io/models.rb", "lib/incident_io/resources.rb", "sig/incident_io/resources.rbs",
+      "lib/incident_io/resources/v2/widgets.rb", "sig/incident_io/resources/v2/widgets.rbs",
+      *models.map { |m| "lib/incident_io/models/#{m}.rb" },
+      *models.map { |m| "sig/incident_io/models/#{m}.rbs" }
     )
   end
 
   it "writes valid Ruby" do
     files = described_class.new(api, @dir).write
 
-    files.each do |path|
+    files.grep(/\.rb\z/).each do |path|
       expect { RubyVM::InstructionSequence.compile(generated(path)) }.not_to raise_error, path
     end
   end
 
   it "removes files left over from an earlier run" do
-    FileUtils.mkdir_p(File.join(@dir, "models"))
-    File.write(File.join(@dir, "models", "gone_v1.rb"), "")
+    %w[lib/incident_io/models/gone_v1.rb sig/incident_io/models/gone_v1.rbs].each do |path|
+      FileUtils.mkdir_p(File.dirname(File.join(@dir, path)))
+      File.write(File.join(@dir, path), "")
+    end
 
     described_class.new(api, @dir).write
 
-    expect(File).not_to exist(File.join(@dir, "models", "gone_v1.rb"))
+    expect(File).not_to exist(File.join(@dir, "lib/incident_io/models/gone_v1.rb"))
+    expect(File).not_to exist(File.join(@dir, "sig/incident_io/models/gone_v1.rbs"))
   end
 
   it "generates idiomatic methods" do
     described_class.new(api, @dir).write
-    source = generated("resources/v2/widgets.rb")
+    source = generated("lib/incident_io/resources/v2/widgets.rb")
 
     expect(source).to include("def create(name:, idempotency_key: SecureRandom.uuid, part: nil, request_options: {})")
     expect(source).to include("def show(id, request_options: {})")
@@ -58,10 +65,41 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
 
   it "generates models with lazy references" do
     described_class.new(api, @dir).write
-    source = generated("models/widget_v2.rb")
+    source = generated("lib/incident_io/models/widget_v2.rb")
 
     expect(source).to include("    WidgetV2 = Model.define(\n      id: :string,\n      class: :string,")
     expect(source).to include("parts: [-> { PartV2 }]")
     expect(source).to include("# @!attribute [r] class_")
+  end
+  it "generates resource signatures" do
+    described_class.new(api, @dir).write
+    source = generated("sig/incident_io/resources/v2/widgets.rbs")
+
+    expect(source).to include("def show: (String id, ?request_options: request_options) -> Models::WidgetV2")
+    expect(source).to include(<<~RBS.gsub(/^/, "        ").strip)
+      def list: (
+        kind: Hash[untyped, untyped],
+        ?page_size: Integer?,
+        ?after: String?,
+        ?request_options: request_options
+      ) -> Pager[Models::WidgetV2]
+    RBS
+    expect(source).to include("?part: (Models::PartV2 | Hash[untyped, untyped])?")
+    expect(source).to include("?idempotency_key: String,")
+    expect(source).to include("# @deprecated\n        def destroy: (String id, ?request_options: request_options) -> nil")
+    expect(source).to include("-> String") # CSV export
+  end
+
+  it "generates model signatures" do
+    described_class.new(api, @dir).write
+    source = generated("sig/incident_io/models/widget_v2.rbs")
+
+    expect(source).to include("class WidgetV2 < ::Data")
+    expect(source).to include("attr_reader class_: String?")
+    expect(source).to include("attr_reader created_at: Time?")
+    expect(source).to include("attr_reader parts: Array[PartV2]?")
+    expect(source).to include("attr_reader labels: Hash[String, String]?")
+    expect(source).to include("?_raw: Hash[String, untyped]?")
+    expect(source).to include("def self.from_api: (nil) -> nil")
   end
 end

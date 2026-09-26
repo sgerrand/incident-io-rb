@@ -12,7 +12,8 @@ module IncidentIoGenerator
   #   model: Ruby source for the `model:` argument, or nil for raw data
   #   items_key: array key for paginated responses
   #   yard: YARD return type
-  Result = Data.define(:kind, :unwrap, :model, :items_key, :yard)
+  #   rbs: RBS return type
+  Result = Data.define(:kind, :unwrap, :model, :items_key, :yard, :rbs)
 
   Operation = Data.define(
     :operation_id, :http_method, :path, :method_name, :full_name, :summary, :description,
@@ -31,7 +32,7 @@ module IncidentIoGenerator
     def file_path = "resources/#{version.downcase}/#{name}"
   end
 
-  Field = Data.define(:api_name, :member, :type, :yard, :description, :required)
+  Field = Data.define(:api_name, :member, :type, :yard, :rbs, :description, :required)
   ModelSchema = Data.define(:name, :file_name, :description, :fields)
 
   # Reads the OpenAPI spec into the resources and models to generate.
@@ -79,6 +80,7 @@ module IncidentIoGenerator
             member: IncidentIo::Model.member_name(api_name).to_s,
             type: Types.model_type(prop),
             yard: Types.yard_type(prop, namespace: ""),
+            rbs: Types.rbs_type(prop, namespace: ""),
             description: describe(prop),
             required: required.include?(api_name)
           )
@@ -198,7 +200,11 @@ module IncidentIoGenerator
 
       content = response["content"] || {}
       json = content.dig("application/json", "schema")
-      return Result.new(kind: content.empty? ? :none : :text, unwrap: nil, model: nil, items_key: nil, yard: content.empty? ? "nil" : "String") unless json
+      unless json
+        return Result.new(kind: :none, unwrap: nil, model: nil, items_key: nil, yard: "nil", rbs: "nil") if content.empty?
+
+        return Result.new(kind: :text, unwrap: nil, model: nil, items_key: nil, yard: "String", rbs: "String")
+      end
 
       schema = resolve(json)
       props = schema["properties"] || {}
@@ -210,12 +216,15 @@ module IncidentIoGenerator
         items_key, items = arrays.first
         item_type = Types.result_type(items["items"])
         Result.new(kind: :paginated, unwrap: nil, model: item_type, items_key:,
-                   yard: "IncidentIo::Pager<#{Types.yard_type(items["items"])}>")
+                   yard: "IncidentIo::Pager<#{Types.yard_type(items["items"])}>",
+                   rbs: "Pager[#{Types.rbs_result(items["items"])}]")
       elsif props.size == 1
         key, prop = props.first
-        Result.new(kind: :json, unwrap: key, model: Types.result_type(prop), items_key: nil, yard: Types.yard_type(prop))
+        Result.new(kind: :json, unwrap: key, model: Types.result_type(prop), items_key: nil,
+                   yard: Types.yard_type(prop), rbs: Types.rbs_result(prop))
       else
-        Result.new(kind: :json, unwrap: nil, model: Types.result_type(json), items_key: nil, yard: Types.yard_type(json))
+        Result.new(kind: :json, unwrap: nil, model: Types.result_type(json), items_key: nil,
+                   yard: Types.yard_type(json), rbs: Types.rbs_result(json))
       end
     end
 

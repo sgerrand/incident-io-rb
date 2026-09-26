@@ -1,0 +1,40 @@
+<%= header %>
+
+module IncidentIo
+  module Resources
+<% api.versions.each do |version, resources| -%>
+    module <%= version %>
+      # Every <%= version.downcase %> resource, e.g. `client.<%= version.downcase %>.<%= resources.first.name %>`.
+      class Namespace
+        @client: Client
+        @resources: Hash[Symbol, untyped]
+
+        def initialize: (Client client) -> void
+
+        def inspect: () -> String
+<% resources.each do |resource| -%>
+
+        def <%= resource.name %>: () -> <%= resource.class_name %>
+<% end -%>
+      end
+    end
+
+<% end -%>
+    # Resource accessors added to IncidentIo::Client.
+    module Accessors
+<% api.versions.each_key do |version| -%>
+      def <%= version.downcase %>: () -> <%= version %>::Namespace
+
+<% end -%>
+<% api.latest_resources.each do |name, resource| -%>
+      def <%= name %>: () -> <%= resource.version %>::<%= resource.class_name %>
+
+<% end -%>
+      private
+
+      @resource_cache: Hash[Symbol, untyped]?
+
+      def resource_cache: () -> Hash[Symbol, untyped]
+    end
+  end
+end

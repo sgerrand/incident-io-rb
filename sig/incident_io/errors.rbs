@@ -1,0 +1,88 @@
+module IncidentIo
+  class Error < StandardError
+  end
+
+  class ConfigurationError < Error
+  end
+
+  class APIConnectionError < Error
+  end
+
+  class APITimeoutError < APIConnectionError
+  end
+
+  class APIError < Error
+    class Detail < ::Data
+      attr_reader code: String?
+      attr_reader message: String?
+      attr_reader field: String?
+      attr_reader pointer: String?
+      attr_reader metadata: Hash[String, untyped]?
+
+      def self.new: (code: String?, message: String?, field: String?, pointer: String?, metadata: Hash[String, untyped]?) -> instance
+
+      def initialize: (code: String?, message: String?, field: String?, pointer: String?, metadata: Hash[String, untyped]?) -> void
+    end
+
+    class RateLimit < ::Data
+      attr_reader name: String?
+      attr_reader limit: Integer?
+      attr_reader remaining: Integer?
+      attr_reader retry_after: Time?
+
+      def self.new: (name: String?, limit: Integer?, remaining: Integer?, retry_after: Time?) -> instance
+
+      def initialize: (name: String?, limit: Integer?, remaining: Integer?, retry_after: Time?) -> void
+    end
+
+    attr_reader status: Integer
+    attr_reader type: String?
+    attr_reader request_id: String?
+    attr_reader errors: Array[Detail]
+    attr_reader rate_limit: RateLimit?
+    attr_reader headers: Hash[String, String]
+    attr_reader body: untyped
+
+    def self.from_response: (Response response) -> APIError
+
+    def initialize: (status: Integer, ?headers: Hash[String, String]?, ?body: untyped) -> void
+
+    # Seconds the API asked us to wait before retrying, or nil.
+    def retry_after: () -> Float?
+
+    private
+
+    def build_detail: (Hash[String, untyped] error) -> Detail
+
+    def build_rate_limit: (untyped data) -> RateLimit?
+
+    def build_message: () -> String
+  end
+
+  class BadRequestError < APIError
+  end
+
+  class AuthenticationError < APIError
+  end
+
+  class PermissionDeniedError < APIError
+  end
+
+  class NotFoundError < APIError
+  end
+
+  class RequestTimeoutError < APIError
+  end
+
+  class ConflictError < APIError
+  end
+
+  class UnprocessableEntityError < APIError
+  end
+
+  class RateLimitError < APIError
+  end
+
+  class InternalServerError < APIError
+  end
+end

@@ -1,0 +1,15 @@
+module IncidentIo
+  module Transport
+    # What Client needs from a transport. See NetHTTP.
+    interface _Transport
+      def call: (Request request) -> Response
+    end
+
+    class NetHTTP
+      TIMEOUT_ERRORS: Array[singleton(Exception)]
+      CONNECTION_ERRORS: Array[singleton(Exception)]
+
+      def call: (Request request) -> Response
+    end
+  end
+end

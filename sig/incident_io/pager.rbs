@@ -1,0 +1,53 @@
+module IncidentIo
+  # One page of a list endpoint.
+  class Page[T]
+    include Enumerable[T]
+
+    attr_reader items: Array[T]
+    attr_reader after: String?
+    attr_reader page_size: Integer?
+    attr_reader total_record_count: Integer?
+    attr_reader data: Hash[String, untyped]
+
+    @cursor: String?
+    @fetch_next: ^(String) -> Page[T]
+
+    def initialize: (items: Array[T], pagination_meta: Hash[String, untyped]?, cursor: String?, ?data: Hash[String, untyped]) { (String) -> Page[T] } -> void
+
+    def each: () { (T) -> void } -> Array[T]
+            | () -> Enumerator[T, Array[T]]
+
+    def next_page?: () -> bool
+
+    def next_page: () -> Page[T]?
+  end
+
+  # Walks every item of a cursor-paginated list endpoint, fetching pages
+  # only as they are needed.
+  class Pager[T]
+    include Enumerable[T]
+
+    @client: Client
+    @path: String
+    @items_key: String
+    @query: Hash[untyped, untyped]
+    @model: _FromApi?
+    @request_options: request_options
+
+    def initialize: (Client client, String path, items_key: String, ?query: Hash[untyped, untyped]?, ?model: _FromApi?, ?request_options: request_options) -> void
+
+    def first_page: () -> Page[T]
+
+    def each_page: () { (Page[T]) -> void } -> void
+                 | () -> Enumerator[Page[T], void]
+
+    def each: () { (T) -> void } -> void
+            | () -> Enumerator[T, void]
+
+    alias auto_paging_each each
+
+    private
+
+    def fetch: (String? cursor) -> Page[T]
+  end
+end

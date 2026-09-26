@@ -1,0 +1,26 @@
+module IncidentIo
+  # Base class for API resources.
+  class Resource
+    DEPRECATION_WARNINGS: Set[String]
+    DEPRECATION_MUTEX: Thread::Mutex
+
+    # Returns true the first time it is called for a name, then false.
+    def self.first_deprecation_warning?: (String name) -> bool
+
+    attr_reader client: Client
+
+    def initialize: (Client client) -> void
+
+    def inspect: () -> String
+
+    private
+
+    def request: (Symbol method, String path, ?unwrap: String?, ?model: untyped, **untyped options) -> untyped
+
+    def paginate: (String path, items_key: String, **untyped options) -> Pager[untyped]
+
+    def deprecated!: (String name, ?String? replacement) -> void
+
+    def path: (String template, *_ToS ids) -> String
+  end
+end

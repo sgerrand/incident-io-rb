@@ -1,0 +1,29 @@
+<%= header %>
+
+module IncidentIo
+  module Models
+<%= helpers.comment(model.description, 4) -%>
+    class <%= model.name %> < ::Data
+      extend Model::ClassMethods
+      include Model::InstanceMethods
+<% if model.fields.any? -%>
+
+<% model.fields.each do |f| -%>
+<% if f.description -%>
+      # <%= helpers.first_sentence(f.description) %>
+<% end -%>
+      attr_reader <%= f.member %>: <%= IncidentIoGenerator::Types.rbs_optional(f.rbs) %>
+<% end -%>
+<% end -%>
+
+      <%= helpers.rbs_def("self.new", helpers.rbs_fields(model), "instance", 6) %>
+
+      <%= helpers.rbs_def("initialize", helpers.rbs_fields(model) + ["?_raw: Hash[String, untyped]?"], "void", 6) %>
+
+      <%= helpers.rbs_def("with", helpers.rbs_fields(model), "instance", 6) %>
+
+      def self.from_api: (nil) -> nil
+                       | (Hash[String, untyped] | <%= model.name %>) -> <%= model.name %>
+    end
+  end
+end

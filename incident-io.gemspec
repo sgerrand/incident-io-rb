@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
     "rubygems_mfa_required" => "true"
   }
 
-  s.files         = Dir['CHANGELOG.md', 'LICENSE', 'README.md', 'lib/**/*.rb']
+  s.files         = Dir['CHANGELOG.md', 'LICENSE', 'README.md', 'lib/**/*.rb', 'sig/**/*.rbs']
   s.executables   = []
   s.require_paths = ["lib"]
 end

@@ -29,4 +29,23 @@ RSpec.describe IncidentIoGenerator::Types do
     expect(described_class.yard_type({ "type" => "object", "additionalProperties" => { "type" => "integer" } }))
       .to eq("Hash{String => Integer}")
   end
+  it "maps schemas to RBS types" do
+    expect(described_class.rbs_type({ "$ref" => "#/c/X" })).to eq("Models::X")
+    expect(described_class.rbs_type({ "$ref" => "#/c/X" }, input: true)).to eq("Models::X | Hash[untyped, untyped]")
+    expect(described_class.rbs_type({ "type" => "string", "format" => "date-time" })).to eq("Time")
+    expect(described_class.rbs_type({ "type" => "string", "format" => "date-time" }, input: true)).to eq("Time | String")
+    expect(described_class.rbs_type({ "type" => "number" }, input: true)).to eq("Numeric")
+    expect(described_class.rbs_type({ "type" => "boolean" })).to eq("bool")
+    expect(described_class.rbs_type({ "type" => "object", "additionalProperties" => { "type" => "string" } }))
+      .to eq("Hash[String, String]")
+    expect(described_class.rbs_type({ "type" => "object" }, input: true)).to eq("Hash[untyped, untyped]")
+    expect(described_class.rbs_type({})).to eq("untyped")
+  end
+
+  it "makes RBS types nilable" do
+    expect(described_class.rbs_optional("String")).to eq("String?")
+    expect(described_class.rbs_optional("A | B")).to eq("(A | B)?")
+    expect(described_class.rbs_optional("Array[A | B]")).to eq("Array[A | B]?")
+    expect(described_class.rbs_optional("untyped")).to eq("untyped")
+  end
 end

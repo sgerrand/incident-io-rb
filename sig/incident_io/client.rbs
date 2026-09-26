@@ -1,0 +1,92 @@
+module IncidentIo
+  # The API client. Handles auth, JSON, errors and retries.
+  class Client
+    include Resources::Accessors
+
+    DEFAULT_BASE_URL: String
+    DEFAULT_TIMEOUT: Integer
+    DEFAULT_OPEN_TIMEOUT: Integer
+    DEFAULT_MAX_RETRIES: Integer
+    IDEMPOTENT_METHODS: Array[Symbol]
+    RETRYABLE_STATUSES: Array[Integer]
+    RATE_LIMIT_STATUS: Integer
+    INITIAL_RETRY_DELAY: Float
+    MAX_RETRY_DELAY: Float
+    MAX_RETRY_AFTER: Float
+    REQUEST_OPTIONS: Array[Symbol]
+
+    attr_reader base_url: String
+    attr_reader timeout: seconds
+    attr_reader open_timeout: seconds
+    attr_reader max_retries: Integer
+    attr_reader logger: Logger?
+
+    @api_key: String
+    @user_agent: String
+    @transport: Transport::_Transport
+
+    def initialize: (
+      ?api_key: String?,
+      ?base_url: String,
+      ?timeout: seconds,
+      ?open_timeout: seconds,
+      ?max_retries: Integer,
+      ?logger: Logger?,
+      ?user_agent: String?,
+      ?transport: Transport::_Transport
+    ) -> void
+
+    # Sends a request and returns the parsed body.
+    def request: (
+      Symbol | String method,
+      String path,
+      ?query: Hash[untyped, untyped]?,
+      ?body: Hash[untyped, untyped]?,
+      ?idempotent: bool?,
+      ?request_options: request_options
+    ) -> untyped
+
+    # Same as #request but returns the raw Response.
+    def execute: (
+      Symbol | String method,
+      String path,
+      ?query: Hash[untyped, untyped]?,
+      ?body: Hash[untyped, untyped]?,
+      ?idempotent: bool?,
+      ?request_options: request_options
+    ) -> Response
+
+    # Returns a lazy Pager over every item of a cursor-paginated list.
+    def paginate: (
+      String path,
+      items_key: String,
+      ?query: Hash[untyped, untyped]?,
+      ?model: _FromApi?,
+      ?request_options: request_options
+    ) -> Pager[untyped]
+
+    def inspect: () -> String
+
+    private
+
+    def with_retries: (Request request, idempotent: bool, max_retries: Integer) -> Response
+
+    def perform: (Request request, Integer attempt) -> Response
+
+    def retry_delay: (APIError error, Integer attempt, idempotent: bool, max_retries: Integer) -> Float?
+
+    def backoff: (Integer attempt) -> Float
+
+    def sleep_for: (seconds seconds) -> void
+
+    def build_url: (String path, Hash[untyped, untyped]? query) -> String
+
+    def build_headers: (Hash[Symbol, untyped] options, json_body: bool) -> Hash[String, String]
+
+    def normalize_options: (request_options? options) -> Hash[Symbol, untyped]
+
+    def redact: (String url) -> String
+
+    def log: () { () -> String } -> void
+  end
+end

@@ -1,0 +1,15 @@
+module IncidentIo
+  # One HTTP request, as handed to a transport.
+  class Request < ::Data
+    attr_reader method: Symbol
+    attr_reader url: String
+    attr_reader headers: Hash[String, String]
+    attr_reader body: String?
+    attr_reader timeout: seconds
+    attr_reader open_timeout: seconds
+
+    def self.new: (method: Symbol, url: String, headers: Hash[String, String], body: String?, timeout: seconds, open_timeout: seconds) -> instance
+
+    def initialize: (method: Symbol, url: String, headers: Hash[String, String], body: String?, timeout: seconds, open_timeout: seconds) -> void
+  end
+end

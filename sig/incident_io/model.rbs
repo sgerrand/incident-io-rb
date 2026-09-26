@@ -1,0 +1,51 @@
+module IncidentIo
+  # Builds immutable model classes on top of Data. Each generated model has
+  # its own signature in sig/incident_io/models.
+  module Model
+    class MapOf < ::Data
+      attr_reader type: untyped
+
+      def self.new: (type: untyped) -> instance
+
+      def initialize: (type: untyped) -> void
+    end
+
+    def self.map_of: (untyped type) -> MapOf
+
+    def self.define: (**untyped schema) ?{ () -> void } -> untyped
+
+    def self.member_name: (String | Symbol api_name) -> Symbol
+
+    def self.reserved_names: () -> Array[Symbol]
+
+    self.@reserved_names: Array[Symbol]?
+
+    def self.coerce: (untyped type, untyped value) -> untyped
+
+    def self.parse_date: (untyped value) -> untyped
+
+    # Added to every model class.
+    module ClassMethods : Class
+      @fields: Hash[Symbol, [String, untyped]]
+
+      # Model fields: Ruby member name => [API field name, type].
+      def fields: () -> Hash[Symbol, [String, untyped]]
+
+      def from_api: (untyped hash) -> untyped
+    end
+
+    # Added to every model instance.
+    module InstanceMethods
+      @_raw: Hash[String, untyped]?
+
+      # The payload this model was built from, or nil if built by hand.
+      def raw: () -> Hash[String, untyped]?
+
+      # Reads a field by its API name from the raw payload.
+      def []: (String | Symbol key) -> untyped
+
+      # A JSON-ready hash keyed by API field names.
+      def to_api: () -> Hash[String, untyped]
+    end
+  end
+end

@@ -1,0 +1,21 @@
+# Ruby client for the incident.io API.
+module IncidentIo
+  VERSION: String
+
+  # A duration in seconds.
+  type seconds = Integer | Float
+
+  # Per-call overrides accepted by every request method.
+  type request_options = {
+    ?api_key: String,
+    ?timeout: seconds,
+    ?open_timeout: seconds,
+    ?max_retries: Integer,
+    ?headers: Hash[String, String]
+  }
+
+  # Anything that can build a result from parsed JSON, e.g. a model class.
+  interface _FromApi
+    def from_api: (untyped data) -> untyped
+  end
+end
