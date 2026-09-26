@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/sgerrand/incident-io-rb"
   s.summary     = "incident.io Ruby API client"
   s.description = "A Ruby API client for interacting with the incident.io API."
-  s.license     = "MIT"
+  s.license     = "BSD-2-Clause"
   s.required_ruby_version = ">= 3.3"
 
   s.metadata = {
@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.cert_chain  = ['certs/sgerrand.pem']
   s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
 
-  s.files         = Dir['README.md', 'lib/**/*.rb']
+  s.files         = Dir['LICENSE', 'README.md', 'lib/**/*.rb']
   s.executables   = []
   s.require_paths = ["lib"]
 end

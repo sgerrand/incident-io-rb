@@ -86,3 +86,7 @@ It is saved to `openapi/openapi.json`, which git ignores.
 To rename a generated method, add it to `generator/overrides.yml`.
 `bundle exec rake generate:check` fails if the generated code does not match
 your local copy of the spec.
+
+## License
+
+BSD 2-Clause. See [LICENSE](LICENSE).
