@@ -47,6 +47,12 @@ client.request(:get, "/v2/incidents/01ABC")
 client.paginate("/v2/incidents", items_key: "incidents").first(10)
 ```
 
+### Types
+
+The gem ships [RBS](https://github.com/ruby/rbs) signatures in `sig/`, so
+type checkers such as [Steep](https://github.com/soutaro/steep) know every
+resource method, argument and model field.
+
 ### Errors
 
 Failed requests raise a subclass of `IncidentIo::APIError`, for example
@@ -68,11 +74,13 @@ The client retries up to 2 times (change this with `max_retries:`):
 
 ```sh
 bundle install
-bundle exec rake
+bundle exec rake            # run the specs
+bundle exec rake typecheck  # type-check with Steep
 ```
 
 The models and resources in `lib/incident_io/models` and
-`lib/incident_io/resources` are generated from the incident.io OpenAPI spec.
+`lib/incident_io/resources`, and their signatures in `sig/incident_io`, are
+generated from the incident.io OpenAPI spec.
 Do not edit them by hand. To update them:
 
 ```sh

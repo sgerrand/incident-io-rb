@@ -17,6 +17,8 @@ jobs:
   publish:
     name: Publish to RubyGems.org
     runs-on: ubuntu-latest
+    env:
+      BUNDLE_WITHOUT: typecheck
     environment:
       name: rubygems
       url: https://rubygems.org/gems/incident-io

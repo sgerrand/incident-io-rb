@@ -5,6 +5,11 @@ RSpec::Core::RakeTask.new(:spec)
 
 task default: :spec
 
+desc "Type-check lib/ against the signatures in sig/ with Steep"
+task :typecheck do
+  sh "steep", "check"
+end
+
 SPEC_FILE = "openapi/openapi.json"
 
 # The spec is not stored in git, so generating needs a local copy.

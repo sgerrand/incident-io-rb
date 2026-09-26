@@ -48,9 +48,9 @@ jobs:
 
       # Pull requests opened with GITHUB_TOKEN don't trigger the Test
       # workflow, so run the specs here before opening one.
-      - name: Run specs
+      - name: Run specs and type check
         if: steps.changes.outputs.changed == 'true'
-        run: bundle exec rake
+        run: bundle exec rake spec typecheck
 
       - name: Open or update pull request
         if: steps.changes.outputs.changed == 'true'
