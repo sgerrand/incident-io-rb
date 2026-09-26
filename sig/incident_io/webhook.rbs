@@ -1,0 +1,44 @@
+module IncidentIo
+  # Checks and parses incident.io webhooks, which are sent through Svix.
+  module Webhook
+    DEFAULT_TOLERANCE: Integer
+    SIGNATURE_VERSION: String
+    SECRET_PREFIX: String
+
+    # Request headers: a Hash, Rails' request.headers or a Rack env.
+    interface _Headers
+      def each: () { ([untyped, untyped]) -> void } -> untyped
+    end
+
+    # The webhook's signature or timestamp is missing, wrong or too old.
+    class SignatureError < Error
+    end
+
+    # A parsed webhook.
+    class Event < ::Data
+      attr_reader id: String?
+      attr_reader type: String?
+      attr_reader data: data | Hash[String, untyped] | nil
+      attr_reader raw: Hash[String, untyped]
+
+      def self.new: (id: String?, type: String?, data: data | Hash[String, untyped] | nil, raw: Hash[String, untyped]) -> instance
+
+      def initialize: (id: String?, type: String?, data: data | Hash[String, untyped] | nil, raw: Hash[String, untyped]) -> void
+    end
+
+    # Checks the signature, then parses the webhook.
+    def self?.construct_event: (String payload, _Headers headers, secret: String, ?tolerance: Integer, ?now: Time) -> Event
+
+    # Raises SignatureError unless the webhook can be trusted.
+    def self?.verify!: (String payload, _Headers headers, secret: String, ?tolerance: Integer, ?now: Time) -> true
+
+    def self?.sign: (String payload, id: String, timestamp: Integer, secret: String) -> String
+
+    # Parses a webhook body without checking its signature.
+    def self?.parse: (String | Hash[String, untyped] payload, ?id: String?) -> Event
+
+    def self?.find_header: (_Headers headers, String name) -> String?
+
+    def self?.decode_secret: (String secret) -> String
+  end
+end

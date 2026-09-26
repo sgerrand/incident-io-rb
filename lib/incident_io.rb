@@ -19,6 +19,10 @@ require_relative "incident_io/resource"
 require_relative "incident_io/models"
 require_relative "incident_io/resources"
 require_relative "incident_io/client"
+require_relative "incident_io/webhook"
+require_relative "incident_io/webhook_events"
+require_relative "incident_io/audit_log"
+require_relative "incident_io/audit_log_entries"
 
 # Ruby client for the incident.io API.
 module IncidentIo

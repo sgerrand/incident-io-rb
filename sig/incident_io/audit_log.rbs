@@ -1,0 +1,7 @@
+module IncidentIo
+  # Parses incident.io audit log entries.
+  module AuditLog
+    # The entry's model, or the parsed Hash for unknown entry types.
+    def self?.parse: (String | Hash[String, untyped] entry) -> (entry | Hash[String, untyped])
+  end
+end
