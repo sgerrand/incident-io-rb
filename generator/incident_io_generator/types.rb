@@ -123,6 +123,27 @@ module IncidentIoGenerator
       end
     end
 
+    # A JSON value that fits the schema, for tests. Models are passed as
+    # plain hashes, which generated methods accept.
+    def sample_value(schema, name)
+      return {} if ref_name(schema)
+
+      case schema["type"]
+      when "string"
+        case schema["format"]
+        when "date-time" then "2024-01-01T00:00:00Z"
+        when "date" then "2024-01-01"
+        else schema["enum"]&.first || "#{name}-value"
+        end
+      when "integer" then 1
+      when "number" then 1.5
+      when "boolean" then true
+      when "array" then [sample_value(schema["items"] || {}, name)]
+      when "object" then {"one_of" => ["#{name}-value"]}
+      else "#{name}-value"
+      end
+    end
+
     def string_type(schema)
       case schema["format"]
       when "date-time" then ":time"

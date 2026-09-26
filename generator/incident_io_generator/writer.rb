@@ -22,6 +22,7 @@ module IncidentIoGenerator
       sig/incident_io/webhook_events.rbs
       lib/incident_io/audit_log_entries.rb
       sig/incident_io/audit_log_entries.rbs
+      spec/fixtures/operations.json
     ].freeze
     # Keep method signatures on one line up to this width.
     MAX_LINE = 110
@@ -45,6 +46,7 @@ module IncidentIoGenerator
       files["sig/incident_io/webhook_events.rbs"] = render("webhook_events.rbs")
       files["lib/incident_io/audit_log_entries.rb"] = render("audit_log_entries.rb")
       files["sig/incident_io/audit_log_entries.rbs"] = render("audit_log_entries.rbs")
+      files["spec/fixtures/operations.json"] = "#{JSON.pretty_generate(operations_manifest)}\n"
       api.models.each do |model|
         files["lib/incident_io/models/#{model.file_name}.rb"] = render("model.rb", model:)
         files["sig/incident_io/models/#{model.file_name}.rbs"] = render("model.rbs", model:)
@@ -202,6 +204,40 @@ module IncidentIoGenerator
       return nil if text.nil?
 
       text[/\A.*?[.!?](?=\s|\z)/] || text
+    end
+
+    # What each generated resource method should do, for
+    # spec/incident_io/generated_operations_spec.rb: how to call it, the
+    # request it should send and what it should return.
+    def operations_manifest
+      api.resources.flat_map do |resource|
+        resource.operations.map do |op|
+          keyword_params = op.keyword_params.select(&:required)
+          model = op.result.model
+          {
+            "operation_id" => op.operation_id,
+            "version" => resource.version.downcase,
+            "resource" => resource.name,
+            "method" => op.method_name,
+            "deprecated" => op.deprecated,
+            "http_method" => op.http_method,
+            "path" => op.path,
+            "path_args" => op.path_params.map { |p| "#{p.name}-value" },
+            "keyword_args" => keyword_params.to_h { |p| [p.name, Types.sample_value(p.schema, p.name)] },
+            "query_keys" => keyword_params.select { |p| op.query_params.include?(p) }.map(&:name),
+            "body_keys" => keyword_params.select { |p| op.body_params.include?(p) }.map(&:name),
+            "body" => op.body,
+            "idempotency_key" => op.idempotent,
+            "result" => {
+              "kind" => op.result.kind.to_s,
+              "unwrap" => op.result.unwrap,
+              "items_key" => op.result.items_key,
+              "model" => model&.delete_prefix("[")&.delete_suffix("]")&.delete_prefix("Models::"),
+              "array" => model&.start_with?("[") || false
+            }
+          }
+        end
+      end
     end
 
     private

@@ -50,7 +50,7 @@ task :generate do
   require_relative "generator/incident_io_generator"
 
   files = IncidentIoGenerator.generate
-  puts "Generated #{files.size} files in lib/incident_io and sig/incident_io."
+  puts "Generated #{files.size} files."
 end
 
 namespace :generate do

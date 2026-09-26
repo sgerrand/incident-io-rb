@@ -28,6 +28,7 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
       "lib/incident_io/resources/v2/widgets.rb", "sig/incident_io/resources/v2/widgets.rbs",
       "lib/incident_io/webhook_events.rb", "sig/incident_io/webhook_events.rbs",
       "lib/incident_io/audit_log_entries.rb", "sig/incident_io/audit_log_entries.rbs",
+      "spec/fixtures/operations.json",
       *models.map { |m| "lib/incident_io/models/#{m}.rb" },
       *models.map { |m| "sig/incident_io/models/#{m}.rbs" }
     )
@@ -113,5 +114,24 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
     expect(generated("lib/incident_io/audit_log_entries.rb"))
       .to include(%(["widget.deleted", 2] => :AuditLogsWidgetDeletedV2\n))
     expect(generated("sig/incident_io/audit_log_entries.rbs")).to include("type entry = Models::AuditLogsWidgetDeletedV2")
+  end
+
+  it "writes a manifest of what each resource method should do" do
+    described_class.new(api, @dir).write
+    manifest = JSON.parse(generated("spec/fixtures/operations.json")).to_h { |op| [op["method"], op] }
+
+    expect(manifest["create"]).to include(
+      "operation_id" => "Widgets V2#Create", "version" => "v2", "resource" => "widgets",
+      "http_method" => "post", "path" => "/v2/widgets", "path_args" => [],
+      "keyword_args" => {"name" => "name-value"}, "body_keys" => ["name"], "body" => true, "idempotency_key" => true,
+      "result" => {"kind" => "json", "unwrap" => "widget", "items_key" => nil, "model" => "WidgetV2", "array" => false}
+    )
+    expect(manifest["list"]).to include(
+      "keyword_args" => {"kind" => {"one_of" => ["kind-value"]}}, "query_keys" => ["kind"],
+      "result" => include("kind" => "paginated", "items_key" => "widgets", "model" => "WidgetV2")
+    )
+    expect(manifest["show"]).to include("path" => "/v2/widgets/{id}", "path_args" => ["id-value"])
+    expect(manifest["destroy"]).to include("deprecated" => true, "body" => false, "result" => include("kind" => "none"))
+    expect(manifest["export"]["result"]).to include("kind" => "text")
   end
 end

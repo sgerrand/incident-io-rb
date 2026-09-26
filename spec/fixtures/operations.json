@@ -1,0 +1,8473 @@
+[
+  {
+    "operation_id": "Actions V1#List",
+    "version": "v1",
+    "resource": "actions",
+    "method": "list",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v1/actions",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "actions",
+      "items_key": null,
+      "model": "ActionV1",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Actions V1#Show",
+    "version": "v1",
+    "resource": "actions",
+    "method": "show",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v1/actions/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "action",
+      "items_key": null,
+      "model": "ActionV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Notes V1#Create",
+    "version": "v1",
+    "resource": "alert_notes",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/alert_notes",
+    "path_args": [],
+    "keyword_args": {
+      "content": "content-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "content"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_note",
+      "items_key": null,
+      "model": "AlertNoteV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Notes V1#Delete",
+    "version": "v1",
+    "resource": "alert_notes",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v1/alert_notes/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Notes V1#List",
+    "version": "v1",
+    "resource": "alert_notes",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/alert_notes",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "alert_notes",
+      "model": "AlertNoteV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Notes V1#Show",
+    "version": "v1",
+    "resource": "alert_notes",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/alert_notes/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_note",
+      "items_key": null,
+      "model": "AlertNoteV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Notes V1#Update",
+    "version": "v1",
+    "resource": "alert_notes",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v1/alert_notes/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "content": "content-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "content"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_note",
+      "items_key": null,
+      "model": "AlertNoteV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "API Keys V1#Create",
+    "version": "v1",
+    "resource": "api_keys",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/api_keys",
+    "path_args": [],
+    "keyword_args": {
+      "name": "name-value",
+      "role_names": [
+        "viewer"
+      ],
+      "team_ids": [
+        "team_ids-value"
+      ],
+      "team_role_names": [
+        "catalog_editor"
+      ]
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name",
+      "role_names",
+      "team_ids",
+      "team_role_names"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": null,
+      "items_key": null,
+      "model": "APIKeysCreateResultV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "API Keys V1#Delete",
+    "version": "v1",
+    "resource": "api_keys",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v1/api_keys/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "API Keys V1#List",
+    "version": "v1",
+    "resource": "api_keys",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/api_keys",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "api_keys",
+      "model": "APIKeyV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "API Keys V1#Rotate",
+    "version": "v1",
+    "resource": "api_keys",
+    "method": "rotate",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/api_keys/{id}/actions/rotate",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "grace_period_minutes": 1
+    },
+    "query_keys": [],
+    "body_keys": [
+      "grace_period_minutes"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": null,
+      "items_key": null,
+      "model": "APIKeysRotateResultV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "API Keys V1#Show",
+    "version": "v1",
+    "resource": "api_keys",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/api_keys/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "api_key",
+      "items_key": null,
+      "model": "APIKeyV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "API Keys V1#Update",
+    "version": "v1",
+    "resource": "api_keys",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v1/api_keys/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "name": "name-value",
+      "role_names": [
+        "viewer"
+      ],
+      "team_ids": [
+        "team_ids-value"
+      ],
+      "team_role_names": [
+        "catalog_editor"
+      ]
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name",
+      "role_names",
+      "team_ids",
+      "team_role_names"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "api_key",
+      "items_key": null,
+      "model": "APIKeyV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Custom Field Options V1#Create",
+    "version": "v1",
+    "resource": "custom_field_options",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/custom_field_options",
+    "path_args": [],
+    "keyword_args": {
+      "custom_field_id": "custom_field_id-value",
+      "value": "value-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "custom_field_id",
+      "value"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "custom_field_option",
+      "items_key": null,
+      "model": "CustomFieldOptionV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Custom Field Options V1#Delete",
+    "version": "v1",
+    "resource": "custom_field_options",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v1/custom_field_options/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Custom Field Options V1#List",
+    "version": "v1",
+    "resource": "custom_field_options",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/custom_field_options",
+    "path_args": [],
+    "keyword_args": {
+      "custom_field_id": "custom_field_id-value"
+    },
+    "query_keys": [
+      "custom_field_id"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "custom_field_options",
+      "model": "CustomFieldOptionV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Custom Field Options V1#Show",
+    "version": "v1",
+    "resource": "custom_field_options",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/custom_field_options/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "custom_field_option",
+      "items_key": null,
+      "model": "CustomFieldOptionV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Custom Field Options V1#Update",
+    "version": "v1",
+    "resource": "custom_field_options",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v1/custom_field_options/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "sort_key": 1,
+      "value": "value-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "sort_key",
+      "value"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "custom_field_option",
+      "items_key": null,
+      "model": "CustomFieldOptionV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Custom Fields V1#Create",
+    "version": "v1",
+    "resource": "custom_fields",
+    "method": "create",
+    "deprecated": true,
+    "http_method": "post",
+    "path": "/v1/custom_fields",
+    "path_args": [],
+    "keyword_args": {
+      "description": "description-value",
+      "field_type": "single_select",
+      "name": "name-value",
+      "show_before_closure": true,
+      "show_before_creation": true,
+      "show_before_update": true
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "field_type",
+      "name",
+      "show_before_closure",
+      "show_before_creation",
+      "show_before_update"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "custom_field",
+      "items_key": null,
+      "model": "CustomFieldV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Custom Fields V1#Delete",
+    "version": "v1",
+    "resource": "custom_fields",
+    "method": "delete",
+    "deprecated": true,
+    "http_method": "delete",
+    "path": "/v1/custom_fields/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Custom Fields V1#List",
+    "version": "v1",
+    "resource": "custom_fields",
+    "method": "list",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v1/custom_fields",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "custom_fields",
+      "items_key": null,
+      "model": "CustomFieldV1",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Custom Fields V1#Show",
+    "version": "v1",
+    "resource": "custom_fields",
+    "method": "show",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v1/custom_fields/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "custom_field",
+      "items_key": null,
+      "model": "CustomFieldV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Custom Fields V1#Update",
+    "version": "v1",
+    "resource": "custom_fields",
+    "method": "update",
+    "deprecated": true,
+    "http_method": "put",
+    "path": "/v1/custom_fields/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "description": "description-value",
+      "name": "name-value",
+      "show_before_closure": true,
+      "show_before_creation": true,
+      "show_before_update": true
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "name",
+      "show_before_closure",
+      "show_before_creation",
+      "show_before_update"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "custom_field",
+      "items_key": null,
+      "model": "CustomFieldV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Attachments V1#Create",
+    "version": "v1",
+    "resource": "incident_attachments",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/incident_attachments",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value",
+      "resource": {
+        "one_of": [
+          "resource-value"
+        ]
+      }
+    },
+    "query_keys": [],
+    "body_keys": [
+      "incident_id",
+      "resource"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_attachment",
+      "items_key": null,
+      "model": "IncidentAttachmentV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Attachments V1#Delete",
+    "version": "v1",
+    "resource": "incident_attachments",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v1/incident_attachments/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Attachments V1#List",
+    "version": "v1",
+    "resource": "incident_attachments",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/incident_attachments",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_attachments",
+      "items_key": null,
+      "model": "IncidentAttachmentV1",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Incident Memberships V1#Create",
+    "version": "v1",
+    "resource": "incident_memberships",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/incident_memberships",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value",
+      "user_id": "user_id-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "incident_id",
+      "user_id"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_membership",
+      "items_key": null,
+      "model": "IncidentMembershipV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Memberships V1#Revoke",
+    "version": "v1",
+    "resource": "incident_memberships",
+    "method": "revoke",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/incident_memberships/actions/revoke",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value",
+      "user_id": "user_id-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "incident_id",
+      "user_id"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Relationships V1#List",
+    "version": "v1",
+    "resource": "incident_relationships",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/incident_relationships",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value"
+    },
+    "query_keys": [
+      "incident_id"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "incident_relationships",
+      "model": "IncidentRelationshipV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Roles V1#Create",
+    "version": "v1",
+    "resource": "incident_roles",
+    "method": "create",
+    "deprecated": true,
+    "http_method": "post",
+    "path": "/v1/incident_roles",
+    "path_args": [],
+    "keyword_args": {
+      "description": "description-value",
+      "instructions": "instructions-value",
+      "name": "name-value",
+      "required": true,
+      "shortform": "shortform-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "instructions",
+      "name",
+      "required",
+      "shortform"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_role",
+      "items_key": null,
+      "model": "IncidentRoleV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Roles V1#Delete",
+    "version": "v1",
+    "resource": "incident_roles",
+    "method": "delete",
+    "deprecated": true,
+    "http_method": "delete",
+    "path": "/v1/incident_roles/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Roles V1#List",
+    "version": "v1",
+    "resource": "incident_roles",
+    "method": "list",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v1/incident_roles",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_roles",
+      "items_key": null,
+      "model": "IncidentRoleV1",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Incident Roles V1#Show",
+    "version": "v1",
+    "resource": "incident_roles",
+    "method": "show",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v1/incident_roles/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_role",
+      "items_key": null,
+      "model": "IncidentRoleV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Roles V1#Update",
+    "version": "v1",
+    "resource": "incident_roles",
+    "method": "update",
+    "deprecated": true,
+    "http_method": "put",
+    "path": "/v1/incident_roles/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "description": "description-value",
+      "instructions": "instructions-value",
+      "name": "name-value",
+      "shortform": "shortform-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "instructions",
+      "name",
+      "shortform"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_role",
+      "items_key": null,
+      "model": "IncidentRoleV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Statuses V1#Create",
+    "version": "v1",
+    "resource": "incident_statuses",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/incident_statuses",
+    "path_args": [],
+    "keyword_args": {
+      "category": "live",
+      "description": "description-value",
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "category",
+      "description",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_status",
+      "items_key": null,
+      "model": "IncidentStatusV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Statuses V1#Delete",
+    "version": "v1",
+    "resource": "incident_statuses",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v1/incident_statuses/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Statuses V1#List",
+    "version": "v1",
+    "resource": "incident_statuses",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/incident_statuses",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_statuses",
+      "items_key": null,
+      "model": "IncidentStatusV1",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Incident Statuses V1#Show",
+    "version": "v1",
+    "resource": "incident_statuses",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/incident_statuses/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_status",
+      "items_key": null,
+      "model": "IncidentStatusV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Statuses V1#Update",
+    "version": "v1",
+    "resource": "incident_statuses",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v1/incident_statuses/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "description": "description-value",
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_status",
+      "items_key": null,
+      "model": "IncidentStatusV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Templates V1#Create",
+    "version": "v1",
+    "resource": "incident_templates",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/incident_templates",
+    "path_args": [],
+    "keyword_args": {
+      "name": "name-value",
+      "template": {}
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name",
+      "template"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_template",
+      "items_key": null,
+      "model": "IncidentTemplateV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Templates V1#Destroy",
+    "version": "v1",
+    "resource": "incident_templates",
+    "method": "destroy",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v1/incident_templates/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Templates V1#List",
+    "version": "v1",
+    "resource": "incident_templates",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/incident_templates",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "incident_templates",
+      "model": "IncidentTemplateV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Templates V1#Show",
+    "version": "v1",
+    "resource": "incident_templates",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/incident_templates/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_template",
+      "items_key": null,
+      "model": "IncidentTemplateV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Templates V1#Update",
+    "version": "v1",
+    "resource": "incident_templates",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v1/incident_templates/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "name": "name-value",
+      "template": {}
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name",
+      "template"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_template",
+      "items_key": null,
+      "model": "IncidentTemplateV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Templates V1#Validate",
+    "version": "v1",
+    "resource": "incident_templates",
+    "method": "validate",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/incident_templates/actions/validate",
+    "path_args": [],
+    "keyword_args": {
+      "name": "name-value",
+      "template": {}
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name",
+      "template"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "warnings",
+      "items_key": null,
+      "model": "IncidentTemplateValidateWarningV1",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Incident Types V1#List",
+    "version": "v1",
+    "resource": "incident_types",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/incident_types",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_types",
+      "items_key": null,
+      "model": "IncidentTypeV1",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Incident Types V1#Show",
+    "version": "v1",
+    "resource": "incident_types",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/incident_types/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_type",
+      "items_key": null,
+      "model": "IncidentTypeV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incidents V1#Create",
+    "version": "v1",
+    "resource": "incidents",
+    "method": "create",
+    "deprecated": true,
+    "http_method": "post",
+    "path": "/v1/incidents",
+    "path_args": [],
+    "keyword_args": {
+      "visibility": "public"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "visibility"
+    ],
+    "body": true,
+    "idempotency_key": true,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident",
+      "items_key": null,
+      "model": "IncidentV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incidents V1#List",
+    "version": "v1",
+    "resource": "incidents",
+    "method": "list",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v1/incidents",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "incidents",
+      "model": "IncidentV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incidents V1#Show",
+    "version": "v1",
+    "resource": "incidents",
+    "method": "show",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v1/incidents/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident",
+      "items_key": null,
+      "model": "IncidentV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "IPAllowlists V1#ShowIPAllowlist",
+    "version": "v1",
+    "resource": "ip_allowlists",
+    "method": "show_ip_allowlist",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/ip_allowlists",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "ip_allowlist",
+      "items_key": null,
+      "model": "IPAllowlistV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "IPAllowlists V1#UpdateIPAllowlist",
+    "version": "v1",
+    "resource": "ip_allowlists",
+    "method": "update_ip_allowlist",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v1/ip_allowlists",
+    "path_args": [],
+    "keyword_args": {
+      "allowlist": [
+        {}
+      ],
+      "enabled": true,
+      "version": 1
+    },
+    "query_keys": [],
+    "body_keys": [
+      "allowlist",
+      "enabled",
+      "version"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "ip_allowlist",
+      "items_key": null,
+      "model": "IPAllowlistV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "MaintenanceWindows V1#Create",
+    "version": "v1",
+    "resource": "maintenance_windows",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/maintenance_windows",
+    "path_args": [],
+    "keyword_args": {
+      "alert_condition_groups": [
+        {}
+      ],
+      "end_at": "2024-01-01T00:00:00Z",
+      "lead": {},
+      "name": "name-value",
+      "show_in_sidebar": true,
+      "start_at": "2024-01-01T00:00:00Z"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "alert_condition_groups",
+      "end_at",
+      "lead",
+      "name",
+      "show_in_sidebar",
+      "start_at"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "maintenance_window",
+      "items_key": null,
+      "model": "MaintenanceWindowV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "MaintenanceWindows V1#Delete",
+    "version": "v1",
+    "resource": "maintenance_windows",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v1/maintenance_windows/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "MaintenanceWindows V1#List",
+    "version": "v1",
+    "resource": "maintenance_windows",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/maintenance_windows",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "maintenance_windows",
+      "model": "MaintenanceWindowV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "MaintenanceWindows V1#Show",
+    "version": "v1",
+    "resource": "maintenance_windows",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/maintenance_windows/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "maintenance_window",
+      "items_key": null,
+      "model": "MaintenanceWindowV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "MaintenanceWindows V1#Update",
+    "version": "v1",
+    "resource": "maintenance_windows",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v1/maintenance_windows/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "alert_condition_groups": [
+        {}
+      ],
+      "end_at": "2024-01-01T00:00:00Z",
+      "lead": {},
+      "name": "name-value",
+      "show_in_sidebar": true,
+      "start_at": "2024-01-01T00:00:00Z"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "alert_condition_groups",
+      "end_at",
+      "lead",
+      "name",
+      "show_in_sidebar",
+      "start_at"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "maintenance_window",
+      "items_key": null,
+      "model": "MaintenanceWindowV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "PostmortemDocuments V1#Attach",
+    "version": "v1",
+    "resource": "postmortem_documents",
+    "method": "attach",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/postmortem_documents/actions/attach",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value",
+      "permalink": "permalink-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "incident_id",
+      "permalink"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "postmortem_document",
+      "items_key": null,
+      "model": "PostmortemDocumentV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "PostmortemDocuments V1#List",
+    "version": "v1",
+    "resource": "postmortem_documents",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/postmortem_documents",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "postmortem_documents",
+      "model": "PostmortemDocumentV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "PostmortemDocuments V1#Show",
+    "version": "v1",
+    "resource": "postmortem_documents",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/postmortem_documents/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "postmortem_document",
+      "items_key": null,
+      "model": "PostmortemDocumentV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "PostmortemDocuments V1#ShowContent",
+    "version": "v1",
+    "resource": "postmortem_documents",
+    "method": "show_content",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/postmortem_documents/{id}/content",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "markdown",
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "PostmortemDocuments V1#UpdateStatus",
+    "version": "v1",
+    "resource": "postmortem_documents",
+    "method": "update_status",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v1/postmortem_documents/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "status": "in_progress"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "status"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "postmortem_document",
+      "items_key": null,
+      "model": "PostmortemDocumentV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Severities V1#Create",
+    "version": "v1",
+    "resource": "severities",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/severities",
+    "path_args": [],
+    "keyword_args": {
+      "description": "description-value",
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "severity",
+      "items_key": null,
+      "model": "SeverityV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Severities V1#Delete",
+    "version": "v1",
+    "resource": "severities",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v1/severities/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Severities V1#List",
+    "version": "v1",
+    "resource": "severities",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/severities",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "severities",
+      "items_key": null,
+      "model": "SeverityV1",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Severities V1#Show",
+    "version": "v1",
+    "resource": "severities",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/severities/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "severity",
+      "items_key": null,
+      "model": "SeverityV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Severities V1#Update",
+    "version": "v1",
+    "resource": "severities",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v1/severities/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "description": "description-value",
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "severity",
+      "items_key": null,
+      "model": "SeverityV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Status Pages V1#ListResponseIncidents",
+    "version": "v1",
+    "resource": "status_pages",
+    "method": "list_response_incidents",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/status-pages/{id}/incidents/{incident_id}/response-incidents",
+    "path_args": [
+      "id-value",
+      "incident_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incidents",
+      "items_key": null,
+      "model": "StatusPageLinkedResponseIncidentV1",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Utilities V1#Identity",
+    "version": "v1",
+    "resource": "utilities",
+    "method": "identity",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/identity",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "identity",
+      "items_key": null,
+      "model": "IdentityV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Utilities V1#IPRanges",
+    "version": "v1",
+    "resource": "utilities",
+    "method": "ip_ranges",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/ip_ranges",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "ip_ranges",
+      "items_key": null,
+      "model": "IPRangeV1",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Utilities V1#OpenAPIV3",
+    "version": "v1",
+    "resource": "utilities",
+    "method": "openapi_spec",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v1/openapiV3.json",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Actions V2#Create",
+    "version": "v2",
+    "resource": "actions",
+    "method": "create",
+    "deprecated": true,
+    "http_method": "post",
+    "path": "/v2/actions",
+    "path_args": [],
+    "keyword_args": {
+      "description": "description-value",
+      "incident_id": "incident_id-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "incident_id"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "action",
+      "items_key": null,
+      "model": "ActionV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Actions V2#Delete",
+    "version": "v2",
+    "resource": "actions",
+    "method": "delete",
+    "deprecated": true,
+    "http_method": "delete",
+    "path": "/v2/actions/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Actions V2#List",
+    "version": "v2",
+    "resource": "actions",
+    "method": "list",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v2/actions",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "actions",
+      "items_key": null,
+      "model": "ActionV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Actions V2#Show",
+    "version": "v2",
+    "resource": "actions",
+    "method": "show",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v2/actions/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "action",
+      "items_key": null,
+      "model": "ActionV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Actions V2#Update",
+    "version": "v2",
+    "resource": "actions",
+    "method": "update",
+    "deprecated": true,
+    "http_method": "put",
+    "path": "/v2/actions/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "description": "description-value",
+      "status": "outstanding"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "status"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "action",
+      "items_key": null,
+      "model": "ActionV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Attributes V2#Create",
+    "version": "v2",
+    "resource": "alert_attributes",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/alert_attributes",
+    "path_args": [],
+    "keyword_args": {
+      "array": true,
+      "name": "name-value",
+      "type": "type-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "array",
+      "name",
+      "type"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_attribute",
+      "items_key": null,
+      "model": "AlertAttributeV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Attributes V2#Destroy",
+    "version": "v2",
+    "resource": "alert_attributes",
+    "method": "destroy",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/alert_attributes/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Attributes V2#List",
+    "version": "v2",
+    "resource": "alert_attributes",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/alert_attributes",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_attributes",
+      "items_key": null,
+      "model": "AlertAttributeV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Alert Attributes V2#Show",
+    "version": "v2",
+    "resource": "alert_attributes",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/alert_attributes/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_attribute",
+      "items_key": null,
+      "model": "AlertAttributeV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Attributes V2#Update",
+    "version": "v2",
+    "resource": "alert_attributes",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/alert_attributes/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "array": true,
+      "name": "name-value",
+      "type": "type-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "array",
+      "name",
+      "type"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_attribute",
+      "items_key": null,
+      "model": "AlertAttributeV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Events V2#CreateHTTP",
+    "version": "v2",
+    "resource": "alert_events",
+    "method": "create_http",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/alert_events/http/{alert_source_config_id}",
+    "path_args": [
+      "alert_source_config_id-value"
+    ],
+    "keyword_args": {
+      "status": "firing",
+      "title": "title-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "status",
+      "title"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": null,
+      "items_key": null,
+      "model": "AlertEventsCreateHTTPResultV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Routes V2#Create",
+    "version": "v2",
+    "resource": "alert_routes",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/alert_routes",
+    "path_args": [],
+    "keyword_args": {
+      "alert_sources": [
+        {}
+      ],
+      "channel_config": [
+        {}
+      ],
+      "condition_groups": [
+        {}
+      ],
+      "enabled": true,
+      "escalation_config": {},
+      "expressions": [
+        {}
+      ],
+      "incident_config": {},
+      "incident_template": {},
+      "is_private": true,
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "alert_sources",
+      "channel_config",
+      "condition_groups",
+      "enabled",
+      "escalation_config",
+      "expressions",
+      "incident_config",
+      "incident_template",
+      "is_private",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_route",
+      "items_key": null,
+      "model": "AlertRouteV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Routes V2#Delete",
+    "version": "v2",
+    "resource": "alert_routes",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/alert_routes/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Routes V2#List",
+    "version": "v2",
+    "resource": "alert_routes",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/alert_routes",
+    "path_args": [],
+    "keyword_args": {
+      "page_size": 1
+    },
+    "query_keys": [
+      "page_size"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "alert_routes",
+      "model": "AlertRouteSlimV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Routes V2#Show",
+    "version": "v2",
+    "resource": "alert_routes",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/alert_routes/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_route",
+      "items_key": null,
+      "model": "AlertRouteV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Routes V2#Update",
+    "version": "v2",
+    "resource": "alert_routes",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/alert_routes/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "alert_sources": [
+        {}
+      ],
+      "channel_config": [
+        {}
+      ],
+      "condition_groups": [
+        {}
+      ],
+      "enabled": true,
+      "escalation_config": {},
+      "expressions": [
+        {}
+      ],
+      "incident_config": {},
+      "incident_template": {},
+      "is_private": true,
+      "name": "name-value",
+      "version": 1
+    },
+    "query_keys": [],
+    "body_keys": [
+      "alert_sources",
+      "channel_config",
+      "condition_groups",
+      "enabled",
+      "escalation_config",
+      "expressions",
+      "incident_config",
+      "incident_template",
+      "is_private",
+      "name",
+      "version"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_route",
+      "items_key": null,
+      "model": "AlertRouteV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Sources V2#Create",
+    "version": "v2",
+    "resource": "alert_sources",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/alert_sources",
+    "path_args": [],
+    "keyword_args": {
+      "name": "name-value",
+      "source_type": "alertmanager",
+      "template": {}
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name",
+      "source_type",
+      "template"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_source",
+      "items_key": null,
+      "model": "AlertSourceV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Sources V2#Delete",
+    "version": "v2",
+    "resource": "alert_sources",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/alert_sources/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Sources V2#List",
+    "version": "v2",
+    "resource": "alert_sources",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/alert_sources",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_sources",
+      "items_key": null,
+      "model": "AlertSourceV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Alert Sources V2#Show",
+    "version": "v2",
+    "resource": "alert_sources",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/alert_sources/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_source",
+      "items_key": null,
+      "model": "AlertSourceV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Sources V2#Update",
+    "version": "v2",
+    "resource": "alert_sources",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/alert_sources/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "name": "name-value",
+      "template": {}
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name",
+      "template"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_source",
+      "items_key": null,
+      "model": "AlertSourceV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Sources V2#Validate",
+    "version": "v2",
+    "resource": "alert_sources",
+    "method": "validate",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/alert_sources/actions/validate",
+    "path_args": [],
+    "keyword_args": {
+      "source_type": "alertmanager",
+      "template": {}
+    },
+    "query_keys": [],
+    "body_keys": [
+      "source_type",
+      "template"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alerts V2#AddTags",
+    "version": "v2",
+    "resource": "alerts",
+    "method": "add_tags",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/alerts/{id}/actions/add_tags",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "tags": [
+        "tags-value"
+      ]
+    },
+    "query_keys": [],
+    "body_keys": [
+      "tags"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert",
+      "items_key": null,
+      "model": "AlertV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alerts V2#CreateIncidentAlert",
+    "version": "v2",
+    "resource": "alerts",
+    "method": "create_incident_alert",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/incident_alerts",
+    "path_args": [],
+    "keyword_args": {
+      "alert_id": "alert_id-value",
+      "incident_id": "incident_id-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "alert_id",
+      "incident_id"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_alert",
+      "items_key": null,
+      "model": "IncidentAlertV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alerts V2#List",
+    "version": "v2",
+    "resource": "alerts",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/alerts",
+    "path_args": [],
+    "keyword_args": {
+      "page_size": 1
+    },
+    "query_keys": [
+      "page_size"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "alerts",
+      "model": "AlertV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alerts V2#ListAlertTags",
+    "version": "v2",
+    "resource": "alerts",
+    "method": "list_alert_tags",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/alert_tags",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "alert_tags",
+      "model": "AlertTagV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alerts V2#ListIncidentAlerts",
+    "version": "v2",
+    "resource": "alerts",
+    "method": "list_incident_alerts",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/incident_alerts",
+    "path_args": [],
+    "keyword_args": {
+      "page_size": 1
+    },
+    "query_keys": [
+      "page_size"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "incident_alerts",
+      "model": "IncidentAlertV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alerts V2#RemoveTags",
+    "version": "v2",
+    "resource": "alerts",
+    "method": "remove_tags",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/alerts/{id}/actions/remove_tags",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "tags": [
+        "tags-value"
+      ]
+    },
+    "query_keys": [],
+    "body_keys": [
+      "tags"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert",
+      "items_key": null,
+      "model": "AlertV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alerts V2#Resolve",
+    "version": "v2",
+    "resource": "alerts",
+    "method": "resolve",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/alerts/{id}/actions/resolve",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert",
+      "items_key": null,
+      "model": "AlertV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alerts V2#SetTags",
+    "version": "v2",
+    "resource": "alerts",
+    "method": "set_tags",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/alerts/{id}/actions/set_tags",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "tags": [
+        "tags-value"
+      ]
+    },
+    "query_keys": [],
+    "body_keys": [
+      "tags"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert",
+      "items_key": null,
+      "model": "AlertV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alerts V2#Show",
+    "version": "v2",
+    "resource": "alerts",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/alerts/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert",
+      "items_key": null,
+      "model": "AlertV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alerts V2#TransitionIncidentAlert",
+    "version": "v2",
+    "resource": "alerts",
+    "method": "transition_incident_alert",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/incident_alerts/{id}/actions/transition",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "state": "related"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "state"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_alert",
+      "items_key": null,
+      "model": "IncidentAlertV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Announcement Rules V2#Create",
+    "version": "v2",
+    "resource": "announcement_rules",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/announcement_rules",
+    "path_args": [],
+    "keyword_args": {
+      "condition_groups": [
+        {}
+      ],
+      "mode": "live_and_closed",
+      "name": "name-value",
+      "update_sharing_mode": "none"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "condition_groups",
+      "mode",
+      "name",
+      "update_sharing_mode"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "announcement_rule",
+      "items_key": null,
+      "model": "AnnouncementRuleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Announcement Rules V2#Destroy",
+    "version": "v2",
+    "resource": "announcement_rules",
+    "method": "destroy",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/announcement_rules/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Announcement Rules V2#List",
+    "version": "v2",
+    "resource": "announcement_rules",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/announcement_rules",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "announcement_rules",
+      "model": "AnnouncementRuleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Announcement Rules V2#Show",
+    "version": "v2",
+    "resource": "announcement_rules",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/announcement_rules/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "announcement_rule",
+      "items_key": null,
+      "model": "AnnouncementRuleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Announcement Rules V2#Update",
+    "version": "v2",
+    "resource": "announcement_rules",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/announcement_rules/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "condition_groups": [
+        {}
+      ],
+      "mode": "live_and_closed",
+      "name": "name-value",
+      "update_sharing_mode": "none"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "condition_groups",
+      "mode",
+      "name",
+      "update_sharing_mode"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "announcement_rule",
+      "items_key": null,
+      "model": "AnnouncementRuleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Announcement Templates V2#Create",
+    "version": "v2",
+    "resource": "announcement_templates",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/announcement_templates",
+    "path_args": [],
+    "keyword_args": {
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "announcement_template",
+      "items_key": null,
+      "model": "AnnouncementTemplateV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Announcement Templates V2#Destroy",
+    "version": "v2",
+    "resource": "announcement_templates",
+    "method": "destroy",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/announcement_templates/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Announcement Templates V2#List",
+    "version": "v2",
+    "resource": "announcement_templates",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/announcement_templates",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "announcement_templates",
+      "items_key": null,
+      "model": "AnnouncementTemplateV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Announcement Templates V2#Show",
+    "version": "v2",
+    "resource": "announcement_templates",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/announcement_templates/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "announcement_template",
+      "items_key": null,
+      "model": "AnnouncementTemplateV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Announcement Templates V2#Update",
+    "version": "v2",
+    "resource": "announcement_templates",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/announcement_templates/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "actions": [
+        {}
+      ],
+      "fields": [
+        {}
+      ],
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "actions",
+      "fields",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "announcement_template",
+      "items_key": null,
+      "model": "AnnouncementTemplateV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Call Routes V2#CreateAllowedCaller",
+    "version": "v2",
+    "resource": "call_routes",
+    "method": "create_allowed_caller",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/call_routes/{call_route_id}/allowed_callers",
+    "path_args": [
+      "call_route_id-value"
+    ],
+    "keyword_args": {
+      "phone_number": "phone_number-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "phone_number"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "allowed_caller",
+      "items_key": null,
+      "model": "CallRouteAllowedCallerV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Call Routes V2#CreateOption",
+    "version": "v2",
+    "resource": "call_routes",
+    "method": "create_option",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/call_routes/{call_route_id}/options",
+    "path_args": [
+      "call_route_id-value"
+    ],
+    "keyword_args": {
+      "digit": "1",
+      "path": [
+        {}
+      ],
+      "prompt": "prompt-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "digit",
+      "path",
+      "prompt"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "option",
+      "items_key": null,
+      "model": "CallRouteOptionV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Call Routes V2#DestroyAllowedCaller",
+    "version": "v2",
+    "resource": "call_routes",
+    "method": "destroy_allowed_caller",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/call_routes/{call_route_id}/allowed_callers/{id}",
+    "path_args": [
+      "call_route_id-value",
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Call Routes V2#DestroyOption",
+    "version": "v2",
+    "resource": "call_routes",
+    "method": "destroy_option",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/call_routes/{call_route_id}/options/{id}",
+    "path_args": [
+      "call_route_id-value",
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Call Routes V2#List",
+    "version": "v2",
+    "resource": "call_routes",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/call_routes",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "call_routes",
+      "model": "CallRouteV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Call Routes V2#ListAllowedCallers",
+    "version": "v2",
+    "resource": "call_routes",
+    "method": "list_allowed_callers",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/call_routes/{call_route_id}/allowed_callers",
+    "path_args": [
+      "call_route_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "allowed_callers",
+      "items_key": null,
+      "model": "CallRouteAllowedCallerV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Call Routes V2#ListOptions",
+    "version": "v2",
+    "resource": "call_routes",
+    "method": "list_options",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/call_routes/{call_route_id}/options",
+    "path_args": [
+      "call_route_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "options",
+      "items_key": null,
+      "model": "CallRouteOptionV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Call Routes V2#Show",
+    "version": "v2",
+    "resource": "call_routes",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/call_routes/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "call_route",
+      "items_key": null,
+      "model": "CallRouteV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Call Routes V2#ShowAllowedCaller",
+    "version": "v2",
+    "resource": "call_routes",
+    "method": "show_allowed_caller",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/call_routes/{call_route_id}/allowed_callers/{id}",
+    "path_args": [
+      "call_route_id-value",
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "allowed_caller",
+      "items_key": null,
+      "model": "CallRouteAllowedCallerV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Call Routes V2#ShowOption",
+    "version": "v2",
+    "resource": "call_routes",
+    "method": "show_option",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/call_routes/{call_route_id}/options/{id}",
+    "path_args": [
+      "call_route_id-value",
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "option",
+      "items_key": null,
+      "model": "CallRouteOptionV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Call Routes V2#Update",
+    "version": "v2",
+    "resource": "call_routes",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/call_routes/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "custom_language": "en-US",
+      "name": "name-value",
+      "path": [
+        {}
+      ],
+      "responder_caller_id": "route_number",
+      "use_caller_allowlist": true
+    },
+    "query_keys": [],
+    "body_keys": [
+      "custom_language",
+      "name",
+      "path",
+      "responder_caller_id",
+      "use_caller_allowlist"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "call_route",
+      "items_key": null,
+      "model": "CallRouteV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Call Routes V2#UpdateAllowedCaller",
+    "version": "v2",
+    "resource": "call_routes",
+    "method": "update_allowed_caller",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/call_routes/{call_route_id}/allowed_callers/{id}",
+    "path_args": [
+      "call_route_id-value",
+      "id-value"
+    ],
+    "keyword_args": {
+      "phone_number": "phone_number-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "phone_number"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "allowed_caller",
+      "items_key": null,
+      "model": "CallRouteAllowedCallerV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Call Routes V2#UpdateOption",
+    "version": "v2",
+    "resource": "call_routes",
+    "method": "update_option",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/call_routes/{call_route_id}/options/{id}",
+    "path_args": [
+      "call_route_id-value",
+      "id-value"
+    ],
+    "keyword_args": {
+      "digit": "1",
+      "path": [
+        {}
+      ],
+      "prompt": "prompt-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "digit",
+      "path",
+      "prompt"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "option",
+      "items_key": null,
+      "model": "CallRouteOptionV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Call Sessions V2#List",
+    "version": "v2",
+    "resource": "call_sessions",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/call_sessions",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value"
+    },
+    "query_keys": [
+      "incident_id"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "call_sessions",
+      "model": "CallSessionV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Call Transcript Entries V2#List",
+    "version": "v2",
+    "resource": "call_transcript_entries",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/call_transcript_entries",
+    "path_args": [],
+    "keyword_args": {
+      "call_session_id": "call_session_id-value"
+    },
+    "query_keys": [
+      "call_session_id"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "call_transcript_entries",
+      "model": "CallTranscriptEntryV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V2#CreateEntry",
+    "version": "v2",
+    "resource": "catalog",
+    "method": "create_entry",
+    "deprecated": true,
+    "http_method": "post",
+    "path": "/v2/catalog_entries",
+    "path_args": [],
+    "keyword_args": {
+      "attribute_values": {
+        "one_of": [
+          "attribute_values-value"
+        ]
+      },
+      "catalog_type_id": "catalog_type_id-value",
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "attribute_values",
+      "catalog_type_id",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "catalog_entry",
+      "items_key": null,
+      "model": "CatalogEntryV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V2#CreateType",
+    "version": "v2",
+    "resource": "catalog",
+    "method": "create_type",
+    "deprecated": true,
+    "http_method": "post",
+    "path": "/v2/catalog_types",
+    "path_args": [],
+    "keyword_args": {
+      "description": "description-value",
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "catalog_type",
+      "items_key": null,
+      "model": "CatalogTypeV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V2#DestroyEntry",
+    "version": "v2",
+    "resource": "catalog",
+    "method": "destroy_entry",
+    "deprecated": true,
+    "http_method": "delete",
+    "path": "/v2/catalog_entries/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V2#DestroyType",
+    "version": "v2",
+    "resource": "catalog",
+    "method": "destroy_type",
+    "deprecated": true,
+    "http_method": "delete",
+    "path": "/v2/catalog_types/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V2#ListEntries",
+    "version": "v2",
+    "resource": "catalog",
+    "method": "list_entries",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v2/catalog_entries",
+    "path_args": [],
+    "keyword_args": {
+      "catalog_type_id": "catalog_type_id-value"
+    },
+    "query_keys": [
+      "catalog_type_id"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "catalog_entries",
+      "model": "CatalogEntryV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V2#ListResources",
+    "version": "v2",
+    "resource": "catalog",
+    "method": "list_resources",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v2/catalog_resources",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "resources",
+      "items_key": null,
+      "model": "CatalogResourceV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Catalog V2#ListTypes",
+    "version": "v2",
+    "resource": "catalog",
+    "method": "list_types",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v2/catalog_types",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "catalog_types",
+      "items_key": null,
+      "model": "CatalogTypeV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Catalog V2#ShowEntry",
+    "version": "v2",
+    "resource": "catalog",
+    "method": "show_entry",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v2/catalog_entries/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": null,
+      "items_key": null,
+      "model": "CatalogShowEntryResultV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V2#ShowType",
+    "version": "v2",
+    "resource": "catalog",
+    "method": "show_type",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v2/catalog_types/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "catalog_type",
+      "items_key": null,
+      "model": "CatalogTypeV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V2#UpdateEntry",
+    "version": "v2",
+    "resource": "catalog",
+    "method": "update_entry",
+    "deprecated": true,
+    "http_method": "put",
+    "path": "/v2/catalog_entries/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "attribute_values": {
+        "one_of": [
+          "attribute_values-value"
+        ]
+      },
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "attribute_values",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": null,
+      "items_key": null,
+      "model": "CatalogUpdateEntryResultV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V2#UpdateType",
+    "version": "v2",
+    "resource": "catalog",
+    "method": "update_type",
+    "deprecated": true,
+    "http_method": "put",
+    "path": "/v2/catalog_types/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "description": "description-value",
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "catalog_type",
+      "items_key": null,
+      "model": "CatalogTypeV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V2#UpdateTypeSchema",
+    "version": "v2",
+    "resource": "catalog",
+    "method": "update_type_schema",
+    "deprecated": true,
+    "http_method": "post",
+    "path": "/v2/catalog_types/{id}/actions/update_schema",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "attributes": [
+        {}
+      ],
+      "version": 1
+    },
+    "query_keys": [],
+    "body_keys": [
+      "attributes",
+      "version"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "catalog_type",
+      "items_key": null,
+      "model": "CatalogTypeV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Custom Fields V2#Create",
+    "version": "v2",
+    "resource": "custom_fields",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/custom_fields",
+    "path_args": [],
+    "keyword_args": {
+      "description": "description-value",
+      "field_type": "single_select",
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "field_type",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "custom_field",
+      "items_key": null,
+      "model": "CustomFieldV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Custom Fields V2#Delete",
+    "version": "v2",
+    "resource": "custom_fields",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/custom_fields/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Custom Fields V2#List",
+    "version": "v2",
+    "resource": "custom_fields",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/custom_fields",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "custom_fields",
+      "items_key": null,
+      "model": "CustomFieldV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Custom Fields V2#Show",
+    "version": "v2",
+    "resource": "custom_fields",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/custom_fields/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "custom_field",
+      "items_key": null,
+      "model": "CustomFieldV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Custom Fields V2#Update",
+    "version": "v2",
+    "resource": "custom_fields",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/custom_fields/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "description": "description-value",
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "custom_field",
+      "items_key": null,
+      "model": "CustomFieldV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Escalation Path Templates V2#Create",
+    "version": "v2",
+    "resource": "escalation_path_templates",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/escalation_path_templates",
+    "path_args": [],
+    "keyword_args": {
+      "name": "name-value",
+      "path": [
+        {}
+      ]
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name",
+      "path"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "escalation_path_template",
+      "items_key": null,
+      "model": "EscalationPathTemplateV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Escalation Path Templates V2#Destroy",
+    "version": "v2",
+    "resource": "escalation_path_templates",
+    "method": "destroy",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/escalation_path_templates/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Escalation Path Templates V2#List",
+    "version": "v2",
+    "resource": "escalation_path_templates",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/escalation_path_templates",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "escalation_path_templates",
+      "model": "EscalationPathTemplateV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Escalation Path Templates V2#Show",
+    "version": "v2",
+    "resource": "escalation_path_templates",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/escalation_path_templates/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "escalation_path_template",
+      "items_key": null,
+      "model": "EscalationPathTemplateV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Escalation Path Templates V2#Update",
+    "version": "v2",
+    "resource": "escalation_path_templates",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/escalation_path_templates/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "name": "name-value",
+      "path": [
+        {}
+      ]
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name",
+      "path"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "escalation_path_template",
+      "items_key": null,
+      "model": "EscalationPathTemplateV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Escalations V2#CancelEscalation",
+    "version": "v2",
+    "resource": "escalations",
+    "method": "cancel_escalation",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/escalations/{id}/actions/cancel",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Escalations V2#CheckEscalationPermissions",
+    "version": "v2",
+    "resource": "escalations",
+    "method": "check_escalation_permissions",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/escalations/{escalation_id}/actions/check_permissions",
+    "path_args": [
+      "escalation_id-value"
+    ],
+    "keyword_args": {
+      "user_ids": [
+        "user_ids-value"
+      ]
+    },
+    "query_keys": [],
+    "body_keys": [
+      "user_ids"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "response_options",
+      "items_key": null,
+      "model": "EscalationUserResponseOptionsV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Escalations V2#Create",
+    "version": "v2",
+    "resource": "escalations",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/escalations",
+    "path_args": [],
+    "keyword_args": {
+      "title": "title-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "title"
+    ],
+    "body": true,
+    "idempotency_key": true,
+    "result": {
+      "kind": "json",
+      "unwrap": "escalation",
+      "items_key": null,
+      "model": "EscalationV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Escalations V2#CreatePath",
+    "version": "v2",
+    "resource": "escalations",
+    "method": "create_path",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/escalation_paths",
+    "path_args": [],
+    "keyword_args": {
+      "name": "name-value",
+      "path": [
+        {}
+      ]
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name",
+      "path"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "escalation_path",
+      "items_key": null,
+      "model": "EscalationPathV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Escalations V2#DestroyPath",
+    "version": "v2",
+    "resource": "escalations",
+    "method": "destroy_path",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/escalation_paths/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Escalations V2#List",
+    "version": "v2",
+    "resource": "escalations",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/escalations",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "escalations",
+      "model": "EscalationV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Escalations V2#ListPaths",
+    "version": "v2",
+    "resource": "escalations",
+    "method": "list_paths",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/escalation_paths",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "escalation_paths",
+      "model": "EscalationPathV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Escalations V2#ReassignEscalation",
+    "version": "v2",
+    "resource": "escalations",
+    "method": "reassign_escalation",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/escalations/{escalation_id}/actions/reassign",
+    "path_args": [
+      "escalation_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "escalation",
+      "items_key": null,
+      "model": "EscalationV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Escalations V2#RespondEscalation",
+    "version": "v2",
+    "resource": "escalations",
+    "method": "respond_escalation",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/escalations/{escalation_id}/actions/respond",
+    "path_args": [
+      "escalation_id-value"
+    ],
+    "keyword_args": {
+      "response": "ack"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "response"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Escalations V2#Show",
+    "version": "v2",
+    "resource": "escalations",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/escalations/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "escalation",
+      "items_key": null,
+      "model": "EscalationV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Escalations V2#ShowPath",
+    "version": "v2",
+    "resource": "escalations",
+    "method": "show_path",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/escalation_paths/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "escalation_path",
+      "items_key": null,
+      "model": "EscalationPathV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Escalations V2#UpdatePath",
+    "version": "v2",
+    "resource": "escalations",
+    "method": "update_path",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/escalation_paths/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "name": "name-value",
+      "path": [
+        {}
+      ]
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name",
+      "path"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "escalation_path",
+      "items_key": null,
+      "model": "EscalationPathV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Follow-ups V2#ConnectExternalIssue",
+    "version": "v2",
+    "resource": "follow_ups",
+    "method": "connect_external_issue",
+    "deprecated": true,
+    "http_method": "post",
+    "path": "/v2/follow_ups/{id}/actions/connect_external_issue",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "provider": "asana",
+      "url": "url-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "provider",
+      "url"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "follow_up",
+      "items_key": null,
+      "model": "FollowUpV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Follow-ups V2#Create",
+    "version": "v2",
+    "resource": "follow_ups",
+    "method": "create",
+    "deprecated": true,
+    "http_method": "post",
+    "path": "/v2/follow_ups",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value",
+      "title": "title-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "incident_id",
+      "title"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "follow_up",
+      "items_key": null,
+      "model": "FollowUpV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Follow-ups V2#Delete",
+    "version": "v2",
+    "resource": "follow_ups",
+    "method": "delete",
+    "deprecated": true,
+    "http_method": "delete",
+    "path": "/v2/follow_ups/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Follow-ups V2#List",
+    "version": "v2",
+    "resource": "follow_ups",
+    "method": "list",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v2/follow_ups",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "follow_ups",
+      "items_key": null,
+      "model": "FollowUpV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Follow-ups V2#Show",
+    "version": "v2",
+    "resource": "follow_ups",
+    "method": "show",
+    "deprecated": true,
+    "http_method": "get",
+    "path": "/v2/follow_ups/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "follow_up",
+      "items_key": null,
+      "model": "FollowUpV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Follow-ups V2#Update",
+    "version": "v2",
+    "resource": "follow_ups",
+    "method": "update",
+    "deprecated": true,
+    "http_method": "put",
+    "path": "/v2/follow_ups/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "status": "outstanding",
+      "title": "title-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "status",
+      "title"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "follow_up",
+      "items_key": null,
+      "model": "FollowUpV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Heartbeat V2#Ping",
+    "version": "v2",
+    "resource": "heartbeat",
+    "method": "ping",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/heartbeat/{alert_source_config_id}/ping",
+    "path_args": [
+      "alert_source_config_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Heartbeat V2#Ping#1",
+    "version": "v2",
+    "resource": "heartbeat",
+    "method": "ping_with_get",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/heartbeat/{alert_source_config_id}/ping",
+    "path_args": [
+      "alert_source_config_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Activity Log Entries V2#List",
+    "version": "v2",
+    "resource": "incident_activity_log_entries",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/incident_activity_log_entries",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value"
+    },
+    "query_keys": [
+      "incident_id"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "incident_activity_log_entries",
+      "model": "IncidentActivityLogEntryV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "IncidentParticipantWorkloads V2#List",
+    "version": "v2",
+    "resource": "incident_participant_workloads",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/incident_participant_workloads",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value"
+    },
+    "query_keys": [
+      "incident_id"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": null,
+      "items_key": null,
+      "model": "IncidentParticipantWorkloadsListResultV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "IncidentParticipants V2#List",
+    "version": "v2",
+    "resource": "incident_participants",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/incident_participants",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value"
+    },
+    "query_keys": [
+      "incident_id"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_participants",
+      "items_key": null,
+      "model": "IncidentParticipantsV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Roles V2#Create",
+    "version": "v2",
+    "resource": "incident_roles",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/incident_roles",
+    "path_args": [],
+    "keyword_args": {
+      "description": "description-value",
+      "instructions": "instructions-value",
+      "name": "name-value",
+      "shortform": "shortform-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "instructions",
+      "name",
+      "shortform"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_role",
+      "items_key": null,
+      "model": "IncidentRoleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Roles V2#Delete",
+    "version": "v2",
+    "resource": "incident_roles",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/incident_roles/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Roles V2#List",
+    "version": "v2",
+    "resource": "incident_roles",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/incident_roles",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_roles",
+      "items_key": null,
+      "model": "IncidentRoleV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Incident Roles V2#Show",
+    "version": "v2",
+    "resource": "incident_roles",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/incident_roles/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_role",
+      "items_key": null,
+      "model": "IncidentRoleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Roles V2#Update",
+    "version": "v2",
+    "resource": "incident_roles",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/incident_roles/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "description": "description-value",
+      "instructions": "instructions-value",
+      "name": "name-value",
+      "shortform": "shortform-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "instructions",
+      "name",
+      "shortform"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_role",
+      "items_key": null,
+      "model": "IncidentRoleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Timeline Items V2#Create",
+    "version": "v2",
+    "resource": "incident_timeline_items",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/incident_timeline_items",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value",
+      "timestamp": "2024-01-01T00:00:00Z",
+      "title": "title-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "incident_id",
+      "timestamp",
+      "title"
+    ],
+    "body": true,
+    "idempotency_key": true,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_timeline_item",
+      "items_key": null,
+      "model": "IncidentTimelineItemV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Timeline Items V2#List",
+    "version": "v2",
+    "resource": "incident_timeline_items",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/incident_timeline_items",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value"
+    },
+    "query_keys": [
+      "incident_id"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "incident_timeline_items",
+      "model": "IncidentTimelineItemV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Timeline Items V2#Update",
+    "version": "v2",
+    "resource": "incident_timeline_items",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "patch",
+    "path": "/v2/incident_timeline_items/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_timeline_item",
+      "items_key": null,
+      "model": "IncidentTimelineItemV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Timestamps V2#List",
+    "version": "v2",
+    "resource": "incident_timestamps",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/incident_timestamps",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_timestamps",
+      "items_key": null,
+      "model": "IncidentTimestampV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Incident Timestamps V2#Show",
+    "version": "v2",
+    "resource": "incident_timestamps",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/incident_timestamps/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_timestamp",
+      "items_key": null,
+      "model": "IncidentTimestampV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Updates V2#Create",
+    "version": "v2",
+    "resource": "incident_updates",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/incident_updates",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "incident_id"
+    ],
+    "body": true,
+    "idempotency_key": true,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_update",
+      "items_key": null,
+      "model": "IncidentUpdateV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incident Updates V2#List",
+    "version": "v2",
+    "resource": "incident_updates",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/incident_updates",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "incident_updates",
+      "model": "IncidentUpdateV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incidents V2#Create",
+    "version": "v2",
+    "resource": "incidents",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/incidents",
+    "path_args": [],
+    "keyword_args": {
+      "visibility": "public"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "visibility"
+    ],
+    "body": true,
+    "idempotency_key": true,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident",
+      "items_key": null,
+      "model": "IncidentV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incidents V2#Edit",
+    "version": "v2",
+    "resource": "incidents",
+    "method": "edit",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/incidents/{id}/actions/edit",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "incident": {},
+      "notify_incident_channel": true
+    },
+    "query_keys": [],
+    "body_keys": [
+      "incident",
+      "notify_incident_channel"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident",
+      "items_key": null,
+      "model": "IncidentV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incidents V2#ImportPostmortemDocument",
+    "version": "v2",
+    "resource": "incidents",
+    "method": "import_postmortem_document",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/incidents/{id}/actions/import_postmortem_document",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "content": "content-value",
+      "title": "title-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "content",
+      "title"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "postmortem_document",
+      "items_key": null,
+      "model": "PostmortemDocumentV1",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incidents V2#List",
+    "version": "v2",
+    "resource": "incidents",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/incidents",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "incidents",
+      "model": "IncidentV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Incidents V2#Show",
+    "version": "v2",
+    "resource": "incidents",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/incidents/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident",
+      "items_key": null,
+      "model": "IncidentV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Configs V2#Create",
+    "version": "v2",
+    "resource": "pay_configs",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/pay_configs",
+    "path_args": [],
+    "keyword_args": {
+      "base_rate_cents": 1,
+      "currency": "currency-value",
+      "name": "name-value",
+      "rate_time_unit": "hour",
+      "timezone": "timezone-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "base_rate_cents",
+      "currency",
+      "name",
+      "rate_time_unit",
+      "timezone"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "pay_config",
+      "items_key": null,
+      "model": "PayConfigV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Configs V2#CreateOneOffRule",
+    "version": "v2",
+    "resource": "pay_configs",
+    "method": "create_one_off_rule",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/pay_configs/{pay_config_id}/one_off_rules",
+    "path_args": [
+      "pay_config_id-value"
+    ],
+    "keyword_args": {
+      "end_at": "2024-01-01T00:00:00Z",
+      "name": "name-value",
+      "rate_cents": 1,
+      "start_at": "2024-01-01T00:00:00Z"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "end_at",
+      "name",
+      "rate_cents",
+      "start_at"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "one_off_rule",
+      "items_key": null,
+      "model": "PayConfigOneOffRuleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Configs V2#CreateWeeklyRule",
+    "version": "v2",
+    "resource": "pay_configs",
+    "method": "create_weekly_rule",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/pay_configs/{pay_config_id}/weekly_rules",
+    "path_args": [
+      "pay_config_id-value"
+    ],
+    "keyword_args": {
+      "end_time": "end_time-value",
+      "rate_cents": 1,
+      "start_time": "start_time-value",
+      "weekdays": [
+        "monday"
+      ]
+    },
+    "query_keys": [],
+    "body_keys": [
+      "end_time",
+      "rate_cents",
+      "start_time",
+      "weekdays"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "weekly_rule",
+      "items_key": null,
+      "model": "PayConfigWeeklyRuleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Configs V2#Destroy",
+    "version": "v2",
+    "resource": "pay_configs",
+    "method": "destroy",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/pay_configs/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Configs V2#DestroyOneOffRule",
+    "version": "v2",
+    "resource": "pay_configs",
+    "method": "destroy_one_off_rule",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/pay_configs/{pay_config_id}/one_off_rules/{id}",
+    "path_args": [
+      "pay_config_id-value",
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Configs V2#DestroyWeeklyRule",
+    "version": "v2",
+    "resource": "pay_configs",
+    "method": "destroy_weekly_rule",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/pay_configs/{pay_config_id}/weekly_rules/{id}",
+    "path_args": [
+      "pay_config_id-value",
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Configs V2#List",
+    "version": "v2",
+    "resource": "pay_configs",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/pay_configs",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "pay_configs",
+      "model": "PayConfigV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Configs V2#ListOneOffRules",
+    "version": "v2",
+    "resource": "pay_configs",
+    "method": "list_one_off_rules",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/pay_configs/{pay_config_id}/one_off_rules",
+    "path_args": [
+      "pay_config_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "one_off_rules",
+      "items_key": null,
+      "model": "PayConfigOneOffRuleV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Pay Configs V2#ListWeeklyRules",
+    "version": "v2",
+    "resource": "pay_configs",
+    "method": "list_weekly_rules",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/pay_configs/{pay_config_id}/weekly_rules",
+    "path_args": [
+      "pay_config_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "weekly_rules",
+      "items_key": null,
+      "model": "PayConfigWeeklyRuleV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Pay Configs V2#Show",
+    "version": "v2",
+    "resource": "pay_configs",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/pay_configs/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "pay_config",
+      "items_key": null,
+      "model": "PayConfigV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Configs V2#ShowOneOffRule",
+    "version": "v2",
+    "resource": "pay_configs",
+    "method": "show_one_off_rule",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/pay_configs/{pay_config_id}/one_off_rules/{id}",
+    "path_args": [
+      "pay_config_id-value",
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "one_off_rule",
+      "items_key": null,
+      "model": "PayConfigOneOffRuleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Configs V2#ShowWeeklyRule",
+    "version": "v2",
+    "resource": "pay_configs",
+    "method": "show_weekly_rule",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/pay_configs/{pay_config_id}/weekly_rules/{id}",
+    "path_args": [
+      "pay_config_id-value",
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "weekly_rule",
+      "items_key": null,
+      "model": "PayConfigWeeklyRuleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Configs V2#Update",
+    "version": "v2",
+    "resource": "pay_configs",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/pay_configs/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "base_rate_cents": 1,
+      "currency": "currency-value",
+      "name": "name-value",
+      "rate_time_unit": "hour",
+      "timezone": "timezone-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "base_rate_cents",
+      "currency",
+      "name",
+      "rate_time_unit",
+      "timezone"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "pay_config",
+      "items_key": null,
+      "model": "PayConfigV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Configs V2#UpdateOneOffRule",
+    "version": "v2",
+    "resource": "pay_configs",
+    "method": "update_one_off_rule",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/pay_configs/{pay_config_id}/one_off_rules/{id}",
+    "path_args": [
+      "pay_config_id-value",
+      "id-value"
+    ],
+    "keyword_args": {
+      "end_at": "2024-01-01T00:00:00Z",
+      "name": "name-value",
+      "rate_cents": 1,
+      "start_at": "2024-01-01T00:00:00Z"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "end_at",
+      "name",
+      "rate_cents",
+      "start_at"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "one_off_rule",
+      "items_key": null,
+      "model": "PayConfigOneOffRuleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Configs V2#UpdateWeeklyRule",
+    "version": "v2",
+    "resource": "pay_configs",
+    "method": "update_weekly_rule",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/pay_configs/{pay_config_id}/weekly_rules/{id}",
+    "path_args": [
+      "pay_config_id-value",
+      "id-value"
+    ],
+    "keyword_args": {
+      "end_time": "end_time-value",
+      "rate_cents": 1,
+      "start_time": "start_time-value",
+      "weekdays": [
+        "monday"
+      ]
+    },
+    "query_keys": [],
+    "body_keys": [
+      "end_time",
+      "rate_cents",
+      "start_time",
+      "weekdays"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "weekly_rule",
+      "items_key": null,
+      "model": "PayConfigWeeklyRuleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Reports V2#Create",
+    "version": "v2",
+    "resource": "pay_reports",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/pay_reports",
+    "path_args": [],
+    "keyword_args": {
+      "end_date": "end_date-value",
+      "name": "name-value",
+      "schedule_ids": [
+        "schedule_ids-value"
+      ],
+      "start_date": "start_date-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "end_date",
+      "name",
+      "schedule_ids",
+      "start_date"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "pay_report",
+      "items_key": null,
+      "model": "PayReportV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Reports V2#Destroy",
+    "version": "v2",
+    "resource": "pay_reports",
+    "method": "destroy",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/pay_reports/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Reports V2#Download",
+    "version": "v2",
+    "resource": "pay_reports",
+    "method": "download",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/pay_reports/{id}/download",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "text",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Reports V2#List",
+    "version": "v2",
+    "resource": "pay_reports",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/pay_reports",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "pay_reports",
+      "model": "PayReportV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Reports V2#Publish",
+    "version": "v2",
+    "resource": "pay_reports",
+    "method": "publish",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/pay_reports/{id}/actions/publish",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "cc_emails": [
+        "cc_emails-value"
+      ],
+      "send_user_breakdowns": "send"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "cc_emails",
+      "send_user_breakdowns"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "pay_report",
+      "items_key": null,
+      "model": "PayReportV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Reports V2#Show",
+    "version": "v2",
+    "resource": "pay_reports",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/pay_reports/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "pay_report",
+      "items_key": null,
+      "model": "PayReportV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Pay Reports V2#Unpublish",
+    "version": "v2",
+    "resource": "pay_reports",
+    "method": "unpublish",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/pay_reports/{id}/actions/unpublish",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "unpublish_reason": "unpublish_reason-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "unpublish_reason"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "pay_report",
+      "items_key": null,
+      "model": "PayReportV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Policies V2#Create",
+    "version": "v2",
+    "resource": "policies",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/policies",
+    "path_args": [],
+    "keyword_args": {
+      "conditions": [
+        {}
+      ],
+      "description": "description-value",
+      "name": "name-value",
+      "policy_type": "debrief"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "conditions",
+      "description",
+      "name",
+      "policy_type"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "policy",
+      "items_key": null,
+      "model": "PolicyV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Policies V2#Delete",
+    "version": "v2",
+    "resource": "policies",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/policies/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Policies V2#List",
+    "version": "v2",
+    "resource": "policies",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/policies",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "policies",
+      "model": "PolicyV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Policies V2#Show",
+    "version": "v2",
+    "resource": "policies",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/policies/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "policy",
+      "items_key": null,
+      "model": "PolicyV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Policies V2#Update",
+    "version": "v2",
+    "resource": "policies",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/policies/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "conditions": [
+        {}
+      ],
+      "description": "description-value",
+      "name": "name-value",
+      "policy_type": "debrief"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "conditions",
+      "description",
+      "name",
+      "policy_type"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "policy",
+      "items_key": null,
+      "model": "PolicyV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Policy Findings V2#Dismiss",
+    "version": "v2",
+    "resource": "policy_findings",
+    "method": "dismiss",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/policy_findings/{id}/actions/dismiss",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "reason": "reason-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "reason"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "policy_finding",
+      "items_key": null,
+      "model": "PolicyFindingV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Policy Findings V2#List",
+    "version": "v2",
+    "resource": "policy_findings",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/policy_findings",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "policy_findings",
+      "model": "PolicyFindingV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Policy Findings V2#Restore",
+    "version": "v2",
+    "resource": "policy_findings",
+    "method": "restore",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/policy_findings/{id}/actions/restore",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "policy_finding",
+      "items_key": null,
+      "model": "PolicyFindingV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Policy Findings V2#Show",
+    "version": "v2",
+    "resource": "policy_findings",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/policy_findings/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "policy_finding",
+      "items_key": null,
+      "model": "PolicyFindingV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedule Sync Targets V2#Create",
+    "version": "v2",
+    "resource": "schedule_sync_targets",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/schedule_sync_targets",
+    "path_args": [],
+    "keyword_args": {
+      "schedule_sync_target": {}
+    },
+    "query_keys": [],
+    "body_keys": [
+      "schedule_sync_target"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "schedule_sync_target",
+      "items_key": null,
+      "model": "ScheduleSyncTargetResourceV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedule Sync Targets V2#Destroy",
+    "version": "v2",
+    "resource": "schedule_sync_targets",
+    "method": "destroy",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/schedule_sync_targets/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedule Sync Targets V2#List",
+    "version": "v2",
+    "resource": "schedule_sync_targets",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/schedule_sync_targets",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "schedule_sync_targets",
+      "model": "ScheduleSyncTargetResourceV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedule Sync Targets V2#Show",
+    "version": "v2",
+    "resource": "schedule_sync_targets",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/schedule_sync_targets/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "schedule_sync_target",
+      "items_key": null,
+      "model": "ScheduleSyncTargetResourceV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedule Sync Targets V2#Update",
+    "version": "v2",
+    "resource": "schedule_sync_targets",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/schedule_sync_targets/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "add_bot_to_group": true
+    },
+    "query_keys": [],
+    "body_keys": [
+      "add_bot_to_group"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "schedule_sync_target",
+      "items_key": null,
+      "model": "ScheduleSyncTargetResourceV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#Create",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/schedules",
+    "path_args": [],
+    "keyword_args": {
+      "schedule": {}
+    },
+    "query_keys": [],
+    "body_keys": [
+      "schedule"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "schedule",
+      "items_key": null,
+      "model": "ScheduleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#CreateOverride",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "create_override",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/schedule_overrides",
+    "path_args": [],
+    "keyword_args": {
+      "end_at": "2024-01-01T00:00:00Z",
+      "layer_id": "layer_id-value",
+      "rotation_id": "rotation_id-value",
+      "schedule_id": "schedule_id-value",
+      "start_at": "2024-01-01T00:00:00Z",
+      "user": {}
+    },
+    "query_keys": [],
+    "body_keys": [
+      "end_at",
+      "layer_id",
+      "rotation_id",
+      "schedule_id",
+      "start_at",
+      "user"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "override",
+      "items_key": null,
+      "model": "ScheduleOverrideV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#CreateScheduleReplica",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "create_schedule_replica",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/schedules/{schedule_id}/replicas",
+    "path_args": [
+      "schedule_id-value"
+    ],
+    "keyword_args": {
+      "schedule_replica": {}
+    },
+    "query_keys": [],
+    "body_keys": [
+      "schedule_replica"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "schedule_replica",
+      "items_key": null,
+      "model": "ScheduleReplicaV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#CreateScheduleSyncRule",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "create_schedule_sync_rule",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/schedules/{schedule_id}/sync_rules",
+    "path_args": [
+      "schedule_id-value"
+    ],
+    "keyword_args": {
+      "schedule_sync_rule": {}
+    },
+    "query_keys": [],
+    "body_keys": [
+      "schedule_sync_rule"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "schedule_sync_rule",
+      "items_key": null,
+      "model": "ScheduleSyncRuleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#Destroy",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "destroy",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/schedules/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#DestroyOverride",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "destroy_override",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/schedule_overrides/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#DestroyScheduleReplica",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "destroy_schedule_replica",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/schedules/{schedule_id}/replicas/{id}",
+    "path_args": [
+      "schedule_id-value",
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#DestroyScheduleSyncRule",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "destroy_schedule_sync_rule",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/schedules/{schedule_id}/sync_rules/{id}",
+    "path_args": [
+      "schedule_id-value",
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#List",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/schedules",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "schedules",
+      "model": "ScheduleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#ListOverrides",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "list_overrides",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/schedule_overrides",
+    "path_args": [],
+    "keyword_args": {
+      "schedule_id": "schedule_id-value"
+    },
+    "query_keys": [
+      "schedule_id"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "overrides",
+      "model": "ScheduleOverrideV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#ListScheduleEntries",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "list_schedule_entries",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/schedule_entries",
+    "path_args": [],
+    "keyword_args": {
+      "schedule_id": "schedule_id-value"
+    },
+    "query_keys": [
+      "schedule_id"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": null,
+      "items_key": null,
+      "model": "SchedulesListScheduleEntriesResultV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#ListScheduleReplicas",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "list_schedule_replicas",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/schedules/{schedule_id}/replicas",
+    "path_args": [
+      "schedule_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "schedule_replicas",
+      "items_key": null,
+      "model": "ScheduleReplicaV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Schedules V2#ListScheduleSyncRules",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "list_schedule_sync_rules",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/schedules/{schedule_id}/sync_rules",
+    "path_args": [
+      "schedule_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "schedule_sync_rules",
+      "model": "ScheduleSyncRuleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#PreviewScheduleEntries",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "preview_schedule_entries",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/schedules/{id}/actions/preview_entries",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "schedule": {}
+    },
+    "query_keys": [],
+    "body_keys": [
+      "schedule"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "schedule_entries",
+      "items_key": null,
+      "model": "ScheduleEntriesListPayloadV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#Show",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/schedules/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "schedule",
+      "items_key": null,
+      "model": "ScheduleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#ShowOverride",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "show_override",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/schedule_overrides/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "override",
+      "items_key": null,
+      "model": "ScheduleOverrideV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#ShowScheduleReplica",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "show_schedule_replica",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/schedules/{schedule_id}/replicas/{id}",
+    "path_args": [
+      "schedule_id-value",
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "schedule_replica",
+      "items_key": null,
+      "model": "ScheduleReplicaV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#ShowScheduleSyncRule",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "show_schedule_sync_rule",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/schedules/{schedule_id}/sync_rules/{id}",
+    "path_args": [
+      "schedule_id-value",
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "schedule_sync_rule",
+      "items_key": null,
+      "model": "ScheduleSyncRuleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#Update",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/schedules/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "schedule": {}
+    },
+    "query_keys": [],
+    "body_keys": [
+      "schedule"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "schedule",
+      "items_key": null,
+      "model": "ScheduleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#UpdateOverride",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "update_override",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/schedule_overrides/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "end_at": "2024-01-01T00:00:00Z",
+      "layer_id": "layer_id-value",
+      "rotation_id": "rotation_id-value",
+      "start_at": "2024-01-01T00:00:00Z",
+      "user": {}
+    },
+    "query_keys": [],
+    "body_keys": [
+      "end_at",
+      "layer_id",
+      "rotation_id",
+      "start_at",
+      "user"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "override",
+      "items_key": null,
+      "model": "ScheduleOverrideV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Schedules V2#UpdateScheduleSyncRule",
+    "version": "v2",
+    "resource": "schedules",
+    "method": "update_schedule_sync_rule",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/schedules/{schedule_id}/sync_rules/{id}",
+    "path_args": [
+      "schedule_id-value",
+      "id-value"
+    ],
+    "keyword_args": {
+      "sync_type": "on_call"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "sync_type"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "schedule_sync_rule",
+      "items_key": null,
+      "model": "ScheduleSyncRuleV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Secrets V2#Create",
+    "version": "v2",
+    "resource": "secrets",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/secrets",
+    "path_args": [],
+    "keyword_args": {
+      "name": "name-value",
+      "value": "value-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name",
+      "value"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "secret",
+      "items_key": null,
+      "model": "SecretV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Secrets V2#Destroy",
+    "version": "v2",
+    "resource": "secrets",
+    "method": "destroy",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/secrets/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Secrets V2#List",
+    "version": "v2",
+    "resource": "secrets",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/secrets",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "secrets",
+      "model": "SecretV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Secrets V2#Rotate",
+    "version": "v2",
+    "resource": "secrets",
+    "method": "rotate",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/secrets/{id}/actions/rotate",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "value": "value-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "value"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "secret",
+      "items_key": null,
+      "model": "SecretV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Secrets V2#Show",
+    "version": "v2",
+    "resource": "secrets",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/secrets/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": null,
+      "items_key": null,
+      "model": "SecretsShowResultV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Secrets V2#Update",
+    "version": "v2",
+    "resource": "secrets",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/secrets/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "secret",
+      "items_key": null,
+      "model": "SecretV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Status Pages V2#CreateStatusPageIncident",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "create_status_page_incident",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/status_page_incidents",
+    "path_args": [],
+    "keyword_args": {
+      "incident_status": "investigating",
+      "message": "message-value",
+      "name": "name-value",
+      "notify_subscribers": true,
+      "status_page_id": "status_page_id-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "incident_status",
+      "message",
+      "name",
+      "notify_subscribers",
+      "status_page_id"
+    ],
+    "body": true,
+    "idempotency_key": true,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_incident",
+      "items_key": null,
+      "model": "StatusPageIncidentV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Status Pages V2#CreateStatusPageIncidentUpdate",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "create_status_page_incident_update",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/status_page_incident_updates",
+    "path_args": [],
+    "keyword_args": {
+      "message": "message-value",
+      "notify_subscribers": true,
+      "status_page_incident_id": "status_page_incident_id-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "message",
+      "notify_subscribers",
+      "status_page_incident_id"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_incident_update",
+      "items_key": null,
+      "model": "StatusPageIncidentUpdateV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Status Pages V2#CreateStatusPageMaintenance",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "create_status_page_maintenance",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/status_page_maintenances",
+    "path_args": [],
+    "keyword_args": {
+      "affected_component_ids": [
+        "affected_component_ids-value"
+      ],
+      "end_at": "2024-01-01T00:00:00Z",
+      "maintenance_status": "maintenance_scheduled",
+      "message": "message-value",
+      "name": "name-value",
+      "notify_subscribers": true,
+      "start_at": "2024-01-01T00:00:00Z",
+      "status_page_id": "status_page_id-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "affected_component_ids",
+      "end_at",
+      "maintenance_status",
+      "message",
+      "name",
+      "notify_subscribers",
+      "start_at",
+      "status_page_id"
+    ],
+    "body": true,
+    "idempotency_key": true,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_maintenance",
+      "items_key": null,
+      "model": "StatusPageMaintenanceV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Status Pages V2#CreateStatusPageMaintenanceUpdate",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "create_status_page_maintenance_update",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/status_page_maintenance_updates",
+    "path_args": [],
+    "keyword_args": {
+      "message": "message-value",
+      "notify_subscribers": true,
+      "status_page_maintenance_id": "status_page_maintenance_id-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "message",
+      "notify_subscribers",
+      "status_page_maintenance_id"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_maintenance_update",
+      "items_key": null,
+      "model": "StatusPageMaintenanceUpdateV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Status Pages V2#CreateStatusPageRetrospectiveIncident",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "create_status_page_retrospective_incident",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/status_page_retrospective_incidents",
+    "path_args": [],
+    "keyword_args": {
+      "name": "name-value",
+      "status_page_id": "status_page_id-value",
+      "updates": [
+        {}
+      ]
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name",
+      "status_page_id",
+      "updates"
+    ],
+    "body": true,
+    "idempotency_key": true,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_incident",
+      "items_key": null,
+      "model": "StatusPageIncidentV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Status Pages V2#DeleteStatusPageMaintenance",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "delete_status_page_maintenance",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/status_page_maintenances/{status_page_maintenance_id}",
+    "path_args": [
+      "status_page_maintenance_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Status Pages V2#ListStatusPageIncidents",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "list_status_page_incidents",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/status_page_incidents",
+    "path_args": [],
+    "keyword_args": {
+      "status_page_id": "status_page_id-value"
+    },
+    "query_keys": [
+      "status_page_id"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "status_page_incidents",
+      "model": "StatusPageIncidentV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Status Pages V2#ListStatusPageMaintenances",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "list_status_page_maintenances",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/status_page_maintenances",
+    "path_args": [],
+    "keyword_args": {
+      "status_page_id": "status_page_id-value"
+    },
+    "query_keys": [
+      "status_page_id"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "status_page_maintenances",
+      "model": "StatusPageMaintenanceV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Status Pages V2#ListStatusPages",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "list_status_pages",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/status_pages",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "status_pages",
+      "model": "StatusPageV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Status Pages V2#ShowStatusPageComponentAvailability",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "show_status_page_component_availability",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/status_pages/{status_page_id}/components/{component_id}/availability",
+    "path_args": [
+      "status_page_id-value",
+      "component_id-value"
+    ],
+    "keyword_args": {
+      "start_at": "2024-01-01T00:00:00Z",
+      "end_at": "2024-01-01T00:00:00Z"
+    },
+    "query_keys": [
+      "start_at",
+      "end_at"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "availability",
+      "items_key": null,
+      "model": "StatusPageComponentAvailabilityV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Status Pages V2#ShowStatusPageIncident",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "show_status_page_incident",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/status_page_incidents/{status_page_incident_id}",
+    "path_args": [
+      "status_page_incident_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_incident",
+      "items_key": null,
+      "model": "StatusPageIncidentV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Status Pages V2#ShowStatusPageMaintenance",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "show_status_page_maintenance",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/status_page_maintenances/{status_page_maintenance_id}",
+    "path_args": [
+      "status_page_maintenance_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_maintenance",
+      "items_key": null,
+      "model": "StatusPageMaintenanceV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Status Pages V2#ShowStatusPageStructure",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "show_status_page_structure",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/status_page_structures/{status_page_id}",
+    "path_args": [
+      "status_page_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "current_structure",
+      "items_key": null,
+      "model": "StatusPageStructureV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Status Pages V2#UpdateStatusPageIncident",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "update_status_page_incident",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/status_page_incidents/{status_page_incident_id}",
+    "path_args": [
+      "status_page_incident_id-value"
+    ],
+    "keyword_args": {
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_incident",
+      "items_key": null,
+      "model": "StatusPageIncidentV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Status Pages V2#UpdateStatusPageMaintenance",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "update_status_page_maintenance",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/status_page_maintenances/{status_page_maintenance_id}",
+    "path_args": [
+      "status_page_maintenance_id-value"
+    ],
+    "keyword_args": {
+      "end_at": "2024-01-01T00:00:00Z",
+      "name": "name-value",
+      "start_at": "2024-01-01T00:00:00Z"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "end_at",
+      "name",
+      "start_at"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_maintenance",
+      "items_key": null,
+      "model": "StatusPageMaintenanceV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Telemetry V2#UpdateDataSource",
+    "version": "v2",
+    "resource": "telemetry",
+    "method": "update_data_source",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/telemetry/data_sources/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "data_source",
+      "items_key": null,
+      "model": "TelemetryDataSourceV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Users V2#List",
+    "version": "v2",
+    "resource": "users",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/users",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "users",
+      "model": "UserWithRolesV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Users V2#ListNotificationMethods",
+    "version": "v2",
+    "resource": "users",
+    "method": "list_notification_methods",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/users/{user_id}/notification_methods",
+    "path_args": [
+      "user_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "notification_methods",
+      "items_key": null,
+      "model": "OnCallNotificationMethodPublicV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Users V2#ListNotificationRules",
+    "version": "v2",
+    "resource": "users",
+    "method": "list_notification_rules",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/users/{user_id}/notification_rules",
+    "path_args": [
+      "user_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "notification_rules",
+      "items_key": null,
+      "model": "OnCallNotificationRulePublicV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Users V2#Show",
+    "version": "v2",
+    "resource": "users",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/users/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "user",
+      "items_key": null,
+      "model": "UserWithRolesV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Users V2#ShowPagingProvider",
+    "version": "v2",
+    "resource": "users",
+    "method": "show_paging_provider",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/users/{user_id}/paging_provider",
+    "path_args": [
+      "user_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "preferred_escalation_provider",
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Users V2#UpdatePagingProvider",
+    "version": "v2",
+    "resource": "users",
+    "method": "update_paging_provider",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/users/{user_id}/paging_provider",
+    "path_args": [
+      "user_id-value"
+    ],
+    "keyword_args": {
+      "preferred_escalation_provider": "native"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "preferred_escalation_provider"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "WorkflowRuns V2#List",
+    "version": "v2",
+    "resource": "workflow_runs",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/workflow_runs",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "workflow_runs",
+      "model": "WorkflowRunSlimV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "WorkflowRuns V2#Show",
+    "version": "v2",
+    "resource": "workflow_runs",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/workflow_runs/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "workflow_run",
+      "items_key": null,
+      "model": "WorkflowRunV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Workflows V2#CreateWorkflow",
+    "version": "v2",
+    "resource": "workflows",
+    "method": "create_workflow",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/workflows",
+    "path_args": [],
+    "keyword_args": {
+      "condition_groups": [
+        {}
+      ],
+      "continue_on_step_error": true,
+      "expressions": [
+        {}
+      ],
+      "name": "name-value",
+      "once_for": [
+        "once_for-value"
+      ],
+      "runs_on_incident_modes": [
+        "standard"
+      ],
+      "runs_on_incidents": "newly_created",
+      "steps": [
+        {}
+      ],
+      "trigger": "trigger-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "condition_groups",
+      "continue_on_step_error",
+      "expressions",
+      "name",
+      "once_for",
+      "runs_on_incident_modes",
+      "runs_on_incidents",
+      "steps",
+      "trigger"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": null,
+      "items_key": null,
+      "model": "WorkflowsCreateWorkflowResultV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Workflows V2#DestroyWorkflow",
+    "version": "v2",
+    "resource": "workflows",
+    "method": "destroy_workflow",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/workflows/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Workflows V2#ListWorkflows",
+    "version": "v2",
+    "resource": "workflows",
+    "method": "list_workflows",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/workflows",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "workflows",
+      "items_key": null,
+      "model": "WorkflowSlimV2",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Workflows V2#ShowWorkflow",
+    "version": "v2",
+    "resource": "workflows",
+    "method": "show_workflow",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/workflows/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": null,
+      "items_key": null,
+      "model": "WorkflowsShowWorkflowResultV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Workflows V2#UpdateWorkflow",
+    "version": "v2",
+    "resource": "workflows",
+    "method": "update_workflow",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/workflows/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "condition_groups": [
+        {}
+      ],
+      "continue_on_step_error": true,
+      "expressions": [
+        {}
+      ],
+      "name": "name-value",
+      "once_for": [
+        "once_for-value"
+      ],
+      "runs_on_incident_modes": [
+        "standard"
+      ],
+      "runs_on_incidents": "newly_created",
+      "steps": [
+        {}
+      ]
+    },
+    "query_keys": [],
+    "body_keys": [
+      "condition_groups",
+      "continue_on_step_error",
+      "expressions",
+      "name",
+      "once_for",
+      "runs_on_incident_modes",
+      "runs_on_incidents",
+      "steps"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": null,
+      "items_key": null,
+      "model": "WorkflowsUpdateWorkflowResultV2",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Actions V3#Create",
+    "version": "v3",
+    "resource": "actions",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v3/actions",
+    "path_args": [],
+    "keyword_args": {
+      "description": "description-value",
+      "incident_id": "incident_id-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "incident_id"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "action",
+      "items_key": null,
+      "model": "ActionV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Actions V3#Delete",
+    "version": "v3",
+    "resource": "actions",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v3/actions/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Actions V3#List",
+    "version": "v3",
+    "resource": "actions",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/actions",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "actions",
+      "model": "ActionV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Actions V3#Show",
+    "version": "v3",
+    "resource": "actions",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/actions/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "action",
+      "items_key": null,
+      "model": "ActionV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Actions V3#Update",
+    "version": "v3",
+    "resource": "actions",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v3/actions/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "description": "description-value",
+      "status": "outstanding"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "status"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "action",
+      "items_key": null,
+      "model": "ActionV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Routes V3#Create",
+    "version": "v3",
+    "resource": "alert_routes",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v3/alert_routes",
+    "path_args": [],
+    "keyword_args": {
+      "alert_sources": [
+        {}
+      ],
+      "condition_groups": [
+        {}
+      ],
+      "enabled": true,
+      "escalation_config": {},
+      "expressions": [
+        {}
+      ],
+      "grouping_config": {},
+      "incident_config": {},
+      "is_private": true,
+      "message_config": {},
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "alert_sources",
+      "condition_groups",
+      "enabled",
+      "escalation_config",
+      "expressions",
+      "grouping_config",
+      "incident_config",
+      "is_private",
+      "message_config",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_route",
+      "items_key": null,
+      "model": "AlertRouteV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Routes V3#Delete",
+    "version": "v3",
+    "resource": "alert_routes",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v3/alert_routes/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Routes V3#List",
+    "version": "v3",
+    "resource": "alert_routes",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/alert_routes",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "alert_routes",
+      "model": "AlertRouteSlimV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Routes V3#Show",
+    "version": "v3",
+    "resource": "alert_routes",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/alert_routes/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_route",
+      "items_key": null,
+      "model": "AlertRouteV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Alert Routes V3#Update",
+    "version": "v3",
+    "resource": "alert_routes",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v3/alert_routes/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "alert_sources": [
+        {}
+      ],
+      "condition_groups": [
+        {}
+      ],
+      "enabled": true,
+      "escalation_config": {},
+      "expressions": [
+        {}
+      ],
+      "grouping_config": {},
+      "incident_config": {},
+      "is_private": true,
+      "message_config": {},
+      "name": "name-value",
+      "version": 1
+    },
+    "query_keys": [],
+    "body_keys": [
+      "alert_sources",
+      "condition_groups",
+      "enabled",
+      "escalation_config",
+      "expressions",
+      "grouping_config",
+      "incident_config",
+      "is_private",
+      "message_config",
+      "name",
+      "version"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "alert_route",
+      "items_key": null,
+      "model": "AlertRouteV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V3#BulkUpdateEntries",
+    "version": "v3",
+    "resource": "catalog",
+    "method": "bulk_update_entries",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v3/catalog_entries/actions/bulk_update",
+    "path_args": [],
+    "keyword_args": {
+      "catalog_type_id": "catalog_type_id-value",
+      "entries": [
+        {}
+      ]
+    },
+    "query_keys": [],
+    "body_keys": [
+      "catalog_type_id",
+      "entries"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V3#CreateEntry",
+    "version": "v3",
+    "resource": "catalog",
+    "method": "create_entry",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v3/catalog_entries",
+    "path_args": [],
+    "keyword_args": {
+      "attribute_values": {
+        "one_of": [
+          "attribute_values-value"
+        ]
+      },
+      "catalog_type_id": "catalog_type_id-value",
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "attribute_values",
+      "catalog_type_id",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "catalog_entry",
+      "items_key": null,
+      "model": "CatalogEntryV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V3#CreateType",
+    "version": "v3",
+    "resource": "catalog",
+    "method": "create_type",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v3/catalog_types",
+    "path_args": [],
+    "keyword_args": {
+      "description": "description-value",
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "catalog_type",
+      "items_key": null,
+      "model": "CatalogTypeV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V3#DestroyEntry",
+    "version": "v3",
+    "resource": "catalog",
+    "method": "destroy_entry",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v3/catalog_entries/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V3#DestroyType",
+    "version": "v3",
+    "resource": "catalog",
+    "method": "destroy_type",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v3/catalog_types/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V3#ListEntries",
+    "version": "v3",
+    "resource": "catalog",
+    "method": "list_entries",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/catalog_entries",
+    "path_args": [],
+    "keyword_args": {
+      "catalog_type_id": "catalog_type_id-value",
+      "page_size": 1
+    },
+    "query_keys": [
+      "catalog_type_id",
+      "page_size"
+    ],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "catalog_entries",
+      "model": "CatalogEntryV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V3#ListResources",
+    "version": "v3",
+    "resource": "catalog",
+    "method": "list_resources",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/catalog_resources",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "resources",
+      "items_key": null,
+      "model": "CatalogResourceV3",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Catalog V3#ListTypes",
+    "version": "v3",
+    "resource": "catalog",
+    "method": "list_types",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/catalog_types",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "catalog_types",
+      "items_key": null,
+      "model": "CatalogTypeV3",
+      "array": true
+    }
+  },
+  {
+    "operation_id": "Catalog V3#ShowEntry",
+    "version": "v3",
+    "resource": "catalog",
+    "method": "show_entry",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/catalog_entries/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": null,
+      "items_key": null,
+      "model": "CatalogShowEntryResultV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V3#ShowType",
+    "version": "v3",
+    "resource": "catalog",
+    "method": "show_type",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/catalog_types/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "catalog_type",
+      "items_key": null,
+      "model": "CatalogTypeV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V3#UpdateEntry",
+    "version": "v3",
+    "resource": "catalog",
+    "method": "update_entry",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v3/catalog_entries/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "attribute_values": {
+        "one_of": [
+          "attribute_values-value"
+        ]
+      },
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "attribute_values",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": null,
+      "items_key": null,
+      "model": "CatalogUpdateEntryResultV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V3#UpdateType",
+    "version": "v3",
+    "resource": "catalog",
+    "method": "update_type",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v3/catalog_types/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "description": "description-value",
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "name"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "catalog_type",
+      "items_key": null,
+      "model": "CatalogTypeV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Catalog V3#UpdateTypeSchema",
+    "version": "v3",
+    "resource": "catalog",
+    "method": "update_type_schema",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v3/catalog_types/{id}/actions/update_schema",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "attributes": [
+        {}
+      ],
+      "version": 1
+    },
+    "query_keys": [],
+    "body_keys": [
+      "attributes",
+      "version"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "catalog_type",
+      "items_key": null,
+      "model": "CatalogTypeV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Follow-ups V3#ConnectExternalIssue",
+    "version": "v3",
+    "resource": "follow_ups",
+    "method": "connect_external_issue",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v3/follow_ups/{id}/actions/connect_external_issue",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "provider": "asana",
+      "url": "url-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "provider",
+      "url"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "follow_up",
+      "items_key": null,
+      "model": "FollowUpV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Follow-ups V3#Create",
+    "version": "v3",
+    "resource": "follow_ups",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v3/follow_ups",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value",
+      "title": "title-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "incident_id",
+      "title"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "follow_up",
+      "items_key": null,
+      "model": "FollowUpV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Follow-ups V3#CreateFromLink",
+    "version": "v3",
+    "resource": "follow_ups",
+    "method": "create_from_link",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v3/follow_ups/actions/create_from_link",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value",
+      "url": "url-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "incident_id",
+      "url"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "follow_up",
+      "items_key": null,
+      "model": "FollowUpV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Follow-ups V3#Delete",
+    "version": "v3",
+    "resource": "follow_ups",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v3/follow_ups/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Follow-ups V3#List",
+    "version": "v3",
+    "resource": "follow_ups",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/follow_ups",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "follow_ups",
+      "model": "FollowUpV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Follow-ups V3#Show",
+    "version": "v3",
+    "resource": "follow_ups",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/follow_ups/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "follow_up",
+      "items_key": null,
+      "model": "FollowUpV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Follow-ups V3#Update",
+    "version": "v3",
+    "resource": "follow_ups",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v3/follow_ups/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "status": "outstanding",
+      "title": "title-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "status",
+      "title"
+    ],
+    "body": true,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "follow_up",
+      "items_key": null,
+      "model": "FollowUpV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Teams V3#List",
+    "version": "v3",
+    "resource": "teams",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/teams",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "teams",
+      "model": "TeamV3",
+      "array": false
+    }
+  },
+  {
+    "operation_id": "Teams V3#Show",
+    "version": "v3",
+    "resource": "teams",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/teams/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "team",
+      "items_key": null,
+      "model": "TeamV3",
+      "array": false
+    }
+  }
+]
