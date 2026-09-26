@@ -18,9 +18,6 @@ Gem::Specification.new do |s|
     "rubygems_mfa_required" => "true"
   }
 
-  s.cert_chain  = ['certs/sgerrand.pem']
-  s.signing_key = File.expand_path("~/.ssh/gem-private_key.pem") if $0 =~ /gem\z/
-
   s.files         = Dir['LICENSE', 'README.md', 'lib/**/*.rb']
   s.executables   = []
   s.require_paths = ["lib"]
