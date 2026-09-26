@@ -41,5 +41,8 @@ jobs:
         with:
           file: coverage/.resultset.json
           format: simplecov
+          # The action downloads this uploader when it runs. Pin it rather
+          # than take the latest release. Dependabot doesn't update it.
+          coverage-reporter-version: v0.6.22
           # A Coveralls outage shouldn't fail the tests.
           fail-on-error: false
