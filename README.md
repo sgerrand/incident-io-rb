@@ -75,6 +75,7 @@ The client retries up to 2 times (change this with `max_retries:`):
 ```sh
 bundle install
 bundle exec rake            # run the specs
+bundle exec rake standard   # lint with Standard (standard:fix to fix)
 bundle exec rake typecheck  # type-check with Steep
 ```
 

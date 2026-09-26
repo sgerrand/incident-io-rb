@@ -5,6 +5,14 @@ RSpec::Core::RakeTask.new(:spec)
 
 task default: :spec
 
+# Standard's `standard` and `standard:fix` tasks. Only there when the lint
+# gems are installed.
+begin
+  require "standard/rake"
+rescue LoadError
+  nil
+end
+
 desc "Type-check lib/ against the signatures in sig/ with Steep"
 task :typecheck do
   sh "steep", "check"

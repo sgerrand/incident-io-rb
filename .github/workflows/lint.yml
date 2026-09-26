@@ -1,4 +1,4 @@
-name: Test
+name: Lint
 
 on:
   push:
@@ -13,23 +13,17 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
-    name: Ruby ${{ matrix.ruby }}
+  standard:
+    name: Standard
     runs-on: ubuntu-latest
-    # The next Ruby release is tested but never blocks a merge.
-    continue-on-error: ${{ matrix.ruby == 'head' }}
-    strategy:
-      fail-fast: false
-      matrix:
-        ruby: ["3.3", "3.4", "4.0", head]
     env:
-      BUNDLE_WITHOUT: lint:typecheck
+      BUNDLE_WITHOUT: typecheck
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
         with:
-          ruby-version: ${{ matrix.ruby }}
+          ruby-version: "4.0"
           bundler-cache: true
-      - run: bundle exec rake
+      - run: bundle exec standardrb

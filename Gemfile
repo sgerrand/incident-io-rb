@@ -14,3 +14,10 @@ end
 group :typecheck do
   gem "steep", "~> 2.1"
 end
+
+# Linting with Standard, which runs on RuboCop. CI only installs it for the
+# lint job.
+group :lint do
+  gem "rubocop"
+  gem "standard", "~> 1.56"
+end
