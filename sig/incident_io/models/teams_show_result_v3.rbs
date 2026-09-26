@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?team: TeamV3?) -> instance
 
-      def initialize: (?team: TeamV3?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?team: TeamV3?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?team: TeamV3?) -> instance
 

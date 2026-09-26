@@ -31,7 +31,7 @@ module IncidentIo
         ?final: Array[ScheduleEntryV2]?,
         ?overrides: Array[ScheduleEntryV2]?,
         ?scheduled: Array[ScheduleEntryV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

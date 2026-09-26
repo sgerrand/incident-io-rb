@@ -40,7 +40,7 @@ module IncidentIo
         ?rate_time_unit: String?,
         ?timezone: String?,
         ?weekly_rules: Array[PayConfigWeeklyRulePayloadV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

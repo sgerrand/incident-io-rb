@@ -15,7 +15,7 @@ module IncidentIo
       def initialize: (
         ?follow_ups: Array[FollowUpV3]?,
         ?pagination_meta: PaginationMetaResultV3?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?follow_ups: Array[FollowUpV3]?, ?pagination_meta: PaginationMetaResultV3?) -> instance

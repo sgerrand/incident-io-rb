@@ -22,7 +22,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/telemetry/data_sources/%s", id),
-            body: { datadog_config:, grafana_config:, name: }.compact,
+            body: {datadog_config:, grafana_config:, name:}.compact,
             unwrap: "data_source",
             model: Models::TelemetryDataSourceV2,
             request_options:

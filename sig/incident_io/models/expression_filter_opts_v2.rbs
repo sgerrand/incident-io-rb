@@ -12,7 +12,7 @@ module IncidentIo
 
       def self.new: (?condition_groups: Array[ConditionGroupV2]?) -> instance
 
-      def initialize: (?condition_groups: Array[ConditionGroupV2]?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?condition_groups: Array[ConditionGroupV2]?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?condition_groups: Array[ConditionGroupV2]?) -> instance
 

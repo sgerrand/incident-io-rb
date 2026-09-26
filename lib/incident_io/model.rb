@@ -41,11 +41,11 @@ module IncidentIo
       klass.instance_variable_set(:@fields, fields)
 
       # Every field is optional: the API leaves some out and adds others.
-      klass.define_method(:initialize) do |_raw: nil, **attrs|
+      klass.define_method(:initialize) do |raw: nil, **attrs|
         unknown = attrs.keys - members
         raise ArgumentError, "unknown keyword#{"s" if unknown.size > 1}: #{unknown.join(", ")}" if unknown.any?
 
-        @_raw = _raw.nil? ? nil : _raw.dup.freeze
+        @_raw = raw.nil? ? nil : raw.dup.freeze
         super(**members.to_h { |m| [m, attrs[m]] })
       end
 
@@ -99,7 +99,7 @@ module IncidentIo
         attrs = fields.to_h do |member, (api_name, type)|
           [member, Model.coerce(type, hash[api_name])]
         end
-        new(_raw: hash, **attrs)
+        new(raw: hash, **attrs)
       end
     end
 

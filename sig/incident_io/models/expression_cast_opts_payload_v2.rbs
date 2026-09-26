@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?returns: ReturnsMetaV2?) -> instance
 
-      def initialize: (?returns: ReturnsMetaV2?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?returns: ReturnsMetaV2?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?returns: ReturnsMetaV2?) -> instance
 

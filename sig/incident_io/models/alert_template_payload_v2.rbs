@@ -33,7 +33,7 @@ module IncidentIo
         ?is_private: bool?,
         ?title: EngineParamBindingValuePayloadV2?,
         ?visible_to_teams: EngineParamBindingPayloadV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

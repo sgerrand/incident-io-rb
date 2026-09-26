@@ -17,7 +17,7 @@ module IncidentIo
       def initialize: (
         ?cc_emails: Array[String]?,
         ?send_user_breakdowns: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?cc_emails: Array[String]?, ?send_user_breakdowns: String?) -> instance

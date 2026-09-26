@@ -14,7 +14,7 @@ module IncidentIo
 
       def self.new: (?repeat_times: Integer?, ?to_node: String?) -> instance
 
-      def initialize: (?repeat_times: Integer?, ?to_node: String?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?repeat_times: Integer?, ?to_node: String?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?repeat_times: Integer?, ?to_node: String?) -> instance
 

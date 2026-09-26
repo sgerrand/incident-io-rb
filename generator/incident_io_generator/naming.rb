@@ -15,13 +15,13 @@ module IncidentIoGenerator
     # "IPAllowlists" => "ip_allowlists", "CreateHTTP" => "create_http"
     def underscore(name)
       name.to_s
-          .gsub(/[^A-Za-z0-9]+/, "_")
-          .gsub(/([A-Z\d]+)([A-Z][a-z])/, '\1_\2')
-          .gsub(/([a-z\d])([A-Z])/, '\1_\2')
-          .downcase
-          .squeeze("_")
-          .delete_prefix("_")
-          .delete_suffix("_")
+        .gsub(/[^A-Za-z0-9]+/, "_")
+        .gsub(/([A-Z\d]+)([A-Z][a-z])/, '\1_\2')
+        .gsub(/([a-z\d])([A-Z])/, '\1_\2')
+        .downcase
+        .squeeze("_")
+        .delete_prefix("_")
+        .delete_suffix("_")
     end
 
     # "follow_ups" => "FollowUps"

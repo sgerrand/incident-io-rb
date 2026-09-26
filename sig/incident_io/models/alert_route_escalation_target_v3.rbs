@@ -15,7 +15,7 @@ module IncidentIo
       def initialize: (
         ?escalation_paths: EngineParamBindingV3?,
         ?users: EngineParamBindingV3?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?escalation_paths: EngineParamBindingV3?, ?users: EngineParamBindingV3?) -> instance

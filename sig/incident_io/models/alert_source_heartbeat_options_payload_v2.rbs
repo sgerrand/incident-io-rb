@@ -24,7 +24,7 @@ module IncidentIo
         ?failure_threshold: Integer?,
         ?grace_period_seconds: Integer?,
         ?interval_seconds: Integer?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

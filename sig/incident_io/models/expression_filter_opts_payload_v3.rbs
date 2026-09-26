@@ -14,7 +14,7 @@ module IncidentIo
 
       def initialize: (
         ?condition_groups: Array[ConditionGroupPayloadV3]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?condition_groups: Array[ConditionGroupPayloadV3]?) -> instance

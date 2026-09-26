@@ -23,7 +23,7 @@ module IncidentIo
         ?binding: EngineParamBindingPayloadV3?,
         ?channel_visibility: String?,
         ?group_alerts_summary: bool?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

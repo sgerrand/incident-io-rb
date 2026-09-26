@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?data_source: TelemetryDataSourceV2?) -> instance
 
-      def initialize: (?data_source: TelemetryDataSourceV2?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?data_source: TelemetryDataSourceV2?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?data_source: TelemetryDataSourceV2?) -> instance
 

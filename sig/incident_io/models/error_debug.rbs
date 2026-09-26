@@ -14,7 +14,7 @@ module IncidentIo
 
       def self.new: (?message: String?, ?stacktrace: Array[String]?) -> instance
 
-      def initialize: (?message: String?, ?stacktrace: Array[String]?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?message: String?, ?stacktrace: Array[String]?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?message: String?, ?stacktrace: Array[String]?) -> instance
 

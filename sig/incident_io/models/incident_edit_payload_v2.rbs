@@ -48,7 +48,7 @@ module IncidentIo
         ?severity_id: String?,
         ?slack_channel_name_override: String?,
         ?summary: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

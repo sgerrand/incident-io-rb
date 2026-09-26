@@ -21,7 +21,7 @@ module IncidentIo
         ?channel_id: String?,
         ?channel_name: String?,
         ?channel_type: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?channel_id: String?, ?channel_name: String?, ?channel_type: String?) -> instance

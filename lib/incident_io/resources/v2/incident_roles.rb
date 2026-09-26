@@ -28,7 +28,7 @@ module IncidentIo
           request(
             :post,
             "/v2/incident_roles",
-            body: { description:, instructions:, name:, shortform: }.compact,
+            body: {description:, instructions:, name:, shortform:}.compact,
             unwrap: "incident_role",
             model: Models::IncidentRoleV2,
             request_options:
@@ -98,7 +98,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/incident_roles/%s", id),
-            body: { description:, instructions:, name:, shortform: }.compact,
+            body: {description:, instructions:, name:, shortform:}.compact,
             unwrap: "incident_role",
             model: Models::IncidentRoleV2,
             request_options:

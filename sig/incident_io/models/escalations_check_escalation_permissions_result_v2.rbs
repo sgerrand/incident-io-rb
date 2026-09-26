@@ -14,7 +14,7 @@ module IncidentIo
 
       def initialize: (
         ?response_options: Array[EscalationUserResponseOptionsV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?response_options: Array[EscalationUserResponseOptionsV2]?) -> instance

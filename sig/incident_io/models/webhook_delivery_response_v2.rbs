@@ -20,7 +20,7 @@ module IncidentIo
         ?body: String?,
         ?body_truncated: bool?,
         ?headers: Hash[String, String]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?body: String?, ?body_truncated: bool?, ?headers: Hash[String, String]?) -> instance

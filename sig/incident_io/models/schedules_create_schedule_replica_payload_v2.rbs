@@ -13,7 +13,7 @@ module IncidentIo
 
       def initialize: (
         ?schedule_replica: ScheduleReplicaCreatePayloadV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?schedule_replica: ScheduleReplicaCreatePayloadV2?) -> instance

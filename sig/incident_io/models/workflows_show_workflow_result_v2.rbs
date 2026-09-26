@@ -15,7 +15,7 @@ module IncidentIo
       def initialize: (
         ?management_meta: ManagementMetaV2?,
         ?workflow: WorkflowV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?management_meta: ManagementMetaV2?, ?workflow: WorkflowV2?) -> instance

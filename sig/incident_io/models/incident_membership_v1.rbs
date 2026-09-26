@@ -31,7 +31,7 @@ module IncidentIo
         ?incident_id: String?,
         ?updated_at: Time?,
         ?user: UserV1?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

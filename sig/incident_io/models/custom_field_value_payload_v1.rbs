@@ -40,7 +40,7 @@ module IncidentIo
         ?value_option_id: String?,
         ?value_text: String?,
         ?value_timestamp: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

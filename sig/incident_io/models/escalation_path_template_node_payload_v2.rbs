@@ -38,7 +38,7 @@ module IncidentIo
         ?notify_channel: EscalationPathNodeNotifyChannelWithBindingPayloadV2?,
         ?repeat: EscalationPathNodeRepeatV2?,
         ?type: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

@@ -15,7 +15,7 @@ module IncidentIo
       def initialize: (
         ?alert_tags: Array[AlertTagV2]?,
         ?pagination_meta: PaginationMetaResultV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?alert_tags: Array[AlertTagV2]?, ?pagination_meta: PaginationMetaResultV2?) -> instance

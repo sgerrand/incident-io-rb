@@ -13,7 +13,7 @@ module IncidentIo
 
       def initialize: (
         ?incidents: Array[StatusPageLinkedResponseIncidentV1]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?incidents: Array[StatusPageLinkedResponseIncidentV1]?) -> instance

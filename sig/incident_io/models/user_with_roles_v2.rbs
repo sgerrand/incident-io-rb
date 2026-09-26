@@ -45,7 +45,7 @@ module IncidentIo
         ?role: String?,
         ?seats: UserSeatsV2?,
         ?slack_user_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

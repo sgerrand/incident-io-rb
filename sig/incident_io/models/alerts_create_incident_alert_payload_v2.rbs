@@ -20,7 +20,7 @@ module IncidentIo
         ?alert_id: String?,
         ?incident_id: String?,
         ?re_relate: bool?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?alert_id: String?, ?incident_id: String?, ?re_relate: bool?) -> instance

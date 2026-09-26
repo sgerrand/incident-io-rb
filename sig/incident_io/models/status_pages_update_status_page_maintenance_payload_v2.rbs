@@ -16,12 +16,7 @@ module IncidentIo
 
       def self.new: (?end_at: Time?, ?name: String?, ?start_at: Time?) -> instance
 
-      def initialize: (
-        ?end_at: Time?,
-        ?name: String?,
-        ?start_at: Time?,
-        ?_raw: Hash[String, untyped]?
-      ) -> void
+      def initialize: (?end_at: Time?, ?name: String?, ?start_at: Time?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?end_at: Time?, ?name: String?, ?start_at: Time?) -> instance
 

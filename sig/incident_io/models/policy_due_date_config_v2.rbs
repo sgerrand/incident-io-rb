@@ -31,7 +31,7 @@ module IncidentIo
         ?calculation_type: String?,
         ?days: EngineParamBindingV2?,
         ?incident_timestamp_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

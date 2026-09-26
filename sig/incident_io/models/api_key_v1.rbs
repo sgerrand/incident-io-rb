@@ -51,7 +51,7 @@ module IncidentIo
         ?team_ids: Array[String]?,
         ?team_roles: Array[APIKeyTeamRoleV1]?,
         ?token_last_issued_at: Time?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

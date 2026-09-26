@@ -17,7 +17,7 @@ module IncidentIo
       def initialize: (
         ?after_default_team_ids: String?,
         ?before_default_team_ids: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?after_default_team_ids: String?, ?before_default_team_ids: String?) -> instance

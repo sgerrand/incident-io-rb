@@ -24,7 +24,7 @@ module IncidentIo
         ?previous_assignee: UserV2?,
         ?role: IncidentRoleV2?,
         ?updater: ActorV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

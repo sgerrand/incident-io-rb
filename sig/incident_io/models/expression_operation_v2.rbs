@@ -37,7 +37,7 @@ module IncidentIo
         ?operation_type: String?,
         ?parse: ExpressionParseOptsV2?,
         ?returns: ReturnsMetaV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

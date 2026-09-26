@@ -202,7 +202,7 @@ module IncidentIo
           request(
             :post,
             "/v2/alert_sources/actions/validate",
-            body: { owning_team_ids:, source_type:, template: }.compact,
+            body: {owning_team_ids:, source_type:, template:}.compact,
             request_options:
           )
         end

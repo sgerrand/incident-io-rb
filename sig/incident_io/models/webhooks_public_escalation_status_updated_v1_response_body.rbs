@@ -19,7 +19,7 @@ module IncidentIo
       def initialize: (
         ?event_type: String?,
         ?public_escalation_escalation_status_updated_v1: EscalationWithStatusChangeV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

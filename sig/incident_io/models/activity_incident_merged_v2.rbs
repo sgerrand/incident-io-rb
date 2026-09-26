@@ -22,7 +22,7 @@ module IncidentIo
         ?incident_update_id: String?,
         ?merger: ActorV2?,
         ?source_incident: IncidentSlimV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

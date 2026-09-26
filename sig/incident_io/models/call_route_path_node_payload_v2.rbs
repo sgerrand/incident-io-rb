@@ -26,7 +26,7 @@ module IncidentIo
         ?level: CallRoutePathNodeLevelV2?,
         ?type: String?,
         ?voicemail: CallRoutePathNodeVoicemailV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

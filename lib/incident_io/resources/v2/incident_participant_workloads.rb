@@ -29,7 +29,7 @@ module IncidentIo
           request(
             :get,
             "/v2/incident_participant_workloads",
-            query: { incident_id: },
+            query: {incident_id:},
             model: Models::IncidentParticipantWorkloadsListResultV2,
             request_options:
           )

@@ -40,7 +40,7 @@ module IncidentIo
         ?enabled: bool?,
         ?grouping_keys: Array[GroupingKeyV2]?,
         ?grouping_window_seconds: Integer?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

@@ -56,7 +56,7 @@ module IncidentIo
         ?team_ids: Array[String]?,
         ?timezone: String?,
         ?updated_at: Time?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

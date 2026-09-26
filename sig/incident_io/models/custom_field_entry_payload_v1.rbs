@@ -17,7 +17,7 @@ module IncidentIo
       def initialize: (
         ?custom_field_id: String?,
         ?values: Array[CustomFieldValuePayloadV1]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?custom_field_id: String?, ?values: Array[CustomFieldValuePayloadV1]?) -> instance

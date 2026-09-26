@@ -28,7 +28,7 @@ module IncidentIo
         ?time_to_ack_interval_condition: String?,
         ?time_to_ack_seconds: Integer?,
         ?time_to_ack_weekday_interval_config_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

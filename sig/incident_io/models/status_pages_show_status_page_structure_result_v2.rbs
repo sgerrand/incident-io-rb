@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?current_structure: StatusPageStructureV2?) -> instance
 
-      def initialize: (?current_structure: StatusPageStructureV2?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?current_structure: StatusPageStructureV2?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?current_structure: StatusPageStructureV2?) -> instance
 

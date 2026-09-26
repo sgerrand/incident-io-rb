@@ -20,7 +20,7 @@ module IncidentIo
         ?end_time: String?,
         ?start_time: String?,
         ?weekday: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?end_time: String?, ?start_time: String?, ?weekday: String?) -> instance

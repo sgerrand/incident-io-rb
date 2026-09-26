@@ -24,7 +24,7 @@ module IncidentIo
         ?conditions: Array[ConditionPayloadV2]?,
         ?else_path: Array[EscalationPathNodePayloadV2]?,
         ?then_path: Array[EscalationPathNodePayloadV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

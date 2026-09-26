@@ -24,7 +24,7 @@ module IncidentIo
         ?components: Array[StatusPageStructureComponentV2]?,
         ?id: String?,
         ?name: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

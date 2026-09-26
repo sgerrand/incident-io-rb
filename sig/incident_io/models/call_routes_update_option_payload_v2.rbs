@@ -20,7 +20,7 @@ module IncidentIo
         ?digit: String?,
         ?path: Array[CallRoutePathNodePayloadV2]?,
         ?prompt: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?digit: String?, ?path: Array[CallRoutePathNodePayloadV2]?, ?prompt: String?) -> instance

@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?schedule: ScheduleCreatePayloadV2?) -> instance
 
-      def initialize: (?schedule: ScheduleCreatePayloadV2?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?schedule: ScheduleCreatePayloadV2?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?schedule: ScheduleCreatePayloadV2?) -> instance
 

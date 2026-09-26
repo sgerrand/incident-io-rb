@@ -44,8 +44,8 @@ module IncidentIo
           request(
             :post,
             path("/v2/alert_events/http/%s", alert_source_config_id),
-            query: { token:, query: },
-            body: { deduplication_key:, description:, metadata:, source_url:, status:, title: }.compact,
+            query: {token:, query:},
+            body: {deduplication_key:, description:, metadata:, source_url:, status:, title:}.compact,
             model: Models::AlertEventsCreateHTTPResultV2,
             request_options:
           )

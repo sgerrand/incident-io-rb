@@ -35,7 +35,7 @@ module IncidentIo
           request(
             :post,
             "/v1/postmortem_documents/actions/attach",
-            body: { document_provider:, incident_id:, permalink: }.compact,
+            body: {document_provider:, incident_id:, permalink:}.compact,
             unwrap: "postmortem_document",
             model: Models::PostmortemDocumentV1,
             request_options:
@@ -59,7 +59,7 @@ module IncidentIo
           paginate(
             "/v1/postmortem_documents",
             items_key: "postmortem_documents",
-            query: { page_size:, after:, incident_id:, sort_by: },
+            query: {page_size:, after:, incident_id:, sort_by:},
             model: Models::PostmortemDocumentV1,
             request_options:
           )
@@ -131,7 +131,7 @@ module IncidentIo
           request(
             :put,
             path("/v1/postmortem_documents/%s", id),
-            body: { status: }.compact,
+            body: {status:}.compact,
             unwrap: "postmortem_document",
             model: Models::PostmortemDocumentV1,
             request_options:

@@ -26,7 +26,7 @@ module IncidentIo
           request(
             :post,
             "/v1/custom_field_options",
-            body: { custom_field_id:, sort_key:, value: }.compact,
+            body: {custom_field_id:, sort_key:, value:}.compact,
             unwrap: "custom_field_option",
             model: Models::CustomFieldOptionV1,
             request_options:
@@ -61,7 +61,7 @@ module IncidentIo
           paginate(
             "/v1/custom_field_options",
             items_key: "custom_field_options",
-            query: { page_size:, after:, custom_field_id: },
+            query: {page_size:, after:, custom_field_id:},
             model: Models::CustomFieldOptionV1,
             request_options:
           )
@@ -97,7 +97,7 @@ module IncidentIo
           request(
             :put,
             path("/v1/custom_field_options/%s", id),
-            body: { sort_key:, value: }.compact,
+            body: {sort_key:, value:}.compact,
             unwrap: "custom_field_option",
             model: Models::CustomFieldOptionV1,
             request_options:

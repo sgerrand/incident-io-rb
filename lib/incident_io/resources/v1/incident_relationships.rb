@@ -21,7 +21,7 @@ module IncidentIo
           paginate(
             "/v1/incident_relationships",
             items_key: "incident_relationships",
-            query: { incident_id:, page_size:, after: },
+            query: {incident_id:, page_size:, after:},
             model: Models::IncidentRelationshipV1,
             request_options:
           )

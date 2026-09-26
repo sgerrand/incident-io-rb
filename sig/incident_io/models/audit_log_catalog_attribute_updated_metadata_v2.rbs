@@ -17,7 +17,7 @@ module IncidentIo
       def initialize: (
         ?after_values: Array[String]?,
         ?before_values: Array[String]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?after_values: Array[String]?, ?before_values: Array[String]?) -> instance

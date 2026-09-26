@@ -15,7 +15,7 @@ module IncidentIo
       def initialize: (
         ?catalog_entry: CatalogEntryV2?,
         ?catalog_type: CatalogTypeV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?catalog_entry: CatalogEntryV2?, ?catalog_type: CatalogTypeV2?) -> instance

@@ -37,7 +37,7 @@ module IncidentIo
         ?method_type: String?,
         ?phone: OnCallNotificationRulePhoneDetailsPublicV2?,
         ?rule_type: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

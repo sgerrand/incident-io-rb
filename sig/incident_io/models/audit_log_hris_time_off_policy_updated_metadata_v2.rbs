@@ -28,7 +28,7 @@ module IncidentIo
         ?connection_name: String?,
         ?previous_behaviour: String?,
         ?provider_slug: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

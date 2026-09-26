@@ -31,7 +31,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/policy_findings/%s/actions/dismiss", id),
-            body: { reason: }.compact,
+            body: {reason:}.compact,
             unwrap: "policy_finding",
             model: Models::PolicyFindingV2,
             request_options:
@@ -51,7 +51,7 @@ module IncidentIo
           paginate(
             "/v2/policy_findings",
             items_key: "policy_findings",
-            query: { page_size:, after:, policy_id: },
+            query: {page_size:, after:, policy_id:},
             model: Models::PolicyFindingV2,
             request_options:
           )

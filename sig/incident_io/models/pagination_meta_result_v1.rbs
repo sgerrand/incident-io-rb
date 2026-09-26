@@ -14,7 +14,7 @@ module IncidentIo
 
       def self.new: (?after: String?, ?page_size: Integer?) -> instance
 
-      def initialize: (?after: String?, ?page_size: Integer?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?after: String?, ?page_size: Integer?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?after: String?, ?page_size: Integer?) -> instance
 

@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?schedule_sync_rule: ScheduleSyncRuleV2?) -> instance
 
-      def initialize: (?schedule_sync_rule: ScheduleSyncRuleV2?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?schedule_sync_rule: ScheduleSyncRuleV2?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?schedule_sync_rule: ScheduleSyncRuleV2?) -> instance
 

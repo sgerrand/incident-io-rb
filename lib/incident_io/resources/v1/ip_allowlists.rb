@@ -39,7 +39,7 @@ module IncidentIo
           request(
             :put,
             "/v1/ip_allowlists",
-            body: { allowlist:, enabled:, version: }.compact,
+            body: {allowlist:, enabled:, version:}.compact,
             unwrap: "ip_allowlist",
             model: Models::IPAllowlistV1,
             request_options:

@@ -109,7 +109,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/incidents/%s/actions/edit", id),
-            body: { incident:, notify_incident_channel: }.compact,
+            body: {incident:, notify_incident_channel:}.compact,
             unwrap: "incident",
             model: Models::IncidentV2,
             request_options:
@@ -136,7 +136,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/incidents/%s/actions/import_postmortem_document", id),
-            body: { content:, title: }.compact,
+            body: {content:, title:}.compact,
             unwrap: "postmortem_document",
             model: Models::PostmortemDocumentV1,
             request_options:

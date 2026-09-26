@@ -22,7 +22,7 @@ module IncidentIo
         ?datadog_config: TelemetryDatadogUpdateConfigV2?,
         ?grafana_config: TelemetryGrafanaUpdateConfigV2?,
         ?name: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

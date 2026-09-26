@@ -40,7 +40,7 @@ module IncidentIo
         ?name: String?,
         ?notify_subscribers: bool?,
         ?status_page_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

@@ -64,7 +64,7 @@ module IncidentIo
         ?schedule: PolicyScheduleV2?,
         ?status: String?,
         ?updated_at: Time?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?follow_ups: Array[FollowUpV2]?) -> instance
 
-      def initialize: (?follow_ups: Array[FollowUpV2]?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?follow_ups: Array[FollowUpV2]?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?follow_ups: Array[FollowUpV2]?) -> instance
 

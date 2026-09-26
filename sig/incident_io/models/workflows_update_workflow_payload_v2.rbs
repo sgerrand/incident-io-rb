@@ -87,7 +87,7 @@ module IncidentIo
         ?skip_step_upgrades: bool?,
         ?state: String?,
         ?steps: Array[StepConfigPayloadV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

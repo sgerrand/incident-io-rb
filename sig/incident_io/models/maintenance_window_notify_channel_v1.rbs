@@ -29,7 +29,7 @@ module IncidentIo
         ?channel_name: String?,
         ?channel_type: String?,
         ?is_private: bool?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

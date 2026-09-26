@@ -92,7 +92,7 @@ module IncidentIo
           paginate(
             "/v1/incidents",
             items_key: "incidents",
-            query: { page_size:, after:, status: },
+            query: {page_size:, after:, status:},
             model: Models::IncidentV1,
             request_options:
           )

@@ -17,7 +17,7 @@ module IncidentIo
       def initialize: (
         ?after_owning_team_ids: String?,
         ?before_owning_team_ids: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?after_owning_team_ids: String?, ?before_owning_team_ids: String?) -> instance

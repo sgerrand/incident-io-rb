@@ -10,13 +10,13 @@ RSpec.describe IncidentIo::QueryEncoder do
   end
 
   it "encodes deepObject filters and repeats the key for each array value" do
-    query = described_class.encode(status: { one_of: %w[a b] })
+    query = described_class.encode(status: {one_of: %w[a b]})
 
     expect(decode(query)).to eq([["status[one_of]", "a"], ["status[one_of]", "b"]])
   end
 
   it "encodes two-level filters such as custom_field" do
-    query = described_class.encode(custom_field: { "01F" => { one_of: ["x"] } })
+    query = described_class.encode(custom_field: {"01F" => {one_of: ["x"]}})
 
     expect(decode(query)).to eq([["custom_field[01F][one_of]", "x"]])
   end
@@ -31,7 +31,7 @@ RSpec.describe IncidentIo::QueryEncoder do
 
   it "formats times, dates and booleans" do
     query = described_class.encode(
-      created_at: { gte: [Time.utc(2024, 5, 1, 12)] },
+      created_at: {gte: [Time.utc(2024, 5, 1, 12)]},
       on: Date.new(2024, 5, 1),
       flag: true
     )

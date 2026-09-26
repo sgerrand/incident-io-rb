@@ -20,7 +20,7 @@ module IncidentIo
       def initialize: (
         ?auto_cancel_escalations: bool?,
         ?escalation_targets: Array[AlertRouteEscalationTargetV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

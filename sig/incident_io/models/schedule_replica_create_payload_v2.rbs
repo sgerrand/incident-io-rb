@@ -32,7 +32,7 @@ module IncidentIo
         ?replica_provider: String?,
         ?replica_provider_id: String?,
         ?sources: Array[ScheduleReplicaSourceV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

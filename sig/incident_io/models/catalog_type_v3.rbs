@@ -103,7 +103,7 @@ module IncidentIo
         ?type_name: String?,
         ?updated_at: Time?,
         ?use_name_as_identifier: bool?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

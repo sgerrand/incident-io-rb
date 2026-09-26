@@ -50,7 +50,7 @@ module IncidentIo
         ?users: Array[UserReferencePayloadV2]?,
         ?working_interval: Array[ScheduleRotationWorkingIntervalV2]?,
         ?working_intervals: Array[ScheduleRotationWorkingIntervalV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

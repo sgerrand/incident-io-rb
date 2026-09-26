@@ -12,7 +12,7 @@ module IncidentIo
 
       def self.new: (?run_on_private_incidents: String?) -> instance
 
-      def initialize: (?run_on_private_incidents: String?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?run_on_private_incidents: String?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?run_on_private_incidents: String?) -> instance
 

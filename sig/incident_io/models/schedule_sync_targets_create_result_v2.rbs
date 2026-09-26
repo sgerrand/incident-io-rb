@@ -13,7 +13,7 @@ module IncidentIo
 
       def initialize: (
         ?schedule_sync_target: ScheduleSyncTargetResourceV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?schedule_sync_target: ScheduleSyncTargetResourceV2?) -> instance

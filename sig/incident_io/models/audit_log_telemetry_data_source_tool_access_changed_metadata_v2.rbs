@@ -36,7 +36,7 @@ module IncidentIo
         ?source: String?,
         ?surface: String?,
         ?tool: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

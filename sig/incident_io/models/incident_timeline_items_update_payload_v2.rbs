@@ -20,7 +20,7 @@ module IncidentIo
         ?description: String?,
         ?timestamp: Time?,
         ?title: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?description: String?, ?timestamp: Time?, ?title: String?) -> instance

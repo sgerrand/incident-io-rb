@@ -88,7 +88,7 @@ module IncidentIo
           paginate(
             "/v2/announcement_rules",
             items_key: "announcement_rules",
-            query: { page_size:, after: },
+            query: {page_size:, after:},
             model: Models::AnnouncementRuleV2,
             request_options:
           )

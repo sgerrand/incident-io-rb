@@ -13,7 +13,7 @@ module IncidentIo
 
       def initialize: (
         ?announcement_templates: Array[AnnouncementTemplateV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?announcement_templates: Array[AnnouncementTemplateV2]?) -> instance

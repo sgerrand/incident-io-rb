@@ -17,7 +17,7 @@ module IncidentIo
       def initialize: (
         ?max_delay_seconds: Integer?,
         ?method_types: Array[String]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?max_delay_seconds: Integer?, ?method_types: Array[String]?) -> instance

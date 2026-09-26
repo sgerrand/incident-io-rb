@@ -51,7 +51,7 @@ module IncidentIo
         ?sort_key: String?,
         ?unavailable: bool?,
         ?value: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

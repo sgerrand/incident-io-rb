@@ -21,7 +21,7 @@ module IncidentIo
         ?catalog_entries: Array[CatalogEntryV3]?,
         ?catalog_type: CatalogTypeV3?,
         ?pagination_meta: PaginationMetaResultWithTotalV3?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

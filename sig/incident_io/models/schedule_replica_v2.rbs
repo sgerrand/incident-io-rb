@@ -60,7 +60,7 @@ module IncidentIo
         ?sources: Array[ScheduleReplicaSourceV2]?,
         ?updated_at: Time?,
         ?user_statuses: Array[ScheduleReplicaUserStatusV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

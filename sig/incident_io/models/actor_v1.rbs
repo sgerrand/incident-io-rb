@@ -12,7 +12,7 @@ module IncidentIo
 
       def self.new: (?api_key: APIKeyActorV1?, ?user: UserV1?) -> instance
 
-      def initialize: (?api_key: APIKeyActorV1?, ?user: UserV1?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?api_key: APIKeyActorV1?, ?user: UserV1?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?api_key: APIKeyActorV1?, ?user: UserV1?) -> instance
 

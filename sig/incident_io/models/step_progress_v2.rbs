@@ -43,7 +43,7 @@ module IncidentIo
         ?step: String?,
         ?webhook_delivery: WebhookDeliveryV2?,
         ?webhook_delivery_state: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

@@ -23,7 +23,7 @@ module IncidentIo
         ?enforcement: String?,
         ?high_urgency: Array[PolicyReadinessRuleV2]?,
         ?low_urgency: Array[PolicyReadinessRuleV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

@@ -17,7 +17,7 @@ module IncidentIo
       def initialize: (
         ?available_actions: Array[String]?,
         ?user_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?available_actions: Array[String]?, ?user_id: String?) -> instance

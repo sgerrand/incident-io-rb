@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?status_page_incident: StatusPageIncidentV2?) -> instance
 
-      def initialize: (?status_page_incident: StatusPageIncidentV2?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?status_page_incident: StatusPageIncidentV2?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?status_page_incident: StatusPageIncidentV2?) -> instance
 

@@ -30,7 +30,7 @@ module IncidentIo
         ?value_numeric: String?,
         ?value_option: CustomFieldOptionV2?,
         ?value_text: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

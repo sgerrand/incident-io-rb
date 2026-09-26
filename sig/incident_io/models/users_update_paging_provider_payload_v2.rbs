@@ -12,7 +12,7 @@ module IncidentIo
 
       def self.new: (?preferred_escalation_provider: String?) -> instance
 
-      def initialize: (?preferred_escalation_provider: String?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?preferred_escalation_provider: String?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?preferred_escalation_provider: String?) -> instance
 

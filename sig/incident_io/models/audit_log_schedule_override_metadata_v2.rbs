@@ -36,7 +36,7 @@ module IncidentIo
         ?before_user_names: String?,
         ?end_at: String?,
         ?start_at: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

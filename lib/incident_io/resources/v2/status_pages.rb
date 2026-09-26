@@ -215,7 +215,7 @@ module IncidentIo
           request(
             :post,
             "/v2/status_page_retrospective_incidents",
-            body: { idempotency_key:, name:, status_page_id:, updates: }.compact,
+            body: {idempotency_key:, name:, status_page_id:, updates:}.compact,
             idempotent: true,
             unwrap: "status_page_incident",
             model: Models::StatusPageIncidentV2,
@@ -348,7 +348,7 @@ module IncidentIo
           paginate(
             "/v2/status_pages",
             items_key: "status_pages",
-            query: { page_size:, after: },
+            query: {page_size:, after:},
             model: Models::StatusPageV2,
             request_options:
           )
@@ -378,7 +378,7 @@ module IncidentIo
           request(
             :get,
             path("/v2/status_pages/%s/components/%s/availability", status_page_id, component_id),
-            query: { start_at:, end_at: },
+            query: {start_at:, end_at:},
             unwrap: "availability",
             model: Models::StatusPageComponentAvailabilityV2,
             request_options:
@@ -456,7 +456,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/status_page_incidents/%s", status_page_incident_id),
-            body: { name: }.compact,
+            body: {name:}.compact,
             unwrap: "status_page_incident",
             model: Models::StatusPageIncidentV2,
             request_options:
@@ -489,7 +489,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/status_page_maintenances/%s", status_page_maintenance_id),
-            body: { end_at:, name:, start_at: }.compact,
+            body: {end_at:, name:, start_at:}.compact,
             unwrap: "status_page_maintenance",
             model: Models::StatusPageMaintenanceV2,
             request_options:

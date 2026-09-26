@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?pay_report: PayReportV2?) -> instance
 
-      def initialize: (?pay_report: PayReportV2?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?pay_report: PayReportV2?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?pay_report: PayReportV2?) -> instance
 

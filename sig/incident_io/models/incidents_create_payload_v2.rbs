@@ -67,7 +67,7 @@ module IncidentIo
         ?slack_team_id: String?,
         ?summary: String?,
         ?visibility: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

@@ -12,7 +12,7 @@ module IncidentIo
 
       def self.new: (?items: Array[StatusPageStructureItemV2]?) -> instance
 
-      def initialize: (?items: Array[StatusPageStructureItemV2]?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?items: Array[StatusPageStructureItemV2]?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?items: Array[StatusPageStructureItemV2]?) -> instance
 

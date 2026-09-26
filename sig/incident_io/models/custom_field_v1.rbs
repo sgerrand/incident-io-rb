@@ -68,7 +68,7 @@ module IncidentIo
         ?show_before_update: bool?,
         ?show_in_announcement_post: bool?,
         ?updated_at: Time?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

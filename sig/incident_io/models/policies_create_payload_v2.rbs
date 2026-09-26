@@ -54,7 +54,7 @@ module IncidentIo
         ?post_mortem: PolicyPostMortemPayloadV2?,
         ?schedule: PolicyScheduleV2?,
         ?status: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

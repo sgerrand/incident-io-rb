@@ -13,7 +13,7 @@ module IncidentIo
 
       def initialize: (
         ?notification_methods: Array[OnCallNotificationMethodPublicV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?notification_methods: Array[OnCallNotificationMethodPublicV2]?) -> instance

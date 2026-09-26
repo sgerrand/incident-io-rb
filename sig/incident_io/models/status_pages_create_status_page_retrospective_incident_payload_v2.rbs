@@ -28,7 +28,7 @@ module IncidentIo
         ?name: String?,
         ?status_page_id: String?,
         ?updates: Array[StatusPageRetrospectiveIncidentUpdateV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

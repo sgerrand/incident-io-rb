@@ -22,7 +22,7 @@ module IncidentIo
         ?array_value: Array[AlertAttributeValueV2]?,
         ?attribute: AlertAttributeV2?,
         ?value: AlertAttributeValueV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

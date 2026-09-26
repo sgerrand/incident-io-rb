@@ -77,7 +77,7 @@ module IncidentIo
 
       each_page { |page| page.each(&block) }
     end
-    alias auto_paging_each each
+    alias_method :auto_paging_each, :each
 
     private
 

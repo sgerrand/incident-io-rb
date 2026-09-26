@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?catalog_type: CatalogTypeV3?) -> instance
 
-      def initialize: (?catalog_type: CatalogTypeV3?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?catalog_type: CatalogTypeV3?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?catalog_type: CatalogTypeV3?) -> instance
 

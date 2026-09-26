@@ -27,7 +27,7 @@ module IncidentIo
           paginate(
             "/v2/call_transcript_entries",
             items_key: "call_transcript_entries",
-            query: { page_size:, after:, call_session_id: },
+            query: {page_size:, after:, call_session_id:},
             model: Models::CallTranscriptEntryV2,
             request_options:
           )

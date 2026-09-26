@@ -52,7 +52,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/escalations/%s/actions/check_permissions", escalation_id),
-            body: { user_ids: }.compact,
+            body: {user_ids:}.compact,
             unwrap: "response_options",
             model: [Models::EscalationUserResponseOptionsV2],
             request_options:
@@ -103,7 +103,7 @@ module IncidentIo
           request(
             :post,
             "/v2/escalations",
-            body: { description:, escalation_path_id:, idempotency_key:, incident_id:, title:, user_ids: }.compact,
+            body: {description:, escalation_path_id:, idempotency_key:, incident_id:, title:, user_ids:}.compact,
             idempotent: true,
             unwrap: "escalation",
             model: Models::EscalationV2,
@@ -306,7 +306,7 @@ module IncidentIo
           paginate(
             "/v2/escalation_paths",
             items_key: "escalation_paths",
-            query: { page_size:, after: },
+            query: {page_size:, after:},
             model: Models::EscalationPathV2,
             request_options:
           )
@@ -366,7 +366,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/escalations/%s/actions/reassign", escalation_id),
-            body: { description:, escalation_path_id:, resolve_original:, title:, user_ids: }.compact,
+            body: {description:, escalation_path_id:, resolve_original:, title:, user_ids:}.compact,
             unwrap: "escalation",
             model: Models::EscalationV2,
             request_options:
@@ -394,7 +394,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/escalations/%s/actions/respond", escalation_id),
-            body: { response:, snooze_details: }.compact,
+            body: {response:, snooze_details:}.compact,
             request_options:
           )
         end

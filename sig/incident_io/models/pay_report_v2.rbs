@@ -90,7 +90,7 @@ module IncidentIo
         ?total_pay_by_currency: Hash[String, Integer]?,
         ?unpaid_shifts: String?,
         ?updated_at: Time?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

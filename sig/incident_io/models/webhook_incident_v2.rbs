@@ -147,7 +147,7 @@ module IncidentIo
         ?workload_minutes_sleeping: Float?,
         ?workload_minutes_total: Float?,
         ?workload_minutes_working: Float?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

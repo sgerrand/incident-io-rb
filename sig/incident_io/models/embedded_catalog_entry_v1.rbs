@@ -28,7 +28,7 @@ module IncidentIo
         ?external_id: String?,
         ?id: String?,
         ?name: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?aliases: Array[String]?, ?external_id: String?, ?id: String?, ?name: String?) -> instance

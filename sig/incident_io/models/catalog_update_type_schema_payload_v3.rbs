@@ -15,7 +15,7 @@ module IncidentIo
       def initialize: (
         ?attributes: Array[CatalogTypeAttributePayloadV3]?,
         ?version: Integer?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?attributes: Array[CatalogTypeAttributePayloadV3]?, ?version: Integer?) -> instance

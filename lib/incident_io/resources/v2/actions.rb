@@ -35,7 +35,7 @@ module IncidentIo
           request(
             :post,
             "/v2/actions",
-            body: { assignee_id:, description:, incident_id: }.compact,
+            body: {assignee_id:, description:, incident_id:}.compact,
             unwrap: "action",
             model: Models::ActionV2,
             request_options:
@@ -77,7 +77,7 @@ module IncidentIo
           request(
             :get,
             "/v2/actions",
-            query: { incident_id:, incident_mode: },
+            query: {incident_id:, incident_mode:},
             unwrap: "actions",
             model: [Models::ActionV2],
             request_options:
@@ -123,7 +123,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/actions/%s", id),
-            body: { assignee_id:, description:, status: }.compact,
+            body: {assignee_id:, description:, status:}.compact,
             unwrap: "action",
             model: Models::ActionV2,
             request_options:

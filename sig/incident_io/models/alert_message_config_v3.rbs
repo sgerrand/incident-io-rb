@@ -19,7 +19,7 @@ module IncidentIo
       def initialize: (
         ?destinations: Array[AlertMessageDestinationV3]?,
         ?template: EngineParamBindingV3?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

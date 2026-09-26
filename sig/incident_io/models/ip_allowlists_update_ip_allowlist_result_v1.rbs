@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?ip_allowlist: IPAllowlistV1?) -> instance
 
-      def initialize: (?ip_allowlist: IPAllowlistV1?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?ip_allowlist: IPAllowlistV1?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?ip_allowlist: IPAllowlistV1?) -> instance
 

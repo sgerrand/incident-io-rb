@@ -28,7 +28,7 @@ module IncidentIo
         ?enabled: bool?,
         ?updated_at: Time?,
         ?version: Integer?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

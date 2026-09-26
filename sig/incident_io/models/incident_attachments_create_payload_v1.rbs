@@ -16,7 +16,7 @@ module IncidentIo
       def initialize: (
         ?incident_id: String?,
         ?resource: Hash[String, untyped]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?incident_id: String?, ?resource: Hash[String, untyped]?) -> instance

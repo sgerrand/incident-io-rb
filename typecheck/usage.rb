@@ -17,9 +17,9 @@ client.incidents.edit(
   incident: IncidentIo::Models::IncidentEditPayloadV2.new(name: "New name"),
   notify_incident_channel: false
 )
-client.incidents.edit("01ABC", incident: { name: "New name" }, notify_incident_channel: false)
+client.incidents.edit("01ABC", incident: {name: "New name"}, notify_incident_channel: false)
 
-client.incidents.list(page_size: 100, status_category: { one_of: ["live"] }).each do |item|
+client.incidents.list(page_size: 100, status_category: {one_of: ["live"]}).each do |item|
   item.name&.length
 end
 client.incidents.list.first(10).map(&:id)
@@ -30,8 +30,8 @@ client.v2.catalog.list_types
 client.pay_reports.download("01REPORT").lines
 client.schedules.destroy("01SCHED")
 
-client.incidents.show("01ABC", request_options: { api_key: "other", timeout: 5 })
-client.request(:get, "/v2/incidents", query: { page_size: 1 })
+client.incidents.show("01ABC", request_options: {api_key: "other", timeout: 5})
+client.request(:get, "/v2/incidents", query: {page_size: 1})
 
 begin
   client.incidents.show("missing")

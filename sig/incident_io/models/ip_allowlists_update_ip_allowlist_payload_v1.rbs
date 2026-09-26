@@ -20,7 +20,7 @@ module IncidentIo
         ?allowlist: Array[IPAllowlistItemV1]?,
         ?enabled: bool?,
         ?version: Integer?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?allowlist: Array[IPAllowlistItemV1]?, ?enabled: bool?, ?version: Integer?) -> instance

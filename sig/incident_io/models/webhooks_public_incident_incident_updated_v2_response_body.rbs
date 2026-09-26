@@ -19,7 +19,7 @@ module IncidentIo
       def initialize: (
         ?event_type: String?,
         ?public_incident_incident_updated_v2: WebhookIncidentV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?event_type: String?, ?public_incident_incident_updated_v2: WebhookIncidentV2?) -> instance

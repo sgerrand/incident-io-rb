@@ -27,7 +27,7 @@ module IncidentIo
         ?annotations: Hash[String, String]?,
         ?new_slack_user_group: NewSlackUserGroupPayloadV2?,
         ?slack_user_group_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

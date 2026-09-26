@@ -23,7 +23,7 @@ module IncidentIo
         ?duration_metric: IncidentDurationMetricV2?,
         ?status: String?,
         ?value_seconds: Integer?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

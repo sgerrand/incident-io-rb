@@ -91,7 +91,7 @@ module IncidentIo
         ?source_repo_url: String?,
         ?type_name: String?,
         ?updated_at: Time?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

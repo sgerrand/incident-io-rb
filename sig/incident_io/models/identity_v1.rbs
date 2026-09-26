@@ -32,7 +32,7 @@ module IncidentIo
         ?roles: Array[String]?,
         ?team_roles: Array[String]?,
         ?teams: Array[IdentityTeamV1]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

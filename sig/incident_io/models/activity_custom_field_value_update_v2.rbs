@@ -34,7 +34,7 @@ module IncidentIo
         ?previous_values: Array[CustomFieldValueV2]?,
         ?previous_values_count: Integer?,
         ?updater: ActorV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

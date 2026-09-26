@@ -14,7 +14,7 @@ module IncidentIo
 
       def self.new: (?supports_sms: bool?, ?supports_voice: bool?) -> instance
 
-      def initialize: (?supports_sms: bool?, ?supports_voice: bool?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?supports_sms: bool?, ?supports_voice: bool?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?supports_sms: bool?, ?supports_voice: bool?) -> instance
 

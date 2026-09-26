@@ -20,7 +20,7 @@ module IncidentIo
         ?custom_field_id: String?,
         ?sort_key: Integer?,
         ?value: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?custom_field_id: String?, ?sort_key: Integer?, ?value: String?) -> instance

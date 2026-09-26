@@ -24,7 +24,7 @@ module IncidentIo
         ?delay_interval_condition: String?,
         ?delay_seconds: Integer?,
         ?delay_weekday_interval_config_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

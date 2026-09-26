@@ -28,7 +28,7 @@ module IncidentIo
         ?handle: String?,
         ?name: String?,
         ?slack_team_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?description: String?, ?handle: String?, ?name: String?, ?slack_team_id: String?) -> instance

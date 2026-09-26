@@ -23,7 +23,7 @@ module IncidentIo
         ?emoji: String?,
         ?rank: Integer?,
         ?title: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?action_type: String?, ?emoji: String?, ?rank: Integer?, ?title: String?) -> instance

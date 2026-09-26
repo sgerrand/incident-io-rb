@@ -18,7 +18,7 @@ module IncidentIo
       def initialize: (
         ?escalations: Array[EscalationV2]?,
         ?pagination_meta: PaginationMetaResultV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?escalations: Array[EscalationV2]?, ?pagination_meta: PaginationMetaResultV2?) -> instance

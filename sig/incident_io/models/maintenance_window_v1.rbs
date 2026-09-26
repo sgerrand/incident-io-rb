@@ -87,7 +87,7 @@ module IncidentIo
         ?show_in_sidebar: bool?,
         ?start_at: Time?,
         ?updated_at: Time?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

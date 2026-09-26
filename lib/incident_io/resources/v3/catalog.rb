@@ -41,7 +41,7 @@ module IncidentIo
           request(
             :post,
             "/v3/catalog_entries/actions/bulk_update",
-            body: { catalog_type_id:, entries:, update_attributes: }.compact,
+            body: {catalog_type_id:, entries:, update_attributes:}.compact,
             request_options:
           )
         end
@@ -72,7 +72,7 @@ module IncidentIo
           request(
             :post,
             "/v3/catalog_entries",
-            body: { aliases:, attribute_values:, catalog_type_id:, external_id:, name:, rank: }.compact,
+            body: {aliases:, attribute_values:, catalog_type_id:, external_id:, name:, rank:}.compact,
             unwrap: "catalog_entry",
             model: Models::CatalogEntryV3,
             request_options:
@@ -176,7 +176,7 @@ module IncidentIo
           paginate(
             "/v3/catalog_entries",
             items_key: "catalog_entries",
-            query: { catalog_type_id:, page_size:, after:, identifier: },
+            query: {catalog_type_id:, page_size:, after:, identifier:},
             model: Models::CatalogEntryV3,
             request_options:
           )
@@ -230,7 +230,7 @@ module IncidentIo
           request(
             :get,
             path("/v3/catalog_entries/%s", id),
-            query: { expand: },
+            query: {expand:},
             model: Models::CatalogShowEntryResultV3,
             request_options:
           )
@@ -279,7 +279,7 @@ module IncidentIo
           request(
             :put,
             path("/v3/catalog_entries/%s", id),
-            body: { aliases:, attribute_values:, external_id:, name:, rank:, update_attributes: }.compact,
+            body: {aliases:, attribute_values:, external_id:, name:, rank:, update_attributes:}.compact,
             model: Models::CatalogUpdateEntryResultV3,
             request_options:
           )
@@ -357,7 +357,7 @@ module IncidentIo
           request(
             :post,
             path("/v3/catalog_types/%s/actions/update_schema", id),
-            body: { attributes:, version: }.compact,
+            body: {attributes:, version:}.compact,
             unwrap: "catalog_type",
             model: Models::CatalogTypeV3,
             request_options:

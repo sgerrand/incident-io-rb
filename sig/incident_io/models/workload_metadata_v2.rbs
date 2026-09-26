@@ -12,7 +12,7 @@ module IncidentIo
 
       def self.new: (?data_synced_at: Time?) -> instance
 
-      def initialize: (?data_synced_at: Time?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?data_synced_at: Time?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?data_synced_at: Time?) -> instance
 

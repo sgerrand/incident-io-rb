@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?actions: Array[ActionV2]?) -> instance
 
-      def initialize: (?actions: Array[ActionV2]?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?actions: Array[ActionV2]?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?actions: Array[ActionV2]?) -> instance
 

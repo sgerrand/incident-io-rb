@@ -160,7 +160,7 @@ module IncidentIo
       return nil unless idempotent && RETRYABLE_STATUSES.include?(error.status)
 
       wait = error.retry_after
-      wait && wait <= MAX_RETRY_AFTER ? wait : backoff(attempt)
+      (wait && wait <= MAX_RETRY_AFTER) ? wait : backoff(attempt)
     end
 
     # Exponential backoff with up to 25% jitter: ~0.5s, 1s, 2s ... 8s.

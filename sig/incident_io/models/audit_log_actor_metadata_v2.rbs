@@ -36,7 +36,7 @@ module IncidentIo
         ?external_resource_type: String?,
         ?user_base_role_slug: String?,
         ?user_custom_role_slugs: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

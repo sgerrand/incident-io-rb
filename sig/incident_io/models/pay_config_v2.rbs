@@ -60,7 +60,7 @@ module IncidentIo
         ?timezone: String?,
         ?updated_at: Time?,
         ?weekly_rules: Array[PayConfigWeeklyRuleV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

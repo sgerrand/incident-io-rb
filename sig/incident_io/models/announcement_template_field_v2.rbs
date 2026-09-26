@@ -43,7 +43,7 @@ module IncidentIo
         ?rank: Integer?,
         ?rich_text: AnnouncementTemplateRichTextV2?,
         ?title: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

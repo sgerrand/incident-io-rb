@@ -22,7 +22,7 @@ module IncidentIo
         ?operation: ConditionOperationV3?,
         ?param_bindings: Array[EngineParamBindingV3]?,
         ?subject: ConditionSubjectV3?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

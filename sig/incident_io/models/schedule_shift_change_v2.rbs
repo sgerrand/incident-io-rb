@@ -23,7 +23,7 @@ module IncidentIo
         ?current_users: Array[UserV2]?,
         ?previous_users: Array[UserV2]?,
         ?schedule: ScheduleSlimV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

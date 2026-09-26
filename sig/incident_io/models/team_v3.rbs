@@ -27,7 +27,7 @@ module IncidentIo
         ?id: String?,
         ?members_: Array[UserV3]?,
         ?name: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

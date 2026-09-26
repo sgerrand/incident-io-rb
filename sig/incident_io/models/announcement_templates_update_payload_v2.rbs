@@ -28,7 +28,7 @@ module IncidentIo
         ?fields: Array[AnnouncementTemplateFieldPayloadV2]?,
         ?name: String?,
         ?owning_team_ids: Array[String]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

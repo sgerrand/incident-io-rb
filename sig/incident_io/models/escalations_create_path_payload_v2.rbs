@@ -43,7 +43,7 @@ module IncidentIo
         ?team_ids: Array[String]?,
         ?template_id: String?,
         ?working_hours: Array[WeekdayIntervalConfigV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

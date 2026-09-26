@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?follow_up: FollowUpV3?) -> instance
 
-      def initialize: (?follow_up: FollowUpV3?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?follow_up: FollowUpV3?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?follow_up: FollowUpV3?) -> instance
 

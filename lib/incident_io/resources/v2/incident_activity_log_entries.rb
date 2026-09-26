@@ -35,7 +35,7 @@ module IncidentIo
           paginate(
             "/v2/incident_activity_log_entries",
             items_key: "incident_activity_log_entries",
-            query: { incident_id:, id:, page_size:, after: },
+            query: {incident_id:, id:, page_size:, after:},
             model: Models::IncidentActivityLogEntryV2,
             request_options:
           )

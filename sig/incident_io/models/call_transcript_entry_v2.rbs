@@ -34,7 +34,7 @@ module IncidentIo
         ?medium: String?,
         ?participant_name: String?,
         ?timestamp: Time?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

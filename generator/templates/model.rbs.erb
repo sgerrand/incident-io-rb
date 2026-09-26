@@ -18,7 +18,7 @@ module IncidentIo
 
       <%= helpers.rbs_def("self.new", helpers.rbs_fields(model), "instance", 6) %>
 
-      <%= helpers.rbs_def("initialize", helpers.rbs_fields(model) + ["?_raw: Hash[String, untyped]?"], "void", 6) %>
+      <%= helpers.rbs_def("initialize", helpers.rbs_fields(model) + ["?raw: Hash[String, untyped]?"], "void", 6) %>
 
       <%= helpers.rbs_def("with", helpers.rbs_fields(model), "instance", 6) %>
 

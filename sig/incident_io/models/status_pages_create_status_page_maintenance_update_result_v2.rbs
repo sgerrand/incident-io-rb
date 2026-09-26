@@ -13,7 +13,7 @@ module IncidentIo
 
       def initialize: (
         ?status_page_maintenance_update: StatusPageMaintenanceUpdateV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?status_page_maintenance_update: StatusPageMaintenanceUpdateV2?) -> instance

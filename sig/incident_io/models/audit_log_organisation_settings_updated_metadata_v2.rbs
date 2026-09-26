@@ -24,7 +24,7 @@ module IncidentIo
         ?after_organisation_name: String?,
         ?before_organisation_name: String?,
         ?default_timezone: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

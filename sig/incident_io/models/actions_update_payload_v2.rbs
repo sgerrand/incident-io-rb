@@ -20,7 +20,7 @@ module IncidentIo
         ?assignee_id: String?,
         ?description: String?,
         ?status: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?assignee_id: String?, ?description: String?, ?status: String?) -> instance

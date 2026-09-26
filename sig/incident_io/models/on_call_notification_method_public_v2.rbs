@@ -31,7 +31,7 @@ module IncidentIo
         ?is_usable: bool?,
         ?method_type: String?,
         ?phone_details: OnCallNotificationMethodPhoneDetailsPublicV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

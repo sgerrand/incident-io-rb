@@ -16,7 +16,7 @@ module IncidentIo
       def initialize: (
         ?incident: IncidentEditPayloadV2?,
         ?notify_incident_channel: bool?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?incident: IncidentEditPayloadV2?, ?notify_incident_channel: bool?) -> instance

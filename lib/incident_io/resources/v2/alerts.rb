@@ -31,7 +31,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/alerts/%s/actions/add_tags", id),
-            body: { tags: }.compact,
+            body: {tags:}.compact,
             unwrap: "alert",
             model: Models::AlertV2,
             request_options:
@@ -67,7 +67,7 @@ module IncidentIo
           request(
             :post,
             "/v2/incident_alerts",
-            body: { alert_id:, incident_id:, re_relate: }.compact,
+            body: {alert_id:, incident_id:, re_relate:}.compact,
             unwrap: "incident_alert",
             model: Models::IncidentAlertV2,
             request_options:
@@ -273,7 +273,7 @@ module IncidentIo
           paginate(
             "/v2/alert_tags",
             items_key: "alert_tags",
-            query: { page_size:, after:, search: },
+            query: {page_size:, after:, search:},
             model: Models::AlertTagV2,
             request_options:
           )
@@ -293,7 +293,7 @@ module IncidentIo
           paginate(
             "/v2/incident_alerts",
             items_key: "incident_alerts",
-            query: { page_size:, after:, alert_id:, incident_id: },
+            query: {page_size:, after:, alert_id:, incident_id:},
             model: Models::IncidentAlertV2,
             request_options:
           )
@@ -313,7 +313,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/alerts/%s/actions/remove_tags", id),
-            body: { tags: }.compact,
+            body: {tags:}.compact,
             unwrap: "alert",
             model: Models::AlertV2,
             request_options:
@@ -359,7 +359,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/alerts/%s/actions/set_tags", id),
-            body: { tags: }.compact,
+            body: {tags:}.compact,
             unwrap: "alert",
             model: Models::AlertV2,
             request_options:
@@ -404,7 +404,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/incident_alerts/%s/actions/transition", id),
-            body: { state: }.compact,
+            body: {state:}.compact,
             unwrap: "incident_alert",
             model: Models::IncidentAlertV2,
             request_options:

@@ -87,7 +87,7 @@ module IncidentIo
         ?state: String?,
         ?steps: Array[StepConfigPayloadV2]?,
         ?trigger: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

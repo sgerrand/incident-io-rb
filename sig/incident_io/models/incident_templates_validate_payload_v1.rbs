@@ -23,7 +23,7 @@ module IncidentIo
         ?expressions: Array[ExpressionPayloadV3]?,
         ?name: String?,
         ?template: IncidentTemplateConfigPayloadV1?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

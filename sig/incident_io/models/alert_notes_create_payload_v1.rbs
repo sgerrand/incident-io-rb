@@ -20,7 +20,7 @@ module IncidentIo
         ?alert_group_id: String?,
         ?alert_id: String?,
         ?content: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?alert_group_id: String?, ?alert_id: String?, ?content: String?) -> instance

@@ -20,7 +20,7 @@ module IncidentIo
         ?component_id: String?,
         ?end_at: Time?,
         ?start_at: Time?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?component_id: String?, ?end_at: Time?, ?start_at: Time?) -> instance

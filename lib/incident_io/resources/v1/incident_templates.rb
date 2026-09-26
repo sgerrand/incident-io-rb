@@ -21,7 +21,7 @@ module IncidentIo
           request(
             :post,
             "/v1/incident_templates",
-            body: { expressions:, name:, template: }.compact,
+            body: {expressions:, name:, template:}.compact,
             unwrap: "incident_template",
             model: Models::IncidentTemplateV1,
             request_options:
@@ -55,7 +55,7 @@ module IncidentIo
           paginate(
             "/v1/incident_templates",
             items_key: "incident_templates",
-            query: { page_size:, after: },
+            query: {page_size:, after:},
             model: Models::IncidentTemplateV1,
             request_options:
           )
@@ -92,7 +92,7 @@ module IncidentIo
           request(
             :put,
             path("/v1/incident_templates/%s", id),
-            body: { expressions:, name:, template: }.compact,
+            body: {expressions:, name:, template:}.compact,
             unwrap: "incident_template",
             model: Models::IncidentTemplateV1,
             request_options:
@@ -117,7 +117,7 @@ module IncidentIo
           request(
             :post,
             "/v1/incident_templates/actions/validate",
-            body: { expressions:, name:, template: }.compact,
+            body: {expressions:, name:, template:}.compact,
             unwrap: "warnings",
             model: [Models::IncidentTemplateValidateWarningV1],
             request_options:

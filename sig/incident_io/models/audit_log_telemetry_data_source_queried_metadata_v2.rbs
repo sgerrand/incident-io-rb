@@ -28,7 +28,7 @@ module IncidentIo
         ?investigation_id: String?,
         ?outcome: String?,
         ?surface: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

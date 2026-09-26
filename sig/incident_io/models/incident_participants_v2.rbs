@@ -20,7 +20,7 @@ module IncidentIo
       def initialize: (
         ?active: Array[IncidentParticipantV2]?,
         ?passive: Array[IncidentParticipantV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?active: Array[IncidentParticipantV2]?, ?passive: Array[IncidentParticipantV2]?) -> instance

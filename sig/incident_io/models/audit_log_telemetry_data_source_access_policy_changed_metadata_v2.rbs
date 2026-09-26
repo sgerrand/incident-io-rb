@@ -23,7 +23,7 @@ module IncidentIo
         ?before: String?,
         ?change_id: String?,
         ?set_by: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?after: String?, ?before: String?, ?change_id: String?, ?set_by: String?) -> instance

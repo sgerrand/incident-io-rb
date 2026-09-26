@@ -27,7 +27,7 @@ module IncidentIo
         ?name: String?,
         ?timezone: String?,
         ?weekday_intervals: Array[WeekdayIntervalV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

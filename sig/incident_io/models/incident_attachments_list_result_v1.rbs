@@ -13,7 +13,7 @@ module IncidentIo
 
       def initialize: (
         ?incident_attachments: Array[IncidentAttachmentV1]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?incident_attachments: Array[IncidentAttachmentV1]?) -> instance

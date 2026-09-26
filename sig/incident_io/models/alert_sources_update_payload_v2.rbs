@@ -61,7 +61,7 @@ module IncidentIo
         ?owning_team_ids: Array[String]?,
         ?rate_limit_sharding: AlertSourceRateLimitShardingV2?,
         ?template: AlertTemplatePayloadV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

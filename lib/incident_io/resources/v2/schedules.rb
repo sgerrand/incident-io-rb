@@ -20,7 +20,7 @@ module IncidentIo
           request(
             :post,
             "/v2/schedules",
-            body: { schedule: }.compact,
+            body: {schedule:}.compact,
             unwrap: "schedule",
             model: Models::ScheduleV2,
             request_options:
@@ -51,7 +51,7 @@ module IncidentIo
           request(
             :post,
             "/v2/schedule_overrides",
-            body: { end_at:, layer_id:, rotation_id:, schedule_id:, start_at:, user: }.compact,
+            body: {end_at:, layer_id:, rotation_id:, schedule_id:, start_at:, user:}.compact,
             unwrap: "override",
             model: Models::ScheduleOverrideV2,
             request_options:
@@ -70,7 +70,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/schedules/%s/replicas", schedule_id),
-            body: { schedule_replica: }.compact,
+            body: {schedule_replica:}.compact,
             unwrap: "schedule_replica",
             model: Models::ScheduleReplicaV2,
             request_options:
@@ -89,7 +89,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/schedules/%s/sync_rules", schedule_id),
-            body: { schedule_sync_rule: }.compact,
+            body: {schedule_sync_rule:}.compact,
             unwrap: "schedule_sync_rule",
             model: Models::ScheduleSyncRuleV2,
             request_options:
@@ -176,7 +176,7 @@ module IncidentIo
           paginate(
             "/v2/schedules",
             items_key: "schedules",
-            query: { page_size:, after: },
+            query: {page_size:, after:},
             model: Models::ScheduleV2,
             request_options:
           )
@@ -214,7 +214,7 @@ module IncidentIo
           paginate(
             "/v2/schedule_overrides",
             items_key: "overrides",
-            query: { schedule_id:, rotation_id:, layer_id:, page_size:, after: },
+            query: {schedule_id:, rotation_id:, layer_id:, page_size:, after:},
             model: Models::ScheduleOverrideV2,
             request_options:
           )
@@ -275,7 +275,7 @@ module IncidentIo
           request(
             :get,
             "/v2/schedule_entries",
-            query: { schedule_id:, entry_window_start:, entry_window_end: },
+            query: {schedule_id:, entry_window_start:, entry_window_end:},
             model: Models::SchedulesListScheduleEntriesResultV2,
             request_options:
           )
@@ -311,7 +311,7 @@ module IncidentIo
           paginate(
             path("/v2/schedules/%s/sync_rules", schedule_id),
             items_key: "schedule_sync_rules",
-            query: { page_size:, after: },
+            query: {page_size:, after:},
             model: Models::ScheduleSyncRuleV2,
             request_options:
           )
@@ -350,7 +350,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/schedules/%s/actions/preview_entries", id),
-            body: { entry_window_end:, entry_window_start:, schedule: }.compact,
+            body: {entry_window_end:, entry_window_start:, schedule:}.compact,
             unwrap: "schedule_entries",
             model: Models::ScheduleEntriesListPayloadV2,
             request_options:
@@ -455,7 +455,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/schedules/%s", id),
-            body: { schedule: }.compact,
+            body: {schedule:}.compact,
             unwrap: "schedule",
             model: Models::ScheduleV2,
             request_options:
@@ -486,7 +486,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/schedule_overrides/%s", id),
-            body: { end_at:, layer_id:, rotation_id:, start_at:, user: }.compact,
+            body: {end_at:, layer_id:, rotation_id:, start_at:, user:}.compact,
             unwrap: "override",
             model: Models::ScheduleOverrideV2,
             request_options:
@@ -515,7 +515,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/schedules/%s/sync_rules/%s", schedule_id, id),
-            body: { annotations:, permanent_member_user_ids:, sync_type: }.compact,
+            body: {annotations:, permanent_member_user_ids:, sync_type:}.compact,
             unwrap: "schedule_sync_rule",
             model: Models::ScheduleSyncRuleV2,
             request_options:

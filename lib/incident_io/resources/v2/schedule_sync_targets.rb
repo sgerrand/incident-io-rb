@@ -19,7 +19,7 @@ module IncidentIo
           request(
             :post,
             "/v2/schedule_sync_targets",
-            body: { schedule_sync_target: }.compact,
+            body: {schedule_sync_target:}.compact,
             unwrap: "schedule_sync_target",
             model: Models::ScheduleSyncTargetResourceV2,
             request_options:
@@ -53,7 +53,7 @@ module IncidentIo
           paginate(
             "/v2/schedule_sync_targets",
             items_key: "schedule_sync_targets",
-            query: { page_size:, after: },
+            query: {page_size:, after:},
             model: Models::ScheduleSyncTargetResourceV2,
             request_options:
           )
@@ -89,7 +89,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/schedule_sync_targets/%s", id),
-            body: { add_bot_to_group:, annotations: }.compact,
+            body: {add_bot_to_group:, annotations:}.compact,
             unwrap: "schedule_sync_target",
             model: Models::ScheduleSyncTargetResourceV2,
             request_options:

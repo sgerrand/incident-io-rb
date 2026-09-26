@@ -13,7 +13,7 @@ module IncidentIo
 
       def self.new: (?returns: ReturnsMetaV3?, ?source: String?) -> instance
 
-      def initialize: (?returns: ReturnsMetaV3?, ?source: String?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?returns: ReturnsMetaV3?, ?source: String?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?returns: ReturnsMetaV3?, ?source: String?) -> instance
 

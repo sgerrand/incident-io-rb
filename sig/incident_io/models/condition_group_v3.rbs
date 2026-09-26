@@ -12,7 +12,7 @@ module IncidentIo
 
       def self.new: (?conditions: Array[ConditionV3]?) -> instance
 
-      def initialize: (?conditions: Array[ConditionV3]?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?conditions: Array[ConditionV3]?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?conditions: Array[ConditionV3]?) -> instance
 

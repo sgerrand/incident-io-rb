@@ -25,8 +25,8 @@ RSpec.describe "generated resources" do
 
   it "shows an incident" do
     stub_request(:get, "#{BASE_URL}/v2/incidents/01ABC").to_return(
-      json_response({ "incident" => { "id" => "01ABC", "name" => "DB down", "created_at" => "2024-05-01T12:00:00Z",
-                                      "severity" => { "id" => "s1", "name" => "Major" } } })
+      json_response({"incident" => {"id" => "01ABC", "name" => "DB down", "created_at" => "2024-05-01T12:00:00Z",
+                                    "severity" => {"id" => "s1", "name" => "Major"}}})
     )
 
     incident = client.incidents.show("01ABC")
@@ -41,7 +41,7 @@ RSpec.describe "generated resources" do
     stub_request(:post, "#{BASE_URL}/v2/incidents")
       .with { |req| bodies << JSON.parse(req.body) }
       .to_return(json_response(error_body(status: 500, type: "internal_error"), status: 500),
-                 json_response({ "incident" => { "id" => "1" } }, status: 201))
+        json_response({"incident" => {"id" => "1"}}, status: 201))
     allow(client).to receive(:sleep_for)
 
     incident = client.incidents.create(visibility: "public", name: "DB down")
@@ -56,24 +56,24 @@ RSpec.describe "generated resources" do
 
   it "accepts models and hashes as arguments" do
     stub = stub_request(:post, "#{BASE_URL}/v2/incidents/1/actions/edit").with(
-      body: { "incident" => { "name" => "New name" }, "notify_incident_channel" => false }
-    ).to_return(json_response({ "incident" => { "id" => "1" } }))
+      body: {"incident" => {"name" => "New name"}, "notify_incident_channel" => false}
+    ).to_return(json_response({"incident" => {"id" => "1"}}))
 
     client.incidents.edit("1", incident: IncidentIo::Models::IncidentEditPayloadV2.new(name: "New name"),
-                               notify_incident_channel: false)
+      notify_incident_channel: false)
 
     expect(stub).to have_been_requested
   end
 
   it "lists incidents with filters, page by page" do
     stub_request(:get, "#{BASE_URL}/v2/incidents")
-      .with(query: { "page_size" => "1", "status_category[one_of]" => "live" })
-      .to_return(json_response({ "incidents" => [{ "id" => "1" }], "pagination_meta" => { "after" => "1" } }))
+      .with(query: {"page_size" => "1", "status_category[one_of]" => "live"})
+      .to_return(json_response({"incidents" => [{"id" => "1"}], "pagination_meta" => {"after" => "1"}}))
     stub_request(:get, "#{BASE_URL}/v2/incidents")
-      .with(query: { "page_size" => "1", "status_category[one_of]" => "live", "after" => "1" })
-      .to_return(json_response({ "incidents" => [{ "id" => "2" }], "pagination_meta" => {} }))
+      .with(query: {"page_size" => "1", "status_category[one_of]" => "live", "after" => "1"})
+      .to_return(json_response({"incidents" => [{"id" => "2"}], "pagination_meta" => {}}))
 
-    pager = client.incidents.list(page_size: 1, status_category: { one_of: ["live"] })
+    pager = client.incidents.list(page_size: 1, status_category: {one_of: ["live"]})
 
     expect(pager).to be_a(IncidentIo::Pager)
     expect(pager.map(&:id)).to eq(%w[1 2])
@@ -87,7 +87,7 @@ RSpec.describe "generated resources" do
 
   it "returns CSV downloads as text" do
     stub_request(:get, "#{BASE_URL}/v2/pay_reports/1/download")
-      .to_return(status: 200, body: "a,b\n", headers: { "Content-Type" => "text/csv" })
+      .to_return(status: 200, body: "a,b\n", headers: {"Content-Type" => "text/csv"})
 
     expect(client.pay_reports.download("1")).to eq("a,b\n")
   end
@@ -106,7 +106,7 @@ RSpec.describe "generated resources" do
     end
 
     it "warns once, pointing at the newer method" do
-      stub_request(:get, "#{BASE_URL}/v2/catalog_types/1").to_return(json_response({ "catalog_type" => { "id" => "1" } }))
+      stub_request(:get, "#{BASE_URL}/v2/catalog_types/1").to_return(json_response({"catalog_type" => {"id" => "1"}}))
       allow(IncidentIo::Resource).to receive(:first_deprecation_warning?).and_return(true, false)
 
       expect { client.v2.catalog.show_type("1") }

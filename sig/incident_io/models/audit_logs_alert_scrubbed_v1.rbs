@@ -34,7 +34,7 @@ module IncidentIo
         ?occurred_at: Time?,
         ?targets: Array[AuditLogTargetV2]?,
         ?version: Integer?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

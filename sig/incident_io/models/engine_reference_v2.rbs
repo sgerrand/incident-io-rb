@@ -23,7 +23,7 @@ module IncidentIo
         ?key: String?,
         ?label: String?,
         ?type: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?array: bool?, ?key: String?, ?label: String?, ?type: String?) -> instance

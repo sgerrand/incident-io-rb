@@ -13,7 +13,7 @@ module IncidentIo
 
       def initialize: (
         ?availability: StatusPageComponentAvailabilityV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?availability: StatusPageComponentAvailabilityV2?) -> instance

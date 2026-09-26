@@ -19,7 +19,7 @@ module IncidentIo
         ?creator: ActorV2?,
         ?event_description: String?,
         ?event_title: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?creator: ActorV2?, ?event_description: String?, ?event_title: String?) -> instance

@@ -15,7 +15,7 @@ module IncidentIo
 
       def self.new: (?api_key: String?, ?api_url: String?) -> instance
 
-      def initialize: (?api_key: String?, ?api_url: String?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?api_key: String?, ?api_url: String?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?api_key: String?, ?api_url: String?) -> instance
 

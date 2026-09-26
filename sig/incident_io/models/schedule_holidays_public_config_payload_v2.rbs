@@ -12,7 +12,7 @@ module IncidentIo
 
       def self.new: (?country_codes: Array[String]?) -> instance
 
-      def initialize: (?country_codes: Array[String]?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?country_codes: Array[String]?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?country_codes: Array[String]?) -> instance
 

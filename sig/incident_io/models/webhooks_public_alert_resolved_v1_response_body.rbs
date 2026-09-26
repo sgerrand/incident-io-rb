@@ -16,7 +16,7 @@ module IncidentIo
       def initialize: (
         ?event_type: String?,
         ?public_alert_alert_resolved_v1: AlertV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?event_type: String?, ?public_alert_alert_resolved_v1: AlertV2?) -> instance

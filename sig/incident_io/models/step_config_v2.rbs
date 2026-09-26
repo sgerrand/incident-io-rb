@@ -32,7 +32,7 @@ module IncidentIo
         ?label: String?,
         ?name: String?,
         ?param_bindings: Array[EngineParamBindingV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

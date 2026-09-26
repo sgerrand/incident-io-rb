@@ -19,7 +19,7 @@ module IncidentIo
       def initialize: (
         ?alert_attribute_id: String?,
         ?binding: AlertTemplateAttributeBindingPayloadV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?alert_attribute_id: String?, ?binding: AlertTemplateAttributeBindingPayloadV2?) -> instance

@@ -18,7 +18,7 @@ module IncidentIo
       def initialize: (
         ?incidents: Array[IncidentV2]?,
         ?pagination_meta: PaginationMetaResultWithTotalV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

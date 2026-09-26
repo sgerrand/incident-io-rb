@@ -19,7 +19,7 @@ module IncidentIo
         ?new_name: String?,
         ?previous_name: String?,
         ?updater: ActorV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?new_name: String?, ?previous_name: String?, ?updater: ActorV2?) -> instance

@@ -61,7 +61,7 @@ module IncidentIo
         ?rate_limit_sharding: AlertSourceRateLimitShardingV2?,
         ?source_type: String?,
         ?template: AlertTemplatePayloadV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

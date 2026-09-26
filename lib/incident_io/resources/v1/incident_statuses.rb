@@ -29,7 +29,7 @@ module IncidentIo
           request(
             :post,
             "/v1/incident_statuses",
-            body: { category:, description:, name:, rank: }.compact,
+            body: {category:, description:, name:, rank:}.compact,
             unwrap: "incident_status",
             model: Models::IncidentStatusV1,
             request_options:
@@ -98,7 +98,7 @@ module IncidentIo
           request(
             :put,
             path("/v1/incident_statuses/%s", id),
-            body: { description:, name:, rank: }.compact,
+            body: {description:, name:, rank:}.compact,
             unwrap: "incident_status",
             model: Models::IncidentStatusV1,
             request_options:

@@ -28,7 +28,7 @@ module IncidentIo
         ?permalink: String?,
         ?resource_type: String?,
         ?title: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

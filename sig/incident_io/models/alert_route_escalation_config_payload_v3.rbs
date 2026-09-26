@@ -23,7 +23,7 @@ module IncidentIo
         ?auto_cancel_escalations: bool?,
         ?escalation_targets: Array[AlertRouteEscalationTargetPayloadV3]?,
         ?when_alert_joins_group: AlertRouteWhenAlertJoinsGroupPayloadV3?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

@@ -12,7 +12,7 @@ module IncidentIo
 
       def self.new: (?ip_ranges: Array[IPRangeV1]?) -> instance
 
-      def initialize: (?ip_ranges: Array[IPRangeV1]?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?ip_ranges: Array[IPRangeV1]?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?ip_ranges: Array[IPRangeV1]?) -> instance
 

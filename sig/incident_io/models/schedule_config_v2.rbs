@@ -12,7 +12,7 @@ module IncidentIo
 
       def self.new: (?rotations: Array[ScheduleRotationV2]?) -> instance
 
-      def initialize: (?rotations: Array[ScheduleRotationV2]?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?rotations: Array[ScheduleRotationV2]?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?rotations: Array[ScheduleRotationV2]?) -> instance
 

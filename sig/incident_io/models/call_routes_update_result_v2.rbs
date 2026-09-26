@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?call_route: CallRouteV2?) -> instance
 
-      def initialize: (?call_route: CallRouteV2?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?call_route: CallRouteV2?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?call_route: CallRouteV2?) -> instance
 

@@ -25,7 +25,7 @@ module IncidentIo
           request(
             :post,
             "/v2/announcement_templates",
-            body: { actions:, fields:, name:, owning_team_ids: }.compact,
+            body: {actions:, fields:, name:, owning_team_ids:}.compact,
             unwrap: "announcement_template",
             model: Models::AnnouncementTemplateV2,
             request_options:
@@ -95,7 +95,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/announcement_templates/%s", id),
-            body: { actions:, fields:, name:, owning_team_ids: }.compact,
+            body: {actions:, fields:, name:, owning_team_ids:}.compact,
             unwrap: "announcement_template",
             model: Models::AnnouncementTemplateV2,
             request_options:

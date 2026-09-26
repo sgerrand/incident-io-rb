@@ -29,7 +29,7 @@ module IncidentIo
           request(
             :post,
             "/v1/incident_attachments",
-            body: { incident_id:, resource: }.compact,
+            body: {incident_id:, resource:}.compact,
             unwrap: "incident_attachment",
             model: Models::IncidentAttachmentV1,
             request_options:
@@ -64,7 +64,7 @@ module IncidentIo
           request(
             :get,
             "/v1/incident_attachments",
-            query: { incident_id:, external_id:, resource_type: },
+            query: {incident_id:, external_id:, resource_type:},
             unwrap: "incident_attachments",
             model: [Models::IncidentAttachmentV1],
             request_options:

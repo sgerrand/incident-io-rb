@@ -18,7 +18,7 @@ module IncidentIo
       def initialize: (
         ?pagination_meta: PaginationMetaResultV1?,
         ?postmortem_documents: Array[PostmortemDocumentV1]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

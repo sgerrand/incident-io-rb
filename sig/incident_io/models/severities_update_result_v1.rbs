@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?severity: SeverityV1?) -> instance
 
-      def initialize: (?severity: SeverityV1?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?severity: SeverityV1?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?severity: SeverityV1?) -> instance
 

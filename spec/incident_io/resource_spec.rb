@@ -19,13 +19,13 @@ RSpec.describe IncidentIo::Resource do
 
   it "unwraps the response and builds the model" do
     stub_request(:get, "#{BASE_URL}/v2/incidents/01ABC")
-      .to_return(json_response({ "incident" => { "id" => "01ABC", "name" => "DB down" } }))
+      .to_return(json_response({"incident" => {"id" => "01ABC", "name" => "DB down"}}))
 
     expect(resource.show("01ABC")).to eq(model.new(id: "01ABC", name: "DB down"))
   end
 
   it "escapes IDs in the path" do
-    stub = stub_request(:get, "#{BASE_URL}/v2/incidents/a%2F..%2Fb").to_return(json_response({ "incident" => {} }))
+    stub = stub_request(:get, "#{BASE_URL}/v2/incidents/a%2F..%2Fb").to_return(json_response({"incident" => {}}))
 
     resource.show("a/../b")
 
@@ -34,7 +34,7 @@ RSpec.describe IncidentIo::Resource do
 
   it "paginates" do
     stub_request(:get, "#{BASE_URL}/v2/incidents")
-      .to_return(json_response({ "incidents" => [{ "id" => "1" }], "pagination_meta" => {} }))
+      .to_return(json_response({"incidents" => [{"id" => "1"}], "pagination_meta" => {}}))
 
     expect(resource.list.map(&:id)).to eq(["1"])
   end

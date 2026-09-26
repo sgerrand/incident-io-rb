@@ -12,7 +12,7 @@ module IncidentIo
 
       def self.new: (?project_ids: Array[String]?) -> instance
 
-      def initialize: (?project_ids: Array[String]?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?project_ids: Array[String]?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?project_ids: Array[String]?) -> instance
 

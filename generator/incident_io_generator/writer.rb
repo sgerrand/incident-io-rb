@@ -92,9 +92,9 @@ module IncidentIoGenerator
       args = op.path_params.map(&:name)
       op.keyword_params.each do |p|
         args << if p.required then "#{p.name}:"
-                elsif p.default then "#{p.name}: #{p.default}"
-                else "#{p.name}: nil"
-                end
+        elsif p.default then "#{p.name}: #{p.default}"
+        else "#{p.name}: nil"
+        end
       end
       args << "request_options: {}"
 
@@ -135,7 +135,7 @@ module IncidentIoGenerator
       return "{}" if params.empty?
 
       entries = params.map { |p| "#{p.name}:" }
-      one_line = "{ #{entries.join(", ")} }"
+      one_line = "{#{entries.join(", ")}}"
       return one_line if indent + one_line.length + 10 <= MAX_LINE
 
       pad = " " * (indent + 2)
@@ -151,7 +151,7 @@ module IncidentIoGenerator
 
     # A hash key in `Model.define(...)`.
     def model_key(name)
-      Naming.safe_identifier?(name) || Naming::RUBY_KEYWORDS.include?(name) ? "#{name}:" : "#{name.inspect}:"
+      (Naming.safe_identifier?(name) || Naming::RUBY_KEYWORDS.include?(name)) ? "#{name}:" : "#{name.inspect}:"
     end
 
     # An RBS method definition, one line when it fits:
@@ -170,9 +170,9 @@ module IncidentIoGenerator
       op.keyword_params.each do |p|
         type = Types.rbs_type(p.schema, input: true)
         params << if p.required then "#{p.name}: #{type}"
-                  elsif p.default then "?#{p.name}: #{type}"
-                  else "?#{p.name}: #{Types.rbs_optional(type)}"
-                  end
+        elsif p.default then "?#{p.name}: #{type}"
+        else "?#{p.name}: #{Types.rbs_optional(type)}"
+        end
       end
       params << "?request_options: request_options"
     end

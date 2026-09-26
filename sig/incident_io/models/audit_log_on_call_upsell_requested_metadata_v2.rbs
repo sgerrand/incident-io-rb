@@ -28,7 +28,7 @@ module IncidentIo
         ?gate_count_before: String?,
         ?requested_by_user_id: String?,
         ?seats_added: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

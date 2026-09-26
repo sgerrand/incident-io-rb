@@ -65,7 +65,7 @@ module IncidentIo
         ?template_id: String?,
         ?update_sharing_mode: String?,
         ?updated_at: Time?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

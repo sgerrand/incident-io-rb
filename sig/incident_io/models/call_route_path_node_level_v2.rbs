@@ -17,7 +17,7 @@ module IncidentIo
 
       def self.new: (?targets: Array[CallRouteTargetV2]?) -> instance
 
-      def initialize: (?targets: Array[CallRouteTargetV2]?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?targets: Array[CallRouteTargetV2]?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?targets: Array[CallRouteTargetV2]?) -> instance
 

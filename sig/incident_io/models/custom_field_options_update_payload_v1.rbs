@@ -14,7 +14,7 @@ module IncidentIo
 
       def self.new: (?sort_key: Integer?, ?value: String?) -> instance
 
-      def initialize: (?sort_key: Integer?, ?value: String?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?sort_key: Integer?, ?value: String?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?sort_key: Integer?, ?value: String?) -> instance
 

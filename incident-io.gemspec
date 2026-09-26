@@ -1,15 +1,15 @@
 require_relative "lib/incident_io/version"
 
 Gem::Specification.new do |s|
-  s.name        = "incident-io"
-  s.version     = IncidentIo::VERSION
-  s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Sasha Gerrand"]
-  s.email       = ["incident-io+rubygems@sgerrand.dev"]
-  s.homepage    = "https://github.com/sgerrand/incident-io-rb"
-  s.summary     = "incident.io Ruby API client"
+  s.name = "incident-io"
+  s.version = IncidentIo::VERSION
+  s.platform = Gem::Platform::RUBY
+  s.authors = ["Sasha Gerrand"]
+  s.email = ["incident-io+rubygems@sgerrand.dev"]
+  s.homepage = "https://github.com/sgerrand/incident-io-rb"
+  s.summary = "incident.io Ruby API client"
   s.description = "A Ruby API client for interacting with the incident.io API."
-  s.license     = "BSD-2-Clause"
+  s.license = "BSD-2-Clause"
   s.required_ruby_version = ">= 3.3"
 
   s.metadata = {
@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
     "rubygems_mfa_required" => "true"
   }
 
-  s.files         = Dir['CHANGELOG.md', 'LICENSE', 'README.md', 'lib/**/*.rb', 'sig/**/*.rbs']
-  s.executables   = []
+  s.files = Dir["CHANGELOG.md", "LICENSE", "README.md", "lib/**/*.rb", "sig/**/*.rbs"]
+  s.executables = []
   s.require_paths = ["lib"]
 end

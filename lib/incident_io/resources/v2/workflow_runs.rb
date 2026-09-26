@@ -56,7 +56,7 @@ module IncidentIo
           paginate(
             "/v2/workflow_runs",
             items_key: "workflow_runs",
-            query: { workflow_id:, incident_id:, created_at:, page_size:, after: },
+            query: {workflow_id:, incident_id:, created_at:, page_size:, after:},
             model: Models::WorkflowRunSlimV2,
             request_options:
           )

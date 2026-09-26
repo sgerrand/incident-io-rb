@@ -27,7 +27,7 @@ module IncidentIo
         ?message: String?,
         ?metadata: Hash[String, String]?,
         ?source: ErrorSource?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

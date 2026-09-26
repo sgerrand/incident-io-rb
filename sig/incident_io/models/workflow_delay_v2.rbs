@@ -17,7 +17,7 @@ module IncidentIo
       def initialize: (
         ?conditions_apply_over_delay: bool?,
         ?for_seconds: Integer?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?conditions_apply_over_delay: bool?, ?for_seconds: Integer?) -> instance

@@ -39,7 +39,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/follow_ups/%s/actions/connect_external_issue", id),
-            body: { provider:, url: }.compact,
+            body: {provider:, url:}.compact,
             unwrap: "follow_up",
             model: Models::FollowUpV2,
             request_options:
@@ -133,7 +133,7 @@ module IncidentIo
           request(
             :get,
             "/v2/follow_ups",
-            query: { incident_id:, incident_mode:, assignee_team_id: },
+            query: {incident_id:, incident_mode:, assignee_team_id:},
             unwrap: "follow_ups",
             model: [Models::FollowUpV2],
             request_options:

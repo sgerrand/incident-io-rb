@@ -20,7 +20,7 @@ module IncidentIo
         ?deduplication_key: String?,
         ?message: String?,
         ?status: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?deduplication_key: String?, ?message: String?, ?status: String?) -> instance

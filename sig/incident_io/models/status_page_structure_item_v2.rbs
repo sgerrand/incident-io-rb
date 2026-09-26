@@ -21,7 +21,7 @@ module IncidentIo
         ?component: StatusPageStructureComponentV2?,
         ?group: StatusPageStructureGroupV2?,
         ?sub_page: StatusPageStructureSubPageV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

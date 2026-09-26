@@ -52,7 +52,7 @@ module IncidentIo
         ?ranked: bool?,
         ?source_repo_url: String?,
         ?use_name_as_identifier: bool?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

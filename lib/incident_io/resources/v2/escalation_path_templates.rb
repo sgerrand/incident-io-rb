@@ -37,7 +37,7 @@ module IncidentIo
           request(
             :post,
             "/v2/escalation_path_templates",
-            body: { description:, expressions:, name:, params:, path:, repeat_config:, working_hours: }.compact,
+            body: {description:, expressions:, name:, params:, path:, repeat_config:, working_hours:}.compact,
             unwrap: "escalation_path_template",
             model: Models::EscalationPathTemplateV2,
             request_options:
@@ -72,7 +72,7 @@ module IncidentIo
           paginate(
             "/v2/escalation_path_templates",
             items_key: "escalation_path_templates",
-            query: { page_size:, after:, search: },
+            query: {page_size:, after:, search:},
             model: Models::EscalationPathTemplateV2,
             request_options:
           )
@@ -123,7 +123,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/escalation_path_templates/%s", id),
-            body: { description:, expressions:, name:, params:, path:, repeat_config:, working_hours: }.compact,
+            body: {description:, expressions:, name:, params:, path:, repeat_config:, working_hours:}.compact,
             unwrap: "escalation_path_template",
             model: Models::EscalationPathTemplateV2,
             request_options:

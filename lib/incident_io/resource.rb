@@ -17,7 +17,7 @@ module IncidentIo
 
     # Returns true the first time it is called for a name, then false.
     def self.first_deprecation_warning?(name)
-      DEPRECATION_MUTEX.synchronize { DEPRECATION_WARNINGS.add?(name) ? true : false }
+      DEPRECATION_MUTEX.synchronize { !DEPRECATION_WARNINGS.add?(name).nil? }
     end
 
     attr_reader :client

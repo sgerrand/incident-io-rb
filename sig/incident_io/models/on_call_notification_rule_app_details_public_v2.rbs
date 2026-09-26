@@ -12,7 +12,7 @@ module IncidentIo
 
       def self.new: (?push_notification_criticality: String?) -> instance
 
-      def initialize: (?push_notification_criticality: String?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?push_notification_criticality: String?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?push_notification_criticality: String?) -> instance
 

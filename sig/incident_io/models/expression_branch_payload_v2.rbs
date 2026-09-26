@@ -19,7 +19,7 @@ module IncidentIo
       def initialize: (
         ?condition_groups: Array[ConditionGroupPayloadV2]?,
         ?result: EngineParamBindingPayloadV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

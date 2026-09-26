@@ -18,7 +18,7 @@ module IncidentIo
       def initialize: (
         ?rotation_ids: Array[String]?,
         ?schedule_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?rotation_ids: Array[String]?, ?schedule_id: String?) -> instance

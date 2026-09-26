@@ -44,7 +44,7 @@ module IncidentIo
         ?name: String?,
         ?private_incidents_only: bool?,
         ?updated_at: Time?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

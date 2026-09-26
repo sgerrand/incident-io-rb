@@ -90,7 +90,7 @@ module IncidentIo
           paginate(
             "/v3/alert_routes",
             items_key: "alert_routes",
-            query: { page_size:, after: },
+            query: {page_size:, after:},
             model: Models::AlertRouteSlimV3,
             request_options:
           )

@@ -20,7 +20,7 @@ module IncidentIo
         ?catalog_type_id: String?,
         ?id: String?,
         ?name: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?catalog_type_id: String?, ?id: String?, ?name: String?) -> instance

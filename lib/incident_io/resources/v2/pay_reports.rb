@@ -125,7 +125,7 @@ module IncidentIo
           paginate(
             "/v2/pay_reports",
             items_key: "pay_reports",
-            query: { page_size:, after: },
+            query: {page_size:, after:},
             model: Models::PayReportV2,
             request_options:
           )
@@ -147,7 +147,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/pay_reports/%s/actions/publish", id),
-            body: { cc_emails:, send_user_breakdowns: }.compact,
+            body: {cc_emails:, send_user_breakdowns:}.compact,
             unwrap: "pay_report",
             model: Models::PayReportV2,
             request_options:
@@ -191,7 +191,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/pay_reports/%s/actions/unpublish", id),
-            body: { unpublish_reason: }.compact,
+            body: {unpublish_reason:}.compact,
             unwrap: "pay_report",
             model: Models::PayReportV2,
             request_options:

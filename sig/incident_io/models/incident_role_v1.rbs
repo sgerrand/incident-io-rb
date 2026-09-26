@@ -48,7 +48,7 @@ module IncidentIo
         ?role_type: String?,
         ?shortform: String?,
         ?updated_at: Time?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

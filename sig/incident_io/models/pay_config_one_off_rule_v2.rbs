@@ -33,7 +33,7 @@ module IncidentIo
         ?name: String?,
         ?rate_cents: Integer?,
         ?start_at: Time?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

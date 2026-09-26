@@ -13,7 +13,7 @@ module IncidentIo
 
       def self.new: (?actor: ActorV2?, ?alert_id: String?) -> instance
 
-      def initialize: (?actor: ActorV2?, ?alert_id: String?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?actor: ActorV2?, ?alert_id: String?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?actor: ActorV2?, ?alert_id: String?) -> instance
 

@@ -33,7 +33,7 @@ module IncidentIo
         ?reference: String?,
         ?returns: ReturnsMetaV2?,
         ?root_reference: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

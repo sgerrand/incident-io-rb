@@ -19,7 +19,7 @@ module IncidentIo
       def initialize: (
         ?event_type: String?,
         ?public_incident_postmortem_document_status_updated_v1: PostmortemDocumentWithStatusChangeV1?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

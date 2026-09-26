@@ -22,7 +22,7 @@ module IncidentIo
           request(
             :post,
             "/v2/secrets",
-            body: { description:, name:, owning_team_ids:, value: }.compact,
+            body: {description:, name:, owning_team_ids:, value:}.compact,
             unwrap: "secret",
             model: Models::SecretV2,
             request_options:
@@ -57,7 +57,7 @@ module IncidentIo
           paginate(
             "/v2/secrets",
             items_key: "secrets",
-            query: { page_size:, after:, team_ids: },
+            query: {page_size:, after:, team_ids:},
             model: Models::SecretV2,
             request_options:
           )
@@ -75,7 +75,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/secrets/%s/actions/rotate", id),
-            body: { value: }.compact,
+            body: {value:}.compact,
             unwrap: "secret",
             model: Models::SecretV2,
             request_options:
@@ -112,7 +112,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/secrets/%s", id),
-            body: { description:, name:, owning_team_ids: }.compact,
+            body: {description:, name:, owning_team_ids:}.compact,
             unwrap: "secret",
             model: Models::SecretV2,
             request_options:

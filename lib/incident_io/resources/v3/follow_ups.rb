@@ -30,7 +30,7 @@ module IncidentIo
           request(
             :post,
             path("/v3/follow_ups/%s/actions/connect_external_issue", id),
-            body: { provider:, url: }.compact,
+            body: {provider:, url:}.compact,
             unwrap: "follow_up",
             model: Models::FollowUpV3,
             request_options:
@@ -113,7 +113,7 @@ module IncidentIo
           request(
             :post,
             "/v3/follow_ups/actions/create_from_link",
-            body: { incident_id:, url: }.compact,
+            body: {incident_id:, url:}.compact,
             unwrap: "follow_up",
             model: Models::FollowUpV3,
             request_options:

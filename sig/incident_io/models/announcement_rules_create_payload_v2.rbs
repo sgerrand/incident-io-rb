@@ -52,7 +52,7 @@ module IncidentIo
         ?slack_channel_ids: Array[String]?,
         ?template_id: String?,
         ?update_sharing_mode: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

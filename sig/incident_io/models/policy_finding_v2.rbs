@@ -71,7 +71,7 @@ module IncidentIo
         ?state: String?,
         ?updated_at: Time?,
         ?vacation_conflict: PolicyFindingVacationConflictV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

@@ -19,7 +19,7 @@ module IncidentIo
       def initialize: (
         ?array_value: Array[CatalogEntryEngineParamBindingValueV3]?,
         ?value: CatalogEntryEngineParamBindingValueV3?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

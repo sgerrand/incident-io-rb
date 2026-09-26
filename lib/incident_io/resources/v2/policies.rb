@@ -100,7 +100,7 @@ module IncidentIo
           paginate(
             "/v2/policies",
             items_key: "policies",
-            query: { page_size:, after:, policy_type: },
+            query: {page_size:, after:, policy_type:},
             model: Models::PolicyV2,
             request_options:
           )

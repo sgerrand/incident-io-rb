@@ -22,7 +22,7 @@ module IncidentIo
         ?all: OnCallNotificationRuleMethodTargetAllPublicV2?,
         ?specific: OnCallNotificationRuleMethodTargetSpecificPublicV2?,
         ?type: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

@@ -15,7 +15,7 @@ module IncidentIo
       def initialize: (
         ?call_routes: Array[CallRouteV2]?,
         ?pagination_meta: PaginationMetaResultV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?call_routes: Array[CallRouteV2]?, ?pagination_meta: PaginationMetaResultV2?) -> instance

@@ -43,7 +43,7 @@ module IncidentIo
         ?name: String?,
         ?optional: bool?,
         ?type: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

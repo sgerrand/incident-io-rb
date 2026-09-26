@@ -28,7 +28,7 @@ module IncidentIo
         ?grouping_keys: Array[GroupingKeyV3]?,
         ?window_seconds: Integer?,
         ?window_type: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

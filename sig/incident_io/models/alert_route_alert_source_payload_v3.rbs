@@ -20,7 +20,7 @@ module IncidentIo
       def initialize: (
         ?alert_source_id: String?,
         ?condition_groups: Array[ConditionGroupPayloadV3]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?alert_source_id: String?, ?condition_groups: Array[ConditionGroupPayloadV3]?) -> instance

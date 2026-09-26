@@ -20,7 +20,7 @@ module IncidentIo
         ?max_delay_seconds: Integer?,
         ?met: bool?,
         ?method_types: Array[String]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?max_delay_seconds: Integer?, ?met: bool?, ?method_types: Array[String]?) -> instance

@@ -40,7 +40,7 @@ module IncidentIo
         ?name: String?,
         ?path: Array[CatalogTypeAttributePathItemPayloadV3]?,
         ?type: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

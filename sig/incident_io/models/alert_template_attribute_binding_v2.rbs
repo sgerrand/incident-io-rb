@@ -23,7 +23,7 @@ module IncidentIo
         ?array_value: Array[EngineParamBindingValueV2]?,
         ?merge_strategy: String?,
         ?value: EngineParamBindingValueV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

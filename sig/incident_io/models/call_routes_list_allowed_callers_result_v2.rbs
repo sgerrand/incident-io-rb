@@ -13,7 +13,7 @@ module IncidentIo
 
       def initialize: (
         ?allowed_callers: Array[CallRouteAllowedCallerV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?allowed_callers: Array[CallRouteAllowedCallerV2]?) -> instance

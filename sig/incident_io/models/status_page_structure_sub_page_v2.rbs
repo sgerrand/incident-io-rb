@@ -24,7 +24,7 @@ module IncidentIo
         ?id: String?,
         ?items: Array[StatusPageStructureSubPageItemV2]?,
         ?name: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?id: String?, ?items: Array[StatusPageStructureSubPageItemV2]?, ?name: String?) -> instance

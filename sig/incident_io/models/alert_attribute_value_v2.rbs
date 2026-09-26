@@ -23,7 +23,7 @@ module IncidentIo
         ?catalog_entry: AlertAttributeCatalogEntryV2?,
         ?label: String?,
         ?literal: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

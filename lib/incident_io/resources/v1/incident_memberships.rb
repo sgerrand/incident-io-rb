@@ -20,7 +20,7 @@ module IncidentIo
           request(
             :post,
             "/v1/incident_memberships",
-            body: { incident_id:, user_id: }.compact,
+            body: {incident_id:, user_id:}.compact,
             unwrap: "incident_membership",
             model: Models::IncidentMembershipV1,
             request_options:
@@ -39,7 +39,7 @@ module IncidentIo
           request(
             :post,
             "/v1/incident_memberships/actions/revoke",
-            body: { incident_id:, user_id: }.compact,
+            body: {incident_id:, user_id:}.compact,
             request_options:
           )
         end

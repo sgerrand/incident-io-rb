@@ -90,7 +90,7 @@ module IncidentIo
         ?steps: Array[StepConfigSlimV2]?,
         ?trigger: TriggerSlimV2?,
         ?version: Integer?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

@@ -32,7 +32,7 @@ module IncidentIo
         ?surface: String?,
         ?telemetry_query_id: String?,
         ?write: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

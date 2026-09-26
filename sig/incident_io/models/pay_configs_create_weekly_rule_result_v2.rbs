@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?weekly_rule: PayConfigWeeklyRuleV2?) -> instance
 
-      def initialize: (?weekly_rule: PayConfigWeeklyRuleV2?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?weekly_rule: PayConfigWeeklyRuleV2?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?weekly_rule: PayConfigWeeklyRuleV2?) -> instance
 

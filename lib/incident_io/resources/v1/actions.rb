@@ -37,7 +37,7 @@ module IncidentIo
           request(
             :get,
             "/v1/actions",
-            query: { incident_id:, is_follow_up:, incident_mode: },
+            query: {incident_id:, is_follow_up:, incident_mode:},
             unwrap: "actions",
             model: [Models::ActionV1],
             request_options:

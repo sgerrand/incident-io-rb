@@ -20,7 +20,7 @@ module IncidentIo
         ?label: String?,
         ?literal: String?,
         ?reference: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?label: String?, ?literal: String?, ?reference: String?) -> instance

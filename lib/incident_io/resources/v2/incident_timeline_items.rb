@@ -49,7 +49,7 @@ module IncidentIo
           request(
             :post,
             "/v2/incident_timeline_items",
-            body: { description:, idempotency_key:, incident_id:, timestamp:, title: }.compact,
+            body: {description:, idempotency_key:, incident_id:, timestamp:, title:}.compact,
             idempotent: true,
             unwrap: "incident_timeline_item",
             model: Models::IncidentTimelineItemV2,
@@ -78,7 +78,7 @@ module IncidentIo
           paginate(
             "/v2/incident_timeline_items",
             items_key: "incident_timeline_items",
-            query: { incident_id:, page_size:, after: },
+            query: {incident_id:, page_size:, after:},
             model: Models::IncidentTimelineItemV2,
             request_options:
           )
@@ -101,7 +101,7 @@ module IncidentIo
           request(
             :patch,
             path("/v2/incident_timeline_items/%s", id),
-            body: { description:, timestamp:, title: }.compact,
+            body: {description:, timestamp:, title:}.compact,
             unwrap: "incident_timeline_item",
             model: Models::IncidentTimelineItemV2,
             request_options:

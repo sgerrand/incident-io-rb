@@ -37,7 +37,7 @@ module IncidentIo
         ?end_at: Time?,
         ?start_at: Time?,
         ?status_page_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

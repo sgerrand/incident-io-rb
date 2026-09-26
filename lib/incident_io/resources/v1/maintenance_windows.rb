@@ -87,7 +87,7 @@ module IncidentIo
           request(
             :delete,
             path("/v1/maintenance_windows/%s", id),
-            query: { force: },
+            query: {force:},
             request_options:
           )
         end
@@ -105,7 +105,7 @@ module IncidentIo
           paginate(
             "/v1/maintenance_windows",
             items_key: "maintenance_windows",
-            query: { page_size:, after:, status: },
+            query: {page_size:, after:, status:},
             model: Models::MaintenanceWindowV1,
             request_options:
           )

@@ -28,7 +28,7 @@ module IncidentIo
         ?microsoft_teams_team_id: String?,
         ?slack_channel_id: String?,
         ?slack_team_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

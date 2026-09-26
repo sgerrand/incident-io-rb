@@ -41,7 +41,7 @@ module IncidentIo
           request(
             :post,
             "/v2/incident_updates",
-            body: { idempotency_key:, incident_id:, message:, to_incident_status_id:, to_severity_id: }.compact,
+            body: {idempotency_key:, incident_id:, message:, to_incident_status_id:, to_severity_id:}.compact,
             idempotent: true,
             unwrap: "incident_update",
             model: Models::IncidentUpdateV2,
@@ -62,7 +62,7 @@ module IncidentIo
           paginate(
             "/v2/incident_updates",
             items_key: "incident_updates",
-            query: { incident_id:, page_size:, after: },
+            query: {incident_id:, page_size:, after:},
             model: Models::IncidentUpdateV2,
             request_options:
           )

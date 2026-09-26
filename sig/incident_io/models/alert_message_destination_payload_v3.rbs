@@ -22,7 +22,7 @@ module IncidentIo
         ?condition_groups: Array[ConditionGroupPayloadV3]?,
         ?ms_teams_targets: AlertRouteChannelTargetPayloadV3?,
         ?slack_targets: AlertRouteChannelTargetPayloadV3?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

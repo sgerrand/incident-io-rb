@@ -29,7 +29,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/heartbeat/%s/ping", alert_source_config_id),
-            query: { token: },
+            query: {token:},
             request_options:
           )
         end
@@ -50,7 +50,7 @@ module IncidentIo
           request(
             :get,
             path("/v2/heartbeat/%s/ping", alert_source_config_id),
-            query: { token: },
+            query: {token:},
             request_options:
           )
         end

@@ -36,7 +36,7 @@ module IncidentIo
         ?name: String?,
         ?rank: Integer?,
         ?update_attributes: Array[String]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

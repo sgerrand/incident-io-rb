@@ -56,7 +56,7 @@ module IncidentIo
         ?name: String?,
         ?owning_team_ids: Array[String]?,
         ?version: Integer?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

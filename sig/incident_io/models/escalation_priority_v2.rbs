@@ -13,7 +13,7 @@ module IncidentIo
 
       def self.new: (?name: String?) -> instance
 
-      def initialize: (?name: String?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?name: String?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?name: String?) -> instance
 

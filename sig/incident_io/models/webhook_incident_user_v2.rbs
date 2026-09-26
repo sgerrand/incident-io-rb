@@ -20,7 +20,7 @@ module IncidentIo
         ?actor_user_id: String?,
         ?incident_id: String?,
         ?user_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?actor_user_id: String?, ?incident_id: String?, ?user_id: String?) -> instance

@@ -28,7 +28,7 @@ module IncidentIo
           request(
             :post,
             "/v1/severities",
-            body: { description:, name:, rank: }.compact,
+            body: {description:, name:, rank:}.compact,
             unwrap: "severity",
             model: Models::SeverityV1,
             request_options:
@@ -97,7 +97,7 @@ module IncidentIo
           request(
             :put,
             path("/v1/severities/%s", id),
-            body: { description:, name:, rank: }.compact,
+            body: {description:, name:, rank:}.compact,
             unwrap: "severity",
             model: Models::SeverityV1,
             request_options:

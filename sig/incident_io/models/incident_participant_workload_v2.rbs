@@ -26,7 +26,7 @@ module IncidentIo
         ?participant_type: String?,
         ?user: UserV2?,
         ?workload: WorkloadMinutesV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

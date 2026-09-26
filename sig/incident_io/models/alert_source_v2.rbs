@@ -73,7 +73,7 @@ module IncidentIo
         ?secret_token: String?,
         ?source_type: String?,
         ?template: AlertTemplateV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

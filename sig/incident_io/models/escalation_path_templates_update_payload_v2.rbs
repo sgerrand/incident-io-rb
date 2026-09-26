@@ -39,7 +39,7 @@ module IncidentIo
         ?path: Array[EscalationPathTemplateNodePayloadV2]?,
         ?repeat_config: EscalationPathRepeatConfigV2?,
         ?working_hours: Array[WeekdayIntervalConfigV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

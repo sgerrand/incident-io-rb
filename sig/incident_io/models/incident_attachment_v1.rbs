@@ -19,7 +19,7 @@ module IncidentIo
         ?id: String?,
         ?incident_id: String?,
         ?resource: ExternalResourceV1?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?id: String?, ?incident_id: String?, ?resource: ExternalResourceV1?) -> instance

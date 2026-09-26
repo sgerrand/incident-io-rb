@@ -24,7 +24,7 @@ module IncidentIo
         ?email_address: String?,
         ?redactions: Array[String]?,
         ?transform_expression: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

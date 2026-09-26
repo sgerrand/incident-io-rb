@@ -26,7 +26,7 @@ module IncidentIo
           request(
             :post,
             "/v3/actions",
-            body: { assignee_id:, description:, incident_id: }.compact,
+            body: {assignee_id:, description:, incident_id:}.compact,
             unwrap: "action",
             model: Models::ActionV3,
             request_options:
@@ -99,7 +99,7 @@ module IncidentIo
           paginate(
             "/v3/actions",
             items_key: "actions",
-            query: { page_size:, after:, incident_id:, incident_mode:, created_at:, updated_at: },
+            query: {page_size:, after:, incident_id:, incident_mode:, created_at:, updated_at:},
             model: Models::ActionV3,
             request_options:
           )
@@ -136,7 +136,7 @@ module IncidentIo
           request(
             :put,
             path("/v3/actions/%s", id),
-            body: { assignee_id:, description:, status: }.compact,
+            body: {assignee_id:, description:, status:}.compact,
             unwrap: "action",
             model: Models::ActionV3,
             request_options:

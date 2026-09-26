@@ -17,7 +17,7 @@ module IncidentIo
       def initialize: (
         ?after_seat_types: String?,
         ?before_seat_types: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?after_seat_types: String?, ?before_seat_types: String?) -> instance

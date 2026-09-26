@@ -16,7 +16,7 @@ module IncidentIo
       def initialize: (
         ?assignee: UserReferencePayloadV2?,
         ?incident_role_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?assignee: UserReferencePayloadV2?, ?incident_role_id: String?) -> instance

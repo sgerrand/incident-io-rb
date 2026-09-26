@@ -28,7 +28,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/call_routes/%s/allowed_callers", call_route_id),
-            body: { name:, phone_number: }.compact,
+            body: {name:, phone_number:}.compact,
             unwrap: "allowed_caller",
             model: Models::CallRouteAllowedCallerV2,
             request_options:
@@ -54,7 +54,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/call_routes/%s/options", call_route_id),
-            body: { digit:, path:, prompt: }.compact,
+            body: {digit:, path:, prompt:}.compact,
             unwrap: "option",
             model: Models::CallRouteOptionV2,
             request_options:
@@ -111,7 +111,7 @@ module IncidentIo
           paginate(
             "/v2/call_routes",
             items_key: "call_routes",
-            query: { page_size:, after: },
+            query: {page_size:, after:},
             model: Models::CallRouteV2,
             request_options:
           )
@@ -231,7 +231,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/call_routes/%s", id),
-            body: { custom_language:, name:, path:, responder_caller_id:, use_caller_allowlist: }.compact,
+            body: {custom_language:, name:, path:, responder_caller_id:, use_caller_allowlist:}.compact,
             unwrap: "call_route",
             model: Models::CallRouteV2,
             request_options:
@@ -252,7 +252,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/call_routes/%s/allowed_callers/%s", call_route_id, id),
-            body: { name:, phone_number: }.compact,
+            body: {name:, phone_number:}.compact,
             unwrap: "allowed_caller",
             model: Models::CallRouteAllowedCallerV2,
             request_options:
@@ -277,7 +277,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/call_routes/%s/options/%s", call_route_id, id),
-            body: { digit:, path:, prompt: }.compact,
+            body: {digit:, path:, prompt:}.compact,
             unwrap: "option",
             model: Models::CallRouteOptionV2,
             request_options:

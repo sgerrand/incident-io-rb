@@ -24,7 +24,7 @@ module IncidentIo
         ?external_id: Integer?,
         ?postmortem_document_url: String?,
         ?slack_channel_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

@@ -65,8 +65,8 @@ module IncidentIoGenerator
     # The newest version of each resource, keyed by accessor name.
     def latest_resources
       @latest_resources ||= resources.group_by(&:name)
-                                     .transform_values { |rs| rs.max_by(&:version_number) }
-                                     .sort.to_h
+        .transform_values { |rs| rs.max_by(&:version_number) }
+        .sort.to_h
     end
 
     private
@@ -105,7 +105,7 @@ module IncidentIoGenerator
         raise Error, "resource name #{name} clashes with a version accessor" if name.match?(/\Av\d+\z/)
 
         operations = entries.map { |path, http_method, op| build_operation(path, http_method, op, name, match[:version]) }
-                            .sort_by(&:method_name)
+          .sort_by(&:method_name)
         check_unique_methods!(tag, operations)
 
         Resource.new(
@@ -216,15 +216,15 @@ module IncidentIoGenerator
         items_key, items = arrays.first
         item_type = Types.result_type(items["items"])
         Result.new(kind: :paginated, unwrap: nil, model: item_type, items_key:,
-                   yard: "IncidentIo::Pager<#{Types.yard_type(items["items"])}>",
-                   rbs: "Pager[#{Types.rbs_result(items["items"])}]")
+          yard: "IncidentIo::Pager<#{Types.yard_type(items["items"])}>",
+          rbs: "Pager[#{Types.rbs_result(items["items"])}]")
       elsif props.size == 1
         key, prop = props.first
         Result.new(kind: :json, unwrap: key, model: Types.result_type(prop), items_key: nil,
-                   yard: Types.yard_type(prop), rbs: Types.rbs_result(prop))
+          yard: Types.yard_type(prop), rbs: Types.rbs_result(prop))
       else
         Result.new(kind: :json, unwrap: nil, model: Types.result_type(json), items_key: nil,
-                   yard: Types.yard_type(json), rbs: Types.rbs_result(json))
+          yard: Types.yard_type(json), rbs: Types.rbs_result(json))
       end
     end
 

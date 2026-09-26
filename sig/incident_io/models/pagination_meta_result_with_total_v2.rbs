@@ -20,7 +20,7 @@ module IncidentIo
         ?after: String?,
         ?page_size: Integer?,
         ?total_record_count: Integer?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?after: String?, ?page_size: Integer?, ?total_record_count: Integer?) -> instance

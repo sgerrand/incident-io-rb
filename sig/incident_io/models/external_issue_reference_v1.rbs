@@ -20,7 +20,7 @@ module IncidentIo
         ?issue_name: String?,
         ?issue_permalink: String?,
         ?provider: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?issue_name: String?, ?issue_permalink: String?, ?provider: String?) -> instance

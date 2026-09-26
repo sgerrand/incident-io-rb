@@ -18,7 +18,7 @@ module IncidentIo
         ?cause: String?,
         ?name: String?,
         ?user_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?cause: String?, ?name: String?, ?user_id: String?) -> instance

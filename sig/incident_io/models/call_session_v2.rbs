@@ -29,7 +29,7 @@ module IncidentIo
         ?id: String?,
         ?incident_id: String?,
         ?started_at: Time?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?ended_at: Time?, ?id: String?, ?incident_id: String?, ?started_at: Time?) -> instance

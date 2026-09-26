@@ -75,7 +75,7 @@ module IncidentIo
         ?responder_caller_id: String?,
         ?updated_at: Time?,
         ?use_caller_allowlist: bool?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

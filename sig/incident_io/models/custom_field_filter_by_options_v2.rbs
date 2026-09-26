@@ -17,7 +17,7 @@ module IncidentIo
       def initialize: (
         ?catalog_attribute_id: String?,
         ?custom_field_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?catalog_attribute_id: String?, ?custom_field_id: String?) -> instance

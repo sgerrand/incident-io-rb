@@ -36,7 +36,7 @@ module IncidentIo
         ?removals: String?,
         ?removals_count: String?,
         ?version: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

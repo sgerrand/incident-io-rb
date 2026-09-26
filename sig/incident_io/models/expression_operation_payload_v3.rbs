@@ -34,7 +34,7 @@ module IncidentIo
         ?navigate: ExpressionNavigateOptsPayloadV3?,
         ?operation_type: String?,
         ?parse: ExpressionParseOptsPayloadV3?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

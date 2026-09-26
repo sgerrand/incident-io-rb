@@ -14,7 +14,7 @@ module IncidentIo
 
       def self.new: (?location: String?, ?user_agent: String?) -> instance
 
-      def initialize: (?location: String?, ?user_agent: String?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?location: String?, ?user_agent: String?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?location: String?, ?user_agent: String?) -> instance
 

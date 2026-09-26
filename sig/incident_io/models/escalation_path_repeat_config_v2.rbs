@@ -17,7 +17,7 @@ module IncidentIo
       def initialize: (
         ?delay_repeat_on_activity: bool?,
         ?repeat_after_seconds: Integer?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?delay_repeat_on_activity: bool?, ?repeat_after_seconds: Integer?) -> instance

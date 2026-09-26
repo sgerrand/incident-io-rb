@@ -28,7 +28,7 @@ module IncidentIo
         ?grace_period_seconds: Integer?,
         ?interval_seconds: Integer?,
         ?ping_url: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

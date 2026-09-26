@@ -13,7 +13,7 @@ module IncidentIo
 
       def initialize: (
         ?escalation_path_template: EscalationPathTemplateV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?escalation_path_template: EscalationPathTemplateV2?) -> instance

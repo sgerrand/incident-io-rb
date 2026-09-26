@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?default: GroupingSettingsV3?) -> instance
 
-      def initialize: (?default: GroupingSettingsV3?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?default: GroupingSettingsV3?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?default: GroupingSettingsV3?) -> instance
 

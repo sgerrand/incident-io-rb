@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?resources: Array[CatalogResourceV2]?) -> instance
 
-      def initialize: (?resources: Array[CatalogResourceV2]?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?resources: Array[CatalogResourceV2]?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?resources: Array[CatalogResourceV2]?) -> instance
 

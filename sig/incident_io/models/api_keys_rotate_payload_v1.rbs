@@ -12,7 +12,7 @@ module IncidentIo
 
       def self.new: (?grace_period_minutes: Integer?) -> instance
 
-      def initialize: (?grace_period_minutes: Integer?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?grace_period_minutes: Integer?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?grace_period_minutes: Integer?) -> instance
 

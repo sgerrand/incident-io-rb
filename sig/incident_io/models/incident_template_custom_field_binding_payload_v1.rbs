@@ -23,7 +23,7 @@ module IncidentIo
         ?binding: EngineParamBindingPayloadV3?,
         ?custom_field_id: String?,
         ?merge_strategy: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

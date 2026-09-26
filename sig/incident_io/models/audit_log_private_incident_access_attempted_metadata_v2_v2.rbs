@@ -20,7 +20,7 @@ module IncidentIo
         ?access_type: String?,
         ?outcome: String?,
         ?team_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?access_type: String?, ?outcome: String?, ?team_id: String?) -> instance

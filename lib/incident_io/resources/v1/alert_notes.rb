@@ -40,7 +40,7 @@ module IncidentIo
           request(
             :post,
             "/v1/alert_notes",
-            body: { alert_group_id:, alert_id:, content: }.compact,
+            body: {alert_group_id:, alert_id:, content:}.compact,
             unwrap: "alert_note",
             model: Models::AlertNoteV1,
             request_options:
@@ -76,7 +76,7 @@ module IncidentIo
           paginate(
             "/v1/alert_notes",
             items_key: "alert_notes",
-            query: { alert_id:, alert_group_id:, page_size:, after: },
+            query: {alert_id:, alert_group_id:, page_size:, after:},
             model: Models::AlertNoteV1,
             request_options:
           )
@@ -111,7 +111,7 @@ module IncidentIo
           request(
             :put,
             path("/v1/alert_notes/%s", id),
-            body: { content: }.compact,
+            body: {content:}.compact,
             unwrap: "alert_note",
             model: Models::AlertNoteV1,
             request_options:

@@ -32,7 +32,7 @@ module IncidentIo
           paginate(
             "/v2/users",
             items_key: "users",
-            query: { email:, slack_user_id:, include_inactive:, page_size:, after: },
+            query: {email:, slack_user_id:, include_inactive:, page_size:, after:},
             model: Models::UserWithRolesV2,
             request_options:
           )
@@ -117,7 +117,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/users/%s/paging_provider", user_id),
-            body: { preferred_escalation_provider: }.compact,
+            body: {preferred_escalation_provider:}.compact,
             request_options:
           )
         end

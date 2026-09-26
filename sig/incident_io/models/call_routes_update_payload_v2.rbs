@@ -32,7 +32,7 @@ module IncidentIo
         ?path: Array[CallRoutePathNodePayloadV2]?,
         ?responder_caller_id: String?,
         ?use_caller_allowlist: bool?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

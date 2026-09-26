@@ -14,7 +14,7 @@ module IncidentIo
 
       def self.new: (?reason: String?, ?snooze_until: Time?) -> instance
 
-      def initialize: (?reason: String?, ?snooze_until: Time?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?reason: String?, ?snooze_until: Time?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?reason: String?, ?snooze_until: Time?) -> instance
 

@@ -14,7 +14,7 @@ module IncidentIo
 
       def initialize: (
         ?warnings: Array[IncidentTemplateValidateWarningV1]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?warnings: Array[IncidentTemplateValidateWarningV1]?) -> instance

@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?maintenance_window: MaintenanceWindowV1?) -> instance
 
-      def initialize: (?maintenance_window: MaintenanceWindowV1?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?maintenance_window: MaintenanceWindowV1?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?maintenance_window: MaintenanceWindowV1?) -> instance
 

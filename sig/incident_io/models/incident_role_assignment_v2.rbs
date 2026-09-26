@@ -15,7 +15,7 @@ module IncidentIo
       def initialize: (
         ?assignee: UserV2?,
         ?role: EmbeddedIncidentRoleV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?assignee: UserV2?, ?role: EmbeddedIncidentRoleV2?) -> instance

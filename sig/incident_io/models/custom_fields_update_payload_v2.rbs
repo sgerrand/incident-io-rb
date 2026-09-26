@@ -34,7 +34,7 @@ module IncidentIo
         ?group_by_catalog_attribute_id: String?,
         ?helptext_catalog_attribute_id: String?,
         ?name: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

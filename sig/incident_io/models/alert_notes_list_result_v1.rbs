@@ -15,7 +15,7 @@ module IncidentIo
       def initialize: (
         ?alert_notes: Array[AlertNoteV1]?,
         ?pagination_meta: PaginationMetaResultV1?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?alert_notes: Array[AlertNoteV1]?, ?pagination_meta: PaginationMetaResultV1?) -> instance

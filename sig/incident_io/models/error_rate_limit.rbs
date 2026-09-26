@@ -28,7 +28,7 @@ module IncidentIo
         ?name: String?,
         ?remaining: Integer?,
         ?retry_after: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?limit: Integer?, ?name: String?, ?remaining: Integer?, ?retry_after: String?) -> instance

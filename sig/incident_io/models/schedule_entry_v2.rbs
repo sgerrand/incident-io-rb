@@ -56,7 +56,7 @@ module IncidentIo
         ?rotation_id: String?,
         ?start_at: Time?,
         ?user: UserV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

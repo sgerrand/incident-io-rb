@@ -24,7 +24,7 @@ module IncidentIo
         ?due_date_config: PolicyDueDateConfigPayloadV2?,
         ?requirements: Array[ConditionGroupPayloadV2]?,
         ?run_on_private_incidents: bool?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

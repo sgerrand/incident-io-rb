@@ -10,7 +10,7 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
 
   it "builds one resource per tag" do
     expect(resource).to have_attributes(tag: "Widgets V2", version: "V2", name: "widgets", class_name: "Widgets",
-                                        description: "Manage widgets.")
+      description: "Manage widgets.")
     expect(ops.keys).to eq(%w[create destroy export list show])
   end
 
@@ -43,7 +43,7 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
 
   it "points deprecated operations at the newest version" do
     spec = mini_spec
-    spec["paths"]["/v3/widgets/{id}"] = { "delete" => operation("Widgets V3#Destroy", nil, code: "204", parameters: [path_param("id")]) }
+    spec["paths"]["/v3/widgets/{id}"] = {"delete" => operation("Widgets V3#Destroy", nil, code: "204", parameters: [path_param("id")])}
     destroy = described_class.new(spec).resources.find { |r| r.version == "V2" }.operations.find { |o| o.method_name == "destroy" }
 
     expect(destroy.replacement).to eq("client.widgets.destroy")
@@ -65,13 +65,13 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
   end
 
   it "applies method overrides" do
-    api = described_class.new(mini_spec, "operations" => { "Widgets V2#Export" => { "method" => "export_csv" } })
+    api = described_class.new(mini_spec, "operations" => {"Widgets V2#Export" => {"method" => "export_csv"}})
 
     expect(api.resources.first.operations.map(&:method_name)).to include("export_csv")
   end
 
   it "rejects overrides for unknown operations" do
-    expect { described_class.new(mini_spec, "operations" => { "Nope V1#List" => { "method" => "x" } }) }
+    expect { described_class.new(mini_spec, "operations" => {"Nope V1#List" => {"method" => "x"}}) }
       .to raise_error(IncidentIoGenerator::Error, /unknown operations: Nope V1#List/)
   end
 
@@ -84,14 +84,14 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
 
   it "rejects parameter names that aren't safe Ruby" do
     spec = mini_spec
-    spec["paths"]["/v2/widgets/{id}"]["get"]["parameters"] << { "in" => "query", "name" => "end", "schema" => {} }
+    spec["paths"]["/v2/widgets/{id}"]["get"]["parameters"] << {"in" => "query", "name" => "end", "schema" => {}}
 
     expect { described_class.new(spec) }.to raise_error(IncidentIoGenerator::Error, /"end" is not a safe Ruby name/)
   end
 
   it "picks the newest version of each resource" do
     spec = mini_spec
-    spec["paths"]["/v3/widgets/{id}"] = { "delete" => operation("Widgets V3#Destroy", nil, code: "204", parameters: [path_param("id")]) }
+    spec["paths"]["/v3/widgets/{id}"] = {"delete" => operation("Widgets V3#Destroy", nil, code: "204", parameters: [path_param("id")])}
 
     expect(described_class.new(spec).latest_resources.transform_values(&:version)).to eq("widgets" => "V3")
   end

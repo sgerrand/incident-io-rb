@@ -14,7 +14,7 @@ module IncidentIo
 
       def self.new: (?external_user_id: String?, ?user_id: String?) -> instance
 
-      def initialize: (?external_user_id: String?, ?user_id: String?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?external_user_id: String?, ?user_id: String?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?external_user_id: String?, ?user_id: String?) -> instance
 

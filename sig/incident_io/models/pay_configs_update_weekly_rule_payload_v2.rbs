@@ -28,7 +28,7 @@ module IncidentIo
         ?rate_cents: Integer?,
         ?start_time: String?,
         ?weekdays: Array[String]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

@@ -27,7 +27,7 @@ module IncidentIo
         ?escalated_to_users: Array[UserV2]?,
         ?escalation_id: String?,
         ?escalation_path_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

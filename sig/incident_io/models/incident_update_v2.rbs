@@ -41,7 +41,7 @@ module IncidentIo
         ?new_incident_status: IncidentStatusV2?,
         ?new_severity: SeverityV2?,
         ?updater: ActorV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

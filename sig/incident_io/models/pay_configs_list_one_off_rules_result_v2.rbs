@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?one_off_rules: Array[PayConfigOneOffRuleV2]?) -> instance
 
-      def initialize: (?one_off_rules: Array[PayConfigOneOffRuleV2]?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?one_off_rules: Array[PayConfigOneOffRuleV2]?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?one_off_rules: Array[PayConfigOneOffRuleV2]?) -> instance
 

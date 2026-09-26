@@ -47,7 +47,7 @@ module IncidentIo
         ?schedule_ids: Array[String]?,
         ?start_date: String?,
         ?unpaid_shifts: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

@@ -19,7 +19,7 @@ module IncidentIo
         ?new_visibility: String?,
         ?previous_visibility: String?,
         ?updater: ActorV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?new_visibility: String?, ?previous_visibility: String?, ?updater: ActorV2?) -> instance

@@ -28,7 +28,7 @@ module IncidentIo
         ?instructions: String?,
         ?name: String?,
         ?shortform: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

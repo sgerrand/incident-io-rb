@@ -14,7 +14,7 @@ module IncidentIo
 
       def self.new: (?layer_id: String?, ?rotation_id: String?) -> instance
 
-      def initialize: (?layer_id: String?, ?rotation_id: String?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?layer_id: String?, ?rotation_id: String?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?layer_id: String?, ?rotation_id: String?) -> instance
 

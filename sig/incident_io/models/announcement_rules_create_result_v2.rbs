@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?announcement_rule: AnnouncementRuleV2?) -> instance
 
-      def initialize: (?announcement_rule: AnnouncementRuleV2?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?announcement_rule: AnnouncementRuleV2?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?announcement_rule: AnnouncementRuleV2?) -> instance
 

@@ -18,7 +18,7 @@ module IncidentIo
         ?alert: AlertActorV2?,
         ?user: UserV2?,
         ?workflow: WorkflowActorV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?alert: AlertActorV2?, ?user: UserV2?, ?workflow: WorkflowActorV2?) -> instance

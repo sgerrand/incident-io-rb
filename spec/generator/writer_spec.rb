@@ -21,7 +21,7 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
     files = described_class.new(api, @dir).write
 
     models = %w[part_v2 pagination_meta_result_v2 widget_v2 widgets_create_payload_v2 widgets_list_result_v2
-                widgets_show_result_v2]
+      widgets_show_result_v2]
 
     expect(files).to contain_exactly(
       "lib/incident_io/models.rb", "lib/incident_io/resources.rb", "sig/incident_io/resources.rbs",
@@ -99,7 +99,7 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
     expect(source).to include("attr_reader created_at: Time?")
     expect(source).to include("attr_reader parts: Array[PartV2]?")
     expect(source).to include("attr_reader labels: Hash[String, String]?")
-    expect(source).to include("?_raw: Hash[String, untyped]?")
+    expect(source).to include("?raw: Hash[String, untyped]?")
     expect(source).to include("def self.from_api: (nil) -> nil")
   end
 end

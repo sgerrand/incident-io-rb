@@ -30,7 +30,7 @@ module IncidentIo
         ?operations: Array[ExpressionOperationPayloadV2]?,
         ?reference: String?,
         ?root_reference: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

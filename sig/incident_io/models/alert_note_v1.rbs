@@ -47,7 +47,7 @@ module IncidentIo
         ?images: Array[ImageV1]?,
         ?last_edited_at: Time?,
         ?updated_at: Time?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

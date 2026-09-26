@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?workflow_run: WorkflowRunV2?) -> instance
 
-      def initialize: (?workflow_run: WorkflowRunV2?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?workflow_run: WorkflowRunV2?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?workflow_run: WorkflowRunV2?) -> instance
 

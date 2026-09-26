@@ -36,7 +36,7 @@ module IncidentIo
         ?source_url: String?,
         ?status: String?,
         ?title: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

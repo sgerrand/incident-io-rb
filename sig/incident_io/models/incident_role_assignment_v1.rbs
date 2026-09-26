@@ -12,7 +12,7 @@ module IncidentIo
 
       def self.new: (?assignee: UserV1?, ?role: IncidentRoleV1?) -> instance
 
-      def initialize: (?assignee: UserV1?, ?role: IncidentRoleV1?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?assignee: UserV1?, ?role: IncidentRoleV1?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?assignee: UserV1?, ?role: IncidentRoleV1?) -> instance
 

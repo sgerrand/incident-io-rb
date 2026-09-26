@@ -13,7 +13,7 @@ module IncidentIo
 
       def self.new: (?rate_limit_shard_key_path: String?) -> instance
 
-      def initialize: (?rate_limit_shard_key_path: String?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?rate_limit_shard_key_path: String?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?rate_limit_shard_key_path: String?) -> instance
 

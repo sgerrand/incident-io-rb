@@ -30,7 +30,7 @@ module IncidentIo
         ?reminder_cadence_before: PolicyReminderCadenceV2?,
         ?reminder_detected_date_offset_hours: Array[Integer]?,
         ?reminder_due_date_offset_hours: Array[Integer]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

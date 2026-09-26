@@ -15,7 +15,7 @@ module IncidentIo
       def initialize: (
         ?incident_timestamp: IncidentTimestampV2?,
         ?value: IncidentTimestampValueV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?incident_timestamp: IncidentTimestampV2?, ?value: IncidentTimestampValueV2?) -> instance

@@ -24,7 +24,7 @@ module IncidentIo
           paginate(
             "/v3/teams",
             items_key: "teams",
-            query: { page_size:, after: },
+            query: {page_size:, after:},
             model: Models::TeamV3,
             request_options:
           )

@@ -14,11 +14,7 @@ module IncidentIo
 
       def self.new: (?enabled: bool?, ?rotate_after_seconds: Integer?) -> instance
 
-      def initialize: (
-        ?enabled: bool?,
-        ?rotate_after_seconds: Integer?,
-        ?_raw: Hash[String, untyped]?
-      ) -> void
+      def initialize: (?enabled: bool?, ?rotate_after_seconds: Integer?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?enabled: bool?, ?rotate_after_seconds: Integer?) -> instance
 

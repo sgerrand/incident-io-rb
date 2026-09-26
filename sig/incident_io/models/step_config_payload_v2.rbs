@@ -28,7 +28,7 @@ module IncidentIo
         ?id: String?,
         ?name: String?,
         ?param_bindings: Array[EngineParamBindingPayloadV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

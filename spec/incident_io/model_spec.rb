@@ -24,10 +24,10 @@ RSpec.describe IncidentIo::Model do
       "created_at" => "2024-05-01T12:00:00Z",
       "due_on" => "2024-05-02",
       "score" => 1,
-      "severity" => { "id" => "s1", "name" => "Major", "rank" => 2 },
+      "severity" => {"id" => "s1", "name" => "Major", "rank" => 2},
       "tags" => %w[a b],
-      "history" => [{ "id" => "s0" }],
-      "lookup" => { "k" => { "id" => "s2" } },
+      "history" => [{"id" => "s0"}],
+      "lookup" => {"k" => {"id" => "s2"}},
       "class" => "thing",
       "method" => "email",
       "added_later" => "surprise"
@@ -66,7 +66,7 @@ RSpec.describe IncidentIo::Model do
   end
 
   it "fills missing fields with nil" do
-    expect(incident.from_api({ "id" => "x" })).to have_attributes(id: "x", severity: nil, tags: nil)
+    expect(incident.from_api({"id" => "x"})).to have_attributes(id: "x", severity: nil, tags: nil)
   end
 
   it "is frozen and compares by value" do
@@ -79,7 +79,7 @@ RSpec.describe IncidentIo::Model do
       "id" => "01ABC",
       "created_at" => "2024-05-01T12:00:00.000Z",
       "due_on" => "2024-05-02",
-      "severity" => { "id" => "s1", "name" => "Major", "rank" => 2 },
+      "severity" => {"id" => "s1", "name" => "Major", "rank" => 2},
       "class" => "thing"
     )
   end

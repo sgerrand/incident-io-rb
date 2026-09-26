@@ -14,7 +14,7 @@ module IncidentIo
 
       def self.new: (?id: String?, ?name: String?) -> instance
 
-      def initialize: (?id: String?, ?name: String?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?id: String?, ?name: String?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?id: String?, ?name: String?) -> instance
 

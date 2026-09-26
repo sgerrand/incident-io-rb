@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?postmortem_document: PostmortemDocumentV1?) -> instance
 
-      def initialize: (?postmortem_document: PostmortemDocumentV1?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?postmortem_document: PostmortemDocumentV1?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?postmortem_document: PostmortemDocumentV1?) -> instance
 

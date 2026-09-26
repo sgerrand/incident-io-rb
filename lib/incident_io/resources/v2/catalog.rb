@@ -60,7 +60,7 @@ module IncidentIo
           request(
             :post,
             "/v2/catalog_entries",
-            body: { aliases:, attribute_values:, catalog_type_id:, external_id:, name:, rank: }.compact,
+            body: {aliases:, attribute_values:, catalog_type_id:, external_id:, name:, rank:}.compact,
             unwrap: "catalog_entry",
             model: Models::CatalogEntryV2,
             request_options:
@@ -165,7 +165,7 @@ module IncidentIo
           paginate(
             "/v2/catalog_entries",
             items_key: "catalog_entries",
-            query: { catalog_type_id:, page_size:, after: },
+            query: {catalog_type_id:, page_size:, after:},
             model: Models::CatalogEntryV2,
             request_options:
           )
@@ -274,7 +274,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/catalog_entries/%s", id),
-            body: { aliases:, attribute_values:, external_id:, name:, rank: }.compact,
+            body: {aliases:, attribute_values:, external_id:, name:, rank:}.compact,
             model: Models::CatalogUpdateEntryResultV2,
             request_options:
           )
@@ -350,7 +350,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/catalog_types/%s/actions/update_schema", id),
-            body: { attributes:, version: }.compact,
+            body: {attributes:, version:}.compact,
             unwrap: "catalog_type",
             model: Models::CatalogTypeV2,
             request_options:

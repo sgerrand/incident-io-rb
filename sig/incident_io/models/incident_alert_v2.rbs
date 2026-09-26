@@ -26,7 +26,7 @@ module IncidentIo
         ?alert_route_id: String?,
         ?id: String?,
         ?incident: IncidentSlimV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

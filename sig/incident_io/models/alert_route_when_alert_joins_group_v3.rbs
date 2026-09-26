@@ -14,7 +14,7 @@ module IncidentIo
 
       def self.new: (?grace_period_seconds: Integer?, ?mode: String?) -> instance
 
-      def initialize: (?grace_period_seconds: Integer?, ?mode: String?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?grace_period_seconds: Integer?, ?mode: String?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?grace_period_seconds: Integer?, ?mode: String?) -> instance
 

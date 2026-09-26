@@ -22,7 +22,7 @@ module IncidentIo
           request(
             :get,
             "/v2/incident_participants",
-            query: { incident_id: },
+            query: {incident_id:},
             unwrap: "incident_participants",
             model: Models::IncidentParticipantsV2,
             request_options:

@@ -24,7 +24,7 @@ module IncidentIo
         ?annotations: Hash[String, String]?,
         ?managed_by: String?,
         ?source_url: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?annotations: Hash[String, String]?, ?managed_by: String?, ?source_url: String?) -> instance

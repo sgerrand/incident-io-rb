@@ -12,7 +12,7 @@ module IncidentIo
 
       def self.new: (?tags: Array[String]?) -> instance
 
-      def initialize: (?tags: Array[String]?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?tags: Array[String]?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?tags: Array[String]?) -> instance
 

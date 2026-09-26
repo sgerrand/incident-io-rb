@@ -9,12 +9,12 @@ BASE_URL = "https://api.incident.io"
 
 module SpecHelpers
   def json_response(body, status: 200, headers: {})
-    { status:, body: JSON.generate(body), headers: { "Content-Type" => "application/json" }.merge(headers) }
+    {status:, body: JSON.generate(body), headers: {"Content-Type" => "application/json"}.merge(headers)}
   end
 
   def error_body(status:, type:, message: "boom", request_id: "req_123", **extra)
-    { "status" => status, "type" => type, "request_id" => request_id,
-      "errors" => [{ "code" => type, "message" => message }] }.merge(extra)
+    {"status" => status, "type" => type, "request_id" => request_id,
+     "errors" => [{"code" => type, "message" => message}]}.merge(extra)
   end
 end
 

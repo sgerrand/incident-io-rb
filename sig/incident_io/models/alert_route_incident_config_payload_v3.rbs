@@ -33,7 +33,7 @@ module IncidentIo
         ?incident_template: EngineParamBindingPayloadV3?,
         ?membership_teams: EngineParamBindingPayloadV3?,
         ?template: AlertRouteIncidentTemplatePayloadV3?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

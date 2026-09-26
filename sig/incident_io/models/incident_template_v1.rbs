@@ -36,7 +36,7 @@ module IncidentIo
         ?name: String?,
         ?template: IncidentTemplateConfigV1?,
         ?updated_at: Time?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

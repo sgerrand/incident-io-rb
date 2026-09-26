@@ -32,7 +32,7 @@ module IncidentIo
         ?method_: String?,
         ?outcome: String?,
         ?status_code: Integer?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

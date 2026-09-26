@@ -51,14 +51,14 @@ module IncidentIoGenerator
 
       case schema["type"]
       when "string"
-        { "date-time" => "Time", "date" => "Date" }.fetch(schema["format"], "String")
+        {"date-time" => "Time", "date" => "Date"}.fetch(schema["format"], "String")
       when "integer" then "Integer"
       when "number" then "Float"
       when "boolean" then "Boolean"
       when "array" then "Array<#{yard_type(schema["items"] || {}, namespace:, accepts_hash:)}>"
       when "object"
         extra = schema["additionalProperties"]
-        extra.is_a?(Hash) && !extra.empty? ? "Hash{String => #{yard_type(extra, namespace:)}}" : "Hash"
+        (extra.is_a?(Hash) && !extra.empty?) ? "Hash{String => #{yard_type(extra, namespace:)}}" : "Hash"
       else "Object"
       end
     end

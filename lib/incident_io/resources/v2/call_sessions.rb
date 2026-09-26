@@ -25,7 +25,7 @@ module IncidentIo
           paginate(
             "/v2/call_sessions",
             items_key: "call_sessions",
-            query: { page_size:, after:, incident_id: },
+            query: {page_size:, after:, incident_id:},
             model: Models::CallSessionV2,
             request_options:
           )

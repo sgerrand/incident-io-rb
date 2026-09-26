@@ -93,7 +93,7 @@ module IncidentIo
         ?timestamps: Array[IncidentTimestampValueV1]?,
         ?updated_at: Time?,
         ?visibility: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

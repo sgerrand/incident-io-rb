@@ -4,7 +4,7 @@ RSpec.describe IncidentIo::APIError do
   def response(status, body = nil, headers = {})
     IncidentIo::Response.new(
       status:,
-      headers: { "content-type" => "application/json" }.merge(headers),
+      headers: {"content-type" => "application/json"}.merge(headers),
       body: body && JSON.generate(body)
     )
   end
@@ -35,8 +35,8 @@ RSpec.describe IncidentIo::APIError do
       "errors" => [{
         "code" => "invalid_value",
         "message" => "Must be a URL",
-        "source" => { "field" => "default_call_url", "pointer" => "/settings/default_call_url" },
-        "metadata" => { "a" => "b" }
+        "source" => {"field" => "default_call_url", "pointer" => "/settings/default_call_url"},
+        "metadata" => {"a" => "b"}
       }]
     }
 
@@ -46,7 +46,7 @@ RSpec.describe IncidentIo::APIError do
     expect(error.request_id).to eq("req_1")
     expect(error.errors.first).to have_attributes(
       code: "invalid_value", message: "Must be a URL", field: "default_call_url",
-      pointer: "/settings/default_call_url", metadata: { "a" => "b" }
+      pointer: "/settings/default_call_url", metadata: {"a" => "b"}
     )
     expect(error.message).to eq("422 validation_error: Must be a URL (request_id: req_1)")
   end
@@ -74,8 +74,8 @@ RSpec.describe IncidentIo::APIError do
     end
 
     it "falls back to rate_limit.retry_after in the body" do
-      body = { "rate_limit" => { "name" => "api_key", "limit" => 100, "remaining" => 0,
-                                 "retry_after" => (Time.now + 10).utc.iso8601 } }
+      body = {"rate_limit" => {"name" => "api_key", "limit" => 100, "remaining" => 0,
+                               "retry_after" => (Time.now + 10).utc.iso8601}}
       error = described_class.from_response(response(429, body))
 
       expect(error.rate_limit).to have_attributes(name: "api_key", limit: 100, remaining: 0)
@@ -83,7 +83,7 @@ RSpec.describe IncidentIo::APIError do
     end
 
     it "is never negative" do
-      body = { "rate_limit" => { "retry_after" => "2020-01-01T00:00:00Z" } }
+      body = {"rate_limit" => {"retry_after" => "2020-01-01T00:00:00Z"}}
 
       expect(described_class.from_response(response(429, body)).retry_after).to eq(0.0)
     end

@@ -13,7 +13,7 @@ module IncidentIo
 
       def self.new: (?action_id: String?, ?actor: ActorV2?) -> instance
 
-      def initialize: (?action_id: String?, ?actor: ActorV2?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?action_id: String?, ?actor: ActorV2?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?action_id: String?, ?actor: ActorV2?) -> instance
 

@@ -28,7 +28,7 @@ module IncidentIo
         ?after_private_incident_scope: String?,
         ?before_owning_team_ids: String?,
         ?before_private_incident_scope: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

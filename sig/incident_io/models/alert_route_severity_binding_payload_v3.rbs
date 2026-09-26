@@ -16,7 +16,7 @@ module IncidentIo
       def initialize: (
         ?binding: EngineParamBindingPayloadV3?,
         ?merge_strategy: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?binding: EngineParamBindingPayloadV3?, ?merge_strategy: String?) -> instance

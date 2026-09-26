@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?incident_update: IncidentUpdateV2?) -> instance
 
-      def initialize: (?incident_update: IncidentUpdateV2?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?incident_update: IncidentUpdateV2?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?incident_update: IncidentUpdateV2?) -> instance
 

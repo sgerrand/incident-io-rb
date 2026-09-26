@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?policy_finding: PolicyFindingV2?) -> instance
 
-      def initialize: (?policy_finding: PolicyFindingV2?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?policy_finding: PolicyFindingV2?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?policy_finding: PolicyFindingV2?) -> instance
 

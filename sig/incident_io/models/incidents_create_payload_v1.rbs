@@ -64,7 +64,7 @@ module IncidentIo
         ?status: String?,
         ?summary: String?,
         ?visibility: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

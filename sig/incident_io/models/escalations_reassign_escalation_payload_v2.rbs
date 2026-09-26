@@ -32,7 +32,7 @@ module IncidentIo
         ?resolve_original: bool?,
         ?title: String?,
         ?user_ids: Array[String]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

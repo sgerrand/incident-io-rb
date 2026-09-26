@@ -129,7 +129,7 @@ module IncidentIo
           request(
             :get,
             path("/v2/workflows/%s", id),
-            query: { skip_step_upgrades: },
+            query: {skip_step_upgrades:},
             model: Models::WorkflowsShowWorkflowResultV2,
             request_options:
           )

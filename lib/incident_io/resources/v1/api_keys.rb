@@ -47,7 +47,7 @@ module IncidentIo
           request(
             :post,
             "/v1/api_keys",
-            body: { comments:, name:, role_names:, team_ids:, team_role_names: }.compact,
+            body: {comments:, name:, role_names:, team_ids:, team_role_names:}.compact,
             model: Models::APIKeysCreateResultV1,
             request_options:
           )
@@ -84,7 +84,7 @@ module IncidentIo
           paginate(
             "/v1/api_keys",
             items_key: "api_keys",
-            query: { page_size:, after: },
+            query: {page_size:, after:},
             model: Models::APIKeyV1,
             request_options:
           )
@@ -104,7 +104,7 @@ module IncidentIo
           request(
             :post,
             path("/v1/api_keys/%s/actions/rotate", id),
-            body: { grace_period_minutes: }.compact,
+            body: {grace_period_minutes:}.compact,
             model: Models::APIKeysRotateResultV1,
             request_options:
           )
@@ -147,7 +147,7 @@ module IncidentIo
           request(
             :put,
             path("/v1/api_keys/%s", id),
-            body: { comments:, name:, role_names:, team_ids:, team_role_names: }.compact,
+            body: {comments:, name:, role_names:, team_ids:, team_role_names:}.compact,
             unwrap: "api_key",
             model: Models::APIKeyV1,
             request_options:

@@ -24,7 +24,7 @@ module IncidentIo
         ?catalog_type_id: String?,
         ?entries: Array[PartialEntryPayloadV3]?,
         ?update_attributes: Array[String]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

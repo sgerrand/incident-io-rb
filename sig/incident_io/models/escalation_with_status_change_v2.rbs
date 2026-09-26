@@ -26,7 +26,7 @@ module IncidentIo
         ?escalation: EscalationV2?,
         ?new_status: String?,
         ?previous_status: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

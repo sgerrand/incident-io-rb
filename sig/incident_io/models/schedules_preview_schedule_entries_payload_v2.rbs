@@ -23,7 +23,7 @@ module IncidentIo
         ?entry_window_end: Time?,
         ?entry_window_start: Time?,
         ?schedule: ScheduleUpdatePayloadV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

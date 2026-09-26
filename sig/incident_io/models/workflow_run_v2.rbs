@@ -68,7 +68,7 @@ module IncidentIo
         ?workflow_name: String?,
         ?workflow_version_id: String?,
         ?workflow_version_number: Integer?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

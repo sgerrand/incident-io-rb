@@ -32,7 +32,7 @@ module IncidentIo
         ?rotation_id: String?,
         ?schedule_sync_target_id: String?,
         ?sync_type: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

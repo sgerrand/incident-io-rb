@@ -16,7 +16,7 @@ module IncidentIo
       def initialize: (
         ?branches: Array[ExpressionBranchV2]?,
         ?returns: ReturnsMetaV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?branches: Array[ExpressionBranchV2]?, ?returns: ReturnsMetaV2?) -> instance

@@ -24,7 +24,7 @@ module IncidentIo
         ?annotations: Hash[String, String]?,
         ?permanent_member_user_ids: Array[String]?,
         ?sync_type: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

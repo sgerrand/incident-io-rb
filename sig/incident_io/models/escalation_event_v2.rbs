@@ -36,7 +36,7 @@ module IncidentIo
         ?occurred_at: Time?,
         ?urgency: String?,
         ?users: Array[UserV2]?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

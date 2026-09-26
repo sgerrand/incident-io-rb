@@ -23,7 +23,7 @@ module IncidentIo
         ?new_status: String?,
         ?postmortem_document: PostmortemDocumentV1?,
         ?previous_status: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

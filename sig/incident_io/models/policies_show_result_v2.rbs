@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?policy: PolicyV2?) -> instance
 
-      def initialize: (?policy: PolicyV2?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?policy: PolicyV2?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?policy: PolicyV2?) -> instance
 

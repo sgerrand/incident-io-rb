@@ -70,7 +70,7 @@ module IncidentIo
         ?status_change: ActivityStatusChangeV2?,
         ?summary_update: ActivitySummaryUpdateV2?,
         ?workflow_ran: ActivityWorkflowRanV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

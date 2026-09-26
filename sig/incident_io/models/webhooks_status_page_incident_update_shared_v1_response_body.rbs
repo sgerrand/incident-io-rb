@@ -19,7 +19,7 @@ module IncidentIo
       def initialize: (
         ?event_type: String?,
         ?status_page_incident_update_shared_v1: StatusPageIncidentWithUpdateV2?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

@@ -11,7 +11,7 @@ module IncidentIo
 
       def self.new: (?result: EngineParamBindingPayloadV3?) -> instance
 
-      def initialize: (?result: EngineParamBindingPayloadV3?, ?_raw: Hash[String, untyped]?) -> void
+      def initialize: (?result: EngineParamBindingPayloadV3?, ?raw: Hash[String, untyped]?) -> void
 
       def with: (?result: EngineParamBindingPayloadV3?) -> instance
 

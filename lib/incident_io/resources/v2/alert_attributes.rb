@@ -25,7 +25,7 @@ module IncidentIo
           request(
             :post,
             "/v2/alert_attributes",
-            body: { array:, emoji:, name:, required:, type: }.compact,
+            body: {array:, emoji:, name:, required:, type:}.compact,
             unwrap: "alert_attribute",
             model: Models::AlertAttributeV2,
             request_options:
@@ -96,7 +96,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/alert_attributes/%s", id),
-            body: { array:, emoji:, name:, required:, type: }.compact,
+            body: {array:, emoji:, name:, required:, type:}.compact,
             unwrap: "alert_attribute",
             model: Models::AlertAttributeV2,
             request_options:

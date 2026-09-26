@@ -25,7 +25,7 @@ module IncidentIo
         ?high_urgency: Array[PolicyFindingReadinessRuleV2]?,
         ?low_urgency: Array[PolicyFindingReadinessRuleV2]?,
         ?user_id: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (

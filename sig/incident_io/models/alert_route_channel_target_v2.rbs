@@ -16,7 +16,7 @@ module IncidentIo
       def initialize: (
         ?binding: EngineParamBindingV2?,
         ?channel_visibility: String?,
-        ?_raw: Hash[String, untyped]?
+        ?raw: Hash[String, untyped]?
       ) -> void
 
       def with: (?binding: EngineParamBindingV2?, ?channel_visibility: String?) -> instance
