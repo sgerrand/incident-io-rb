@@ -87,6 +87,17 @@ To rename a generated method, add it to `generator/overrides.yml`.
 `bundle exec rake generate:check` fails if the generated code does not match
 your local copy of the spec.
 
+## Releasing
+
+Releases are automated. Use [Conventional Commits](https://www.conventionalcommits.org/)
+(`feat:`, `fix:` and so on) so the version and changelog can be worked out.
+
+1. Each push to `main` updates an open release pull request. It bumps the
+   version and adds the new changes to `CHANGELOG.md`.
+2. Merging that pull request tags the version and creates a GitHub Release.
+3. The release starts the Publish workflow, which pushes the gem to
+   RubyGems.org using trusted publishing. No API key is stored in GitHub.
+
 ## License
 
 BSD 2-Clause. See [LICENSE](LICENSE).

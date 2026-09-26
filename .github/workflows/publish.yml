@@ -1,0 +1,39 @@
+name: Publish
+
+# Publishes the gem to RubyGems.org with trusted publishing when a GitHub
+# Release is published. No RubyGems API key is stored in GitHub.
+
+on:
+  release:
+    types: [published]
+
+concurrency:
+  group: publish-${{ github.event.release.tag_name }}
+  cancel-in-progress: false
+
+permissions: {}
+
+jobs:
+  publish:
+    name: Publish to RubyGems.org
+    runs-on: ubuntu-latest
+    environment:
+      name: rubygems
+      url: https://rubygems.org/gems/incident-io
+    permissions:
+      contents: read
+      id-token: write # to get a short-lived RubyGems.org API key
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
+        with:
+          ruby-version: "4.0"
+      # Install gems fresh rather than from the Actions cache, so a cache
+      # written by another workflow can't change what gets published.
+      - run: bundle install --jobs 4
+      - run: bundle exec rake spec
+      # Builds the gem, skips pushing the tag (release-please already made
+      # it), pushes to RubyGems.org and adds a Sigstore attestation.
+      - uses: rubygems/release-gem@7f9650160c1a4e7989fdc9855807bdbd421d8b6b # v1.4.1

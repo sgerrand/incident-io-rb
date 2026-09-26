@@ -15,10 +15,11 @@ Gem::Specification.new do |s|
   s.metadata = {
     "source_code_uri" => s.homepage,
     "bug_tracker_uri" => "#{s.homepage}/issues",
+    "changelog_uri" => "#{s.homepage}/blob/main/CHANGELOG.md",
     "rubygems_mfa_required" => "true"
   }
 
-  s.files         = Dir['LICENSE', 'README.md', 'lib/**/*.rb']
+  s.files         = Dir['CHANGELOG.md', 'LICENSE', 'README.md', 'lib/**/*.rb']
   s.executables   = []
   s.require_paths = ["lib"]
 end
