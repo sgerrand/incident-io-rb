@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 
 module IncidentIo
-  # Low-level API client. Handles auth, JSON, errors and retries.
+  # The API client. Handles auth, JSON, errors and retries.
   #
   #   client = IncidentIo::Client.new(api_key: ENV["INCIDENT_IO_API_KEY"])
-  #   client.request(:get, "/v2/incidents/#{id}")
-  #   client.paginate("/v2/incidents", items_key: "incidents").first(10)
+  #   client.incidents.show(id)                   # newest version of a resource
+  #   client.v1.incidents.list                    # a specific version
+  #   client.request(:get, "/v2/incidents/#{id}") # any endpoint, raw
   class Client
+    include Resources::Accessors
+
     DEFAULT_BASE_URL = "https://api.incident.io"
     DEFAULT_TIMEOUT = 60
     DEFAULT_OPEN_TIMEOUT = 10
