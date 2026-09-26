@@ -22,6 +22,14 @@ module GeneratorHelpers
               "kind" => {"type" => "string", "enum" => %w[big small]}
             }
           },
+          "WidgetCreatedBody" => {
+            "type" => "object",
+            "properties" => {
+              "event_type" => {"type" => "string"},
+              "public_widget.created_v1" => {"$ref" => "#/components/schemas/WidgetV2"}
+            }
+          },
+          "AuditLogsWidgetDeletedV2" => {"type" => "object", "properties" => {"action" => {"type" => "string"}}},
           "PartV2" => {"type" => "object", "properties" => {"id" => {"type" => "string"}}},
           "PaginationMetaResultV2" => {
             "type" => "object",
@@ -48,6 +56,10 @@ module GeneratorHelpers
             }
           }
         }
+      },
+      "x-webhooks" => {
+        "/x-webhooks/public_widget.created_v1" => event("WidgetCreatedBody", "Widget created."),
+        "/x-audit-logs/widget.deleted.2" => event("AuditLogsWidgetDeletedV2", "Widget deleted.")
       },
       "paths" => {
         "/v2/widgets" => {
@@ -86,6 +98,13 @@ module GeneratorHelpers
     op["requestBody"] = {"content" => {"application/json" => {"schema" => {"$ref" => "#/components/schemas/#{body}"}}}} if body
     op["deprecated"] = true if deprecated
     op
+  end
+
+  def event(schema, description)
+    {"get" => {
+      "description" => description,
+      "responses" => {"200" => {"content" => {"application/json" => {"schema" => {"$ref" => "#/components/schemas/#{schema}"}}}}}
+    }}
   end
 
   def path_param(name)

@@ -1,0 +1,10 @@
+<%= header %>
+
+module IncidentIo
+  module Webhook
+    EVENTS: Hash[String, Symbol]
+
+    # Payload of any known webhook event.
+    type data = <%= api.webhook_events.map { |e| "Models::#{e.model}" }.uniq.sort.join("\n              | ") %>
+  end
+end

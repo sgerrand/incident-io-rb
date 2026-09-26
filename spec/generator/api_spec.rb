@@ -64,6 +64,24 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
     expect(widget.fields.last.description).to eq("One of: big, small.")
   end
 
+  it "reads webhook events and audit log entries" do
+    expect(api.webhook_events).to eq([
+      IncidentIoGenerator::WebhookEvent.new(type: "public_widget.created_v1", description: "Widget created.",
+        model: "WidgetV2")
+    ])
+    expect(api.audit_log_entries).to eq([
+      IncidentIoGenerator::AuditLogEntry.new(action: "widget.deleted", version: 2, description: "Widget deleted.",
+        model: "AuditLogsWidgetDeletedV2")
+    ])
+  end
+
+  it "rejects x-webhooks entries it doesn't understand" do
+    spec = mini_spec
+    spec["x-webhooks"]["/x-other/thing"] = event("WidgetCreatedBody", "?")
+
+    expect { described_class.new(spec) }.to raise_error(IncidentIoGenerator::Error, %r{unknown x-webhooks entry: /x-other/thing})
+  end
+
   it "applies method overrides" do
     api = described_class.new(mini_spec, "operations" => {"Widgets V2#Export" => {"method" => "export_csv"}})
 

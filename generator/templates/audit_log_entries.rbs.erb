@@ -1,0 +1,10 @@
+<%= header %>
+
+module IncidentIo
+  module AuditLog
+    ENTRIES: Hash[[String, Integer], Symbol]
+
+    # Any known audit log entry.
+    type entry = <%= api.audit_log_entries.map { |e| "Models::#{e.model}" }.uniq.sort.join("\n               | ") %>
+  end
+end

@@ -1,0 +1,15 @@
+# frozen_string_literal: true
+
+<%= header %>
+
+module IncidentIo
+  module Webhook
+    # Webhook event types and the model for each one's payload.
+    EVENTS = {
+<% api.webhook_events.each_with_index do |event, i| -%>
+<%= helpers.comment(helpers.first_sentence(event.description), 6) -%>
+      <%= event.type.inspect %> => :<%= event.model %><%= "," if i < api.webhook_events.size - 1 %>
+<% end -%>
+    }.freeze
+  end
+end

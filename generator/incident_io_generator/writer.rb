@@ -18,6 +18,10 @@ module IncidentIoGenerator
       sig/incident_io/models
       sig/incident_io/resources
       sig/incident_io/resources.rbs
+      lib/incident_io/webhook_events.rb
+      sig/incident_io/webhook_events.rbs
+      lib/incident_io/audit_log_entries.rb
+      sig/incident_io/audit_log_entries.rbs
     ].freeze
     # Keep method signatures on one line up to this width.
     MAX_LINE = 110
@@ -37,6 +41,10 @@ module IncidentIoGenerator
       files["lib/incident_io/models.rb"] = render("models_index.rb")
       files["lib/incident_io/resources.rb"] = render("resources_index.rb")
       files["sig/incident_io/resources.rbs"] = render("resources_index.rbs")
+      files["lib/incident_io/webhook_events.rb"] = render("webhook_events.rb")
+      files["sig/incident_io/webhook_events.rbs"] = render("webhook_events.rbs")
+      files["lib/incident_io/audit_log_entries.rb"] = render("audit_log_entries.rb")
+      files["sig/incident_io/audit_log_entries.rbs"] = render("audit_log_entries.rbs")
       api.models.each do |model|
         files["lib/incident_io/models/#{model.file_name}.rb"] = render("model.rb", model:)
         files["sig/incident_io/models/#{model.file_name}.rbs"] = render("model.rbs", model:)

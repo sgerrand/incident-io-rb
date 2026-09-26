@@ -32,6 +32,11 @@ module IncidentIoGenerator
     def file_path = "resources/#{version.downcase}/#{name}"
   end
 
+  # A webhook event type and the schema of its payload.
+  WebhookEvent = Data.define(:type, :description, :model)
+  # An audit log entry type and its schema.
+  AuditLogEntry = Data.define(:action, :version, :description, :model)
+
   Field = Data.define(:api_name, :member, :type, :yard, :rbs, :description, :required)
   ModelSchema = Data.define(:name, :file_name, :description, :fields)
 
@@ -45,7 +50,7 @@ module IncidentIoGenerator
     TAG_PATTERN = /\A(?<base>.+) (?<version>V\d+)\z/
     HTTP_METHODS = %w[get post put patch delete].freeze
 
-    attr_reader :resources, :models
+    attr_reader :resources, :models, :webhook_events, :audit_log_entries
 
     def initialize(spec, overrides = {})
       @spec = spec
@@ -54,6 +59,7 @@ module IncidentIoGenerator
       @overrides = overrides.fetch("operations", {})
       @models = build_models
       @resources = build_resources
+      @webhook_events, @audit_log_entries = build_events
       check_overrides_used!
     end
 
@@ -92,6 +98,38 @@ module IncidentIoGenerator
       raise Error, "models share a file name: #{duplicates.keys.join(", ")}" if duplicates.any?
 
       models
+    end
+
+    # Webhook events and audit log entries are described under `x-webhooks`,
+    # keyed like "/x-webhooks/public_incident.incident_created_v2" and
+    # "/x-audit-logs/alert_route.created.1".
+    def build_events
+      webhook_events = []
+      audit_log_entries = []
+
+      (@spec["x-webhooks"] || {}).sort.each do |key, item|
+        op = item.fetch("get")
+        body = Types.ref_name(op.dig("responses", "200", "content", "application/json", "schema") || {})
+        raise Error, "#{key}: no response schema" unless body
+
+        case key
+        when %r{\A/x-webhooks/(?<type>.+)\z}
+          type = Regexp.last_match(:type)
+          payload = Types.ref_name(@schemas.fetch(body).dig("properties", type) || {})
+          raise Error, "#{key}: body has no #{type} payload" unless payload
+
+          webhook_events << WebhookEvent.new(type:, description: op["description"], model: payload)
+        when %r{\A/x-audit-logs/(?<action>.+)\.(?<version>\d+)\z}
+          audit_log_entries << AuditLogEntry.new(
+            action: Regexp.last_match(:action), version: Regexp.last_match(:version).to_i,
+            description: op["description"], model: body
+          )
+        else
+          raise Error, "unknown x-webhooks entry: #{key}"
+        end
+      end
+
+      [webhook_events, audit_log_entries]
     end
 
     def build_resources
