@@ -41,8 +41,8 @@ module IncidentIo
       model ? Model.coerce(model, data) : data
     end
 
-    def paginate(path, **options)
-      client.paginate(path, **options)
+    def paginate(path, items_key:, **options)
+      client.paginate(path, items_key:, **options)
     end
 
     # Warns once per process that an endpoint is deprecated. Shown only when

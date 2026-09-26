@@ -7,7 +7,7 @@ module IncidentIo
   module Models
     # @!attribute [r] event_type
     #   @return [String, nil] What type of event is this webhook for?
-    # @!attribute [r] public_escalation.escalation_status_updated_v1
+    # @!attribute [r] public_escalation_escalation_status_updated_v1
     #   @return [EscalationWithStatusChangeV2, nil]
     WebhooksPublicEscalationStatusUpdatedV1ResponseBody = Model.define(
       event_type: :string,

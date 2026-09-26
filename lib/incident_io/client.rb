@@ -84,16 +84,16 @@ module IncidentIo
       idempotent = IDEMPOTENT_METHODS.include?(method) if idempotent.nil?
       max_retries = options.fetch(:max_retries, @max_retries)
 
-      call = {
+      request = Request.new(
         method:,
         url: build_url(path, query),
         headers: build_headers(options, json_body: !body.nil?),
         body: body.nil? ? nil : JSON.generate(Util.serialize(body)),
         timeout: options.fetch(:timeout, @timeout),
         open_timeout: options.fetch(:open_timeout, @open_timeout)
-      }
+      )
 
-      with_retries(call, idempotent:, max_retries:)
+      with_retries(request, idempotent:, max_retries:)
     end
 
     # Returns a lazy Pager over every item of a cursor-paginated list.
@@ -101,7 +101,7 @@ module IncidentIo
     # @param items_key [String] key of the item array in the response,
     #   e.g. "incidents"
     # @param model [#from_api, nil] builds each item; raw hashes when nil
-    def paginate(path, items_key:, query: {}, model: nil, request_options: {})
+    def paginate(path, items_key:, query: nil, model: nil, request_options: {})
       Pager.new(self, path, items_key:, query:, model:, request_options:)
     end
 
@@ -111,35 +111,35 @@ module IncidentIo
 
     private
 
-    def with_retries(call, idempotent:, max_retries:)
+    def with_retries(request, idempotent:, max_retries:)
       attempt = 0
       loop do
-        response = perform(call, attempt)
+        response = perform(request, attempt)
         return response if response.success?
 
         error = APIError.from_response(response)
         delay = retry_delay(error, attempt, idempotent:, max_retries:)
         raise error unless delay
 
-        log { "retrying #{call[:method].upcase} after #{response.status} in #{delay.round(2)}s" }
+        log { "retrying #{request.method.upcase} after #{response.status} in #{delay.round(2)}s" }
         sleep_for(delay)
         attempt += 1
       rescue APIConnectionError => e
         raise e unless idempotent && attempt < max_retries
 
         delay = backoff(attempt)
-        log { "retrying #{call[:method].upcase} after #{e.class} in #{delay.round(2)}s" }
+        log { "retrying #{request.method.upcase} after #{e.class} in #{delay.round(2)}s" }
         sleep_for(delay)
         attempt += 1
       end
     end
 
-    def perform(call, attempt)
+    def perform(request, attempt)
       started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
-      response = @transport.call(**call)
+      response = @transport.call(request)
       log do
         elapsed = Process.clock_gettime(Process::CLOCK_MONOTONIC) - started
-        "#{call[:method].upcase} #{redact(call[:url])} -> #{response.status} " \
+        "#{request.method.upcase} #{redact(request.url)} -> #{response.status} " \
           "(#{(elapsed * 1000).round}ms, attempt #{attempt + 1})"
       end
       response
@@ -186,7 +186,8 @@ module IncidentIo
         "User-Agent" => @user_agent
       }
       headers["Content-Type"] = "application/json" if json_body
-      headers.merge(options.fetch(:headers, {}))
+      extra = options[:headers]
+      extra ? headers.merge(extra) : headers
     end
 
     def normalize_options(options)

@@ -7,7 +7,7 @@ module IncidentIo
   module Models
     # @!attribute [r] event_type
     #   @return [String, nil] What type of event is this webhook for?
-    # @!attribute [r] private_incident.incident_created_v2
+    # @!attribute [r] private_incident_incident_created_v2
     #   @return [WebhookPrivateResourceV2, nil]
     WebhooksPrivateIncidentIncidentCreatedV2ResponseBody = Model.define(
       event_type: :string,

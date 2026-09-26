@@ -7,7 +7,7 @@ module IncidentIo
   module Models
     # @!attribute [r] event_type
     #   @return [String, nil] What type of event is this webhook for?
-    # @!attribute [r] private_incident.membership_granted_v1
+    # @!attribute [r] private_incident_membership_granted_v1
     #   @return [WebhookIncidentUserV2, nil]
     WebhooksPrivateIncidentMembershipGrantedV1ResponseBody = Model.define(
       event_type: :string,

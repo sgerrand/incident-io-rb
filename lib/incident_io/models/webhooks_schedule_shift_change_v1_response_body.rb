@@ -7,7 +7,7 @@ module IncidentIo
   module Models
     # @!attribute [r] event_type
     #   @return [String, nil] What type of event is this webhook for?
-    # @!attribute [r] schedule.shift_change_v1
+    # @!attribute [r] schedule_shift_change_v1
     #   @return [ScheduleShiftChangeV2, nil]
     WebhooksScheduleShiftChangeV1ResponseBody = Model.define(
       event_type: :string,

@@ -21,7 +21,9 @@ module IncidentIo
   # class, a Proc returning a type, `[type]` for arrays and `map_of(type)`.
   #
   # API fields whose names clash with core Ruby methods (e.g. `class`,
-  # `method`, `members`) get a trailing underscore: `class_`.
+  # `method`, `members`) get a trailing underscore: `class_`. Characters that
+  # can't appear in a method name become underscores:
+  # `private_alert.alert_created_v1` => `private_alert_alert_created_v1`.
   module Model
     MapOf = Data.define(:type)
 
@@ -33,27 +35,26 @@ module IncidentIo
       fields = schema.to_h { |api_name, type| [member_name(api_name), [api_name.to_s, type]] }.freeze
       members = fields.keys
 
-      Data.define(*members) do
-        extend ClassMethods
-        include InstanceMethods
+      klass = Data.define(*members)
+      klass.extend(ClassMethods)
+      klass.include(InstanceMethods)
+      klass.instance_variable_set(:@fields, fields)
 
-        const_set(:FIELDS, fields)
+      # Every field is optional: the API leaves some out and adds others.
+      klass.define_method(:initialize) do |_raw: nil, **attrs|
+        unknown = attrs.keys - members
+        raise ArgumentError, "unknown keyword#{"s" if unknown.size > 1}: #{unknown.join(", ")}" if unknown.any?
 
-        # Every field is optional: the API leaves some out and adds others.
-        define_method(:initialize) do |_raw: nil, **attrs|
-          unknown = attrs.keys - members
-          raise ArgumentError, "unknown keyword#{"s" if unknown.size > 1}: #{unknown.join(", ")}" if unknown.any?
-
-          @_raw = _raw.nil? ? nil : _raw.dup.freeze
-          super(**members.to_h { |m| [m, attrs[m]] })
-        end
-
-        class_eval(&block) if block
+        @_raw = _raw.nil? ? nil : _raw.dup.freeze
+        super(**members.to_h { |m| [m, attrs[m]] })
       end
+
+      klass.class_eval(&block) if block
+      klass
     end
 
     def self.member_name(api_name)
-      name = api_name.to_sym
+      name = api_name.to_s.gsub(/[^A-Za-z0-9_]/, "_").to_sym
       reserved_names.include?(name) ? :"#{name}_" : name
     end
 
@@ -69,23 +70,33 @@ module IncidentIo
       when Array then Array(value).map { |v| coerce(type.first, v) }
       when MapOf then value.to_h { |k, v| [k, coerce(type.type, v)] }
       when :time then Util.parse_time(value) || value
-      when :date then Date.iso8601(value.to_s)
-      when :float then value.is_a?(Numeric) ? value.to_f : value
-      when Class then type.respond_to?(:from_api) ? type.from_api(value) : value
+      when :date then parse_date(value)
+      when :float then value.is_a?(Integer) ? value.to_f : value
+      when ClassMethods then type.from_api(value)
       else value
       end
-    rescue Date::Error
+    end
+
+    # Keeps the original value if it isn't a valid date.
+    def self.parse_date(value)
+      Date.iso8601(value.to_s)
+    rescue ArgumentError
       value
     end
 
     # Added to every model class.
     module ClassMethods
+      # Model fields: Ruby member name => [API field name, type].
+      def fields
+        @fields
+      end
+
       # Builds a model from a parsed JSON hash. Returns nil for nil.
       def from_api(hash)
         return nil if hash.nil?
         return hash if hash.is_a?(self)
 
-        attrs = self::FIELDS.to_h do |member, (api_name, type)|
+        attrs = fields.to_h do |member, (api_name, type)|
           [member, Model.coerce(type, hash[api_name])]
         end
         new(_raw: hash, **attrs)
@@ -108,10 +119,13 @@ module IncidentIo
       # A JSON-ready hash keyed by API field names. Fields that are nil are
       # left out.
       def to_api
-        self.class::FIELDS.each_with_object({}) do |(member, (api_name, _type)), out|
+        model_class = _ = self.class #: ClassMethods
+        out = {} #: Hash[String, untyped]
+        model_class.fields.each do |member, (api_name, _type)|
           value = public_send(member)
           out[api_name] = Util.serialize(value) unless value.nil?
         end
+        out
       end
     end
   end

@@ -14,7 +14,7 @@ module IncidentIo
     module_function
 
     def encode(params)
-      pairs = []
+      pairs = [] #: Array[[String, String]]
       (params || {}).each { |key, value| append(pairs, key.to_s, value) }
       URI.encode_www_form(pairs)
     end

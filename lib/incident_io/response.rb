@@ -2,7 +2,9 @@
 
 module IncidentIo
   # A raw HTTP response. Header names are lower case.
-  Response = Data.define(:status, :headers, :body) do
+  Response = Data.define(:status, :headers, :body)
+
+  class Response
     def success?
       (200..299).cover?(status)
     end
@@ -14,12 +16,13 @@ module IncidentIo
     # The body as a Hash/Array for JSON, a String otherwise (e.g. CSV), or
     # nil when empty.
     def parsed
-      return nil if body.nil? || body.empty?
-      return body unless json?
+      text = body
+      return nil if text.nil? || text.empty?
+      return text unless json?
 
-      JSON.parse(body)
+      JSON.parse(text)
     rescue JSON::ParserError
-      body
+      text
     end
   end
 end

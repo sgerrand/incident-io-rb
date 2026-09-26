@@ -53,6 +53,13 @@ RSpec.describe IncidentIo::Model do
     expect(model.class).to eq(incident)
   end
 
+  it "turns field names that aren't valid Ruby into method names" do
+    klass = described_class.define("private_alert.alert_created_v1": :string)
+
+    expect(klass.from_api("private_alert.alert_created_v1" => "x").private_alert_alert_created_v1).to eq("x")
+    expect(klass.new(private_alert_alert_created_v1: "x").to_api).to eq("private_alert.alert_created_v1" => "x")
+  end
+
   it "keeps unknown fields readable" do
     expect(model[:added_later]).to eq("surprise")
     expect(model.raw).to eq(payload)

@@ -7,7 +7,7 @@ module IncidentIo
   module Models
     # @!attribute [r] event_type
     #   @return [String, nil] What type of event is this webhook for?
-    # @!attribute [r] public_incident.postmortem_document_status_updated_v1
+    # @!attribute [r] public_incident_postmortem_document_status_updated_v1
     #   @return [PostmortemDocumentWithStatusChangeV1, nil]
     WebhooksPublicIncidentPostmortemDocumentStatusUpdatedV1ResponseBody = Model.define(
       event_type: :string,

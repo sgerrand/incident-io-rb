@@ -42,12 +42,12 @@ module IncidentIo
       klass.new(status: response.status, headers: response.headers, body: response.parsed)
     end
 
-    def initialize(status:, headers: {}, body: nil)
+    def initialize(status:, headers: nil, body: nil)
       @status = status
-      @headers = headers
+      @headers = headers || {}
       @body = body
 
-      data = body.is_a?(Hash) ? body : {}
+      data = body.is_a?(Hash) ? body : {} #: Hash[String, untyped]
       @type = data["type"]
       @request_id = data["request_id"]
       @errors = Array(data["errors"]).map { |e| build_detail(e) }
@@ -67,9 +67,10 @@ module IncidentIo
         return [at - Time.now, 0.0].max if at
       end
 
-      return nil unless rate_limit&.retry_after
+      at = rate_limit&.retry_after
+      return nil unless at
 
-      [rate_limit.retry_after - Time.now, 0.0].max
+      [at - Time.now, 0.0].max
     end
 
     private

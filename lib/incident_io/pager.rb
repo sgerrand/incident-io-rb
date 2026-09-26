@@ -20,8 +20,10 @@ module IncidentIo
       @fetch_next = fetch_next
     end
 
-    def each(&)
-      items.each(&)
+    def each(&block)
+      return items.each unless block
+
+      items.each(&block)
     end
 
     # False on the last page. Also false if the API sends back the cursor we
@@ -31,7 +33,10 @@ module IncidentIo
     end
 
     def next_page
-      next_page? ? @fetch_next.call(after) : nil
+      cursor = after
+      return nil if cursor.nil? || !next_page?
+
+      @fetch_next.call(cursor)
     end
   end
 
@@ -44,7 +49,7 @@ module IncidentIo
   class Pager
     include Enumerable
 
-    def initialize(client, path, items_key:, query: {}, model: nil, request_options: {})
+    def initialize(client, path, items_key:, query: nil, model: nil, request_options: {})
       @client = client
       @path = path
       @items_key = items_key
@@ -82,7 +87,8 @@ module IncidentIo
 
       data = @client.request(:get, @path, query: query, request_options: @request_options) || {}
       items = Array(data[@items_key])
-      items = items.map { |item| @model.from_api(item) } if @model
+      model = @model
+      items = items.map { |item| model.from_api(item) } if model
 
       Page.new(items: items, pagination_meta: data["pagination_meta"], cursor: cursor, data: data) { |after| fetch(after) }
     end
