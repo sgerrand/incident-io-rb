@@ -1,5 +1,7 @@
 # incident-io
 
+[![Coverage Status](https://coveralls.io/repos/github/sgerrand/incident-io-rb/badge.svg?branch=main)](https://coveralls.io/github/sgerrand/incident-io-rb?branch=main)
+
 A Ruby client for the incident.io API.
 
 Needs Ruby 3.3 or newer.
@@ -112,6 +114,7 @@ The client retries up to 2 times (change this with `max_retries:`):
 ```sh
 bundle install
 bundle exec rake            # run the specs
+COVERAGE=1 bundle exec rake # run the specs and write coverage/index.html
 bundle exec rake standard   # lint with Standard (standard:fix to fix)
 bundle exec rake typecheck  # type-check with Steep
 ```
