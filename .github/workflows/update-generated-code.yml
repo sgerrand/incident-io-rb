@@ -1,0 +1,84 @@
+name: Update generated code
+
+# Fetches the latest incident.io OpenAPI spec, regenerates the models and
+# resources, and opens (or updates) a pull request when they change.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      BRANCH: automation/update-generated-code
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
+        with:
+          ruby-version: "4.0"
+          bundler-cache: true
+
+      - name: Fetch spec and regenerate
+        run: bundle exec rake openapi:fetch generate
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if [ -z "$(git status --porcelain -- lib)" ]; then
+            echo "Generated code is up to date."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git status --short -- lib
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Pull requests opened with GITHUB_TOKEN don't trigger the Test
+      # workflow, so run the specs here before opening one.
+      - name: Run specs
+        if: steps.changes.outputs.changed == 'true'
+        run: bundle exec rake
+
+      - name: Open or update pull request
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        # The write token is only handed to git here, after the code from
+        # the repo and the spec has run.
+        run: |
+          gh auth setup-git
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch --force-create "$BRANCH"
+          git add -- lib
+          git commit --message "feat: update generated code from the latest OpenAPI spec"
+          git push --force origin "$BRANCH"
+
+          if [ "$(gh pr view "$BRANCH" --json state --jq .state 2>/dev/null)" = "OPEN" ]; then
+            echo "Updated the open pull request."
+          else
+            gh pr create \
+              --base "$GITHUB_REF_NAME" \
+              --head "$BRANCH" \
+              --title "feat: update generated code from the latest OpenAPI spec" \
+              --body-file - <<'BODY'
+          :tipping_hand_person: These changes update the generated models and resources in `lib/incident_io` from the latest incident.io OpenAPI spec.
+
+          The spec itself is not stored in git, so review the changes to the generated code. The specs passed in the workflow run that opened this pull request.
+
+          The Test workflow does not run on pull requests opened by GitHub Actions. To run it, close and reopen this pull request.
+          BODY
+          fi
