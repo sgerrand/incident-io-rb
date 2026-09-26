@@ -11,6 +11,8 @@ unless ENV.fetch("COVERAGE", "").empty?
     # Models are one Model.define call each with no logic of their own; which
     # ones load only says which the specs happen to touch.
     skip "lib/incident_io/models/"
+    # Bundler loads this through the gemspec before coverage starts.
+    skip "lib/incident_io/version.rb"
 
     path = ->(file) { file.project_filename.delete_prefix("/") }
     generated = %r{\Alib/incident_io/(resources|webhook_events\.rb|audit_log_entries\.rb|models\.rb)}
@@ -18,15 +20,16 @@ unless ENV.fetch("COVERAGE", "").empty?
     group("Generated") { |file| path[file].match?(generated) }
     group("Generator") { |file| path[file].start_with?("generator/") }
 
-    # Set a little below what the specs reach today. Generated code has no
-    # minimum: most of it counts as covered just by loading.
+    # Every line and branch is covered, and should stay that way. Generated
+    # resources are called by spec/incident_io/generated_operations_spec.rb.
     coverage :line do
-      minimum 95, per: group("Core")
-      minimum 93, per: group("Generator")
+      minimum 100, per: group("Core")
+      minimum 100, per: group("Generated")
+      minimum 100, per: group("Generator")
     end
     coverage :branch do
-      minimum 85, per: group("Core")
-      minimum 75, per: group("Generator")
+      minimum 100, per: group("Core")
+      minimum 100, per: group("Generator")
     end
   end
 end
