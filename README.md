@@ -47,6 +47,43 @@ client.request(:get, "/v2/incidents/01ABC")
 client.paginate("/v2/incidents", items_key: "incidents").first(10)
 ```
 
+### Webhooks
+
+`IncidentIo::Webhook.construct_event` checks a webhook's signature and turns
+it into an event. Pass the raw request body, the request headers and your
+endpoint's signing secret (it starts with `whsec_`):
+
+```ruby
+# In a Rails controller
+event = IncidentIo::Webhook.construct_event(
+  request.raw_post, request.headers, secret: ENV["INCIDENT_IO_WEBHOOK_SECRET"]
+)
+
+case event.type
+when "public_incident.incident_created_v2"
+  puts event.data.name
+when "private_incident.incident_created_v2"
+  # Private events only include an ID, so fetch the details.
+  incident = client.incidents.show(event.data.id)
+end
+```
+
+It raises `IncidentIo::Webhook::SignatureError` if the signature is wrong or
+the webhook is more than 5 minutes old. `event.id` stays the same when
+incident.io retries a webhook, so you can use it to skip duplicates.
+
+### Audit logs
+
+incident.io sends audit logs to a log stream (e.g. Datadog, Splunk or S3),
+not through the API. `IncidentIo::AuditLog.parse` turns an entry into a
+model:
+
+```ruby
+entry = IncidentIo::AuditLog.parse(line)
+entry.action      # => "alert_route.created"
+entry.actor.name
+```
+
 ### Types
 
 The gem ships [RBS](https://github.com/ruby/rbs) signatures in `sig/`, so
