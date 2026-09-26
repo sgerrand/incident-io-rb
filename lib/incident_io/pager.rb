@@ -5,10 +5,13 @@ module IncidentIo
   class Page
     include Enumerable
 
-    attr_reader :items, :after, :page_size, :total_record_count
+    attr_reader :items, :after, :page_size, :total_record_count, :data
 
-    def initialize(items:, pagination_meta:, cursor:, &fetch_next)
+    # `data` is the whole parsed response, for fields other than the items
+    # (e.g. `catalog_type` when listing catalog entries).
+    def initialize(items:, pagination_meta:, cursor:, data: {}, &fetch_next)
       meta = pagination_meta || {}
+      @data = data
       @items = items
       @after = meta["after"]
       @page_size = meta["page_size"]
@@ -81,7 +84,7 @@ module IncidentIo
       items = Array(data[@items_key])
       items = items.map { |item| @model.from_api(item) } if @model
 
-      Page.new(items: items, pagination_meta: data["pagination_meta"], cursor: cursor) { |after| fetch(after) }
+      Page.new(items: items, pagination_meta: data["pagination_meta"], cursor: cursor, data: data) { |after| fetch(after) }
     end
   end
 end
