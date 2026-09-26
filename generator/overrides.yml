@@ -1,0 +1,9 @@
+# Changes applied on top of openapi/openapi.json, keyed by operationId.
+#
+#   method: name of the generated Ruby method
+operations:
+  # GET and POST versions of the same heartbeat ping.
+  "Heartbeat V2#Ping#1":
+    method: ping_with_get
+  "Utilities V1#OpenAPIV3":
+    method: openapi_spec

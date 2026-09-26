@@ -1,0 +1,25 @@
+# frozen_string_literal: true
+
+<%= header %>
+
+module IncidentIo
+  module Models
+<%= helpers.comment(model.description, 4) -%>
+<% if model.description && model.fields.any? -%>
+    #
+<% end -%>
+<% model.fields.each do |f| -%>
+    # @!attribute [r] <%= f.member %>
+    #   @return [<%= f.yard %>, nil]<%= " #{helpers.first_sentence(f.description)}" if f.description %>
+<% end -%>
+<% if model.fields.empty? -%>
+    <%= model.name %> = Model.define
+<% else -%>
+    <%= model.name %> = Model.define(
+<% model.fields.each_with_index do |f, i| -%>
+      <%= helpers.model_key(f.api_name) %> <%= f.type %><%= "," if i < model.fields.size - 1 %>
+<% end -%>
+    )
+<% end -%>
+  end
+end

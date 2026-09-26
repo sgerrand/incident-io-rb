@@ -1,0 +1,13 @@
+# frozen_string_literal: true
+
+<%= header %>
+
+module IncidentIo
+  # One model per schema in the incident.io OpenAPI spec. Each loads the first
+  # time it is used.
+  module Models
+<% api.models.each do |model| -%>
+    autoload :<%= model.name %>, "#{__dir__}/models/<%= model.file_name %>"
+<% end -%>
+  end
+end

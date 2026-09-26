@@ -3,3 +3,4 @@
 /vendor/
 /coverage/
 *.gem
+/openapi/openapi.json

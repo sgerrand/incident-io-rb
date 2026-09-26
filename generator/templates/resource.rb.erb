@@ -1,0 +1,25 @@
+# frozen_string_literal: true
+
+<%= header %>
+
+module IncidentIo
+  module Resources
+    module <%= resource.version %>
+<%= helpers.comment(resource.description || resource.tag, 6) -%>
+      class <%= resource.class_name %> < Resource
+<% resource.operations.each_with_index do |op, i| -%>
+<% if i > 0 -%>
+
+<% end -%>
+<%= helpers.method_docs(op, 8) -%>
+        <%= helpers.signature(op, 8) %>
+<% if op.deprecated -%>
+          deprecated!(<%= op.full_name.inspect %><%= ", #{op.replacement.inspect}" if op.replacement %>)
+<% end -%>
+<%= helpers.call(op, 10) %>
+        end
+<% end -%>
+      end
+    end
+  end
+end
