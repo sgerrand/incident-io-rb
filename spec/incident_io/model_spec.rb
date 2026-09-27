@@ -98,6 +98,31 @@ RSpec.describe IncidentIo::Model do
     expect(incident.from_api(model)).to be(model)
   end
 
+  describe "which fields are sent" do
+    it "sends fields passed to new, with nil as null, and leaves the rest out" do
+      expect(severity.new(id: "s1", name: nil).to_api).to eq("id" => "s1", "name" => nil)
+    end
+
+    it "sends only the keys the API gave, keeping nulls" do
+      expect(severity.from_api("id" => "s1", "name" => nil).to_api).to eq("id" => "s1", "name" => nil)
+    end
+
+    it "keeps given fields and the raw payload through #with" do
+      original = severity.from_api("id" => "s1", "extra" => true)
+      changed = original.with(name: nil)
+
+      expect(changed.to_api).to eq("id" => "s1", "name" => nil)
+      expect(changed[:extra]).to be(true)
+      expect(changed).to be_a(severity)
+    end
+
+    it "returns itself from #with without changes" do
+      model = severity.new(id: "s1")
+
+      expect(model.with).to be(model)
+    end
+  end
+
   it "keeps floats as they are" do
     expect(incident.from_api("score" => 2.5).score).to eq(2.5)
   end

@@ -50,11 +50,14 @@ module IncidentIo
       klass.instance_variable_set(:@fields, fields)
 
       # Every field is optional: the API leaves some out and adds others.
+      # Fields that were passed, even as nil, are remembered so to_api sends
+      # them and leaves the rest out.
       klass.define_method(:initialize) do |raw: nil, **attrs|
         unknown = attrs.keys - members
         raise ArgumentError, "unknown keyword#{"s" if unknown.size > 1}: #{unknown.join(", ")}" if unknown.any?
 
         @_raw = raw.nil? ? nil : raw.dup.freeze
+        @_given = attrs.keys.freeze
         super(**members.to_h { |m| [m, attrs[m]] })
       end
 
@@ -120,14 +123,18 @@ module IncidentIo
 
       # Builds a model from a parsed JSON hash
       #
+      # Only the keys in the hash count as given, so a key the API left out
+      # stays out if the model is sent back, and a null stays null.
+      #
       # @param hash [Hash, nil] a model is returned unchanged
       # @return [Object, nil] the model, or nil for nil
       def from_api(hash)
         return nil if hash.nil?
         return hash if hash.is_a?(self)
 
-        attrs = fields.to_h do |member, (api_name, type)|
-          [member, Model.coerce(type, hash[api_name])]
+        attrs = {} #: Hash[Symbol, untyped]
+        fields.each do |member, (api_name, type)|
+          attrs[member] = Model.coerce(type, hash[api_name]) if hash.key?(api_name)
         end
         new(raw: hash, **attrs)
       end
@@ -152,17 +159,32 @@ module IncidentIo
         raw&.[](key.to_s)
       end
 
+      # A copy with some fields changed
+      #
+      # Keeps which fields were given and the raw payload, which Data#with
+      # would lose.
+      #
+      # @param changes [Hash{Symbol => Object}]
+      # @return [Object] a model of the same class
+      def with(**changes)
+        return self if changes.empty?
+
+        model_class = _ = self.class
+        given = @_given.to_h { |member| [member, public_send(member)] }
+        model_class.new(raw: @_raw, **given, **changes)
+      end
+
       # A hash ready for JSON, keyed by API field names
       #
-      # Fields that are nil are left out.
+      # Fields that were given are included, with nil sent as null. Fields
+      # that weren't given are left out.
       #
       # @return [Hash{String => Object}]
       def to_api
         model_class = _ = self.class #: ClassMethods
         out = {} #: Hash[String, untyped]
         model_class.fields.each do |member, (api_name, _type)|
-          value = public_send(member)
-          out[api_name] = Util.serialize(value) unless value.nil?
+          out[api_name] = Util.serialize(public_send(member)) if @_given.include?(member)
         end
         out
       end

@@ -64,6 +64,17 @@ RSpec.describe "generated resources" do
     expect(stub).to have_been_requested
   end
 
+  it "sends nil fields set on a nested model as null" do
+    stub = stub_request(:post, "#{BASE_URL}/v2/incidents/1/actions/edit").with(
+      body: {"incident" => {"name" => "New name", "summary" => nil}, "notify_incident_channel" => false}
+    ).to_return(json_response({"incident" => {"id" => "1"}}))
+
+    client.incidents.edit("1", incident: IncidentIo::Models::IncidentEditPayloadV2.new(name: "New name", summary: nil),
+      notify_incident_channel: false)
+
+    expect(stub).to have_been_requested
+  end
+
   it "accepts models and hashes as arguments" do
     stub = stub_request(:post, "#{BASE_URL}/v2/incidents/1/actions/edit").with(
       body: {"incident" => {"name" => "New name"}, "notify_incident_channel" => false}
