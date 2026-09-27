@@ -23,7 +23,7 @@ jobs:
       matrix:
         ruby: ["3.3", "3.4", "4.0", head]
     env:
-      BUNDLE_WITHOUT: lint:typecheck
+      BUNDLE_WITHOUT: docs:lint:typecheck
       # Coverage is measured and uploaded on one Ruby version only.
       COVERAGE: ${{ matrix.ruby == '4.0' && '1' || '' }}
     steps:

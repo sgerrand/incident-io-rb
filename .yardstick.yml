@@ -1,0 +1,16 @@
+# Yardstick checks the YARD docs in lib/. `rake yardstick` fails below the
+# threshold (a percentage of passing checks).
+threshold: 100
+path: "lib/**/*.rb"
+rules:
+  # This gem doesn't use @api tags or require an @example on every method.
+  ApiTag::Presence:
+    enabled: false
+  ApiTag::Inclusion:
+    enabled: false
+  ApiTag::ProtectedMethod:
+    enabled: false
+  ApiTag::PrivateMethod:
+    enabled: false
+  ExampleTag:
+    enabled: false

@@ -22,3 +22,10 @@ group :lint do
   gem "rubocop"
   gem "standard", "~> 1.56"
 end
+
+# Checking YARD docs with Yardstick. CI only installs it for the Yardstick
+# job. YARD's legacy parser needs irb, which Ruby 4.0 no longer includes.
+group :docs do
+  gem "irb"
+  gem "yardstick", "~> 0.9.9"
+end

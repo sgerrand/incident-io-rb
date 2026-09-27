@@ -13,6 +13,19 @@ rescue LoadError
   nil
 end
 
+desc "Check the YARD docs in lib/ with Yardstick (see .yardstick.yml)"
+task :yardstick do
+  require "yaml"
+  require "yardstick"
+
+  config = Yardstick::Config.coerce(YAML.safe_load_file(".yardstick.yml"))
+  measurements = Yardstick.measure(config)
+  measurements.puts
+  coverage = (measurements.coverage * 100).to_f
+
+  abort "Yardstick: #{coverage.round(1)}% is below the #{config.threshold}% threshold" if coverage < config.threshold
+end
+
 desc "Type-check lib/ against the signatures in sig/ with Steep"
 task :typecheck do
   sh "steep", "check"

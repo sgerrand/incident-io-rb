@@ -125,6 +125,7 @@ bundle exec rake            # run the specs
 COVERAGE=1 bundle exec rake # run the specs and write coverage/index.html
 bundle exec rake standard   # lint with Standard (standard:fix to fix)
 bundle exec rake typecheck  # type-check with Steep
+bundle exec rake yardstick  # check the YARD docs with Yardstick
 ```
 
 The models and resources in `lib/incident_io/models` and
