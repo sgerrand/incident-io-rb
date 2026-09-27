@@ -1,0 +1,29 @@
+module IncidentIo
+  module Webhook
+    # A Rack app or middleware. Rack responses are rarely typed, so its
+    # response is untyped.
+    interface _RackApp
+      def call: (Hash[String, untyped] env) -> untyped
+    end
+
+    # Rack middleware that checks and parses incident.io webhooks.
+    class Middleware
+      DEFAULT_PATH: String
+      ENV_KEY: String
+
+      @app: _RackApp
+      @secret: String
+      @path: String
+      @tolerance: Integer
+      @handler: (^(Event) -> void)?
+
+      def initialize: (_RackApp app, secret: String, ?path: String, ?tolerance: Integer) ?{ (Event event) -> void } -> void
+
+      def call: (Hash[String, untyped] env) -> untyped
+
+      private
+
+      def read_body: (Hash[String, untyped] env) -> String
+    end
+  end
+end

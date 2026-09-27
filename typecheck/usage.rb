@@ -55,5 +55,9 @@ when IncidentIo::Models::WebhookPrivateResourceV2 then client.incidents.show(dat
 end
 event.id&.length
 
+rack_app = ->(_env) { [200, {"content-type" => "text/plain"}, ["ok"]] }
+IncidentIo::Webhook::Middleware.new(rack_app, secret: "secret") { |webhook| webhook.type&.length }
+IncidentIo::Webhook::Middleware.new(rack_app, secret: "secret", path: "/hooks").call({"REQUEST_METHOD" => "GET"})
+
 entry = IncidentIo::AuditLog.parse('{"action": "alert_route.created", "version": 1}')
 entry.actor&.name if entry.is_a?(IncidentIo::Models::AuditLogsAlertRouteCreatedV1)

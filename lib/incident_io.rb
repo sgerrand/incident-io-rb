@@ -22,6 +22,7 @@ require_relative "incident_io/resources"
 require_relative "incident_io/client"
 require_relative "incident_io/webhook"
 require_relative "incident_io/webhook_events"
+require_relative "incident_io/webhook_middleware"
 require_relative "incident_io/audit_log"
 require_relative "incident_io/audit_log_entries"
 
