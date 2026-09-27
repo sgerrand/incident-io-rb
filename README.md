@@ -86,6 +86,58 @@ It raises `IncidentIo::Webhook::SignatureError` if the signature is wrong or
 the webhook is more than 5 minutes old. `event.id` stays the same when
 incident.io retries a webhook, so you can use it to skip duplicates.
 
+#### With Rack middleware
+
+`IncidentIo::Webhook::Middleware` checks webhooks sent to
+`/incident_io/webhooks` (change it with `path:`) and replies `400` to any that
+fail the check. Other requests pass through untouched.
+
+Give it a block to handle webhooks there. It replies `204` once the block
+returns. If the block raises an error, incident.io retries the webhook later.
+
+```ruby
+# config.ru
+use IncidentIo::Webhook::Middleware, secret: ENV["INCIDENT_IO_WEBHOOK_SECRET"] do |event|
+  IncidentWebhookJob.perform_later(event.raw) if event.type.start_with?("public_incident.")
+end
+```
+
+Without a block, it adds the event to the request and passes it on, so your
+app can handle it, e.g. in Rails:
+
+```ruby
+# config/application.rb
+config.middleware.use IncidentIo::Webhook::Middleware, secret: ENV["INCIDENT_IO_WEBHOOK_SECRET"]
+
+# config/routes.rb
+post "/incident_io/webhooks", to: "incident_io_webhooks#create"
+
+# app/controllers/incident_io_webhooks_controller.rb
+class IncidentIoWebhooksController < ActionController::API
+  def create
+    event = request.env[IncidentIo::Webhook::Middleware::ENV_KEY]
+    IncidentWebhookJob.perform_later(event.raw)
+    head :no_content
+  end
+end
+```
+
+#### In a Rails controller, without middleware
+
+```ruby
+class IncidentIoWebhooksController < ActionController::API
+  def create
+    event = IncidentIo::Webhook.construct_event(
+      request.raw_post, request.headers, secret: ENV["INCIDENT_IO_WEBHOOK_SECRET"]
+    )
+    IncidentWebhookJob.perform_later(event.raw)
+    head :no_content
+  rescue IncidentIo::Webhook::SignatureError
+    head :bad_request
+  end
+end
+```
+
 ### Audit logs
 
 incident.io sends audit logs to a log stream (e.g. Datadog, Splunk or S3),
