@@ -29,16 +29,42 @@ module IncidentIo
 
     REQUEST_OPTIONS = %i[api_key timeout open_timeout max_retries headers].freeze
 
-    attr_reader :base_url, :timeout, :open_timeout, :max_retries, :logger
+    # The API's address, without a trailing slash
+    #
+    # @return [String]
+    attr_reader :base_url
 
+    # Seconds to wait for a response
+    #
+    # @return [Integer, Float]
+    attr_reader :timeout
+
+    # Seconds to wait for a connection
+    #
+    # @return [Integer, Float]
+    attr_reader :open_timeout
+
+    # How many times to retry after the first attempt
+    #
+    # @return [Integer]
+    attr_reader :max_retries
+
+    # Gets one debug line per attempt
+    #
+    # @return [Logger, nil]
+    attr_reader :logger
+
+    # Creates a client
+    #
     # @param api_key [String] defaults to ENV["INCIDENT_IO_API_KEY"]
     # @param base_url [String] defaults to ENV["INCIDENT_IO_BASE_URL"] or the public API
-    # @param timeout [Numeric] seconds to wait for a response
-    # @param open_timeout [Numeric] seconds to wait for a connection
+    # @param timeout [Integer, Float] seconds to wait for a response
+    # @param open_timeout [Integer, Float] seconds to wait for a connection
     # @param max_retries [Integer] retries after the first attempt
     # @param logger [Logger, nil] gets one debug line per attempt
     # @param user_agent [String, nil] added before the gem's own user agent
     # @param transport [#call] see Transport::NetHTTP
+    # @raise [ConfigurationError] when there's no API key
     def initialize(
       api_key: ENV.fetch("INCIDENT_IO_API_KEY", nil),
       base_url: ENV.fetch("INCIDENT_IO_BASE_URL", DEFAULT_BASE_URL),
@@ -63,9 +89,12 @@ module IncidentIo
       @transport = transport
     end
 
-    # Sends a request and returns the parsed body: a Hash for JSON, a String
-    # for other content types (e.g. CSV) and nil for an empty body.
+    # Sends a request and returns the parsed body
     #
+    # @param method [Symbol, String] the HTTP method, e.g. :get
+    # @param path [String] e.g. "/v2/incidents"
+    # @param query [Hash, nil] query parameters; nil values are left out
+    # @param body [Hash, nil] sent as JSON
     # @param idempotent [Boolean, nil] whether 5xx and network errors may be
     #   retried. Defaults to true for GET/HEAD/PUT/DELETE. Set true for a POST
     #   that sends an `idempotency_key`.
@@ -73,11 +102,26 @@ module IncidentIo
     #   open_timeout, max_retries, headers
     # @raise [APIError] for non-2xx responses
     # @raise [APIConnectionError] when no response arrived
+    # @return [Hash, Array, String, nil] parsed JSON, other text (e.g. CSV),
+    #   or nil for an empty body
     def request(method, path, query: nil, body: nil, idempotent: nil, request_options: {})
       execute(method, path, query:, body:, idempotent:, request_options:).parsed
     end
 
-    # Same as #request but returns the raw Response.
+    # Sends a request and returns the raw Response
+    #
+    # @param method [Symbol, String] the HTTP method, e.g. :get
+    # @param path [String] e.g. "/v2/incidents"
+    # @param query [Hash, nil] query parameters; nil values are left out
+    # @param body [Hash, nil] sent as JSON
+    # @param idempotent [Boolean, nil] whether 5xx and network errors may be
+    #   retried. Defaults to true for GET/HEAD/PUT/DELETE. Set true for a POST
+    #   that sends an `idempotency_key`.
+    # @param request_options [Hash] per-call overrides: api_key, timeout,
+    #   open_timeout, max_retries, headers
+    # @raise [APIError] for non-2xx responses
+    # @raise [APIConnectionError] when no response arrived
+    # @return [Response]
     def execute(method, path, query: nil, body: nil, idempotent: nil, request_options: {})
       method = method.to_s.downcase.to_sym
       options = normalize_options(request_options)
@@ -96,21 +140,35 @@ module IncidentIo
       with_retries(request, idempotent:, max_retries:)
     end
 
-    # Returns a lazy Pager over every item of a cursor-paginated list.
+    # A lazy Pager over every item of a cursor-paginated list
     #
+    # @param path [String] e.g. "/v2/incidents"
     # @param items_key [String] key of the item array in the response,
     #   e.g. "incidents"
+    # @param query [Hash, nil] query parameters; `after` sets the first cursor
     # @param model [#from_api, nil] builds each item; raw hashes when nil
+    # @param request_options [Hash] see #request
+    # @return [Pager]
     def paginate(path, items_key:, query: nil, model: nil, request_options: {})
       Pager.new(self, path, items_key:, query:, model:, request_options:)
     end
 
+    # A short description that leaves out the API key
+    #
+    # @return [String]
     def inspect
       "#<#{self.class.name} base_url=#{base_url.inspect}>"
     end
 
     private
 
+    # Sends a request, retrying when that's safe and useful
+    #
+    # @param request [Request]
+    # @param idempotent [Boolean]
+    # @param max_retries [Integer]
+    # @raise [APIError, APIConnectionError] once retries run out
+    # @return [Response] a 2xx response
     def with_retries(request, idempotent:, max_retries:)
       attempt = 0
       loop do
@@ -134,6 +192,11 @@ module IncidentIo
       end
     end
 
+    # Sends one attempt through the transport and logs it
+    #
+    # @param request [Request]
+    # @param attempt [Integer] 0 for the first attempt
+    # @return [Response]
     def perform(request, attempt)
       started = Process.clock_gettime(Process::CLOCK_MONOTONIC)
       response = @transport.call(request)
@@ -145,7 +208,13 @@ module IncidentIo
       response
     end
 
-    # Seconds to wait before the next attempt, or nil to give up.
+    # How long to wait before the next attempt
+    #
+    # @param error [APIError]
+    # @param attempt [Integer]
+    # @param idempotent [Boolean]
+    # @param max_retries [Integer]
+    # @return [Float, nil] seconds, or nil to give up
     def retry_delay(error, attempt, idempotent:, max_retries:)
       return nil if attempt >= max_retries
 
@@ -163,22 +232,39 @@ module IncidentIo
       (wait && wait <= MAX_RETRY_AFTER) ? wait : backoff(attempt)
     end
 
-    # Exponential backoff with up to 25% jitter: ~0.5s, 1s, 2s ... 8s.
+    # Exponential backoff with up to 25% jitter: about 0.5s, 1s, 2s … 8s
+    #
+    # @param attempt [Integer]
+    # @return [Float] seconds
     def backoff(attempt)
       delay = [INITIAL_RETRY_DELAY * (2**attempt), MAX_RETRY_DELAY].min
       delay * (1 - (rand * 0.25))
     end
 
+    # Waits between attempts
+    #
+    # @param seconds [Integer, Float]
+    # @return [void]
     def sleep_for(seconds)
       sleep(seconds)
     end
 
+    # The full URL for a path and query
+    #
+    # @param path [String]
+    # @param query [Hash, nil]
+    # @return [String]
     def build_url(path, query)
       path = "/#{path}" unless path.start_with?("/")
       encoded = QueryEncoder.encode(query)
       encoded.empty? ? "#{base_url}#{path}" : "#{base_url}#{path}?#{encoded}"
     end
 
+    # The request headers, including auth
+    #
+    # @param options [Hash] normalized request options
+    # @param json_body [Boolean] whether a JSON body is sent
+    # @return [Hash{String => String}]
     def build_headers(options, json_body:)
       headers = {
         "Authorization" => "Bearer #{options.fetch(:api_key, @api_key)}",
@@ -190,6 +276,11 @@ module IncidentIo
       extra ? headers.merge(extra) : headers
     end
 
+    # Request options with symbol keys, checked for typos
+    #
+    # @param options [Hash, nil]
+    # @raise [ArgumentError] for unknown options
+    # @return [Hash{Symbol => Object}]
     def normalize_options(options)
       options = (options || {}).transform_keys(&:to_sym)
       unknown = options.keys - REQUEST_OPTIONS
@@ -198,11 +289,20 @@ module IncidentIo
       options
     end
 
+    # The URL with any `token` query value hidden, for logs
+    #
     # Some endpoints take a secret `token` in the query string.
+    #
+    # @param url [String]
+    # @return [String]
     def redact(url)
       url.gsub(/([?&]token=)[^&]*/, '\1[REDACTED]')
     end
 
+    # Logs a debug line, built only when the logger wants it
+    #
+    # @yieldreturn [String] the message
+    # @return [void]
     def log(&)
       logger&.debug { "[incident-io] #{yield}" }
     end

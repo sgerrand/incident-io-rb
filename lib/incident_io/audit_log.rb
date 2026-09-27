@@ -10,10 +10,12 @@ module IncidentIo
   module AuditLog
     module_function
 
-    # Returns the model for the entry's action and version, or the parsed
-    # Hash for entry types this gem doesn't know yet.
+    # Turns an audit log entry into its model
+    #
+    # Entry types this gem doesn't know yet come back as the parsed Hash.
     #
     # @param entry [String, Hash] the entry as JSON or already parsed
+    # @return [Object, Hash] the model for the entry's action and version
     def parse(entry)
       data = entry.is_a?(String) ? JSON.parse(entry) : entry
       model = ENTRIES[[data["action"], data["version"]]]

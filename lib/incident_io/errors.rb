@@ -22,8 +22,45 @@ module IncidentIo
     # `ErrorResponse.rate_limit`. `retry_after` is a Time.
     RateLimit = Data.define(:name, :limit, :remaining, :retry_after)
 
-    attr_reader :status, :type, :request_id, :errors, :rate_limit, :headers, :body
+    # The HTTP status
+    #
+    # @return [Integer]
+    attr_reader :status
 
+    # The general kind of error, e.g. "validation_error"
+    #
+    # @return [String, nil]
+    attr_reader :type
+
+    # The API's ID for the request, useful when asking incident.io for help
+    #
+    # @return [String, nil]
+    attr_reader :request_id
+
+    # What went wrong, e.g. one entry per invalid field
+    #
+    # @return [Array<Detail>]
+    attr_reader :errors
+
+    # The rate limit that was hit, if any
+    #
+    # @return [RateLimit, nil]
+    attr_reader :rate_limit
+
+    # The response headers, with lower-case names
+    #
+    # @return [Hash{String => String}]
+    attr_reader :headers
+
+    # The parsed response body
+    #
+    # @return [Hash, String, nil]
+    attr_reader :body
+
+    # Builds the error class that matches a response's status
+    #
+    # @param response [Response]
+    # @return [APIError]
     def self.from_response(response)
       klass =
         case response.status
@@ -42,6 +79,11 @@ module IncidentIo
       klass.new(status: response.status, headers: response.headers, body: response.parsed)
     end
 
+    # Creates an error from a response's parts
+    #
+    # @param status [Integer]
+    # @param headers [Hash{String => String}, nil]
+    # @param body [Object] the parsed response body
     def initialize(status:, headers: nil, body: nil)
       @status = status
       @headers = headers || {}
@@ -56,7 +98,11 @@ module IncidentIo
       super(build_message)
     end
 
-    # Seconds the API asked us to wait before retrying, or nil.
+    # How long the API asked us to wait before retrying
+    #
+    # Read from the Retry-After header, or the rate limit in the body.
+    #
+    # @return [Float, nil] seconds, or nil when the API gave no hint
     def retry_after
       header = headers["retry-after"]
       if header
@@ -75,6 +121,10 @@ module IncidentIo
 
     private
 
+    # Builds a Detail from one entry of `ErrorResponse.errors`
+    #
+    # @param error [Hash]
+    # @return [Detail]
     def build_detail(error)
       source = error["source"] || {}
       Detail.new(
@@ -86,6 +136,10 @@ module IncidentIo
       )
     end
 
+    # Builds a RateLimit from `ErrorResponse.rate_limit`
+    #
+    # @param data [Object]
+    # @return [RateLimit, nil]
     def build_rate_limit(data)
       return nil unless data.is_a?(Hash)
 
@@ -97,6 +151,9 @@ module IncidentIo
       )
     end
 
+    # The exception message, e.g. "422 validation_error: Must be a URL"
+    #
+    # @return [String]
     def build_message
       parts = ["#{status}#{" #{type}" if type}"]
       detail = errors.map(&:message).compact.join("; ")

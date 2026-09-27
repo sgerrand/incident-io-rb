@@ -44,6 +44,16 @@ RSpec.describe IncidentIo::Pager do
     expect(first.next_page.map { |i| i["id"] }).to eq(%w[3 4])
   end
 
+  it "walks every page with auto_paging_each too" do
+    pager = client.paginate("/v2/incidents", items_key: "incidents", query: {page_size: 2})
+
+    ids = []
+    pager.auto_paging_each { |i| ids << i["id"] }
+
+    expect(ids).to eq(%w[1 2 3 4 5])
+    expect(pager.auto_paging_each).to be_a(Enumerator)
+  end
+
   it "returns enumerators without a block" do
     pager = client.paginate("/v2/incidents", items_key: "incidents", query: {page_size: 2})
 

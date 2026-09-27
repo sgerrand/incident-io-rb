@@ -27,10 +27,19 @@ module IncidentIo
   module Model
     MapOf = Data.define(:type)
 
+    # A type for objects with free-form keys, all with values of one type
+    #
+    # @param type [Object] the type of each value
+    # @return [MapOf]
     def self.map_of(type)
       MapOf.new(type: type)
     end
 
+    # Builds a model class
+    #
+    # @param schema [Hash{Symbol => Object}] API field name => type
+    # @yield optional methods to add to the class, evaluated in the class
+    # @return [Class] a Data subclass with ClassMethods and InstanceMethods
     def self.define(**schema, &block)
       fields = schema.to_h { |api_name, type| [member_name(api_name), [api_name.to_s, type]] }.freeze
       members = fields.keys
@@ -53,15 +62,27 @@ module IncidentIo
       klass
     end
 
+    # The Ruby method name for an API field name
+    #
+    # @param api_name [String, Symbol]
+    # @return [Symbol]
     def self.member_name(api_name)
       name = api_name.to_s.gsub(/[^A-Za-z0-9_]/, "_").to_sym
       reserved_names.include?(name) ? :"#{name}_" : name
     end
 
+    # Method names that fields can't use, as models already define them
+    #
+    # @return [Array<Symbol>]
     def self.reserved_names
       @reserved_names ||= (Data.instance_methods + InstanceMethods.instance_methods + %i[initialize]).freeze
     end
 
+    # Converts a parsed JSON value to a field's type
+    #
+    # @param type [Object] a type as described in the Model docs
+    # @param value [Object]
+    # @return [Object]
     def self.coerce(type, value)
       return nil if value.nil?
 
@@ -77,7 +98,10 @@ module IncidentIo
       end
     end
 
-    # Keeps the original value if it isn't a valid date.
+    # Parses an ISO 8601 date, keeping the original value if it isn't one
+    #
+    # @param value [Object]
+    # @return [Date, Object]
     def self.parse_date(value)
       Date.iso8601(value.to_s)
     rescue ArgumentError
@@ -86,12 +110,18 @@ module IncidentIo
 
     # Added to every model class.
     module ClassMethods
-      # Model fields: Ruby member name => [API field name, type].
+      # The model's fields
+      #
+      # @return [Hash{Symbol => Array(String, Object)}] Ruby member name =>
+      #   [API field name, type]
       def fields
         @fields
       end
 
-      # Builds a model from a parsed JSON hash. Returns nil for nil.
+      # Builds a model from a parsed JSON hash
+      #
+      # @param hash [Hash, nil] a model is returned unchanged
+      # @return [Object, nil] the model, or nil for nil
       def from_api(hash)
         return nil if hash.nil?
         return hash if hash.is_a?(self)
@@ -105,19 +135,28 @@ module IncidentIo
 
     # Added to every model instance.
     module InstanceMethods
-      # The payload this model was built from, or nil if built by hand.
+      # The payload this model was built from
+      #
+      # @return [Hash, nil] nil if the model was built by hand
       def raw
         @_raw
       end
 
-      # Reads a field by its API name from the raw payload. Useful for
-      # fields the API has added since this gem was generated.
+      # Reads a field by its API name from the raw payload
+      #
+      # Useful for fields the API has added since this gem was generated.
+      #
+      # @param key [String, Symbol]
+      # @return [Object, nil]
       def [](key)
         raw&.[](key.to_s)
       end
 
-      # A JSON-ready hash keyed by API field names. Fields that are nil are
-      # left out.
+      # A hash ready for JSON, keyed by API field names
+      #
+      # Fields that are nil are left out.
+      #
+      # @return [Hash{String => Object}]
       def to_api
         model_class = _ = self.class #: ClassMethods
         out = {} #: Hash[String, untyped]

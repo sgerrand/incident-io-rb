@@ -3,6 +3,9 @@
 module IncidentIo
   # The type of NOT_GIVEN.
   class NotGiven
+    # How NOT_GIVEN reads when printed
+    #
+    # @return [String]
     def inspect
       "IncidentIo::NOT_GIVEN"
     end

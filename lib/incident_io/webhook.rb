@@ -36,12 +36,14 @@ module IncidentIo
 
     module_function
 
-    # Checks the signature, then parses the webhook.
+    # Checks the signature, then parses the webhook
     #
     # @param payload [String] the raw request body, exactly as received
     # @param headers [#each] request headers: a Hash, Rails' request.headers or
     #   a Rack env
     # @param secret [String] the endpoint's signing secret, "whsec_..."
+    # @param tolerance [Integer] seconds a webhook may be early or late
+    # @param now [Time] the time to check against
     # @raise [SignatureError] when the webhook can't be trusted
     # @return [Event]
     def construct_event(payload, headers, secret:, tolerance: DEFAULT_TOLERANCE, now: Time.now)
@@ -49,8 +51,15 @@ module IncidentIo
       parse(payload, id: find_header(headers, "id"))
     end
 
-    # Raises SignatureError unless the webhook was signed with the secret and
-    # sent within the tolerance. Returns true.
+    # Checks that the webhook was signed with the secret and sent in time
+    #
+    # @param payload [String] the raw request body, exactly as received
+    # @param headers [#each] request headers
+    # @param secret [String] the endpoint's signing secret, "whsec_..."
+    # @param tolerance [Integer] seconds a webhook may be early or late
+    # @param now [Time] the time to check against
+    # @raise [SignatureError] when the webhook can't be trusted
+    # @return [true]
     def verify!(payload, headers, secret:, tolerance: DEFAULT_TOLERANCE, now: Time.now)
       id = find_header(headers, "id")
       timestamp = find_header(headers, "timestamp")
@@ -75,16 +84,24 @@ module IncidentIo
       true
     end
 
-    # The base64 HMAC-SHA256 signature of a webhook, as Svix computes it.
+    # The base64 HMAC-SHA256 signature of a webhook, as Svix computes it
+    #
+    # @param payload [String]
+    # @param id [String] the webhook-id header
+    # @param timestamp [Integer] the webhook-timestamp header
+    # @param secret [String] the endpoint's signing secret
+    # @return [String]
     def sign(payload, id:, timestamp:, secret:)
       key = decode_secret(secret)
       [OpenSSL::HMAC.digest("SHA256", key, "#{id}.#{timestamp}.#{payload}")].pack("m0")
     end
 
-    # Parses a webhook body without checking its signature. Only use this for
-    # payloads you already trust.
+    # Parses a webhook body without checking its signature
+    #
+    # Only use this for payloads you already trust.
     #
     # @param payload [String, Hash] the body as JSON or already parsed
+    # @param id [String, nil] the webhook-id header, if known
     # @return [Event]
     def parse(payload, id: nil)
       raw = payload.is_a?(String) ? JSON.parse(payload) : payload
@@ -94,8 +111,14 @@ module IncidentIo
       Event.new(id:, type:, data: model ? Models.const_get(model).from_api(data) : data, raw:)
     end
 
-    # Finds a webhook header, e.g. "id" => "webhook-id". Also accepts Svix's
-    # older "svix-" names and Rack env keys like "HTTP_WEBHOOK_ID".
+    # Finds a webhook header, e.g. "id" finds "webhook-id"
+    #
+    # Also accepts Svix's older "svix-" names and Rack env keys like
+    # "HTTP_WEBHOOK_ID".
+    #
+    # @param headers [#each]
+    # @param name [String]
+    # @return [String, nil]
     def find_header(headers, name)
       wanted = ["webhook-#{name}", "svix-#{name}"]
       headers.each do |key, value|
@@ -105,6 +128,11 @@ module IncidentIo
       nil
     end
 
+    # The key bytes from a signing secret
+    #
+    # @param secret [String] "whsec_" and base64, or just base64
+    # @raise [ConfigurationError] when the secret isn't valid base64
+    # @return [String]
     def decode_secret(secret)
       secret.delete_prefix(SECRET_PREFIX).unpack1("m0") #: String
     rescue ArgumentError

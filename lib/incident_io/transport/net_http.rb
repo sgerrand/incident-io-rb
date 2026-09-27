@@ -18,6 +18,11 @@ module IncidentIo
         OpenSSL::SSL::SSLError, Net::HTTPBadResponse, Net::ProtocolError
       ].freeze
 
+      # Sends a request
+      #
+      # @param request [Request]
+      # @raise [APITimeoutError, APIConnectionError] when no response arrives
+      # @return [Response]
       def call(request)
         uri = URI(request.url)
         host = uri.hostname
