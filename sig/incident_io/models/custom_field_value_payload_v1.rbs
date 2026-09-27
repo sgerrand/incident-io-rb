@@ -29,7 +29,8 @@ module IncidentIo
         ?value_numeric: String?,
         ?value_option_id: String?,
         ?value_text: String?,
-        ?value_timestamp: String?
+        ?value_timestamp: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

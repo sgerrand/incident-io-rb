@@ -13,7 +13,8 @@ module IncidentIo
 
       def self.new: (
         ?response: String?,
-        ?snooze_details: EscalationRespondSnoozeDetailsPayloadV2?
+        ?snooze_details: EscalationRespondSnoozeDetailsPayloadV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

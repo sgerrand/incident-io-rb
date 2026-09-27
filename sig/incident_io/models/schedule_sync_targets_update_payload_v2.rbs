@@ -12,7 +12,11 @@ module IncidentIo
       # Annotations that track metadata about this resource
       attr_reader annotations: Hash[String, String]?
 
-      def self.new: (?add_bot_to_group: bool?, ?annotations: Hash[String, String]?) -> instance
+      def self.new: (
+        ?add_bot_to_group: bool?,
+        ?annotations: Hash[String, String]?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?add_bot_to_group: bool?,

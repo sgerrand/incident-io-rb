@@ -12,7 +12,8 @@ module IncidentIo
 
       def self.new: (
         ?pagination_meta: PaginationMetaResultWithTotalV2?,
-        ?workflow_runs: Array[WorkflowRunSlimV2]?
+        ?workflow_runs: Array[WorkflowRunSlimV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

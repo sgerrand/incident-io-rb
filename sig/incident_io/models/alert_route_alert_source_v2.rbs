@@ -12,7 +12,11 @@ module IncidentIo
       # What conditions should alerts from this source meet to be included in this alert route?
       attr_reader condition_groups: Array[ConditionGroupV2]?
 
-      def self.new: (?alert_source_id: String?, ?condition_groups: Array[ConditionGroupV2]?) -> instance
+      def self.new: (
+        ?alert_source_id: String?,
+        ?condition_groups: Array[ConditionGroupV2]?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?alert_source_id: String?,

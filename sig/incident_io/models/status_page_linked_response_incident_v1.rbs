@@ -12,7 +12,7 @@ module IncidentIo
       # When the Response incident was linked to the status page incident
       attr_reader linked_at: Time?
 
-      def self.new: (?id: String?, ?linked_at: Time?) -> instance
+      def self.new: (?id: String?, ?linked_at: Time?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?id: String?, ?linked_at: Time?, ?raw: Hash[String, untyped]?) -> void
 

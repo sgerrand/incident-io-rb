@@ -23,7 +23,8 @@ module IncidentIo
         ?idempotency_key: String?,
         ?incident_id: String?,
         ?timestamp: Time?,
-        ?title: String?
+        ?title: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

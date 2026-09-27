@@ -48,7 +48,8 @@ module IncidentIo
         ?slack_channel_ids: Array[String]?,
         ?template_id: String?,
         ?update_sharing_mode: String?,
-        ?updated_at: Time?
+        ?updated_at: Time?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

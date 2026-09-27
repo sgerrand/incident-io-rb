@@ -17,7 +17,8 @@ module IncidentIo
       def self.new: (
         ?due_date_config: PolicyDueDateConfigV2?,
         ?requirements: Array[ConditionGroupV2]?,
-        ?run_on_private_incidents: bool?
+        ?run_on_private_incidents: bool?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

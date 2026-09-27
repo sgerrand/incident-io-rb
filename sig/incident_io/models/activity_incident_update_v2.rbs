@@ -27,7 +27,8 @@ module IncidentIo
         ?next_update_in_minutes: Integer?,
         ?previous_severity: SeverityV2?,
         ?previous_status: IncidentStatusV2?,
-        ?updater: ActorV2?
+        ?updater: ActorV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

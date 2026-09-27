@@ -10,7 +10,7 @@ module IncidentIo
       # Every address our traffic to you may originate from
       attr_reader ip_ranges: Array[IPRangeV1]?
 
-      def self.new: (?ip_ranges: Array[IPRangeV1]?) -> instance
+      def self.new: (?ip_ranges: Array[IPRangeV1]?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?ip_ranges: Array[IPRangeV1]?, ?raw: Hash[String, untyped]?) -> void
 

@@ -16,7 +16,13 @@ module IncidentIo
       # The public URL of this status page
       attr_reader public_url: String?
 
-      def self.new: (?description: String?, ?id: String?, ?name: String?, ?public_url: String?) -> instance
+      def self.new: (
+        ?description: String?,
+        ?id: String?,
+        ?name: String?,
+        ?public_url: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?description: String?,

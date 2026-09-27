@@ -20,7 +20,8 @@ module IncidentIo
         ?custom_field_id: String?,
         ?id: String?,
         ?sort_key: Integer?,
-        ?value: String?
+        ?value: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

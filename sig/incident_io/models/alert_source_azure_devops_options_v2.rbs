@@ -10,7 +10,7 @@ module IncidentIo
       # Which Azure DevOps projects should this alert source watch for work item updates?
       attr_reader project_ids: Array[String]?
 
-      def self.new: (?project_ids: Array[String]?) -> instance
+      def self.new: (?project_ids: Array[String]?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?project_ids: Array[String]?, ?raw: Hash[String, untyped]?) -> void
 

@@ -25,7 +25,8 @@ module IncidentIo
         ?rotation_id: String?,
         ?schedule_id: String?,
         ?start_at: Time?,
-        ?user: UserReferencePayloadV2?
+        ?user: UserReferencePayloadV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

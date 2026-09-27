@@ -13,7 +13,7 @@ module IncidentIo
       # New Datadog Application key
       attr_reader app_key: String?
 
-      def self.new: (?api_key: String?, ?app_key: String?) -> instance
+      def self.new: (?api_key: String?, ?app_key: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?api_key: String?, ?app_key: String?, ?raw: Hash[String, untyped]?) -> void
 

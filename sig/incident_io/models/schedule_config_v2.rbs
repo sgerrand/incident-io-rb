@@ -10,7 +10,7 @@ module IncidentIo
       # Rotas in this schedule
       attr_reader rotations: Array[ScheduleRotationV2]?
 
-      def self.new: (?rotations: Array[ScheduleRotationV2]?) -> instance
+      def self.new: (?rotations: Array[ScheduleRotationV2]?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?rotations: Array[ScheduleRotationV2]?, ?raw: Hash[String, untyped]?) -> void
 

@@ -13,7 +13,12 @@ module IncidentIo
       attr_reader previous_visibility: String?
       attr_reader updater: ActorV2?
 
-      def self.new: (?new_visibility: String?, ?previous_visibility: String?, ?updater: ActorV2?) -> instance
+      def self.new: (
+        ?new_visibility: String?,
+        ?previous_visibility: String?,
+        ?updater: ActorV2?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?new_visibility: String?,

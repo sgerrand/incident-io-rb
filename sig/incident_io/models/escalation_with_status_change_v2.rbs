@@ -18,7 +18,8 @@ module IncidentIo
         ?actor: ActorV2?,
         ?escalation: EscalationV2?,
         ?new_status: String?,
-        ?previous_status: String?
+        ?previous_status: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

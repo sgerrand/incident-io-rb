@@ -16,7 +16,8 @@ module IncidentIo
       def self.new: (
         ?auto_cancel_escalations: bool?,
         ?escalation_targets: Array[AlertRouteEscalationTargetPayloadV3]?,
-        ?when_alert_joins_group: AlertRouteWhenAlertJoinsGroupPayloadV3?
+        ?when_alert_joins_group: AlertRouteWhenAlertJoinsGroupPayloadV3?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

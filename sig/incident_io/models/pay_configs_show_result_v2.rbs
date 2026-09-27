@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader pay_config: PayConfigV2?
 
-      def self.new: (?pay_config: PayConfigV2?) -> instance
+      def self.new: (?pay_config: PayConfigV2?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?pay_config: PayConfigV2?, ?raw: Hash[String, untyped]?) -> void
 

@@ -21,7 +21,8 @@ module IncidentIo
         ?component_statuses: Array[StatusPageIncidentAffectedComponentV2]?,
         ?incident_status: String?,
         ?message: String?,
-        ?published_at: Time?
+        ?published_at: Time?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -12,7 +12,11 @@ module IncidentIo
       # The seat types assigned to this SCIM group before the mapping was changed
       attr_reader before_seat_types: String?
 
-      def self.new: (?after_seat_types: String?, ?before_seat_types: String?) -> instance
+      def self.new: (
+        ?after_seat_types: String?,
+        ?before_seat_types: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?after_seat_types: String?,

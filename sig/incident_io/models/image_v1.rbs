@@ -12,7 +12,7 @@ module IncidentIo
       # Pre-signed URL to fetch the image, valid for 10 minutes
       attr_reader url: String?
 
-      def self.new: (?id: String?, ?url: String?) -> instance
+      def self.new: (?id: String?, ?url: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?id: String?, ?url: String?, ?raw: Hash[String, untyped]?) -> void
 

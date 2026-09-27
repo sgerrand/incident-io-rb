@@ -14,7 +14,8 @@ module IncidentIo
 
       def self.new: (
         ?auto_cancel_escalations: bool?,
-        ?escalation_targets: Array[AlertRouteEscalationTargetV2]?
+        ?escalation_targets: Array[AlertRouteEscalationTargetV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

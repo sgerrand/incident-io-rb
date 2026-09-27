@@ -22,7 +22,8 @@ module IncidentIo
         ?digit: String?,
         ?id: String?,
         ?path: Array[CallRoutePathNodeV2]?,
-        ?prompt: String?
+        ?prompt: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -10,7 +10,7 @@ module IncidentIo
       # Whether or not the user was able to access the private incident One of: granted, denied.
       attr_reader outcome: String?
 
-      def self.new: (?outcome: String?) -> instance
+      def self.new: (?outcome: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?outcome: String?, ?raw: Hash[String, untyped]?) -> void
 

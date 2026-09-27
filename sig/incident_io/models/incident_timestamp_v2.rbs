@@ -14,7 +14,7 @@ module IncidentIo
       # Order in which this timestamp should be shown
       attr_reader rank: Integer?
 
-      def self.new: (?id: String?, ?name: String?, ?rank: Integer?) -> instance
+      def self.new: (?id: String?, ?name: String?, ?rank: Integer?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?id: String?, ?name: String?, ?rank: Integer?, ?raw: Hash[String, untyped]?) -> void
 

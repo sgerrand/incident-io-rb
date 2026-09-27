@@ -16,7 +16,8 @@ module IncidentIo
       def self.new: (
         ?entry_window_end: Time?,
         ?entry_window_start: Time?,
-        ?schedule: ScheduleUpdatePayloadV2?
+        ?schedule: ScheduleUpdatePayloadV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

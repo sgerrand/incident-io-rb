@@ -20,7 +20,8 @@ module IncidentIo
         ?for_each: String?,
         ?id: String?,
         ?name: String?,
-        ?param_bindings: Array[EngineParamBindingPayloadV2]?
+        ?param_bindings: Array[EngineParamBindingPayloadV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

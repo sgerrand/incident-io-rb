@@ -12,7 +12,7 @@ module IncidentIo
       # The URL to fetch the next page of entries
       attr_reader after_url: String?
 
-      def self.new: (?after: String?, ?after_url: String?) -> instance
+      def self.new: (?after: String?, ?after_url: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?after: String?, ?after_url: String?, ?raw: Hash[String, untyped]?) -> void
 

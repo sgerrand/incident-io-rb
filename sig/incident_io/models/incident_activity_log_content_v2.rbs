@@ -48,7 +48,8 @@ module IncidentIo
         ?role_update: ActivityRoleUpdateV2?,
         ?status_change: ActivityStatusChangeV2?,
         ?summary_update: ActivitySummaryUpdateV2?,
-        ?workflow_ran: ActivityWorkflowRanV2?
+        ?workflow_ran: ActivityWorkflowRanV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

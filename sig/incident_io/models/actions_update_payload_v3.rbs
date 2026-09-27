@@ -14,7 +14,12 @@ module IncidentIo
       # Status of the action.
       attr_reader status: String?
 
-      def self.new: (?assignee_id: String?, ?description: String?, ?status: String?) -> instance
+      def self.new: (
+        ?assignee_id: String?,
+        ?description: String?,
+        ?status: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?assignee_id: String?,

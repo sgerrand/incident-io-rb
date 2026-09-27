@@ -10,7 +10,7 @@ module IncidentIo
       # The ID of the escalation path to reassign to
       attr_reader escalation_path_id: String?
 
-      def self.new: (?escalation_path_id: String?) -> instance
+      def self.new: (?escalation_path_id: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?escalation_path_id: String?, ?raw: Hash[String, untyped]?) -> void
 

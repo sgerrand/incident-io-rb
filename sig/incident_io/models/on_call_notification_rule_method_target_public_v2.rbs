@@ -15,7 +15,8 @@ module IncidentIo
       def self.new: (
         ?all: OnCallNotificationRuleMethodTargetAllPublicV2?,
         ?specific: OnCallNotificationRuleMethodTargetSpecificPublicV2?,
-        ?type: String?
+        ?type: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -23,7 +23,8 @@ module IncidentIo
         ?currency: String?,
         ?name: String?,
         ?rate_time_unit: String?,
-        ?timezone: String?
+        ?timezone: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

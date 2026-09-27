@@ -21,7 +21,8 @@ module IncidentIo
         ?label: String?,
         ?operations: Array[ExpressionOperationPayloadV3]?,
         ?reference: String?,
-        ?root_reference: String?
+        ?root_reference: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

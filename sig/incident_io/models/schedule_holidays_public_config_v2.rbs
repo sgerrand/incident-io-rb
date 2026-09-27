@@ -10,7 +10,7 @@ module IncidentIo
       # ISO 3166-1 alpha-2 country codes for the countries that this schedule is configured to view holidays for
       attr_reader country_codes: Array[String]?
 
-      def self.new: (?country_codes: Array[String]?) -> instance
+      def self.new: (?country_codes: Array[String]?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?country_codes: Array[String]?, ?raw: Hash[String, untyped]?) -> void
 

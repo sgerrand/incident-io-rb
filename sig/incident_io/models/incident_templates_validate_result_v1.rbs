@@ -10,7 +10,10 @@ module IncidentIo
       # Anything suspect about this config that isn't severe enough to reject it.
       attr_reader warnings: Array[IncidentTemplateValidateWarningV1]?
 
-      def self.new: (?warnings: Array[IncidentTemplateValidateWarningV1]?) -> instance
+      def self.new: (
+        ?warnings: Array[IncidentTemplateValidateWarningV1]?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?warnings: Array[IncidentTemplateValidateWarningV1]?,

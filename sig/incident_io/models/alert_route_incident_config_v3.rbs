@@ -23,7 +23,8 @@ module IncidentIo
         ?enabled: bool?,
         ?incident_template: EngineParamBindingV3?,
         ?membership_teams: EngineParamBindingV3?,
-        ?template: AlertRouteIncidentTemplateV3?
+        ?template: AlertRouteIncidentTemplateV3?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

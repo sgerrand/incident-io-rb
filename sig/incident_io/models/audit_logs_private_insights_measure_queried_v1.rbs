@@ -26,7 +26,8 @@ module IncidentIo
         ?metadata: AuditLogPrivateInsightsMeasureQueriedMetadataV2?,
         ?occurred_at: Time?,
         ?targets: Array[AuditLogTargetV2]?,
-        ?version: Integer?
+        ?version: Integer?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

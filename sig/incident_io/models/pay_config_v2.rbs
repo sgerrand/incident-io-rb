@@ -45,7 +45,8 @@ module IncidentIo
         ?rate_time_unit: String?,
         ?timezone: String?,
         ?updated_at: Time?,
-        ?weekly_rules: Array[PayConfigWeeklyRuleV2]?
+        ?weekly_rules: Array[PayConfigWeeklyRuleV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

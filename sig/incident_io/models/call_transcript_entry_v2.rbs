@@ -25,7 +25,8 @@ module IncidentIo
         ?id: String?,
         ?medium: String?,
         ?participant_name: String?,
-        ?timestamp: Time?
+        ?timestamp: Time?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

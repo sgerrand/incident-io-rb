@@ -12,7 +12,12 @@ module IncidentIo
       # Why it was dismissed
       attr_reader reason: String?
 
-      def self.new: (?dismissed_at: Time?, ?dismissed_by: ActorV2?, ?reason: String?) -> instance
+      def self.new: (
+        ?dismissed_at: Time?,
+        ?dismissed_by: ActorV2?,
+        ?reason: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?dismissed_at: Time?,

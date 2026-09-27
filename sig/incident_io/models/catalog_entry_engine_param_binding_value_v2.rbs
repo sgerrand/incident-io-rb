@@ -37,7 +37,8 @@ module IncidentIo
         ?reference: String?,
         ?sort_key: String?,
         ?unavailable: bool?,
-        ?value: String?
+        ?value: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

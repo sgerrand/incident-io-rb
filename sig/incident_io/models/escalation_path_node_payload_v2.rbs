@@ -26,7 +26,8 @@ module IncidentIo
         ?level: EscalationPathNodeLevelV2?,
         ?notify_channel: EscalationPathNodeNotifyChannelV2?,
         ?repeat: EscalationPathNodeRepeatV2?,
-        ?type: String?
+        ?type: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -13,7 +13,8 @@ module IncidentIo
 
       def self.new: (
         ?event_type: String?,
-        ?private_incident_membership_revoked_v1: WebhookIncidentUserV2?
+        ?private_incident_membership_revoked_v1: WebhookIncidentUserV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

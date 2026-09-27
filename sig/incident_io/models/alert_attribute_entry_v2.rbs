@@ -15,7 +15,8 @@ module IncidentIo
       def self.new: (
         ?array_value: Array[AlertAttributeValueV2]?,
         ?attribute: AlertAttributeV2?,
-        ?value: AlertAttributeValueV2?
+        ?value: AlertAttributeValueV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

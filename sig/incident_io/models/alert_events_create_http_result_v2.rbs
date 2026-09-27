@@ -14,7 +14,12 @@ module IncidentIo
       # Status of the event
       attr_reader status: String?
 
-      def self.new: (?deduplication_key: String?, ?message: String?, ?status: String?) -> instance
+      def self.new: (
+        ?deduplication_key: String?,
+        ?message: String?,
+        ?status: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?deduplication_key: String?,

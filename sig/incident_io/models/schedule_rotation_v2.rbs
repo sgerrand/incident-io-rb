@@ -38,7 +38,8 @@ module IncidentIo
         ?scheduling_mode: String?,
         ?users: Array[UserV2]?,
         ?working_interval: Array[ScheduleRotationWorkingIntervalV2]?,
-        ?working_intervals: Array[ScheduleRotationWorkingIntervalV2]?
+        ?working_intervals: Array[ScheduleRotationWorkingIntervalV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

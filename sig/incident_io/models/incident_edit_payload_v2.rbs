@@ -35,7 +35,8 @@ module IncidentIo
         ?name: String?,
         ?severity_id: String?,
         ?slack_channel_name_override: String?,
-        ?summary: String?
+        ?summary: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

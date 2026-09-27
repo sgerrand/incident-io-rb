@@ -23,7 +23,8 @@ module IncidentIo
         ?filter: ExpressionFilterOptsPayloadV3?,
         ?navigate: ExpressionNavigateOptsPayloadV3?,
         ?operation_type: String?,
-        ?parse: ExpressionParseOptsPayloadV3?
+        ?parse: ExpressionParseOptsPayloadV3?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

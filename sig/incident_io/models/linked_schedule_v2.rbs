@@ -14,7 +14,12 @@ module IncidentIo
       # IDs of teams that own this schedule
       attr_reader team_ids: Array[String]?
 
-      def self.new: (?id: String?, ?name: String?, ?team_ids: Array[String]?) -> instance
+      def self.new: (
+        ?id: String?,
+        ?name: String?,
+        ?team_ids: Array[String]?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?id: String?,

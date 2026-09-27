@@ -26,7 +26,8 @@ module IncidentIo
         ?incident_status: String?,
         ?message: String?,
         ?published_at: Time?,
-        ?status_page_incident_id: String?
+        ?status_page_incident_id: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

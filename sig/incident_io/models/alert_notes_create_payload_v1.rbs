@@ -14,7 +14,12 @@ module IncidentIo
       # Markdown body of the note
       attr_reader content: String?
 
-      def self.new: (?alert_group_id: String?, ?alert_id: String?, ?content: String?) -> instance
+      def self.new: (
+        ?alert_group_id: String?,
+        ?alert_id: String?,
+        ?content: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?alert_group_id: String?,

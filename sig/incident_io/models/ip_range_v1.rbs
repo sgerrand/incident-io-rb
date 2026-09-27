@@ -13,7 +13,7 @@ module IncidentIo
       # Which of our traffic reaches you from this address
       attr_reader description: String?
 
-      def self.new: (?cidr: String?, ?description: String?) -> instance
+      def self.new: (?cidr: String?, ?description: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?cidr: String?, ?description: String?, ?raw: Hash[String, untyped]?) -> void
 

@@ -14,7 +14,12 @@ module IncidentIo
       # Rank to help sort severities (lower numbers are less severe)
       attr_reader rank: Integer?
 
-      def self.new: (?description: String?, ?name: String?, ?rank: Integer?) -> instance
+      def self.new: (
+        ?description: String?,
+        ?name: String?,
+        ?rank: Integer?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?description: String?,

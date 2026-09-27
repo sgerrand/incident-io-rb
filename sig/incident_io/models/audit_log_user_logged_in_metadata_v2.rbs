@@ -10,7 +10,7 @@ module IncidentIo
       # The method the user authenticated with
       attr_reader login_method: String?
 
-      def self.new: (?login_method: String?) -> instance
+      def self.new: (?login_method: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?login_method: String?, ?raw: Hash[String, untyped]?) -> void
 

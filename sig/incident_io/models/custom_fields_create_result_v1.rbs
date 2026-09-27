@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader custom_field: CustomFieldV1?
 
-      def self.new: (?custom_field: CustomFieldV1?) -> instance
+      def self.new: (?custom_field: CustomFieldV1?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?custom_field: CustomFieldV1?, ?raw: Hash[String, untyped]?) -> void
 

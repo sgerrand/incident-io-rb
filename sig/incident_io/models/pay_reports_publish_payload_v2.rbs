@@ -12,7 +12,11 @@ module IncidentIo
       # Whether each user in the report is emailed their own pay breakdown One of: send, skip.
       attr_reader send_user_breakdowns: String?
 
-      def self.new: (?cc_emails: Array[String]?, ?send_user_breakdowns: String?) -> instance
+      def self.new: (
+        ?cc_emails: Array[String]?,
+        ?send_user_breakdowns: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?cc_emails: Array[String]?,

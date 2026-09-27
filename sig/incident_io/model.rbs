@@ -12,7 +12,9 @@ module IncidentIo
 
     def self.map_of: (untyped type) -> MapOf
 
-    def self.define: (**untyped schema) ?{ () -> void } -> untyped
+    # rbs test wraps blocks to check them, which breaks this class_eval block.
+    %a{rbs:test:skip}
+    def self.define: (**untyped schema) ?{ (Class klass) -> void } -> untyped
 
     def self.member_name: (String | Symbol api_name) -> Symbol
 

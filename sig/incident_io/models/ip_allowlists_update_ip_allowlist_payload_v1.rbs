@@ -14,7 +14,12 @@ module IncidentIo
       # The version of this IP allowlist
       attr_reader version: Integer?
 
-      def self.new: (?allowlist: Array[IPAllowlistItemV1]?, ?enabled: bool?, ?version: Integer?) -> instance
+      def self.new: (
+        ?allowlist: Array[IPAllowlistItemV1]?,
+        ?enabled: bool?,
+        ?version: Integer?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?allowlist: Array[IPAllowlistItemV1]?,

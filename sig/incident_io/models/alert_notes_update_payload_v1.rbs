@@ -10,7 +10,7 @@ module IncidentIo
       # Markdown body of the note
       attr_reader content: String?
 
-      def self.new: (?content: String?) -> instance
+      def self.new: (?content: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?content: String?, ?raw: Hash[String, untyped]?) -> void
 

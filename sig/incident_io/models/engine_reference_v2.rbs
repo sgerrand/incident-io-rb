@@ -16,7 +16,13 @@ module IncidentIo
       # The type of this resource in the engine
       attr_reader type: String?
 
-      def self.new: (?array: bool?, ?key: String?, ?label: String?, ?type: String?) -> instance
+      def self.new: (
+        ?array: bool?,
+        ?key: String?,
+        ?label: String?,
+        ?type: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?array: bool?,

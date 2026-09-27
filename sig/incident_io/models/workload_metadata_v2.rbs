@@ -10,7 +10,7 @@ module IncidentIo
       # The time the workload figures are calculated up to.
       attr_reader data_synced_at: Time?
 
-      def self.new: (?data_synced_at: Time?) -> instance
+      def self.new: (?data_synced_at: Time?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?data_synced_at: Time?, ?raw: Hash[String, untyped]?) -> void
 

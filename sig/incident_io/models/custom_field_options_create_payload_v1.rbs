@@ -14,7 +14,12 @@ module IncidentIo
       # Human readable name for the custom field option.
       attr_reader value: String?
 
-      def self.new: (?custom_field_id: String?, ?sort_key: Integer?, ?value: String?) -> instance
+      def self.new: (
+        ?custom_field_id: String?,
+        ?sort_key: Integer?,
+        ?value: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?custom_field_id: String?,

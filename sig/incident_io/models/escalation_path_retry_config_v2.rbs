@@ -12,7 +12,11 @@ module IncidentIo
       # How long we wait between attempts at this level, in seconds.
       attr_reader interval_seconds: Integer?
 
-      def self.new: (?attempts: Integer?, ?interval_seconds: Integer?) -> instance
+      def self.new: (
+        ?attempts: Integer?,
+        ?interval_seconds: Integer?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (?attempts: Integer?, ?interval_seconds: Integer?, ?raw: Hash[String, untyped]?) -> void
 

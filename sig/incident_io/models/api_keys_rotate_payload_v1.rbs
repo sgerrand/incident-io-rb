@@ -10,7 +10,7 @@ module IncidentIo
       # How many minutes to keep the old access token alive.
       attr_reader grace_period_minutes: Integer?
 
-      def self.new: (?grace_period_minutes: Integer?) -> instance
+      def self.new: (?grace_period_minutes: Integer?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?grace_period_minutes: Integer?, ?raw: Hash[String, untyped]?) -> void
 

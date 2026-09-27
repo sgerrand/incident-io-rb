@@ -12,7 +12,7 @@ module IncidentIo
       # Unique identifier for this option
       attr_reader value: String?
 
-      def self.new: (?label: String?, ?value: String?) -> instance
+      def self.new: (?label: String?, ?value: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?label: String?, ?value: String?, ?raw: Hash[String, untyped]?) -> void
 

@@ -10,7 +10,7 @@ module IncidentIo
       # Why this report is being unpublished
       attr_reader unpublish_reason: String?
 
-      def self.new: (?unpublish_reason: String?) -> instance
+      def self.new: (?unpublish_reason: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?unpublish_reason: String?, ?raw: Hash[String, untyped]?) -> void
 

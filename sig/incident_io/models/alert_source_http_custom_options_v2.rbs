@@ -12,7 +12,11 @@ module IncidentIo
       # JavaScript expression that returns an object with all alert fields
       attr_reader transform_expression: String?
 
-      def self.new: (?deduplication_key_path: String?, ?transform_expression: String?) -> instance
+      def self.new: (
+        ?deduplication_key_path: String?,
+        ?transform_expression: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?deduplication_key_path: String?,

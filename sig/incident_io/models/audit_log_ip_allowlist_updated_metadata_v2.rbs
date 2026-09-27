@@ -26,7 +26,8 @@ module IncidentIo
         ?enabled: String?,
         ?removals: String?,
         ?removals_count: String?,
-        ?version: String?
+        ?version: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

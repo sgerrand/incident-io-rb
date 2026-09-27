@@ -17,7 +17,8 @@ module IncidentIo
         ?incident: IncidentV2?,
         ?message: String?,
         ?new_status: IncidentStatusV2?,
-        ?previous_status: IncidentStatusV2?
+        ?previous_status: IncidentStatusV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -14,7 +14,12 @@ module IncidentIo
       # When the component started being under maintenance
       attr_reader start_at: Time?
 
-      def self.new: (?component_id: String?, ?end_at: Time?, ?start_at: Time?) -> instance
+      def self.new: (
+        ?component_id: String?,
+        ?end_at: Time?,
+        ?start_at: Time?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?component_id: String?,

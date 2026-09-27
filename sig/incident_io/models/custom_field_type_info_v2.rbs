@@ -23,7 +23,8 @@ module IncidentIo
         ?field_type: String?,
         ?id: String?,
         ?name: String?,
-        ?options: Array[CustomFieldOptionV2]?
+        ?options: Array[CustomFieldOptionV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

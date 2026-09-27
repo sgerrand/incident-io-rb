@@ -26,7 +26,8 @@ module IncidentIo
         ?method_target: OnCallNotificationRuleMethodTargetPublicV2?,
         ?method_type: String?,
         ?phone: OnCallNotificationRulePhoneDetailsPublicV2?,
-        ?rule_type: String?
+        ?rule_type: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

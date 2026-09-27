@@ -108,7 +108,8 @@ module IncidentIo
         ?workload_minutes_late: Float?,
         ?workload_minutes_sleeping: Float?,
         ?workload_minutes_total: Float?,
-        ?workload_minutes_working: Float?
+        ?workload_minutes_working: Float?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

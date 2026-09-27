@@ -13,7 +13,8 @@ module IncidentIo
 
       def self.new: (
         ?event_type: String?,
-        ?public_incident_postmortem_document_status_updated_v1: PostmortemDocumentWithStatusChangeV1?
+        ?public_incident_postmortem_document_status_updated_v1: PostmortemDocumentWithStatusChangeV1?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

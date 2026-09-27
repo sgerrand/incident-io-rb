@@ -10,7 +10,7 @@ module IncidentIo
       # The complete set of tag names for this alert
       attr_reader tags: Array[String]?
 
-      def self.new: (?tags: Array[String]?) -> instance
+      def self.new: (?tags: Array[String]?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?tags: Array[String]?, ?raw: Hash[String, untyped]?) -> void
 

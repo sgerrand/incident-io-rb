@@ -50,7 +50,8 @@ module IncidentIo
         ?workflow_id: String?,
         ?workflow_name: String?,
         ?workflow_version_id: String?,
-        ?workflow_version_number: Integer?
+        ?workflow_version_number: Integer?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -21,7 +21,8 @@ module IncidentIo
         ?channel_id: String?,
         ?channel_name: String?,
         ?channel_type: String?,
-        ?is_private: bool?
+        ?is_private: bool?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

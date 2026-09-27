@@ -11,7 +11,7 @@ module IncidentIo
       attr_reader participant_type: String?
       attr_reader user: UserV2?
 
-      def self.new: (?participant_type: String?, ?user: UserV2?) -> instance
+      def self.new: (?participant_type: String?, ?user: UserV2?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?participant_type: String?, ?user: UserV2?, ?raw: Hash[String, untyped]?) -> void
 

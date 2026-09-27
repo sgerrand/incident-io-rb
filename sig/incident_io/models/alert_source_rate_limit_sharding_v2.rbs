@@ -11,7 +11,7 @@ module IncidentIo
       # JSON path to a value that splits this source's rate limit into per-value buckets.
       attr_reader rate_limit_shard_key_path: String?
 
-      def self.new: (?rate_limit_shard_key_path: String?) -> instance
+      def self.new: (?rate_limit_shard_key_path: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?rate_limit_shard_key_path: String?, ?raw: Hash[String, untyped]?) -> void
 

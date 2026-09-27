@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader escalation_path: EscalationPathV2?
 
-      def self.new: (?escalation_path: EscalationPathV2?) -> instance
+      def self.new: (?escalation_path: EscalationPathV2?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?escalation_path: EscalationPathV2?, ?raw: Hash[String, untyped]?) -> void
 

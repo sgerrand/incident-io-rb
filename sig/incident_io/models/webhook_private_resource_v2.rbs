@@ -10,7 +10,7 @@ module IncidentIo
       # The ID of the resource
       attr_reader id: String?
 
-      def self.new: (?id: String?) -> instance
+      def self.new: (?id: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?id: String?, ?raw: Hash[String, untyped]?) -> void
 

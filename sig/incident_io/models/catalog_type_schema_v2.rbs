@@ -12,7 +12,11 @@ module IncidentIo
       # The version number of this schema
       attr_reader version: Integer?
 
-      def self.new: (?attributes: Array[CatalogTypeAttributeV2]?, ?version: Integer?) -> instance
+      def self.new: (
+        ?attributes: Array[CatalogTypeAttributeV2]?,
+        ?version: Integer?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?attributes: Array[CatalogTypeAttributeV2]?,

@@ -10,7 +10,11 @@ module IncidentIo
       attr_reader alert_notes: Array[AlertNoteV1]?
       attr_reader pagination_meta: PaginationMetaResultV1?
 
-      def self.new: (?alert_notes: Array[AlertNoteV1]?, ?pagination_meta: PaginationMetaResultV1?) -> instance
+      def self.new: (
+        ?alert_notes: Array[AlertNoteV1]?,
+        ?pagination_meta: PaginationMetaResultV1?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?alert_notes: Array[AlertNoteV1]?,

@@ -12,7 +12,8 @@ module IncidentIo
 
       def self.new: (
         ?escalation_paths: EngineParamBindingPayloadV3?,
-        ?users: EngineParamBindingPayloadV3?
+        ?users: EngineParamBindingPayloadV3?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

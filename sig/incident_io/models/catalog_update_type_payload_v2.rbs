@@ -32,7 +32,8 @@ module IncidentIo
         ?icon: String?,
         ?name: String?,
         ?ranked: bool?,
-        ?source_repo_url: String?
+        ?source_repo_url: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

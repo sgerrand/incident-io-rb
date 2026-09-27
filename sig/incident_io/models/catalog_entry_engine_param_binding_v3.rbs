@@ -13,7 +13,8 @@ module IncidentIo
 
       def self.new: (
         ?array_value: Array[CatalogEntryEngineParamBindingValueV3]?,
-        ?value: CatalogEntryEngineParamBindingValueV3?
+        ?value: CatalogEntryEngineParamBindingValueV3?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -29,7 +29,8 @@ module IncidentIo
         ?defer_time_seconds: Integer?,
         ?enabled: bool?,
         ?grouping_keys: Array[GroupingKeyV2]?,
-        ?grouping_window_seconds: Integer?
+        ?grouping_window_seconds: Integer?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

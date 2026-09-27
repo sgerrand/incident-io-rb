@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader action: ActionV3?
 
-      def self.new: (?action: ActionV3?) -> instance
+      def self.new: (?action: ActionV3?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?action: ActionV3?, ?raw: Hash[String, untyped]?) -> void
 

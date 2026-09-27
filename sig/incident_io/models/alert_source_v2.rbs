@@ -52,7 +52,8 @@ module IncidentIo
         ?rate_limit_sharding: AlertSourceRateLimitShardingV2?,
         ?secret_token: String?,
         ?source_type: String?,
-        ?template: AlertTemplateV2?
+        ?template: AlertTemplateV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

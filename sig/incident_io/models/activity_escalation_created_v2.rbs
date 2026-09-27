@@ -19,7 +19,8 @@ module IncidentIo
         ?creator: ActorV2?,
         ?escalated_to_users: Array[UserV2]?,
         ?escalation_id: String?,
-        ?escalation_path_id: String?
+        ?escalation_path_id: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -14,7 +14,12 @@ module IncidentIo
       # Name of this incident
       attr_reader name: String?
 
-      def self.new: (?external_id: Integer?, ?id: String?, ?name: String?) -> instance
+      def self.new: (
+        ?external_id: Integer?,
+        ?id: String?,
+        ?name: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?external_id: Integer?,

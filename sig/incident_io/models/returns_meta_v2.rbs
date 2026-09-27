@@ -12,7 +12,7 @@ module IncidentIo
       # Expected return type of this expression (what to try casting the result to)
       attr_reader type: String?
 
-      def self.new: (?array: bool?, ?type: String?) -> instance
+      def self.new: (?array: bool?, ?type: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?array: bool?, ?type: String?, ?raw: Hash[String, untyped]?) -> void
 

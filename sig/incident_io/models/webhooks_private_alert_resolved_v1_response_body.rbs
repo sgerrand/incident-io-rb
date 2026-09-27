@@ -13,7 +13,8 @@ module IncidentIo
 
       def self.new: (
         ?event_type: String?,
-        ?private_alert_alert_resolved_v1: WebhookPrivateResourceV2?
+        ?private_alert_alert_resolved_v1: WebhookPrivateResourceV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

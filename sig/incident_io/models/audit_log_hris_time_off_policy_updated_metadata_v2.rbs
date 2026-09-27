@@ -20,7 +20,8 @@ module IncidentIo
         ?behaviour: String?,
         ?connection_name: String?,
         ?previous_behaviour: String?,
-        ?provider_slug: String?
+        ?provider_slug: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

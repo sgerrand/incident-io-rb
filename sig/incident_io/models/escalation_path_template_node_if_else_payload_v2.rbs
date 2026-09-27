@@ -17,7 +17,8 @@ module IncidentIo
       def self.new: (
         ?conditions: Array[ConditionPayloadV2]?,
         ?else_path: Array[EscalationPathTemplateNodePayloadV2]?,
-        ?then_path: Array[EscalationPathTemplateNodePayloadV2]?
+        ?then_path: Array[EscalationPathTemplateNodePayloadV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

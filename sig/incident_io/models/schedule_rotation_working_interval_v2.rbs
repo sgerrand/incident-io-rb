@@ -14,7 +14,12 @@ module IncidentIo
       # Weekdays for use with a schedule One of: monday, tuesday, wednesday, thursday, friday, saturday, sunday.
       attr_reader weekday: String?
 
-      def self.new: (?end_time: String?, ?start_time: String?, ?weekday: String?) -> instance
+      def self.new: (
+        ?end_time: String?,
+        ?start_time: String?,
+        ?weekday: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?end_time: String?,

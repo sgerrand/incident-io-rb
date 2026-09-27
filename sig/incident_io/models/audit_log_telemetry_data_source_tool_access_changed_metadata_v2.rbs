@@ -26,7 +26,8 @@ module IncidentIo
         ?change_id: String?,
         ?source: String?,
         ?surface: String?,
-        ?tool: String?
+        ?tool: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

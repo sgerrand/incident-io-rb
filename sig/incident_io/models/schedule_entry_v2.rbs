@@ -45,7 +45,8 @@ module IncidentIo
         ?layer_id: String?,
         ?rotation_id: String?,
         ?start_at: Time?,
-        ?user: UserV2?
+        ?user: UserV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

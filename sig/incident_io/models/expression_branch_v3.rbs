@@ -11,7 +11,11 @@ module IncidentIo
       attr_reader condition_groups: Array[ConditionGroupV3]?
       attr_reader result: EngineParamBindingV3?
 
-      def self.new: (?condition_groups: Array[ConditionGroupV3]?, ?result: EngineParamBindingV3?) -> instance
+      def self.new: (
+        ?condition_groups: Array[ConditionGroupV3]?,
+        ?result: EngineParamBindingV3?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?condition_groups: Array[ConditionGroupV3]?,

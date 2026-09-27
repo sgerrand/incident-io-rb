@@ -10,7 +10,7 @@ module IncidentIo
       # What state to move the connection to One of: related, unrelated.
       attr_reader state: String?
 
-      def self.new: (?state: String?) -> instance
+      def self.new: (?state: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?state: String?, ?raw: Hash[String, untyped]?) -> void
 

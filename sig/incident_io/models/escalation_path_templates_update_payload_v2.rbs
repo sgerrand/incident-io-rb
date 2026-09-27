@@ -28,7 +28,8 @@ module IncidentIo
         ?params: Array[EngineParamV2]?,
         ?path: Array[EscalationPathTemplateNodePayloadV2]?,
         ?repeat_config: EscalationPathRepeatConfigV2?,
-        ?working_hours: Array[WeekdayIntervalConfigV2]?
+        ?working_hours: Array[WeekdayIntervalConfigV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

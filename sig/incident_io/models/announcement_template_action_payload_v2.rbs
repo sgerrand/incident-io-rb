@@ -14,7 +14,12 @@ module IncidentIo
       # Position of this action on the post, lowest first
       attr_reader rank: Integer?
 
-      def self.new: (?action_type: String?, ?emoji: String?, ?rank: Integer?) -> instance
+      def self.new: (
+        ?action_type: String?,
+        ?emoji: String?,
+        ?rank: Integer?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?action_type: String?,

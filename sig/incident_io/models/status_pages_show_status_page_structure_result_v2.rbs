@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader current_structure: StatusPageStructureV2?
 
-      def self.new: (?current_structure: StatusPageStructureV2?) -> instance
+      def self.new: (?current_structure: StatusPageStructureV2?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?current_structure: StatusPageStructureV2?, ?raw: Hash[String, untyped]?) -> void
 

@@ -11,7 +11,11 @@ module IncidentIo
       # Strategy for merging severity when multiple alerts create/update the same incident One of: first-wins, max.
       attr_reader merge_strategy: String?
 
-      def self.new: (?binding: EngineParamBindingPayloadV3?, ?merge_strategy: String?) -> instance
+      def self.new: (
+        ?binding: EngineParamBindingPayloadV3?,
+        ?merge_strategy: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?binding: EngineParamBindingPayloadV3?,

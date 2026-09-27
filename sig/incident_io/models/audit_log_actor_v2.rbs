@@ -19,7 +19,8 @@ module IncidentIo
         ?id: String?,
         ?metadata: AuditLogActorMetadataV2?,
         ?name: String?,
-        ?type: String?
+        ?type: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

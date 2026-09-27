@@ -29,7 +29,8 @@ module IncidentIo
         ?message: String?,
         ?new_incident_status: IncidentStatusV2?,
         ?new_severity: SeverityV2?,
-        ?updater: ActorV2?
+        ?updater: ActorV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

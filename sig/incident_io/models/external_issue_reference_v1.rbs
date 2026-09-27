@@ -14,7 +14,12 @@ module IncidentIo
       # ID of the issue tracker provider One of: asana, azure_devops, click_up, freshservice, linear, jira, salesforce, jira_server, github, gitlab, service_now, shortcut, notion.
       attr_reader provider: String?
 
-      def self.new: (?issue_name: String?, ?issue_permalink: String?, ?provider: String?) -> instance
+      def self.new: (
+        ?issue_name: String?,
+        ?issue_permalink: String?,
+        ?provider: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?issue_name: String?,

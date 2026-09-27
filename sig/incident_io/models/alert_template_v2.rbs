@@ -23,7 +23,8 @@ module IncidentIo
         ?expressions: Array[ExpressionV2]?,
         ?is_private: bool?,
         ?title: EngineParamBindingValueV2?,
-        ?visible_to_teams: EngineParamBindingV2?
+        ?visible_to_teams: EngineParamBindingV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

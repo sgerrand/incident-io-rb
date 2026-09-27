@@ -31,7 +31,8 @@ module IncidentIo
         ?status: String?,
         ?step: String?,
         ?webhook_delivery: WebhookDeliveryV2?,
-        ?webhook_delivery_state: String?
+        ?webhook_delivery_state: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

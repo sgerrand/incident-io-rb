@@ -16,7 +16,13 @@ module IncidentIo
       # When this rule starts applying
       attr_reader start_at: Time?
 
-      def self.new: (?end_at: Time?, ?name: String?, ?rate_cents: Integer?, ?start_at: Time?) -> instance
+      def self.new: (
+        ?end_at: Time?,
+        ?name: String?,
+        ?rate_cents: Integer?,
+        ?start_at: Time?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?end_at: Time?,

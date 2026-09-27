@@ -19,7 +19,8 @@ module IncidentIo
         ?catalog_entry: CatalogEntrySlimV3V3?,
         ?id: String?,
         ?members_: Array[UserV3]?,
-        ?name: String?
+        ?name: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

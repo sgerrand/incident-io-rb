@@ -13,7 +13,12 @@ module IncidentIo
       attr_reader incident_id: String?
       attr_reader resource: ExternalResourceV1?
 
-      def self.new: (?id: String?, ?incident_id: String?, ?resource: ExternalResourceV1?) -> instance
+      def self.new: (
+        ?id: String?,
+        ?incident_id: String?,
+        ?resource: ExternalResourceV1?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?id: String?,

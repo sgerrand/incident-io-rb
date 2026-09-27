@@ -23,7 +23,8 @@ module IncidentIo
         ?investigation_id: String?,
         ?outcome: String?,
         ?surface: String?,
-        ?telemetry_query_id: String?
+        ?telemetry_query_id: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

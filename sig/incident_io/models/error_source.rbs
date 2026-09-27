@@ -12,7 +12,7 @@ module IncidentIo
       # JSON pointer to the request field that is the source of the error
       attr_reader pointer: String?
 
-      def self.new: (?field: String?, ?pointer: String?) -> instance
+      def self.new: (?field: String?, ?pointer: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?field: String?, ?pointer: String?, ?raw: Hash[String, untyped]?) -> void
 

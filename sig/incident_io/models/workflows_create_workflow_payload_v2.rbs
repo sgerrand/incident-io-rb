@@ -64,7 +64,8 @@ module IncidentIo
         ?shortform: String?,
         ?state: String?,
         ?steps: Array[StepConfigPayloadV2]?,
-        ?trigger: String?
+        ?trigger: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

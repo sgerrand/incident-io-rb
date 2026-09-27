@@ -10,7 +10,7 @@ module IncidentIo
       # The IDs of the users to check response options for
       attr_reader user_ids: Array[String]?
 
-      def self.new: (?user_ids: Array[String]?) -> instance
+      def self.new: (?user_ids: Array[String]?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?user_ids: Array[String]?, ?raw: Hash[String, untyped]?) -> void
 

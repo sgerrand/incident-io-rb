@@ -35,7 +35,8 @@ module IncidentIo
         ?show_before_closure: bool?,
         ?show_before_creation: bool?,
         ?show_before_update: bool?,
-        ?show_in_announcement_post: bool?
+        ?show_in_announcement_post: bool?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

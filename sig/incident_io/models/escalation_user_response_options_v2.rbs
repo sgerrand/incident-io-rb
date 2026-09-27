@@ -12,7 +12,11 @@ module IncidentIo
       # The ID of the user these response options are for
       attr_reader user_id: String?
 
-      def self.new: (?available_actions: Array[String]?, ?user_id: String?) -> instance
+      def self.new: (
+        ?available_actions: Array[String]?,
+        ?user_id: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?available_actions: Array[String]?,

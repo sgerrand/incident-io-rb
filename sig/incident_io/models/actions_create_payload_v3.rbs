@@ -14,7 +14,12 @@ module IncidentIo
       # Unique identifier of the incident the action belongs to
       attr_reader incident_id: String?
 
-      def self.new: (?assignee_id: String?, ?description: String?, ?incident_id: String?) -> instance
+      def self.new: (
+        ?assignee_id: String?,
+        ?description: String?,
+        ?incident_id: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?assignee_id: String?,

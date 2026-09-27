@@ -20,7 +20,8 @@ module IncidentIo
         ?gate_count_after: String?,
         ?gate_count_before: String?,
         ?requested_by_user_id: String?,
-        ?seats_added: String?
+        ?seats_added: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

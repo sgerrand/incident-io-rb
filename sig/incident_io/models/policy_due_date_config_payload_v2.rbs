@@ -22,7 +22,8 @@ module IncidentIo
         ?calculation_timezone: String?,
         ?calculation_type: String?,
         ?days: EngineParamBindingPayloadV2?,
-        ?incident_timestamp_id: String?
+        ?incident_timestamp_id: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

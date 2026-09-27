@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader postmortem_document: PostmortemDocumentV1?
 
-      def self.new: (?postmortem_document: PostmortemDocumentV1?) -> instance
+      def self.new: (?postmortem_document: PostmortemDocumentV1?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?postmortem_document: PostmortemDocumentV1?, ?raw: Hash[String, untyped]?) -> void
 

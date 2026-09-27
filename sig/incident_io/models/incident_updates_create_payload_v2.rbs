@@ -23,7 +23,8 @@ module IncidentIo
         ?incident_id: String?,
         ?message: String?,
         ?to_incident_status_id: String?,
-        ?to_severity_id: String?
+        ?to_severity_id: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

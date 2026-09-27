@@ -12,7 +12,7 @@ module IncidentIo
       # Reference into the scope for the value of the subject
       attr_reader reference: String?
 
-      def self.new: (?label: String?, ?reference: String?) -> instance
+      def self.new: (?label: String?, ?reference: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?label: String?, ?reference: String?, ?raw: Hash[String, untyped]?) -> void
 

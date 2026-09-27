@@ -20,7 +20,8 @@ module IncidentIo
         ?after_base_role_slug: String?,
         ?after_custom_role_slugs: String?,
         ?before_base_role_slug: String?,
-        ?before_custom_role_slugs: String?
+        ?before_custom_role_slugs: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

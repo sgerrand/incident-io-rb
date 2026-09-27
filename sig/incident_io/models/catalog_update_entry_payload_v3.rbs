@@ -26,7 +26,8 @@ module IncidentIo
         ?external_id: String?,
         ?name: String?,
         ?rank: Integer?,
-        ?update_attributes: Array[String]?
+        ?update_attributes: Array[String]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

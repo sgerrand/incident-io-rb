@@ -16,7 +16,13 @@ module IncidentIo
       # Slack ID of the user
       attr_reader slack_user_id: String?
 
-      def self.new: (?email: String?, ?id: String?, ?name: String?, ?slack_user_id: String?) -> instance
+      def self.new: (
+        ?email: String?,
+        ?id: String?,
+        ?name: String?,
+        ?slack_user_id: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?email: String?,

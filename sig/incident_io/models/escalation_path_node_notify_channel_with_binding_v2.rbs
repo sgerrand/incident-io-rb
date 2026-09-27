@@ -20,7 +20,8 @@ module IncidentIo
         ?targets: Array[EscalationPathTargetWithBindingV2]?,
         ?time_to_ack_interval_condition: String?,
         ?time_to_ack_seconds: Integer?,
-        ?time_to_ack_weekday_interval_config_id: String?
+        ?time_to_ack_weekday_interval_config_id: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

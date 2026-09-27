@@ -14,7 +14,12 @@ module IncidentIo
       # The ID of the user
       attr_reader user_id: String?
 
-      def self.new: (?actor_user_id: String?, ?incident_id: String?, ?user_id: String?) -> instance
+      def self.new: (
+        ?actor_user_id: String?,
+        ?incident_id: String?,
+        ?user_id: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?actor_user_id: String?,

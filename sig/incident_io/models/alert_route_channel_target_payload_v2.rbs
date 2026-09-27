@@ -11,7 +11,11 @@ module IncidentIo
       # The visibility of the channel
       attr_reader channel_visibility: String?
 
-      def self.new: (?binding: EngineParamBindingPayloadV2?, ?channel_visibility: String?) -> instance
+      def self.new: (
+        ?binding: EngineParamBindingPayloadV2?,
+        ?channel_visibility: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?binding: EngineParamBindingPayloadV2?,

@@ -17,7 +17,8 @@ module IncidentIo
       def self.new: (
         ?catalog_type_id: String?,
         ?entries: Array[PartialEntryPayloadV3]?,
-        ?update_attributes: Array[String]?
+        ?update_attributes: Array[String]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

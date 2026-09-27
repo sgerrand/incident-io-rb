@@ -24,7 +24,8 @@ module IncidentIo
         ?new_values_count: Integer?,
         ?previous_values: Array[CustomFieldValueV2]?,
         ?previous_values_count: Integer?,
-        ?updater: ActorV2?
+        ?updater: ActorV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

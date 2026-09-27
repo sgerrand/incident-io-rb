@@ -10,7 +10,7 @@ module IncidentIo
       # The full content of the post-mortem document, rendered as markdown.
       attr_reader markdown: String?
 
-      def self.new: (?markdown: String?) -> instance
+      def self.new: (?markdown: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?markdown: String?, ?raw: Hash[String, untyped]?) -> void
 

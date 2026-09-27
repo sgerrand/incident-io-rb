@@ -24,7 +24,8 @@ module IncidentIo
         ?name: String?,
         ?team_ids: Array[String]?,
         ?timezone: String?,
-        ?updated_at: Time?
+        ?updated_at: Time?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

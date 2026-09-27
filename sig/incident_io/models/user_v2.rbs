@@ -23,7 +23,8 @@ module IncidentIo
         ?id: String?,
         ?name: String?,
         ?role: String?,
-        ?slack_user_id: String?
+        ?slack_user_id: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

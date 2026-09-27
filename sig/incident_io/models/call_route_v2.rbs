@@ -57,7 +57,8 @@ module IncidentIo
         ?phone_number_type: String?,
         ?responder_caller_id: String?,
         ?updated_at: Time?,
-        ?use_caller_allowlist: bool?
+        ?use_caller_allowlist: bool?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -31,7 +31,8 @@ module IncidentIo
         ?incident_timestamp_id: String?,
         ?rank: Integer?,
         ?rich_text: AnnouncementTemplateRichTextV2?,
-        ?title: String?
+        ?title: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -12,7 +12,7 @@ module IncidentIo
       # Whether or not the user was able to access private Insights data One of: granted, denied.
       attr_reader outcome: String?
 
-      def self.new: (?measure: String?, ?outcome: String?) -> instance
+      def self.new: (?measure: String?, ?outcome: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?measure: String?, ?outcome: String?, ?raw: Hash[String, untyped]?) -> void
 

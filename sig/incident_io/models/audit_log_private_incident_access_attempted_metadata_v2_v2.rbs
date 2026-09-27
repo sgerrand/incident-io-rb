@@ -14,7 +14,12 @@ module IncidentIo
       # The ID of the team through which access was granted, or N/A when access_type is not team_membership
       attr_reader team_id: String?
 
-      def self.new: (?access_type: String?, ?outcome: String?, ?team_id: String?) -> instance
+      def self.new: (
+        ?access_type: String?,
+        ?outcome: String?,
+        ?team_id: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?access_type: String?,

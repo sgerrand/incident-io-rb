@@ -13,7 +13,11 @@ module IncidentIo
       # One of: contiguous.
       attr_reader requirement_type: String?
 
-      def self.new: (?evaluation_level: String?, ?requirement_type: String?) -> instance
+      def self.new: (
+        ?evaluation_level: String?,
+        ?requirement_type: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?evaluation_level: String?,

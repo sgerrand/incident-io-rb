@@ -11,7 +11,7 @@ module IncidentIo
       # What we read to the caller before recording, via text-to-speech in the route's language, exactly as written
       attr_reader greeting_text: String?
 
-      def self.new: (?greeting_text: String?) -> instance
+      def self.new: (?greeting_text: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?greeting_text: String?, ?raw: Hash[String, untyped]?) -> void
 

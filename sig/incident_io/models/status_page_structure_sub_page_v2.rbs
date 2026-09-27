@@ -17,7 +17,8 @@ module IncidentIo
       def self.new: (
         ?id: String?,
         ?items: Array[StatusPageStructureSubPageItemV2]?,
-        ?name: String?
+        ?name: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

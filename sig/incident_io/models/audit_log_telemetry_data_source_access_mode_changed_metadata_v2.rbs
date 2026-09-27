@@ -12,7 +12,7 @@ module IncidentIo
       # The access mode after the change
       attr_reader to: String?
 
-      def self.new: (?from: String?, ?to: String?) -> instance
+      def self.new: (?from: String?, ?to: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?from: String?, ?to: String?, ?raw: Hash[String, untyped]?) -> void
 

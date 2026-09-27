@@ -12,7 +12,7 @@ module IncidentIo
       # The incident.io user ID for a user who appears in the schedule rotation.
       attr_reader user_id: String?
 
-      def self.new: (?external_user_id: String?, ?user_id: String?) -> instance
+      def self.new: (?external_user_id: String?, ?user_id: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?external_user_id: String?, ?user_id: String?, ?raw: Hash[String, untyped]?) -> void
 

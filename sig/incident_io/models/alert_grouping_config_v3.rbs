@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader default: GroupingSettingsV3?
 
-      def self.new: (?default: GroupingSettingsV3?) -> instance
+      def self.new: (?default: GroupingSettingsV3?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?default: GroupingSettingsV3?, ?raw: Hash[String, untyped]?) -> void
 

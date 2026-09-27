@@ -12,7 +12,11 @@ module IncidentIo
       # Number of seconds we'll wait before repeating an escalation.
       attr_reader repeat_after_seconds: Integer?
 
-      def self.new: (?delay_repeat_on_activity: bool?, ?repeat_after_seconds: Integer?) -> instance
+      def self.new: (
+        ?delay_repeat_on_activity: bool?,
+        ?repeat_after_seconds: Integer?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?delay_repeat_on_activity: bool?,

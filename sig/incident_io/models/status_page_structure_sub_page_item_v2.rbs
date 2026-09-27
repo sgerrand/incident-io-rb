@@ -12,7 +12,8 @@ module IncidentIo
 
       def self.new: (
         ?component: StatusPageStructureComponentV2?,
-        ?group: StatusPageStructureGroupV2?
+        ?group: StatusPageStructureGroupV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

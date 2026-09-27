@@ -38,7 +38,8 @@ module IncidentIo
         ?policy_type: String?,
         ?post_mortem: PolicyPostMortemPayloadV2?,
         ?schedule: PolicyScheduleV2?,
-        ?status: String?
+        ?status: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

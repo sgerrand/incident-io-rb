@@ -10,7 +10,7 @@ module IncidentIo
       # Which channel of a phone notification method this rule uses.
       attr_reader channel: String?
 
-      def self.new: (?channel: String?) -> instance
+      def self.new: (?channel: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?channel: String?, ?raw: Hash[String, untyped]?) -> void
 

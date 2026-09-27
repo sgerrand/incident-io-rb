@@ -12,7 +12,7 @@ module IncidentIo
       # The ID of the rotation within the schedule to replicate.
       attr_reader rotation_id: String?
 
-      def self.new: (?layer_id: String?, ?rotation_id: String?) -> instance
+      def self.new: (?layer_id: String?, ?rotation_id: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?layer_id: String?, ?rotation_id: String?, ?raw: Hash[String, untyped]?) -> void
 

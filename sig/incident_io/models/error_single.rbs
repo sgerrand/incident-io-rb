@@ -19,7 +19,8 @@ module IncidentIo
         ?code: String?,
         ?message: String?,
         ?metadata: Hash[String, String]?,
-        ?source: ErrorSource?
+        ?source: ErrorSource?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

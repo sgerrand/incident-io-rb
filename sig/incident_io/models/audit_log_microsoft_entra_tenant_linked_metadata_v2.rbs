@@ -12,7 +12,7 @@ module IncidentIo
       # The Microsoft Entra tenant that was linked
       attr_reader tenant_id: String?
 
-      def self.new: (?tenant_domain: String?, ?tenant_id: String?) -> instance
+      def self.new: (?tenant_domain: String?, ?tenant_id: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?tenant_domain: String?, ?tenant_id: String?, ?raw: Hash[String, untyped]?) -> void
 

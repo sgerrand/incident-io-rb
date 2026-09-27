@@ -12,7 +12,8 @@ module IncidentIo
 
       def self.new: (
         ?status_page_incident: StatusPageIncidentV2?,
-        ?update: StatusPageIncidentUpdateV2?
+        ?update: StatusPageIncidentUpdateV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

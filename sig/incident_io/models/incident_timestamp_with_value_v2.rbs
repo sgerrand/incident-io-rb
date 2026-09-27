@@ -10,7 +10,11 @@ module IncidentIo
       attr_reader incident_timestamp: IncidentTimestampV2?
       attr_reader value: IncidentTimestampValueV2?
 
-      def self.new: (?incident_timestamp: IncidentTimestampV2?, ?value: IncidentTimestampValueV2?) -> instance
+      def self.new: (
+        ?incident_timestamp: IncidentTimestampV2?,
+        ?value: IncidentTimestampValueV2?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?incident_timestamp: IncidentTimestampV2?,

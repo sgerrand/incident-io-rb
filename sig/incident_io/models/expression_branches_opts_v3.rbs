@@ -11,7 +11,11 @@ module IncidentIo
       attr_reader branches: Array[ExpressionBranchV3]?
       attr_reader returns: ReturnsMetaV3?
 
-      def self.new: (?branches: Array[ExpressionBranchV3]?, ?returns: ReturnsMetaV3?) -> instance
+      def self.new: (
+        ?branches: Array[ExpressionBranchV3]?,
+        ?returns: ReturnsMetaV3?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?branches: Array[ExpressionBranchV3]?,

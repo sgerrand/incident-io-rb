@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader workflow_run: WorkflowRunV2?
 
-      def self.new: (?workflow_run: WorkflowRunV2?) -> instance
+      def self.new: (?workflow_run: WorkflowRunV2?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?workflow_run: WorkflowRunV2?, ?raw: Hash[String, untyped]?) -> void
 

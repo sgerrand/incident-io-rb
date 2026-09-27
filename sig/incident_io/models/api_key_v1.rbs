@@ -37,7 +37,8 @@ module IncidentIo
         ?roles: Array[APIKeyRoleV1]?,
         ?team_ids: Array[String]?,
         ?team_roles: Array[APIKeyTeamRoleV1]?,
-        ?token_last_issued_at: Time?
+        ?token_last_issued_at: Time?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

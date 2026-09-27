@@ -13,7 +13,8 @@ module IncidentIo
 
       def self.new: (
         ?event_type: String?,
-        ?public_escalation_escalation_status_updated_v1: EscalationWithStatusChangeV2?
+        ?public_escalation_escalation_status_updated_v1: EscalationWithStatusChangeV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -16,7 +16,8 @@ module IncidentIo
       def self.new: (
         ?binding: EngineParamBindingV3?,
         ?custom_field_id: String?,
-        ?merge_strategy: String?
+        ?merge_strategy: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

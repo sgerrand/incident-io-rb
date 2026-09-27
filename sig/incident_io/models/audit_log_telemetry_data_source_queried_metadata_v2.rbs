@@ -20,7 +20,8 @@ module IncidentIo
         ?access_mode: String?,
         ?investigation_id: String?,
         ?outcome: String?,
-        ?surface: String?
+        ?surface: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

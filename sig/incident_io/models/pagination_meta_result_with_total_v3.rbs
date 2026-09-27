@@ -14,7 +14,12 @@ module IncidentIo
       # How many matching records were there in total, if known
       attr_reader total_record_count: Integer?
 
-      def self.new: (?after: String?, ?page_size: Integer?, ?total_record_count: Integer?) -> instance
+      def self.new: (
+        ?after: String?,
+        ?page_size: Integer?,
+        ?total_record_count: Integer?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?after: String?,

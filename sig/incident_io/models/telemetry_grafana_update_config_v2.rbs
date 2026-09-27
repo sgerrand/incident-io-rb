@@ -13,7 +13,7 @@ module IncidentIo
       # Grafana API URL (without protocol)
       attr_reader api_url: String?
 
-      def self.new: (?api_key: String?, ?api_url: String?) -> instance
+      def self.new: (?api_key: String?, ?api_url: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?api_key: String?, ?api_url: String?, ?raw: Hash[String, untyped]?) -> void
 

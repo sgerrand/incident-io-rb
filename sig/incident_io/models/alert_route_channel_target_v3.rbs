@@ -16,7 +16,8 @@ module IncidentIo
       def self.new: (
         ?binding: EngineParamBindingV3?,
         ?channel_visibility: String?,
-        ?group_alerts_summary: bool?
+        ?group_alerts_summary: bool?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

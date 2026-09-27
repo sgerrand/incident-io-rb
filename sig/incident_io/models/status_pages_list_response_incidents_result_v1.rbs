@@ -9,7 +9,10 @@ module IncidentIo
 
       attr_reader incidents: Array[StatusPageLinkedResponseIncidentV1]?
 
-      def self.new: (?incidents: Array[StatusPageLinkedResponseIncidentV1]?) -> instance
+      def self.new: (
+        ?incidents: Array[StatusPageLinkedResponseIncidentV1]?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?incidents: Array[StatusPageLinkedResponseIncidentV1]?,

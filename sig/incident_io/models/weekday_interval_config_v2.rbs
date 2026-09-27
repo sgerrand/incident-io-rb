@@ -19,7 +19,8 @@ module IncidentIo
         ?id: String?,
         ?name: String?,
         ?timezone: String?,
-        ?weekday_intervals: Array[WeekdayIntervalV2]?
+        ?weekday_intervals: Array[WeekdayIntervalV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

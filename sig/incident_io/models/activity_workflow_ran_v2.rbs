@@ -13,7 +13,12 @@ module IncidentIo
       # Title of the event the workflow added
       attr_reader event_title: String?
 
-      def self.new: (?creator: ActorV2?, ?event_description: String?, ?event_title: String?) -> instance
+      def self.new: (
+        ?creator: ActorV2?,
+        ?event_description: String?,
+        ?event_title: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?creator: ActorV2?,

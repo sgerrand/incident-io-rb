@@ -17,7 +17,8 @@ module IncidentIo
       def self.new: (
         ?email_address: String?,
         ?redactions: Array[String]?,
-        ?transform_expression: String?
+        ?transform_expression: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

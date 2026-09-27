@@ -14,7 +14,12 @@ module IncidentIo
       # A URL pointing to the externally-hosted post-mortem document
       attr_reader permalink: String?
 
-      def self.new: (?document_provider: String?, ?incident_id: String?, ?permalink: String?) -> instance
+      def self.new: (
+        ?document_provider: String?,
+        ?incident_id: String?,
+        ?permalink: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?document_provider: String?,

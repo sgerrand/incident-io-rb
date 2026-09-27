@@ -44,7 +44,8 @@ module IncidentIo
         ?schedule_id: String?,
         ?sources: Array[ScheduleReplicaSourceV2]?,
         ?updated_at: Time?,
-        ?user_statuses: Array[ScheduleReplicaUserStatusV2]?
+        ?user_statuses: Array[ScheduleReplicaUserStatusV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

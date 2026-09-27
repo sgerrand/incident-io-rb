@@ -12,7 +12,11 @@ module IncidentIo
       # The catalog entry IDs (of the type the attribute points at) that the attribute must reference.
       attr_reader values: Array[String]?
 
-      def self.new: (?catalog_attribute_id: String?, ?values: Array[String]?) -> instance
+      def self.new: (
+        ?catalog_attribute_id: String?,
+        ?values: Array[String]?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?catalog_attribute_id: String?,

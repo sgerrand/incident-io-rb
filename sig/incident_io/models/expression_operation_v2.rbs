@@ -25,7 +25,8 @@ module IncidentIo
         ?navigate: ExpressionNavigateOptsV2?,
         ?operation_type: String?,
         ?parse: ExpressionParseOptsV2?,
-        ?returns: ReturnsMetaV2?
+        ?returns: ReturnsMetaV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -13,7 +13,7 @@ module IncidentIo
       # The incident the follow-up belongs to
       attr_reader incident_id: String?
 
-      def self.new: (?follow_up_id: String?, ?incident_id: String?) -> instance
+      def self.new: (?follow_up_id: String?, ?incident_id: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?follow_up_id: String?, ?incident_id: String?, ?raw: Hash[String, untyped]?) -> void
 

@@ -14,7 +14,12 @@ module IncidentIo
       # What we read out to offer this option, via text-to-speech in the route's language, exactly as written
       attr_reader prompt: String?
 
-      def self.new: (?digit: String?, ?path: Array[CallRoutePathNodePayloadV2]?, ?prompt: String?) -> instance
+      def self.new: (
+        ?digit: String?,
+        ?path: Array[CallRoutePathNodePayloadV2]?,
+        ?prompt: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?digit: String?,

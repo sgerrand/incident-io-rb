@@ -24,7 +24,8 @@ module IncidentIo
         ?holidays_public_config: ScheduleHolidaysPublicConfigPayloadV2?,
         ?name: String?,
         ?team_ids: Array[String]?,
-        ?timezone: String?
+        ?timezone: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

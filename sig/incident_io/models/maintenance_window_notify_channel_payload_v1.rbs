@@ -15,7 +15,12 @@ module IncidentIo
       # The type of channel (e.g.
       attr_reader channel_type: String?
 
-      def self.new: (?channel_id: String?, ?channel_name: String?, ?channel_type: String?) -> instance
+      def self.new: (
+        ?channel_id: String?,
+        ?channel_name: String?,
+        ?channel_type: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?channel_id: String?,

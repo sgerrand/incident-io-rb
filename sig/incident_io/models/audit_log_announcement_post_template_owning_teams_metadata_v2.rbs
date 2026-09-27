@@ -12,7 +12,11 @@ module IncidentIo
       # Catalog entry IDs of the owning teams before the change, comma separated
       attr_reader before_owning_team_ids: String?
 
-      def self.new: (?after_owning_team_ids: String?, ?before_owning_team_ids: String?) -> instance
+      def self.new: (
+        ?after_owning_team_ids: String?,
+        ?before_owning_team_ids: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?after_owning_team_ids: String?,

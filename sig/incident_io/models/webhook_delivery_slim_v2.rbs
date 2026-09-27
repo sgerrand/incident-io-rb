@@ -23,7 +23,8 @@ module IncidentIo
         ?endpoint: String?,
         ?method_: String?,
         ?outcome: String?,
-        ?status_code: Integer?
+        ?status_code: Integer?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

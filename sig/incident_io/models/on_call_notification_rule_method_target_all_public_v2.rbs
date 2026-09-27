@@ -7,7 +7,7 @@ module IncidentIo
       extend Model::ClassMethods
       include Model::InstanceMethods
 
-      def self.new: () -> instance
+      def self.new: (?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?raw: Hash[String, untyped]?) -> void
 

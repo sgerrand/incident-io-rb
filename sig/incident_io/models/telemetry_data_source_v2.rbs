@@ -33,7 +33,8 @@ module IncidentIo
         ?provider: String?,
         ?source_type: String?,
         ?updated_at: Time?,
-        ?version: String?
+        ?version: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

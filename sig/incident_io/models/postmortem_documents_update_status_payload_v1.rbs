@@ -10,7 +10,7 @@ module IncidentIo
       # The new status to set the post-mortem document to One of: in_progress, in_review, completed.
       attr_reader status: String?
 
-      def self.new: (?status: String?) -> instance
+      def self.new: (?status: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?status: String?, ?raw: Hash[String, untyped]?) -> void
 

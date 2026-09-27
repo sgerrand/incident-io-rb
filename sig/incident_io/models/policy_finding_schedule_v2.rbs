@@ -30,7 +30,8 @@ module IncidentIo
         ?impacted_users: Array[PolicyFindingScheduleImpactedUserV2]?,
         ?rotation_id: String?,
         ?schedule_id: String?,
-        ?start_at: Time?
+        ?start_at: Time?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

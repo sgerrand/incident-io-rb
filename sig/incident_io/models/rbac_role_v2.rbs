@@ -16,7 +16,13 @@ module IncidentIo
       # Unique human-readable slug for the RBAC role
       attr_reader slug: String?
 
-      def self.new: (?description: String?, ?id: String?, ?name: String?, ?slug: String?) -> instance
+      def self.new: (
+        ?description: String?,
+        ?id: String?,
+        ?name: String?,
+        ?slug: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?description: String?,

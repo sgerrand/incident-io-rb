@@ -12,7 +12,11 @@ module IncidentIo
       # When a subsequent alert joins an existing group, when should we escalate again?
       attr_reader mode: String?
 
-      def self.new: (?grace_period_seconds: Integer?, ?mode: String?) -> instance
+      def self.new: (
+        ?grace_period_seconds: Integer?,
+        ?mode: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (?grace_period_seconds: Integer?, ?mode: String?, ?raw: Hash[String, untyped]?) -> void
 

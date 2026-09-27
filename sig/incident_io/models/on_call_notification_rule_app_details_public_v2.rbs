@@ -10,7 +10,7 @@ module IncidentIo
       # Controls the interruption level of push notifications.
       attr_reader push_notification_criticality: String?
 
-      def self.new: (?push_notification_criticality: String?) -> instance
+      def self.new: (?push_notification_criticality: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?push_notification_criticality: String?, ?raw: Hash[String, untyped]?) -> void
 

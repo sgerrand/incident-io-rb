@@ -16,7 +16,13 @@ module IncidentIo
       # The name of the tool whose pinned decisions changed
       attr_reader tool: String?
 
-      def self.new: (?after: String?, ?before: String?, ?change_id: String?, ?tool: String?) -> instance
+      def self.new: (
+        ?after: String?,
+        ?before: String?,
+        ?change_id: String?,
+        ?tool: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?after: String?,

@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader maintenance_window: MaintenanceWindowV1?
 
-      def self.new: (?maintenance_window: MaintenanceWindowV1?) -> instance
+      def self.new: (?maintenance_window: MaintenanceWindowV1?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?maintenance_window: MaintenanceWindowV1?, ?raw: Hash[String, untyped]?) -> void
 

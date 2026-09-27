@@ -10,7 +10,7 @@ module IncidentIo
       # Why this finding is being dismissed
       attr_reader reason: String?
 
-      def self.new: (?reason: String?) -> instance
+      def self.new: (?reason: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?reason: String?, ?raw: Hash[String, untyped]?) -> void
 

@@ -12,7 +12,11 @@ module IncidentIo
       # the name of the attribute to use
       attr_reader attribute_name: String?
 
-      def self.new: (?attribute_id: String?, ?attribute_name: String?) -> instance
+      def self.new: (
+        ?attribute_id: String?,
+        ?attribute_name: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (?attribute_id: String?, ?attribute_name: String?, ?raw: Hash[String, untyped]?) -> void
 

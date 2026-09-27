@@ -10,7 +10,10 @@ module IncidentIo
       # The response options available to each requested user, in the same order as the request.
       attr_reader response_options: Array[EscalationUserResponseOptionsV2]?
 
-      def self.new: (?response_options: Array[EscalationUserResponseOptionsV2]?) -> instance
+      def self.new: (
+        ?response_options: Array[EscalationUserResponseOptionsV2]?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?response_options: Array[EscalationUserResponseOptionsV2]?,

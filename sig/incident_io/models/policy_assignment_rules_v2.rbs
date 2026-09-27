@@ -21,7 +21,8 @@ module IncidentIo
         ?reminder_cadence_after: PolicyReminderCadenceV2?,
         ?reminder_cadence_before: PolicyReminderCadenceV2?,
         ?reminder_detected_date_offset_hours: Array[Integer]?,
-        ?reminder_due_date_offset_hours: Array[Integer]?
+        ?reminder_due_date_offset_hours: Array[Integer]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

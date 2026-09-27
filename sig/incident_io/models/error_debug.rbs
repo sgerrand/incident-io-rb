@@ -12,7 +12,7 @@ module IncidentIo
       # Stacktrace of the error, if applicable
       attr_reader stacktrace: Array[String]?
 
-      def self.new: (?message: String?, ?stacktrace: Array[String]?) -> instance
+      def self.new: (?message: String?, ?stacktrace: Array[String]?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?message: String?, ?stacktrace: Array[String]?, ?raw: Hash[String, untyped]?) -> void
 

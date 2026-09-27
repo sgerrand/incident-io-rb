@@ -27,7 +27,8 @@ module IncidentIo
         ?outcome: String?,
         ?request: WebhookDeliveryRequestV2?,
         ?response: WebhookDeliveryResponseV2?,
-        ?status_code: Integer?
+        ?status_code: Integer?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

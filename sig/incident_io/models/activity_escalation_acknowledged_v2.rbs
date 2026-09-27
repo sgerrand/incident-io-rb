@@ -11,7 +11,11 @@ module IncidentIo
       # The escalation that was acknowledged
       attr_reader escalation_id: String?
 
-      def self.new: (?acknowledger: UserV2?, ?escalation_id: String?) -> instance
+      def self.new: (
+        ?acknowledger: UserV2?,
+        ?escalation_id: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (?acknowledger: UserV2?, ?escalation_id: String?, ?raw: Hash[String, untyped]?) -> void
 

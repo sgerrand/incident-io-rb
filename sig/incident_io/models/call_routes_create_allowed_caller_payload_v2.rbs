@@ -12,7 +12,7 @@ module IncidentIo
       # The number to allow, in international format
       attr_reader phone_number: String?
 
-      def self.new: (?name: String?, ?phone_number: String?) -> instance
+      def self.new: (?name: String?, ?phone_number: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?name: String?, ?phone_number: String?, ?raw: Hash[String, untyped]?) -> void
 

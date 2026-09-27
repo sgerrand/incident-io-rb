@@ -10,7 +10,7 @@ module IncidentIo
       # The current value of this timestamp, for this incident
       attr_reader value: Time?
 
-      def self.new: (?value: Time?) -> instance
+      def self.new: (?value: Time?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?value: Time?, ?raw: Hash[String, untyped]?) -> void
 

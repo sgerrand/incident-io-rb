@@ -10,7 +10,7 @@ module IncidentIo
       attr_reader api_key: APIKeyActorV1?
       attr_reader user: UserV1?
 
-      def self.new: (?api_key: APIKeyActorV1?, ?user: UserV1?) -> instance
+      def self.new: (?api_key: APIKeyActorV1?, ?user: UserV1?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?api_key: APIKeyActorV1?, ?user: UserV1?, ?raw: Hash[String, untyped]?) -> void
 

@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader workflows: Array[WorkflowSlimV2]?
 
-      def self.new: (?workflows: Array[WorkflowSlimV2]?) -> instance
+      def self.new: (?workflows: Array[WorkflowSlimV2]?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?workflows: Array[WorkflowSlimV2]?, ?raw: Hash[String, untyped]?) -> void
 

@@ -12,7 +12,7 @@ module IncidentIo
       # Title of the postmortem document
       attr_reader title: String?
 
-      def self.new: (?content: String?, ?title: String?) -> instance
+      def self.new: (?content: String?, ?title: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?content: String?, ?title: String?, ?raw: Hash[String, untyped]?) -> void
 

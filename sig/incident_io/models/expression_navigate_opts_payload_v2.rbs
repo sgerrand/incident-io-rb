@@ -10,7 +10,7 @@ module IncidentIo
       # The reference that you want to navigate to
       attr_reader reference: String?
 
-      def self.new: (?reference: String?) -> instance
+      def self.new: (?reference: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?reference: String?, ?raw: Hash[String, untyped]?) -> void
 

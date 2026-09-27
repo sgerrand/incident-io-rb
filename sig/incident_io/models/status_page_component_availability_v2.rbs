@@ -27,7 +27,8 @@ module IncidentIo
         ?data_available_since: Time?,
         ?end_at: Time?,
         ?start_at: Time?,
-        ?status_page_id: String?
+        ?status_page_id: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -70,7 +70,8 @@ module IncidentIo
         ?total_duration_seconds: Integer?,
         ?total_pay_by_currency: Hash[String, Integer]?,
         ?unpaid_shifts: String?,
-        ?updated_at: Time?
+        ?updated_at: Time?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

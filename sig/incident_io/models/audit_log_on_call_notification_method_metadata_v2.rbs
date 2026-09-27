@@ -10,7 +10,7 @@ module IncidentIo
       # The user whose notification method was created or destroyed
       attr_reader target_user: String?
 
-      def self.new: (?target_user: String?) -> instance
+      def self.new: (?target_user: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?target_user: String?, ?raw: Hash[String, untyped]?) -> void
 

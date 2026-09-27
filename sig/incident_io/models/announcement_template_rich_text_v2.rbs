@@ -13,7 +13,7 @@ module IncidentIo
       # How contents is written.
       attr_reader type: String?
 
-      def self.new: (?contents: String?, ?type: String?) -> instance
+      def self.new: (?contents: String?, ?type: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?contents: String?, ?type: String?, ?raw: Hash[String, untyped]?) -> void
 

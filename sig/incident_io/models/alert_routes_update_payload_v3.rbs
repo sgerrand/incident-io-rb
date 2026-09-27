@@ -40,7 +40,8 @@ module IncidentIo
         ?message_config: AlertMessageConfigPayloadV3?,
         ?name: String?,
         ?owning_team_ids: Array[String]?,
-        ?version: Integer?
+        ?version: Integer?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

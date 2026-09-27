@@ -27,7 +27,8 @@ module IncidentIo
         ?id: String?,
         ?is_default: bool?,
         ?name: String?,
-        ?owning_team_ids: Array[String]?
+        ?owning_team_ids: Array[String]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

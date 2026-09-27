@@ -10,7 +10,7 @@ module IncidentIo
       # All conditions in this list must be satisfied for the group to be satisfied
       attr_reader conditions: Array[ConditionPayloadV3]?
 
-      def self.new: (?conditions: Array[ConditionPayloadV3]?) -> instance
+      def self.new: (?conditions: Array[ConditionPayloadV3]?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?conditions: Array[ConditionPayloadV3]?, ?raw: Hash[String, untyped]?) -> void
 

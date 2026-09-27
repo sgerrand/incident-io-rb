@@ -11,7 +11,7 @@ module IncidentIo
       # The incident the debrief belongs to
       attr_reader incident_id: String?
 
-      def self.new: (?incident_id: String?) -> instance
+      def self.new: (?incident_id: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?incident_id: String?, ?raw: Hash[String, untyped]?) -> void
 

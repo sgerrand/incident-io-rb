@@ -20,7 +20,8 @@ module IncidentIo
         ?limit: Integer?,
         ?name: String?,
         ?remaining: Integer?,
-        ?retry_after: String?
+        ?retry_after: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

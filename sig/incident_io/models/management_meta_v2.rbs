@@ -17,7 +17,8 @@ module IncidentIo
       def self.new: (
         ?annotations: Hash[String, String]?,
         ?managed_by: String?,
-        ?source_url: String?
+        ?source_url: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

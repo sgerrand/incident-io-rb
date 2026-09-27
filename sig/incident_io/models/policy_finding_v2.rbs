@@ -50,7 +50,8 @@ module IncidentIo
         ?schedule: PolicyFindingScheduleV2?,
         ?state: String?,
         ?updated_at: Time?,
-        ?vacation_conflict: PolicyFindingVacationConflictV2?
+        ?vacation_conflict: PolicyFindingVacationConflictV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader severity: SeverityV1?
 
-      def self.new: (?severity: SeverityV1?) -> instance
+      def self.new: (?severity: SeverityV1?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?severity: SeverityV1?, ?raw: Hash[String, untyped]?) -> void
 

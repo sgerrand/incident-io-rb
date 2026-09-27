@@ -29,7 +29,8 @@ module IncidentIo
         ?mode: String?,
         ?name: String?,
         ?path: Array[CatalogTypeAttributePathItemPayloadV3]?,
-        ?type: String?
+        ?type: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

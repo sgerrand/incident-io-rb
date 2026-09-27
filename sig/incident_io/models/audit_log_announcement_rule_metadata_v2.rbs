@@ -20,7 +20,8 @@ module IncidentIo
         ?after_owning_team_ids: String?,
         ?after_private_incident_scope: String?,
         ?before_owning_team_ids: String?,
-        ?before_private_incident_scope: String?
+        ?before_private_incident_scope: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

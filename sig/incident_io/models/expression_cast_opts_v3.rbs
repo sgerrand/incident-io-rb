@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader returns: ReturnsMetaV3?
 
-      def self.new: (?returns: ReturnsMetaV3?) -> instance
+      def self.new: (?returns: ReturnsMetaV3?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?returns: ReturnsMetaV3?, ?raw: Hash[String, untyped]?) -> void
 

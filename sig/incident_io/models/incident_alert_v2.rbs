@@ -18,7 +18,8 @@ module IncidentIo
         ?alert: AlertSlimV2?,
         ?alert_route_id: String?,
         ?id: String?,
-        ?incident: IncidentSlimV2?
+        ?incident: IncidentSlimV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

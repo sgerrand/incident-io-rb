@@ -16,7 +16,8 @@ module IncidentIo
       def self.new: (
         ?duration_metric: IncidentDurationMetricV2?,
         ?status: String?,
-        ?value_seconds: Integer?
+        ?value_seconds: Integer?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

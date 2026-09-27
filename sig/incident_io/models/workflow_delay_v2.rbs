@@ -12,7 +12,11 @@ module IncidentIo
       # Delay in seconds between trigger firing and running the workflow
       attr_reader for_seconds: Integer?
 
-      def self.new: (?conditions_apply_over_delay: bool?, ?for_seconds: Integer?) -> instance
+      def self.new: (
+        ?conditions_apply_over_delay: bool?,
+        ?for_seconds: Integer?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?conditions_apply_over_delay: bool?,

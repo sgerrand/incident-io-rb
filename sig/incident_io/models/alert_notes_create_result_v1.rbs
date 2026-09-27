@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader alert_note: AlertNoteV1?
 
-      def self.new: (?alert_note: AlertNoteV1?) -> instance
+      def self.new: (?alert_note: AlertNoteV1?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?alert_note: AlertNoteV1?, ?raw: Hash[String, untyped]?) -> void
 

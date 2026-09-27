@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader incident: IncidentV2?
 
-      def self.new: (?incident: IncidentV2?) -> instance
+      def self.new: (?incident: IncidentV2?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?incident: IncidentV2?, ?raw: Hash[String, untyped]?) -> void
 

@@ -12,7 +12,8 @@ module IncidentIo
 
       def self.new: (
         ?call_transcript_entries: Array[CallTranscriptEntryV2]?,
-        ?pagination_meta: PaginationMetaResultV2?
+        ?pagination_meta: PaginationMetaResultV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -10,7 +10,7 @@ module IncidentIo
       # A title for the incident
       attr_reader name: String?
 
-      def self.new: (?name: String?) -> instance
+      def self.new: (?name: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?name: String?, ?raw: Hash[String, untyped]?) -> void
 

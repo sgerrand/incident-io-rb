@@ -35,7 +35,8 @@ module IncidentIo
         ?follow_up_priority_option_id: String?,
         ?incident_id: String?,
         ?labels: Array[String]?,
-        ?title: String?
+        ?title: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

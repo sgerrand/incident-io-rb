@@ -29,7 +29,8 @@ module IncidentIo
         ?one_off_rules: Array[PayConfigOneOffRulePayloadV2]?,
         ?rate_time_unit: String?,
         ?timezone: String?,
-        ?weekly_rules: Array[PayConfigWeeklyRulePayloadV2]?
+        ?weekly_rules: Array[PayConfigWeeklyRulePayloadV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

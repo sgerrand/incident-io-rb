@@ -76,7 +76,8 @@ module IncidentIo
         ?source_repo_url: String?,
         ?type_name: String?,
         ?updated_at: Time?,
-        ?use_name_as_identifier: bool?
+        ?use_name_as_identifier: bool?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

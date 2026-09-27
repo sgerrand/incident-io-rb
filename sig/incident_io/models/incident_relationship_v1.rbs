@@ -11,7 +11,11 @@ module IncidentIo
       attr_reader id: String?
       attr_reader incident: IncidentRelationshipDetailsV1?
 
-      def self.new: (?id: String?, ?incident: IncidentRelationshipDetailsV1?) -> instance
+      def self.new: (
+        ?id: String?,
+        ?incident: IncidentRelationshipDetailsV1?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?id: String?,

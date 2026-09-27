@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader follow_up: FollowUpV3?
 
-      def self.new: (?follow_up: FollowUpV3?) -> instance
+      def self.new: (?follow_up: FollowUpV3?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?follow_up: FollowUpV3?, ?raw: Hash[String, untyped]?) -> void
 

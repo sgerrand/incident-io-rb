@@ -14,7 +14,12 @@ module IncidentIo
       # Relate the alert again even though someone previously marked it unrelated to this incident.
       attr_reader re_relate: bool?
 
-      def self.new: (?alert_id: String?, ?incident_id: String?, ?re_relate: bool?) -> instance
+      def self.new: (
+        ?alert_id: String?,
+        ?incident_id: String?,
+        ?re_relate: bool?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?alert_id: String?,

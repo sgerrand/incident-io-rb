@@ -12,7 +12,7 @@ module IncidentIo
       # Which node ID we begin repeating from.
       attr_reader to_node: String?
 
-      def self.new: (?repeat_times: Integer?, ?to_node: String?) -> instance
+      def self.new: (?repeat_times: Integer?, ?to_node: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?repeat_times: Integer?, ?to_node: String?, ?raw: Hash[String, untyped]?) -> void
 

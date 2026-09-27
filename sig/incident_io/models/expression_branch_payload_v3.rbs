@@ -13,7 +13,8 @@ module IncidentIo
 
       def self.new: (
         ?condition_groups: Array[ConditionGroupPayloadV3]?,
-        ?result: EngineParamBindingPayloadV3?
+        ?result: EngineParamBindingPayloadV3?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -23,7 +23,8 @@ module IncidentIo
         ?emoji: String?,
         ?name: String?,
         ?required: bool?,
-        ?type: String?
+        ?type: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

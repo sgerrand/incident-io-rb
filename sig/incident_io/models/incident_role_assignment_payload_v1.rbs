@@ -11,7 +11,11 @@ module IncidentIo
       # Unique ID of an incident role.
       attr_reader incident_role_id: String?
 
-      def self.new: (?assignee: UserReferencePayloadV1?, ?incident_role_id: String?) -> instance
+      def self.new: (
+        ?assignee: UserReferencePayloadV1?,
+        ?incident_role_id: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?assignee: UserReferencePayloadV1?,

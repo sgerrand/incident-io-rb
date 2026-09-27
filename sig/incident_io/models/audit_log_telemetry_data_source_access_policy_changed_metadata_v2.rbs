@@ -16,7 +16,13 @@ module IncidentIo
       # ID of the user who saved the policy, absent when staff tooling saved it
       attr_reader set_by: String?
 
-      def self.new: (?after: String?, ?before: String?, ?change_id: String?, ?set_by: String?) -> instance
+      def self.new: (
+        ?after: String?,
+        ?before: String?,
+        ?change_id: String?,
+        ?set_by: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?after: String?,

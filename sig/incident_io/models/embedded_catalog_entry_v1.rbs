@@ -20,7 +20,8 @@ module IncidentIo
         ?aliases: Array[String]?,
         ?external_id: String?,
         ?id: String?,
-        ?name: String?
+        ?name: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

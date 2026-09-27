@@ -11,7 +11,7 @@ module IncidentIo
       # The alert.
       attr_reader alert_id: String?
 
-      def self.new: (?actor: ActorV2?, ?alert_id: String?) -> instance
+      def self.new: (?actor: ActorV2?, ?alert_id: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?actor: ActorV2?, ?alert_id: String?, ?raw: Hash[String, untyped]?) -> void
 

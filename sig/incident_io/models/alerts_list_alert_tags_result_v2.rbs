@@ -10,7 +10,11 @@ module IncidentIo
       attr_reader alert_tags: Array[AlertTagV2]?
       attr_reader pagination_meta: PaginationMetaResultV2?
 
-      def self.new: (?alert_tags: Array[AlertTagV2]?, ?pagination_meta: PaginationMetaResultV2?) -> instance
+      def self.new: (
+        ?alert_tags: Array[AlertTagV2]?,
+        ?pagination_meta: PaginationMetaResultV2?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?alert_tags: Array[AlertTagV2]?,

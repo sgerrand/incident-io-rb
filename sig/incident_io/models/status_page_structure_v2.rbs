@@ -10,7 +10,7 @@ module IncidentIo
       # Array of components and groups to display in the status page
       attr_reader items: Array[StatusPageStructureItemV2]?
 
-      def self.new: (?items: Array[StatusPageStructureItemV2]?) -> instance
+      def self.new: (?items: Array[StatusPageStructureItemV2]?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?items: Array[StatusPageStructureItemV2]?, ?raw: Hash[String, untyped]?) -> void
 

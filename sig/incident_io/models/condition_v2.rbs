@@ -15,7 +15,8 @@ module IncidentIo
       def self.new: (
         ?operation: ConditionOperationV2?,
         ?param_bindings: Array[EngineParamBindingV2]?,
-        ?subject: ConditionSubjectV2?
+        ?subject: ConditionSubjectV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

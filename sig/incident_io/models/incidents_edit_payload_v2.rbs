@@ -11,7 +11,11 @@ module IncidentIo
       # Should we send Slack channel notifications to inform responders of this update?
       attr_reader notify_incident_channel: bool?
 
-      def self.new: (?incident: IncidentEditPayloadV2?, ?notify_incident_channel: bool?) -> instance
+      def self.new: (
+        ?incident: IncidentEditPayloadV2?,
+        ?notify_incident_channel: bool?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?incident: IncidentEditPayloadV2?,

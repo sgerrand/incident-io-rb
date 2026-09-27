@@ -9,7 +9,10 @@ module IncidentIo
 
       attr_reader status_page_incident_update: StatusPageIncidentUpdateV2?
 
-      def self.new: (?status_page_incident_update: StatusPageIncidentUpdateV2?) -> instance
+      def self.new: (
+        ?status_page_incident_update: StatusPageIncidentUpdateV2?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?status_page_incident_update: StatusPageIncidentUpdateV2?,

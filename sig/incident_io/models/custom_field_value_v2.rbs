@@ -21,7 +21,8 @@ module IncidentIo
         ?value_link: String?,
         ?value_numeric: String?,
         ?value_option: CustomFieldOptionV2?,
-        ?value_text: String?
+        ?value_text: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

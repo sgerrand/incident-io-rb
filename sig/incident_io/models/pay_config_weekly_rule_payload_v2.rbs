@@ -24,7 +24,8 @@ module IncidentIo
         ?id: String?,
         ?rate_cents: Integer?,
         ?start_time: String?,
-        ?weekdays: Array[String]?
+        ?weekdays: Array[String]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

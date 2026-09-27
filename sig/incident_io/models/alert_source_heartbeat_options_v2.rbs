@@ -20,7 +20,8 @@ module IncidentIo
         ?failure_threshold: Integer?,
         ?grace_period_seconds: Integer?,
         ?interval_seconds: Integer?,
-        ?ping_url: String?
+        ?ping_url: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -12,7 +12,7 @@ module IncidentIo
       # The name of this component
       attr_reader name: String?
 
-      def self.new: (?component_id: String?, ?name: String?) -> instance
+      def self.new: (?component_id: String?, ?name: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?component_id: String?, ?name: String?, ?raw: Hash[String, untyped]?) -> void
 

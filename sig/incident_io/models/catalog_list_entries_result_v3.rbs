@@ -14,7 +14,8 @@ module IncidentIo
       def self.new: (
         ?catalog_entries: Array[CatalogEntryV3]?,
         ?catalog_type: CatalogTypeV3?,
-        ?pagination_meta: PaginationMetaResultWithTotalV3?
+        ?pagination_meta: PaginationMetaResultWithTotalV3?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

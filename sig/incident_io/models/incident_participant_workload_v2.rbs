@@ -18,7 +18,8 @@ module IncidentIo
         ?archived_at: Time?,
         ?participant_type: String?,
         ?user: UserV2?,
-        ?workload: WorkloadMinutesV2?
+        ?workload: WorkloadMinutesV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

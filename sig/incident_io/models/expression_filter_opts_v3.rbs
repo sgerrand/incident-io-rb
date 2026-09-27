@@ -10,7 +10,7 @@ module IncidentIo
       # The condition groups to apply in this filter.
       attr_reader condition_groups: Array[ConditionGroupV3]?
 
-      def self.new: (?condition_groups: Array[ConditionGroupV3]?) -> instance
+      def self.new: (?condition_groups: Array[ConditionGroupV3]?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?condition_groups: Array[ConditionGroupV3]?, ?raw: Hash[String, untyped]?) -> void
 

@@ -10,7 +10,7 @@ module IncidentIo
       # The tools whose permission changed, comma separated
       attr_reader tools: String?
 
-      def self.new: (?tools: String?) -> instance
+      def self.new: (?tools: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?tools: String?, ?raw: Hash[String, untyped]?) -> void
 

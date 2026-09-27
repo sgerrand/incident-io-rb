@@ -12,7 +12,11 @@ module IncidentIo
       # The user IDs that were in the attribute before the change
       attr_reader before_values: Array[String]?
 
-      def self.new: (?after_values: Array[String]?, ?before_values: Array[String]?) -> instance
+      def self.new: (
+        ?after_values: Array[String]?,
+        ?before_values: Array[String]?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?after_values: Array[String]?,

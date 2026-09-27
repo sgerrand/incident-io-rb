@@ -20,7 +20,8 @@ module IncidentIo
         ?description: String?,
         ?handle: String?,
         ?name: String?,
-        ?slack_team_id: String?
+        ?slack_team_id: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

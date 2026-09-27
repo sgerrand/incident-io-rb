@@ -23,7 +23,8 @@ module IncidentIo
         ?name: String?,
         ?roles: Array[String]?,
         ?team_roles: Array[String]?,
-        ?teams: Array[IdentityTeamV1]?
+        ?teams: Array[IdentityTeamV1]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -12,7 +12,7 @@ module IncidentIo
       # The user agent of the actor that performed this action
       attr_reader user_agent: String?
 
-      def self.new: (?location: String?, ?user_agent: String?) -> instance
+      def self.new: (?location: String?, ?user_agent: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?location: String?, ?user_agent: String?, ?raw: Hash[String, untyped]?) -> void
 

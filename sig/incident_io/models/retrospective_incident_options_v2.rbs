@@ -17,7 +17,8 @@ module IncidentIo
       def self.new: (
         ?external_id: Integer?,
         ?postmortem_document_url: String?,
-        ?slack_channel_id: String?
+        ?slack_channel_id: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

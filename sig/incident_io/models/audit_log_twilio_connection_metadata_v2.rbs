@@ -10,7 +10,7 @@ module IncidentIo
       # The Twilio account SID for the connection
       attr_reader account_sid: String?
 
-      def self.new: (?account_sid: String?) -> instance
+      def self.new: (?account_sid: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?account_sid: String?, ?raw: Hash[String, untyped]?) -> void
 

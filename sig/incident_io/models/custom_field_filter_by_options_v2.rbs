@@ -12,7 +12,11 @@ module IncidentIo
       # This must be the ID of a custom field, which must have values of the same type as the attribute you are filtering by.
       attr_reader custom_field_id: String?
 
-      def self.new: (?catalog_attribute_id: String?, ?custom_field_id: String?) -> instance
+      def self.new: (
+        ?catalog_attribute_id: String?,
+        ?custom_field_id: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?catalog_attribute_id: String?,

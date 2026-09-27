@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader resources: Array[CatalogResourceV3]?
 
-      def self.new: (?resources: Array[CatalogResourceV3]?) -> instance
+      def self.new: (?resources: Array[CatalogResourceV3]?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?resources: Array[CatalogResourceV3]?, ?raw: Hash[String, untyped]?) -> void
 

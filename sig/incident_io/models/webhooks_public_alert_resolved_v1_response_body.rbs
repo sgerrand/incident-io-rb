@@ -11,7 +11,11 @@ module IncidentIo
       attr_reader event_type: String?
       attr_reader public_alert_alert_resolved_v1: AlertV2?
 
-      def self.new: (?event_type: String?, ?public_alert_alert_resolved_v1: AlertV2?) -> instance
+      def self.new: (
+        ?event_type: String?,
+        ?public_alert_alert_resolved_v1: AlertV2?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?event_type: String?,

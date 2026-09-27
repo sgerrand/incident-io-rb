@@ -26,7 +26,8 @@ module IncidentIo
         ?metadata: Hash[String, untyped]?,
         ?source_url: String?,
         ?status: String?,
-        ?title: String?
+        ?title: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

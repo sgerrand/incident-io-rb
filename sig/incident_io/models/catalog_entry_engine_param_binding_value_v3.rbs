@@ -12,7 +12,7 @@ module IncidentIo
       # The underlying value of the attribute, serialized as a string.
       attr_reader literal: String?
 
-      def self.new: (?label: String?, ?literal: String?) -> instance
+      def self.new: (?label: String?, ?literal: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?label: String?, ?literal: String?, ?raw: Hash[String, untyped]?) -> void
 

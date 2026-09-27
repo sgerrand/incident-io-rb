@@ -26,7 +26,8 @@ module IncidentIo
         ?engine_resource_type: String?,
         ?label: String?,
         ?type: String?,
-        ?value_docstring: String?
+        ?value_docstring: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

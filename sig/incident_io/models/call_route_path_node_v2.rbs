@@ -23,7 +23,8 @@ module IncidentIo
         ?id: String?,
         ?level: CallRoutePathNodeLevelV2?,
         ?type: String?,
-        ?voicemail: CallRoutePathNodeVoicemailV2?
+        ?voicemail: CallRoutePathNodeVoicemailV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

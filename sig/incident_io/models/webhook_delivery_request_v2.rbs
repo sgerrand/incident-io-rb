@@ -14,7 +14,12 @@ module IncidentIo
       # Headers sent with the request, including those added automatically.
       attr_reader headers: Hash[String, String]?
 
-      def self.new: (?body: String?, ?body_truncated: bool?, ?headers: Hash[String, String]?) -> instance
+      def self.new: (
+        ?body: String?,
+        ?body_truncated: bool?,
+        ?headers: Hash[String, String]?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?body: String?,

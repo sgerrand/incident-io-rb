@@ -23,7 +23,8 @@ module IncidentIo
         ?operations: Array[ExpressionOperationV3]?,
         ?reference: String?,
         ?returns: ReturnsMetaV3?,
-        ?root_reference: String?
+        ?root_reference: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

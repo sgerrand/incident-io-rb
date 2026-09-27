@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader catalog_type: CatalogTypeV3?
 
-      def self.new: (?catalog_type: CatalogTypeV3?) -> instance
+      def self.new: (?catalog_type: CatalogTypeV3?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?catalog_type: CatalogTypeV3?, ?raw: Hash[String, untyped]?) -> void
 

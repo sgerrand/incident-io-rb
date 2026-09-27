@@ -16,7 +16,8 @@ module IncidentIo
       def self.new: (
         ?catalog_entry: AlertAttributeCatalogEntryV2?,
         ?label: String?,
-        ?literal: String?
+        ?literal: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -12,7 +12,7 @@ module IncidentIo
       # An IP address or a CIDR IP prefix to allow
       attr_reader value: String?
 
-      def self.new: (?label: String?, ?value: String?) -> instance
+      def self.new: (?label: String?, ?value: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?label: String?, ?value: String?, ?raw: Hash[String, untyped]?) -> void
 

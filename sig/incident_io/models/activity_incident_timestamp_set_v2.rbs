@@ -18,7 +18,8 @@ module IncidentIo
         ?incident_timestamp: IncidentTimestampV2?,
         ?new_value: Time?,
         ?previous_value: Time?,
-        ?updater: ActorV2?
+        ?updater: ActorV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

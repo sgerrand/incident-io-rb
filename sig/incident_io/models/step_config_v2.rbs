@@ -23,7 +23,8 @@ module IncidentIo
         ?id: String?,
         ?label: String?,
         ?name: String?,
-        ?param_bindings: Array[EngineParamBindingV2]?
+        ?param_bindings: Array[EngineParamBindingV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -11,7 +11,7 @@ module IncidentIo
       # The new bearer token to use in API requests.
       attr_reader token: String?
 
-      def self.new: (?api_key: APIKeyV1?, ?token: String?) -> instance
+      def self.new: (?api_key: APIKeyV1?, ?token: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?api_key: APIKeyV1?, ?token: String?, ?raw: Hash[String, untyped]?) -> void
 

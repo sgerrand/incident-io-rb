@@ -12,7 +12,8 @@ module IncidentIo
 
       def self.new: (
         ?pagination_meta: AfterPaginationMetaResultV2?,
-        ?schedule_entries: ScheduleEntriesListPayloadV2?
+        ?schedule_entries: ScheduleEntriesListPayloadV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

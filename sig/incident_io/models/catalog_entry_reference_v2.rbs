@@ -20,7 +20,8 @@ module IncidentIo
         ?archived_at: Time?,
         ?catalog_entry_id: String?,
         ?catalog_entry_name: String?,
-        ?catalog_type_id: String?
+        ?catalog_type_id: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

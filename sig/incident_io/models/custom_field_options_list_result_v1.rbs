@@ -12,7 +12,8 @@ module IncidentIo
 
       def self.new: (
         ?custom_field_options: Array[CustomFieldOptionV1]?,
-        ?pagination_meta: PaginationMetaResultV1?
+        ?pagination_meta: PaginationMetaResultV1?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

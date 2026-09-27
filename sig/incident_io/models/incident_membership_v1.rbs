@@ -22,7 +22,8 @@ module IncidentIo
         ?id: String?,
         ?incident_id: String?,
         ?updated_at: Time?,
-        ?user: UserV1?
+        ?user: UserV1?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

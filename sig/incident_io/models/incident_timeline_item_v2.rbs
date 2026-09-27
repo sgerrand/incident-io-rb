@@ -41,7 +41,8 @@ module IncidentIo
         ?incident_id: String?,
         ?timestamp: Time?,
         ?title: String?,
-        ?updated_at: Time?
+        ?updated_at: Time?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

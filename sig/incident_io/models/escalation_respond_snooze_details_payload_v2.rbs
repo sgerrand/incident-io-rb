@@ -12,7 +12,7 @@ module IncidentIo
       # The time at which the snooze should end
       attr_reader snooze_until: Time?
 
-      def self.new: (?reason: String?, ?snooze_until: Time?) -> instance
+      def self.new: (?reason: String?, ?snooze_until: Time?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?reason: String?, ?snooze_until: Time?, ?raw: Hash[String, untyped]?) -> void
 

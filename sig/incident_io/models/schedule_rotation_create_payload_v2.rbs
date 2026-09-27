@@ -36,7 +36,8 @@ module IncidentIo
         ?scheduling_mode: String?,
         ?users: Array[UserReferencePayloadV2]?,
         ?working_interval: Array[ScheduleRotationWorkingIntervalCreatePayloadV2]?,
-        ?working_intervals: Array[ScheduleRotationWorkingIntervalCreatePayloadV2]?
+        ?working_intervals: Array[ScheduleRotationWorkingIntervalCreatePayloadV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

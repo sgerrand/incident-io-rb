@@ -14,7 +14,8 @@ module IncidentIo
 
       def self.new: (
         ?alert_source_id: String?,
-        ?condition_groups: Array[ConditionGroupPayloadV3]?
+        ?condition_groups: Array[ConditionGroupPayloadV3]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

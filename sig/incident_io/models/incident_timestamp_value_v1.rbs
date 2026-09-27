@@ -12,7 +12,7 @@ module IncidentIo
       # Name of the lifecycle event
       attr_reader name: String?
 
-      def self.new: (?last_occurred_at: Time?, ?name: String?) -> instance
+      def self.new: (?last_occurred_at: Time?, ?name: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?last_occurred_at: Time?, ?name: String?, ?raw: Hash[String, untyped]?) -> void
 

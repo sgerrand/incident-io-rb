@@ -15,7 +15,12 @@ module IncidentIo
       # The number allowed to call this route, in international format
       attr_reader phone_number: String?
 
-      def self.new: (?id: String?, ?name: String?, ?phone_number: String?) -> instance
+      def self.new: (
+        ?id: String?,
+        ?name: String?,
+        ?phone_number: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?id: String?,

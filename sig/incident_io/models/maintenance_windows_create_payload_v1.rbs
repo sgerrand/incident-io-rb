@@ -52,7 +52,8 @@ module IncidentIo
         ?reroute_on_end: bool?,
         ?resolve_on_end: bool?,
         ?show_in_sidebar: bool?,
-        ?start_at: Time?
+        ?start_at: Time?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

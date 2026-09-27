@@ -30,7 +30,8 @@ module IncidentIo
         ?reference: String?,
         ?status_category: String?,
         ?summary: String?,
-        ?visibility: String?
+        ?visibility: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

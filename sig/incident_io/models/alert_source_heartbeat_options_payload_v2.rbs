@@ -17,7 +17,8 @@ module IncidentIo
       def self.new: (
         ?failure_threshold: Integer?,
         ?grace_period_seconds: Integer?,
-        ?interval_seconds: Integer?
+        ?interval_seconds: Integer?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

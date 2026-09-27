@@ -12,7 +12,11 @@ module IncidentIo
       # JavaScript expression to transform email fields into structured alert fields
       attr_reader transform_expression: String?
 
-      def self.new: (?redactions: Array[String]?, ?transform_expression: String?) -> instance
+      def self.new: (
+        ?redactions: Array[String]?,
+        ?transform_expression: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?redactions: Array[String]?,

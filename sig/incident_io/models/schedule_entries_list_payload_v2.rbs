@@ -24,7 +24,8 @@ module IncidentIo
       def self.new: (
         ?final: Array[ScheduleEntryV2]?,
         ?overrides: Array[ScheduleEntryV2]?,
-        ?scheduled: Array[ScheduleEntryV2]?
+        ?scheduled: Array[ScheduleEntryV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

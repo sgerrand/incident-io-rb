@@ -10,7 +10,7 @@ module IncidentIo
       # Whether QR code mobile login is enabled after the update
       attr_reader enabled: String?
 
-      def self.new: (?enabled: String?) -> instance
+      def self.new: (?enabled: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?enabled: String?, ?raw: Hash[String, untyped]?) -> void
 

@@ -16,7 +16,8 @@ module IncidentIo
       def self.new: (
         ?expressions: Array[ExpressionPayloadV3]?,
         ?name: String?,
-        ?template: IncidentTemplateConfigPayloadV1?
+        ?template: IncidentTemplateConfigPayloadV1?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

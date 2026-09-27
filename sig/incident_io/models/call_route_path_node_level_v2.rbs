@@ -15,7 +15,7 @@ module IncidentIo
       # The users and schedules to page
       attr_reader targets: Array[CallRouteTargetV2]?
 
-      def self.new: (?targets: Array[CallRouteTargetV2]?) -> instance
+      def self.new: (?targets: Array[CallRouteTargetV2]?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?targets: Array[CallRouteTargetV2]?, ?raw: Hash[String, untyped]?) -> void
 

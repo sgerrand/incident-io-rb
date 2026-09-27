@@ -11,7 +11,7 @@ module IncidentIo
       # How often to send the reminder, stepping in fixed durations from the due date.
       attr_reader interval: String?
 
-      def self.new: (?interval: String?) -> instance
+      def self.new: (?interval: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?interval: String?, ?raw: Hash[String, untyped]?) -> void
 

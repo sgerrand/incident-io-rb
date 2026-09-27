@@ -12,7 +12,7 @@ module IncidentIo
       # The title of the alert, parsed from the alert payload according to the alert source configuration
       attr_reader title: String?
 
-      def self.new: (?id: String?, ?title: String?) -> instance
+      def self.new: (?id: String?, ?title: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?id: String?, ?title: String?, ?raw: Hash[String, untyped]?) -> void
 

@@ -15,7 +15,8 @@ module IncidentIo
       def self.new: (
         ?condition_groups: Array[ConditionGroupPayloadV2]?,
         ?ms_teams_targets: AlertRouteChannelTargetPayloadV2?,
-        ?slack_targets: AlertRouteChannelTargetPayloadV2?
+        ?slack_targets: AlertRouteChannelTargetPayloadV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

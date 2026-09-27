@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader alert_attribute: AlertAttributeV2?
 
-      def self.new: (?alert_attribute: AlertAttributeV2?) -> instance
+      def self.new: (?alert_attribute: AlertAttributeV2?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?alert_attribute: AlertAttributeV2?, ?raw: Hash[String, untyped]?) -> void
 

@@ -16,7 +16,8 @@ module IncidentIo
       def self.new: (
         ?owning_team_ids: Array[String]?,
         ?source_type: String?,
-        ?template: AlertTemplatePayloadV2?
+        ?template: AlertTemplatePayloadV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

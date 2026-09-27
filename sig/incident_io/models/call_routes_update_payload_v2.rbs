@@ -23,7 +23,8 @@ module IncidentIo
         ?name: String?,
         ?path: Array[CallRoutePathNodePayloadV2]?,
         ?responder_caller_id: String?,
-        ?use_caller_allowlist: bool?
+        ?use_caller_allowlist: bool?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

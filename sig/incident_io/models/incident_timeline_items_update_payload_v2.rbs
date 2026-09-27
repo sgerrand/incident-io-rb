@@ -14,7 +14,12 @@ module IncidentIo
       # Title of the timeline item
       attr_reader title: String?
 
-      def self.new: (?description: String?, ?timestamp: Time?, ?title: String?) -> instance
+      def self.new: (
+        ?description: String?,
+        ?timestamp: Time?,
+        ?title: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?description: String?,

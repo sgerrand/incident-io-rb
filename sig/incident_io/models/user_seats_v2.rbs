@@ -12,7 +12,7 @@ module IncidentIo
       # Response seat access level One of: full_access, viewer_only, none.
       attr_reader response: String?
 
-      def self.new: (?on_call: String?, ?response: String?) -> instance
+      def self.new: (?on_call: String?, ?response: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?on_call: String?, ?response: String?, ?raw: Hash[String, untyped]?) -> void
 

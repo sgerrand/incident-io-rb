@@ -24,7 +24,8 @@ module IncidentIo
         ?fixed_filter: CustomFieldFixedFilterOptionsV2?,
         ?group_by_catalog_attribute_id: String?,
         ?helptext_catalog_attribute_id: String?,
-        ?name: String?
+        ?name: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader identity: IdentityV1?
 
-      def self.new: (?identity: IdentityV1?) -> instance
+      def self.new: (?identity: IdentityV1?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?identity: IdentityV1?, ?raw: Hash[String, untyped]?) -> void
 

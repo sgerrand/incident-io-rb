@@ -10,7 +10,11 @@ module IncidentIo
       attr_reader assignee: UserV2?
       attr_reader role: EmbeddedIncidentRoleV2?
 
-      def self.new: (?assignee: UserV2?, ?role: EmbeddedIncidentRoleV2?) -> instance
+      def self.new: (
+        ?assignee: UserV2?,
+        ?role: EmbeddedIncidentRoleV2?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?assignee: UserV2?,

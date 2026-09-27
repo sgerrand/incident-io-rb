@@ -11,7 +11,7 @@ module IncidentIo
       # Source expression that is evaluated to a result
       attr_reader source: String?
 
-      def self.new: (?returns: ReturnsMetaV2?, ?source: String?) -> instance
+      def self.new: (?returns: ReturnsMetaV2?, ?source: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?returns: ReturnsMetaV2?, ?source: String?, ?raw: Hash[String, untyped]?) -> void
 

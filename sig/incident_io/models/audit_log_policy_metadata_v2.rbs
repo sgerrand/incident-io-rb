@@ -10,7 +10,7 @@ module IncidentIo
       # Whether the policy evaluates private incidents
       attr_reader run_on_private_incidents: String?
 
-      def self.new: (?run_on_private_incidents: String?) -> instance
+      def self.new: (?run_on_private_incidents: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?run_on_private_incidents: String?, ?raw: Hash[String, untyped]?) -> void
 

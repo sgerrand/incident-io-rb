@@ -68,7 +68,8 @@ module IncidentIo
         ?summary: String?,
         ?timestamps: Array[IncidentTimestampValueV1]?,
         ?updated_at: Time?,
-        ?visibility: String?
+        ?visibility: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

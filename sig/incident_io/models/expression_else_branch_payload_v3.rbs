@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader result: EngineParamBindingPayloadV3?
 
-      def self.new: (?result: EngineParamBindingPayloadV3?) -> instance
+      def self.new: (?result: EngineParamBindingPayloadV3?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?result: EngineParamBindingPayloadV3?, ?raw: Hash[String, untyped]?) -> void
 

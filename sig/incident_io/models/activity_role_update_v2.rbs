@@ -16,7 +16,8 @@ module IncidentIo
         ?new_assignee: UserV2?,
         ?previous_assignee: UserV2?,
         ?role: IncidentRoleV2?,
-        ?updater: ActorV2?
+        ?updater: ActorV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

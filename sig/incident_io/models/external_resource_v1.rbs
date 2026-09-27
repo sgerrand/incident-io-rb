@@ -20,7 +20,8 @@ module IncidentIo
         ?external_id: String?,
         ?permalink: String?,
         ?resource_type: String?,
-        ?title: String?
+        ?title: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

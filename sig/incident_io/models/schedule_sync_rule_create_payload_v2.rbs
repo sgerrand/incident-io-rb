@@ -23,7 +23,8 @@ module IncidentIo
         ?permanent_member_user_ids: Array[String]?,
         ?rotation_id: String?,
         ?schedule_sync_target_id: String?,
-        ?sync_type: String?
+        ?sync_type: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

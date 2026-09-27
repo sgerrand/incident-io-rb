@@ -16,7 +16,13 @@ module IncidentIo
       # Label shown on this action's button, derived from its type
       attr_reader title: String?
 
-      def self.new: (?action_type: String?, ?emoji: String?, ?rank: Integer?, ?title: String?) -> instance
+      def self.new: (
+        ?action_type: String?,
+        ?emoji: String?,
+        ?rank: Integer?,
+        ?title: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?action_type: String?,

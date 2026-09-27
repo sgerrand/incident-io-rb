@@ -17,7 +17,8 @@ module IncidentIo
       def self.new: (
         ?delay_interval_condition: String?,
         ?delay_seconds: Integer?,
-        ?delay_weekday_interval_config_id: String?
+        ?delay_weekday_interval_config_id: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

@@ -23,7 +23,8 @@ module IncidentIo
         ?replica_fallback_user_id: String?,
         ?replica_provider: String?,
         ?replica_provider_id: String?,
-        ?sources: Array[ScheduleReplicaSourceV2]?
+        ?sources: Array[ScheduleReplicaSourceV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

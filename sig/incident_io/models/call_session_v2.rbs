@@ -22,7 +22,13 @@ module IncidentIo
       # When the call session started
       attr_reader started_at: Time?
 
-      def self.new: (?ended_at: Time?, ?id: String?, ?incident_id: String?, ?started_at: Time?) -> instance
+      def self.new: (
+        ?ended_at: Time?,
+        ?id: String?,
+        ?incident_id: String?,
+        ?started_at: Time?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?ended_at: Time?,

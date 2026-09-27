@@ -32,7 +32,8 @@ module IncidentIo
         ?schedule_id: String?,
         ?start_at: Time?,
         ?updated_at: Time?,
-        ?user: UserV2?
+        ?user: UserV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

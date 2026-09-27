@@ -13,7 +13,11 @@ module IncidentIo
       # The schedule to narrow.
       attr_reader schedule_id: String?
 
-      def self.new: (?rotation_ids: Array[String]?, ?schedule_id: String?) -> instance
+      def self.new: (
+        ?rotation_ids: Array[String]?,
+        ?schedule_id: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?rotation_ids: Array[String]?,

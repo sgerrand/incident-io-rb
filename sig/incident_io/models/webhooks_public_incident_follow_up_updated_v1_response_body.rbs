@@ -11,7 +11,11 @@ module IncidentIo
       attr_reader event_type: String?
       attr_reader public_incident_follow_up_updated_v1: ActionV1?
 
-      def self.new: (?event_type: String?, ?public_incident_follow_up_updated_v1: ActionV1?) -> instance
+      def self.new: (
+        ?event_type: String?,
+        ?public_incident_follow_up_updated_v1: ActionV1?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?event_type: String?,

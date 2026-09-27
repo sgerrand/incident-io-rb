@@ -11,7 +11,7 @@ module IncidentIo
       attr_reader incident_id: String?
       attr_reader user_id: String?
 
-      def self.new: (?incident_id: String?, ?user_id: String?) -> instance
+      def self.new: (?incident_id: String?, ?user_id: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?incident_id: String?, ?user_id: String?, ?raw: Hash[String, untyped]?) -> void
 

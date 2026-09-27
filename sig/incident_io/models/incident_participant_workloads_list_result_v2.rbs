@@ -12,7 +12,8 @@ module IncidentIo
 
       def self.new: (
         ?incident_participant_workloads: Array[IncidentParticipantWorkloadV2]?,
-        ?metadata: WorkloadMetadataV2?
+        ?metadata: WorkloadMetadataV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

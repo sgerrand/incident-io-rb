@@ -16,7 +16,13 @@ module IncidentIo
       # Rank is used to order the follow-up categories correctly
       attr_reader rank: Integer?
 
-      def self.new: (?description: String?, ?id: String?, ?name: String?, ?rank: Integer?) -> instance
+      def self.new: (
+        ?description: String?,
+        ?id: String?,
+        ?name: String?,
+        ?rank: Integer?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?description: String?,

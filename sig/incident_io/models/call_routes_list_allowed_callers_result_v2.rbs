@@ -9,7 +9,10 @@ module IncidentIo
 
       attr_reader allowed_callers: Array[CallRouteAllowedCallerV2]?
 
-      def self.new: (?allowed_callers: Array[CallRouteAllowedCallerV2]?) -> instance
+      def self.new: (
+        ?allowed_callers: Array[CallRouteAllowedCallerV2]?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?allowed_callers: Array[CallRouteAllowedCallerV2]?,

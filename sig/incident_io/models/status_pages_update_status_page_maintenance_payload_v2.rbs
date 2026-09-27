@@ -14,7 +14,12 @@ module IncidentIo
       # The time the maintenance window starts
       attr_reader start_at: Time?
 
-      def self.new: (?end_at: Time?, ?name: String?, ?start_at: Time?) -> instance
+      def self.new: (
+        ?end_at: Time?,
+        ?name: String?,
+        ?start_at: Time?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (?end_at: Time?, ?name: String?, ?start_at: Time?, ?raw: Hash[String, untyped]?) -> void
 

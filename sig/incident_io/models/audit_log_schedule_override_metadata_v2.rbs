@@ -26,7 +26,8 @@ module IncidentIo
         ?before_user_ids: String?,
         ?before_user_names: String?,
         ?end_at: String?,
-        ?start_at: String?
+        ?start_at: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

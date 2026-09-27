@@ -10,7 +10,7 @@ module IncidentIo
       # The user's effective escalation provider.
       attr_reader preferred_escalation_provider: String?
 
-      def self.new: (?preferred_escalation_provider: String?) -> instance
+      def self.new: (?preferred_escalation_provider: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?preferred_escalation_provider: String?, ?raw: Hash[String, untyped]?) -> void
 

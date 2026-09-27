@@ -37,7 +37,8 @@ module IncidentIo
         ?repeat_config: EscalationPathRepeatConfigV2?,
         ?team_ids: Array[String]?,
         ?template_id: String?,
-        ?working_hours: Array[WeekdayIntervalConfigV2]?
+        ?working_hours: Array[WeekdayIntervalConfigV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

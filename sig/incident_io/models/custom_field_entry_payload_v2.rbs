@@ -12,7 +12,11 @@ module IncidentIo
       # List of values to associate with this entry.
       attr_reader values: Array[CustomFieldValuePayloadV2]?
 
-      def self.new: (?custom_field_id: String?, ?values: Array[CustomFieldValuePayloadV2]?) -> instance
+      def self.new: (
+        ?custom_field_id: String?,
+        ?values: Array[CustomFieldValuePayloadV2]?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?custom_field_id: String?,

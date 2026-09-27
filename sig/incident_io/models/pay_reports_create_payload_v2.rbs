@@ -34,7 +34,8 @@ module IncidentIo
         ?rotation_filters: Array[PayReportRotationFilterV2]?,
         ?schedule_ids: Array[String]?,
         ?start_date: String?,
-        ?unpaid_shifts: String?
+        ?unpaid_shifts: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

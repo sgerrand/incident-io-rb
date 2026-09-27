@@ -39,7 +39,8 @@ module IncidentIo
         ?helptext_catalog_attribute_id: String?,
         ?id: String?,
         ?name: String?,
-        ?updated_at: Time?
+        ?updated_at: Time?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

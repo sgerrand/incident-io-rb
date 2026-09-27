@@ -43,7 +43,8 @@ module IncidentIo
         ?name: String?,
         ?owning_team_ids: Array[String]?,
         ?rate_limit_sharding: AlertSourceRateLimitShardingV2?,
-        ?template: AlertTemplatePayloadV2?
+        ?template: AlertTemplatePayloadV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

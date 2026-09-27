@@ -31,7 +31,8 @@ module IncidentIo
         ?label: String?,
         ?name: String?,
         ?optional: bool?,
-        ?type: String?
+        ?type: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

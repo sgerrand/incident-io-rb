@@ -14,7 +14,8 @@ module IncidentIo
       def self.new: (
         ?new_status: IncidentStatusV2?,
         ?previous_status: IncidentStatusV2?,
-        ?updater: ActorV2?
+        ?updater: ActorV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

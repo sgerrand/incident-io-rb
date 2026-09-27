@@ -22,7 +22,8 @@ module IncidentIo
         ?id: String?,
         ?is_usable: bool?,
         ?method_type: String?,
-        ?phone_details: OnCallNotificationMethodPhoneDetailsPublicV2?
+        ?phone_details: OnCallNotificationMethodPhoneDetailsPublicV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

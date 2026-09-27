@@ -12,7 +12,7 @@ module IncidentIo
       # Name of the team
       attr_reader name: String?
 
-      def self.new: (?id: String?, ?name: String?) -> instance
+      def self.new: (?id: String?, ?name: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?id: String?, ?name: String?, ?raw: Hash[String, untyped]?) -> void
 

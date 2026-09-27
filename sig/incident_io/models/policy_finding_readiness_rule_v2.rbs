@@ -14,7 +14,12 @@ module IncidentIo
       # One of: slack, email, app, sms, phone, live_call, slack_channel, microsoft_teams, microsoft_teams_channel, whatsapp_message.
       attr_reader method_types: Array[String]?
 
-      def self.new: (?max_delay_seconds: Integer?, ?met: bool?, ?method_types: Array[String]?) -> instance
+      def self.new: (
+        ?max_delay_seconds: Integer?,
+        ?met: bool?,
+        ?method_types: Array[String]?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
       def initialize: (
         ?max_delay_seconds: Integer?,

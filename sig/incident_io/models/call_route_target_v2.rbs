@@ -24,7 +24,8 @@ module IncidentIo
         ?schedule_mode: String?,
         ?selected_rota_id: String?,
         ?type: String?,
-        ?urgency: String?
+        ?urgency: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

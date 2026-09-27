@@ -14,7 +14,7 @@ module IncidentIo
       # The name of this alert route config, for the user's reference
       attr_reader name: String?
 
-      def self.new: (?enabled: bool?, ?id: String?, ?name: String?) -> instance
+      def self.new: (?enabled: bool?, ?id: String?, ?name: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?enabled: bool?, ?id: String?, ?name: String?, ?raw: Hash[String, untyped]?) -> void
 

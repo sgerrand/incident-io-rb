@@ -11,7 +11,7 @@ module IncidentIo
       # The follow-up.
       attr_reader follow_up_id: String?
 
-      def self.new: (?actor: ActorV2?, ?follow_up_id: String?) -> instance
+      def self.new: (?actor: ActorV2?, ?follow_up_id: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?actor: ActorV2?, ?follow_up_id: String?, ?raw: Hash[String, untyped]?) -> void
 

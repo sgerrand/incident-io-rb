@@ -16,7 +16,8 @@ module IncidentIo
       def self.new: (
         ?enforcement: String?,
         ?high_urgency: Array[PolicyReadinessRuleV2]?,
-        ?low_urgency: Array[PolicyReadinessRuleV2]?
+        ?low_urgency: Array[PolicyReadinessRuleV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

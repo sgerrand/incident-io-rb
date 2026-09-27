@@ -13,7 +13,8 @@ module IncidentIo
 
       def self.new: (
         ?event_type: String?,
-        ?status_page_incident_update_shared_v1: StatusPageIncidentWithUpdateV2?
+        ?status_page_incident_update_shared_v1: StatusPageIncidentWithUpdateV2?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

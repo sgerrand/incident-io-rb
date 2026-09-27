@@ -17,7 +17,8 @@ module IncidentIo
       def self.new: (
         ?annotations: Hash[String, String]?,
         ?permanent_member_user_ids: Array[String]?,
-        ?sync_type: String?
+        ?sync_type: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

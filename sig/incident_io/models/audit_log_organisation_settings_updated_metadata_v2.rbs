@@ -17,7 +17,8 @@ module IncidentIo
       def self.new: (
         ?after_organisation_name: String?,
         ?before_organisation_name: String?,
-        ?default_timezone: String?
+        ?default_timezone: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

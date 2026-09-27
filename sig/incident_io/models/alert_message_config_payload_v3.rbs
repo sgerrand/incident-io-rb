@@ -13,7 +13,8 @@ module IncidentIo
 
       def self.new: (
         ?destinations: Array[AlertMessageDestinationPayloadV3]?,
-        ?template: EngineParamBindingPayloadV3?
+        ?template: EngineParamBindingPayloadV3?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

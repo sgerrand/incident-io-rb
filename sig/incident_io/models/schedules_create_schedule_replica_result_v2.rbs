@@ -9,7 +9,7 @@ module IncidentIo
 
       attr_reader schedule_replica: ScheduleReplicaV2?
 
-      def self.new: (?schedule_replica: ScheduleReplicaV2?) -> instance
+      def self.new: (?schedule_replica: ScheduleReplicaV2?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?schedule_replica: ScheduleReplicaV2?, ?raw: Hash[String, untyped]?) -> void
 

@@ -20,7 +20,8 @@ module IncidentIo
         ?allowlist: Array[IPAllowlistItemV1]?,
         ?enabled: bool?,
         ?updated_at: Time?,
-        ?version: Integer?
+        ?version: Integer?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

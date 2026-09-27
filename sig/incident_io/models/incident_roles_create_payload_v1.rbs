@@ -23,7 +23,8 @@ module IncidentIo
         ?instructions: String?,
         ?name: String?,
         ?required: bool?,
-        ?shortform: String?
+        ?shortform: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

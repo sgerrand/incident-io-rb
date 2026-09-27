@@ -14,7 +14,8 @@ module IncidentIo
 
       def self.new: (
         ?active: Array[IncidentParticipantV2]?,
-        ?passive: Array[IncidentParticipantV2]?
+        ?passive: Array[IncidentParticipantV2]?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

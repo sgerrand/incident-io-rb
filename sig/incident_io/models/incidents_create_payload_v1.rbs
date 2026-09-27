@@ -47,7 +47,8 @@ module IncidentIo
         ?source_message_timestamp: String?,
         ?status: String?,
         ?summary: String?,
-        ?visibility: String?
+        ?visibility: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

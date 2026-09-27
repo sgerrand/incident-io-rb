@@ -11,7 +11,7 @@ module IncidentIo
       # How often a handover occurs One of: hourly, daily, weekly.
       attr_reader interval_type: String?
 
-      def self.new: (?interval: Integer?, ?interval_type: String?) -> instance
+      def self.new: (?interval: Integer?, ?interval_type: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?interval: Integer?, ?interval_type: String?, ?raw: Hash[String, untyped]?) -> void
 

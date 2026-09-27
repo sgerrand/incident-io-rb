@@ -13,7 +13,7 @@ module IncidentIo
       # A short description of the warning
       attr_reader summary: String?
 
-      def self.new: (?detail: String?, ?summary: String?) -> instance
+      def self.new: (?detail: String?, ?summary: String?, ?raw: Hash[String, untyped]?) -> instance
 
       def initialize: (?detail: String?, ?summary: String?, ?raw: Hash[String, untyped]?) -> void
 

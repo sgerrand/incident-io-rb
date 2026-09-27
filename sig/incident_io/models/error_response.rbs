@@ -24,7 +24,8 @@ module IncidentIo
         ?rate_limit: ErrorRateLimit?,
         ?request_id: String?,
         ?status: Integer?,
-        ?type: String?
+        ?type: String?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (

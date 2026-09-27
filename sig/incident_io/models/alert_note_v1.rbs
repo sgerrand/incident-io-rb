@@ -34,7 +34,8 @@ module IncidentIo
         ?id: String?,
         ?images: Array[ImageV1]?,
         ?last_edited_at: Time?,
-        ?updated_at: Time?
+        ?updated_at: Time?,
+        ?raw: Hash[String, untyped]?
       ) -> instance
 
       def initialize: (
