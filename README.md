@@ -28,11 +28,15 @@ keyword arguments. Results are read-only model objects. To read a field that
 this gem does not know about yet, use `model[:field_name]`.
 
 Optional fields you leave out are not sent. Passing `nil` sends `null`, for
-example to clear a field:
+example to clear a field. This works the same for method arguments and for
+fields of models you build and pass in:
 
 ```ruby
 client.schedules.update(id, schedule: {name: "On-call"})  # leaves other fields out
 client.incidents.create(visibility: "public", summary: nil)  # sends "summary": null
+
+edit = IncidentIo::Models::IncidentEditPayloadV2.new(summary: nil)
+client.incidents.edit(id, incident: edit, notify_incident_channel: false)  # sends "summary": null
 ```
 
 ### API versions
