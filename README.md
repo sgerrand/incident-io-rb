@@ -27,6 +27,14 @@ Each resource has one method per API endpoint. Required fields are required
 keyword arguments. Results are read-only model objects. To read a field that
 this gem does not know about yet, use `model[:field_name]`.
 
+Optional fields you leave out are not sent. Passing `nil` sends `null`, for
+example to clear a field:
+
+```ruby
+client.schedules.update(id, schedule: {name: "On-call"})  # leaves other fields out
+client.incidents.create(visibility: "public", summary: nil)  # sends "summary": null
+```
+
 ### API versions
 
 Some parts of the incident.io API have more than one version. `client.<name>`
