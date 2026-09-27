@@ -35,17 +35,17 @@ module IncidentIo
           title:,
           token: nil,
           query: nil,
-          deduplication_key: nil,
-          description: nil,
-          metadata: nil,
-          source_url: nil,
+          deduplication_key: NOT_GIVEN,
+          description: NOT_GIVEN,
+          metadata: NOT_GIVEN,
+          source_url: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             path("/v2/alert_events/http/%s", alert_source_config_id),
             query: {token:, query:},
-            body: {deduplication_key:, description:, metadata:, source_url:, status:, title:}.compact,
+            body: given({deduplication_key:, description:, metadata:, source_url:, status:, title:}),
             model: Models::AlertEventsCreateHTTPResultV2,
             request_options:
           )

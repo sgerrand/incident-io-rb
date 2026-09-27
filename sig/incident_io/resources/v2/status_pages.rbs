@@ -12,7 +12,7 @@ module IncidentIo
           name: String,
           notify_subscribers: bool,
           status_page_id: String,
-          ?component_statuses: Array[Models::StatusPageIncidentAffectedComponentV2 | Hash[untyped, untyped]]?,
+          ?component_statuses: (Array[Models::StatusPageIncidentAffectedComponentV2 | Hash[untyped, untyped]] | NotGiven)?,
           ?idempotency_key: String,
           ?request_options: request_options
         ) -> Models::StatusPageIncidentV2
@@ -22,8 +22,8 @@ module IncidentIo
           message: String,
           notify_subscribers: bool,
           status_page_incident_id: String,
-          ?component_statuses: Array[Models::StatusPageIncidentAffectedComponentV2 | Hash[untyped, untyped]]?,
-          ?incident_status: String?,
+          ?component_statuses: (Array[Models::StatusPageIncidentAffectedComponentV2 | Hash[untyped, untyped]] | NotGiven)?,
+          ?incident_status: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::StatusPageIncidentUpdateV2
 
@@ -37,7 +37,7 @@ module IncidentIo
           notify_subscribers: bool,
           start_at: Time | String,
           status_page_id: String,
-          ?automate_maintenance_status: bool?,
+          ?automate_maintenance_status: (bool | NotGiven)?,
           ?idempotency_key: String,
           ?request_options: request_options
         ) -> Models::StatusPageMaintenanceV2
@@ -47,8 +47,8 @@ module IncidentIo
           message: String,
           notify_subscribers: bool,
           status_page_maintenance_id: String,
-          ?component_statuses: Array[Models::StatusPageMaintenanceAffectedComponentV2 | Hash[untyped, untyped]]?,
-          ?maintenance_status: String?,
+          ?component_statuses: (Array[Models::StatusPageMaintenanceAffectedComponentV2 | Hash[untyped, untyped]] | NotGiven)?,
+          ?maintenance_status: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::StatusPageMaintenanceUpdateV2
 

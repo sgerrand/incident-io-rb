@@ -8,9 +8,9 @@ module IncidentIo
         # Update the credentials or configuration of a telemetry data source.
         def update_data_source: (
           String id,
-          ?datadog_config: (Models::TelemetryDatadogUpdateConfigV2 | Hash[untyped, untyped])?,
-          ?grafana_config: (Models::TelemetryGrafanaUpdateConfigV2 | Hash[untyped, untyped])?,
-          ?name: String?,
+          ?datadog_config: (Models::TelemetryDatadogUpdateConfigV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?grafana_config: (Models::TelemetryGrafanaUpdateConfigV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?name: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::TelemetryDataSourceV2
       end

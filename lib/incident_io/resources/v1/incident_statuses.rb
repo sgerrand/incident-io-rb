@@ -25,11 +25,11 @@ module IncidentIo
         # @param rank [Integer] Where this status sits within its category, lowest rank first. No two statuses in the same category can share a rank, but ranks needn't run consecutively — leaving gaps (10, 20, 30) means you can later insert a status between two others without renumbering them. Omit it to add this status to the end of its category.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::IncidentStatusV1]
-        def create(category:, description:, name:, rank: nil, request_options: {})
+        def create(category:, description:, name:, rank: NOT_GIVEN, request_options: {})
           request(
             :post,
             "/v1/incident_statuses",
-            body: {category:, description:, name:, rank:}.compact,
+            body: given({category:, description:, name:, rank:}),
             unwrap: "incident_status",
             model: Models::IncidentStatusV1,
             request_options:
@@ -94,11 +94,11 @@ module IncidentIo
         # @param rank [Integer] Where this status sits within its category, lowest rank first. No two statuses in the same category can share a rank, but ranks needn't run consecutively — leaving gaps (10, 20, 30) means you can later insert a status between two others without renumbering them. Omit it to leave this status where it is.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::IncidentStatusV1]
-        def update(id, description:, name:, rank: nil, request_options: {})
+        def update(id, description:, name:, rank: NOT_GIVEN, request_options: {})
           request(
             :put,
             path("/v1/incident_statuses/%s", id),
-            body: {description:, name:, rank:}.compact,
+            body: given({description:, name:, rank:}),
             unwrap: "incident_status",
             model: Models::IncidentStatusV1,
             request_options:

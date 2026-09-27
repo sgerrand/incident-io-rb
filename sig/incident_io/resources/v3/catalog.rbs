@@ -9,7 +9,7 @@ module IncidentIo
         def bulk_update_entries: (
           catalog_type_id: String,
           entries: Array[Models::PartialEntryPayloadV3 | Hash[untyped, untyped]],
-          ?update_attributes: Array[String]?,
+          ?update_attributes: (Array[String] | NotGiven)?,
           ?request_options: request_options
         ) -> nil
 
@@ -18,9 +18,9 @@ module IncidentIo
           attribute_values: Hash[untyped, untyped],
           catalog_type_id: String,
           name: String,
-          ?aliases: Array[String]?,
-          ?external_id: String?,
-          ?rank: Integer?,
+          ?aliases: (Array[String] | NotGiven)?,
+          ?external_id: (String | NotGiven)?,
+          ?rank: (Integer | NotGiven)?,
           ?request_options: request_options
         ) -> Models::CatalogEntryV3
 
@@ -28,15 +28,15 @@ module IncidentIo
         def create_type: (
           description: String,
           name: String,
-          ?annotations: Hash[untyped, untyped]?,
-          ?categories: Array[String]?,
-          ?color: String?,
-          ?icon: String?,
-          ?owning_team_ids: Array[String]?,
-          ?ranked: bool?,
-          ?source_repo_url: String?,
-          ?type_name: String?,
-          ?use_name_as_identifier: bool?,
+          ?annotations: (Hash[untyped, untyped] | NotGiven)?,
+          ?categories: (Array[String] | NotGiven)?,
+          ?color: (String | NotGiven)?,
+          ?icon: (String | NotGiven)?,
+          ?owning_team_ids: (Array[String] | NotGiven)?,
+          ?ranked: (bool | NotGiven)?,
+          ?source_repo_url: (String | NotGiven)?,
+          ?type_name: (String | NotGiven)?,
+          ?use_name_as_identifier: (bool | NotGiven)?,
           ?request_options: request_options
         ) -> Models::CatalogTypeV3
 
@@ -76,10 +76,10 @@ module IncidentIo
           String id,
           attribute_values: Hash[untyped, untyped],
           name: String,
-          ?aliases: Array[String]?,
-          ?external_id: String?,
-          ?rank: Integer?,
-          ?update_attributes: Array[String]?,
+          ?aliases: (Array[String] | NotGiven)?,
+          ?external_id: (String | NotGiven)?,
+          ?rank: (Integer | NotGiven)?,
+          ?update_attributes: (Array[String] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::CatalogUpdateEntryResultV3
 
@@ -88,14 +88,14 @@ module IncidentIo
           String id,
           description: String,
           name: String,
-          ?annotations: Hash[untyped, untyped]?,
-          ?categories: Array[String]?,
-          ?color: String?,
-          ?icon: String?,
-          ?owning_team_ids: Array[String]?,
-          ?ranked: bool?,
-          ?source_repo_url: String?,
-          ?use_name_as_identifier: bool?,
+          ?annotations: (Hash[untyped, untyped] | NotGiven)?,
+          ?categories: (Array[String] | NotGiven)?,
+          ?color: (String | NotGiven)?,
+          ?icon: (String | NotGiven)?,
+          ?owning_team_ids: (Array[String] | NotGiven)?,
+          ?ranked: (bool | NotGiven)?,
+          ?source_repo_url: (String | NotGiven)?,
+          ?use_name_as_identifier: (bool | NotGiven)?,
           ?request_options: request_options
         ) -> Models::CatalogTypeV3
 

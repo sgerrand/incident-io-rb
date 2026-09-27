@@ -31,7 +31,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/alerts/%s/actions/add_tags", id),
-            body: {tags:}.compact,
+            body: given({tags:}),
             unwrap: "alert",
             model: Models::AlertV2,
             request_options:
@@ -63,11 +63,11 @@ module IncidentIo
         # @param re_relate [Boolean] Relate the alert again even though someone previously marked it unrelated to this incident. Defaults to false, which preserves that decision and returns a 422.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::IncidentAlertV2]
-        def create_incident_alert(alert_id:, incident_id:, re_relate: nil, request_options: {})
+        def create_incident_alert(alert_id:, incident_id:, re_relate: NOT_GIVEN, request_options: {})
           request(
             :post,
             "/v2/incident_alerts",
-            body: {alert_id:, incident_id:, re_relate:}.compact,
+            body: given({alert_id:, incident_id:, re_relate:}),
             unwrap: "incident_alert",
             model: Models::IncidentAlertV2,
             request_options:
@@ -313,7 +313,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/alerts/%s/actions/remove_tags", id),
-            body: {tags:}.compact,
+            body: given({tags:}),
             unwrap: "alert",
             model: Models::AlertV2,
             request_options:
@@ -359,7 +359,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/alerts/%s/actions/set_tags", id),
-            body: {tags:}.compact,
+            body: given({tags:}),
             unwrap: "alert",
             model: Models::AlertV2,
             request_options:
@@ -404,7 +404,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/incident_alerts/%s/actions/transition", id),
-            body: {state:}.compact,
+            body: given({state:}),
             unwrap: "incident_alert",
             model: Models::IncidentAlertV2,
             request_options:

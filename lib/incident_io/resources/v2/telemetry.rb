@@ -18,11 +18,17 @@ module IncidentIo
         # @param name [String] Updated display name.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::TelemetryDataSourceV2]
-        def update_data_source(id, datadog_config: nil, grafana_config: nil, name: nil, request_options: {})
+        def update_data_source(
+          id,
+          datadog_config: NOT_GIVEN,
+          grafana_config: NOT_GIVEN,
+          name: NOT_GIVEN,
+          request_options: {}
+        )
           request(
             :put,
             path("/v2/telemetry/data_sources/%s", id),
-            body: {datadog_config:, grafana_config:, name:}.compact,
+            body: given({datadog_config:, grafana_config:, name:}),
             unwrap: "data_source",
             model: Models::TelemetryDataSourceV2,
             request_options:

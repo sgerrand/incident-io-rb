@@ -14,9 +14,9 @@ module IncidentIo
           show_before_closure: bool,
           show_before_creation: bool,
           show_before_update: bool,
-          ?required: String?,
-          ?required_v2: String?,
-          ?show_in_announcement_post: bool?,
+          ?required: (String | NotGiven)?,
+          ?required_v2: (String | NotGiven)?,
+          ?show_in_announcement_post: (bool | NotGiven)?,
           ?request_options: request_options
         ) -> Models::CustomFieldV1
 
@@ -41,9 +41,9 @@ module IncidentIo
           show_before_closure: bool,
           show_before_creation: bool,
           show_before_update: bool,
-          ?required: String?,
-          ?required_v2: String?,
-          ?show_in_announcement_post: bool?,
+          ?required: (String | NotGiven)?,
+          ?required_v2: (String | NotGiven)?,
+          ?show_in_announcement_post: (bool | NotGiven)?,
           ?request_options: request_options
         ) -> Models::CustomFieldV1
       end

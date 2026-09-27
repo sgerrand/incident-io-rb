@@ -8,9 +8,9 @@ module IncidentIo
         # Create an announcement template.
         def create: (
           name: String,
-          ?actions: Array[Models::AnnouncementTemplateActionPayloadV2 | Hash[untyped, untyped]]?,
-          ?fields: Array[Models::AnnouncementTemplateFieldPayloadV2 | Hash[untyped, untyped]]?,
-          ?owning_team_ids: Array[String]?,
+          ?actions: (Array[Models::AnnouncementTemplateActionPayloadV2 | Hash[untyped, untyped]] | NotGiven)?,
+          ?fields: (Array[Models::AnnouncementTemplateFieldPayloadV2 | Hash[untyped, untyped]] | NotGiven)?,
+          ?owning_team_ids: (Array[String] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::AnnouncementTemplateV2
 
@@ -29,7 +29,7 @@ module IncidentIo
           actions: Array[Models::AnnouncementTemplateActionPayloadV2 | Hash[untyped, untyped]],
           fields: Array[Models::AnnouncementTemplateFieldPayloadV2 | Hash[untyped, untyped]],
           name: String,
-          ?owning_team_ids: Array[String]?,
+          ?owning_team_ids: (Array[String] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::AnnouncementTemplateV2
       end

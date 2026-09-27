@@ -31,7 +31,7 @@ module IncidentIo
           request(
             :post,
             "/v1/incident_roles",
-            body: {description:, instructions:, name:, required:, shortform:}.compact,
+            body: given({description:, instructions:, name:, required:, shortform:}),
             unwrap: "incident_role",
             model: Models::IncidentRoleV1,
             request_options:
@@ -105,12 +105,20 @@ module IncidentIo
         # @param required [Boolean] DEPRECATED: this will always be false.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::IncidentRoleV1]
-        def update(id, description:, instructions:, name:, shortform:, required: nil, request_options: {})
+        def update(
+          id,
+          description:,
+          instructions:,
+          name:,
+          shortform:,
+          required: NOT_GIVEN,
+          request_options: {}
+        )
           deprecated!("client.v1.incident_roles.update", "client.incident_roles.update")
           request(
             :put,
             path("/v1/incident_roles/%s", id),
-            body: {description:, instructions:, name:, required:, shortform:}.compact,
+            body: given({description:, instructions:, name:, required:, shortform:}),
             unwrap: "incident_role",
             model: Models::IncidentRoleV1,
             request_options:

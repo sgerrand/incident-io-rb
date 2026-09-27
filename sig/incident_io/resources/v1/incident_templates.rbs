@@ -9,7 +9,7 @@ module IncidentIo
         def create: (
           name: String,
           template: Models::IncidentTemplateConfigPayloadV1 | Hash[untyped, untyped],
-          ?expressions: Array[Models::ExpressionPayloadV3 | Hash[untyped, untyped]]?,
+          ?expressions: (Array[Models::ExpressionPayloadV3 | Hash[untyped, untyped]] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::IncidentTemplateV1
 
@@ -31,7 +31,7 @@ module IncidentIo
           String id,
           name: String,
           template: Models::IncidentTemplateConfigPayloadV1 | Hash[untyped, untyped],
-          ?expressions: Array[Models::ExpressionPayloadV3 | Hash[untyped, untyped]]?,
+          ?expressions: (Array[Models::ExpressionPayloadV3 | Hash[untyped, untyped]] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::IncidentTemplateV1
 
@@ -39,7 +39,7 @@ module IncidentIo
         def validate: (
           name: String,
           template: Models::IncidentTemplateConfigPayloadV1 | Hash[untyped, untyped],
-          ?expressions: Array[Models::ExpressionPayloadV3 | Hash[untyped, untyped]]?,
+          ?expressions: (Array[Models::ExpressionPayloadV3 | Hash[untyped, untyped]] | NotGiven)?,
           ?request_options: request_options
         ) -> Array[Models::IncidentTemplateValidateWarningV1]
       end

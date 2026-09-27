@@ -42,14 +42,14 @@ module IncidentIo
           incident_id:,
           timestamp:,
           title:,
-          description: nil,
+          description: NOT_GIVEN,
           idempotency_key: SecureRandom.uuid,
           request_options: {}
         )
           request(
             :post,
             "/v2/incident_timeline_items",
-            body: {description:, idempotency_key:, incident_id:, timestamp:, title:}.compact,
+            body: given({description:, idempotency_key:, incident_id:, timestamp:, title:}),
             idempotent: true,
             unwrap: "incident_timeline_item",
             model: Models::IncidentTimelineItemV2,
@@ -97,11 +97,11 @@ module IncidentIo
         # @param title [String] Title of the timeline item.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::IncidentTimelineItemV2]
-        def update(id, description: nil, timestamp: nil, title: nil, request_options: {})
+        def update(id, description: NOT_GIVEN, timestamp: NOT_GIVEN, title: NOT_GIVEN, request_options: {})
           request(
             :patch,
             path("/v2/incident_timeline_items/%s", id),
-            body: {description:, timestamp:, title:}.compact,
+            body: given({description:, timestamp:, title:}),
             unwrap: "incident_timeline_item",
             model: Models::IncidentTimelineItemV2,
             request_options:

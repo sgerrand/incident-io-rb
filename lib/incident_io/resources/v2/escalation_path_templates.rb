@@ -27,17 +27,17 @@ module IncidentIo
         def create(
           name:,
           path:,
-          description: nil,
-          expressions: nil,
-          params: nil,
-          repeat_config: nil,
-          working_hours: nil,
+          description: NOT_GIVEN,
+          expressions: NOT_GIVEN,
+          params: NOT_GIVEN,
+          repeat_config: NOT_GIVEN,
+          working_hours: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v2/escalation_path_templates",
-            body: {description:, expressions:, name:, params:, path:, repeat_config:, working_hours:}.compact,
+            body: given({description:, expressions:, name:, params:, path:, repeat_config:, working_hours:}),
             unwrap: "escalation_path_template",
             model: Models::EscalationPathTemplateV2,
             request_options:
@@ -113,17 +113,17 @@ module IncidentIo
           id,
           name:,
           path:,
-          description: nil,
-          expressions: nil,
-          params: nil,
-          repeat_config: nil,
-          working_hours: nil,
+          description: NOT_GIVEN,
+          expressions: NOT_GIVEN,
+          params: NOT_GIVEN,
+          repeat_config: NOT_GIVEN,
+          working_hours: NOT_GIVEN,
           request_options: {}
         )
           request(
             :put,
             path("/v2/escalation_path_templates/%s", id),
-            body: {description:, expressions:, name:, params:, path:, repeat_config:, working_hours:}.compact,
+            body: given({description:, expressions:, name:, params:, path:, repeat_config:, working_hours:}),
             unwrap: "escalation_path_template",
             model: Models::EscalationPathTemplateV2,
             request_options:

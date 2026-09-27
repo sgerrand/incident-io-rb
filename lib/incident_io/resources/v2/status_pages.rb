@@ -33,14 +33,14 @@ module IncidentIo
           name:,
           notify_subscribers:,
           status_page_id:,
-          component_statuses: nil,
+          component_statuses: NOT_GIVEN,
           idempotency_key: SecureRandom.uuid,
           request_options: {}
         )
           request(
             :post,
             "/v2/status_page_incidents",
-            body: {
+            body: given({
               component_statuses:,
               idempotency_key:,
               incident_status:,
@@ -48,7 +48,7 @@ module IncidentIo
               name:,
               notify_subscribers:,
               status_page_id:
-            }.compact,
+            }),
             idempotent: true,
             unwrap: "status_page_incident",
             model: Models::StatusPageIncidentV2,
@@ -75,20 +75,20 @@ module IncidentIo
           message:,
           notify_subscribers:,
           status_page_incident_id:,
-          component_statuses: nil,
-          incident_status: nil,
+          component_statuses: NOT_GIVEN,
+          incident_status: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v2/status_page_incident_updates",
-            body: {
+            body: given({
               component_statuses:,
               incident_status:,
               message:,
               notify_subscribers:,
               status_page_incident_id:
-            }.compact,
+            }),
             unwrap: "status_page_incident_update",
             model: Models::StatusPageIncidentUpdateV2,
             request_options:
@@ -122,14 +122,14 @@ module IncidentIo
           notify_subscribers:,
           start_at:,
           status_page_id:,
-          automate_maintenance_status: nil,
+          automate_maintenance_status: NOT_GIVEN,
           idempotency_key: SecureRandom.uuid,
           request_options: {}
         )
           request(
             :post,
             "/v2/status_page_maintenances",
-            body: {
+            body: given({
               affected_component_ids:,
               automate_maintenance_status:,
               end_at:,
@@ -140,7 +140,7 @@ module IncidentIo
               notify_subscribers:,
               start_at:,
               status_page_id:
-            }.compact,
+            }),
             idempotent: true,
             unwrap: "status_page_maintenance",
             model: Models::StatusPageMaintenanceV2,
@@ -167,20 +167,20 @@ module IncidentIo
           message:,
           notify_subscribers:,
           status_page_maintenance_id:,
-          component_statuses: nil,
-          maintenance_status: nil,
+          component_statuses: NOT_GIVEN,
+          maintenance_status: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v2/status_page_maintenance_updates",
-            body: {
+            body: given({
               component_statuses:,
               maintenance_status:,
               message:,
               notify_subscribers:,
               status_page_maintenance_id:
-            }.compact,
+            }),
             unwrap: "status_page_maintenance_update",
             model: Models::StatusPageMaintenanceUpdateV2,
             request_options:
@@ -215,7 +215,7 @@ module IncidentIo
           request(
             :post,
             "/v2/status_page_retrospective_incidents",
-            body: {idempotency_key:, name:, status_page_id:, updates:}.compact,
+            body: given({idempotency_key:, name:, status_page_id:, updates:}),
             idempotent: true,
             unwrap: "status_page_incident",
             model: Models::StatusPageIncidentV2,
@@ -456,7 +456,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/status_page_incidents/%s", status_page_incident_id),
-            body: {name:}.compact,
+            body: given({name:}),
             unwrap: "status_page_incident",
             model: Models::StatusPageIncidentV2,
             request_options:
@@ -489,7 +489,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/status_page_maintenances/%s", status_page_maintenance_id),
-            body: {end_at:, name:, start_at:}.compact,
+            body: given({end_at:, name:, start_at:}),
             unwrap: "status_page_maintenance",
             model: Models::StatusPageMaintenanceV2,
             request_options:

@@ -99,8 +99,8 @@ module IncidentIo
         def preview_schedule_entries: (
           String id,
           schedule: Models::ScheduleUpdatePayloadV2 | Hash[untyped, untyped],
-          ?entry_window_end: (Time | String)?,
-          ?entry_window_start: (Time | String)?,
+          ?entry_window_end: (Time | String | NotGiven)?,
+          ?entry_window_start: (Time | String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::ScheduleEntriesListPayloadV2
 
@@ -147,8 +147,8 @@ module IncidentIo
           String schedule_id,
           String id,
           sync_type: String,
-          ?annotations: Hash[untyped, untyped]?,
-          ?permanent_member_user_ids: Array[String]?,
+          ?annotations: (Hash[untyped, untyped] | NotGiven)?,
+          ?permanent_member_user_ids: (Array[String] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::ScheduleSyncRuleV2
       end

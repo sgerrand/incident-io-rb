@@ -11,7 +11,7 @@ module IncidentIo
           role_names: Array[String],
           team_ids: Array[String],
           team_role_names: Array[String],
-          ?comments: String?,
+          ?comments: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::APIKeysCreateResultV1
 
@@ -42,7 +42,7 @@ module IncidentIo
           role_names: Array[String],
           team_ids: Array[String],
           team_role_names: Array[String],
-          ?comments: String?,
+          ?comments: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::APIKeyV1
       end

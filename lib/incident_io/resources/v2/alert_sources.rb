@@ -34,23 +34,23 @@ module IncidentIo
           name:,
           source_type:,
           template:,
-          auto_resolve_incident_alerts: nil,
-          auto_resolve_timeout_minutes: nil,
-          azure_devops_options: nil,
-          email_options: nil,
-          filter_condition_groups: nil,
-          fixed_team_id: nil,
-          heartbeat_options: nil,
-          http_custom_options: nil,
-          jira_options: nil,
-          owning_team_ids: nil,
-          rate_limit_sharding: nil,
+          auto_resolve_incident_alerts: NOT_GIVEN,
+          auto_resolve_timeout_minutes: NOT_GIVEN,
+          azure_devops_options: NOT_GIVEN,
+          email_options: NOT_GIVEN,
+          filter_condition_groups: NOT_GIVEN,
+          fixed_team_id: NOT_GIVEN,
+          heartbeat_options: NOT_GIVEN,
+          http_custom_options: NOT_GIVEN,
+          jira_options: NOT_GIVEN,
+          owning_team_ids: NOT_GIVEN,
+          rate_limit_sharding: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v2/alert_sources",
-            body: {
+            body: given({
               auto_resolve_incident_alerts:,
               auto_resolve_timeout_minutes:,
               azure_devops_options:,
@@ -65,7 +65,7 @@ module IncidentIo
               rate_limit_sharding:,
               source_type:,
               template:
-            }.compact,
+            }),
             unwrap: "alert_source",
             model: Models::AlertSourceV2,
             request_options:
@@ -145,24 +145,24 @@ module IncidentIo
           id,
           name:,
           template:,
-          auto_resolve_incident_alerts: nil,
-          auto_resolve_timeout_minutes: nil,
-          azure_devops_options: nil,
-          disabled: nil,
-          email_options: nil,
-          filter_condition_groups: nil,
-          fixed_team_id: nil,
-          heartbeat_options: nil,
-          http_custom_options: nil,
-          jira_options: nil,
-          owning_team_ids: nil,
-          rate_limit_sharding: nil,
+          auto_resolve_incident_alerts: NOT_GIVEN,
+          auto_resolve_timeout_minutes: NOT_GIVEN,
+          azure_devops_options: NOT_GIVEN,
+          disabled: NOT_GIVEN,
+          email_options: NOT_GIVEN,
+          filter_condition_groups: NOT_GIVEN,
+          fixed_team_id: NOT_GIVEN,
+          heartbeat_options: NOT_GIVEN,
+          http_custom_options: NOT_GIVEN,
+          jira_options: NOT_GIVEN,
+          owning_team_ids: NOT_GIVEN,
+          rate_limit_sharding: NOT_GIVEN,
           request_options: {}
         )
           request(
             :put,
             path("/v2/alert_sources/%s", id),
-            body: {
+            body: given({
               auto_resolve_incident_alerts:,
               auto_resolve_timeout_minutes:,
               azure_devops_options:,
@@ -177,7 +177,7 @@ module IncidentIo
               owning_team_ids:,
               rate_limit_sharding:,
               template:
-            }.compact,
+            }),
             unwrap: "alert_source",
             model: Models::AlertSourceV2,
             request_options:
@@ -198,11 +198,11 @@ module IncidentIo
         # @param owning_team_ids [Array<String>] IDs of teams that own this alert source.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [nil]
-        def validate(source_type:, template:, owning_team_ids: nil, request_options: {})
+        def validate(source_type:, template:, owning_team_ids: NOT_GIVEN, request_options: {})
           request(
             :post,
             "/v2/alert_sources/actions/validate",
-            body: {owning_team_ids:, source_type:, template:}.compact,
+            body: given({owning_team_ids:, source_type:, template:}),
             request_options:
           )
         end

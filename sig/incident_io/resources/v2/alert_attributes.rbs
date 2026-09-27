@@ -10,8 +10,8 @@ module IncidentIo
           array: bool,
           name: String,
           type: String,
-          ?emoji: String?,
-          ?required: bool?,
+          ?emoji: (String | NotGiven)?,
+          ?required: (bool | NotGiven)?,
           ?request_options: request_options
         ) -> Models::AlertAttributeV2
 
@@ -30,8 +30,8 @@ module IncidentIo
           array: bool,
           name: String,
           type: String,
-          ?emoji: String?,
-          ?required: bool?,
+          ?emoji: (String | NotGiven)?,
+          ?required: (bool | NotGiven)?,
           ?request_options: request_options
         ) -> Models::AlertAttributeV2
       end

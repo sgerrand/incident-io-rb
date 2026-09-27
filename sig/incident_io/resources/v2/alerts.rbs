@@ -12,7 +12,7 @@ module IncidentIo
         def create_incident_alert: (
           alert_id: String,
           incident_id: String,
-          ?re_relate: bool?,
+          ?re_relate: (bool | NotGiven)?,
           ?request_options: request_options
         ) -> Models::IncidentAlertV2
 

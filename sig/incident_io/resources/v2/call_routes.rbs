@@ -9,7 +9,7 @@ module IncidentIo
         def create_allowed_caller: (
           String call_route_id,
           phone_number: String,
-          ?name: String?,
+          ?name: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::CallRouteAllowedCallerV2
 
@@ -84,7 +84,7 @@ module IncidentIo
           String call_route_id,
           String id,
           phone_number: String,
-          ?name: String?,
+          ?name: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::CallRouteAllowedCallerV2
 

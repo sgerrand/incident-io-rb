@@ -10,17 +10,17 @@ module IncidentIo
           name: String,
           source_type: String,
           template: Models::AlertTemplatePayloadV2 | Hash[untyped, untyped],
-          ?auto_resolve_incident_alerts: bool?,
-          ?auto_resolve_timeout_minutes: Integer?,
-          ?azure_devops_options: (Models::AlertSourceAzureDevopsOptionsV2 | Hash[untyped, untyped])?,
-          ?email_options: (Models::AlertSourceEmailOptionsPayloadV2 | Hash[untyped, untyped])?,
-          ?filter_condition_groups: Array[Models::ConditionGroupPayloadV2 | Hash[untyped, untyped]]?,
-          ?fixed_team_id: String?,
-          ?heartbeat_options: (Models::AlertSourceHeartbeatOptionsPayloadV2 | Hash[untyped, untyped])?,
-          ?http_custom_options: (Models::AlertSourceHTTPCustomOptionsV2 | Hash[untyped, untyped])?,
-          ?jira_options: (Models::AlertSourceJiraOptionsV2 | Hash[untyped, untyped])?,
-          ?owning_team_ids: Array[String]?,
-          ?rate_limit_sharding: (Models::AlertSourceRateLimitShardingV2 | Hash[untyped, untyped])?,
+          ?auto_resolve_incident_alerts: (bool | NotGiven)?,
+          ?auto_resolve_timeout_minutes: (Integer | NotGiven)?,
+          ?azure_devops_options: (Models::AlertSourceAzureDevopsOptionsV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?email_options: (Models::AlertSourceEmailOptionsPayloadV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?filter_condition_groups: (Array[Models::ConditionGroupPayloadV2 | Hash[untyped, untyped]] | NotGiven)?,
+          ?fixed_team_id: (String | NotGiven)?,
+          ?heartbeat_options: (Models::AlertSourceHeartbeatOptionsPayloadV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?http_custom_options: (Models::AlertSourceHTTPCustomOptionsV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?jira_options: (Models::AlertSourceJiraOptionsV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?owning_team_ids: (Array[String] | NotGiven)?,
+          ?rate_limit_sharding: (Models::AlertSourceRateLimitShardingV2 | Hash[untyped, untyped] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::AlertSourceV2
 
@@ -38,18 +38,18 @@ module IncidentIo
           String id,
           name: String,
           template: Models::AlertTemplatePayloadV2 | Hash[untyped, untyped],
-          ?auto_resolve_incident_alerts: bool?,
-          ?auto_resolve_timeout_minutes: Integer?,
-          ?azure_devops_options: (Models::AlertSourceAzureDevopsOptionsV2 | Hash[untyped, untyped])?,
-          ?disabled: bool?,
-          ?email_options: (Models::AlertSourceEmailOptionsPayloadV2 | Hash[untyped, untyped])?,
-          ?filter_condition_groups: Array[Models::ConditionGroupPayloadV2 | Hash[untyped, untyped]]?,
-          ?fixed_team_id: String?,
-          ?heartbeat_options: (Models::AlertSourceHeartbeatOptionsPayloadV2 | Hash[untyped, untyped])?,
-          ?http_custom_options: (Models::AlertSourceHTTPCustomOptionsV2 | Hash[untyped, untyped])?,
-          ?jira_options: (Models::AlertSourceJiraOptionsV2 | Hash[untyped, untyped])?,
-          ?owning_team_ids: Array[String]?,
-          ?rate_limit_sharding: (Models::AlertSourceRateLimitShardingV2 | Hash[untyped, untyped])?,
+          ?auto_resolve_incident_alerts: (bool | NotGiven)?,
+          ?auto_resolve_timeout_minutes: (Integer | NotGiven)?,
+          ?azure_devops_options: (Models::AlertSourceAzureDevopsOptionsV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?disabled: (bool | NotGiven)?,
+          ?email_options: (Models::AlertSourceEmailOptionsPayloadV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?filter_condition_groups: (Array[Models::ConditionGroupPayloadV2 | Hash[untyped, untyped]] | NotGiven)?,
+          ?fixed_team_id: (String | NotGiven)?,
+          ?heartbeat_options: (Models::AlertSourceHeartbeatOptionsPayloadV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?http_custom_options: (Models::AlertSourceHTTPCustomOptionsV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?jira_options: (Models::AlertSourceJiraOptionsV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?owning_team_ids: (Array[String] | NotGiven)?,
+          ?rate_limit_sharding: (Models::AlertSourceRateLimitShardingV2 | Hash[untyped, untyped] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::AlertSourceV2
 
@@ -57,7 +57,7 @@ module IncidentIo
         def validate: (
           source_type: String,
           template: Models::AlertTemplatePayloadV2 | Hash[untyped, untyped],
-          ?owning_team_ids: Array[String]?,
+          ?owning_team_ids: (Array[String] | NotGiven)?,
           ?request_options: request_options
         ) -> nil
       end

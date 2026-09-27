@@ -22,11 +22,11 @@ module IncidentIo
         # @param sort_key [Integer] Sort key used to order the custom field options correctly.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::CustomFieldOptionV1]
-        def create(custom_field_id:, value:, sort_key: nil, request_options: {})
+        def create(custom_field_id:, value:, sort_key: NOT_GIVEN, request_options: {})
           request(
             :post,
             "/v1/custom_field_options",
-            body: {custom_field_id:, sort_key:, value:}.compact,
+            body: given({custom_field_id:, sort_key:, value:}),
             unwrap: "custom_field_option",
             model: Models::CustomFieldOptionV1,
             request_options:
@@ -97,7 +97,7 @@ module IncidentIo
           request(
             :put,
             path("/v1/custom_field_options/%s", id),
-            body: {sort_key:, value:}.compact,
+            body: given({sort_key:, value:}),
             unwrap: "custom_field_option",
             model: Models::CustomFieldOptionV1,
             request_options:

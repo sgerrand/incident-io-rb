@@ -24,11 +24,11 @@ module IncidentIo
         # @param name [String] Label for whose number this is.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::CallRouteAllowedCallerV2]
-        def create_allowed_caller(call_route_id, phone_number:, name: nil, request_options: {})
+        def create_allowed_caller(call_route_id, phone_number:, name: NOT_GIVEN, request_options: {})
           request(
             :post,
             path("/v2/call_routes/%s/allowed_callers", call_route_id),
-            body: {name:, phone_number:}.compact,
+            body: given({name:, phone_number:}),
             unwrap: "allowed_caller",
             model: Models::CallRouteAllowedCallerV2,
             request_options:
@@ -54,7 +54,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/call_routes/%s/options", call_route_id),
-            body: {digit:, path:, prompt:}.compact,
+            body: given({digit:, path:, prompt:}),
             unwrap: "option",
             model: Models::CallRouteOptionV2,
             request_options:
@@ -231,7 +231,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/call_routes/%s", id),
-            body: {custom_language:, name:, path:, responder_caller_id:, use_caller_allowlist:}.compact,
+            body: given({custom_language:, name:, path:, responder_caller_id:, use_caller_allowlist:}),
             unwrap: "call_route",
             model: Models::CallRouteV2,
             request_options:
@@ -248,11 +248,11 @@ module IncidentIo
         # @param name [String] Label for whose number this is.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::CallRouteAllowedCallerV2]
-        def update_allowed_caller(call_route_id, id, phone_number:, name: nil, request_options: {})
+        def update_allowed_caller(call_route_id, id, phone_number:, name: NOT_GIVEN, request_options: {})
           request(
             :put,
             path("/v2/call_routes/%s/allowed_callers/%s", call_route_id, id),
-            body: {name:, phone_number:}.compact,
+            body: given({name:, phone_number:}),
             unwrap: "allowed_caller",
             model: Models::CallRouteAllowedCallerV2,
             request_options:
@@ -277,7 +277,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/call_routes/%s/options/%s", call_route_id, id),
-            body: {digit:, path:, prompt:}.compact,
+            body: given({digit:, path:, prompt:}),
             unwrap: "option",
             model: Models::CallRouteOptionV2,
             request_options:

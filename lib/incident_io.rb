@@ -7,6 +7,7 @@ require "time"
 require "uri"
 
 require_relative "incident_io/version"
+require_relative "incident_io/not_given"
 require_relative "incident_io/errors"
 require_relative "incident_io/util"
 require_relative "incident_io/query_encoder"

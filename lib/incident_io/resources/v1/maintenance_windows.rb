@@ -38,21 +38,21 @@ module IncidentIo
           name:,
           show_in_sidebar:,
           start_at:,
-          escalation_targets: nil,
-          incident_id: nil,
-          notification_message: nil,
-          notify_channels: nil,
-          notify_end_minutes_before: nil,
-          notify_start_minutes_before: nil,
-          owning_team_ids: nil,
-          reroute_on_end: nil,
-          resolve_on_end: nil,
+          escalation_targets: NOT_GIVEN,
+          incident_id: NOT_GIVEN,
+          notification_message: NOT_GIVEN,
+          notify_channels: NOT_GIVEN,
+          notify_end_minutes_before: NOT_GIVEN,
+          notify_start_minutes_before: NOT_GIVEN,
+          owning_team_ids: NOT_GIVEN,
+          reroute_on_end: NOT_GIVEN,
+          resolve_on_end: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v1/maintenance_windows",
-            body: {
+            body: given({
               alert_condition_groups:,
               end_at:,
               escalation_targets:,
@@ -68,7 +68,7 @@ module IncidentIo
               resolve_on_end:,
               show_in_sidebar:,
               start_at:
-            }.compact,
+            }),
             unwrap: "maintenance_window",
             model: Models::MaintenanceWindowV1,
             request_options:
@@ -158,21 +158,21 @@ module IncidentIo
           name:,
           show_in_sidebar:,
           start_at:,
-          escalation_targets: nil,
-          incident_id: nil,
-          notification_message: nil,
-          notify_channels: nil,
-          notify_end_minutes_before: nil,
-          notify_start_minutes_before: nil,
-          owning_team_ids: nil,
-          reroute_on_end: nil,
-          resolve_on_end: nil,
+          escalation_targets: NOT_GIVEN,
+          incident_id: NOT_GIVEN,
+          notification_message: NOT_GIVEN,
+          notify_channels: NOT_GIVEN,
+          notify_end_minutes_before: NOT_GIVEN,
+          notify_start_minutes_before: NOT_GIVEN,
+          owning_team_ids: NOT_GIVEN,
+          reroute_on_end: NOT_GIVEN,
+          resolve_on_end: NOT_GIVEN,
           request_options: {}
         )
           request(
             :put,
             path("/v1/maintenance_windows/%s", id),
-            body: {
+            body: given({
               alert_condition_groups:,
               end_at:,
               escalation_targets:,
@@ -188,7 +188,7 @@ module IncidentIo
               resolve_on_end:,
               show_in_sidebar:,
               start_at:
-            }.compact,
+            }),
             unwrap: "maintenance_window",
             model: Models::MaintenanceWindowV1,
             request_options:

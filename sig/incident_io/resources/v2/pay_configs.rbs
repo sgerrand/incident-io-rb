@@ -12,8 +12,8 @@ module IncidentIo
           name: String,
           rate_time_unit: String,
           timezone: String,
-          ?one_off_rules: Array[Models::PayConfigOneOffRulePayloadV2 | Hash[untyped, untyped]]?,
-          ?weekly_rules: Array[Models::PayConfigWeeklyRulePayloadV2 | Hash[untyped, untyped]]?,
+          ?one_off_rules: (Array[Models::PayConfigOneOffRulePayloadV2 | Hash[untyped, untyped]] | NotGiven)?,
+          ?weekly_rules: (Array[Models::PayConfigWeeklyRulePayloadV2 | Hash[untyped, untyped]] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::PayConfigV2
 

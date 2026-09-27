@@ -31,8 +31,10 @@ RSpec.describe "generated resource methods" do
       sent = nil
       stub_request(op["http_method"].to_sym, url).with { |request| sent = request }.to_return(response_for(op["result"]))
 
+      kwargs = op["keyword_args"].transform_keys(&:to_sym)
+      kwargs[op["null_body_key"].to_sym] = nil if op["null_body_key"]
       resource = client.public_send(op["version"]).public_send(op["resource"])
-      result = resource.public_send(op["method"], *op["path_args"], **op["keyword_args"].transform_keys(&:to_sym))
+      result = resource.public_send(op["method"], *op["path_args"], **kwargs)
       result = result.to_a if op["result"]["kind"] == "paginated"
 
       expect(sent).not_to be_nil, "expected #{op["http_method"].upcase} #{path}"
@@ -45,6 +47,9 @@ RSpec.describe "generated resource methods" do
         body = JSON.parse(sent.body)
         op["body_keys"].each { |key| expect(body[key]).to eq(op["keyword_args"][key]) }
         expect(body["idempotency_key"]).to match(/\A\h{8}-\h{4}-/) if op["idempotency_key"]
+        # Optional fields that weren't passed are left out; nil is sent as null.
+        expect(body.keys).to match_array(op["body_keys"] + [op["null_body_key"], ("idempotency_key" if op["idempotency_key"])].compact)
+        expect(body).to include(op["null_body_key"] => nil) if op["null_body_key"]
       else
         expect(sent.body.to_s).to be_empty
       end

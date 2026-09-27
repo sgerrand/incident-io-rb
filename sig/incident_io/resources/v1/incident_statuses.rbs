@@ -10,7 +10,7 @@ module IncidentIo
           category: String,
           description: String,
           name: String,
-          ?rank: Integer?,
+          ?rank: (Integer | NotGiven)?,
           ?request_options: request_options
         ) -> Models::IncidentStatusV1
 
@@ -28,7 +28,7 @@ module IncidentIo
           String id,
           description: String,
           name: String,
-          ?rank: Integer?,
+          ?rank: (Integer | NotGiven)?,
           ?request_options: request_options
         ) -> Models::IncidentStatusV1
       end

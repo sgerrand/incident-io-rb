@@ -38,13 +38,13 @@ module IncidentIo
           is_private:,
           message_config:,
           name:,
-          owning_team_ids: nil,
+          owning_team_ids: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v3/alert_routes",
-            body: {
+            body: given({
               alert_sources:,
               condition_groups:,
               enabled:,
@@ -56,7 +56,7 @@ module IncidentIo
               message_config:,
               name:,
               owning_team_ids:
-            }.compact,
+            }),
             unwrap: "alert_route",
             model: Models::AlertRouteV3,
             request_options:
@@ -145,13 +145,13 @@ module IncidentIo
           message_config:,
           name:,
           version:,
-          owning_team_ids: nil,
+          owning_team_ids: NOT_GIVEN,
           request_options: {}
         )
           request(
             :put,
             path("/v3/alert_routes/%s", id),
-            body: {
+            body: given({
               alert_sources:,
               condition_groups:,
               enabled:,
@@ -164,7 +164,7 @@ module IncidentIo
               name:,
               owning_team_ids:,
               version:
-            }.compact,
+            }),
             unwrap: "alert_route",
             model: Models::AlertRouteV3,
             request_options:

@@ -97,12 +97,15 @@ module IncidentIoGenerator
       comment(lines.join("\n"), indent)
     end
 
-    # The parameter list of a generated method.
+    # The parameter list of a generated method. Optional body arguments
+    # default to NOT_GIVEN so that nil can be sent as null; optional query
+    # arguments default to nil, which is left out.
     def signature(op, indent)
       args = op.path_params.map(&:name)
       op.keyword_params.each do |p|
         args << if p.required then "#{p.name}:"
         elsif p.default then "#{p.name}: #{p.default}"
+        elsif op.body_params.include?(p) then "#{p.name}: NOT_GIVEN"
         else "#{p.name}: nil"
         end
       end
@@ -132,7 +135,7 @@ module IncidentIoGenerator
       args << ":#{op.http_method}"
       args << path_expression(op)
       args << "query: #{hash_expression(op.query_params, indent + 2)}" if op.query_params.any?
-      args << "body: #{hash_expression(op.body_params, indent + 2)}#{".compact" if op.body_params.any?}" if op.body
+      args << "body: #{body_expression(op.body_params, indent + 2)}" if op.body
       args << "idempotent: true" if op.idempotent
       args << "unwrap: #{op.result.unwrap.inspect}" if op.result.unwrap
       args << "model: #{op.result.model}" if op.result.model
@@ -150,6 +153,13 @@ module IncidentIoGenerator
 
       pad = " " * (indent + 2)
       "{\n#{entries.map { |e| "#{pad}#{e}" }.join(",\n")}\n#{" " * indent}}"
+    end
+
+    # Request body source: `given({...})` drops arguments that weren't passed.
+    def body_expression(params, indent)
+      return "{}" if params.empty?
+
+      "given(#{hash_expression(params, indent)})"
     end
 
     def path_expression(op)
@@ -181,6 +191,7 @@ module IncidentIoGenerator
         type = Types.rbs_type(p.schema, input: true)
         params << if p.required then "#{p.name}: #{type}"
         elsif p.default then "?#{p.name}: #{type}"
+        elsif op.body_params.include?(p) then "?#{p.name}: #{Types.rbs_optional("#{type} | NotGiven")}"
         else "?#{p.name}: #{Types.rbs_optional(type)}"
         end
       end
@@ -227,6 +238,8 @@ module IncidentIoGenerator
             "query_keys" => keyword_params.select { |p| op.query_params.include?(p) }.map(&:name),
             "body_keys" => keyword_params.select { |p| op.body_params.include?(p) }.map(&:name),
             "body" => op.body,
+            # An optional body field to pass as nil, which should be sent as null.
+            "null_body_key" => op.body_params.find { |p| !p.required && !p.default }&.name,
             "idempotency_key" => op.idempotent,
             "result" => {
               "kind" => op.result.kind.to_s,

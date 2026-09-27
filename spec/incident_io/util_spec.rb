@@ -34,4 +34,11 @@ RSpec.describe IncidentIo::Util do
       expect([nil, "", "soon"].map { |v| described_class.parse_time(v) }).to all(be_nil)
     end
   end
+
+  describe "IncidentIo::NOT_GIVEN" do
+    it "reads well when printed" do
+      expect([IncidentIo::NOT_GIVEN.inspect, IncidentIo::NOT_GIVEN.to_s]).to all(eq("IncidentIo::NOT_GIVEN"))
+      expect(IncidentIo::NOT_GIVEN).to be_frozen
+    end
+  end
 end

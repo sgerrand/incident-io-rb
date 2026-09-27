@@ -51,16 +51,16 @@ module IncidentIo
           attribute_values:,
           catalog_type_id:,
           name:,
-          aliases: nil,
-          external_id: nil,
-          rank: nil,
+          aliases: NOT_GIVEN,
+          external_id: NOT_GIVEN,
+          rank: NOT_GIVEN,
           request_options: {}
         )
           deprecated!("client.v2.catalog.create_entry", "client.catalog.create_entry")
           request(
             :post,
             "/v2/catalog_entries",
-            body: {aliases:, attribute_values:, catalog_type_id:, external_id:, name:, rank:}.compact,
+            body: given({aliases:, attribute_values:, catalog_type_id:, external_id:, name:, rank:}),
             unwrap: "catalog_entry",
             model: Models::CatalogEntryV2,
             request_options:
@@ -86,20 +86,20 @@ module IncidentIo
         def create_type(
           description:,
           name:,
-          annotations: nil,
-          categories: nil,
-          color: nil,
-          icon: nil,
-          ranked: nil,
-          source_repo_url: nil,
-          type_name: nil,
+          annotations: NOT_GIVEN,
+          categories: NOT_GIVEN,
+          color: NOT_GIVEN,
+          icon: NOT_GIVEN,
+          ranked: NOT_GIVEN,
+          source_repo_url: NOT_GIVEN,
+          type_name: NOT_GIVEN,
           request_options: {}
         )
           deprecated!("client.v2.catalog.create_type", "client.catalog.create_type")
           request(
             :post,
             "/v2/catalog_types",
-            body: {
+            body: given({
               annotations:,
               categories:,
               color:,
@@ -109,7 +109,7 @@ module IncidentIo
               ranked:,
               source_repo_url:,
               type_name:
-            }.compact,
+            }),
             unwrap: "catalog_type",
             model: Models::CatalogTypeV2,
             request_options:
@@ -265,16 +265,16 @@ module IncidentIo
           id,
           attribute_values:,
           name:,
-          aliases: nil,
-          external_id: nil,
-          rank: nil,
+          aliases: NOT_GIVEN,
+          external_id: NOT_GIVEN,
+          rank: NOT_GIVEN,
           request_options: {}
         )
           deprecated!("client.v2.catalog.update_entry", "client.catalog.update_entry")
           request(
             :put,
             path("/v2/catalog_entries/%s", id),
-            body: {aliases:, attribute_values:, external_id:, name:, rank:}.compact,
+            body: given({aliases:, attribute_values:, external_id:, name:, rank:}),
             model: Models::CatalogUpdateEntryResultV2,
             request_options:
           )
@@ -300,19 +300,19 @@ module IncidentIo
           id,
           description:,
           name:,
-          annotations: nil,
-          categories: nil,
-          color: nil,
-          icon: nil,
-          ranked: nil,
-          source_repo_url: nil,
+          annotations: NOT_GIVEN,
+          categories: NOT_GIVEN,
+          color: NOT_GIVEN,
+          icon: NOT_GIVEN,
+          ranked: NOT_GIVEN,
+          source_repo_url: NOT_GIVEN,
           request_options: {}
         )
           deprecated!("client.v2.catalog.update_type", "client.catalog.update_type")
           request(
             :put,
             path("/v2/catalog_types/%s", id),
-            body: {
+            body: given({
               annotations:,
               categories:,
               color:,
@@ -321,7 +321,7 @@ module IncidentIo
               name:,
               ranked:,
               source_repo_url:
-            }.compact,
+            }),
             unwrap: "catalog_type",
             model: Models::CatalogTypeV2,
             request_options:
@@ -350,7 +350,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/catalog_types/%s/actions/update_schema", id),
-            body: {attributes:, version:}.compact,
+            body: given({attributes:, version:}),
             unwrap: "catalog_type",
             model: Models::CatalogTypeV2,
             request_options:

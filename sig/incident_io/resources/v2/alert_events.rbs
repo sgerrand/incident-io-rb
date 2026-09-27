@@ -12,10 +12,10 @@ module IncidentIo
           title: String,
           ?token: String?,
           ?query: Hash[untyped, untyped]?,
-          ?deduplication_key: String?,
-          ?description: String?,
-          ?metadata: Hash[untyped, untyped]?,
-          ?source_url: String?,
+          ?deduplication_key: (String | NotGiven)?,
+          ?description: (String | NotGiven)?,
+          ?metadata: (Hash[untyped, untyped] | NotGiven)?,
+          ?source_url: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::AlertEventsCreateHTTPResultV2
       end

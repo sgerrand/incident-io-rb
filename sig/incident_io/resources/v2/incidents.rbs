@@ -8,19 +8,19 @@ module IncidentIo
         # Create a new incident.
         def create: (
           visibility: String,
-          ?custom_field_entries: Array[Models::CustomFieldEntryPayloadV2 | Hash[untyped, untyped]]?,
+          ?custom_field_entries: (Array[Models::CustomFieldEntryPayloadV2 | Hash[untyped, untyped]] | NotGiven)?,
           ?idempotency_key: String,
-          ?incident_role_assignments: Array[Models::IncidentRoleAssignmentPayloadV2 | Hash[untyped, untyped]]?,
-          ?incident_status_id: String?,
-          ?incident_timestamp_values: Array[Models::IncidentTimestampValuePayloadV2 | Hash[untyped, untyped]]?,
-          ?incident_type_id: String?,
-          ?mode: String?,
-          ?name: String?,
-          ?retrospective_incident_options: (Models::RetrospectiveIncidentOptionsV2 | Hash[untyped, untyped])?,
-          ?severity_id: String?,
-          ?slack_channel_name_override: String?,
-          ?slack_team_id: String?,
-          ?summary: String?,
+          ?incident_role_assignments: (Array[Models::IncidentRoleAssignmentPayloadV2 | Hash[untyped, untyped]] | NotGiven)?,
+          ?incident_status_id: (String | NotGiven)?,
+          ?incident_timestamp_values: (Array[Models::IncidentTimestampValuePayloadV2 | Hash[untyped, untyped]] | NotGiven)?,
+          ?incident_type_id: (String | NotGiven)?,
+          ?mode: (String | NotGiven)?,
+          ?name: (String | NotGiven)?,
+          ?retrospective_incident_options: (Models::RetrospectiveIncidentOptionsV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?severity_id: (String | NotGiven)?,
+          ?slack_channel_name_override: (String | NotGiven)?,
+          ?slack_team_id: (String | NotGiven)?,
+          ?summary: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::IncidentV2
 

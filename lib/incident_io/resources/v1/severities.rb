@@ -24,11 +24,11 @@ module IncidentIo
         # @param rank [Integer] Rank to help sort severities (lower numbers are less severe)
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::SeverityV1]
-        def create(description:, name:, rank: nil, request_options: {})
+        def create(description:, name:, rank: NOT_GIVEN, request_options: {})
           request(
             :post,
             "/v1/severities",
-            body: {description:, name:, rank:}.compact,
+            body: given({description:, name:, rank:}),
             unwrap: "severity",
             model: Models::SeverityV1,
             request_options:
@@ -93,11 +93,11 @@ module IncidentIo
         # @param rank [Integer] Rank to help sort severities (lower numbers are less severe)
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::SeverityV1]
-        def update(id, description:, name:, rank: nil, request_options: {})
+        def update(id, description:, name:, rank: NOT_GIVEN, request_options: {})
           request(
             :put,
             path("/v1/severities/%s", id),
-            body: {description:, name:, rank:}.compact,
+            body: given({description:, name:, rank:}),
             unwrap: "severity",
             model: Models::SeverityV1,
             request_options:

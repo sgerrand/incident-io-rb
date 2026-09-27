@@ -43,11 +43,11 @@ module IncidentIo
         # @param comments [String] Freeform notes about the API key.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::APIKeysCreateResultV1]
-        def create(name:, role_names:, team_ids:, team_role_names:, comments: nil, request_options: {})
+        def create(name:, role_names:, team_ids:, team_role_names:, comments: NOT_GIVEN, request_options: {})
           request(
             :post,
             "/v1/api_keys",
-            body: {comments:, name:, role_names:, team_ids:, team_role_names:}.compact,
+            body: given({comments:, name:, role_names:, team_ids:, team_role_names:}),
             model: Models::APIKeysCreateResultV1,
             request_options:
           )
@@ -104,7 +104,7 @@ module IncidentIo
           request(
             :post,
             path("/v1/api_keys/%s/actions/rotate", id),
-            body: {grace_period_minutes:}.compact,
+            body: given({grace_period_minutes:}),
             model: Models::APIKeysRotateResultV1,
             request_options:
           )
@@ -143,11 +143,19 @@ module IncidentIo
         # @param comments [String] Freeform notes about the API key.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::APIKeyV1]
-        def update(id, name:, role_names:, team_ids:, team_role_names:, comments: nil, request_options: {})
+        def update(
+          id,
+          name:,
+          role_names:,
+          team_ids:,
+          team_role_names:,
+          comments: NOT_GIVEN,
+          request_options: {}
+        )
           request(
             :put,
             path("/v1/api_keys/%s", id),
-            body: {comments:, name:, role_names:, team_ids:, team_role_names:}.compact,
+            body: given({comments:, name:, role_names:, team_ids:, team_role_names:}),
             unwrap: "api_key",
             model: Models::APIKeyV1,
             request_options:

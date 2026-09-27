@@ -35,17 +35,17 @@ module IncidentIo
           name:,
           schedule_ids:,
           start_date:,
-          overlapping_shifts: nil,
-          pay_config_expression: nil,
-          pay_config_id: nil,
-          rotation_filters: nil,
-          unpaid_shifts: nil,
+          overlapping_shifts: NOT_GIVEN,
+          pay_config_expression: NOT_GIVEN,
+          pay_config_id: NOT_GIVEN,
+          rotation_filters: NOT_GIVEN,
+          unpaid_shifts: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v2/pay_reports",
-            body: {
+            body: given({
               end_date:,
               name:,
               overlapping_shifts:,
@@ -55,7 +55,7 @@ module IncidentIo
               schedule_ids:,
               start_date:,
               unpaid_shifts:
-            }.compact,
+            }),
             unwrap: "pay_report",
             model: Models::PayReportV2,
             request_options:
@@ -147,7 +147,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/pay_reports/%s/actions/publish", id),
-            body: {cc_emails:, send_user_breakdowns:}.compact,
+            body: given({cc_emails:, send_user_breakdowns:}),
             unwrap: "pay_report",
             model: Models::PayReportV2,
             request_options:
@@ -191,7 +191,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/pay_reports/%s/actions/unpublish", id),
-            body: {unpublish_reason:}.compact,
+            body: given({unpublish_reason:}),
             unwrap: "pay_report",
             model: Models::PayReportV2,
             request_options:

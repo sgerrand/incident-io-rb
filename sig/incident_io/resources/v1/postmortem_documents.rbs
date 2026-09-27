@@ -9,7 +9,7 @@ module IncidentIo
         def attach: (
           incident_id: String,
           permalink: String,
-          ?document_provider: String?,
+          ?document_provider: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::PostmortemDocumentV1
 

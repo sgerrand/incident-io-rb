@@ -117,7 +117,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/users/%s/paging_provider", user_id),
-            body: {preferred_escalation_provider:}.compact,
+            body: given({preferred_escalation_provider:}),
             request_options:
           )
         end

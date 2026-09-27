@@ -29,7 +29,7 @@ module IncidentIo
           request(
             :post,
             "/v1/incident_attachments",
-            body: {incident_id:, resource:}.compact,
+            body: given({incident_id:, resource:}),
             unwrap: "incident_attachment",
             model: Models::IncidentAttachmentV1,
             request_options:

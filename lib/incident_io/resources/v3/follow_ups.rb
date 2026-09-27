@@ -30,7 +30,7 @@ module IncidentIo
           request(
             :post,
             path("/v3/follow_ups/%s/actions/connect_external_issue", id),
-            body: {provider:, url:}.compact,
+            body: given({provider:, url:}),
             unwrap: "follow_up",
             model: Models::FollowUpV3,
             request_options:
@@ -55,19 +55,19 @@ module IncidentIo
         def create(
           incident_id:,
           title:,
-          assignee_id: nil,
-          assignee_team_id: nil,
-          description: nil,
-          external_issue_reference_id: nil,
-          follow_up_category_id: nil,
-          follow_up_priority_option_id: nil,
-          labels: nil,
+          assignee_id: NOT_GIVEN,
+          assignee_team_id: NOT_GIVEN,
+          description: NOT_GIVEN,
+          external_issue_reference_id: NOT_GIVEN,
+          follow_up_category_id: NOT_GIVEN,
+          follow_up_priority_option_id: NOT_GIVEN,
+          labels: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v3/follow_ups",
-            body: {
+            body: given({
               assignee_id:,
               assignee_team_id:,
               description:,
@@ -77,7 +77,7 @@ module IncidentIo
               incident_id:,
               labels:,
               title:
-            }.compact,
+            }),
             unwrap: "follow_up",
             model: Models::FollowUpV3,
             request_options:
@@ -113,7 +113,7 @@ module IncidentIo
           request(
             :post,
             "/v3/follow_ups/actions/create_from_link",
-            body: {incident_id:, url:}.compact,
+            body: given({incident_id:, url:}),
             unwrap: "follow_up",
             model: Models::FollowUpV3,
             request_options:
@@ -239,18 +239,18 @@ module IncidentIo
           id,
           status:,
           title:,
-          assignee_id: nil,
-          assignee_team_id: nil,
-          description: nil,
-          follow_up_category_id: nil,
-          follow_up_priority_option_id: nil,
-          labels: nil,
+          assignee_id: NOT_GIVEN,
+          assignee_team_id: NOT_GIVEN,
+          description: NOT_GIVEN,
+          follow_up_category_id: NOT_GIVEN,
+          follow_up_priority_option_id: NOT_GIVEN,
+          labels: NOT_GIVEN,
           request_options: {}
         )
           request(
             :put,
             path("/v3/follow_ups/%s", id),
-            body: {
+            body: given({
               assignee_id:,
               assignee_team_id:,
               description:,
@@ -259,7 +259,7 @@ module IncidentIo
               labels:,
               status:,
               title:
-            }.compact,
+            }),
             unwrap: "follow_up",
             model: Models::FollowUpV3,
             request_options:

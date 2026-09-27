@@ -10,7 +10,7 @@ module IncidentIo
           incident_id: String,
           timestamp: Time | String,
           title: String,
-          ?description: String?,
+          ?description: (String | NotGiven)?,
           ?idempotency_key: String,
           ?request_options: request_options
         ) -> Models::IncidentTimelineItemV2
@@ -26,9 +26,9 @@ module IncidentIo
         # Edit a timeline item.
         def update: (
           String id,
-          ?description: String?,
-          ?timestamp: (Time | String)?,
-          ?title: String?,
+          ?description: (String | NotGiven)?,
+          ?timestamp: (Time | String | NotGiven)?,
+          ?title: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::IncidentTimelineItemV2
       end

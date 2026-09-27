@@ -9,11 +9,11 @@ module IncidentIo
         def create: (
           name: String,
           path: Array[Models::EscalationPathTemplateNodePayloadV2 | Hash[untyped, untyped]],
-          ?description: String?,
-          ?expressions: Array[Models::ExpressionPayloadV2 | Hash[untyped, untyped]]?,
-          ?params: Array[Models::EngineParamV2 | Hash[untyped, untyped]]?,
-          ?repeat_config: (Models::EscalationPathRepeatConfigV2 | Hash[untyped, untyped])?,
-          ?working_hours: Array[Models::WeekdayIntervalConfigV2 | Hash[untyped, untyped]]?,
+          ?description: (String | NotGiven)?,
+          ?expressions: (Array[Models::ExpressionPayloadV2 | Hash[untyped, untyped]] | NotGiven)?,
+          ?params: (Array[Models::EngineParamV2 | Hash[untyped, untyped]] | NotGiven)?,
+          ?repeat_config: (Models::EscalationPathRepeatConfigV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?working_hours: (Array[Models::WeekdayIntervalConfigV2 | Hash[untyped, untyped]] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::EscalationPathTemplateV2
 
@@ -36,11 +36,11 @@ module IncidentIo
           String id,
           name: String,
           path: Array[Models::EscalationPathTemplateNodePayloadV2 | Hash[untyped, untyped]],
-          ?description: String?,
-          ?expressions: Array[Models::ExpressionPayloadV2 | Hash[untyped, untyped]]?,
-          ?params: Array[Models::EngineParamV2 | Hash[untyped, untyped]]?,
-          ?repeat_config: (Models::EscalationPathRepeatConfigV2 | Hash[untyped, untyped])?,
-          ?working_hours: Array[Models::WeekdayIntervalConfigV2 | Hash[untyped, untyped]]?,
+          ?description: (String | NotGiven)?,
+          ?expressions: (Array[Models::ExpressionPayloadV2 | Hash[untyped, untyped]] | NotGiven)?,
+          ?params: (Array[Models::EngineParamV2 | Hash[untyped, untyped]] | NotGiven)?,
+          ?repeat_config: (Models::EscalationPathRepeatConfigV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?working_hours: (Array[Models::WeekdayIntervalConfigV2 | Hash[untyped, untyped]] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::EscalationPathTemplateV2
       end

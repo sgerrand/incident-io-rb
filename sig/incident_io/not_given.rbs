@@ -1,0 +1,11 @@
+module IncidentIo
+  # The type of NOT_GIVEN.
+  class NotGiven
+    def inspect: () -> String
+
+    alias to_s inspect
+  end
+
+  # Default for optional request body arguments: left out of the request.
+  NOT_GIVEN: NotGiven
+end

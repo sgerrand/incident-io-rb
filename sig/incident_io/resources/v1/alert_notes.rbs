@@ -8,8 +8,8 @@ module IncidentIo
         # Add a note to an alert.
         def create: (
           content: String,
-          ?alert_group_id: String?,
-          ?alert_id: String?,
+          ?alert_group_id: (String | NotGiven)?,
+          ?alert_id: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::AlertNoteV1
 

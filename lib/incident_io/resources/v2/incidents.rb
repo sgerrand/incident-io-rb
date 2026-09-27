@@ -38,25 +38,25 @@ module IncidentIo
         # @return [Models::IncidentV2]
         def create(
           visibility:,
-          custom_field_entries: nil,
+          custom_field_entries: NOT_GIVEN,
           idempotency_key: SecureRandom.uuid,
-          incident_role_assignments: nil,
-          incident_status_id: nil,
-          incident_timestamp_values: nil,
-          incident_type_id: nil,
-          mode: nil,
-          name: nil,
-          retrospective_incident_options: nil,
-          severity_id: nil,
-          slack_channel_name_override: nil,
-          slack_team_id: nil,
-          summary: nil,
+          incident_role_assignments: NOT_GIVEN,
+          incident_status_id: NOT_GIVEN,
+          incident_timestamp_values: NOT_GIVEN,
+          incident_type_id: NOT_GIVEN,
+          mode: NOT_GIVEN,
+          name: NOT_GIVEN,
+          retrospective_incident_options: NOT_GIVEN,
+          severity_id: NOT_GIVEN,
+          slack_channel_name_override: NOT_GIVEN,
+          slack_team_id: NOT_GIVEN,
+          summary: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v2/incidents",
-            body: {
+            body: given({
               custom_field_entries:,
               idempotency_key:,
               incident_role_assignments:,
@@ -71,7 +71,7 @@ module IncidentIo
               slack_team_id:,
               summary:,
               visibility:
-            }.compact,
+            }),
             idempotent: true,
             unwrap: "incident",
             model: Models::IncidentV2,
@@ -109,7 +109,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/incidents/%s/actions/edit", id),
-            body: {incident:, notify_incident_channel:}.compact,
+            body: given({incident:, notify_incident_channel:}),
             unwrap: "incident",
             model: Models::IncidentV2,
             request_options:
@@ -136,7 +136,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/incidents/%s/actions/import_postmortem_document", id),
-            body: {content:, title:}.compact,
+            body: given({content:, title:}),
             unwrap: "postmortem_document",
             model: Models::PostmortemDocumentV1,
             request_options:

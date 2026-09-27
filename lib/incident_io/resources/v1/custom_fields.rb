@@ -45,16 +45,16 @@ module IncidentIo
           show_before_closure:,
           show_before_creation:,
           show_before_update:,
-          required: nil,
-          required_v2: nil,
-          show_in_announcement_post: nil,
+          required: NOT_GIVEN,
+          required_v2: NOT_GIVEN,
+          show_in_announcement_post: NOT_GIVEN,
           request_options: {}
         )
           deprecated!("client.v1.custom_fields.create", "client.custom_fields.create")
           request(
             :post,
             "/v1/custom_fields",
-            body: {
+            body: given({
               description:,
               field_type:,
               name:,
@@ -64,7 +64,7 @@ module IncidentIo
               show_before_creation:,
               show_before_update:,
               show_in_announcement_post:
-            }.compact,
+            }),
             unwrap: "custom_field",
             model: Models::CustomFieldV1,
             request_options:
@@ -148,16 +148,16 @@ module IncidentIo
           show_before_closure:,
           show_before_creation:,
           show_before_update:,
-          required: nil,
-          required_v2: nil,
-          show_in_announcement_post: nil,
+          required: NOT_GIVEN,
+          required_v2: NOT_GIVEN,
+          show_in_announcement_post: NOT_GIVEN,
           request_options: {}
         )
           deprecated!("client.v1.custom_fields.update", "client.custom_fields.update")
           request(
             :put,
             path("/v1/custom_fields/%s", id),
-            body: {
+            body: given({
               description:,
               name:,
               required:,
@@ -166,7 +166,7 @@ module IncidentIo
               show_before_creation:,
               show_before_update:,
               show_in_announcement_post:
-            }.compact,
+            }),
             unwrap: "custom_field",
             model: Models::CustomFieldV1,
             request_options:

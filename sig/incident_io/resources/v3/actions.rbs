@@ -9,7 +9,7 @@ module IncidentIo
         def create: (
           description: String,
           incident_id: String,
-          ?assignee_id: String?,
+          ?assignee_id: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::ActionV3
 
@@ -35,7 +35,7 @@ module IncidentIo
           String id,
           description: String,
           status: String,
-          ?assignee_id: String?,
+          ?assignee_id: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::ActionV3
       end

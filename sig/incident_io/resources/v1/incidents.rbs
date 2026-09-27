@@ -9,18 +9,18 @@ module IncidentIo
         # @deprecated Use `client.incidents.create` instead.
         def create: (
           visibility: String,
-          ?custom_field_entries: Array[Models::CustomFieldEntryPayloadV1 | Hash[untyped, untyped]]?,
+          ?custom_field_entries: (Array[Models::CustomFieldEntryPayloadV1 | Hash[untyped, untyped]] | NotGiven)?,
           ?idempotency_key: String,
-          ?incident_role_assignments: Array[Models::IncidentRoleAssignmentPayloadV1 | Hash[untyped, untyped]]?,
-          ?incident_type_id: String?,
-          ?mode: String?,
-          ?name: String?,
-          ?severity_id: String?,
-          ?slack_team_id: String?,
-          ?source_message_channel_id: String?,
-          ?source_message_timestamp: String?,
-          ?status: String?,
-          ?summary: String?,
+          ?incident_role_assignments: (Array[Models::IncidentRoleAssignmentPayloadV1 | Hash[untyped, untyped]] | NotGiven)?,
+          ?incident_type_id: (String | NotGiven)?,
+          ?mode: (String | NotGiven)?,
+          ?name: (String | NotGiven)?,
+          ?severity_id: (String | NotGiven)?,
+          ?slack_team_id: (String | NotGiven)?,
+          ?source_message_channel_id: (String | NotGiven)?,
+          ?source_message_timestamp: (String | NotGiven)?,
+          ?status: (String | NotGiven)?,
+          ?summary: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::IncidentV1
 

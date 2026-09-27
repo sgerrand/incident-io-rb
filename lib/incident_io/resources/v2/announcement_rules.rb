@@ -32,18 +32,18 @@ module IncidentIo
           mode:,
           name:,
           update_sharing_mode:,
-          conditions_no_longer_apply_behaviour: nil,
-          microsoft_teams_channel_ids: nil,
-          owning_team_ids: nil,
-          private_incident_scope: nil,
-          slack_channel_ids: nil,
-          template_id: nil,
+          conditions_no_longer_apply_behaviour: NOT_GIVEN,
+          microsoft_teams_channel_ids: NOT_GIVEN,
+          owning_team_ids: NOT_GIVEN,
+          private_incident_scope: NOT_GIVEN,
+          slack_channel_ids: NOT_GIVEN,
+          template_id: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v2/announcement_rules",
-            body: {
+            body: given({
               condition_groups:,
               conditions_no_longer_apply_behaviour:,
               microsoft_teams_channel_ids:,
@@ -54,7 +54,7 @@ module IncidentIo
               slack_channel_ids:,
               template_id:,
               update_sharing_mode:
-            }.compact,
+            }),
             unwrap: "announcement_rule",
             model: Models::AnnouncementRuleV2,
             request_options:
@@ -134,18 +134,18 @@ module IncidentIo
           mode:,
           name:,
           update_sharing_mode:,
-          conditions_no_longer_apply_behaviour: nil,
-          microsoft_teams_channel_ids: nil,
-          owning_team_ids: nil,
-          private_incident_scope: nil,
-          slack_channel_ids: nil,
-          template_id: nil,
+          conditions_no_longer_apply_behaviour: NOT_GIVEN,
+          microsoft_teams_channel_ids: NOT_GIVEN,
+          owning_team_ids: NOT_GIVEN,
+          private_incident_scope: NOT_GIVEN,
+          slack_channel_ids: NOT_GIVEN,
+          template_id: NOT_GIVEN,
           request_options: {}
         )
           request(
             :put,
             path("/v2/announcement_rules/%s", id),
-            body: {
+            body: given({
               condition_groups:,
               conditions_no_longer_apply_behaviour:,
               microsoft_teams_channel_ids:,
@@ -156,7 +156,7 @@ module IncidentIo
               slack_channel_ids:,
               template_id:,
               update_sharing_mode:
-            }.compact,
+            }),
             unwrap: "announcement_rule",
             model: Models::AnnouncementRuleV2,
             request_options:

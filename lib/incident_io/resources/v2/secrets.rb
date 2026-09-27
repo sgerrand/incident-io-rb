@@ -18,11 +18,11 @@ module IncidentIo
         # @param owning_team_ids [Array<String>] IDs of the teams that own this secret. When empty or omitted, the secret is owned by the whole organisation.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::SecretV2]
-        def create(name:, value:, description: nil, owning_team_ids: nil, request_options: {})
+        def create(name:, value:, description: NOT_GIVEN, owning_team_ids: NOT_GIVEN, request_options: {})
           request(
             :post,
             "/v2/secrets",
-            body: {description:, name:, owning_team_ids:, value:}.compact,
+            body: given({description:, name:, owning_team_ids:, value:}),
             unwrap: "secret",
             model: Models::SecretV2,
             request_options:
@@ -75,7 +75,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/secrets/%s/actions/rotate", id),
-            body: {value:}.compact,
+            body: given({value:}),
             unwrap: "secret",
             model: Models::SecretV2,
             request_options:
@@ -108,11 +108,11 @@ module IncidentIo
         # @param owning_team_ids [Array<String>] IDs of the teams that own this secret. When omitted, the existing owning teams are left unchanged.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::SecretV2]
-        def update(id, name:, description: nil, owning_team_ids: nil, request_options: {})
+        def update(id, name:, description: NOT_GIVEN, owning_team_ids: NOT_GIVEN, request_options: {})
           request(
             :put,
             path("/v2/secrets/%s", id),
-            body: {description:, name:, owning_team_ids:}.compact,
+            body: given({description:, name:, owning_team_ids:}),
             unwrap: "secret",
             model: Models::SecretV2,
             request_options:

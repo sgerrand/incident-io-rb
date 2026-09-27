@@ -11,12 +11,12 @@ module IncidentIo
           mode: String,
           name: String,
           update_sharing_mode: String,
-          ?conditions_no_longer_apply_behaviour: String?,
-          ?microsoft_teams_channel_ids: Array[String]?,
-          ?owning_team_ids: Array[String]?,
-          ?private_incident_scope: String?,
-          ?slack_channel_ids: Array[String]?,
-          ?template_id: String?,
+          ?conditions_no_longer_apply_behaviour: (String | NotGiven)?,
+          ?microsoft_teams_channel_ids: (Array[String] | NotGiven)?,
+          ?owning_team_ids: (Array[String] | NotGiven)?,
+          ?private_incident_scope: (String | NotGiven)?,
+          ?slack_channel_ids: (Array[String] | NotGiven)?,
+          ?template_id: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::AnnouncementRuleV2
 
@@ -40,12 +40,12 @@ module IncidentIo
           mode: String,
           name: String,
           update_sharing_mode: String,
-          ?conditions_no_longer_apply_behaviour: String?,
-          ?microsoft_teams_channel_ids: Array[String]?,
-          ?owning_team_ids: Array[String]?,
-          ?private_incident_scope: String?,
-          ?slack_channel_ids: Array[String]?,
-          ?template_id: String?,
+          ?conditions_no_longer_apply_behaviour: (String | NotGiven)?,
+          ?microsoft_teams_channel_ids: (Array[String] | NotGiven)?,
+          ?owning_team_ids: (Array[String] | NotGiven)?,
+          ?private_incident_scope: (String | NotGiven)?,
+          ?slack_channel_ids: (Array[String] | NotGiven)?,
+          ?template_id: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::AnnouncementRuleV2
       end

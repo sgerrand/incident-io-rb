@@ -11,9 +11,9 @@ module IncidentIo
           attribute_values: Hash[untyped, untyped],
           catalog_type_id: String,
           name: String,
-          ?aliases: Array[String]?,
-          ?external_id: String?,
-          ?rank: Integer?,
+          ?aliases: (Array[String] | NotGiven)?,
+          ?external_id: (String | NotGiven)?,
+          ?rank: (Integer | NotGiven)?,
           ?request_options: request_options
         ) -> Models::CatalogEntryV2
 
@@ -22,13 +22,13 @@ module IncidentIo
         def create_type: (
           description: String,
           name: String,
-          ?annotations: Hash[untyped, untyped]?,
-          ?categories: Array[String]?,
-          ?color: String?,
-          ?icon: String?,
-          ?ranked: bool?,
-          ?source_repo_url: String?,
-          ?type_name: String?,
+          ?annotations: (Hash[untyped, untyped] | NotGiven)?,
+          ?categories: (Array[String] | NotGiven)?,
+          ?color: (String | NotGiven)?,
+          ?icon: (String | NotGiven)?,
+          ?ranked: (bool | NotGiven)?,
+          ?source_repo_url: (String | NotGiven)?,
+          ?type_name: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::CatalogTypeV2
 
@@ -71,9 +71,9 @@ module IncidentIo
           String id,
           attribute_values: Hash[untyped, untyped],
           name: String,
-          ?aliases: Array[String]?,
-          ?external_id: String?,
-          ?rank: Integer?,
+          ?aliases: (Array[String] | NotGiven)?,
+          ?external_id: (String | NotGiven)?,
+          ?rank: (Integer | NotGiven)?,
           ?request_options: request_options
         ) -> Models::CatalogUpdateEntryResultV2
 
@@ -83,12 +83,12 @@ module IncidentIo
           String id,
           description: String,
           name: String,
-          ?annotations: Hash[untyped, untyped]?,
-          ?categories: Array[String]?,
-          ?color: String?,
-          ?icon: String?,
-          ?ranked: bool?,
-          ?source_repo_url: String?,
+          ?annotations: (Hash[untyped, untyped] | NotGiven)?,
+          ?categories: (Array[String] | NotGiven)?,
+          ?color: (String | NotGiven)?,
+          ?icon: (String | NotGiven)?,
+          ?ranked: (bool | NotGiven)?,
+          ?source_repo_url: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::CatalogTypeV2
 

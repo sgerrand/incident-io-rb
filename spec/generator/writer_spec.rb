@@ -58,7 +58,8 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
     described_class.new(api, @dir).write
     source = generated("lib/incident_io/resources/v2/widgets.rb")
 
-    expect(source).to include("def create(name:, idempotency_key: SecureRandom.uuid, part: nil, request_options: {})")
+    expect(source).to include("def create(name:, idempotency_key: SecureRandom.uuid, part: NOT_GIVEN, request_options: {})")
+    expect(source).to include("body: given({name:, idempotency_key:, part:}),")
     expect(source).to include("def show(id, request_options: {})")
     expect(source).to include('path("/v2/widgets/%s", id)')
     expect(source).to include('deprecated!("client.v2.widgets.destroy")')
@@ -87,7 +88,7 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
         ?request_options: request_options
       ) -> Pager[Models::WidgetV2]
     RBS
-    expect(source).to include("?part: (Models::PartV2 | Hash[untyped, untyped])?")
+    expect(source).to include("?part: (Models::PartV2 | Hash[untyped, untyped] | NotGiven)?")
     expect(source).to include("?idempotency_key: String,")
     expect(source).to include("# @deprecated\n        def destroy: (String id, ?request_options: request_options) -> nil")
     expect(source).to include("-> String") # CSV export
@@ -122,7 +123,8 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
     expect(manifest["create"]).to include(
       "operation_id" => "Widgets V2#Create", "version" => "v2", "resource" => "widgets",
       "http_method" => "post", "path" => "/v2/widgets", "path_args" => [],
-      "keyword_args" => {"name" => "name-value"}, "body_keys" => ["name"], "body" => true, "idempotency_key" => true,
+      "keyword_args" => {"name" => "name-value"}, "body_keys" => ["name"], "body" => true, "null_body_key" => "part",
+      "idempotency_key" => true,
       "result" => {"kind" => "json", "unwrap" => "widget", "items_key" => nil, "model" => "WidgetV2", "array" => false}
     )
     expect(manifest["list"]).to include(

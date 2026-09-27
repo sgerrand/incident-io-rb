@@ -20,7 +20,7 @@ module IncidentIo
           request(
             :post,
             "/v2/schedules",
-            body: {schedule:}.compact,
+            body: given({schedule:}),
             unwrap: "schedule",
             model: Models::ScheduleV2,
             request_options:
@@ -51,7 +51,7 @@ module IncidentIo
           request(
             :post,
             "/v2/schedule_overrides",
-            body: {end_at:, layer_id:, rotation_id:, schedule_id:, start_at:, user:}.compact,
+            body: given({end_at:, layer_id:, rotation_id:, schedule_id:, start_at:, user:}),
             unwrap: "override",
             model: Models::ScheduleOverrideV2,
             request_options:
@@ -70,7 +70,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/schedules/%s/replicas", schedule_id),
-            body: {schedule_replica:}.compact,
+            body: given({schedule_replica:}),
             unwrap: "schedule_replica",
             model: Models::ScheduleReplicaV2,
             request_options:
@@ -89,7 +89,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/schedules/%s/sync_rules", schedule_id),
-            body: {schedule_sync_rule:}.compact,
+            body: given({schedule_sync_rule:}),
             unwrap: "schedule_sync_rule",
             model: Models::ScheduleSyncRuleV2,
             request_options:
@@ -343,14 +343,14 @@ module IncidentIo
         def preview_schedule_entries(
           id,
           schedule:,
-          entry_window_end: nil,
-          entry_window_start: nil,
+          entry_window_end: NOT_GIVEN,
+          entry_window_start: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             path("/v2/schedules/%s/actions/preview_entries", id),
-            body: {entry_window_end:, entry_window_start:, schedule:}.compact,
+            body: given({entry_window_end:, entry_window_start:, schedule:}),
             unwrap: "schedule_entries",
             model: Models::ScheduleEntriesListPayloadV2,
             request_options:
@@ -455,7 +455,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/schedules/%s", id),
-            body: {schedule:}.compact,
+            body: given({schedule:}),
             unwrap: "schedule",
             model: Models::ScheduleV2,
             request_options:
@@ -486,7 +486,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/schedule_overrides/%s", id),
-            body: {end_at:, layer_id:, rotation_id:, start_at:, user:}.compact,
+            body: given({end_at:, layer_id:, rotation_id:, start_at:, user:}),
             unwrap: "override",
             model: Models::ScheduleOverrideV2,
             request_options:
@@ -508,14 +508,14 @@ module IncidentIo
           schedule_id,
           id,
           sync_type:,
-          annotations: nil,
-          permanent_member_user_ids: nil,
+          annotations: NOT_GIVEN,
+          permanent_member_user_ids: NOT_GIVEN,
           request_options: {}
         )
           request(
             :put,
             path("/v2/schedules/%s/sync_rules/%s", schedule_id, id),
-            body: {annotations:, permanent_member_user_ids:, sync_type:}.compact,
+            body: given({annotations:, permanent_member_user_ids:, sync_type:}),
             unwrap: "schedule_sync_rule",
             model: Models::ScheduleSyncRuleV2,
             request_options:

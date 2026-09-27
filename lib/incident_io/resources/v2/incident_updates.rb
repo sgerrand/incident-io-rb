@@ -33,15 +33,15 @@ module IncidentIo
         def create(
           incident_id:,
           idempotency_key: SecureRandom.uuid,
-          message: nil,
-          to_incident_status_id: nil,
-          to_severity_id: nil,
+          message: NOT_GIVEN,
+          to_incident_status_id: NOT_GIVEN,
+          to_severity_id: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v2/incident_updates",
-            body: {idempotency_key:, incident_id:, message:, to_incident_status_id:, to_severity_id:}.compact,
+            body: given({idempotency_key:, incident_id:, message:, to_incident_status_id:, to_severity_id:}),
             idempotent: true,
             unwrap: "incident_update",
             model: Models::IncidentUpdateV2,

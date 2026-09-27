@@ -9,9 +9,9 @@ module IncidentIo
         def create: (
           incident_id: String,
           ?idempotency_key: String,
-          ?message: String?,
-          ?to_incident_status_id: String?,
-          ?to_severity_id: String?,
+          ?message: (String | NotGiven)?,
+          ?to_incident_status_id: (String | NotGiven)?,
+          ?to_severity_id: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::IncidentUpdateV2
 

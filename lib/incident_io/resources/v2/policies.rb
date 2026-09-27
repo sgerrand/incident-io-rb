@@ -39,20 +39,20 @@ module IncidentIo
           description:,
           name:,
           policy_type:,
-          assignment_rules: nil,
-          debrief: nil,
-          expressions: nil,
-          follow_up: nil,
-          on_call_readiness: nil,
-          post_mortem: nil,
-          schedule: nil,
-          status: nil,
+          assignment_rules: NOT_GIVEN,
+          debrief: NOT_GIVEN,
+          expressions: NOT_GIVEN,
+          follow_up: NOT_GIVEN,
+          on_call_readiness: NOT_GIVEN,
+          post_mortem: NOT_GIVEN,
+          schedule: NOT_GIVEN,
+          status: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v2/policies",
-            body: {
+            body: given({
               assignment_rules:,
               conditions:,
               debrief:,
@@ -65,7 +65,7 @@ module IncidentIo
               post_mortem:,
               schedule:,
               status:
-            }.compact,
+            }),
             unwrap: "policy",
             model: Models::PolicyV2,
             request_options:
@@ -151,20 +151,20 @@ module IncidentIo
           description:,
           name:,
           policy_type:,
-          assignment_rules: nil,
-          debrief: nil,
-          expressions: nil,
-          follow_up: nil,
-          on_call_readiness: nil,
-          post_mortem: nil,
-          schedule: nil,
-          status: nil,
+          assignment_rules: NOT_GIVEN,
+          debrief: NOT_GIVEN,
+          expressions: NOT_GIVEN,
+          follow_up: NOT_GIVEN,
+          on_call_readiness: NOT_GIVEN,
+          post_mortem: NOT_GIVEN,
+          schedule: NOT_GIVEN,
+          status: NOT_GIVEN,
           request_options: {}
         )
           request(
             :put,
             path("/v2/policies/%s", id),
-            body: {
+            body: given({
               assignment_rules:,
               conditions:,
               debrief:,
@@ -177,7 +177,7 @@ module IncidentIo
               post_mortem:,
               schedule:,
               status:
-            }.compact,
+            }),
             unwrap: "policy",
             model: Models::PolicyV2,
             request_options:

@@ -52,7 +52,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/escalations/%s/actions/check_permissions", escalation_id),
-            body: {user_ids:}.compact,
+            body: given({user_ids:}),
             unwrap: "response_options",
             model: [Models::EscalationUserResponseOptionsV2],
             request_options:
@@ -93,17 +93,17 @@ module IncidentIo
         # @return [Models::EscalationV2]
         def create(
           title:,
-          description: nil,
-          escalation_path_id: nil,
+          description: NOT_GIVEN,
+          escalation_path_id: NOT_GIVEN,
           idempotency_key: SecureRandom.uuid,
-          incident_id: nil,
-          user_ids: nil,
+          incident_id: NOT_GIVEN,
+          user_ids: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v2/escalations",
-            body: {description:, escalation_path_id:, idempotency_key:, incident_id:, title:, user_ids:}.compact,
+            body: given({description:, escalation_path_id:, idempotency_key:, incident_id:, title:, user_ids:}),
             idempotent: true,
             unwrap: "escalation",
             model: Models::EscalationV2,
@@ -135,18 +135,18 @@ module IncidentIo
         def create_path(
           name:,
           path:,
-          kind: nil,
-          param_bindings: nil,
-          repeat_config: nil,
-          team_ids: nil,
-          template_id: nil,
-          working_hours: nil,
+          kind: NOT_GIVEN,
+          param_bindings: NOT_GIVEN,
+          repeat_config: NOT_GIVEN,
+          team_ids: NOT_GIVEN,
+          template_id: NOT_GIVEN,
+          working_hours: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v2/escalation_paths",
-            body: {
+            body: given({
               kind:,
               name:,
               param_bindings:,
@@ -155,7 +155,7 @@ module IncidentIo
               team_ids:,
               template_id:,
               working_hours:
-            }.compact,
+            }),
             unwrap: "escalation_path",
             model: Models::EscalationPathV2,
             request_options:
@@ -356,17 +356,17 @@ module IncidentIo
         # @return [Models::EscalationV2]
         def reassign_escalation(
           escalation_id,
-          description: nil,
-          escalation_path_id: nil,
-          resolve_original: nil,
-          title: nil,
-          user_ids: nil,
+          description: NOT_GIVEN,
+          escalation_path_id: NOT_GIVEN,
+          resolve_original: NOT_GIVEN,
+          title: NOT_GIVEN,
+          user_ids: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             path("/v2/escalations/%s/actions/reassign", escalation_id),
-            body: {description:, escalation_path_id:, resolve_original:, title:, user_ids:}.compact,
+            body: given({description:, escalation_path_id:, resolve_original:, title:, user_ids:}),
             unwrap: "escalation",
             model: Models::EscalationV2,
             request_options:
@@ -390,11 +390,11 @@ module IncidentIo
         # @param snooze_details [Models::EscalationRespondSnoozeDetailsPayloadV2, Hash]
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [nil]
-        def respond_escalation(escalation_id, response:, snooze_details: nil, request_options: {})
+        def respond_escalation(escalation_id, response:, snooze_details: NOT_GIVEN, request_options: {})
           request(
             :post,
             path("/v2/escalations/%s/actions/respond", escalation_id),
-            body: {response:, snooze_details:}.compact,
+            body: given({response:, snooze_details:}),
             request_options:
           )
         end
@@ -458,18 +458,18 @@ module IncidentIo
           id,
           name:,
           path:,
-          kind: nil,
-          param_bindings: nil,
-          repeat_config: nil,
-          team_ids: nil,
-          template_id: nil,
-          working_hours: nil,
+          kind: NOT_GIVEN,
+          param_bindings: NOT_GIVEN,
+          repeat_config: NOT_GIVEN,
+          team_ids: NOT_GIVEN,
+          template_id: NOT_GIVEN,
+          working_hours: NOT_GIVEN,
           request_options: {}
         )
           request(
             :put,
             path("/v2/escalation_paths/%s", id),
-            body: {
+            body: given({
               kind:,
               name:,
               param_bindings:,
@@ -478,7 +478,7 @@ module IncidentIo
               team_ids:,
               template_id:,
               working_hours:
-            }.compact,
+            }),
             unwrap: "escalation_path",
             model: Models::EscalationPathV2,
             request_options:

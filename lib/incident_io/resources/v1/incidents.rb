@@ -37,25 +37,25 @@ module IncidentIo
         # @return [Models::IncidentV1]
         def create(
           visibility:,
-          custom_field_entries: nil,
+          custom_field_entries: NOT_GIVEN,
           idempotency_key: SecureRandom.uuid,
-          incident_role_assignments: nil,
-          incident_type_id: nil,
-          mode: nil,
-          name: nil,
-          severity_id: nil,
-          slack_team_id: nil,
-          source_message_channel_id: nil,
-          source_message_timestamp: nil,
-          status: nil,
-          summary: nil,
+          incident_role_assignments: NOT_GIVEN,
+          incident_type_id: NOT_GIVEN,
+          mode: NOT_GIVEN,
+          name: NOT_GIVEN,
+          severity_id: NOT_GIVEN,
+          slack_team_id: NOT_GIVEN,
+          source_message_channel_id: NOT_GIVEN,
+          source_message_timestamp: NOT_GIVEN,
+          status: NOT_GIVEN,
+          summary: NOT_GIVEN,
           request_options: {}
         )
           deprecated!("client.v1.incidents.create", "client.incidents.create")
           request(
             :post,
             "/v1/incidents",
-            body: {
+            body: given({
               custom_field_entries:,
               idempotency_key:,
               incident_role_assignments:,
@@ -69,7 +69,7 @@ module IncidentIo
               status:,
               summary:,
               visibility:
-            }.compact,
+            }),
             idempotent: true,
             unwrap: "incident",
             model: Models::IncidentV1,

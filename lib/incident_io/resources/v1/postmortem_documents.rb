@@ -31,11 +31,11 @@ module IncidentIo
         # @param document_provider [String] The provider hosting the document. Set this when it can't be inferred from the permalink so the link renders correctly. One of: , confluence, google_docs, notion, sharepoint, incident_io, copy_paste_basecamp, copy_paste_confluence, copy_paste_github_wiki, copy_paste_google_docs, copy_paste_notion, copy_paste_quip.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::PostmortemDocumentV1]
-        def attach(incident_id:, permalink:, document_provider: nil, request_options: {})
+        def attach(incident_id:, permalink:, document_provider: NOT_GIVEN, request_options: {})
           request(
             :post,
             "/v1/postmortem_documents/actions/attach",
-            body: {document_provider:, incident_id:, permalink:}.compact,
+            body: given({document_provider:, incident_id:, permalink:}),
             unwrap: "postmortem_document",
             model: Models::PostmortemDocumentV1,
             request_options:
@@ -131,7 +131,7 @@ module IncidentIo
           request(
             :put,
             path("/v1/postmortem_documents/%s", id),
-            body: {status:}.compact,
+            body: given({status:}),
             unwrap: "postmortem_document",
             model: Models::PostmortemDocumentV1,
             request_options:

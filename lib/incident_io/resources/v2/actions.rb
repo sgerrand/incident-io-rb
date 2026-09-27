@@ -30,12 +30,12 @@ module IncidentIo
         # @param assignee_id [String] ID of the user this action is assigned to.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::ActionV2]
-        def create(description:, incident_id:, assignee_id: nil, request_options: {})
+        def create(description:, incident_id:, assignee_id: NOT_GIVEN, request_options: {})
           deprecated!("client.v2.actions.create", "client.actions.create")
           request(
             :post,
             "/v2/actions",
-            body: {assignee_id:, description:, incident_id:}.compact,
+            body: given({assignee_id:, description:, incident_id:}),
             unwrap: "action",
             model: Models::ActionV2,
             request_options:
@@ -118,12 +118,12 @@ module IncidentIo
         # @param assignee_id [String] ID of the user this action is assigned to. Set to null to unassign.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::ActionV2]
-        def update(id, description:, status:, assignee_id: nil, request_options: {})
+        def update(id, description:, status:, assignee_id: NOT_GIVEN, request_options: {})
           deprecated!("client.v2.actions.update", "client.actions.update")
           request(
             :put,
             path("/v2/actions/%s", id),
-            body: {assignee_id:, description:, status:}.compact,
+            body: given({assignee_id:, description:, status:}),
             unwrap: "action",
             model: Models::ActionV2,
             request_options:

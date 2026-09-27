@@ -19,7 +19,7 @@ module IncidentIo
           request(
             :post,
             "/v2/schedule_sync_targets",
-            body: {schedule_sync_target:}.compact,
+            body: given({schedule_sync_target:}),
             unwrap: "schedule_sync_target",
             model: Models::ScheduleSyncTargetResourceV2,
             request_options:
@@ -85,11 +85,11 @@ module IncidentIo
         # @param annotations [Hash{String => String}] Annotations that track metadata about this resource.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::ScheduleSyncTargetResourceV2]
-        def update(id, add_bot_to_group:, annotations: nil, request_options: {})
+        def update(id, add_bot_to_group:, annotations: NOT_GIVEN, request_options: {})
           request(
             :put,
             path("/v2/schedule_sync_targets/%s", id),
-            body: {add_bot_to_group:, annotations:}.compact,
+            body: given({add_bot_to_group:, annotations:}),
             unwrap: "schedule_sync_target",
             model: Models::ScheduleSyncTargetResourceV2,
             request_options:

@@ -9,7 +9,7 @@ module IncidentIo
         def create: (
           custom_field_id: String,
           value: String,
-          ?sort_key: Integer?,
+          ?sort_key: (Integer | NotGiven)?,
           ?request_options: request_options
         ) -> Models::CustomFieldOptionV1
 

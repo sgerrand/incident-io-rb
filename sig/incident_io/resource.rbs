@@ -21,6 +21,8 @@ module IncidentIo
 
     def deprecated!: (String name, ?String? replacement) -> void
 
+    def given: (Hash[Symbol, untyped] fields) -> Hash[Symbol, untyped]
+
     def path: (String template, *_ToS ids) -> String
   end
 end

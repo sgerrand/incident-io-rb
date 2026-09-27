@@ -37,11 +37,11 @@ module IncidentIo
         # @param update_attributes [Array<String>] Optional list of specific attribute IDs to update across all entries. When provided, only these attributes in attribute_values will be updated and all other attributes will be preserved. This parameter only affects attribute_values - it does not affect core entry fields like name, rank, aliases, or external_id, which follow their individual omission rules.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [nil]
-        def bulk_update_entries(catalog_type_id:, entries:, update_attributes: nil, request_options: {})
+        def bulk_update_entries(catalog_type_id:, entries:, update_attributes: NOT_GIVEN, request_options: {})
           request(
             :post,
             "/v3/catalog_entries/actions/bulk_update",
-            body: {catalog_type_id:, entries:, update_attributes:}.compact,
+            body: given({catalog_type_id:, entries:, update_attributes:}),
             request_options:
           )
         end
@@ -64,15 +64,15 @@ module IncidentIo
           attribute_values:,
           catalog_type_id:,
           name:,
-          aliases: nil,
-          external_id: nil,
-          rank: nil,
+          aliases: NOT_GIVEN,
+          external_id: NOT_GIVEN,
+          rank: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v3/catalog_entries",
-            body: {aliases:, attribute_values:, catalog_type_id:, external_id:, name:, rank:}.compact,
+            body: given({aliases:, attribute_values:, catalog_type_id:, external_id:, name:, rank:}),
             unwrap: "catalog_entry",
             model: Models::CatalogEntryV3,
             request_options:
@@ -99,21 +99,21 @@ module IncidentIo
         def create_type(
           description:,
           name:,
-          annotations: nil,
-          categories: nil,
-          color: nil,
-          icon: nil,
-          owning_team_ids: nil,
-          ranked: nil,
-          source_repo_url: nil,
-          type_name: nil,
-          use_name_as_identifier: nil,
+          annotations: NOT_GIVEN,
+          categories: NOT_GIVEN,
+          color: NOT_GIVEN,
+          icon: NOT_GIVEN,
+          owning_team_ids: NOT_GIVEN,
+          ranked: NOT_GIVEN,
+          source_repo_url: NOT_GIVEN,
+          type_name: NOT_GIVEN,
+          use_name_as_identifier: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v3/catalog_types",
-            body: {
+            body: given({
               annotations:,
               categories:,
               color:,
@@ -125,7 +125,7 @@ module IncidentIo
               source_repo_url:,
               type_name:,
               use_name_as_identifier:
-            }.compact,
+            }),
             unwrap: "catalog_type",
             model: Models::CatalogTypeV3,
             request_options:
@@ -270,16 +270,16 @@ module IncidentIo
           id,
           attribute_values:,
           name:,
-          aliases: nil,
-          external_id: nil,
-          rank: nil,
-          update_attributes: nil,
+          aliases: NOT_GIVEN,
+          external_id: NOT_GIVEN,
+          rank: NOT_GIVEN,
+          update_attributes: NOT_GIVEN,
           request_options: {}
         )
           request(
             :put,
             path("/v3/catalog_entries/%s", id),
-            body: {aliases:, attribute_values:, external_id:, name:, rank:, update_attributes:}.compact,
+            body: given({aliases:, attribute_values:, external_id:, name:, rank:, update_attributes:}),
             model: Models::CatalogUpdateEntryResultV3,
             request_options:
           )
@@ -306,20 +306,20 @@ module IncidentIo
           id,
           description:,
           name:,
-          annotations: nil,
-          categories: nil,
-          color: nil,
-          icon: nil,
-          owning_team_ids: nil,
-          ranked: nil,
-          source_repo_url: nil,
-          use_name_as_identifier: nil,
+          annotations: NOT_GIVEN,
+          categories: NOT_GIVEN,
+          color: NOT_GIVEN,
+          icon: NOT_GIVEN,
+          owning_team_ids: NOT_GIVEN,
+          ranked: NOT_GIVEN,
+          source_repo_url: NOT_GIVEN,
+          use_name_as_identifier: NOT_GIVEN,
           request_options: {}
         )
           request(
             :put,
             path("/v3/catalog_types/%s", id),
-            body: {
+            body: given({
               annotations:,
               categories:,
               color:,
@@ -330,7 +330,7 @@ module IncidentIo
               ranked:,
               source_repo_url:,
               use_name_as_identifier:
-            }.compact,
+            }),
             unwrap: "catalog_type",
             model: Models::CatalogTypeV3,
             request_options:
@@ -357,7 +357,7 @@ module IncidentIo
           request(
             :post,
             path("/v3/catalog_types/%s/actions/update_schema", id),
-            body: {attributes:, version:}.compact,
+            body: given({attributes:, version:}),
             unwrap: "catalog_type",
             model: Models::CatalogTypeV3,
             request_options:

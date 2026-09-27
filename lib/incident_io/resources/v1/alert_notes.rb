@@ -36,11 +36,11 @@ module IncidentIo
         # @param alert_id [String] ID of the alert to add the note to. Provide exactly one of alert_id or alert_group_id.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::AlertNoteV1]
-        def create(content:, alert_group_id: nil, alert_id: nil, request_options: {})
+        def create(content:, alert_group_id: NOT_GIVEN, alert_id: NOT_GIVEN, request_options: {})
           request(
             :post,
             "/v1/alert_notes",
-            body: {alert_group_id:, alert_id:, content:}.compact,
+            body: given({alert_group_id:, alert_id:, content:}),
             unwrap: "alert_note",
             model: Models::AlertNoteV1,
             request_options:
@@ -111,7 +111,7 @@ module IncidentIo
           request(
             :put,
             path("/v1/alert_notes/%s", id),
-            body: {content:}.compact,
+            body: given({content:}),
             unwrap: "alert_note",
             model: Models::AlertNoteV1,
             request_options:

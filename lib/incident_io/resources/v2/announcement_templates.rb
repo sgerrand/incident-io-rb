@@ -21,11 +21,17 @@ module IncidentIo
         # @param owning_team_ids [Array<String>] IDs of the teams that own this template.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::AnnouncementTemplateV2]
-        def create(name:, actions: nil, fields: nil, owning_team_ids: nil, request_options: {})
+        def create(
+          name:,
+          actions: NOT_GIVEN,
+          fields: NOT_GIVEN,
+          owning_team_ids: NOT_GIVEN,
+          request_options: {}
+        )
           request(
             :post,
             "/v2/announcement_templates",
-            body: {actions:, fields:, name:, owning_team_ids:}.compact,
+            body: given({actions:, fields:, name:, owning_team_ids:}),
             unwrap: "announcement_template",
             model: Models::AnnouncementTemplateV2,
             request_options:
@@ -91,11 +97,11 @@ module IncidentIo
         # @param owning_team_ids [Array<String>] IDs of the teams that own this template. The existing owning teams are kept when omitted.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::AnnouncementTemplateV2]
-        def update(id, actions:, fields:, name:, owning_team_ids: nil, request_options: {})
+        def update(id, actions:, fields:, name:, owning_team_ids: NOT_GIVEN, request_options: {})
           request(
             :put,
             path("/v2/announcement_templates/%s", id),
-            body: {actions:, fields:, name:, owning_team_ids:}.compact,
+            body: given({actions:, fields:, name:, owning_team_ids:}),
             unwrap: "announcement_template",
             model: Models::AnnouncementTemplateV2,
             request_options:

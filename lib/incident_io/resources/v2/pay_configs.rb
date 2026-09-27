@@ -30,14 +30,14 @@ module IncidentIo
           name:,
           rate_time_unit:,
           timezone:,
-          one_off_rules: nil,
-          weekly_rules: nil,
+          one_off_rules: NOT_GIVEN,
+          weekly_rules: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v2/pay_configs",
-            body: {
+            body: given({
               base_rate_cents:,
               currency:,
               name:,
@@ -45,7 +45,7 @@ module IncidentIo
               rate_time_unit:,
               timezone:,
               weekly_rules:
-            }.compact,
+            }),
             unwrap: "pay_config",
             model: Models::PayConfigV2,
             request_options:
@@ -67,7 +67,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/pay_configs/%s/one_off_rules", pay_config_id),
-            body: {end_at:, name:, rate_cents:, start_at:}.compact,
+            body: given({end_at:, name:, rate_cents:, start_at:}),
             unwrap: "one_off_rule",
             model: Models::PayConfigOneOffRuleV2,
             request_options:
@@ -99,7 +99,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/pay_configs/%s/weekly_rules", pay_config_id),
-            body: {end_time:, rate_cents:, start_time:, weekdays:}.compact,
+            body: given({end_time:, rate_cents:, start_time:, weekdays:}),
             unwrap: "weekly_rule",
             model: Models::PayConfigWeeklyRuleV2,
             request_options:
@@ -293,7 +293,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/pay_configs/%s", id),
-            body: {base_rate_cents:, currency:, name:, rate_time_unit:, timezone:}.compact,
+            body: given({base_rate_cents:, currency:, name:, rate_time_unit:, timezone:}),
             unwrap: "pay_config",
             model: Models::PayConfigV2,
             request_options:
@@ -324,7 +324,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/pay_configs/%s/one_off_rules/%s", pay_config_id, id),
-            body: {end_at:, name:, rate_cents:, start_at:}.compact,
+            body: given({end_at:, name:, rate_cents:, start_at:}),
             unwrap: "one_off_rule",
             model: Models::PayConfigOneOffRuleV2,
             request_options:
@@ -355,7 +355,7 @@ module IncidentIo
           request(
             :put,
             path("/v2/pay_configs/%s/weekly_rules/%s", pay_config_id, id),
-            body: {end_time:, rate_cents:, start_time:, weekdays:}.compact,
+            body: given({end_time:, rate_cents:, start_time:, weekdays:}),
             unwrap: "weekly_rule",
             model: Models::PayConfigWeeklyRuleV2,
             request_options:

@@ -36,7 +36,7 @@ module IncidentIo
           instructions: String,
           name: String,
           shortform: String,
-          ?required: bool?,
+          ?required: (bool | NotGiven)?,
           ?request_options: request_options
         ) -> Models::IncidentRoleV1
       end

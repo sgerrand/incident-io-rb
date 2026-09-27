@@ -18,11 +18,11 @@ module IncidentIo
         # Create an escalation.
         def create: (
           title: String,
-          ?description: String?,
-          ?escalation_path_id: String?,
+          ?description: (String | NotGiven)?,
+          ?escalation_path_id: (String | NotGiven)?,
           ?idempotency_key: String,
-          ?incident_id: String?,
-          ?user_ids: Array[String]?,
+          ?incident_id: (String | NotGiven)?,
+          ?user_ids: (Array[String] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::EscalationV2
 
@@ -30,12 +30,12 @@ module IncidentIo
         def create_path: (
           name: String,
           path: Array[Models::EscalationPathNodePayloadV2 | Hash[untyped, untyped]],
-          ?kind: String?,
-          ?param_bindings: Hash[untyped, untyped]?,
-          ?repeat_config: (Models::EscalationPathRepeatConfigV2 | Hash[untyped, untyped])?,
-          ?team_ids: Array[String]?,
-          ?template_id: String?,
-          ?working_hours: Array[Models::WeekdayIntervalConfigV2 | Hash[untyped, untyped]]?,
+          ?kind: (String | NotGiven)?,
+          ?param_bindings: (Hash[untyped, untyped] | NotGiven)?,
+          ?repeat_config: (Models::EscalationPathRepeatConfigV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?team_ids: (Array[String] | NotGiven)?,
+          ?template_id: (String | NotGiven)?,
+          ?working_hours: (Array[Models::WeekdayIntervalConfigV2 | Hash[untyped, untyped]] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::EscalationPathV2
 
@@ -66,11 +66,11 @@ module IncidentIo
         # Reassign an escalation to a different escalation path or set of users.
         def reassign_escalation: (
           String escalation_id,
-          ?description: String?,
-          ?escalation_path_id: String?,
-          ?resolve_original: bool?,
-          ?title: String?,
-          ?user_ids: Array[String]?,
+          ?description: (String | NotGiven)?,
+          ?escalation_path_id: (String | NotGiven)?,
+          ?resolve_original: (bool | NotGiven)?,
+          ?title: (String | NotGiven)?,
+          ?user_ids: (Array[String] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::EscalationV2
 
@@ -78,7 +78,7 @@ module IncidentIo
         def respond_escalation: (
           String escalation_id,
           response: String,
-          ?snooze_details: (Models::EscalationRespondSnoozeDetailsPayloadV2 | Hash[untyped, untyped])?,
+          ?snooze_details: (Models::EscalationRespondSnoozeDetailsPayloadV2 | Hash[untyped, untyped] | NotGiven)?,
           ?request_options: request_options
         ) -> nil
 
@@ -93,12 +93,12 @@ module IncidentIo
           String id,
           name: String,
           path: Array[Models::EscalationPathNodePayloadV2 | Hash[untyped, untyped]],
-          ?kind: String?,
-          ?param_bindings: Hash[untyped, untyped]?,
-          ?repeat_config: (Models::EscalationPathRepeatConfigV2 | Hash[untyped, untyped])?,
-          ?team_ids: Array[String]?,
-          ?template_id: String?,
-          ?working_hours: Array[Models::WeekdayIntervalConfigV2 | Hash[untyped, untyped]]?,
+          ?kind: (String | NotGiven)?,
+          ?param_bindings: (Hash[untyped, untyped] | NotGiven)?,
+          ?repeat_config: (Models::EscalationPathRepeatConfigV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?team_ids: (Array[String] | NotGiven)?,
+          ?template_id: (String | NotGiven)?,
+          ?working_hours: (Array[Models::WeekdayIntervalConfigV2 | Hash[untyped, untyped]] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::EscalationPathV2
       end

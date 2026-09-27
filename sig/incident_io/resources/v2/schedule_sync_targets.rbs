@@ -28,7 +28,7 @@ module IncidentIo
         def update: (
           String id,
           add_bot_to_group: bool,
-          ?annotations: Hash[untyped, untyped]?,
+          ?annotations: (Hash[untyped, untyped] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::ScheduleSyncTargetResourceV2
       end

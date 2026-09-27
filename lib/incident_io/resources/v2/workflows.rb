@@ -45,22 +45,22 @@ module IncidentIo
           runs_on_incidents:,
           steps:,
           trigger:,
-          annotations: nil,
-          delay: nil,
-          folder: nil,
-          form_fields: nil,
-          include_private_escalations: nil,
-          include_private_incidents: nil,
-          owning_team_ids: nil,
-          private_incident_scope: nil,
-          shortform: nil,
-          state: nil,
+          annotations: NOT_GIVEN,
+          delay: NOT_GIVEN,
+          folder: NOT_GIVEN,
+          form_fields: NOT_GIVEN,
+          include_private_escalations: NOT_GIVEN,
+          include_private_incidents: NOT_GIVEN,
+          owning_team_ids: NOT_GIVEN,
+          private_incident_scope: NOT_GIVEN,
+          shortform: NOT_GIVEN,
+          state: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v2/workflows",
-            body: {
+            body: given({
               annotations:,
               condition_groups:,
               continue_on_step_error:,
@@ -80,7 +80,7 @@ module IncidentIo
               state:,
               steps:,
               trigger:
-            }.compact,
+            }),
             model: Models::WorkflowsCreateWorkflowResultV2,
             request_options:
           )
@@ -171,23 +171,23 @@ module IncidentIo
           runs_on_incident_modes:,
           runs_on_incidents:,
           steps:,
-          annotations: nil,
-          delay: nil,
-          folder: nil,
-          form_fields: nil,
-          include_private_escalations: nil,
-          include_private_incidents: nil,
-          owning_team_ids: nil,
-          private_incident_scope: nil,
-          shortform: nil,
-          skip_step_upgrades: nil,
-          state: nil,
+          annotations: NOT_GIVEN,
+          delay: NOT_GIVEN,
+          folder: NOT_GIVEN,
+          form_fields: NOT_GIVEN,
+          include_private_escalations: NOT_GIVEN,
+          include_private_incidents: NOT_GIVEN,
+          owning_team_ids: NOT_GIVEN,
+          private_incident_scope: NOT_GIVEN,
+          shortform: NOT_GIVEN,
+          skip_step_upgrades: NOT_GIVEN,
+          state: NOT_GIVEN,
           request_options: {}
         )
           request(
             :put,
             path("/v2/workflows/%s", id),
-            body: {
+            body: given({
               annotations:,
               condition_groups:,
               continue_on_step_error:,
@@ -207,7 +207,7 @@ module IncidentIo
               skip_step_upgrades:,
               state:,
               steps:
-            }.compact,
+            }),
             model: Models::WorkflowsUpdateWorkflowResultV2,
             request_options:
           )

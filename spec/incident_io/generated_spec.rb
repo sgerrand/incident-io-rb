@@ -54,6 +54,16 @@ RSpec.describe "generated resources" do
     expect(bodies.first).not_to have_key("summary")
   end
 
+  it "sends nil as null and leaves out arguments that weren't passed" do
+    stub = stub_request(:post, "#{BASE_URL}/v2/incidents")
+      .with { |req| JSON.parse(req.body).then { |b| b.key?("summary") && b["summary"].nil? && !b.key?("name") } }
+      .to_return(json_response({"incident" => {"id" => "1"}}, status: 201))
+
+    client.incidents.create(visibility: "public", summary: nil)
+
+    expect(stub).to have_been_requested
+  end
+
   it "accepts models and hashes as arguments" do
     stub = stub_request(:post, "#{BASE_URL}/v2/incidents/1/actions/edit").with(
       body: {"incident" => {"name" => "New name"}, "notify_incident_channel" => false}

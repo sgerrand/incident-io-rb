@@ -21,11 +21,11 @@ module IncidentIo
         # @param required [Boolean] Whether this attribute is required. If this field is not set, the existing setting will be preserved.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::AlertAttributeV2]
-        def create(array:, name:, type:, emoji: nil, required: nil, request_options: {})
+        def create(array:, name:, type:, emoji: NOT_GIVEN, required: NOT_GIVEN, request_options: {})
           request(
             :post,
             "/v2/alert_attributes",
-            body: {array:, emoji:, name:, required:, type:}.compact,
+            body: given({array:, emoji:, name:, required:, type:}),
             unwrap: "alert_attribute",
             model: Models::AlertAttributeV2,
             request_options:
@@ -92,11 +92,11 @@ module IncidentIo
         # @param required [Boolean] Whether this attribute is required. If this field is not set, the existing setting will be preserved.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::AlertAttributeV2]
-        def update(id, array:, name:, type:, emoji: nil, required: nil, request_options: {})
+        def update(id, array:, name:, type:, emoji: NOT_GIVEN, required: NOT_GIVEN, request_options: {})
           request(
             :put,
             path("/v2/alert_attributes/%s", id),
-            body: {array:, emoji:, name:, required:, type:}.compact,
+            body: given({array:, emoji:, name:, required:, type:}),
             unwrap: "alert_attribute",
             model: Models::AlertAttributeV2,
             request_options:

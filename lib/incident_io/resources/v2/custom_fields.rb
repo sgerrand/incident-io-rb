@@ -40,17 +40,17 @@ module IncidentIo
           description:,
           field_type:,
           name:,
-          catalog_type_id: nil,
-          filter_by: nil,
-          fixed_filter: nil,
-          group_by_catalog_attribute_id: nil,
-          helptext_catalog_attribute_id: nil,
+          catalog_type_id: NOT_GIVEN,
+          filter_by: NOT_GIVEN,
+          fixed_filter: NOT_GIVEN,
+          group_by_catalog_attribute_id: NOT_GIVEN,
+          helptext_catalog_attribute_id: NOT_GIVEN,
           request_options: {}
         )
           request(
             :post,
             "/v2/custom_fields",
-            body: {
+            body: given({
               catalog_type_id:,
               description:,
               field_type:,
@@ -59,7 +59,7 @@ module IncidentIo
               group_by_catalog_attribute_id:,
               helptext_catalog_attribute_id:,
               name:
-            }.compact,
+            }),
             unwrap: "custom_field",
             model: Models::CustomFieldV2,
             request_options:
@@ -131,23 +131,23 @@ module IncidentIo
           id,
           description:,
           name:,
-          filter_by: nil,
-          fixed_filter: nil,
-          group_by_catalog_attribute_id: nil,
-          helptext_catalog_attribute_id: nil,
+          filter_by: NOT_GIVEN,
+          fixed_filter: NOT_GIVEN,
+          group_by_catalog_attribute_id: NOT_GIVEN,
+          helptext_catalog_attribute_id: NOT_GIVEN,
           request_options: {}
         )
           request(
             :put,
             path("/v2/custom_fields/%s", id),
-            body: {
+            body: given({
               description:,
               filter_by:,
               fixed_filter:,
               group_by_catalog_attribute_id:,
               helptext_catalog_attribute_id:,
               name:
-            }.compact,
+            }),
             unwrap: "custom_field",
             model: Models::CustomFieldV2,
             request_options:

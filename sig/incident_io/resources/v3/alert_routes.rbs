@@ -17,7 +17,7 @@ module IncidentIo
           is_private: bool,
           message_config: Models::AlertMessageConfigPayloadV3 | Hash[untyped, untyped],
           name: String,
-          ?owning_team_ids: Array[String]?,
+          ?owning_team_ids: (Array[String] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::AlertRouteV3
 
@@ -48,7 +48,7 @@ module IncidentIo
           message_config: Models::AlertMessageConfigPayloadV3 | Hash[untyped, untyped],
           name: String,
           version: Integer,
-          ?owning_team_ids: Array[String]?,
+          ?owning_team_ids: (Array[String] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::AlertRouteV3
       end

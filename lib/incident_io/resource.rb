@@ -57,6 +57,11 @@ module IncidentIo
       warn(message, category: :deprecated, uplevel: 2)
     end
 
+    # Drops arguments that weren't passed, keeping nil so it's sent as null.
+    def given(fields)
+      fields.reject { |_, value| NOT_GIVEN.equal?(value) }
+    end
+
     # Fills `%s` placeholders in a path template with escaped IDs.
     def path(template, *ids)
       format(template, *ids.map { |id| Util.escape_path(id) })

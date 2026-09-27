@@ -17,11 +17,11 @@ module IncidentIo
         # @param expressions [Array<Models::ExpressionPayloadV3, Hash>] The expressions used by bindings in this template.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::IncidentTemplateV1]
-        def create(name:, template:, expressions: nil, request_options: {})
+        def create(name:, template:, expressions: NOT_GIVEN, request_options: {})
           request(
             :post,
             "/v1/incident_templates",
-            body: {expressions:, name:, template:}.compact,
+            body: given({expressions:, name:, template:}),
             unwrap: "incident_template",
             model: Models::IncidentTemplateV1,
             request_options:
@@ -88,11 +88,11 @@ module IncidentIo
         # @param expressions [Array<Models::ExpressionPayloadV3, Hash>] The expressions used by bindings in this template.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::IncidentTemplateV1]
-        def update(id, name:, template:, expressions: nil, request_options: {})
+        def update(id, name:, template:, expressions: NOT_GIVEN, request_options: {})
           request(
             :put,
             path("/v1/incident_templates/%s", id),
-            body: {expressions:, name:, template:}.compact,
+            body: given({expressions:, name:, template:}),
             unwrap: "incident_template",
             model: Models::IncidentTemplateV1,
             request_options:
@@ -113,11 +113,11 @@ module IncidentIo
         # @param expressions [Array<Models::ExpressionPayloadV3, Hash>] The expressions used by bindings in this template.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Array<Models::IncidentTemplateValidateWarningV1>]
-        def validate(name:, template:, expressions: nil, request_options: {})
+        def validate(name:, template:, expressions: NOT_GIVEN, request_options: {})
           request(
             :post,
             "/v1/incident_templates/actions/validate",
-            body: {expressions:, name:, template:}.compact,
+            body: given({expressions:, name:, template:}),
             unwrap: "warnings",
             model: [Models::IncidentTemplateValidateWarningV1],
             request_options:

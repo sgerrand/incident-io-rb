@@ -10,11 +10,11 @@ module IncidentIo
           description: String,
           field_type: String,
           name: String,
-          ?catalog_type_id: String?,
-          ?filter_by: (Models::CustomFieldFilterByOptionsV2 | Hash[untyped, untyped])?,
-          ?fixed_filter: (Models::CustomFieldFixedFilterOptionsV2 | Hash[untyped, untyped])?,
-          ?group_by_catalog_attribute_id: String?,
-          ?helptext_catalog_attribute_id: String?,
+          ?catalog_type_id: (String | NotGiven)?,
+          ?filter_by: (Models::CustomFieldFilterByOptionsV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?fixed_filter: (Models::CustomFieldFixedFilterOptionsV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?group_by_catalog_attribute_id: (String | NotGiven)?,
+          ?helptext_catalog_attribute_id: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::CustomFieldV2
 
@@ -32,10 +32,10 @@ module IncidentIo
           String id,
           description: String,
           name: String,
-          ?filter_by: (Models::CustomFieldFilterByOptionsV2 | Hash[untyped, untyped])?,
-          ?fixed_filter: (Models::CustomFieldFixedFilterOptionsV2 | Hash[untyped, untyped])?,
-          ?group_by_catalog_attribute_id: String?,
-          ?helptext_catalog_attribute_id: String?,
+          ?filter_by: (Models::CustomFieldFilterByOptionsV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?fixed_filter: (Models::CustomFieldFixedFilterOptionsV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?group_by_catalog_attribute_id: (String | NotGiven)?,
+          ?helptext_catalog_attribute_id: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::CustomFieldV2
       end

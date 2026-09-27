@@ -9,7 +9,7 @@ module IncidentIo
         def create: (
           description: String,
           name: String,
-          ?rank: Integer?,
+          ?rank: (Integer | NotGiven)?,
           ?request_options: request_options
         ) -> Models::SeverityV1
 
@@ -27,7 +27,7 @@ module IncidentIo
           String id,
           description: String,
           name: String,
-          ?rank: Integer?,
+          ?rank: (Integer | NotGiven)?,
           ?request_options: request_options
         ) -> Models::SeverityV1
       end

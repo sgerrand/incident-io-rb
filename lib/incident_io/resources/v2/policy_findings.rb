@@ -31,7 +31,7 @@ module IncidentIo
           request(
             :post,
             path("/v2/policy_findings/%s/actions/dismiss", id),
-            body: {reason:}.compact,
+            body: given({reason:}),
             unwrap: "policy_finding",
             model: Models::PolicyFindingV2,
             request_options:

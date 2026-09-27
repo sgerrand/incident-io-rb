@@ -11,11 +11,11 @@ module IncidentIo
           name: String,
           schedule_ids: Array[String],
           start_date: String,
-          ?overlapping_shifts: String?,
-          ?pay_config_expression: (Models::ExpressionPayloadV2 | Hash[untyped, untyped])?,
-          ?pay_config_id: String?,
-          ?rotation_filters: Array[Models::PayReportRotationFilterV2 | Hash[untyped, untyped]]?,
-          ?unpaid_shifts: String?,
+          ?overlapping_shifts: (String | NotGiven)?,
+          ?pay_config_expression: (Models::ExpressionPayloadV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?pay_config_id: (String | NotGiven)?,
+          ?rotation_filters: (Array[Models::PayReportRotationFilterV2 | Hash[untyped, untyped]] | NotGiven)?,
+          ?unpaid_shifts: (String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::PayReportV2
 

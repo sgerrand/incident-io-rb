@@ -6,6 +6,8 @@
 client = IncidentIo::Client.new(api_key: "key", timeout: 30, max_retries: 3)
 
 incident = client.incidents.create(name: "Database is down", visibility: "public")
+client.incidents.create(visibility: "public", summary: nil) # sends "summary": null
+client.incidents.create(visibility: "public", summary: IncidentIo::NOT_GIVEN) # leaves it out
 incident.id&.upcase
 incident.created_at&.iso8601
 incident.severity&.name

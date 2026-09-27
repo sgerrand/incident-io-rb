@@ -17,10 +17,10 @@ module IncidentIo
           incident_template: Models::AlertRouteIncidentTemplatePayloadV2 | Hash[untyped, untyped],
           is_private: bool,
           name: String,
-          ?created_at: (Time | String)?,
-          ?message_template: (Models::EngineParamBindingPayloadV2 | Hash[untyped, untyped])?,
-          ?owning_team_ids: Array[String]?,
-          ?updated_at: (Time | String)?,
+          ?created_at: (Time | String | NotGiven)?,
+          ?message_template: (Models::EngineParamBindingPayloadV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?owning_team_ids: (Array[String] | NotGiven)?,
+          ?updated_at: (Time | String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::AlertRouteV2
 
@@ -51,10 +51,10 @@ module IncidentIo
           is_private: bool,
           name: String,
           version: Integer,
-          ?created_at: (Time | String)?,
-          ?message_template: (Models::EngineParamBindingPayloadV2 | Hash[untyped, untyped])?,
-          ?owning_team_ids: Array[String]?,
-          ?updated_at: (Time | String)?,
+          ?created_at: (Time | String | NotGiven)?,
+          ?message_template: (Models::EngineParamBindingPayloadV2 | Hash[untyped, untyped] | NotGiven)?,
+          ?owning_team_ids: (Array[String] | NotGiven)?,
+          ?updated_at: (Time | String | NotGiven)?,
           ?request_options: request_options
         ) -> Models::AlertRouteV2
       end

@@ -17,13 +17,13 @@ module IncidentIo
         def create: (
           incident_id: String,
           title: String,
-          ?assignee_id: String?,
-          ?assignee_team_id: String?,
-          ?description: String?,
-          ?external_issue_reference_id: String?,
-          ?follow_up_category_id: String?,
-          ?follow_up_priority_option_id: String?,
-          ?labels: Array[String]?,
+          ?assignee_id: (String | NotGiven)?,
+          ?assignee_team_id: (String | NotGiven)?,
+          ?description: (String | NotGiven)?,
+          ?external_issue_reference_id: (String | NotGiven)?,
+          ?follow_up_category_id: (String | NotGiven)?,
+          ?follow_up_priority_option_id: (String | NotGiven)?,
+          ?labels: (Array[String] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::FollowUpV3
 
@@ -57,12 +57,12 @@ module IncidentIo
           String id,
           status: String,
           title: String,
-          ?assignee_id: String?,
-          ?assignee_team_id: String?,
-          ?description: String?,
-          ?follow_up_category_id: String?,
-          ?follow_up_priority_option_id: String?,
-          ?labels: Array[String]?,
+          ?assignee_id: (String | NotGiven)?,
+          ?assignee_team_id: (String | NotGiven)?,
+          ?description: (String | NotGiven)?,
+          ?follow_up_category_id: (String | NotGiven)?,
+          ?follow_up_priority_option_id: (String | NotGiven)?,
+          ?labels: (Array[String] | NotGiven)?,
           ?request_options: request_options
         ) -> Models::FollowUpV3
       end
