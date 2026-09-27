@@ -13,6 +13,20 @@ rescue LoadError
   nil
 end
 
+namespace :spec do
+  desc "Run the specs, checking every call into the gem against sig/ with rbs test"
+  task :rbs do
+    env = {
+      "RBS_TEST_TARGET" => "IncidentIo::*",
+      "RBS_TEST_OPT" => "-I sig -r date -r json -r logger -r net-http -r openssl -r securerandom -r time -r uri",
+      "RBS_TEST_DOUBLE_SUITE" => "rspec",
+      "RBS_TEST_LOGLEVEL" => "error",
+      "RUBYOPT" => "#{ENV["RUBYOPT"]} -rbundler/setup -rrbs/test/setup".strip
+    }
+    sh env, "rspec"
+  end
+end
+
 desc "Check the YARD docs in lib/ with Yardstick (see .yardstick.yml)"
 task :yardstick do
   require "yaml"

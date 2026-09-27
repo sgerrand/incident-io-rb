@@ -24,8 +24,9 @@ jobs:
         ruby: ["3.3", "3.4", "4.0", head]
     env:
       BUNDLE_WITHOUT: docs:lint:typecheck
-      # Coverage is measured and uploaded on one Ruby version only.
+      # Coverage and signature checks run on one Ruby version only.
       COVERAGE: ${{ matrix.ruby == '4.0' && '1' || '' }}
+      RAKE_TASK: ${{ matrix.ruby == '4.0' && 'spec:rbs' || 'default' }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -34,7 +35,9 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-      - run: bundle exec rake
+      # spec:rbs runs the specs with rbs test, checking every call into the
+      # gem against the signatures in sig/.
+      - run: bundle exec rake "$RAKE_TASK"
       - name: Upload coverage to Coveralls
         if: matrix.ruby == '4.0'
         uses: coverallsapp/github-action@8d6379e14d29928660c4ba802d8e85393440b329 # v2.3.8

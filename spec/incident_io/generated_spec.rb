@@ -114,7 +114,12 @@ RSpec.describe "generated resources" do
   end
 
   it "requires required arguments" do
-    expect { client.incidents.create(name: "x") }.to raise_error(ArgumentError, /missing keyword: :visibility/)
+    # Under `rake spec:rbs` the signature check rejects the call before Ruby does.
+    if ENV["RBS_TEST_TARGET"]
+      expect { client.incidents.create(name: "x") }.to raise_error(RBS::Test::Tester::TypeError, /visibility:/)
+    else
+      expect { client.incidents.create(name: "x") }.to raise_error(ArgumentError, /missing keyword: :visibility/)
+    end
   end
 
   describe "deprecated endpoints" do
