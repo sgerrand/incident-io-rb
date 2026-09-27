@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] operation
-    #   @return [ConditionOperationV2, nil]
-    # @!attribute [r] param_bindings
-    #   @return [Array<EngineParamBindingV2>, nil] Bindings for the operation parameters
-    # @!attribute [r] subject
-    #   @return [ConditionSubjectV2, nil]
     ConditionV2 = Model.define(
       operation: -> { ConditionOperationV2 },
       param_bindings: [-> { EngineParamBindingV2 }],
       subject: -> { ConditionSubjectV2 }
     )
+
+    class ConditionV2
+      # @!attribute [r] operation
+      #   The operation field
+      #   @return [ConditionOperationV2, nil]
+      # @!attribute [r] param_bindings
+      #   Bindings for the operation parameters
+      #   @return [Array<EngineParamBindingV2>, nil]
+      # @!attribute [r] subject
+      #   The subject field
+      #   @return [ConditionSubjectV2, nil]
+    end
   end
 end

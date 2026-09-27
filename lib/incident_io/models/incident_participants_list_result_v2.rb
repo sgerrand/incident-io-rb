@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_participants
-    #   @return [IncidentParticipantsV2, nil]
     IncidentParticipantsListResultV2 = Model.define(
       incident_participants: -> { IncidentParticipantsV2 }
     )
+
+    class IncidentParticipantsListResultV2
+      # @!attribute [r] incident_participants
+      #   The incident_participants field
+      #   @return [IncidentParticipantsV2, nil]
+    end
   end
 end

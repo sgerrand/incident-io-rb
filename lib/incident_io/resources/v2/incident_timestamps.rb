@@ -15,7 +15,7 @@ module IncidentIo
       # Timestamps help to communicate when a given action was taken for a specific
       # incident, for example when it was reported, closed or fixed.
       class IncidentTimestamps < Resource
-        # List all incident timestamps for an organisation.
+        # List all incident timestamps for an organisation
         #
         # Endpoint: `GET /v2/incident_timestamps`.
         #
@@ -31,7 +31,7 @@ module IncidentIo
           )
         end
 
-        # Get a single incident timestamp.
+        # Get a single incident timestamp
         #
         # Endpoint: `GET /v2/incident_timestamps/{id}`.
         #

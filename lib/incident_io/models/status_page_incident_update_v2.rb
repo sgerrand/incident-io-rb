@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] component_statuses
-    #   @return [Array<StatusPageIncidentAffectedComponentV2>, nil] The updated statuses of affected components
-    # @!attribute [r] id
-    #   @return [String, nil] A unique ID for this status page incident update
-    # @!attribute [r] incident_status
-    #   @return [String, nil] Current status for this incident One of: investigating, identified, monitoring, resolved.
-    # @!attribute [r] message
-    #   @return [String, nil] Markdown update on what's changed about this status page incident
-    # @!attribute [r] published_at
-    #   @return [Time, nil] When this status page incident update was published to the status page
-    # @!attribute [r] status_page_incident_id
-    #   @return [String, nil] The ID of the corresponding status page incident
     StatusPageIncidentUpdateV2 = Model.define(
       component_statuses: [-> { StatusPageIncidentAffectedComponentV2 }],
       id: :string,
@@ -25,5 +13,26 @@ module IncidentIo
       published_at: :time,
       status_page_incident_id: :string
     )
+
+    class StatusPageIncidentUpdateV2
+      # @!attribute [r] component_statuses
+      #   The updated statuses of affected components
+      #   @return [Array<StatusPageIncidentAffectedComponentV2>, nil]
+      # @!attribute [r] id
+      #   A unique ID for this status page incident update
+      #   @return [String, nil]
+      # @!attribute [r] incident_status
+      #   Current status for this incident One of: investigating, identified,…
+      #   @return [String, nil]
+      # @!attribute [r] message
+      #   Markdown update on what's changed about this status page incident
+      #   @return [String, nil]
+      # @!attribute [r] published_at
+      #   When this status page incident update was published to the status page
+      #   @return [Time, nil]
+      # @!attribute [r] status_page_incident_id
+      #   The ID of the corresponding status page incident
+      #   @return [String, nil]
+    end
   end
 end

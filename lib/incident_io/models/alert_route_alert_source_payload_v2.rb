@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert_source_id
-    #   @return [String, nil] The alert source ID that will match for the route
-    # @!attribute [r] condition_groups
-    #   @return [Array<ConditionGroupPayloadV2>, nil] What conditions should alerts from this source meet to be included in this alert route?
     AlertRouteAlertSourcePayloadV2 = Model.define(
       alert_source_id: :string,
       condition_groups: [-> { ConditionGroupPayloadV2 }]
     )
+
+    class AlertRouteAlertSourcePayloadV2
+      # @!attribute [r] alert_source_id
+      #   The alert source ID that will match for the route
+      #   @return [String, nil]
+      # @!attribute [r] condition_groups
+      #   What conditions should alerts from this source meet to be included in this…
+      #   @return [Array<ConditionGroupPayloadV2>, nil]
+    end
   end
 end

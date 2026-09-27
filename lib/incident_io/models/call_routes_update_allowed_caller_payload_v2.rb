@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] name
-    #   @return [String, nil] Label for whose number this is
-    # @!attribute [r] phone_number
-    #   @return [String, nil] The number to allow, in international format
     CallRoutesUpdateAllowedCallerPayloadV2 = Model.define(
       name: :string,
       phone_number: :string
     )
+
+    class CallRoutesUpdateAllowedCallerPayloadV2
+      # @!attribute [r] name
+      #   Label for whose number this is
+      #   @return [String, nil]
+      # @!attribute [r] phone_number
+      #   The number to allow, in international format
+      #   @return [String, nil]
+    end
   end
 end

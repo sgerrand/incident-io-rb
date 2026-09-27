@@ -6,5 +6,8 @@
 module IncidentIo
   module Models
     OnCallNotificationRuleMethodTargetAllPublicV2 = Model.define
+
+    class OnCallNotificationRuleMethodTargetAllPublicV2
+    end
   end
 end

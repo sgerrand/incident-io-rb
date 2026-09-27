@@ -5,36 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] assignment_rules
-    #   @return [PolicyAssignmentRulesV2, nil]
-    # @!attribute [r] conditions
-    #   @return [Array<ConditionGroupV2>, nil] Conditions which determine which resources are in scope for this policy
-    # @!attribute [r] created_at
-    #   @return [Time, nil]
-    # @!attribute [r] debrief
-    #   @return [PolicyDebriefV2, nil]
-    # @!attribute [r] description
-    #   @return [String, nil] Human readable description of the policy
-    # @!attribute [r] expressions
-    #   @return [Array<ExpressionV2>, nil] The expressions relating to this policy
-    # @!attribute [r] follow_up
-    #   @return [PolicyFollowUpV2, nil]
-    # @!attribute [r] id
-    #   @return [String, nil] Unique ID of the policy
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name of the policy
-    # @!attribute [r] on_call_readiness
-    #   @return [PolicyOnCallReadinessV2, nil]
-    # @!attribute [r] policy_type
-    #   @return [String, nil] Type of the policy, specifying what this applies to One of: debrief, follow_up, on_call_readiness, post_mortem, schedule, shift_conflict, vacation_conflict.
-    # @!attribute [r] post_mortem
-    #   @return [PolicyPostMortemV2, nil]
-    # @!attribute [r] schedule
-    #   @return [PolicyScheduleV2, nil]
-    # @!attribute [r] status
-    #   @return [String, nil] Disabled policies stop evaluating but keep their config One of: enabled, disabled.
-    # @!attribute [r] updated_at
-    #   @return [Time, nil]
     PolicyV2 = Model.define(
       assignment_rules: -> { PolicyAssignmentRulesV2 },
       conditions: [-> { ConditionGroupV2 }],
@@ -52,5 +22,53 @@ module IncidentIo
       status: :string,
       updated_at: :time
     )
+
+    class PolicyV2
+      # @!attribute [r] assignment_rules
+      #   The assignment_rules field
+      #   @return [PolicyAssignmentRulesV2, nil]
+      # @!attribute [r] conditions
+      #   Conditions which determine which resources are in scope for this policy
+      #   @return [Array<ConditionGroupV2>, nil]
+      # @!attribute [r] created_at
+      #   The created_at field
+      #   @return [Time, nil]
+      # @!attribute [r] debrief
+      #   The debrief field
+      #   @return [PolicyDebriefV2, nil]
+      # @!attribute [r] description
+      #   Human readable description of the policy
+      #   @return [String, nil]
+      # @!attribute [r] expressions
+      #   The expressions relating to this policy
+      #   @return [Array<ExpressionV2>, nil]
+      # @!attribute [r] follow_up
+      #   The follow_up field
+      #   @return [PolicyFollowUpV2, nil]
+      # @!attribute [r] id
+      #   Unique ID of the policy
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name of the policy
+      #   @return [String, nil]
+      # @!attribute [r] on_call_readiness
+      #   The on_call_readiness field
+      #   @return [PolicyOnCallReadinessV2, nil]
+      # @!attribute [r] policy_type
+      #   Type of the policy, specifying what this applies to One of: debrief,…
+      #   @return [String, nil]
+      # @!attribute [r] post_mortem
+      #   The post_mortem field
+      #   @return [PolicyPostMortemV2, nil]
+      # @!attribute [r] schedule
+      #   The schedule field
+      #   @return [PolicyScheduleV2, nil]
+      # @!attribute [r] status
+      #   Disabled policies stop evaluating but keep their config One of: enabled,…
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   The updated_at field
+      #   @return [Time, nil]
+    end
   end
 end

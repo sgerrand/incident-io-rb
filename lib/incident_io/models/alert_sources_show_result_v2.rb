@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert_source
-    #   @return [AlertSourceV2, nil]
     AlertSourcesShowResultV2 = Model.define(
       alert_source: -> { AlertSourceV2 }
     )
+
+    class AlertSourcesShowResultV2
+      # @!attribute [r] alert_source
+      #   The alert_source field
+      #   @return [AlertSourceV2, nil]
+    end
   end
 end

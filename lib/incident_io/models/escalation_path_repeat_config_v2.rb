@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] delay_repeat_on_activity
-    #   @return [Boolean, nil] When true, incident activity resets the repeat timer.
-    # @!attribute [r] repeat_after_seconds
-    #   @return [Integer, nil] Number of seconds we'll wait before repeating an escalation.
     EscalationPathRepeatConfigV2 = Model.define(
       delay_repeat_on_activity: :boolean,
       repeat_after_seconds: :integer
     )
+
+    class EscalationPathRepeatConfigV2
+      # @!attribute [r] delay_repeat_on_activity
+      #   When true, incident activity resets the repeat timer
+      #   @return [Boolean, nil]
+      # @!attribute [r] repeat_after_seconds
+      #   Number of seconds we'll wait before repeating an escalation
+      #   @return [Integer, nil]
+    end
   end
 end

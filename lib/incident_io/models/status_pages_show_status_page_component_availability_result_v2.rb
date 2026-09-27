@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] availability
-    #   @return [StatusPageComponentAvailabilityV2, nil]
     StatusPagesShowStatusPageComponentAvailabilityResultV2 = Model.define(
       availability: -> { StatusPageComponentAvailabilityV2 }
     )
+
+    class StatusPagesShowStatusPageComponentAvailabilityResultV2
+      # @!attribute [r] availability
+      #   The availability field
+      #   @return [StatusPageComponentAvailabilityV2, nil]
+    end
   end
 end

@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] escalation_path_template
-    #   @return [EscalationPathTemplateV2, nil]
     EscalationPathTemplatesUpdateResultV2 = Model.define(
       escalation_path_template: -> { EscalationPathTemplateV2 }
     )
+
+    class EscalationPathTemplatesUpdateResultV2
+      # @!attribute [r] escalation_path_template
+      #   The escalation_path_template field
+      #   @return [EscalationPathTemplateV2, nil]
+    end
   end
 end

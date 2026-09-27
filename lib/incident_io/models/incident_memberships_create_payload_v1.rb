@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_id
-    #   @return [String, nil] The incident to make the user a member of
-    # @!attribute [r] user_id
-    #   @return [String, nil]
     IncidentMembershipsCreatePayloadV1 = Model.define(
       incident_id: :string,
       user_id: :string
     )
+
+    class IncidentMembershipsCreatePayloadV1
+      # @!attribute [r] incident_id
+      #   The incident to make the user a member of
+      #   @return [String, nil]
+      # @!attribute [r] user_id
+      #   The user_id field
+      #   @return [String, nil]
+    end
   end
 end

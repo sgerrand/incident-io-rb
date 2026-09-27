@@ -5,15 +5,19 @@
 
 module IncidentIo
   module Models
-    # One address our requests to your systems come from.
-    #
-    # @!attribute [r] cidr
-    #   @return [String, nil] The address in CIDR notation.
-    # @!attribute [r] description
-    #   @return [String, nil] Which of our traffic reaches you from this address
     IPRangeV1 = Model.define(
       cidr: :string,
       description: :string
     )
+
+    # One address our requests to your systems come from.
+    class IPRangeV1
+      # @!attribute [r] cidr
+      #   The address in CIDR notation
+      #   @return [String, nil]
+      # @!attribute [r] description
+      #   Which of our traffic reaches you from this address
+      #   @return [String, nil]
+    end
   end
 end

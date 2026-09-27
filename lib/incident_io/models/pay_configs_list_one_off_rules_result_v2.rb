@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] one_off_rules
-    #   @return [Array<PayConfigOneOffRuleV2>, nil]
     PayConfigsListOneOffRulesResultV2 = Model.define(
       one_off_rules: [-> { PayConfigOneOffRuleV2 }]
     )
+
+    class PayConfigsListOneOffRulesResultV2
+      # @!attribute [r] one_off_rules
+      #   The one_off_rules field
+      #   @return [Array<PayConfigOneOffRuleV2>, nil]
+    end
   end
 end

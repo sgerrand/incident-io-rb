@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] after_organisation_name
-    #   @return [String, nil] The organisation name after the change
-    # @!attribute [r] before_organisation_name
-    #   @return [String, nil] The organisation name before the change
-    # @!attribute [r] default_timezone
-    #   @return [String, nil] The default timezone that was set
     AuditLogOrganisationSettingsUpdatedMetadataV2 = Model.define(
       after_organisation_name: :string,
       before_organisation_name: :string,
       default_timezone: :string
     )
+
+    class AuditLogOrganisationSettingsUpdatedMetadataV2
+      # @!attribute [r] after_organisation_name
+      #   The organisation name after the change
+      #   @return [String, nil]
+      # @!attribute [r] before_organisation_name
+      #   The organisation name before the change
+      #   @return [String, nil]
+      # @!attribute [r] default_timezone
+      #   The default timezone that was set
+      #   @return [String, nil]
+    end
   end
 end

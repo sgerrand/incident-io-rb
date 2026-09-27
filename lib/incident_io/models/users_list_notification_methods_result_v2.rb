@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] notification_methods
-    #   @return [Array<OnCallNotificationMethodPublicV2>, nil]
     UsersListNotificationMethodsResultV2 = Model.define(
       notification_methods: [-> { OnCallNotificationMethodPublicV2 }]
     )
+
+    class UsersListNotificationMethodsResultV2
+      # @!attribute [r] notification_methods
+      #   The notification_methods field
+      #   @return [Array<OnCallNotificationMethodPublicV2>, nil]
+    end
   end
 end

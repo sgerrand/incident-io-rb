@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_timestamp
-    #   @return [IncidentTimestampV2, nil]
-    # @!attribute [r] value
-    #   @return [IncidentTimestampValueV2, nil]
     IncidentTimestampWithValueV2 = Model.define(
       incident_timestamp: -> { IncidentTimestampV2 },
       value: -> { IncidentTimestampValueV2 }
     )
+
+    class IncidentTimestampWithValueV2
+      # @!attribute [r] incident_timestamp
+      #   The incident_timestamp field
+      #   @return [IncidentTimestampV2, nil]
+      # @!attribute [r] value
+      #   The value field
+      #   @return [IncidentTimestampValueV2, nil]
+    end
   end
 end

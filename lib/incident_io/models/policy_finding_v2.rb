@@ -5,40 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] created_at
-    #   @return [Time, nil]
-    # @!attribute [r] days
-    #   @return [Integer, nil] Days outside the policy's due date
-    # @!attribute [r] debrief
-    #   @return [PolicyFindingDebriefV2, nil]
-    # @!attribute [r] dismissal
-    #   @return [PolicyFindingDismissalV2, nil]
-    # @!attribute [r] due_at
-    #   @return [Time, nil] When this finding becomes overdue
-    # @!attribute [r] follow_up
-    #   @return [PolicyFindingFollowUpV2, nil]
-    # @!attribute [r] id
-    #   @return [String, nil] Unique ID of the finding
-    # @!attribute [r] last_checked_at
-    #   @return [Time, nil] When this finding was last re-evaluated
-    # @!attribute [r] on_call_readiness
-    #   @return [PolicyFindingOnCallReadinessV2, nil]
-    # @!attribute [r] policy_id
-    #   @return [String, nil] The policy this finding was raised against
-    # @!attribute [r] policy_type
-    #   @return [String, nil] Type of the policy this finding was raised against One of: debrief, follow_up, on_call_readiness, post_mortem, schedule, shift_conflict, vacation_conflict.
-    # @!attribute [r] post_mortem
-    #   @return [PolicyFindingPostMortemV2, nil]
-    # @!attribute [r] responsible_users
-    #   @return [Array<UserV2>, nil] Who is expected to resolve this finding
-    # @!attribute [r] schedule
-    #   @return [PolicyFindingScheduleV2, nil]
-    # @!attribute [r] state
-    #   @return [String, nil] Where this finding is in its lifecycle One of: pending, active, resolved, cancelled, dismissed.
-    # @!attribute [r] updated_at
-    #   @return [Time, nil]
-    # @!attribute [r] vacation_conflict
-    #   @return [PolicyFindingVacationConflictV2, nil]
     PolicyFindingV2 = Model.define(
       created_at: :time,
       days: :integer,
@@ -58,5 +24,59 @@ module IncidentIo
       updated_at: :time,
       vacation_conflict: -> { PolicyFindingVacationConflictV2 }
     )
+
+    class PolicyFindingV2
+      # @!attribute [r] created_at
+      #   The created_at field
+      #   @return [Time, nil]
+      # @!attribute [r] days
+      #   Days outside the policy's due date
+      #   @return [Integer, nil]
+      # @!attribute [r] debrief
+      #   The debrief field
+      #   @return [PolicyFindingDebriefV2, nil]
+      # @!attribute [r] dismissal
+      #   The dismissal field
+      #   @return [PolicyFindingDismissalV2, nil]
+      # @!attribute [r] due_at
+      #   When this finding becomes overdue
+      #   @return [Time, nil]
+      # @!attribute [r] follow_up
+      #   The follow_up field
+      #   @return [PolicyFindingFollowUpV2, nil]
+      # @!attribute [r] id
+      #   Unique ID of the finding
+      #   @return [String, nil]
+      # @!attribute [r] last_checked_at
+      #   When this finding was last re-evaluated
+      #   @return [Time, nil]
+      # @!attribute [r] on_call_readiness
+      #   The on_call_readiness field
+      #   @return [PolicyFindingOnCallReadinessV2, nil]
+      # @!attribute [r] policy_id
+      #   The policy this finding was raised against
+      #   @return [String, nil]
+      # @!attribute [r] policy_type
+      #   Type of the policy this finding was raised against One of: debrief,…
+      #   @return [String, nil]
+      # @!attribute [r] post_mortem
+      #   The post_mortem field
+      #   @return [PolicyFindingPostMortemV2, nil]
+      # @!attribute [r] responsible_users
+      #   Who is expected to resolve this finding
+      #   @return [Array<UserV2>, nil]
+      # @!attribute [r] schedule
+      #   The schedule field
+      #   @return [PolicyFindingScheduleV2, nil]
+      # @!attribute [r] state
+      #   Where this finding is in its lifecycle One of: pending, active, resolved,…
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   The updated_at field
+      #   @return [Time, nil]
+      # @!attribute [r] vacation_conflict
+      #   The vacation_conflict field
+      #   @return [PolicyFindingVacationConflictV2, nil]
+    end
   end
 end

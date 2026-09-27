@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] catalog_type_id
-    #   @return [String, nil] The unique identifier of the catalog type containing the entries
-    # @!attribute [r] entries
-    #   @return [Array<PartialEntryPayloadV3>, nil] A list of entries to update with their new values.
-    # @!attribute [r] update_attributes
-    #   @return [Array<String>, nil] Optional list of specific attribute IDs to update across all entries.
     CatalogBulkUpdateEntriesPayloadV3 = Model.define(
       catalog_type_id: :string,
       entries: [-> { PartialEntryPayloadV3 }],
       update_attributes: [:string]
     )
+
+    class CatalogBulkUpdateEntriesPayloadV3
+      # @!attribute [r] catalog_type_id
+      #   The unique identifier of the catalog type containing the entries
+      #   @return [String, nil]
+      # @!attribute [r] entries
+      #   A list of entries to update with their new values
+      #   @return [Array<PartialEntryPayloadV3>, nil]
+      # @!attribute [r] update_attributes
+      #   Optional list of specific attribute IDs to update across all entries
+      #   @return [Array<String>, nil]
+    end
   end
 end

@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] schedule_entries
-    #   @return [ScheduleEntriesListPayloadV2, nil]
     SchedulesPreviewScheduleEntriesResultV2 = Model.define(
       schedule_entries: -> { ScheduleEntriesListPayloadV2 }
     )
+
+    class SchedulesPreviewScheduleEntriesResultV2
+      # @!attribute [r] schedule_entries
+      #   The schedule_entries field
+      #   @return [ScheduleEntriesListPayloadV2, nil]
+    end
   end
 end

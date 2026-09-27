@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] available_actions
-    #   @return [Array<String>, nil] The response actions this user can currently take on the escalation.
-    # @!attribute [r] user_id
-    #   @return [String, nil] The ID of the user these response options are for
     EscalationUserResponseOptionsV2 = Model.define(
       available_actions: [:string],
       user_id: :string
     )
+
+    class EscalationUserResponseOptionsV2
+      # @!attribute [r] available_actions
+      #   The response actions this user can currently take on the escalation
+      #   @return [Array<String>, nil]
+      # @!attribute [r] user_id
+      #   The ID of the user these response options are for
+      #   @return [String, nil]
+    end
   end
 end

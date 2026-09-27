@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] identity
-    #   @return [IdentityV1, nil]
     UtilitiesIdentityResultV1 = Model.define(
       identity: -> { IdentityV1 }
     )
+
+    class UtilitiesIdentityResultV1
+      # @!attribute [r] identity
+      #   The identity field
+      #   @return [IdentityV1, nil]
+    end
   end
 end

@@ -5,25 +5,6 @@
 
 module IncidentIo
   module Models
-    # One thing that happened on an incident.
-    #
-    # The activity log records everything. The timeline is the narrative, made of the entries
-    # someone promoted onto it and the items they wrote by hand.
-    #
-    # @!attribute [r] content
-    #   @return [IncidentActivityLogContentV2, nil]
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When we recorded the activity
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier of the activity log entry
-    # @!attribute [r] incident_id
-    #   @return [String, nil] ID of the incident this happened on.
-    # @!attribute [r] occurred_at
-    #   @return [Time, nil] When the activity happened.
-    # @!attribute [r] title
-    #   @return [String, nil] Human-readable summary of what happened
-    # @!attribute [r] type
-    #   @return [String, nil] What kind of activity this is.
     IncidentActivityLogEntryV2 = Model.define(
       content: -> { IncidentActivityLogContentV2 },
       created_at: :time,
@@ -33,5 +14,33 @@ module IncidentIo
       title: :string,
       type: :string
     )
+
+    # One thing that happened on an incident.
+    #
+    # The activity log records everything. The timeline is the narrative, made of the entries
+    # someone promoted onto it and the items they wrote by hand.
+    class IncidentActivityLogEntryV2
+      # @!attribute [r] content
+      #   The content field
+      #   @return [IncidentActivityLogContentV2, nil]
+      # @!attribute [r] created_at
+      #   When we recorded the activity
+      #   @return [Time, nil]
+      # @!attribute [r] id
+      #   Unique identifier of the activity log entry
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   ID of the incident this happened on
+      #   @return [String, nil]
+      # @!attribute [r] occurred_at
+      #   When the activity happened
+      #   @return [Time, nil]
+      # @!attribute [r] title
+      #   Human-readable summary of what happened
+      #   @return [String, nil]
+      # @!attribute [r] type
+      #   What kind of activity this is
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] branches
-    #   @return [Array<ExpressionBranchV2>, nil] The branches to apply for this operation
-    # @!attribute [r] returns
-    #   @return [ReturnsMetaV2, nil]
     ExpressionBranchesOptsV2 = Model.define(
       branches: [-> { ExpressionBranchV2 }],
       returns: -> { ReturnsMetaV2 }
     )
+
+    class ExpressionBranchesOptsV2
+      # @!attribute [r] branches
+      #   The branches to apply for this operation
+      #   @return [Array<ExpressionBranchV2>, nil]
+      # @!attribute [r] returns
+      #   The returns field
+      #   @return [ReturnsMetaV2, nil]
+    end
   end
 end

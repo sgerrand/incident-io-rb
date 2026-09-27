@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the timeline item, in markdown.
-    # @!attribute [r] timestamp
-    #   @return [Time, nil] When the thing this item describes happened.
-    # @!attribute [r] title
-    #   @return [String, nil] Title of the timeline item
     IncidentTimelineItemsUpdatePayloadV2 = Model.define(
       description: :string,
       timestamp: :time,
       title: :string
     )
+
+    class IncidentTimelineItemsUpdatePayloadV2
+      # @!attribute [r] description
+      #   Description of the timeline item, in markdown
+      #   @return [String, nil]
+      # @!attribute [r] timestamp
+      #   When the thing this item describes happened
+      #   @return [Time, nil]
+      # @!attribute [r] title
+      #   Title of the timeline item
+      #   @return [String, nil]
+    end
   end
 end

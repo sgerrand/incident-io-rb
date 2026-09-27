@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] escalation
-    #   @return [EscalationV2, nil]
     EscalationsReassignEscalationResultV2 = Model.define(
       escalation: -> { EscalationV2 }
     )
+
+    class EscalationsReassignEscalationResultV2
+      # @!attribute [r] escalation
+      #   The escalation field
+      #   @return [EscalationV2, nil]
+    end
   end
 end

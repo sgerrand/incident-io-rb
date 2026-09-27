@@ -5,12 +5,15 @@
 
 module IncidentIo
   module Models
-    # Records a message from the caller, and enriches the resulting alert with the transcript.
-    #
-    # @!attribute [r] greeting_text
-    #   @return [String, nil] What we read to the caller before recording, via text-to-speech in the route's language, exactly as written
     CallRoutePathNodeVoicemailV2 = Model.define(
       greeting_text: :string
     )
+
+    # Records a message from the caller, and enriches the resulting alert with the transcript.
+    class CallRoutePathNodeVoicemailV2
+      # @!attribute [r] greeting_text
+      #   What we read to the caller before recording, via text-to-speech in the…
+      #   @return [String, nil]
+    end
   end
 end

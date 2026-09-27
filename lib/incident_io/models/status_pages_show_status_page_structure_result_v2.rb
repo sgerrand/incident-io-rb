@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] current_structure
-    #   @return [StatusPageStructureV2, nil]
     StatusPagesShowStatusPageStructureResultV2 = Model.define(
       current_structure: -> { StatusPageStructureV2 }
     )
+
+    class StatusPagesShowStatusPageStructureResultV2
+      # @!attribute [r] current_structure
+      #   The current_structure field
+      #   @return [StatusPageStructureV2, nil]
+    end
   end
 end

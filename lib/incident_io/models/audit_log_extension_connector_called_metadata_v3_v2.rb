@@ -5,24 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] access_source
-    #   @return [String, nil] What decided: the connector's access policy, or a decision pinned on this tool (policy, override)
-    # @!attribute [r] class_
-    #   @return [String, nil] What calling the tool does to the connected system, as the tool's own server describes it (read, write, destructive, unknown)
-    # @!attribute [r] incident_id
-    #   @return [String, nil] The incident the call was made for, when incident-scoped
-    # @!attribute [r] outcome
-    #   @return [String, nil] How the call ended (success, error, denied).
-    # @!attribute [r] reason
-    #   @return [String, nil] Why the call was allowed or refused (allowed, denied_by_rule, disabled, unknown_rule_type, not_read)
-    # @!attribute [r] source_kind
-    #   @return [String, nil] The kind of connector that was called (mcp, http)
-    # @!attribute [r] surface
-    #   @return [String, nil] The product surface the call ran from (chat, investigation, explore, mcp_client, verify), or internal for system paths with no surface
-    # @!attribute [r] telemetry_query_id
-    #   @return [String, nil] ID of our stored record of this call, absent for a call that was refused
-    # @!attribute [r] write
-    #   @return [String, nil] Whether the call was permitted to change the connected system (true, false)
     AuditLogExtensionConnectorCalledMetadataV3V2 = Model.define(
       access_source: :string,
       class: :string,
@@ -34,5 +16,35 @@ module IncidentIo
       telemetry_query_id: :string,
       write: :string
     )
+
+    class AuditLogExtensionConnectorCalledMetadataV3V2
+      # @!attribute [r] access_source
+      #   What decided: the connector's access policy, or a decision pinned on this…
+      #   @return [String, nil]
+      # @!attribute [r] class_
+      #   What calling the tool does to the connected system, as the tool's own server…
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   The incident the call was made for, when incident-scoped
+      #   @return [String, nil]
+      # @!attribute [r] outcome
+      #   How the call ended (success, error, denied)
+      #   @return [String, nil]
+      # @!attribute [r] reason
+      #   Why the call was allowed or refused (allowed, denied_by_rule, disabled,…
+      #   @return [String, nil]
+      # @!attribute [r] source_kind
+      #   The kind of connector that was called (mcp, http)
+      #   @return [String, nil]
+      # @!attribute [r] surface
+      #   The product surface the call ran from (chat, investigation, explore,…
+      #   @return [String, nil]
+      # @!attribute [r] telemetry_query_id
+      #   ID of our stored record of this call, absent for a call that was refused
+      #   @return [String, nil]
+      # @!attribute [r] write
+      #   Whether the call was permitted to change the connected system (true, false)
+      #   @return [String, nil]
+    end
   end
 end

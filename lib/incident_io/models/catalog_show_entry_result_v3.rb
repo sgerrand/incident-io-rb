@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] catalog_entry
-    #   @return [CatalogEntryV3, nil]
-    # @!attribute [r] catalog_type
-    #   @return [CatalogTypeV3, nil]
     CatalogShowEntryResultV3 = Model.define(
       catalog_entry: -> { CatalogEntryV3 },
       catalog_type: -> { CatalogTypeV3 }
     )
+
+    class CatalogShowEntryResultV3
+      # @!attribute [r] catalog_entry
+      #   The catalog_entry field
+      #   @return [CatalogEntryV3, nil]
+      # @!attribute [r] catalog_type
+      #   The catalog_type field
+      #   @return [CatalogTypeV3, nil]
+    end
   end
 end

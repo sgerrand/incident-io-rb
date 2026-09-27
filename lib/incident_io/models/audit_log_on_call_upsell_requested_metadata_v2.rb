@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] gate_count_after
-    #   @return [String, nil] The on-call seat allowance after the upsell
-    # @!attribute [r] gate_count_before
-    #   @return [String, nil] The on-call seat allowance before the upsell
-    # @!attribute [r] requested_by_user_id
-    #   @return [String, nil] The ID of the user who requested the upsell
-    # @!attribute [r] seats_added
-    #   @return [String, nil] The number of on-call seats added by this upsell
     AuditLogOnCallUpsellRequestedMetadataV2 = Model.define(
       gate_count_after: :string,
       gate_count_before: :string,
       requested_by_user_id: :string,
       seats_added: :string
     )
+
+    class AuditLogOnCallUpsellRequestedMetadataV2
+      # @!attribute [r] gate_count_after
+      #   The on-call seat allowance after the upsell
+      #   @return [String, nil]
+      # @!attribute [r] gate_count_before
+      #   The on-call seat allowance before the upsell
+      #   @return [String, nil]
+      # @!attribute [r] requested_by_user_id
+      #   The ID of the user who requested the upsell
+      #   @return [String, nil]
+      # @!attribute [r] seats_added
+      #   The number of on-call seats added by this upsell
+      #   @return [String, nil]
+    end
   end
 end

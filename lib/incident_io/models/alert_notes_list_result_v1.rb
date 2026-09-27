@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert_notes
-    #   @return [Array<AlertNoteV1>, nil]
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV1, nil]
     AlertNotesListResultV1 = Model.define(
       alert_notes: [-> { AlertNoteV1 }],
       pagination_meta: -> { PaginationMetaResultV1 }
     )
+
+    class AlertNotesListResultV1
+      # @!attribute [r] alert_notes
+      #   The alert_notes field
+      #   @return [Array<AlertNoteV1>, nil]
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV1, nil]
+    end
   end
 end

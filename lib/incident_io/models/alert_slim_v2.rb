@@ -5,28 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert_group_ids
-    #   @return [Array<String>, nil] The IDs of every alert group this alert belongs to.
-    # @!attribute [r] alert_source_id
-    #   @return [String, nil] The ID of the alert source this alert fired on
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When this entry was created
-    # @!attribute [r] deduplication_key
-    #   @return [String, nil] A deduplication key which uniquely references this alert from your alert source.
-    # @!attribute [r] description
-    #   @return [String, nil] The description of the alert
-    # @!attribute [r] id
-    #   @return [String, nil] The ID of this alert
-    # @!attribute [r] resolved_at
-    #   @return [Time, nil] When this alert was resolved
-    # @!attribute [r] source_url
-    #   @return [String, nil] If applicable, a link to the alert in the upstream system
-    # @!attribute [r] status
-    #   @return [String, nil] Statuses of an alert One of: firing, resolved.
-    # @!attribute [r] title
-    #   @return [String, nil] The title of the alert, parsed from the alert payload according to the alert source configuration
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When this alert was last updated
     AlertSlimV2 = Model.define(
       alert_group_ids: [:string],
       alert_source_id: :string,
@@ -40,5 +18,41 @@ module IncidentIo
       title: :string,
       updated_at: :time
     )
+
+    class AlertSlimV2
+      # @!attribute [r] alert_group_ids
+      #   The IDs of every alert group this alert belongs to
+      #   @return [Array<String>, nil]
+      # @!attribute [r] alert_source_id
+      #   The ID of the alert source this alert fired on
+      #   @return [String, nil]
+      # @!attribute [r] created_at
+      #   When this entry was created
+      #   @return [Time, nil]
+      # @!attribute [r] deduplication_key
+      #   A deduplication key which uniquely references this alert from your alert source
+      #   @return [String, nil]
+      # @!attribute [r] description
+      #   The description of the alert
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   The ID of this alert
+      #   @return [String, nil]
+      # @!attribute [r] resolved_at
+      #   When this alert was resolved
+      #   @return [Time, nil]
+      # @!attribute [r] source_url
+      #   If applicable, a link to the alert in the upstream system
+      #   @return [String, nil]
+      # @!attribute [r] status
+      #   Statuses of an alert One of: firing, resolved
+      #   @return [String, nil]
+      # @!attribute [r] title
+      #   The title of the alert, parsed from the alert payload according to the alert…
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   When this alert was last updated
+      #   @return [Time, nil]
+    end
   end
 end

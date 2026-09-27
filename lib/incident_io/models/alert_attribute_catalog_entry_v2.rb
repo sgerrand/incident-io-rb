@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] catalog_type_id
-    #   @return [String, nil] ID of this catalog type
-    # @!attribute [r] id
-    #   @return [String, nil] ID of this catalog entry
-    # @!attribute [r] name
-    #   @return [String, nil] Name is the human readable name of this entry
     AlertAttributeCatalogEntryV2 = Model.define(
       catalog_type_id: :string,
       id: :string,
       name: :string
     )
+
+    class AlertAttributeCatalogEntryV2
+      # @!attribute [r] catalog_type_id
+      #   ID of this catalog type
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   ID of this catalog entry
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name is the human readable name of this entry
+      #   @return [String, nil]
+    end
   end
 end

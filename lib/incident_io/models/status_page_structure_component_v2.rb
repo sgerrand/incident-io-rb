@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] component_id
-    #   @return [String, nil] The ID of the affected component.
-    # @!attribute [r] name
-    #   @return [String, nil] The name of this component
     StatusPageStructureComponentV2 = Model.define(
       component_id: :string,
       name: :string
     )
+
+    class StatusPageStructureComponentV2
+      # @!attribute [r] component_id
+      #   The ID of the affected component
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   The name of this component
+      #   @return [String, nil]
+    end
   end
 end

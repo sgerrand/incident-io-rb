@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] message
-    #   @return [String, nil] Original internal error message
-    # @!attribute [r] stacktrace
-    #   @return [Array<String>, nil] Stacktrace of the error, if applicable
     ErrorDebug = Model.define(
       message: :string,
       stacktrace: [:string]
     )
+
+    class ErrorDebug
+      # @!attribute [r] message
+      #   Original internal error message
+      #   @return [String, nil]
+      # @!attribute [r] stacktrace
+      #   Stacktrace of the error, if applicable
+      #   @return [Array<String>, nil]
+    end
   end
 end

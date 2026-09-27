@@ -5,24 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] assignee_id
-    #   @return [String, nil] ID of the user this follow-up is assigned to
-    # @!attribute [r] assignee_team_id
-    #   @return [String, nil] ID of the team this follow-up is assigned to
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the follow-up.
-    # @!attribute [r] external_issue_reference_id
-    #   @return [String, nil] If this follow-up is related to an external issue, the ID of that issue
-    # @!attribute [r] follow_up_category_id
-    #   @return [String, nil] ID of the category for this follow-up
-    # @!attribute [r] follow_up_priority_option_id
-    #   @return [String, nil] ID of the priority for this follow-up
-    # @!attribute [r] incident_id
-    #   @return [String, nil] Unique identifier of the incident the follow-up belongs to
-    # @!attribute [r] labels
-    #   @return [Array<String>, nil] Labels associated with this follow-up
-    # @!attribute [r] title
-    #   @return [String, nil] Title of the follow-up
     FollowUpsCreatePayloadV3 = Model.define(
       assignee_id: :string,
       assignee_team_id: :string,
@@ -34,5 +16,35 @@ module IncidentIo
       labels: [:string],
       title: :string
     )
+
+    class FollowUpsCreatePayloadV3
+      # @!attribute [r] assignee_id
+      #   ID of the user this follow-up is assigned to
+      #   @return [String, nil]
+      # @!attribute [r] assignee_team_id
+      #   ID of the team this follow-up is assigned to
+      #   @return [String, nil]
+      # @!attribute [r] description
+      #   Description of the follow-up
+      #   @return [String, nil]
+      # @!attribute [r] external_issue_reference_id
+      #   If this follow-up is related to an external issue, the ID of that issue
+      #   @return [String, nil]
+      # @!attribute [r] follow_up_category_id
+      #   ID of the category for this follow-up
+      #   @return [String, nil]
+      # @!attribute [r] follow_up_priority_option_id
+      #   ID of the priority for this follow-up
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   Unique identifier of the incident the follow-up belongs to
+      #   @return [String, nil]
+      # @!attribute [r] labels
+      #   Labels associated with this follow-up
+      #   @return [Array<String>, nil]
+      # @!attribute [r] title
+      #   Title of the follow-up
+      #   @return [String, nil]
+    end
   end
 end

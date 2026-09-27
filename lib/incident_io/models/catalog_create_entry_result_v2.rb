@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] catalog_entry
-    #   @return [CatalogEntryV2, nil]
     CatalogCreateEntryResultV2 = Model.define(
       catalog_entry: -> { CatalogEntryV2 }
     )
+
+    class CatalogCreateEntryResultV2
+      # @!attribute [r] catalog_entry
+      #   The catalog_entry field
+      #   @return [CatalogEntryV2, nil]
+    end
   end
 end

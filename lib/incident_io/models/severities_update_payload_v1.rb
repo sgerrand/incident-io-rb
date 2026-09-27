@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the severity
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name of the severity
-    # @!attribute [r] rank
-    #   @return [Integer, nil] Rank to help sort severities (lower numbers are less severe)
     SeveritiesUpdatePayloadV1 = Model.define(
       description: :string,
       name: :string,
       rank: :integer
     )
+
+    class SeveritiesUpdatePayloadV1
+      # @!attribute [r] description
+      #   Description of the severity
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name of the severity
+      #   @return [String, nil]
+      # @!attribute [r] rank
+      #   Rank to help sort severities (lower numbers are less severe)
+      #   @return [Integer, nil]
+    end
   end
 end

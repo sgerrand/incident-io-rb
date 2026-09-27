@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] applies_from
-    #   @return [Time, nil] If set, the policy only applies to resources from this timestamp onwards
-    # @!attribute [r] calculation_timezone
-    #   @return [String, nil] Timezone the due date is calculated in.
-    # @!attribute [r] calculation_type
-    #   @return [String, nil] One of: seven_days, weekdays.
-    # @!attribute [r] days
-    #   @return [EngineParamBindingV2, nil]
-    # @!attribute [r] incident_timestamp_id
-    #   @return [String, nil] Timestamp the due date counts from
     PolicyDueDateConfigV2 = Model.define(
       applies_from: :time,
       calculation_timezone: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       days: -> { EngineParamBindingV2 },
       incident_timestamp_id: :string
     )
+
+    class PolicyDueDateConfigV2
+      # @!attribute [r] applies_from
+      #   If set, the policy only applies to resources from this timestamp onwards
+      #   @return [Time, nil]
+      # @!attribute [r] calculation_timezone
+      #   Timezone the due date is calculated in
+      #   @return [String, nil]
+      # @!attribute [r] calculation_type
+      #   One of: seven_days, weekdays
+      #   @return [String, nil]
+      # @!attribute [r] days
+      #   The days field
+      #   @return [EngineParamBindingV2, nil]
+      # @!attribute [r] incident_timestamp_id
+      #   Timestamp the due date counts from
+      #   @return [String, nil]
+    end
   end
 end

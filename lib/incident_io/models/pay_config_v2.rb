@@ -5,35 +5,6 @@
 
 module IncidentIo
   module Models
-    # A pay config sets what someone is paid for being on call: a base rate,
-    # plus rules that override it at particular times. An on-call pay report prices
-    # each person's shifts against one.
-    #
-    # Rules are evaluated in the order they are returned, and the first one that
-    # covers a shift wins. Any time no rule covers is paid at the base rate.
-    #
-    # @!attribute [r] base_rate_cents
-    #   @return [Integer, nil] Rate paid for any time no rule covers, in the lowest denomination of the currency
-    # @!attribute [r] created_at
-    #   @return [Time, nil]
-    # @!attribute [r] currency
-    #   @return [String, nil] Currency this config pays in, in ISO 4217 format
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this pay config
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name for this pay config
-    # @!attribute [r] one_off_rules
-    #   @return [Array<PayConfigOneOffRuleV2>, nil] Rules that apply over a single window of time, such as a public holiday
-    # @!attribute [r] published_at
-    #   @return [Time, nil] When a published report first priced against this config.
-    # @!attribute [r] rate_time_unit
-    #   @return [String, nil] The unit of time every rate on this config is quoted per.
-    # @!attribute [r] timezone
-    #   @return [String, nil] IANA timezone this config's rules are interpreted in
-    # @!attribute [r] updated_at
-    #   @return [Time, nil]
-    # @!attribute [r] weekly_rules
-    #   @return [Array<PayConfigWeeklyRuleV2>, nil] Rules that apply every week, by day of week and time of day, in evaluation order
     PayConfigV2 = Model.define(
       base_rate_cents: :integer,
       created_at: :time,
@@ -47,5 +18,47 @@ module IncidentIo
       updated_at: :time,
       weekly_rules: [-> { PayConfigWeeklyRuleV2 }]
     )
+
+    # A pay config sets what someone is paid for being on call: a base rate,
+    # plus rules that override it at particular times. An on-call pay report prices
+    # each person's shifts against one.
+    #
+    # Rules are evaluated in the order they are returned, and the first one that
+    # covers a shift wins. Any time no rule covers is paid at the base rate.
+    class PayConfigV2
+      # @!attribute [r] base_rate_cents
+      #   Rate paid for any time no rule covers, in the lowest denomination of the…
+      #   @return [Integer, nil]
+      # @!attribute [r] created_at
+      #   The created_at field
+      #   @return [Time, nil]
+      # @!attribute [r] currency
+      #   Currency this config pays in, in ISO 4217 format
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this pay config
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name for this pay config
+      #   @return [String, nil]
+      # @!attribute [r] one_off_rules
+      #   Rules that apply over a single window of time, such as a public holiday
+      #   @return [Array<PayConfigOneOffRuleV2>, nil]
+      # @!attribute [r] published_at
+      #   When a published report first priced against this config
+      #   @return [Time, nil]
+      # @!attribute [r] rate_time_unit
+      #   The unit of time every rate on this config is quoted per
+      #   @return [String, nil]
+      # @!attribute [r] timezone
+      #   IANA timezone this config's rules are interpreted in
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   The updated_at field
+      #   @return [Time, nil]
+      # @!attribute [r] weekly_rules
+      #   Rules that apply every week, by day of week and time of day, in evaluation…
+      #   @return [Array<PayConfigWeeklyRuleV2>, nil]
+    end
   end
 end

@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] value
-    #   @return [String, nil] The secret's new plaintext value.
     SecretsRotatePayloadV2 = Model.define(
       value: :string
     )
+
+    class SecretsRotatePayloadV2
+      # @!attribute [r] value
+      #   The secret's new plaintext value
+      #   @return [String, nil]
+    end
   end
 end

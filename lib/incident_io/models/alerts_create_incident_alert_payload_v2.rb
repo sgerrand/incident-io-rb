@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert_id
-    #   @return [String, nil] Alert to attach to the incident
-    # @!attribute [r] incident_id
-    #   @return [String, nil] Incident to attach the alert to
-    # @!attribute [r] re_relate
-    #   @return [Boolean, nil] Relate the alert again even though someone previously marked it unrelated to this incident.
     AlertsCreateIncidentAlertPayloadV2 = Model.define(
       alert_id: :string,
       incident_id: :string,
       re_relate: :boolean
     )
+
+    class AlertsCreateIncidentAlertPayloadV2
+      # @!attribute [r] alert_id
+      #   Alert to attach to the incident
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   Incident to attach the alert to
+      #   @return [String, nil]
+      # @!attribute [r] re_relate
+      #   Relate the alert again even though someone previously marked it unrelated to…
+      #   @return [Boolean, nil]
+    end
   end
 end

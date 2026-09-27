@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] after
-    #   @return [String, nil] The rule in force after the change, as the stored rule JSON, or the switch's new value
-    # @!attribute [r] before
-    #   @return [String, nil] The rule in force before the change, as the stored rule JSON, or the switch's previous value; empty when the connector had no access policy before
-    # @!attribute [r] change_id
-    #   @return [String, nil] Shared by every entry the same save produced, so the decision that changed and the access it reached can be read together
-    # @!attribute [r] source
-    #   @return [String, nil] What decides it now: the connector's access policy, or a decision pinned on this tool (policy, override)
-    # @!attribute [r] surface
-    #   @return [String, nil] The surface whose rule changed (chat, mcp_client, investigation), or enabled when it was the tool's own switch
-    # @!attribute [r] tool
-    #   @return [String, nil] The name of the tool whose access changed
     AuditLogTelemetryDataSourceToolAccessChangedMetadataV2 = Model.define(
       after: :string,
       before: :string,
@@ -25,5 +13,26 @@ module IncidentIo
       surface: :string,
       tool: :string
     )
+
+    class AuditLogTelemetryDataSourceToolAccessChangedMetadataV2
+      # @!attribute [r] after
+      #   The rule in force after the change, as the stored rule JSON, or the switch's…
+      #   @return [String, nil]
+      # @!attribute [r] before
+      #   The rule in force before the change, as the stored rule JSON, or the switch's…
+      #   @return [String, nil]
+      # @!attribute [r] change_id
+      #   Shared by every entry the same save produced, so the decision that changed…
+      #   @return [String, nil]
+      # @!attribute [r] source
+      #   What decides it now: the connector's access policy, or a decision pinned on…
+      #   @return [String, nil]
+      # @!attribute [r] surface
+      #   The surface whose rule changed (chat, mcp_client, investigation), or enabled…
+      #   @return [String, nil]
+      # @!attribute [r] tool
+      #   The name of the tool whose access changed
+      #   @return [String, nil]
+    end
   end
 end

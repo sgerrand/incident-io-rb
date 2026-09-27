@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] body
-    #   @return [String, nil] The response body returned by the endpoint
-    # @!attribute [r] body_truncated
-    #   @return [Boolean, nil] Whether the body was truncated, in which case it may not be valid JSON
-    # @!attribute [r] headers
-    #   @return [Hash{String => String}, nil] Headers returned by the endpoint, excluding any whose name resembles a credential
     WebhookDeliveryResponseV2 = Model.define(
       body: :string,
       body_truncated: :boolean,
       headers: Model.map_of(:string)
     )
+
+    class WebhookDeliveryResponseV2
+      # @!attribute [r] body
+      #   The response body returned by the endpoint
+      #   @return [String, nil]
+      # @!attribute [r] body_truncated
+      #   Whether the body was truncated, in which case it may not be valid JSON
+      #   @return [Boolean, nil]
+      # @!attribute [r] headers
+      #   Headers returned by the endpoint, excluding any whose name resembles a…
+      #   @return [Hash{String => String}, nil]
+    end
   end
 end

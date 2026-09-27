@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] after
-    #   @return [String, nil] The tool's pins after the change, as JSON; empty when the change removed the last one
-    # @!attribute [r] before
-    #   @return [String, nil] The tool's pins before the change, as JSON; empty when nothing was pinned on it
-    # @!attribute [r] change_id
-    #   @return [String, nil] Shared by every entry the same save produced, so the decision that changed and the access it reached can be read together
-    # @!attribute [r] tool
-    #   @return [String, nil] The name of the tool whose pinned decisions changed
     AuditLogTelemetryDataSourceToolOverridesChangedMetadataV2 = Model.define(
       after: :string,
       before: :string,
       change_id: :string,
       tool: :string
     )
+
+    class AuditLogTelemetryDataSourceToolOverridesChangedMetadataV2
+      # @!attribute [r] after
+      #   The tool's pins after the change, as JSON; empty when the change removed the…
+      #   @return [String, nil]
+      # @!attribute [r] before
+      #   The tool's pins before the change, as JSON; empty when nothing was pinned on it
+      #   @return [String, nil]
+      # @!attribute [r] change_id
+      #   Shared by every entry the same save produced, so the decision that changed…
+      #   @return [String, nil]
+      # @!attribute [r] tool
+      #   The name of the tool whose pinned decisions changed
+      #   @return [String, nil]
+    end
   end
 end

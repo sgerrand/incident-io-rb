@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] workflow_run
-    #   @return [WorkflowRunV2, nil]
     WorkflowRunsShowResultV2 = Model.define(
       workflow_run: -> { WorkflowRunV2 }
     )
+
+    class WorkflowRunsShowResultV2
+      # @!attribute [r] workflow_run
+      #   The workflow_run field
+      #   @return [WorkflowRunV2, nil]
+    end
   end
 end

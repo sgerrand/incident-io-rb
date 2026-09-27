@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] enabled
-    #   @return [String, nil] Whether QR code mobile login is enabled after the update
     AuditLogQrCodeMobileLoginSettingUpdatedMetadataV2 = Model.define(
       enabled: :string
     )
+
+    class AuditLogQrCodeMobileLoginSettingUpdatedMetadataV2
+      # @!attribute [r] enabled
+      #   Whether QR code mobile login is enabled after the update
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] event_type
-    #   @return [String, nil] What type of event is this webhook for?
-    # @!attribute [r] schedule_shift_change_v1
-    #   @return [ScheduleShiftChangeV2, nil]
     WebhooksScheduleShiftChangeV1ResponseBody = Model.define(
       event_type: :string,
       "schedule.shift_change_v1": -> { ScheduleShiftChangeV2 }
     )
+
+    class WebhooksScheduleShiftChangeV1ResponseBody
+      # @!attribute [r] event_type
+      #   What type of event is this webhook for?
+      #   @return [String, nil]
+      # @!attribute [r] schedule_shift_change_v1
+      #   The schedule.shift_change_v1 field
+      #   @return [ScheduleShiftChangeV2, nil]
+    end
   end
 end

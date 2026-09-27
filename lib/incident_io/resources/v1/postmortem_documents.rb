@@ -12,6 +12,8 @@ module IncidentIo
       # incident. Use this API to list and retrieve post-mortem documents, update their status, and fetch
       # the full document's content.
       class PostmortemDocuments < Resource
+        # Link an externally-hosted post-mortem document to an incident
+        #
         # Link an externally-hosted post-mortem document to an incident.
         #
         # Use this to attach a retrospective document you've created in your own provider (for example
@@ -42,6 +44,8 @@ module IncidentIo
           )
         end
 
+        # List post-mortem documents for the organisation
+        #
         # List post-mortem documents for the organisation.
         #
         # Results can be filtered by incident and sorted by creation date. This endpoint returns document
@@ -65,6 +69,8 @@ module IncidentIo
           )
         end
 
+        # Get a single post-mortem document by ID
+        #
         # Get a single post-mortem document by ID.
         #
         # This returns the document's metadata. To retrieve the content of the post-mortem, use the ShowContent endpoint.
@@ -84,6 +90,8 @@ module IncidentIo
           )
         end
 
+        # Fetch the content of a post-mortem document, rendered as markdown
+        #
         # Fetch the content of a post-mortem document, rendered as markdown.
         #
         # The response contains the full document content as a single markdown string. The markdown
@@ -119,7 +127,7 @@ module IncidentIo
           )
         end
 
-        # Update the status of a post-mortem document.
+        # Update the status of a post-mortem document
         #
         # Endpoint: `PUT /v1/postmortem_documents/{id}`. Scopes: in_app_postmortems.update_status.
         #

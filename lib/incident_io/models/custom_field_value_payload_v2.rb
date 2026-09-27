@@ -5,20 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the custom field value
-    # @!attribute [r] value_catalog_entry_id
-    #   @return [String, nil] ID of the catalog entry.
-    # @!attribute [r] value_link
-    #   @return [String, nil] If the custom field type is 'link', this will contain the value assigned.
-    # @!attribute [r] value_numeric
-    #   @return [String, nil] If the custom field type is 'numeric', this will contain the value assigned.
-    # @!attribute [r] value_option_id
-    #   @return [String, nil] ID of the custom field option
-    # @!attribute [r] value_text
-    #   @return [String, nil] If the custom field type is 'text', this will contain the value assigned.
-    # @!attribute [r] value_timestamp
-    #   @return [String, nil] Deprecated: please use incident timestamp values instead
     CustomFieldValuePayloadV2 = Model.define(
       id: :string,
       value_catalog_entry_id: :string,
@@ -28,5 +14,29 @@ module IncidentIo
       value_text: :string,
       value_timestamp: :string
     )
+
+    class CustomFieldValuePayloadV2
+      # @!attribute [r] id
+      #   Unique identifier for the custom field value
+      #   @return [String, nil]
+      # @!attribute [r] value_catalog_entry_id
+      #   ID of the catalog entry
+      #   @return [String, nil]
+      # @!attribute [r] value_link
+      #   If the custom field type is 'link', this will contain the value assigned
+      #   @return [String, nil]
+      # @!attribute [r] value_numeric
+      #   If the custom field type is 'numeric', this will contain the value assigned
+      #   @return [String, nil]
+      # @!attribute [r] value_option_id
+      #   ID of the custom field option
+      #   @return [String, nil]
+      # @!attribute [r] value_text
+      #   If the custom field type is 'text', this will contain the value assigned
+      #   @return [String, nil]
+      # @!attribute [r] value_timestamp
+      #   Deprecated: please use incident timestamp values instead
+      #   @return [String, nil]
+    end
   end
 end

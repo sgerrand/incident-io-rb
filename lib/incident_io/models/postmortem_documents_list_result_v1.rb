@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV1, nil]
-    # @!attribute [r] postmortem_documents
-    #   @return [Array<PostmortemDocumentV1>, nil]
     PostmortemDocumentsListResultV1 = Model.define(
       pagination_meta: -> { PaginationMetaResultV1 },
       postmortem_documents: [-> { PostmortemDocumentV1 }]
     )
+
+    class PostmortemDocumentsListResultV1
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV1, nil]
+      # @!attribute [r] postmortem_documents
+      #   The postmortem_documents field
+      #   @return [Array<PostmortemDocumentV1>, nil]
+    end
   end
 end

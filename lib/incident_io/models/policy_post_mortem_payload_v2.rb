@@ -5,18 +5,23 @@
 
 module IncidentIo
   module Models
-    # Set when policy_type is post_mortem.
-    #
-    # @!attribute [r] due_date_config
-    #   @return [PolicyDueDateConfigPayloadV2, nil]
-    # @!attribute [r] requirements
-    #   @return [Array<ConditionGroupPayloadV2>, nil] Conditions a post-mortem must satisfy to be compliant
-    # @!attribute [r] run_on_private_incidents
-    #   @return [Boolean, nil] Requires the policies.run_on_private scope
     PolicyPostMortemPayloadV2 = Model.define(
       due_date_config: -> { PolicyDueDateConfigPayloadV2 },
       requirements: [-> { ConditionGroupPayloadV2 }],
       run_on_private_incidents: :boolean
     )
+
+    # Set when policy_type is post_mortem.
+    class PolicyPostMortemPayloadV2
+      # @!attribute [r] due_date_config
+      #   The due_date_config field
+      #   @return [PolicyDueDateConfigPayloadV2, nil]
+      # @!attribute [r] requirements
+      #   Conditions a post-mortem must satisfy to be compliant
+      #   @return [Array<ConditionGroupPayloadV2>, nil]
+      # @!attribute [r] run_on_private_incidents
+      #   Requires the policies.run_on_private scope
+      #   @return [Boolean, nil]
+    end
   end
 end

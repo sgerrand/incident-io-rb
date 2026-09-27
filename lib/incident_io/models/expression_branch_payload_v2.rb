@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] condition_groups
-    #   @return [Array<ConditionGroupPayloadV2>, nil] When one of these condition groups are satisfied, this branch will be evaluated
-    # @!attribute [r] result
-    #   @return [EngineParamBindingPayloadV2, nil]
     ExpressionBranchPayloadV2 = Model.define(
       condition_groups: [-> { ConditionGroupPayloadV2 }],
       result: -> { EngineParamBindingPayloadV2 }
     )
+
+    class ExpressionBranchPayloadV2
+      # @!attribute [r] condition_groups
+      #   When one of these condition groups are satisfied, this branch will be evaluated
+      #   @return [Array<ConditionGroupPayloadV2>, nil]
+      # @!attribute [r] result
+      #   The result field
+      #   @return [EngineParamBindingPayloadV2, nil]
+    end
   end
 end

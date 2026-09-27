@@ -15,6 +15,8 @@ module IncidentIo
       # Use this to pull an incident's history into your own systems - a retrospective, a report, an
       # audit of how a response ran.
       class IncidentActivityLogEntries < Resource
+        # List the activity log entries for an incident, oldest first
+        #
         # List the activity log entries for an incident, oldest first.
         #
         # If the incident has streams, this returns their entries too, and incident_id on each entry

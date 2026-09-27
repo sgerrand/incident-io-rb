@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] enabled
-    #   @return [String, nil] Whether Intune is enabled after the update
     AuditLogMobileIntuneEnabledSettingUpdatedMetadataV2 = Model.define(
       enabled: :string
     )
+
+    class AuditLogMobileIntuneEnabledSettingUpdatedMetadataV2
+      # @!attribute [r] enabled
+      #   Whether Intune is enabled after the update
+      #   @return [String, nil]
+    end
   end
 end

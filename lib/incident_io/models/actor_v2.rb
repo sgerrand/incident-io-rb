@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert
-    #   @return [AlertActorV2, nil]
-    # @!attribute [r] api_key
-    #   @return [APIKeyActorV2, nil]
-    # @!attribute [r] user
-    #   @return [UserV2, nil]
-    # @!attribute [r] workflow
-    #   @return [WorkflowActorV2, nil]
     ActorV2 = Model.define(
       alert: -> { AlertActorV2 },
       api_key: -> { APIKeyActorV2 },
       user: -> { UserV2 },
       workflow: -> { WorkflowActorV2 }
     )
+
+    class ActorV2
+      # @!attribute [r] alert
+      #   The alert field
+      #   @return [AlertActorV2, nil]
+      # @!attribute [r] api_key
+      #   The api_key field
+      #   @return [APIKeyActorV2, nil]
+      # @!attribute [r] user
+      #   The user field
+      #   @return [UserV2, nil]
+      # @!attribute [r] workflow
+      #   The workflow field
+      #   @return [WorkflowActorV2, nil]
+    end
   end
 end

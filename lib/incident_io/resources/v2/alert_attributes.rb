@@ -10,7 +10,7 @@ module IncidentIo
       #
       # Alert attributes are used to parse structured data from alerts coming in via alert sources.
       class AlertAttributes < Resource
-        # Create a new alert attribute.
+        # Create a new alert attribute
         #
         # Endpoint: `POST /v2/alert_attributes`. Scopes: alert_schema.update.
         #
@@ -32,7 +32,7 @@ module IncidentIo
           )
         end
 
-        # Destroy an alert attribute.
+        # Destroy an alert attribute
         #
         # Endpoint: `DELETE /v2/alert_attributes/{id}`. Scopes: alert_schema.update.
         #
@@ -47,7 +47,7 @@ module IncidentIo
           )
         end
 
-        # List alert attributes.
+        # List alert attributes
         #
         # Endpoint: `GET /v2/alert_attributes`. Scopes: alert_schema.view.
         #
@@ -63,7 +63,7 @@ module IncidentIo
           )
         end
 
-        # Show an alert attribute.
+        # Show an alert attribute
         #
         # Endpoint: `GET /v2/alert_attributes/{id}`. Scopes: alert_schema.view.
         #
@@ -80,7 +80,7 @@ module IncidentIo
           )
         end
 
-        # Update an alert attribute.
+        # Update an alert attribute
         #
         # Endpoint: `PUT /v2/alert_attributes/{id}`. Scopes: alert_schema.update.
         #

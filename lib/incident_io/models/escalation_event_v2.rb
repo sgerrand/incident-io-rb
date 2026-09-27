@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] channels
-    #   @return [Array<ChatChannelSlimV2>, nil] This field will be populated for notified_channels events.
-    # @!attribute [r] event
-    #   @return [String, nil] The type of event that occured.
-    # @!attribute [r] id
-    #   @return [String, nil] The unique ID for this escalation event
-    # @!attribute [r] occurred_at
-    #   @return [Time, nil] The time when this escalation event was processed
-    # @!attribute [r] urgency
-    #   @return [String, nil] The urgency at which we tried to notify users.
-    # @!attribute [r] users
-    #   @return [Array<UserV2>, nil] This field will be populated for notified_users and acked events.
     EscalationEventV2 = Model.define(
       channels: [-> { ChatChannelSlimV2 }],
       event: :string,
@@ -25,5 +13,26 @@ module IncidentIo
       urgency: :string,
       users: [-> { UserV2 }]
     )
+
+    class EscalationEventV2
+      # @!attribute [r] channels
+      #   This field will be populated for notified_channels events
+      #   @return [Array<ChatChannelSlimV2>, nil]
+      # @!attribute [r] event
+      #   The type of event that occured
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   The unique ID for this escalation event
+      #   @return [String, nil]
+      # @!attribute [r] occurred_at
+      #   The time when this escalation event was processed
+      #   @return [Time, nil]
+      # @!attribute [r] urgency
+      #   The urgency at which we tried to notify users
+      #   @return [String, nil]
+      # @!attribute [r] users
+      #   This field will be populated for notified_users and acked events
+      #   @return [Array<UserV2>, nil]
+    end
   end
 end

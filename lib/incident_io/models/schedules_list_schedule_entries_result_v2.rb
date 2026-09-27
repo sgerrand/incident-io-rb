@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] pagination_meta
-    #   @return [AfterPaginationMetaResultV2, nil]
-    # @!attribute [r] schedule_entries
-    #   @return [ScheduleEntriesListPayloadV2, nil]
     SchedulesListScheduleEntriesResultV2 = Model.define(
       pagination_meta: -> { AfterPaginationMetaResultV2 },
       schedule_entries: -> { ScheduleEntriesListPayloadV2 }
     )
+
+    class SchedulesListScheduleEntriesResultV2
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [AfterPaginationMetaResultV2, nil]
+      # @!attribute [r] schedule_entries
+      #   The schedule_entries field
+      #   @return [ScheduleEntriesListPayloadV2, nil]
+    end
   end
 end

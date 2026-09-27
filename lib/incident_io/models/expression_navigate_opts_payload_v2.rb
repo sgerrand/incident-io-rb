@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] reference
-    #   @return [String, nil] The reference that you want to navigate to
     ExpressionNavigateOptsPayloadV2 = Model.define(
       reference: :string
     )
+
+    class ExpressionNavigateOptsPayloadV2
+      # @!attribute [r] reference
+      #   The reference that you want to navigate to
+      #   @return [String, nil]
+    end
   end
 end

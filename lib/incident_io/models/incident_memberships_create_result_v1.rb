@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_membership
-    #   @return [IncidentMembershipV1, nil]
     IncidentMembershipsCreateResultV1 = Model.define(
       incident_membership: -> { IncidentMembershipV1 }
     )
+
+    class IncidentMembershipsCreateResultV1
+      # @!attribute [r] incident_membership
+      #   The incident_membership field
+      #   @return [IncidentMembershipV1, nil]
+    end
   end
 end

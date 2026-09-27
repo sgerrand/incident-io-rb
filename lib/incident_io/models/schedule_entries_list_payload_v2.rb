@@ -5,6 +5,12 @@
 
 module IncidentIo
   module Models
+    ScheduleEntriesListPayloadV2 = Model.define(
+      final: [-> { ScheduleEntryV2 }],
+      overrides: [-> { ScheduleEntryV2 }],
+      scheduled: [-> { ScheduleEntryV2 }]
+    )
+
     # The schedule entries for a window of time, grouped by where they come from.
     #
     # `scheduled` are the entries produced by the schedule's rotation rules before
@@ -12,17 +18,16 @@ module IncidentIo
     # apply within the window. `final` is the effective schedule after overrides
     # have been merged in — this is normally the list to use when working out who
     # is on-call.
-    #
-    # @!attribute [r] final
-    #   @return [Array<ScheduleEntryV2>, nil] The effective schedule after overrides have been merged in
-    # @!attribute [r] overrides
-    #   @return [Array<ScheduleEntryV2>, nil] Overrides that apply within the requested window
-    # @!attribute [r] scheduled
-    #   @return [Array<ScheduleEntryV2>, nil] Entries from the schedule's rotation rules, before overrides are applied
-    ScheduleEntriesListPayloadV2 = Model.define(
-      final: [-> { ScheduleEntryV2 }],
-      overrides: [-> { ScheduleEntryV2 }],
-      scheduled: [-> { ScheduleEntryV2 }]
-    )
+    class ScheduleEntriesListPayloadV2
+      # @!attribute [r] final
+      #   The effective schedule after overrides have been merged in
+      #   @return [Array<ScheduleEntryV2>, nil]
+      # @!attribute [r] overrides
+      #   Overrides that apply within the requested window
+      #   @return [Array<ScheduleEntryV2>, nil]
+      # @!attribute [r] scheduled
+      #   Entries from the schedule's rotation rules, before overrides are applied
+      #   @return [Array<ScheduleEntryV2>, nil]
+    end
   end
 end

@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_id
-    #   @return [String, nil] The incident the call was made for, when incident-scoped
-    # @!attribute [r] outcome
-    #   @return [String, nil] How the call ended (success, error)
-    # @!attribute [r] source_kind
-    #   @return [String, nil] The kind of connector that was called (mcp, http)
-    # @!attribute [r] surface
-    #   @return [String, nil] The product surface the call ran from (chat, investigation, explore, mcp_client, verify), or internal for system paths with no surface
-    # @!attribute [r] telemetry_query_id
-    #   @return [String, nil] ID of our stored record of this call
-    # @!attribute [r] write
-    #   @return [String, nil] Whether the call was permitted to change the connected system (true, false)
     AuditLogExtensionConnectorCalledMetadataV2V2 = Model.define(
       incident_id: :string,
       outcome: :string,
@@ -25,5 +13,26 @@ module IncidentIo
       telemetry_query_id: :string,
       write: :string
     )
+
+    class AuditLogExtensionConnectorCalledMetadataV2V2
+      # @!attribute [r] incident_id
+      #   The incident the call was made for, when incident-scoped
+      #   @return [String, nil]
+      # @!attribute [r] outcome
+      #   How the call ended (success, error)
+      #   @return [String, nil]
+      # @!attribute [r] source_kind
+      #   The kind of connector that was called (mcp, http)
+      #   @return [String, nil]
+      # @!attribute [r] surface
+      #   The product surface the call ran from (chat, investigation, explore,…
+      #   @return [String, nil]
+      # @!attribute [r] telemetry_query_id
+      #   ID of our stored record of this call
+      #   @return [String, nil]
+      # @!attribute [r] write
+      #   Whether the call was permitted to change the connected system (true, false)
+      #   @return [String, nil]
+    end
   end
 end

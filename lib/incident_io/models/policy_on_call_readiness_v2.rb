@@ -5,18 +5,23 @@
 
 module IncidentIo
   module Models
-    # Set when policy_type is on_call_readiness. The assignee is always the user the finding is about and cannot be configured.
-    #
-    # @!attribute [r] enforcement
-    #   @return [String, nil] advisory reports only; blocking also prevents users saving non-compliant notification rules.
-    # @!attribute [r] high_urgency
-    #   @return [Array<PolicyReadinessRuleV2>, nil]
-    # @!attribute [r] low_urgency
-    #   @return [Array<PolicyReadinessRuleV2>, nil]
     PolicyOnCallReadinessV2 = Model.define(
       enforcement: :string,
       high_urgency: [-> { PolicyReadinessRuleV2 }],
       low_urgency: [-> { PolicyReadinessRuleV2 }]
     )
+
+    # Set when policy_type is on_call_readiness. The assignee is always the user the finding is about and cannot be configured.
+    class PolicyOnCallReadinessV2
+      # @!attribute [r] enforcement
+      #   advisory reports only; blocking also prevents users saving non-compliant…
+      #   @return [String, nil]
+      # @!attribute [r] high_urgency
+      #   The high_urgency field
+      #   @return [Array<PolicyReadinessRuleV2>, nil]
+      # @!attribute [r] low_urgency
+      #   The low_urgency field
+      #   @return [Array<PolicyReadinessRuleV2>, nil]
+    end
   end
 end

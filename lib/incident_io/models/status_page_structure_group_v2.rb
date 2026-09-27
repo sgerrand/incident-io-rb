@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] components
-    #   @return [Array<StatusPageStructureComponentV2>, nil] Array of components belonging to this group
-    # @!attribute [r] id
-    #   @return [String, nil] Unique ID of this component group
-    # @!attribute [r] name
-    #   @return [String, nil] The name of this component group
     StatusPageStructureGroupV2 = Model.define(
       components: [-> { StatusPageStructureComponentV2 }],
       id: :string,
       name: :string
     )
+
+    class StatusPageStructureGroupV2
+      # @!attribute [r] components
+      #   Array of components belonging to this group
+      #   @return [Array<StatusPageStructureComponentV2>, nil]
+      # @!attribute [r] id
+      #   Unique ID of this component group
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   The name of this component group
+      #   @return [String, nil]
+    end
   end
 end

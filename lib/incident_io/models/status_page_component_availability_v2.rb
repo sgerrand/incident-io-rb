@@ -5,20 +5,6 @@
 
 module IncidentIo
   module Models
-    # Availability of a status page component over a requested time window.
-    #
-    # @!attribute [r] availability_percent
-    #   @return [String, nil] Availability over the window as a percentage, floored (for example "99.94").
-    # @!attribute [r] component_id
-    #   @return [String, nil] ID of the component.
-    # @!attribute [r] data_available_since
-    #   @return [Time, nil] Earliest time we have status data for this component.
-    # @!attribute [r] end_at
-    #   @return [Time, nil] End of the requested availability window
-    # @!attribute [r] start_at
-    #   @return [Time, nil] Start of the requested availability window
-    # @!attribute [r] status_page_id
-    #   @return [String, nil] ID of the status page
     StatusPageComponentAvailabilityV2 = Model.define(
       availability_percent: :string,
       component_id: :string,
@@ -27,5 +13,27 @@ module IncidentIo
       start_at: :time,
       status_page_id: :string
     )
+
+    # Availability of a status page component over a requested time window.
+    class StatusPageComponentAvailabilityV2
+      # @!attribute [r] availability_percent
+      #   Availability over the window as a percentage, floored (for example "99.94")
+      #   @return [String, nil]
+      # @!attribute [r] component_id
+      #   ID of the component
+      #   @return [String, nil]
+      # @!attribute [r] data_available_since
+      #   Earliest time we have status data for this component
+      #   @return [Time, nil]
+      # @!attribute [r] end_at
+      #   End of the requested availability window
+      #   @return [Time, nil]
+      # @!attribute [r] start_at
+      #   Start of the requested availability window
+      #   @return [Time, nil]
+      # @!attribute [r] status_page_id
+      #   ID of the status page
+      #   @return [String, nil]
+    end
   end
 end

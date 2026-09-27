@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] literal
-    #   @return [String, nil] If set, this is the literal value of the step parameter
-    # @!attribute [r] reference
-    #   @return [String, nil] If set, this is the reference into the trigger scope that is the value of this parameter
     EngineParamBindingValuePayloadV3 = Model.define(
       literal: :string,
       reference: :string
     )
+
+    class EngineParamBindingValuePayloadV3
+      # @!attribute [r] literal
+      #   If set, this is the literal value of the step parameter
+      #   @return [String, nil]
+      # @!attribute [r] reference
+      #   If set, this is the reference into the trigger scope that is the value of…
+      #   @return [String, nil]
+    end
   end
 end

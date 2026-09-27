@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] The unique identifier for this set of working intervals
-    # @!attribute [r] name
-    #   @return [String, nil] A human readable label for this set of working intervals
-    # @!attribute [r] timezone
-    #   @return [String, nil] How to interpret all the intervals
-    # @!attribute [r] weekday_intervals
-    #   @return [Array<WeekdayIntervalV2>, nil]
     WeekdayIntervalConfigV2 = Model.define(
       id: :string,
       name: :string,
       timezone: :string,
       weekday_intervals: [-> { WeekdayIntervalV2 }]
     )
+
+    class WeekdayIntervalConfigV2
+      # @!attribute [r] id
+      #   The unique identifier for this set of working intervals
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   A human readable label for this set of working intervals
+      #   @return [String, nil]
+      # @!attribute [r] timezone
+      #   How to interpret all the intervals
+      #   @return [String, nil]
+      # @!attribute [r] weekday_intervals
+      #   The weekday_intervals field
+      #   @return [Array<WeekdayIntervalV2>, nil]
+    end
   end
 end

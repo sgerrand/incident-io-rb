@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] options
-    #   @return [Array<CallRouteOptionV2>, nil]
     CallRoutesListOptionsResultV2 = Model.define(
       options: [-> { CallRouteOptionV2 }]
     )
+
+    class CallRoutesListOptionsResultV2
+      # @!attribute [r] options
+      #   The options field
+      #   @return [Array<CallRouteOptionV2>, nil]
+    end
   end
 end

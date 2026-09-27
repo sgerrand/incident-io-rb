@@ -10,7 +10,7 @@ module IncidentIo
       #
       # Alert sources are the systems that send alerts to incident.io, which can then be routed to the right people and teams.
       class AlertSources < Resource
-        # Create a new alert source in your account.
+        # Create a new alert source in your account
         #
         # Endpoint: `POST /v2/alert_sources`. Scopes: alert_source.create.
         #
@@ -72,7 +72,7 @@ module IncidentIo
           )
         end
 
-        # Delete an existing alert source in your account.
+        # Delete an existing alert source in your account
         #
         # Endpoint: `DELETE /v2/alert_sources/{id}`. Scopes: alert_source.destroy.
         #
@@ -87,7 +87,7 @@ module IncidentIo
           )
         end
 
-        # List all alert sources in your account.
+        # List all alert sources in your account
         #
         # Endpoint: `GET /v2/alert_sources`. Scopes: alert_sources.view.
         #
@@ -103,7 +103,7 @@ module IncidentIo
           )
         end
 
-        # Load details about a specific alert source in your account.
+        # Load details about a specific alert source in your account
         #
         # Endpoint: `GET /v2/alert_sources/{id}`. Scopes: alert_sources.view.
         #
@@ -120,7 +120,7 @@ module IncidentIo
           )
         end
 
-        # Update an existing alert source in your account.
+        # Update an existing alert source in your account
         #
         # Endpoint: `PUT /v2/alert_sources/{id}`. Scopes: alert_source.update.
         #
@@ -184,6 +184,8 @@ module IncidentIo
           )
         end
 
+        # Check whether an alert source template is valid, without creating or updating…
+        #
         # Check whether an alert source template is valid, without creating or updating anything.
         #
         # This validates the template in the same way a create or update would: expressions are

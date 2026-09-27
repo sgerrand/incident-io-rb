@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] reason
-    #   @return [String, nil] Why this finding is being dismissed
     PolicyFindingsDismissPayloadV2 = Model.define(
       reason: :string
     )
+
+    class PolicyFindingsDismissPayloadV2
+      # @!attribute [r] reason
+      #   Why this finding is being dismissed
+      #   @return [String, nil]
+    end
   end
 end

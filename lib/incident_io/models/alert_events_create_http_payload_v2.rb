@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] deduplication_key
-    #   @return [String, nil] A deduplication key which uniquely references this alert from your alert source.
-    # @!attribute [r] description
-    #   @return [String, nil] Description that optionally adds more detail to title.
-    # @!attribute [r] metadata
-    #   @return [Hash, nil] Any additional metadata that you've configured your alert source to parse
-    # @!attribute [r] source_url
-    #   @return [String, nil] If applicable, a link to the alert in the upstream system
-    # @!attribute [r] status
-    #   @return [String, nil] Current status of this alert One of: firing, resolved.
-    # @!attribute [r] title
-    #   @return [String, nil] The title of the alert, parsed from the alert payload according to the alert source configuration
     AlertEventsCreateHTTPPayloadV2 = Model.define(
       deduplication_key: :string,
       description: :string,
@@ -25,5 +13,26 @@ module IncidentIo
       status: :string,
       title: :string
     )
+
+    class AlertEventsCreateHTTPPayloadV2
+      # @!attribute [r] deduplication_key
+      #   A deduplication key which uniquely references this alert from your alert source
+      #   @return [String, nil]
+      # @!attribute [r] description
+      #   Description that optionally adds more detail to title
+      #   @return [String, nil]
+      # @!attribute [r] metadata
+      #   Any additional metadata that you've configured your alert source to parse
+      #   @return [Hash, nil]
+      # @!attribute [r] source_url
+      #   If applicable, a link to the alert in the upstream system
+      #   @return [String, nil]
+      # @!attribute [r] status
+      #   Current status of this alert One of: firing, resolved
+      #   @return [String, nil]
+      # @!attribute [r] title
+      #   The title of the alert, parsed from the alert payload according to the alert…
+      #   @return [String, nil]
+    end
   end
 end

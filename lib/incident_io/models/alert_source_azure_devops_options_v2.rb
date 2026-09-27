@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] project_ids
-    #   @return [Array<String>, nil] Which Azure DevOps projects should this alert source watch for work item updates?
     AlertSourceAzureDevopsOptionsV2 = Model.define(
       project_ids: [:string]
     )
+
+    class AlertSourceAzureDevopsOptionsV2
+      # @!attribute [r] project_ids
+      #   Which Azure DevOps projects should this alert source watch for work item…
+      #   @return [Array<String>, nil]
+    end
   end
 end

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] label
-    #   @return [String, nil] Human readable identifier for this step
-    # @!attribute [r] name
-    #   @return [String, nil] Unique name of the step in the engine
     StepConfigSlimV2 = Model.define(
       label: :string,
       name: :string
     )
+
+    class StepConfigSlimV2
+      # @!attribute [r] label
+      #   Human readable identifier for this step
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Unique name of the step in the engine
+      #   @return [String, nil]
+    end
   end
 end

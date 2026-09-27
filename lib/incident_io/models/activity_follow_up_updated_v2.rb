@@ -5,22 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] follow_up_id
-    #   @return [String, nil] The follow-up that changed.
-    # @!attribute [r] new_assignee
-    #   @return [UserV2, nil]
-    # @!attribute [r] new_status
-    #   @return [String, nil] Status after, when the status changed One of: outstanding, completed, deleted, not_doing.
-    # @!attribute [r] new_title
-    #   @return [String, nil] Title after, when the title changed
-    # @!attribute [r] previous_assignee
-    #   @return [UserV2, nil]
-    # @!attribute [r] previous_status
-    #   @return [String, nil] Status before, when the status changed One of: outstanding, completed, deleted, not_doing.
-    # @!attribute [r] previous_title
-    #   @return [String, nil] Title before, when the title changed
-    # @!attribute [r] updater
-    #   @return [ActorV2, nil]
     ActivityFollowUpUpdatedV2 = Model.define(
       follow_up_id: :string,
       new_assignee: -> { UserV2 },
@@ -31,5 +15,32 @@ module IncidentIo
       previous_title: :string,
       updater: -> { ActorV2 }
     )
+
+    class ActivityFollowUpUpdatedV2
+      # @!attribute [r] follow_up_id
+      #   The follow-up that changed
+      #   @return [String, nil]
+      # @!attribute [r] new_assignee
+      #   The new_assignee field
+      #   @return [UserV2, nil]
+      # @!attribute [r] new_status
+      #   Status after, when the status changed One of: outstanding, completed,…
+      #   @return [String, nil]
+      # @!attribute [r] new_title
+      #   Title after, when the title changed
+      #   @return [String, nil]
+      # @!attribute [r] previous_assignee
+      #   The previous_assignee field
+      #   @return [UserV2, nil]
+      # @!attribute [r] previous_status
+      #   Status before, when the status changed One of: outstanding, completed,…
+      #   @return [String, nil]
+      # @!attribute [r] previous_title
+      #   Title before, when the title changed
+      #   @return [String, nil]
+      # @!attribute [r] updater
+      #   The updater field
+      #   @return [ActorV2, nil]
+    end
   end
 end

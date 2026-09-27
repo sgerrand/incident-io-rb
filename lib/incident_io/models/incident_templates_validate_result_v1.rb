@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] warnings
-    #   @return [Array<IncidentTemplateValidateWarningV1>, nil] Anything suspect about this config that isn't severe enough to reject it.
     IncidentTemplatesValidateResultV1 = Model.define(
       warnings: [-> { IncidentTemplateValidateWarningV1 }]
     )
+
+    class IncidentTemplatesValidateResultV1
+      # @!attribute [r] warnings
+      #   Anything suspect about this config that isn't severe enough to reject it
+      #   @return [Array<IncidentTemplateValidateWarningV1>, nil]
+    end
   end
 end

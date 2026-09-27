@@ -10,7 +10,7 @@ module IncidentIo
       #
       # Users all have a single base role, and can be assigned multiple custom roles. They can be managed via your Slack workspace or SAML provider.
       class Users < Resource
-        # List users in your account.
+        # List users in your account
         #
         # Endpoint: `GET /v2/users`. Scopes: users.view.
         #
@@ -38,6 +38,8 @@ module IncidentIo
           )
         end
 
+        # List notification methods for a user
+        #
         # List notification methods for a user. Phone numbers are partially redacted unless the API key holds the notification_methods.view_unredacted scope.
         #
         # Endpoint: `GET /v2/users/{user_id}/notification_methods`. Scopes: notification_methods.view.
@@ -55,6 +57,8 @@ module IncidentIo
           )
         end
 
+        # List notification rules for a user
+        #
         # List notification rules for a user. Rules define how and when a user is notified for on-call pages. Only includes high_urgency and low_urgency rules; shift_changes rules are not returned.
         #
         # Endpoint: `GET /v2/users/{user_id}/notification_rules`. Scopes: notification_rules.view.
@@ -72,7 +76,7 @@ module IncidentIo
           )
         end
 
-        # Get a single user.
+        # Get a single user
         #
         # Endpoint: `GET /v2/users/{id}`. Scopes: users.view.
         #
@@ -89,6 +93,8 @@ module IncidentIo
           )
         end
 
+        # Show the paging provider that would be used to escalate to this user
+        #
         # Show the paging provider that would be used to escalate to this user. Reflects their explicit preference if set; otherwise resolves to the effective fallback (typically `native` for on-call seat users, or a linked external provider otherwise). May be omitted only when the user cannot be escalated to at all (no seat and no linked external user).
         #
         # Endpoint: `GET /v2/users/{user_id}/paging_provider`. Scopes: user_preferences.view.
@@ -105,7 +111,7 @@ module IncidentIo
           )
         end
 
-        # Update a user's preferred paging provider.
+        # Update a user's preferred paging provider
         #
         # Endpoint: `POST /v2/users/{user_id}/paging_provider`. Scopes: users.preferred_paging_provider.edit.
         #

@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] new_visibility
-    #   @return [String, nil] Visibility after the change One of: public, private.
-    # @!attribute [r] previous_visibility
-    #   @return [String, nil] Visibility before the change One of: public, private.
-    # @!attribute [r] updater
-    #   @return [ActorV2, nil]
     ActivityIncidentVisibilityChangedV2 = Model.define(
       new_visibility: :string,
       previous_visibility: :string,
       updater: -> { ActorV2 }
     )
+
+    class ActivityIncidentVisibilityChangedV2
+      # @!attribute [r] new_visibility
+      #   Visibility after the change One of: public, private
+      #   @return [String, nil]
+      # @!attribute [r] previous_visibility
+      #   Visibility before the change One of: public, private
+      #   @return [String, nil]
+      # @!attribute [r] updater
+      #   The updater field
+      #   @return [ActorV2, nil]
+    end
   end
 end

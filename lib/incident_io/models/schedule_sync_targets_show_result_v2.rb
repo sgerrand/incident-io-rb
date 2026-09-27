@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] schedule_sync_target
-    #   @return [ScheduleSyncTargetResourceV2, nil]
     ScheduleSyncTargetsShowResultV2 = Model.define(
       schedule_sync_target: -> { ScheduleSyncTargetResourceV2 }
     )
+
+    class ScheduleSyncTargetsShowResultV2
+      # @!attribute [r] schedule_sync_target
+      #   The schedule_sync_target field
+      #   @return [ScheduleSyncTargetResourceV2, nil]
+    end
   end
 end

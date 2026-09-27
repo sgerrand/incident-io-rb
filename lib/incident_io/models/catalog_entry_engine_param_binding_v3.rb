@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] array_value
-    #   @return [Array<CatalogEntryEngineParamBindingValueV3>, nil] If the attribute is multi-valued, the value will be returned here.
-    # @!attribute [r] value
-    #   @return [CatalogEntryEngineParamBindingValueV3, nil]
     CatalogEntryEngineParamBindingV3 = Model.define(
       array_value: [-> { CatalogEntryEngineParamBindingValueV3 }],
       value: -> { CatalogEntryEngineParamBindingValueV3 }
     )
+
+    class CatalogEntryEngineParamBindingV3
+      # @!attribute [r] array_value
+      #   If the attribute is multi-valued, the value will be returned here
+      #   @return [Array<CatalogEntryEngineParamBindingValueV3>, nil]
+      # @!attribute [r] value
+      #   The value field
+      #   @return [CatalogEntryEngineParamBindingValueV3, nil]
+    end
   end
 end

@@ -5,34 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] auto_resolve_incident_alerts
-    #   @return [Boolean, nil] Whether alerts from this source keep counting down to auto-resolve while attached to an incident.
-    # @!attribute [r] auto_resolve_timeout_minutes
-    #   @return [Integer, nil] When set, alerts from this source will automatically resolve after this many minutes.
-    # @!attribute [r] azure_devops_options
-    #   @return [AlertSourceAzureDevopsOptionsV2, nil]
-    # @!attribute [r] email_options
-    #   @return [AlertSourceEmailOptionsPayloadV2, nil]
-    # @!attribute [r] filter_condition_groups
-    #   @return [Array<ConditionGroupPayloadV2>, nil] Conditions an incoming event must match to be ingested from this source, evaluated against the event's payload and this source's expressions.
-    # @!attribute [r] fixed_team_id
-    #   @return [String, nil] Fix the team every alert from this source is attributed to.
-    # @!attribute [r] heartbeat_options
-    #   @return [AlertSourceHeartbeatOptionsPayloadV2, nil]
-    # @!attribute [r] http_custom_options
-    #   @return [AlertSourceHTTPCustomOptionsV2, nil]
-    # @!attribute [r] jira_options
-    #   @return [AlertSourceJiraOptionsV2, nil]
-    # @!attribute [r] name
-    #   @return [String, nil] Unique name of the alert source
-    # @!attribute [r] owning_team_ids
-    #   @return [Array<String>, nil] IDs of teams that own this alert source
-    # @!attribute [r] rate_limit_sharding
-    #   @return [AlertSourceRateLimitShardingV2, nil]
-    # @!attribute [r] source_type
-    #   @return [String, nil] Type of alert source One of: alertmanager, app_optics, azure_monitor, azure_devops, big_panda, bugsnag, checkly, chronosphere, cloudwatch, cloudflare, coralogix, cronitor, crowdstrike_falcon, dash0, datadog, dynatrace, elasticsearch, email, expel, github_issue, google_cloud, google_secops, grafana, heartbeat, http, http_custom, honeycomb, icinga2, incoming_calls, jira, jsm, logzio, monte_carlo, nagios, new_relic, opsgenie, prtg, pager_duty, panther, pingdom, posthog, runscope, sns, salesforce_case, sentry, sentry_metric, service_now, splunk, status_cake, status_page_views, sumo_logic, uptime, vercel, wiz, zendesk.
-    # @!attribute [r] template
-    #   @return [AlertTemplatePayloadV2, nil]
     AlertSourcesCreatePayloadV2 = Model.define(
       auto_resolve_incident_alerts: :boolean,
       auto_resolve_timeout_minutes: :integer,
@@ -49,5 +21,50 @@ module IncidentIo
       source_type: :string,
       template: -> { AlertTemplatePayloadV2 }
     )
+
+    class AlertSourcesCreatePayloadV2
+      # @!attribute [r] auto_resolve_incident_alerts
+      #   Whether alerts from this source keep counting down to auto-resolve while…
+      #   @return [Boolean, nil]
+      # @!attribute [r] auto_resolve_timeout_minutes
+      #   When set, alerts from this source will automatically resolve after this many…
+      #   @return [Integer, nil]
+      # @!attribute [r] azure_devops_options
+      #   The azure_devops_options field
+      #   @return [AlertSourceAzureDevopsOptionsV2, nil]
+      # @!attribute [r] email_options
+      #   The email_options field
+      #   @return [AlertSourceEmailOptionsPayloadV2, nil]
+      # @!attribute [r] filter_condition_groups
+      #   Conditions an incoming event must match to be ingested from this source,…
+      #   @return [Array<ConditionGroupPayloadV2>, nil]
+      # @!attribute [r] fixed_team_id
+      #   Fix the team every alert from this source is attributed to
+      #   @return [String, nil]
+      # @!attribute [r] heartbeat_options
+      #   The heartbeat_options field
+      #   @return [AlertSourceHeartbeatOptionsPayloadV2, nil]
+      # @!attribute [r] http_custom_options
+      #   The http_custom_options field
+      #   @return [AlertSourceHTTPCustomOptionsV2, nil]
+      # @!attribute [r] jira_options
+      #   The jira_options field
+      #   @return [AlertSourceJiraOptionsV2, nil]
+      # @!attribute [r] name
+      #   Unique name of the alert source
+      #   @return [String, nil]
+      # @!attribute [r] owning_team_ids
+      #   IDs of teams that own this alert source
+      #   @return [Array<String>, nil]
+      # @!attribute [r] rate_limit_sharding
+      #   The rate_limit_sharding field
+      #   @return [AlertSourceRateLimitShardingV2, nil]
+      # @!attribute [r] source_type
+      #   Type of alert source One of: alertmanager, app_optics, azure_monitor,…
+      #   @return [String, nil]
+      # @!attribute [r] template
+      #   The template field
+      #   @return [AlertTemplatePayloadV2, nil]
+    end
   end
 end

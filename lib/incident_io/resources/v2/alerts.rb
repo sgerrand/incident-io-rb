@@ -15,6 +15,8 @@ module IncidentIo
       #
       # If you'd like to view alerts connected to a particular incident, you can list incident alerts. You can filter by incident_id to find all alerts attached to a particular incident, or by alert_id to find the incident that a particular alert triggered.
       class Alerts < Resource
+        # Add tags to an alert without changing its existing tags
+        #
         # Add tags to an alert without changing its existing tags.
         #
         # Each tag is a name. A name that does not exist is created, except on private alerts,
@@ -38,6 +40,8 @@ module IncidentIo
           )
         end
 
+        # Attach an alert to an incident, creating the connection between them
+        #
         # Attach an alert to an incident, creating the connection between them.
         #
         # The API key also needs the 'manage incident alerts' scope, which is what actually relates
@@ -74,6 +78,8 @@ module IncidentIo
           )
         end
 
+        # List all alerts for your account
+        #
         # List all alerts for your account.
         #
         # This endpoint supports a number of filters, which can help find alerts matching certain
@@ -251,6 +257,8 @@ module IncidentIo
           )
         end
 
+        # List the alert tags in your organisation's vocabulary
+        #
         # List the alert tags in your organisation's vocabulary.
         #
         # Alert tags are the reusable labels you can apply to alerts. This endpoint lists the
@@ -299,6 +307,8 @@ module IncidentIo
           )
         end
 
+        # Remove tags from an alert without changing its other tags
+        #
         # Remove tags from an alert without changing its other tags.
         #
         # Each tag is a name. Tags that are not present on the alert are ignored.
@@ -320,6 +330,8 @@ module IncidentIo
           )
         end
 
+        # Resolve a currently firing alert
+        #
         # Resolve a currently firing alert.
         #
         # This marks the alert as resolved with the current time, attributing the resolution to the API key that made the request. Resolving an already-resolved alert is a no-op and returns the alert unchanged.
@@ -343,6 +355,8 @@ module IncidentIo
           )
         end
 
+        # Replace all tags on an alert
+        #
         # Replace all tags on an alert.
         #
         # Each tag is a name. A name that does not exist is created, except on private alerts,
@@ -383,6 +397,8 @@ module IncidentIo
           )
         end
 
+        # Confirm or detach the connection between an alert and an incident
+        #
         # Confirm or detach the connection between an alert and an incident.
         #
         # Set state to 'related' to confirm the connection, or 'unrelated' to detach the alert from

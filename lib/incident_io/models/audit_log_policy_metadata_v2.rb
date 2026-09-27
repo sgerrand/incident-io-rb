@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] run_on_private_incidents
-    #   @return [String, nil] Whether the policy evaluates private incidents
     AuditLogPolicyMetadataV2 = Model.define(
       run_on_private_incidents: :string
     )
+
+    class AuditLogPolicyMetadataV2
+      # @!attribute [r] run_on_private_incidents
+      #   Whether the policy evaluates private incidents
+      #   @return [String, nil]
+    end
   end
 end

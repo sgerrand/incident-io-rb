@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] external_id
-    #   @return [String, nil] ID of the resource in the external system
-    # @!attribute [r] permalink
-    #   @return [String, nil] URL of the resource
-    # @!attribute [r] resource_type
-    #   @return [String, nil] E.g.
-    # @!attribute [r] title
-    #   @return [String, nil] Title of resource
     ExternalResourceV1 = Model.define(
       external_id: :string,
       permalink: :string,
       resource_type: :string,
       title: :string
     )
+
+    class ExternalResourceV1
+      # @!attribute [r] external_id
+      #   ID of the resource in the external system
+      #   @return [String, nil]
+      # @!attribute [r] permalink
+      #   URL of the resource
+      #   @return [String, nil]
+      # @!attribute [r] resource_type
+      #   E.g
+      #   @return [String, nil]
+      # @!attribute [r] title
+      #   Title of resource
+      #   @return [String, nil]
+    end
   end
 end

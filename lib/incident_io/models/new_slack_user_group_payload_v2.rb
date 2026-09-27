@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the user group
-    # @!attribute [r] handle
-    #   @return [String, nil] Handle of the user group
-    # @!attribute [r] name
-    #   @return [String, nil] Name of the user group
-    # @!attribute [r] slack_team_id
-    #   @return [String, nil] Slack workspace ID where the user group should be created.
     NewSlackUserGroupPayloadV2 = Model.define(
       description: :string,
       handle: :string,
       name: :string,
       slack_team_id: :string
     )
+
+    class NewSlackUserGroupPayloadV2
+      # @!attribute [r] description
+      #   Description of the user group
+      #   @return [String, nil]
+      # @!attribute [r] handle
+      #   Handle of the user group
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name of the user group
+      #   @return [String, nil]
+      # @!attribute [r] slack_team_id
+      #   Slack workspace ID where the user group should be created
+      #   @return [String, nil]
+    end
   end
 end

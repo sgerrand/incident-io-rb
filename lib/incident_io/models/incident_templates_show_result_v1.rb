@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_template
-    #   @return [IncidentTemplateV1, nil]
     IncidentTemplatesShowResultV1 = Model.define(
       incident_template: -> { IncidentTemplateV1 }
     )
+
+    class IncidentTemplatesShowResultV1
+      # @!attribute [r] incident_template
+      #   The incident_template field
+      #   @return [IncidentTemplateV1, nil]
+    end
   end
 end

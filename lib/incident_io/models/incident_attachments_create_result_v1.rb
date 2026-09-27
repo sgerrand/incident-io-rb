@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_attachment
-    #   @return [IncidentAttachmentV1, nil]
     IncidentAttachmentsCreateResultV1 = Model.define(
       incident_attachment: -> { IncidentAttachmentV1 }
     )
+
+    class IncidentAttachmentsCreateResultV1
+      # @!attribute [r] incident_attachment
+      #   The incident_attachment field
+      #   @return [IncidentAttachmentV1, nil]
+    end
   end
 end

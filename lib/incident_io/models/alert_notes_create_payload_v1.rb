@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert_group_id
-    #   @return [String, nil] ID of the alert group to add the note to.
-    # @!attribute [r] alert_id
-    #   @return [String, nil] ID of the alert to add the note to.
-    # @!attribute [r] content
-    #   @return [String, nil] Markdown body of the note
     AlertNotesCreatePayloadV1 = Model.define(
       alert_group_id: :string,
       alert_id: :string,
       content: :string
     )
+
+    class AlertNotesCreatePayloadV1
+      # @!attribute [r] alert_group_id
+      #   ID of the alert group to add the note to
+      #   @return [String, nil]
+      # @!attribute [r] alert_id
+      #   ID of the alert to add the note to
+      #   @return [String, nil]
+      # @!attribute [r] content
+      #   Markdown body of the note
+      #   @return [String, nil]
+    end
   end
 end

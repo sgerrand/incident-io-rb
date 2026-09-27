@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] follow_up
-    #   @return [FollowUpV3, nil]
     FollowUpsCreateResultV3 = Model.define(
       follow_up: -> { FollowUpV3 }
     )
+
+    class FollowUpsCreateResultV3
+      # @!attribute [r] follow_up
+      #   The follow_up field
+      #   @return [FollowUpV3, nil]
+    end
   end
 end

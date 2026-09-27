@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] end_at
-    #   @return [Time, nil] When this rule stops applying
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name for this rule
-    # @!attribute [r] rate_cents
-    #   @return [Integer, nil] Rate paid while this rule applies, in the lowest denomination of the config's currency
-    # @!attribute [r] start_at
-    #   @return [Time, nil] When this rule starts applying
     PayConfigsUpdateOneOffRulePayloadV2 = Model.define(
       end_at: :time,
       name: :string,
       rate_cents: :integer,
       start_at: :time
     )
+
+    class PayConfigsUpdateOneOffRulePayloadV2
+      # @!attribute [r] end_at
+      #   When this rule stops applying
+      #   @return [Time, nil]
+      # @!attribute [r] name
+      #   Human readable name for this rule
+      #   @return [String, nil]
+      # @!attribute [r] rate_cents
+      #   Rate paid while this rule applies, in the lowest denomination of the config's…
+      #   @return [Integer, nil]
+      # @!attribute [r] start_at
+      #   When this rule starts applying
+      #   @return [Time, nil]
+    end
   end
 end

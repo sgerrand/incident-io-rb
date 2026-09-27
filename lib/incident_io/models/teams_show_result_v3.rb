@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] team
-    #   @return [TeamV3, nil]
     TeamsShowResultV3 = Model.define(
       team: -> { TeamV3 }
     )
+
+    class TeamsShowResultV3
+      # @!attribute [r] team
+      #   The team field
+      #   @return [TeamV3, nil]
+    end
   end
 end

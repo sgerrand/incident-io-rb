@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] api_keys
-    #   @return [Array<APIKeyV1>, nil]
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV1, nil]
     APIKeysListResultV1 = Model.define(
       api_keys: [-> { APIKeyV1 }],
       pagination_meta: -> { PaginationMetaResultV1 }
     )
+
+    class APIKeysListResultV1
+      # @!attribute [r] api_keys
+      #   The api_keys field
+      #   @return [Array<APIKeyV1>, nil]
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV1, nil]
+    end
   end
 end

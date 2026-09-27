@@ -5,19 +5,6 @@
 
 module IncidentIo
   module Models
-    # A single entry of a Scribe call transcript: one contiguous run of
-    # speech, or one in-call chat message, from one participant.
-    #
-    # @!attribute [r] content
-    #   @return [String, nil] What was said
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this transcript entry
-    # @!attribute [r] medium
-    #   @return [String, nil] Whether this entry was spoken aloud or sent as an in-call chat message One of: spoken, call_chat.
-    # @!attribute [r] participant_name
-    #   @return [String, nil] Name of the participant who spoke or sent the message, as reported by the call provider
-    # @!attribute [r] timestamp
-    #   @return [Time, nil] When the participant started speaking
     CallTranscriptEntryV2 = Model.define(
       content: :string,
       id: :string,
@@ -25,5 +12,25 @@ module IncidentIo
       participant_name: :string,
       timestamp: :time
     )
+
+    # A single entry of a Scribe call transcript: one contiguous run of
+    # speech, or one in-call chat message, from one participant.
+    class CallTranscriptEntryV2
+      # @!attribute [r] content
+      #   What was said
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this transcript entry
+      #   @return [String, nil]
+      # @!attribute [r] medium
+      #   Whether this entry was spoken aloud or sent as an in-call chat message One…
+      #   @return [String, nil]
+      # @!attribute [r] participant_name
+      #   Name of the participant who spoke or sent the message, as reported by the…
+      #   @return [String, nil]
+      # @!attribute [r] timestamp
+      #   When the participant started speaking
+      #   @return [Time, nil]
+    end
   end
 end

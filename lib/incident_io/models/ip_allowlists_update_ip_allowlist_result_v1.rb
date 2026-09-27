@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] ip_allowlist
-    #   @return [IPAllowlistV1, nil]
     IPAllowlistsUpdateIPAllowlistResultV1 = Model.define(
       ip_allowlist: -> { IPAllowlistV1 }
     )
+
+    class IPAllowlistsUpdateIPAllowlistResultV1
+      # @!attribute [r] ip_allowlist
+      #   The ip_allowlist field
+      #   @return [IPAllowlistV1, nil]
+    end
   end
 end

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] attribute_id
-    #   @return [String, nil] the ID of the attribute to use
-    # @!attribute [r] attribute_name
-    #   @return [String, nil] the name of the attribute to use
     CatalogTypeAttributePathItemV2 = Model.define(
       attribute_id: :string,
       attribute_name: :string
     )
+
+    class CatalogTypeAttributePathItemV2
+      # @!attribute [r] attribute_id
+      #   the ID of the attribute to use
+      #   @return [String, nil]
+      # @!attribute [r] attribute_name
+      #   the name of the attribute to use
+      #   @return [String, nil]
+    end
   end
 end

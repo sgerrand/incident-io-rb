@@ -16,7 +16,7 @@ module IncidentIo
       # config, a <code>schedule</code> policy carries <code>schedule</code> config, and so
       # on. Sending a block that doesn't match the policy type is rejected.
       class Policies < Resource
-        # Create a new policy.
+        # Create a new policy
         #
         # Endpoint: `POST /v2/policies`. Scopes: policies.create.
         #
@@ -72,6 +72,8 @@ module IncidentIo
           )
         end
 
+        # Archive a policy
+        #
         # Archive a policy. Archived policies stop evaluating and no longer appear in the API.
         #
         # Endpoint: `DELETE /v2/policies/{id}`. Scopes: policies.destroy.
@@ -87,7 +89,7 @@ module IncidentIo
           )
         end
 
-        # List all policies for an organisation.
+        # List all policies for an organisation
         #
         # Endpoint: `GET /v2/policies`. Scopes: policies.view.
         #
@@ -106,7 +108,7 @@ module IncidentIo
           )
         end
 
-        # Get a single policy.
+        # Get a single policy
         #
         # Endpoint: `GET /v2/policies/{id}`. Scopes: policies.view.
         #
@@ -123,6 +125,8 @@ module IncidentIo
           )
         end
 
+        # Update an existing policy
+        #
         # Update an existing policy.
         #
         # The <code>policy_type</code> of an existing policy cannot be changed: sending a

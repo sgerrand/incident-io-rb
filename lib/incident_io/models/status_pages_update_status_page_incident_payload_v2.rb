@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] name
-    #   @return [String, nil] A title for the incident
     StatusPagesUpdateStatusPageIncidentPayloadV2 = Model.define(
       name: :string
     )
+
+    class StatusPagesUpdateStatusPageIncidentPayloadV2
+      # @!attribute [r] name
+      #   A title for the incident
+      #   @return [String, nil]
+    end
   end
 end

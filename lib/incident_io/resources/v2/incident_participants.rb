@@ -8,6 +8,8 @@ module IncidentIo
     module V2
       # Read who participated in an incident and the role they took.
       class IncidentParticipants < Resource
+        # List the participants of an incident with the role they took
+        #
         # List the participants of an incident with the role they took.
         #
         # Participants are split into those who are actively helping with the incident and those who are

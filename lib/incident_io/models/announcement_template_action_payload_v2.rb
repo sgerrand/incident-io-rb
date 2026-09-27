@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] action_type
-    #   @return [String, nil] Type of this action One of: announcement_post_actions_homepage, announcement_post_actions_subscribe, announcement_post_actions_join_call, announcement_post_actions_jira_ticket, announcement_post_actions_internal_status_page, announcement_post_actions_public_status_page, announcement_post_actions_postmortem, announcement_post_actions_create_channel, announcement_post_actions_view_alert, announcement_post_actions_triage, announcement_post_actions_escalate, announcement_post_actions_share_update, announcement_post_actions_update_status, announcement_post_actions_request_access.
-    # @!attribute [r] emoji
-    #   @return [String, nil] Emoji shown on this action's button, as a Slack emoji name
-    # @!attribute [r] rank
-    #   @return [Integer, nil] Position of this action on the post, lowest first
     AnnouncementTemplateActionPayloadV2 = Model.define(
       action_type: :string,
       emoji: :string,
       rank: :integer
     )
+
+    class AnnouncementTemplateActionPayloadV2
+      # @!attribute [r] action_type
+      #   Type of this action One of: announcement_post_actions_homepage,…
+      #   @return [String, nil]
+      # @!attribute [r] emoji
+      #   Emoji shown on this action's button, as a Slack emoji name
+      #   @return [String, nil]
+      # @!attribute [r] rank
+      #   Position of this action on the post, lowest first
+      #   @return [Integer, nil]
+    end
   end
 end

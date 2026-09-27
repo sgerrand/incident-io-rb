@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] follow_ups
-    #   @return [Array<FollowUpV3>, nil]
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV3, nil]
     FollowUpsListResultV3 = Model.define(
       follow_ups: [-> { FollowUpV3 }],
       pagination_meta: -> { PaginationMetaResultV3 }
     )
+
+    class FollowUpsListResultV3
+      # @!attribute [r] follow_ups
+      #   The follow_ups field
+      #   @return [Array<FollowUpV3>, nil]
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV3, nil]
+    end
   end
 end

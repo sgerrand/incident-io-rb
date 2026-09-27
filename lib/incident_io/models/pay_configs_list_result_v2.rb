@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV2, nil]
-    # @!attribute [r] pay_configs
-    #   @return [Array<PayConfigV2>, nil]
     PayConfigsListResultV2 = Model.define(
       pagination_meta: -> { PaginationMetaResultV2 },
       pay_configs: [-> { PayConfigV2 }]
     )
+
+    class PayConfigsListResultV2
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV2, nil]
+      # @!attribute [r] pay_configs
+      #   The pay_configs field
+      #   @return [Array<PayConfigV2>, nil]
+    end
   end
 end

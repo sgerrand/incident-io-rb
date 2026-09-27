@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] new_status
-    #   @return [String, nil] The newly assigned status of the postmortem document One of: not_started, created, review, complete.
-    # @!attribute [r] postmortem_document
-    #   @return [PostmortemDocumentV1, nil]
-    # @!attribute [r] previous_status
-    #   @return [String, nil] The previous status of this postmortem document One of: not_started, created, review, complete.
     PostmortemDocumentWithStatusChangeV1 = Model.define(
       new_status: :string,
       postmortem_document: -> { PostmortemDocumentV1 },
       previous_status: :string
     )
+
+    class PostmortemDocumentWithStatusChangeV1
+      # @!attribute [r] new_status
+      #   The newly assigned status of the postmortem document One of: not_started,…
+      #   @return [String, nil]
+      # @!attribute [r] postmortem_document
+      #   The postmortem_document field
+      #   @return [PostmortemDocumentV1, nil]
+      # @!attribute [r] previous_status
+      #   The previous status of this postmortem document One of: not_started, created,…
+      #   @return [String, nil]
+    end
   end
 end

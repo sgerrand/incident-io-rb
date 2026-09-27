@@ -8,6 +8,8 @@ module IncidentIo
     module V2
       # Read how much time each participant has spent working on an incident.
       class IncidentParticipantWorkloads < Resource
+        # List the participants of an incident with their workload
+        #
         # List the participants of an incident with their workload.
         #
         # We calculate how much time each participant has spent working on the incident, aggregated

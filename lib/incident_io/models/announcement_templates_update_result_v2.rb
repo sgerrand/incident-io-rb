@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] announcement_template
-    #   @return [AnnouncementTemplateV2, nil]
     AnnouncementTemplatesUpdateResultV2 = Model.define(
       announcement_template: -> { AnnouncementTemplateV2 }
     )
+
+    class AnnouncementTemplatesUpdateResultV2
+      # @!attribute [r] announcement_template
+      #   The announcement_template field
+      #   @return [AnnouncementTemplateV2, nil]
+    end
   end
 end

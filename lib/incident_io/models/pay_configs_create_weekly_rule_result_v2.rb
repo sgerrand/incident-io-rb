@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] weekly_rule
-    #   @return [PayConfigWeeklyRuleV2, nil]
     PayConfigsCreateWeeklyRuleResultV2 = Model.define(
       weekly_rule: -> { PayConfigWeeklyRuleV2 }
     )
+
+    class PayConfigsCreateWeeklyRuleResultV2
+      # @!attribute [r] weekly_rule
+      #   The weekly_rule field
+      #   @return [PayConfigWeeklyRuleV2, nil]
+    end
   end
 end

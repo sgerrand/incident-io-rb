@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] failure_threshold
-    #   @return [Integer, nil] Number of consecutive missed pings before an alert fires.
-    # @!attribute [r] grace_period_seconds
-    #   @return [Integer, nil] How long after a missed ping before the heartbeat is considered late, in seconds.
-    # @!attribute [r] interval_seconds
-    #   @return [Integer, nil] How often a ping is expected, in seconds.
-    # @!attribute [r] ping_url
-    #   @return [String, nil] The URL to POST to in order to send a heartbeat ping.
     AlertSourceHeartbeatOptionsV2 = Model.define(
       failure_threshold: :integer,
       grace_period_seconds: :integer,
       interval_seconds: :integer,
       ping_url: :string
     )
+
+    class AlertSourceHeartbeatOptionsV2
+      # @!attribute [r] failure_threshold
+      #   Number of consecutive missed pings before an alert fires
+      #   @return [Integer, nil]
+      # @!attribute [r] grace_period_seconds
+      #   How long after a missed ping before the heartbeat is considered late, in…
+      #   @return [Integer, nil]
+      # @!attribute [r] interval_seconds
+      #   How often a ping is expected, in seconds
+      #   @return [Integer, nil]
+      # @!attribute [r] ping_url
+      #   The URL to POST to in order to send a heartbeat ping
+      #   @return [String, nil]
+    end
   end
 end

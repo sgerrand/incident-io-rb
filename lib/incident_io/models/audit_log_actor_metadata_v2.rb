@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert_source_id
-    #   @return [String, nil] The alert source the alert fired on (if it's an alert actor)
-    # @!attribute [r] api_key_roles
-    #   @return [String, nil] The roles that the API key has, separated by commas (if it's an API key actor)
-    # @!attribute [r] external_resource_external_id
-    #   @return [String, nil] The ID of the external resource in the 3rd party system (if it's an external resource actor)
-    # @!attribute [r] external_resource_type
-    #   @return [String, nil] The type of the external resource (if it's an external resource actor)
-    # @!attribute [r] user_base_role_slug
-    #   @return [String, nil] The base role slug of the user (if it's a user actor)
-    # @!attribute [r] user_custom_role_slugs
-    #   @return [String, nil] The custom role slugs of the user, separated by commas (if it's a user actor)
     AuditLogActorMetadataV2 = Model.define(
       alert_source_id: :string,
       api_key_roles: :string,
@@ -25,5 +13,26 @@ module IncidentIo
       user_base_role_slug: :string,
       user_custom_role_slugs: :string
     )
+
+    class AuditLogActorMetadataV2
+      # @!attribute [r] alert_source_id
+      #   The alert source the alert fired on (if it's an alert actor)
+      #   @return [String, nil]
+      # @!attribute [r] api_key_roles
+      #   The roles that the API key has, separated by commas (if it's an API key actor)
+      #   @return [String, nil]
+      # @!attribute [r] external_resource_external_id
+      #   The ID of the external resource in the 3rd party system (if it's an external…
+      #   @return [String, nil]
+      # @!attribute [r] external_resource_type
+      #   The type of the external resource (if it's an external resource actor)
+      #   @return [String, nil]
+      # @!attribute [r] user_base_role_slug
+      #   The base role slug of the user (if it's a user actor)
+      #   @return [String, nil]
+      # @!attribute [r] user_custom_role_slugs
+      #   The custom role slugs of the user, separated by commas (if it's a user actor)
+      #   @return [String, nil]
+    end
   end
 end

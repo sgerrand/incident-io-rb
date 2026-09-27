@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] user
-    #   @return [UserWithRolesV2, nil]
     UsersShowResultV2 = Model.define(
       user: -> { UserWithRolesV2 }
     )
+
+    class UsersShowResultV2
+      # @!attribute [r] user
+      #   The user field
+      #   @return [UserWithRolesV2, nil]
+    end
   end
 end

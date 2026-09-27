@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] binding
-    #   @return [EngineParamBindingPayloadV3, nil]
-    # @!attribute [r] channel_visibility
-    #   @return [String, nil] The visibility of the channel One of: public, private, dm, group_chat, assistant.
-    # @!attribute [r] group_alerts_summary
-    #   @return [Boolean, nil] Whether grouped alerts should render as a single group-summary message per channel
     AlertRouteChannelTargetPayloadV3 = Model.define(
       binding: -> { EngineParamBindingPayloadV3 },
       channel_visibility: :string,
       group_alerts_summary: :boolean
     )
+
+    class AlertRouteChannelTargetPayloadV3
+      # @!attribute [r] binding
+      #   The binding field
+      #   @return [EngineParamBindingPayloadV3, nil]
+      # @!attribute [r] channel_visibility
+      #   The visibility of the channel One of: public, private, dm, group_chat,…
+      #   @return [String, nil]
+      # @!attribute [r] group_alerts_summary
+      #   Whether grouped alerts should render as a single group-summary message per…
+      #   @return [Boolean, nil]
+    end
   end
 end

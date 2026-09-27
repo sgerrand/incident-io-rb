@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] external_id
-    #   @return [Integer, nil] External ID of this incident often prepended with 'INC-'
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier of this incident
-    # @!attribute [r] name
-    #   @return [String, nil] Name of this incident
     IncidentRelationshipDetailsV1 = Model.define(
       external_id: :integer,
       id: :string,
       name: :string
     )
+
+    class IncidentRelationshipDetailsV1
+      # @!attribute [r] external_id
+      #   External ID of this incident often prepended with 'INC-'
+      #   @return [Integer, nil]
+      # @!attribute [r] id
+      #   Unique identifier of this incident
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name of this incident
+      #   @return [String, nil]
+    end
   end
 end

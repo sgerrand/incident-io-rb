@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When the action was created
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the severity
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier of the severity
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name of the severity
-    # @!attribute [r] rank
-    #   @return [Integer, nil] Rank to help sort severities (lower numbers are less severe)
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When the action was last updated
     SeverityV1 = Model.define(
       created_at: :time,
       description: :string,
@@ -25,5 +13,26 @@ module IncidentIo
       rank: :integer,
       updated_at: :time
     )
+
+    class SeverityV1
+      # @!attribute [r] created_at
+      #   When the action was created
+      #   @return [Time, nil]
+      # @!attribute [r] description
+      #   Description of the severity
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier of the severity
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name of the severity
+      #   @return [String, nil]
+      # @!attribute [r] rank
+      #   Rank to help sort severities (lower numbers are less severe)
+      #   @return [Integer, nil]
+      # @!attribute [r] updated_at
+      #   When the action was last updated
+      #   @return [Time, nil]
+    end
   end
 end

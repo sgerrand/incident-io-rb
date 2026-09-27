@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] from
-    #   @return [String, nil] The access mode before the change
-    # @!attribute [r] to
-    #   @return [String, nil] The access mode after the change
     AuditLogTelemetryDataSourceAccessModeChangedMetadataV2 = Model.define(
       from: :string,
       to: :string
     )
+
+    class AuditLogTelemetryDataSourceAccessModeChangedMetadataV2
+      # @!attribute [r] from
+      #   The access mode before the change
+      #   @return [String, nil]
+      # @!attribute [r] to
+      #   The access mode after the change
+      #   @return [String, nil]
+    end
   end
 end

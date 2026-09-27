@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] annotations
-    #   @return [Hash{String => String}, nil] Annotations that can track metadata about the schedule
-    # @!attribute [r] config
-    #   @return [ScheduleConfigCreatePayloadV2, nil]
-    # @!attribute [r] holidays_public_config
-    #   @return [ScheduleHolidaysPublicConfigPayloadV2, nil]
-    # @!attribute [r] name
-    #   @return [String, nil] Name of the schedule
-    # @!attribute [r] team_ids
-    #   @return [Array<String>, nil] IDs of teams that own this schedule
-    # @!attribute [r] timezone
-    #   @return [String, nil] Timezone of the schedule
     ScheduleCreatePayloadV2 = Model.define(
       annotations: Model.map_of(:string),
       config: -> { ScheduleConfigCreatePayloadV2 },
@@ -25,5 +13,26 @@ module IncidentIo
       team_ids: [:string],
       timezone: :string
     )
+
+    class ScheduleCreatePayloadV2
+      # @!attribute [r] annotations
+      #   Annotations that can track metadata about the schedule
+      #   @return [Hash{String => String}, nil]
+      # @!attribute [r] config
+      #   The config field
+      #   @return [ScheduleConfigCreatePayloadV2, nil]
+      # @!attribute [r] holidays_public_config
+      #   The holidays_public_config field
+      #   @return [ScheduleHolidaysPublicConfigPayloadV2, nil]
+      # @!attribute [r] name
+      #   Name of the schedule
+      #   @return [String, nil]
+      # @!attribute [r] team_ids
+      #   IDs of teams that own this schedule
+      #   @return [Array<String>, nil]
+      # @!attribute [r] timezone
+      #   Timezone of the schedule
+      #   @return [String, nil]
+    end
   end
 end

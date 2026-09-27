@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] email
-    #   @return [String, nil] Email address of the user.
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier of the user
-    # @!attribute [r] name
-    #   @return [String, nil] Name of the user
-    # @!attribute [r] role
-    #   @return [String, nil] DEPRECATED: Role of the user as of March 9th 2023, this value is no longer updated.
-    # @!attribute [r] slack_user_id
-    #   @return [String, nil] Slack ID of the user
     UserV1 = Model.define(
       email: :string,
       id: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       role: :string,
       slack_user_id: :string
     )
+
+    class UserV1
+      # @!attribute [r] email
+      #   Email address of the user
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier of the user
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name of the user
+      #   @return [String, nil]
+      # @!attribute [r] role
+      #   DEPRECATED: Role of the user as of March 9th 2023, this value is no longer…
+      #   @return [String, nil]
+      # @!attribute [r] slack_user_id
+      #   Slack ID of the user
+      #   @return [String, nil]
+    end
   end
 end

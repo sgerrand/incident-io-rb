@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert_route
-    #   @return [AlertRouteV3, nil]
     AlertRoutesCreateResultV3 = Model.define(
       alert_route: -> { AlertRouteV3 }
     )
+
+    class AlertRoutesCreateResultV3
+      # @!attribute [r] alert_route
+      #   The alert_route field
+      #   @return [AlertRouteV3, nil]
+    end
   end
 end

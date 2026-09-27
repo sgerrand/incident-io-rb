@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] attributes
-    #   @return [Array<CatalogTypeAttributeV2>, nil] Attributes of this catalog type
-    # @!attribute [r] version
-    #   @return [Integer, nil] The version number of this schema
     CatalogTypeSchemaV2 = Model.define(
       attributes: [-> { CatalogTypeAttributeV2 }],
       version: :integer
     )
+
+    class CatalogTypeSchemaV2
+      # @!attribute [r] attributes
+      #   Attributes of this catalog type
+      #   @return [Array<CatalogTypeAttributeV2>, nil]
+      # @!attribute [r] version
+      #   The version number of this schema
+      #   @return [Integer, nil]
+    end
   end
 end

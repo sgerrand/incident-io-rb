@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] behaviour
-    #   @return [String, nil] The visibility behaviour after the update (private, visible, or ignore)
-    # @!attribute [r] connection_name
-    #   @return [String, nil] The name of the Merge.dev connection the policy belongs to
-    # @!attribute [r] previous_behaviour
-    #   @return [String, nil] The visibility behaviour before the update (private, visible, or ignore)
-    # @!attribute [r] provider_slug
-    #   @return [String, nil] The Merge.dev HRIS provider slug (e.g.
     AuditLogHrisTimeOffPolicyUpdatedMetadataV2 = Model.define(
       behaviour: :string,
       connection_name: :string,
       previous_behaviour: :string,
       provider_slug: :string
     )
+
+    class AuditLogHrisTimeOffPolicyUpdatedMetadataV2
+      # @!attribute [r] behaviour
+      #   The visibility behaviour after the update (private, visible, or ignore)
+      #   @return [String, nil]
+      # @!attribute [r] connection_name
+      #   The name of the Merge.dev connection the policy belongs to
+      #   @return [String, nil]
+      # @!attribute [r] previous_behaviour
+      #   The visibility behaviour before the update (private, visible, or ignore)
+      #   @return [String, nil]
+      # @!attribute [r] provider_slug
+      #   The Merge.dev HRIS provider slug (e.g
+      #   @return [String, nil]
+    end
   end
 end

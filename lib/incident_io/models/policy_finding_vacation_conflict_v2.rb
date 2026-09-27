@@ -5,20 +5,6 @@
 
 module IncidentIo
   module Models
-    # Set when policy_type is vacation_conflict. Someone is on call while on holiday.
-    #
-    # @!attribute [r] end_at
-    #   @return [Time, nil] When the conflict ends
-    # @!attribute [r] holiday_name
-    #   @return [String, nil] What the holiday is called in the external system
-    # @!attribute [r] rotation_id
-    #   @return [String, nil] The rotation the holiday conflicts with
-    # @!attribute [r] schedule_id
-    #   @return [String, nil] The schedule the holiday conflicts with
-    # @!attribute [r] start_at
-    #   @return [Time, nil] When the conflict starts
-    # @!attribute [r] user_id
-    #   @return [String, nil] The user on holiday
     PolicyFindingVacationConflictV2 = Model.define(
       end_at: :time,
       holiday_name: :string,
@@ -27,5 +13,27 @@ module IncidentIo
       start_at: :time,
       user_id: :string
     )
+
+    # Set when policy_type is vacation_conflict. Someone is on call while on holiday.
+    class PolicyFindingVacationConflictV2
+      # @!attribute [r] end_at
+      #   When the conflict ends
+      #   @return [Time, nil]
+      # @!attribute [r] holiday_name
+      #   What the holiday is called in the external system
+      #   @return [String, nil]
+      # @!attribute [r] rotation_id
+      #   The rotation the holiday conflicts with
+      #   @return [String, nil]
+      # @!attribute [r] schedule_id
+      #   The schedule the holiday conflicts with
+      #   @return [String, nil]
+      # @!attribute [r] start_at
+      #   When the conflict starts
+      #   @return [Time, nil]
+      # @!attribute [r] user_id
+      #   The user on holiday
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,15 +5,19 @@
 
 module IncidentIo
   module Models
-    # Content of a rich text field. The type says how contents is written.
-    #
-    # @!attribute [r] contents
-    #   @return [String, nil] The content, as markdown.
-    # @!attribute [r] type
-    #   @return [String, nil] How contents is written.
     AnnouncementTemplateRichTextV2 = Model.define(
       contents: :string,
       type: :string
     )
+
+    # Content of a rich text field. The type says how contents is written.
+    class AnnouncementTemplateRichTextV2
+      # @!attribute [r] contents
+      #   The content, as markdown
+      #   @return [String, nil]
+      # @!attribute [r] type
+      #   How contents is written
+      #   @return [String, nil]
+    end
   end
 end

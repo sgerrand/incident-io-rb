@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] end_at
-    #   @return [Time, nil] End time of the override
-    # @!attribute [r] layer_id
-    #   @return [String, nil] The layer this override applies to
-    # @!attribute [r] rotation_id
-    #   @return [String, nil] The rotation this override applies to
-    # @!attribute [r] start_at
-    #   @return [Time, nil] Start time of the override
-    # @!attribute [r] user
-    #   @return [UserReferencePayloadV2, nil]
     SchedulesUpdateOverridePayloadV2 = Model.define(
       end_at: :time,
       layer_id: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       start_at: :time,
       user: -> { UserReferencePayloadV2 }
     )
+
+    class SchedulesUpdateOverridePayloadV2
+      # @!attribute [r] end_at
+      #   End time of the override
+      #   @return [Time, nil]
+      # @!attribute [r] layer_id
+      #   The layer this override applies to
+      #   @return [String, nil]
+      # @!attribute [r] rotation_id
+      #   The rotation this override applies to
+      #   @return [String, nil]
+      # @!attribute [r] start_at
+      #   Start time of the override
+      #   @return [Time, nil]
+      # @!attribute [r] user
+      #   The user field
+      #   @return [UserReferencePayloadV2, nil]
+    end
   end
 end

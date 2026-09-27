@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] The ID of the resource
     WebhookPrivateResourceV2 = Model.define(
       id: :string
     )
+
+    class WebhookPrivateResourceV2
+      # @!attribute [r] id
+      #   The ID of the resource
+      #   @return [String, nil]
+    end
   end
 end

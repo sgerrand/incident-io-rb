@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] conditions_apply_over_delay
-    #   @return [Boolean, nil] If this workflow is delayed, whether the conditions should be rechecked between trigger firing and execution
-    # @!attribute [r] for_seconds
-    #   @return [Integer, nil] Delay in seconds between trigger firing and running the workflow
     WorkflowDelayV2 = Model.define(
       conditions_apply_over_delay: :boolean,
       for_seconds: :integer
     )
+
+    class WorkflowDelayV2
+      # @!attribute [r] conditions_apply_over_delay
+      #   If this workflow is delayed, whether the conditions should be rechecked…
+      #   @return [Boolean, nil]
+      # @!attribute [r] for_seconds
+      #   Delay in seconds between trigger firing and running the workflow
+      #   @return [Integer, nil]
+    end
   end
 end

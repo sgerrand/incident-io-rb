@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert_tags
-    #   @return [Array<AlertTagV2>, nil]
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV2, nil]
     AlertsListAlertTagsResultV2 = Model.define(
       alert_tags: [-> { AlertTagV2 }],
       pagination_meta: -> { PaginationMetaResultV2 }
     )
+
+    class AlertsListAlertTagsResultV2
+      # @!attribute [r] alert_tags
+      #   The alert_tags field
+      #   @return [Array<AlertTagV2>, nil]
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV2, nil]
+    end
   end
 end

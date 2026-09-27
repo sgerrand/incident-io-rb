@@ -5,22 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When the update was created
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this incident update
-    # @!attribute [r] incident_id
-    #   @return [String, nil] The incident this update relates to
-    # @!attribute [r] merged_into_incident_id
-    #   @return [String, nil] The ID of the incident this incident was merged into, if the to state of this update is 'merged'.
-    # @!attribute [r] message
-    #   @return [String, nil] Message that explains the context behind the update
-    # @!attribute [r] new_incident_status
-    #   @return [IncidentStatusV2, nil]
-    # @!attribute [r] new_severity
-    #   @return [SeverityV2, nil]
-    # @!attribute [r] updater
-    #   @return [ActorV2, nil]
     IncidentUpdateV2 = Model.define(
       created_at: :time,
       id: :string,
@@ -31,5 +15,32 @@ module IncidentIo
       new_severity: -> { SeverityV2 },
       updater: -> { ActorV2 }
     )
+
+    class IncidentUpdateV2
+      # @!attribute [r] created_at
+      #   When the update was created
+      #   @return [Time, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this incident update
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   The incident this update relates to
+      #   @return [String, nil]
+      # @!attribute [r] merged_into_incident_id
+      #   The ID of the incident this incident was merged into, if the to state of this…
+      #   @return [String, nil]
+      # @!attribute [r] message
+      #   Message that explains the context behind the update
+      #   @return [String, nil]
+      # @!attribute [r] new_incident_status
+      #   The new_incident_status field
+      #   @return [IncidentStatusV2, nil]
+      # @!attribute [r] new_severity
+      #   The new_severity field
+      #   @return [SeverityV2, nil]
+      # @!attribute [r] updater
+      #   The updater field
+      #   @return [ActorV2, nil]
+    end
   end
 end

@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] action_id
-    #   @return [String, nil] The action that changed.
-    # @!attribute [r] new_assignee
-    #   @return [UserV2, nil]
-    # @!attribute [r] new_status
-    #   @return [String, nil] Status after, when the status changed One of: outstanding, completed, deleted, not_doing.
-    # @!attribute [r] previous_assignee
-    #   @return [UserV2, nil]
-    # @!attribute [r] previous_status
-    #   @return [String, nil] Status before, when the status changed One of: outstanding, completed, deleted, not_doing.
-    # @!attribute [r] updater
-    #   @return [ActorV2, nil]
     ActivityActionUpdatedV2 = Model.define(
       action_id: :string,
       new_assignee: -> { UserV2 },
@@ -25,5 +13,26 @@ module IncidentIo
       previous_status: :string,
       updater: -> { ActorV2 }
     )
+
+    class ActivityActionUpdatedV2
+      # @!attribute [r] action_id
+      #   The action that changed
+      #   @return [String, nil]
+      # @!attribute [r] new_assignee
+      #   The new_assignee field
+      #   @return [UserV2, nil]
+      # @!attribute [r] new_status
+      #   Status after, when the status changed One of: outstanding, completed,…
+      #   @return [String, nil]
+      # @!attribute [r] previous_assignee
+      #   The previous_assignee field
+      #   @return [UserV2, nil]
+      # @!attribute [r] previous_status
+      #   Status before, when the status changed One of: outstanding, completed,…
+      #   @return [String, nil]
+      # @!attribute [r] updater
+      #   The updater field
+      #   @return [ActorV2, nil]
+    end
   end
 end

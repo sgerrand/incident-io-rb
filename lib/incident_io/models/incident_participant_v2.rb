@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] participant_type
-    #   @return [String, nil] The role they took in the incident One of: observer, collaborator, responder.
-    # @!attribute [r] user
-    #   @return [UserV2, nil]
     IncidentParticipantV2 = Model.define(
       participant_type: :string,
       user: -> { UserV2 }
     )
+
+    class IncidentParticipantV2
+      # @!attribute [r] participant_type
+      #   The role they took in the incident One of: observer, collaborator, responder
+      #   @return [String, nil]
+      # @!attribute [r] user
+      #   The user field
+      #   @return [UserV2, nil]
+    end
   end
 end

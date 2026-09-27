@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_role
-    #   @return [IncidentRoleV1, nil]
     IncidentRolesCreateResultV1 = Model.define(
       incident_role: -> { IncidentRoleV1 }
     )
+
+    class IncidentRolesCreateResultV1
+      # @!attribute [r] incident_role
+      #   The incident_role field
+      #   @return [IncidentRoleV1, nil]
+    end
   end
 end

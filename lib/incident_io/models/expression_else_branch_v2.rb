@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] result
-    #   @return [EngineParamBindingV2, nil]
     ExpressionElseBranchV2 = Model.define(
       result: -> { EngineParamBindingV2 }
     )
+
+    class ExpressionElseBranchV2
+      # @!attribute [r] result
+      #   The result field
+      #   @return [EngineParamBindingV2, nil]
+    end
   end
 end

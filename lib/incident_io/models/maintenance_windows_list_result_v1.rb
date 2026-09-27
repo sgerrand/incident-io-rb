@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] maintenance_windows
-    #   @return [Array<MaintenanceWindowV1>, nil]
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV1, nil]
     MaintenanceWindowsListResultV1 = Model.define(
       maintenance_windows: [-> { MaintenanceWindowV1 }],
       pagination_meta: -> { PaginationMetaResultV1 }
     )
+
+    class MaintenanceWindowsListResultV1
+      # @!attribute [r] maintenance_windows
+      #   The maintenance_windows field
+      #   @return [Array<MaintenanceWindowV1>, nil]
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV1, nil]
+    end
   end
 end

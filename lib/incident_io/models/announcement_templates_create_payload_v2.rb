@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] actions
-    #   @return [Array<AnnouncementTemplateActionPayloadV2>, nil] Actions shown on the announcement post
-    # @!attribute [r] fields
-    #   @return [Array<AnnouncementTemplateFieldPayloadV2>, nil] Fields shown on the announcement post
-    # @!attribute [r] name
-    #   @return [String, nil] Name of this announcement template, unique within the organisation
-    # @!attribute [r] owning_team_ids
-    #   @return [Array<String>, nil] IDs of the teams that own this template
     AnnouncementTemplatesCreatePayloadV2 = Model.define(
       actions: [-> { AnnouncementTemplateActionPayloadV2 }],
       fields: [-> { AnnouncementTemplateFieldPayloadV2 }],
       name: :string,
       owning_team_ids: [:string]
     )
+
+    class AnnouncementTemplatesCreatePayloadV2
+      # @!attribute [r] actions
+      #   Actions shown on the announcement post
+      #   @return [Array<AnnouncementTemplateActionPayloadV2>, nil]
+      # @!attribute [r] fields
+      #   Fields shown on the announcement post
+      #   @return [Array<AnnouncementTemplateFieldPayloadV2>, nil]
+      # @!attribute [r] name
+      #   Name of this announcement template, unique within the organisation
+      #   @return [String, nil]
+      # @!attribute [r] owning_team_ids
+      #   IDs of the teams that own this template
+      #   @return [Array<String>, nil]
+    end
   end
 end

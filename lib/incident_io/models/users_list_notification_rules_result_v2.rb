@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] notification_rules
-    #   @return [Array<OnCallNotificationRulePublicV2>, nil]
     UsersListNotificationRulesResultV2 = Model.define(
       notification_rules: [-> { OnCallNotificationRulePublicV2 }]
     )
+
+    class UsersListNotificationRulesResultV2
+      # @!attribute [r] notification_rules
+      #   The notification_rules field
+      #   @return [Array<OnCallNotificationRulePublicV2>, nil]
+    end
   end
 end

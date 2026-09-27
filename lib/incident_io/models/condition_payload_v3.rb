@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] operation
-    #   @return [String, nil] The name of the operation on the subject
-    # @!attribute [r] param_bindings
-    #   @return [Array<EngineParamBindingPayloadV3>, nil] List of parameter bindings
-    # @!attribute [r] subject
-    #   @return [String, nil] The reference of the subject in the trigger scope
     ConditionPayloadV3 = Model.define(
       operation: :string,
       param_bindings: [-> { EngineParamBindingPayloadV3 }],
       subject: :string
     )
+
+    class ConditionPayloadV3
+      # @!attribute [r] operation
+      #   The name of the operation on the subject
+      #   @return [String, nil]
+      # @!attribute [r] param_bindings
+      #   List of parameter bindings
+      #   @return [Array<EngineParamBindingPayloadV3>, nil]
+      # @!attribute [r] subject
+      #   The reference of the subject in the trigger scope
+      #   @return [String, nil]
+    end
   end
 end

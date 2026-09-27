@@ -11,7 +11,7 @@ module IncidentIo
       # An announcement rule posts an announcement of each incident that matches its conditions
       # into the channels it lists, rendered with an announcement template.
       class AnnouncementRules < Resource
-        # Create an announcement rule.
+        # Create an announcement rule
         #
         # Endpoint: `POST /v2/announcement_rules`. Scopes: announcement_rules.create.
         #
@@ -61,7 +61,7 @@ module IncidentIo
           )
         end
 
-        # Delete an announcement rule.
+        # Delete an announcement rule
         #
         # Endpoint: `DELETE /v2/announcement_rules/{id}`. Scopes: announcement_rules.destroy.
         #
@@ -76,7 +76,7 @@ module IncidentIo
           )
         end
 
-        # List announcement rules for this organisation.
+        # List announcement rules for this organisation
         #
         # Endpoint: `GET /v2/announcement_rules`. Scopes: announcement_rules.view.
         #
@@ -94,7 +94,7 @@ module IncidentIo
           )
         end
 
-        # Show an announcement rule.
+        # Show an announcement rule
         #
         # Endpoint: `GET /v2/announcement_rules/{id}`. Scopes: announcement_rules.view.
         #
@@ -111,7 +111,7 @@ module IncidentIo
           )
         end
 
-        # Update an announcement rule.
+        # Update an announcement rule
         #
         # Endpoint: `PUT /v2/announcement_rules/{id}`. Scopes: announcement_rules.update.
         #

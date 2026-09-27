@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] call_route
-    #   @return [CallRouteV2, nil]
     CallRoutesUpdateResultV2 = Model.define(
       call_route: -> { CallRouteV2 }
     )
+
+    class CallRoutesUpdateResultV2
+      # @!attribute [r] call_route
+      #   The call_route field
+      #   @return [CallRouteV2, nil]
+    end
   end
 end

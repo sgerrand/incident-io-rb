@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] Unique internal ID of the schedule
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name of the schedule
-    # @!attribute [r] team_ids
-    #   @return [Array<String>, nil] IDs of teams that own this schedule
     LinkedScheduleV2 = Model.define(
       id: :string,
       name: :string,
       team_ids: [:string]
     )
+
+    class LinkedScheduleV2
+      # @!attribute [r] id
+      #   Unique internal ID of the schedule
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name of the schedule
+      #   @return [String, nil]
+      # @!attribute [r] team_ids
+      #   IDs of teams that own this schedule
+      #   @return [Array<String>, nil]
+    end
   end
 end

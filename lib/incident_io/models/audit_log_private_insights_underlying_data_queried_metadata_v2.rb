@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] measure
-    #   @return [String, nil] Name of the Insights measure
-    # @!attribute [r] outcome
-    #   @return [String, nil] Whether or not the user was able to access private Insights data One of: granted, denied.
     AuditLogPrivateInsightsUnderlyingDataQueriedMetadataV2 = Model.define(
       measure: :string,
       outcome: :string
     )
+
+    class AuditLogPrivateInsightsUnderlyingDataQueriedMetadataV2
+      # @!attribute [r] measure
+      #   Name of the Insights measure
+      #   @return [String, nil]
+      # @!attribute [r] outcome
+      #   Whether or not the user was able to access private Insights data One of:…
+      #   @return [String, nil]
+    end
   end
 end

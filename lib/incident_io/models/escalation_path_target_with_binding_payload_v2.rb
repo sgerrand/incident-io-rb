@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] binding
-    #   @return [EngineParamBindingPayloadV2, nil]
-    # @!attribute [r] id
-    #   @return [String, nil] Uniquely identifies a concrete target.
-    # @!attribute [r] schedule_mode
-    #   @return [String, nil] Only set for schedule targets, this specifies which users to fetch from the schedule.
-    # @!attribute [r] selected_rota_id
-    #   @return [String, nil] For schedule targets, identifies which rota on the schedule the schedule_mode applies to.
-    # @!attribute [r] type
-    #   @return [String, nil] Controls what type of entity this target identifies, such as EscalationPolicy or User One of: schedule, user, slack_channel, msteams_channel.
-    # @!attribute [r] urgency
-    #   @return [String, nil] The urgency of this escalation path target One of: high, low.
     EscalationPathTargetWithBindingPayloadV2 = Model.define(
       binding: -> { EngineParamBindingPayloadV2 },
       id: :string,
@@ -25,5 +13,26 @@ module IncidentIo
       type: :string,
       urgency: :string
     )
+
+    class EscalationPathTargetWithBindingPayloadV2
+      # @!attribute [r] binding
+      #   The binding field
+      #   @return [EngineParamBindingPayloadV2, nil]
+      # @!attribute [r] id
+      #   Uniquely identifies a concrete target
+      #   @return [String, nil]
+      # @!attribute [r] schedule_mode
+      #   Only set for schedule targets, this specifies which users to fetch from the…
+      #   @return [String, nil]
+      # @!attribute [r] selected_rota_id
+      #   For schedule targets, identifies which rota on the schedule the schedule_mode…
+      #   @return [String, nil]
+      # @!attribute [r] type
+      #   Controls what type of entity this target identifies, such as EscalationPolicy…
+      #   @return [String, nil]
+      # @!attribute [r] urgency
+      #   The urgency of this escalation path target One of: high, low
+      #   @return [String, nil]
+    end
   end
 end

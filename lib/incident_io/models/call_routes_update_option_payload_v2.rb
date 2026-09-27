@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] digit
-    #   @return [String, nil] The keypad digit a caller presses to choose this option One of: 1, 2, 3, 4, 5, 6, 7, 8, 9.
-    # @!attribute [r] path
-    #   @return [Array<CallRoutePathNodePayloadV2>, nil] Who to page when a caller chooses this option
-    # @!attribute [r] prompt
-    #   @return [String, nil] What we read out to offer this option, via text-to-speech in the route's language, exactly as written
     CallRoutesUpdateOptionPayloadV2 = Model.define(
       digit: :string,
       path: [-> { CallRoutePathNodePayloadV2 }],
       prompt: :string
     )
+
+    class CallRoutesUpdateOptionPayloadV2
+      # @!attribute [r] digit
+      #   The keypad digit a caller presses to choose this option One of: 1, 2, 3, 4,…
+      #   @return [String, nil]
+      # @!attribute [r] path
+      #   Who to page when a caller chooses this option
+      #   @return [Array<CallRoutePathNodePayloadV2>, nil]
+      # @!attribute [r] prompt
+      #   What we read out to offer this option, via text-to-speech in the route's…
+      #   @return [String, nil]
+    end
   end
 end

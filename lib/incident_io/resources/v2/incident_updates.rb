@@ -12,6 +12,8 @@ module IncidentIo
       # particular incident. This will include any time that the Severity or Status of
       # an incident changed, alongside any additional updates that were provided.
       class IncidentUpdates < Resource
+        # Share an update against an incident
+        #
         # Share an update against an incident.
         #
         # An update can carry a message, move the incident to a new status, change its severity,
@@ -49,7 +51,7 @@ module IncidentIo
           )
         end
 
-        # List all incident updates for an organisation, or for a specific incident.
+        # List all incident updates for an organisation, or for a specific incident
         #
         # Endpoint: `GET /v2/incident_updates`. Scopes: incidents.view.
         #

@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] reference
-    #   @return [String, nil] The reference that you want to concatenate with
     ExpressionConcatenateOptsPayloadV2 = Model.define(
       reference: :string
     )
+
+    class ExpressionConcatenateOptsPayloadV2
+      # @!attribute [r] reference
+      #   The reference that you want to concatenate with
+      #   @return [String, nil]
+    end
   end
 end

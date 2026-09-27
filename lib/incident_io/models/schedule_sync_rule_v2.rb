@@ -5,6 +5,18 @@
 
 module IncidentIo
   module Models
+    ScheduleSyncRuleV2 = Model.define(
+      created_at: :time,
+      id: :string,
+      permanent_member_user_ids: [:string],
+      rotation_id: :string,
+      schedule_id: :string,
+      schedule_sync_target: -> { ScheduleSyncTargetResourceV2 },
+      schedule_sync_target_id: :string,
+      sync_type: :string,
+      updated_at: :time
+    )
+
     # A sync rule links a schedule to a sync target, telling us which of the
     # schedule's members should flow into the target's Slack user group.
     #
@@ -22,35 +34,34 @@ module IncidentIo
     #
     # permanent_member_user_ids names users who stay in the group whichever way the
     # shifts fall, on top of whoever sync_type selects.
-    #
-    # @!attribute [r] created_at
-    #   @return [Time, nil]
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier of the sync rule
-    # @!attribute [r] permanent_member_user_ids
-    #   @return [Array<String>, nil] IDs of users always kept in the Slack user group, regardless of who is on call.
-    # @!attribute [r] rotation_id
-    #   @return [String, nil] If set, only members of this rotation sync to the user group.
-    # @!attribute [r] schedule_id
-    #   @return [String, nil] The schedule this rule belongs to
-    # @!attribute [r] schedule_sync_target
-    #   @return [ScheduleSyncTargetResourceV2, nil]
-    # @!attribute [r] schedule_sync_target_id
-    #   @return [String, nil] The sync target ID this rule links to
-    # @!attribute [r] sync_type
-    #   @return [String, nil] Which schedule members sync to the user group One of: on_call, all_users, next_on_call.
-    # @!attribute [r] updated_at
-    #   @return [Time, nil]
-    ScheduleSyncRuleV2 = Model.define(
-      created_at: :time,
-      id: :string,
-      permanent_member_user_ids: [:string],
-      rotation_id: :string,
-      schedule_id: :string,
-      schedule_sync_target: -> { ScheduleSyncTargetResourceV2 },
-      schedule_sync_target_id: :string,
-      sync_type: :string,
-      updated_at: :time
-    )
+    class ScheduleSyncRuleV2
+      # @!attribute [r] created_at
+      #   The created_at field
+      #   @return [Time, nil]
+      # @!attribute [r] id
+      #   Unique identifier of the sync rule
+      #   @return [String, nil]
+      # @!attribute [r] permanent_member_user_ids
+      #   IDs of users always kept in the Slack user group, regardless of who is on call
+      #   @return [Array<String>, nil]
+      # @!attribute [r] rotation_id
+      #   If set, only members of this rotation sync to the user group
+      #   @return [String, nil]
+      # @!attribute [r] schedule_id
+      #   The schedule this rule belongs to
+      #   @return [String, nil]
+      # @!attribute [r] schedule_sync_target
+      #   The schedule_sync_target field
+      #   @return [ScheduleSyncTargetResourceV2, nil]
+      # @!attribute [r] schedule_sync_target_id
+      #   The sync target ID this rule links to
+      #   @return [String, nil]
+      # @!attribute [r] sync_type
+      #   Which schedule members sync to the user group One of: on_call, all_users,…
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   The updated_at field
+      #   @return [Time, nil]
+    end
   end
 end

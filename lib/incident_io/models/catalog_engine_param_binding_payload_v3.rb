@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] array_value
-    #   @return [Array<CatalogEngineParamBindingValuePayloadV3>, nil] If set, this is the array value of the step parameter
-    # @!attribute [r] value
-    #   @return [CatalogEngineParamBindingValuePayloadV3, nil]
     CatalogEngineParamBindingPayloadV3 = Model.define(
       array_value: [-> { CatalogEngineParamBindingValuePayloadV3 }],
       value: -> { CatalogEngineParamBindingValuePayloadV3 }
     )
+
+    class CatalogEngineParamBindingPayloadV3
+      # @!attribute [r] array_value
+      #   If set, this is the array value of the step parameter
+      #   @return [Array<CatalogEngineParamBindingValuePayloadV3>, nil]
+      # @!attribute [r] value
+      #   The value field
+      #   @return [CatalogEngineParamBindingValuePayloadV3, nil]
+    end
   end
 end

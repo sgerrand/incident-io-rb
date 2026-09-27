@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] destinations
-    #   @return [Array<AlertMessageDestinationPayloadV3>, nil] The destinations (Slack/Teams channels) alert messages are sent to
-    # @!attribute [r] template
-    #   @return [EngineParamBindingPayloadV3, nil]
     AlertMessageConfigPayloadV3 = Model.define(
       destinations: [-> { AlertMessageDestinationPayloadV3 }],
       template: -> { EngineParamBindingPayloadV3 }
     )
+
+    class AlertMessageConfigPayloadV3
+      # @!attribute [r] destinations
+      #   The destinations (Slack/Teams channels) alert messages are sent to
+      #   @return [Array<AlertMessageDestinationPayloadV3>, nil]
+      # @!attribute [r] template
+      #   The template field
+      #   @return [EngineParamBindingPayloadV3, nil]
+    end
   end
 end

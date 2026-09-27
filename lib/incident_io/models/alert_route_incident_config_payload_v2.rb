@@ -5,20 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] auto_decline_enabled
-    #   @return [Boolean, nil] Should triage incidents be declined when alerts are resolved?
-    # @!attribute [r] auto_relate_grouped_alerts
-    #   @return [Boolean, nil] Should grouped alerts automatically be related to active incidents without confirmation?
-    # @!attribute [r] condition_groups
-    #   @return [Array<ConditionGroupPayloadV2>, nil] What condition groups must be true for this alert route to create an incident?
-    # @!attribute [r] defer_time_seconds
-    #   @return [Integer, nil] How long should the escalation defer time be?
-    # @!attribute [r] enabled
-    #   @return [Boolean, nil] Whether incident creation is enabled for this alert route
-    # @!attribute [r] grouping_keys
-    #   @return [Array<GroupingKeyV2>, nil] Which attributes should this alert route use to group alerts?
-    # @!attribute [r] grouping_window_seconds
-    #   @return [Integer, nil] How large should the grouping window be?
     AlertRouteIncidentConfigPayloadV2 = Model.define(
       auto_decline_enabled: :boolean,
       auto_relate_grouped_alerts: :boolean,
@@ -28,5 +14,29 @@ module IncidentIo
       grouping_keys: [-> { GroupingKeyV2 }],
       grouping_window_seconds: :integer
     )
+
+    class AlertRouteIncidentConfigPayloadV2
+      # @!attribute [r] auto_decline_enabled
+      #   Should triage incidents be declined when alerts are resolved?
+      #   @return [Boolean, nil]
+      # @!attribute [r] auto_relate_grouped_alerts
+      #   Should grouped alerts automatically be related to active incidents without…
+      #   @return [Boolean, nil]
+      # @!attribute [r] condition_groups
+      #   What condition groups must be true for this alert route to create an incident?
+      #   @return [Array<ConditionGroupPayloadV2>, nil]
+      # @!attribute [r] defer_time_seconds
+      #   How long should the escalation defer time be?
+      #   @return [Integer, nil]
+      # @!attribute [r] enabled
+      #   Whether incident creation is enabled for this alert route
+      #   @return [Boolean, nil]
+      # @!attribute [r] grouping_keys
+      #   Which attributes should this alert route use to group alerts?
+      #   @return [Array<GroupingKeyV2>, nil]
+      # @!attribute [r] grouping_window_seconds
+      #   How large should the grouping window be?
+      #   @return [Integer, nil]
+    end
   end
 end

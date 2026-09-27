@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] microsoft_teams_channel_id
-    #   @return [String, nil] ID of the Microsoft Teams channel, if there is one
-    # @!attribute [r] microsoft_teams_team_id
-    #   @return [String, nil] ID of the Microsoft Teams team, if there is one
-    # @!attribute [r] slack_channel_id
-    #   @return [String, nil] ID of the Slack channel, if there is one
-    # @!attribute [r] slack_team_id
-    #   @return [String, nil] ID of the Slack team, if there is one
     ChatChannelSlimV2 = Model.define(
       microsoft_teams_channel_id: :string,
       microsoft_teams_team_id: :string,
       slack_channel_id: :string,
       slack_team_id: :string
     )
+
+    class ChatChannelSlimV2
+      # @!attribute [r] microsoft_teams_channel_id
+      #   ID of the Microsoft Teams channel, if there is one
+      #   @return [String, nil]
+      # @!attribute [r] microsoft_teams_team_id
+      #   ID of the Microsoft Teams team, if there is one
+      #   @return [String, nil]
+      # @!attribute [r] slack_channel_id
+      #   ID of the Slack channel, if there is one
+      #   @return [String, nil]
+      # @!attribute [r] slack_team_id
+      #   ID of the Slack team, if there is one
+      #   @return [String, nil]
+    end
   end
 end

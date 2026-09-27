@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_id
-    #   @return [String, nil] Revoke memberships to incident
-    # @!attribute [r] user_id
-    #   @return [String, nil]
     IncidentMembershipsRevokePayloadV1 = Model.define(
       incident_id: :string,
       user_id: :string
     )
+
+    class IncidentMembershipsRevokePayloadV1
+      # @!attribute [r] incident_id
+      #   Revoke memberships to incident
+      #   @return [String, nil]
+      # @!attribute [r] user_id
+      #   The user_id field
+      #   @return [String, nil]
+    end
   end
 end

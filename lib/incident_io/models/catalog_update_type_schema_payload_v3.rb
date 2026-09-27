@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] attributes
-    #   @return [Array<CatalogTypeAttributePayloadV3>, nil]
-    # @!attribute [r] version
-    #   @return [Integer, nil]
     CatalogUpdateTypeSchemaPayloadV3 = Model.define(
       attributes: [-> { CatalogTypeAttributePayloadV3 }],
       version: :integer
     )
+
+    class CatalogUpdateTypeSchemaPayloadV3
+      # @!attribute [r] attributes
+      #   The attributes field
+      #   @return [Array<CatalogTypeAttributePayloadV3>, nil]
+      # @!attribute [r] version
+      #   The version field
+      #   @return [Integer, nil]
+    end
   end
 end

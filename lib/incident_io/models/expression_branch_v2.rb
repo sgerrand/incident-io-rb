@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] condition_groups
-    #   @return [Array<ConditionGroupV2>, nil] When one of these condition groups are satisfied, this branch will be evaluated
-    # @!attribute [r] result
-    #   @return [EngineParamBindingV2, nil]
     ExpressionBranchV2 = Model.define(
       condition_groups: [-> { ConditionGroupV2 }],
       result: -> { EngineParamBindingV2 }
     )
+
+    class ExpressionBranchV2
+      # @!attribute [r] condition_groups
+      #   When one of these condition groups are satisfied, this branch will be evaluated
+      #   @return [Array<ConditionGroupV2>, nil]
+      # @!attribute [r] result
+      #   The result field
+      #   @return [EngineParamBindingV2, nil]
+    end
   end
 end

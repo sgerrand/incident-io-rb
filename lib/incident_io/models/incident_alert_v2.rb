@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert
-    #   @return [AlertSlimV2, nil]
-    # @!attribute [r] alert_route_id
-    #   @return [String, nil] The ID of the alert route that created this incident alert
-    # @!attribute [r] id
-    #   @return [String, nil] The ID of this alert
-    # @!attribute [r] incident
-    #   @return [IncidentSlimV2, nil]
     IncidentAlertV2 = Model.define(
       alert: -> { AlertSlimV2 },
       alert_route_id: :string,
       id: :string,
       incident: -> { IncidentSlimV2 }
     )
+
+    class IncidentAlertV2
+      # @!attribute [r] alert
+      #   The alert field
+      #   @return [AlertSlimV2, nil]
+      # @!attribute [r] alert_route_id
+      #   The ID of the alert route that created this incident alert
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   The ID of this alert
+      #   @return [String, nil]
+      # @!attribute [r] incident
+      #   The incident field
+      #   @return [IncidentSlimV2, nil]
+    end
   end
 end

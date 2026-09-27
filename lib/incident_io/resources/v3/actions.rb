@@ -13,7 +13,7 @@ module IncidentIo
       # You can manage actions in the incident Slack channel with <code>/incident actions</code>, or on
       # the incident homepage.
       class Actions < Resource
-        # Create a new incident action.
+        # Create a new incident action
         #
         # Endpoint: `POST /v3/actions`. Scopes: actions.create.
         #
@@ -33,7 +33,7 @@ module IncidentIo
           )
         end
 
-        # Delete an incident action.
+        # Delete an incident action
         #
         # Endpoint: `DELETE /v3/actions/{id}`. Scopes: actions.destroy.
         #
@@ -48,6 +48,8 @@ module IncidentIo
           )
         end
 
+        # List actions for an organisation
+        #
         # List actions for an organisation.
         #
         # Results are paginated and ordered by action ID, oldest first. Use the <code>after</code>
@@ -105,7 +107,7 @@ module IncidentIo
           )
         end
 
-        # Get a single incident action.
+        # Get a single incident action
         #
         # Endpoint: `GET /v3/actions/{id}`. Scopes: actions.view.
         #
@@ -122,7 +124,7 @@ module IncidentIo
           )
         end
 
-        # Update an existing incident action.
+        # Update an existing incident action
         #
         # Endpoint: `PUT /v3/actions/{id}`. Scopes: actions.update.
         #

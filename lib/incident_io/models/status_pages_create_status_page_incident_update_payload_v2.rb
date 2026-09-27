@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] component_statuses
-    #   @return [Array<StatusPageIncidentAffectedComponentV2>, nil] An array of mappings from component ID to component status.
-    # @!attribute [r] incident_status
-    #   @return [String, nil] Optional new status for this status page incident.
-    # @!attribute [r] message
-    #   @return [String, nil] Markdown update on what's changed about this status page incident
-    # @!attribute [r] notify_subscribers
-    #   @return [Boolean, nil] Whether to notify subscribers about this incident update.
-    # @!attribute [r] status_page_incident_id
-    #   @return [String, nil] ID of the status page incident
     StatusPagesCreateStatusPageIncidentUpdatePayloadV2 = Model.define(
       component_statuses: [-> { StatusPageIncidentAffectedComponentV2 }],
       incident_status: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       notify_subscribers: :boolean,
       status_page_incident_id: :string
     )
+
+    class StatusPagesCreateStatusPageIncidentUpdatePayloadV2
+      # @!attribute [r] component_statuses
+      #   An array of mappings from component ID to component status
+      #   @return [Array<StatusPageIncidentAffectedComponentV2>, nil]
+      # @!attribute [r] incident_status
+      #   Optional new status for this status page incident
+      #   @return [String, nil]
+      # @!attribute [r] message
+      #   Markdown update on what's changed about this status page incident
+      #   @return [String, nil]
+      # @!attribute [r] notify_subscribers
+      #   Whether to notify subscribers about this incident update
+      #   @return [Boolean, nil]
+      # @!attribute [r] status_page_incident_id
+      #   ID of the status page incident
+      #   @return [String, nil]
+    end
   end
 end

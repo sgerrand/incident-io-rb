@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] custom_field
-    #   @return [CustomFieldTypeInfoV2, nil]
-    # @!attribute [r] new_values
-    #   @return [Array<CustomFieldValueV2>, nil] Values after the change, up to 100 of them
-    # @!attribute [r] new_values_count
-    #   @return [Integer, nil] How many values there are now, which can exceed the array above
-    # @!attribute [r] previous_values
-    #   @return [Array<CustomFieldValueV2>, nil] Values before the change, up to 100 of them
-    # @!attribute [r] previous_values_count
-    #   @return [Integer, nil] How many values there were before, which can exceed the array above
-    # @!attribute [r] updater
-    #   @return [ActorV2, nil]
     ActivityCustomFieldValueUpdateV2 = Model.define(
       custom_field: -> { CustomFieldTypeInfoV2 },
       new_values: [-> { CustomFieldValueV2 }],
@@ -25,5 +13,26 @@ module IncidentIo
       previous_values_count: :integer,
       updater: -> { ActorV2 }
     )
+
+    class ActivityCustomFieldValueUpdateV2
+      # @!attribute [r] custom_field
+      #   The custom_field field
+      #   @return [CustomFieldTypeInfoV2, nil]
+      # @!attribute [r] new_values
+      #   Values after the change, up to 100 of them
+      #   @return [Array<CustomFieldValueV2>, nil]
+      # @!attribute [r] new_values_count
+      #   How many values there are now, which can exceed the array above
+      #   @return [Integer, nil]
+      # @!attribute [r] previous_values
+      #   Values before the change, up to 100 of them
+      #   @return [Array<CustomFieldValueV2>, nil]
+      # @!attribute [r] previous_values_count
+      #   How many values there were before, which can exceed the array above
+      #   @return [Integer, nil]
+      # @!attribute [r] updater
+      #   The updater field
+      #   @return [ActorV2, nil]
+    end
   end
 end

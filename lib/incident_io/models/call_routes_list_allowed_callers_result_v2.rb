@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] allowed_callers
-    #   @return [Array<CallRouteAllowedCallerV2>, nil]
     CallRoutesListAllowedCallersResultV2 = Model.define(
       allowed_callers: [-> { CallRouteAllowedCallerV2 }]
     )
+
+    class CallRoutesListAllowedCallersResultV2
+      # @!attribute [r] allowed_callers
+      #   The allowed_callers field
+      #   @return [Array<CallRouteAllowedCallerV2>, nil]
+    end
   end
 end

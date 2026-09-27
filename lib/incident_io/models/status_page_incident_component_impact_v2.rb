@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] component_id
-    #   @return [String, nil] The ID of the affected component.
-    # @!attribute [r] component_status
-    #   @return [String, nil] The status of the relevant component impact in a status page incident - this excludes the operational status.
-    # @!attribute [r] end_at
-    #   @return [Time, nil] When the component left this status.
-    # @!attribute [r] start_at
-    #   @return [Time, nil] When the component entered this status
     StatusPageIncidentComponentImpactV2 = Model.define(
       component_id: :string,
       component_status: :string,
       end_at: :time,
       start_at: :time
     )
+
+    class StatusPageIncidentComponentImpactV2
+      # @!attribute [r] component_id
+      #   The ID of the affected component
+      #   @return [String, nil]
+      # @!attribute [r] component_status
+      #   The status of the relevant component impact in a status page incident - this…
+      #   @return [String, nil]
+      # @!attribute [r] end_at
+      #   When the component left this status
+      #   @return [Time, nil]
+      # @!attribute [r] start_at
+      #   When the component entered this status
+      #   @return [Time, nil]
+    end
   end
 end

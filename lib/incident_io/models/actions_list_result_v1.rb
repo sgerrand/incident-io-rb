@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] actions
-    #   @return [Array<ActionV1>, nil]
     ActionsListResultV1 = Model.define(
       actions: [-> { ActionV1 }]
     )
+
+    class ActionsListResultV1
+      # @!attribute [r] actions
+      #   The actions field
+      #   @return [Array<ActionV1>, nil]
+    end
   end
 end

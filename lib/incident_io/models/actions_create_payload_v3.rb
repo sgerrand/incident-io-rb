@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] assignee_id
-    #   @return [String, nil] ID of the user this action is assigned to
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the action.
-    # @!attribute [r] incident_id
-    #   @return [String, nil] Unique identifier of the incident the action belongs to
     ActionsCreatePayloadV3 = Model.define(
       assignee_id: :string,
       description: :string,
       incident_id: :string
     )
+
+    class ActionsCreatePayloadV3
+      # @!attribute [r] assignee_id
+      #   ID of the user this action is assigned to
+      #   @return [String, nil]
+      # @!attribute [r] description
+      #   Description of the action
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   Unique identifier of the incident the action belongs to
+      #   @return [String, nil]
+    end
   end
 end

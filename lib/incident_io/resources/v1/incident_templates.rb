@@ -8,7 +8,7 @@ module IncidentIo
     module V1
       # Manage incident templates: reusable sets of values applied to incidents created from alerts.
       class IncidentTemplates < Resource
-        # Create an incident template.
+        # Create an incident template
         #
         # Endpoint: `POST /v1/incident_templates`. Scopes: incident_template.create.
         #
@@ -28,6 +28,8 @@ module IncidentIo
           )
         end
 
+        # Archive an incident template
+        #
         # Archive an incident template. Fails if the template is still referenced by an alert route.
         #
         # Endpoint: `DELETE /v1/incident_templates/{id}`. Scopes: incident_template.destroy.
@@ -43,7 +45,7 @@ module IncidentIo
           )
         end
 
-        # List all incident templates for this organisation.
+        # List all incident templates for this organisation
         #
         # Endpoint: `GET /v1/incident_templates`. Scopes: incident_templates.view.
         #
@@ -61,7 +63,7 @@ module IncidentIo
           )
         end
 
-        # Show a single incident template.
+        # Show a single incident template
         #
         # Endpoint: `GET /v1/incident_templates/{id}`. Scopes: incident_templates.view.
         #
@@ -78,6 +80,8 @@ module IncidentIo
           )
         end
 
+        # Update an incident template
+        #
         # Update an incident template. This is a full replacement: any field not supplied is cleared.
         #
         # Endpoint: `PUT /v1/incident_templates/{id}`. Scopes: incident_template.update.
@@ -99,6 +103,8 @@ module IncidentIo
           )
         end
 
+        # Check whether an incident template's config is valid, without creating or…
+        #
         # Check whether an incident template's config is valid, without creating or updating anything.
         #
         # This validates in the same way a create or update would: expressions are compiled and checked

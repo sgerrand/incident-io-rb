@@ -5,48 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] condition_groups
-    #   @return [Array<ConditionGroupV2>, nil] Conditions that apply to the workflow trigger
-    # @!attribute [r] continue_on_step_error
-    #   @return [Boolean, nil] Whether to continue executing the workflow if a step fails
-    # @!attribute [r] delay
-    #   @return [WorkflowDelayV2, nil]
-    # @!attribute [r] expressions
-    #   @return [Array<ExpressionV2>, nil] Expressions that make variables available in the scope
-    # @!attribute [r] folder
-    #   @return [String, nil] Folder to display the workflow in
-    # @!attribute [r] form_fields
-    #   @return [Array<WorkflowFormFieldV2>, nil] User-configured form fields available in the workflow scope (manual triggers only)
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the workflow
-    # @!attribute [r] include_private_escalations
-    #   @return [Boolean, nil] Whether to include private escalations
-    # @!attribute [r] include_private_incidents
-    #   @return [Boolean, nil] DEPRECATED: use `private_incident_scope` instead.
-    # @!attribute [r] name
-    #   @return [String, nil] Name provided by the user when creating the workflow
-    # @!attribute [r] once_for
-    #   @return [Array<EngineReferenceV2>, nil] This workflow will run 'once for' a list of references
-    # @!attribute [r] owning_team_ids
-    #   @return [Array<String>, nil] IDs of the teams that own this workflow
-    # @!attribute [r] private_incident_scope
-    #   @return [String, nil] Which private incidents this workflow acts on: every private incident (all), those an owning team can see (owning_teams), or none One of: all, owning_teams, none.
-    # @!attribute [r] runs_from
-    #   @return [Time, nil] The time from which this workflow will run on incidents
-    # @!attribute [r] runs_on_incident_modes
-    #   @return [Array<String>, nil] Which incident modes should this workflow run on?
-    # @!attribute [r] runs_on_incidents
-    #   @return [String, nil] Which incidents should the workflow be applied to?
-    # @!attribute [r] shortform
-    #   @return [String, nil] The shortform used to trigger this workflow (only applicable for manual triggers)
-    # @!attribute [r] state
-    #   @return [String, nil] What state this workflow is in One of: active, disabled, draft, error.
-    # @!attribute [r] steps
-    #   @return [Array<StepConfigV2>, nil] Steps that are executed as part of the workflow
-    # @!attribute [r] trigger
-    #   @return [TriggerSlimV2, nil]
-    # @!attribute [r] version
-    #   @return [Integer, nil] Revision of the workflow, uniquely identifying it's version
     WorkflowV2 = Model.define(
       condition_groups: [-> { ConditionGroupV2 }],
       continue_on_step_error: :boolean,
@@ -70,5 +28,71 @@ module IncidentIo
       trigger: -> { TriggerSlimV2 },
       version: :integer
     )
+
+    class WorkflowV2
+      # @!attribute [r] condition_groups
+      #   Conditions that apply to the workflow trigger
+      #   @return [Array<ConditionGroupV2>, nil]
+      # @!attribute [r] continue_on_step_error
+      #   Whether to continue executing the workflow if a step fails
+      #   @return [Boolean, nil]
+      # @!attribute [r] delay
+      #   The delay field
+      #   @return [WorkflowDelayV2, nil]
+      # @!attribute [r] expressions
+      #   Expressions that make variables available in the scope
+      #   @return [Array<ExpressionV2>, nil]
+      # @!attribute [r] folder
+      #   Folder to display the workflow in
+      #   @return [String, nil]
+      # @!attribute [r] form_fields
+      #   User-configured form fields available in the workflow scope (manual triggers…
+      #   @return [Array<WorkflowFormFieldV2>, nil]
+      # @!attribute [r] id
+      #   Unique identifier for the workflow
+      #   @return [String, nil]
+      # @!attribute [r] include_private_escalations
+      #   Whether to include private escalations
+      #   @return [Boolean, nil]
+      # @!attribute [r] include_private_incidents
+      #   DEPRECATED: use `private_incident_scope` instead
+      #   @return [Boolean, nil]
+      # @!attribute [r] name
+      #   Name provided by the user when creating the workflow
+      #   @return [String, nil]
+      # @!attribute [r] once_for
+      #   This workflow will run 'once for' a list of references
+      #   @return [Array<EngineReferenceV2>, nil]
+      # @!attribute [r] owning_team_ids
+      #   IDs of the teams that own this workflow
+      #   @return [Array<String>, nil]
+      # @!attribute [r] private_incident_scope
+      #   Which private incidents this workflow acts on: every private incident (all),…
+      #   @return [String, nil]
+      # @!attribute [r] runs_from
+      #   The time from which this workflow will run on incidents
+      #   @return [Time, nil]
+      # @!attribute [r] runs_on_incident_modes
+      #   Which incident modes should this workflow run on?
+      #   @return [Array<String>, nil]
+      # @!attribute [r] runs_on_incidents
+      #   Which incidents should the workflow be applied to?
+      #   @return [String, nil]
+      # @!attribute [r] shortform
+      #   The shortform used to trigger this workflow (only applicable for manual…
+      #   @return [String, nil]
+      # @!attribute [r] state
+      #   What state this workflow is in One of: active, disabled, draft, error
+      #   @return [String, nil]
+      # @!attribute [r] steps
+      #   Steps that are executed as part of the workflow
+      #   @return [Array<StepConfigV2>, nil]
+      # @!attribute [r] trigger
+      #   The trigger field
+      #   @return [TriggerSlimV2, nil]
+      # @!attribute [r] version
+      #   Revision of the workflow, uniquely identifying it's version
+      #   @return [Integer, nil]
+    end
   end
 end

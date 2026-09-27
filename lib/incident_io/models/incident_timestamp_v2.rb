@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] Unique ID of this incident timestamp
-    # @!attribute [r] name
-    #   @return [String, nil] Unique name of this timestamp
-    # @!attribute [r] rank
-    #   @return [Integer, nil] Order in which this timestamp should be shown
     IncidentTimestampV2 = Model.define(
       id: :string,
       name: :string,
       rank: :integer
     )
+
+    class IncidentTimestampV2
+      # @!attribute [r] id
+      #   Unique ID of this incident timestamp
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Unique name of this timestamp
+      #   @return [String, nil]
+      # @!attribute [r] rank
+      #   Order in which this timestamp should be shown
+      #   @return [Integer, nil]
+    end
   end
 end

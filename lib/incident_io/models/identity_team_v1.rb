@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the team
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name of the team
     IdentityTeamV1 = Model.define(
       id: :string,
       name: :string
     )
+
+    class IdentityTeamV1
+      # @!attribute [r] id
+      #   Unique identifier for the team
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name of the team
+      #   @return [String, nil]
+    end
   end
 end

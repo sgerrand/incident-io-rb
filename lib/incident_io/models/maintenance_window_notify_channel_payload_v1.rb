@@ -5,18 +5,23 @@
 
 module IncidentIo
   module Models
-    # A channel to receive notifications about this maintenance window
-    #
-    # @!attribute [r] channel_id
-    #   @return [String, nil] The external provider channel ID (e.g.
-    # @!attribute [r] channel_name
-    #   @return [String, nil] Human readable name of the channel
-    # @!attribute [r] channel_type
-    #   @return [String, nil] The type of channel (e.g.
     MaintenanceWindowNotifyChannelPayloadV1 = Model.define(
       channel_id: :string,
       channel_name: :string,
       channel_type: :string
     )
+
+    # A channel to receive notifications about this maintenance window
+    class MaintenanceWindowNotifyChannelPayloadV1
+      # @!attribute [r] channel_id
+      #   The external provider channel ID (e.g
+      #   @return [String, nil]
+      # @!attribute [r] channel_name
+      #   Human readable name of the channel
+      #   @return [String, nil]
+      # @!attribute [r] channel_type
+      #   The type of channel (e.g
+      #   @return [String, nil]
+    end
   end
 end

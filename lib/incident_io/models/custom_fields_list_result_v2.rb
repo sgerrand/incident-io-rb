@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] custom_fields
-    #   @return [Array<CustomFieldV2>, nil]
     CustomFieldsListResultV2 = Model.define(
       custom_fields: [-> { CustomFieldV2 }]
     )
+
+    class CustomFieldsListResultV2
+      # @!attribute [r] custom_fields
+      #   The custom_fields field
+      #   @return [Array<CustomFieldV2>, nil]
+    end
   end
 end

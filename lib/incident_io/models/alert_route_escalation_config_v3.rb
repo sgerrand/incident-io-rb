@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] auto_cancel_escalations
-    #   @return [Boolean, nil] Should we auto cancel escalations when all alerts are resolved?
-    # @!attribute [r] escalation_targets
-    #   @return [Array<AlertRouteEscalationTargetV3>, nil] Targets for escalation
-    # @!attribute [r] when_alert_joins_group
-    #   @return [AlertRouteWhenAlertJoinsGroupV3, nil]
     AlertRouteEscalationConfigV3 = Model.define(
       auto_cancel_escalations: :boolean,
       escalation_targets: [-> { AlertRouteEscalationTargetV3 }],
       when_alert_joins_group: -> { AlertRouteWhenAlertJoinsGroupV3 }
     )
+
+    class AlertRouteEscalationConfigV3
+      # @!attribute [r] auto_cancel_escalations
+      #   Should we auto cancel escalations when all alerts are resolved?
+      #   @return [Boolean, nil]
+      # @!attribute [r] escalation_targets
+      #   Targets for escalation
+      #   @return [Array<AlertRouteEscalationTargetV3>, nil]
+      # @!attribute [r] when_alert_joins_group
+      #   The when_alert_joins_group field
+      #   @return [AlertRouteWhenAlertJoinsGroupV3, nil]
+    end
   end
 end

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] label
-    #   @return [String, nil] Human readable identifier for the subject
-    # @!attribute [r] reference
-    #   @return [String, nil] Reference into the scope for the value of the subject
     ConditionSubjectV2 = Model.define(
       label: :string,
       reference: :string
     )
+
+    class ConditionSubjectV2
+      # @!attribute [r] label
+      #   Human readable identifier for the subject
+      #   @return [String, nil]
+      # @!attribute [r] reference
+      #   Reference into the scope for the value of the subject
+      #   @return [String, nil]
+    end
   end
 end

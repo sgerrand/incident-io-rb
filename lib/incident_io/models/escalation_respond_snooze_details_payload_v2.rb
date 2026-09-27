@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] reason
-    #   @return [String, nil] Optional reason for snoozing the escalation
-    # @!attribute [r] snooze_until
-    #   @return [Time, nil] The time at which the snooze should end
     EscalationRespondSnoozeDetailsPayloadV2 = Model.define(
       reason: :string,
       snooze_until: :time
     )
+
+    class EscalationRespondSnoozeDetailsPayloadV2
+      # @!attribute [r] reason
+      #   Optional reason for snoozing the escalation
+      #   @return [String, nil]
+      # @!attribute [r] snooze_until
+      #   The time at which the snooze should end
+      #   @return [Time, nil]
+    end
   end
 end

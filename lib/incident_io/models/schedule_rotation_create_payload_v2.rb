@@ -5,26 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] effective_from
-    #   @return [Time, nil] When this version of the rotation takes effect.
-    # @!attribute [r] handover_start_at
-    #   @return [Time, nil] Determines when shifts change hands and who takes them: the first user in `users` comes on shift at this time, handing over to the next user after each `handovers` interval, cycling through the list — for example, weekly handovers from a Monday 09:00 give week-long shifts that change hands on Mondays at 09:00.
-    # @!attribute [r] handovers
-    #   @return [Array<ScheduleRotationHandoverV2>, nil] The cadence shifts hand over on.
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier of the rotation
-    # @!attribute [r] layers
-    #   @return [Array<ScheduleLayerCreatePayloadV2>, nil]
-    # @!attribute [r] name
-    #   @return [String, nil] Name of the rotation
-    # @!attribute [r] scheduling_mode
-    #   @return [String, nil] Scheduling algorithm to use for this rotation.
-    # @!attribute [r] users
-    #   @return [Array<UserReferencePayloadV2>, nil] The people in the rotation, in the order they take shifts.
-    # @!attribute [r] working_interval
-    #   @return [Array<ScheduleRotationWorkingIntervalCreatePayloadV2>, nil] DEPRECATED: Use working_intervals instead.
-    # @!attribute [r] working_intervals
-    #   @return [Array<ScheduleRotationWorkingIntervalCreatePayloadV2>, nil]
     ScheduleRotationCreatePayloadV2 = Model.define(
       effective_from: :time,
       handover_start_at: :time,
@@ -37,5 +17,38 @@ module IncidentIo
       working_interval: [-> { ScheduleRotationWorkingIntervalCreatePayloadV2 }],
       working_intervals: [-> { ScheduleRotationWorkingIntervalCreatePayloadV2 }]
     )
+
+    class ScheduleRotationCreatePayloadV2
+      # @!attribute [r] effective_from
+      #   When this version of the rotation takes effect
+      #   @return [Time, nil]
+      # @!attribute [r] handover_start_at
+      #   Determines when shifts change hands and who takes them: the first user in…
+      #   @return [Time, nil]
+      # @!attribute [r] handovers
+      #   The cadence shifts hand over on
+      #   @return [Array<ScheduleRotationHandoverV2>, nil]
+      # @!attribute [r] id
+      #   Unique identifier of the rotation
+      #   @return [String, nil]
+      # @!attribute [r] layers
+      #   The layers field
+      #   @return [Array<ScheduleLayerCreatePayloadV2>, nil]
+      # @!attribute [r] name
+      #   Name of the rotation
+      #   @return [String, nil]
+      # @!attribute [r] scheduling_mode
+      #   Scheduling algorithm to use for this rotation
+      #   @return [String, nil]
+      # @!attribute [r] users
+      #   The people in the rotation, in the order they take shifts
+      #   @return [Array<UserReferencePayloadV2>, nil]
+      # @!attribute [r] working_interval
+      #   DEPRECATED: Use working_intervals instead
+      #   @return [Array<ScheduleRotationWorkingIntervalCreatePayloadV2>, nil]
+      # @!attribute [r] working_intervals
+      #   The working_intervals field
+      #   @return [Array<ScheduleRotationWorkingIntervalCreatePayloadV2>, nil]
+    end
   end
 end

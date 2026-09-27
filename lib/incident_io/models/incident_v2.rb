@@ -5,72 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] call_url
-    #   @return [String, nil] The call URL attached to this incident
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When the incident was created
-    # @!attribute [r] creator
-    #   @return [ActorV2, nil]
-    # @!attribute [r] custom_field_entries
-    #   @return [Array<CustomFieldEntryV2>, nil] Custom field entries for this incident
-    # @!attribute [r] duration_metrics
-    #   @return [Array<IncidentDurationMetricWithValueV2>, nil] Incident duration metrics and their measurements for this incident
-    # @!attribute [r] external_issue_reference
-    #   @return [ExternalIssueReferenceV2, nil]
-    # @!attribute [r] has_debrief
-    #   @return [Boolean, nil] If this incident has a debrief attached
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the incident
-    # @!attribute [r] incident_role_assignments
-    #   @return [Array<IncidentRoleAssignmentV2>, nil] A list of who is assigned to each role for this incident
-    # @!attribute [r] incident_status
-    #   @return [IncidentStatusV2, nil]
-    # @!attribute [r] incident_timestamp_values
-    #   @return [Array<IncidentTimestampWithValueV2>, nil] Incident lifecycle events and when they occurred
-    # @!attribute [r] incident_type
-    #   @return [IncidentTypeV2, nil]
-    # @!attribute [r] last_activity_at
-    #   @return [Time, nil] When the incident last recorded 'activity'
-    # @!attribute [r] mode
-    #   @return [String, nil] Whether the incident is real, a test, a tutorial, or importing as a retrospective incident One of: standard, retrospective, test, tutorial.
-    # @!attribute [r] ms_teams_channel_url
-    #   @return [String, nil] URL to link to the Microsoft Teams channel
-    # @!attribute [r] name
-    #   @return [String, nil] Explanation of the incident
-    # @!attribute [r] permalink
-    #   @return [String, nil] A permanent link to the homepage for this incident
-    # @!attribute [r] postmortem_document_ids
-    #   @return [Array<String>, nil] An array of IDs of postmortem documents for this incident
-    # @!attribute [r] postmortem_document_url
-    #   @return [String, nil] The URL of the incident post-mortem document
-    # @!attribute [r] reference
-    #   @return [String, nil] Reference to this incident, as displayed across the product
-    # @!attribute [r] severity
-    #   @return [SeverityV2, nil]
-    # @!attribute [r] slack_channel_id
-    #   @return [String, nil] ID of the Slack channel in the organisation Slack workspace.
-    # @!attribute [r] slack_channel_name
-    #   @return [String, nil] Name of the slack channel
-    # @!attribute [r] slack_channel_url
-    #   @return [String, nil] URL to link to the slack channel
-    # @!attribute [r] slack_team_id
-    #   @return [String, nil] ID of the Slack team / workspace.
-    # @!attribute [r] summary
-    #   @return [String, nil] Detailed description of the incident
-    # @!attribute [r] team_ids
-    #   @return [Array<String>, nil] IDs of the teams that own this incident, resolved from your team settings.
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When the incident was last updated
-    # @!attribute [r] visibility
-    #   @return [String, nil] Whether the incident should be open to anyone in your Slack workspace (public), or invite-only (private).
-    # @!attribute [r] workload_minutes_late
-    #   @return [Float, nil] Amount of time spent on the incident in late hours
-    # @!attribute [r] workload_minutes_sleeping
-    #   @return [Float, nil] Amount of time spent on the incident in sleeping hours
-    # @!attribute [r] workload_minutes_total
-    #   @return [Float, nil] Amount of time spent on the incident in total
-    # @!attribute [r] workload_minutes_working
-    #   @return [Float, nil] Amount of time spent on the incident in working hours
     IncidentV2 = Model.define(
       call_url: :string,
       created_at: :time,
@@ -106,5 +40,107 @@ module IncidentIo
       workload_minutes_total: :float,
       workload_minutes_working: :float
     )
+
+    class IncidentV2
+      # @!attribute [r] call_url
+      #   The call URL attached to this incident
+      #   @return [String, nil]
+      # @!attribute [r] created_at
+      #   When the incident was created
+      #   @return [Time, nil]
+      # @!attribute [r] creator
+      #   The creator field
+      #   @return [ActorV2, nil]
+      # @!attribute [r] custom_field_entries
+      #   Custom field entries for this incident
+      #   @return [Array<CustomFieldEntryV2>, nil]
+      # @!attribute [r] duration_metrics
+      #   Incident duration metrics and their measurements for this incident
+      #   @return [Array<IncidentDurationMetricWithValueV2>, nil]
+      # @!attribute [r] external_issue_reference
+      #   The external_issue_reference field
+      #   @return [ExternalIssueReferenceV2, nil]
+      # @!attribute [r] has_debrief
+      #   If this incident has a debrief attached
+      #   @return [Boolean, nil]
+      # @!attribute [r] id
+      #   Unique identifier for the incident
+      #   @return [String, nil]
+      # @!attribute [r] incident_role_assignments
+      #   A list of who is assigned to each role for this incident
+      #   @return [Array<IncidentRoleAssignmentV2>, nil]
+      # @!attribute [r] incident_status
+      #   The incident_status field
+      #   @return [IncidentStatusV2, nil]
+      # @!attribute [r] incident_timestamp_values
+      #   Incident lifecycle events and when they occurred
+      #   @return [Array<IncidentTimestampWithValueV2>, nil]
+      # @!attribute [r] incident_type
+      #   The incident_type field
+      #   @return [IncidentTypeV2, nil]
+      # @!attribute [r] last_activity_at
+      #   When the incident last recorded 'activity'
+      #   @return [Time, nil]
+      # @!attribute [r] mode
+      #   Whether the incident is real, a test, a tutorial, or importing as a…
+      #   @return [String, nil]
+      # @!attribute [r] ms_teams_channel_url
+      #   URL to link to the Microsoft Teams channel
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Explanation of the incident
+      #   @return [String, nil]
+      # @!attribute [r] permalink
+      #   A permanent link to the homepage for this incident
+      #   @return [String, nil]
+      # @!attribute [r] postmortem_document_ids
+      #   An array of IDs of postmortem documents for this incident
+      #   @return [Array<String>, nil]
+      # @!attribute [r] postmortem_document_url
+      #   The URL of the incident post-mortem document
+      #   @return [String, nil]
+      # @!attribute [r] reference
+      #   Reference to this incident, as displayed across the product
+      #   @return [String, nil]
+      # @!attribute [r] severity
+      #   The severity field
+      #   @return [SeverityV2, nil]
+      # @!attribute [r] slack_channel_id
+      #   ID of the Slack channel in the organisation Slack workspace
+      #   @return [String, nil]
+      # @!attribute [r] slack_channel_name
+      #   Name of the slack channel
+      #   @return [String, nil]
+      # @!attribute [r] slack_channel_url
+      #   URL to link to the slack channel
+      #   @return [String, nil]
+      # @!attribute [r] slack_team_id
+      #   ID of the Slack team / workspace
+      #   @return [String, nil]
+      # @!attribute [r] summary
+      #   Detailed description of the incident
+      #   @return [String, nil]
+      # @!attribute [r] team_ids
+      #   IDs of the teams that own this incident, resolved from your team settings
+      #   @return [Array<String>, nil]
+      # @!attribute [r] updated_at
+      #   When the incident was last updated
+      #   @return [Time, nil]
+      # @!attribute [r] visibility
+      #   Whether the incident should be open to anyone in your Slack workspace…
+      #   @return [String, nil]
+      # @!attribute [r] workload_minutes_late
+      #   Amount of time spent on the incident in late hours
+      #   @return [Float, nil]
+      # @!attribute [r] workload_minutes_sleeping
+      #   Amount of time spent on the incident in sleeping hours
+      #   @return [Float, nil]
+      # @!attribute [r] workload_minutes_total
+      #   Amount of time spent on the incident in total
+      #   @return [Float, nil]
+      # @!attribute [r] workload_minutes_working
+      #   Amount of time spent on the incident in working hours
+      #   @return [Float, nil]
+    end
   end
 end

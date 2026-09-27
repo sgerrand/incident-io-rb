@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] array_value
-    #   @return [Array<EngineParamBindingValueV2>, nil] If array_value is set, this helps render the values
-    # @!attribute [r] value
-    #   @return [EngineParamBindingValueV2, nil]
     EngineParamBindingV2 = Model.define(
       array_value: [-> { EngineParamBindingValueV2 }],
       value: -> { EngineParamBindingValueV2 }
     )
+
+    class EngineParamBindingV2
+      # @!attribute [r] array_value
+      #   If array_value is set, this helps render the values
+      #   @return [Array<EngineParamBindingValueV2>, nil]
+      # @!attribute [r] value
+      #   The value field
+      #   @return [EngineParamBindingValueV2, nil]
+    end
   end
 end

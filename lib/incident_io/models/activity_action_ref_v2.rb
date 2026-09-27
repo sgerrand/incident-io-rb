@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] action_id
-    #   @return [String, nil] The action.
-    # @!attribute [r] actor
-    #   @return [ActorV2, nil]
     ActivityActionRefV2 = Model.define(
       action_id: :string,
       actor: -> { ActorV2 }
     )
+
+    class ActivityActionRefV2
+      # @!attribute [r] action_id
+      #   The action
+      #   @return [String, nil]
+      # @!attribute [r] actor
+      #   The actor field
+      #   @return [ActorV2, nil]
+    end
   end
 end

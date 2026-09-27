@@ -5,22 +5,6 @@
 
 module IncidentIo
   module Models
-    # Set when policy_type is schedule. Describes a gap in on-call cover.
-    #
-    # @!attribute [r] cause
-    #   @return [String, nil] Why the gap exists One of: nobody_scheduled, no_on_call_seat, user_deactivated, notifications_paused.
-    # @!attribute [r] end_at
-    #   @return [Time, nil] When the gap ends
-    # @!attribute [r] has_unscheduled_time
-    #   @return [Boolean, nil] Whether part of the gap has nobody scheduled at all, so impacted_users doesn't fully explain it
-    # @!attribute [r] impacted_users
-    #   @return [Array<PolicyFindingScheduleImpactedUserV2>, nil] Users scheduled across the gap whose entries don't count as cover
-    # @!attribute [r] rotation_id
-    #   @return [String, nil] The rotation with the gap, when the policy evaluates per rotation
-    # @!attribute [r] schedule_id
-    #   @return [String, nil] The schedule with the gap
-    # @!attribute [r] start_at
-    #   @return [Time, nil] When the gap starts
     PolicyFindingScheduleV2 = Model.define(
       cause: :string,
       end_at: :time,
@@ -30,5 +14,30 @@ module IncidentIo
       schedule_id: :string,
       start_at: :time
     )
+
+    # Set when policy_type is schedule. Describes a gap in on-call cover.
+    class PolicyFindingScheduleV2
+      # @!attribute [r] cause
+      #   Why the gap exists One of: nobody_scheduled, no_on_call_seat,…
+      #   @return [String, nil]
+      # @!attribute [r] end_at
+      #   When the gap ends
+      #   @return [Time, nil]
+      # @!attribute [r] has_unscheduled_time
+      #   Whether part of the gap has nobody scheduled at all, so impacted_users…
+      #   @return [Boolean, nil]
+      # @!attribute [r] impacted_users
+      #   Users scheduled across the gap whose entries don't count as cover
+      #   @return [Array<PolicyFindingScheduleImpactedUserV2>, nil]
+      # @!attribute [r] rotation_id
+      #   The rotation with the gap, when the policy evaluates per rotation
+      #   @return [String, nil]
+      # @!attribute [r] schedule_id
+      #   The schedule with the gap
+      #   @return [String, nil]
+      # @!attribute [r] start_at
+      #   When the gap starts
+      #   @return [Time, nil]
+    end
   end
 end

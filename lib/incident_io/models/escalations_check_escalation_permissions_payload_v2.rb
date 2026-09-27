@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] user_ids
-    #   @return [Array<String>, nil] The IDs of the users to check response options for
     EscalationsCheckEscalationPermissionsPayloadV2 = Model.define(
       user_ids: [:string]
     )
+
+    class EscalationsCheckEscalationPermissionsPayloadV2
+      # @!attribute [r] user_ids
+      #   The IDs of the users to check response options for
+      #   @return [Array<String>, nil]
+    end
   end
 end

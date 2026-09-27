@@ -5,48 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] call_url
-    #   @return [String, nil] The call URL attached to this incident
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When the incident was created
-    # @!attribute [r] creator
-    #   @return [ActorV1, nil]
-    # @!attribute [r] custom_field_entries
-    #   @return [Array<CustomFieldEntryV1>, nil] Custom field entries for this incident
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the incident
-    # @!attribute [r] incident_role_assignments
-    #   @return [Array<IncidentRoleAssignmentV1>, nil] A list of who is assigned to each role for this incident
-    # @!attribute [r] incident_type
-    #   @return [IncidentTypeV1, nil]
-    # @!attribute [r] mode
-    #   @return [String, nil] Whether the incident is real, a test, a tutorial, or importing as a retrospective incident One of: real, test, tutorial.
-    # @!attribute [r] name
-    #   @return [String, nil] Explanation of the incident
-    # @!attribute [r] permalink
-    #   @return [String, nil] A permanent link to the homepage for this incident
-    # @!attribute [r] postmortem_document_url
-    #   @return [String, nil] The URL of the incident post-mortem document
-    # @!attribute [r] reference
-    #   @return [String, nil] Reference to this incident, as displayed across the product
-    # @!attribute [r] severity
-    #   @return [SeverityV1, nil]
-    # @!attribute [r] slack_channel_id
-    #   @return [String, nil] ID of the Slack channel in the organisation Slack workspace.
-    # @!attribute [r] slack_channel_name
-    #   @return [String, nil] Name of the slack channel
-    # @!attribute [r] slack_team_id
-    #   @return [String, nil] ID of the Slack team / workspace.
-    # @!attribute [r] status
-    #   @return [String, nil] Current status of the incident One of: triage, investigating, fixing, monitoring, closed, declined.
-    # @!attribute [r] summary
-    #   @return [String, nil] Detailed description of the incident
-    # @!attribute [r] timestamps
-    #   @return [Array<IncidentTimestampValueV1>, nil] Incident lifecycle events and when they last occurred
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When the incident was last updated
-    # @!attribute [r] visibility
-    #   @return [String, nil] Whether the incident should be open to anyone in your Slack workspace (public), or invite-only (private).
     IncidentV1 = Model.define(
       call_url: :string,
       created_at: :time,
@@ -70,5 +28,71 @@ module IncidentIo
       updated_at: :time,
       visibility: :string
     )
+
+    class IncidentV1
+      # @!attribute [r] call_url
+      #   The call URL attached to this incident
+      #   @return [String, nil]
+      # @!attribute [r] created_at
+      #   When the incident was created
+      #   @return [Time, nil]
+      # @!attribute [r] creator
+      #   The creator field
+      #   @return [ActorV1, nil]
+      # @!attribute [r] custom_field_entries
+      #   Custom field entries for this incident
+      #   @return [Array<CustomFieldEntryV1>, nil]
+      # @!attribute [r] id
+      #   Unique identifier for the incident
+      #   @return [String, nil]
+      # @!attribute [r] incident_role_assignments
+      #   A list of who is assigned to each role for this incident
+      #   @return [Array<IncidentRoleAssignmentV1>, nil]
+      # @!attribute [r] incident_type
+      #   The incident_type field
+      #   @return [IncidentTypeV1, nil]
+      # @!attribute [r] mode
+      #   Whether the incident is real, a test, a tutorial, or importing as a…
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Explanation of the incident
+      #   @return [String, nil]
+      # @!attribute [r] permalink
+      #   A permanent link to the homepage for this incident
+      #   @return [String, nil]
+      # @!attribute [r] postmortem_document_url
+      #   The URL of the incident post-mortem document
+      #   @return [String, nil]
+      # @!attribute [r] reference
+      #   Reference to this incident, as displayed across the product
+      #   @return [String, nil]
+      # @!attribute [r] severity
+      #   The severity field
+      #   @return [SeverityV1, nil]
+      # @!attribute [r] slack_channel_id
+      #   ID of the Slack channel in the organisation Slack workspace
+      #   @return [String, nil]
+      # @!attribute [r] slack_channel_name
+      #   Name of the slack channel
+      #   @return [String, nil]
+      # @!attribute [r] slack_team_id
+      #   ID of the Slack team / workspace
+      #   @return [String, nil]
+      # @!attribute [r] status
+      #   Current status of the incident One of: triage, investigating, fixing,…
+      #   @return [String, nil]
+      # @!attribute [r] summary
+      #   Detailed description of the incident
+      #   @return [String, nil]
+      # @!attribute [r] timestamps
+      #   Incident lifecycle events and when they last occurred
+      #   @return [Array<IncidentTimestampValueV1>, nil]
+      # @!attribute [r] updated_at
+      #   When the incident was last updated
+      #   @return [Time, nil]
+      # @!attribute [r] visibility
+      #   Whether the incident should be open to anyone in your Slack workspace…
+      #   @return [String, nil]
+    end
   end
 end

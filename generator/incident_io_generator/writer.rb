@@ -73,11 +73,13 @@ module IncidentIoGenerator
       text.strip.lines.map { |line| line.rstrip.empty? ? "#{pad}#\n" : "#{pad}# #{line.rstrip}\n" }.join
     end
 
-    # YARD docs for a generated method.
+    # YARD docs for a generated method: a one-line summary, then the full
+    # description when there's more to it.
     def method_docs(op, indent)
-      lines = []
-      lines << (op.description || op.summary).to_s.strip
-      lines << ""
+      description = (op.description || op.summary).to_s.strip
+      short = summary(description, "Calls #{op.operation_id}")
+      lines = [short, ""]
+      lines += [description, ""] unless [short, "#{short}."].include?(description)
       endpoint = "Endpoint: `#{op.http_method.upcase} #{op.path}`."
       endpoint += " Scopes: #{op.scopes.join(", ")}." if op.scopes.any?
       lines << endpoint
@@ -201,6 +203,16 @@ module IncidentIoGenerator
     # RBS keyword parameters for a model's fields, all optional.
     def rbs_fields(model)
       model.fields.map { |f| "?#{f.member}: #{Types.rbs_optional(f.rbs)}" }
+    end
+
+    # A one-line YARD summary: the first sentence without its full stop,
+    # shortened to fit in 80 characters. Uses the fallback for blank text.
+    def summary(text, fallback)
+      line = first_sentence(text.to_s.strip.gsub(/\s+/, " ")).to_s.sub(/[.:]+\z/, "")
+      line = fallback if line.empty?
+      return line if line.length < 80
+
+      "#{line[0, 78].sub(/\s+\S*\z/, "")}…"
     end
 
     # Ends text with a full stop unless it already ends a sentence.

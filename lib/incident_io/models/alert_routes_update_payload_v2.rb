@@ -5,36 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert_sources
-    #   @return [Array<AlertRouteAlertSourcePayloadV2>, nil] Which alert sources should this alert route match?
-    # @!attribute [r] channel_config
-    #   @return [Array<AlertRouteChannelConfigPayloadV2>, nil] The channel configuration for this alert route
-    # @!attribute [r] condition_groups
-    #   @return [Array<ConditionGroupPayloadV2>, nil] What condition groups must be true for this alert route to fire?
-    # @!attribute [r] created_at
-    #   @return [Time, nil] The time of creation of this alert route
-    # @!attribute [r] enabled
-    #   @return [Boolean, nil] Whether this alert route is enabled or not
-    # @!attribute [r] escalation_config
-    #   @return [AlertRouteEscalationConfigPayloadV2, nil]
-    # @!attribute [r] expressions
-    #   @return [Array<ExpressionPayloadV2>, nil] The expressions used in this template
-    # @!attribute [r] incident_config
-    #   @return [AlertRouteIncidentConfigPayloadV2, nil]
-    # @!attribute [r] incident_template
-    #   @return [AlertRouteIncidentTemplatePayloadV2, nil]
-    # @!attribute [r] is_private
-    #   @return [Boolean, nil] Whether this alert route is private.
-    # @!attribute [r] message_template
-    #   @return [EngineParamBindingPayloadV2, nil]
-    # @!attribute [r] name
-    #   @return [String, nil] The name of this alert route config, for the user's reference
-    # @!attribute [r] owning_team_ids
-    #   @return [Array<String>, nil] IDs of teams that own this alert route
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] The time of last update of this alert route
-    # @!attribute [r] version
-    #   @return [Integer, nil] The version this update will create.
     AlertRoutesUpdatePayloadV2 = Model.define(
       alert_sources: [-> { AlertRouteAlertSourcePayloadV2 }],
       channel_config: [-> { AlertRouteChannelConfigPayloadV2 }],
@@ -52,5 +22,53 @@ module IncidentIo
       updated_at: :time,
       version: :integer
     )
+
+    class AlertRoutesUpdatePayloadV2
+      # @!attribute [r] alert_sources
+      #   Which alert sources should this alert route match?
+      #   @return [Array<AlertRouteAlertSourcePayloadV2>, nil]
+      # @!attribute [r] channel_config
+      #   The channel configuration for this alert route
+      #   @return [Array<AlertRouteChannelConfigPayloadV2>, nil]
+      # @!attribute [r] condition_groups
+      #   What condition groups must be true for this alert route to fire?
+      #   @return [Array<ConditionGroupPayloadV2>, nil]
+      # @!attribute [r] created_at
+      #   The time of creation of this alert route
+      #   @return [Time, nil]
+      # @!attribute [r] enabled
+      #   Whether this alert route is enabled or not
+      #   @return [Boolean, nil]
+      # @!attribute [r] escalation_config
+      #   The escalation_config field
+      #   @return [AlertRouteEscalationConfigPayloadV2, nil]
+      # @!attribute [r] expressions
+      #   The expressions used in this template
+      #   @return [Array<ExpressionPayloadV2>, nil]
+      # @!attribute [r] incident_config
+      #   The incident_config field
+      #   @return [AlertRouteIncidentConfigPayloadV2, nil]
+      # @!attribute [r] incident_template
+      #   The incident_template field
+      #   @return [AlertRouteIncidentTemplatePayloadV2, nil]
+      # @!attribute [r] is_private
+      #   Whether this alert route is private
+      #   @return [Boolean, nil]
+      # @!attribute [r] message_template
+      #   The message_template field
+      #   @return [EngineParamBindingPayloadV2, nil]
+      # @!attribute [r] name
+      #   The name of this alert route config, for the user's reference
+      #   @return [String, nil]
+      # @!attribute [r] owning_team_ids
+      #   IDs of teams that own this alert route
+      #   @return [Array<String>, nil]
+      # @!attribute [r] updated_at
+      #   The time of last update of this alert route
+      #   @return [Time, nil]
+      # @!attribute [r] version
+      #   The version this update will create
+      #   @return [Integer, nil]
+    end
   end
 end

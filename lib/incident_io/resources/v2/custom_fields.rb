@@ -81,7 +81,7 @@ module IncidentIo
           )
         end
 
-        # List all custom fields for an organisation.
+        # List all custom fields for an organisation
         #
         # Endpoint: `GET /v2/custom_fields`. Scopes: custom_fields.view.
         #
@@ -97,7 +97,7 @@ module IncidentIo
           )
         end
 
-        # Get a single custom field.
+        # Get a single custom field
         #
         # Endpoint: `GET /v2/custom_fields/{id}`. Scopes: custom_fields.view.
         #

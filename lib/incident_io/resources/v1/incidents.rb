@@ -15,7 +15,7 @@ module IncidentIo
       #
       # The maximum page size that can be requested is 250.
       class Incidents < Resource
-        # Create a new incident.
+        # Create a new incident
         #
         # Endpoint: `POST /v1/incidents`. Scopes: incidents.create.
         #
@@ -77,7 +77,7 @@ module IncidentIo
           )
         end
 
-        # List all incidents for an organisation.
+        # List all incidents for an organisation
         #
         # Endpoint: `GET /v1/incidents`. Scopes: incidents.view.
         #
@@ -98,7 +98,7 @@ module IncidentIo
           )
         end
 
-        # Get a single incident.
+        # Get a single incident
         #
         # Endpoint: `GET /v1/incidents/{id}`. Scopes: incidents.view.
         #

@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] limit
-    #   @return [Integer, nil] The maximum number of requests that the consumer is permitted to make per minute
-    # @!attribute [r] name
-    #   @return [String, nil] Which rate limit was exceeded
-    # @!attribute [r] remaining
-    #   @return [Integer, nil] The number of requests remaining in the current rate limit window
-    # @!attribute [r] retry_after
-    #   @return [String, nil] When the client can retry, as an RFC3339 timestamp in UTC.
     ErrorRateLimit = Model.define(
       limit: :integer,
       name: :string,
       remaining: :integer,
       retry_after: :string
     )
+
+    class ErrorRateLimit
+      # @!attribute [r] limit
+      #   The maximum number of requests that the consumer is permitted to make per…
+      #   @return [Integer, nil]
+      # @!attribute [r] name
+      #   Which rate limit was exceeded
+      #   @return [String, nil]
+      # @!attribute [r] remaining
+      #   The number of requests remaining in the current rate limit window
+      #   @return [Integer, nil]
+      # @!attribute [r] retry_after
+      #   When the client can retry, as an RFC3339 timestamp in UTC
+      #   @return [String, nil]
+    end
   end
 end

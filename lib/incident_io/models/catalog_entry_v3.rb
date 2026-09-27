@@ -5,26 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] aliases
-    #   @return [Array<String>, nil] Optional aliases that can be used to reference this entry
-    # @!attribute [r] archived_at
-    #   @return [Time, nil] When this entry was archived
-    # @!attribute [r] attribute_values
-    #   @return [Hash{String => CatalogEntryEngineParamBindingV3}, nil] Values of this entry
-    # @!attribute [r] catalog_type_id
-    #   @return [String, nil] ID of this catalog type
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When this entry was created
-    # @!attribute [r] external_id
-    #   @return [String, nil] An optional alternative ID for this entry, which is ensured to be unique for the type
-    # @!attribute [r] id
-    #   @return [String, nil] ID of this catalog entry
-    # @!attribute [r] name
-    #   @return [String, nil] Name is the human readable name of this entry
-    # @!attribute [r] rank
-    #   @return [Integer, nil] When catalog type is ranked, this is used to help order things
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When this entry was last updated
     CatalogEntryV3 = Model.define(
       aliases: [:string],
       archived_at: :time,
@@ -37,5 +17,38 @@ module IncidentIo
       rank: :integer,
       updated_at: :time
     )
+
+    class CatalogEntryV3
+      # @!attribute [r] aliases
+      #   Optional aliases that can be used to reference this entry
+      #   @return [Array<String>, nil]
+      # @!attribute [r] archived_at
+      #   When this entry was archived
+      #   @return [Time, nil]
+      # @!attribute [r] attribute_values
+      #   Values of this entry
+      #   @return [Hash{String => CatalogEntryEngineParamBindingV3}, nil]
+      # @!attribute [r] catalog_type_id
+      #   ID of this catalog type
+      #   @return [String, nil]
+      # @!attribute [r] created_at
+      #   When this entry was created
+      #   @return [Time, nil]
+      # @!attribute [r] external_id
+      #   An optional alternative ID for this entry, which is ensured to be unique for…
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   ID of this catalog entry
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name is the human readable name of this entry
+      #   @return [String, nil]
+      # @!attribute [r] rank
+      #   When catalog type is ranked, this is used to help order things
+      #   @return [Integer, nil]
+      # @!attribute [r] updated_at
+      #   When this entry was last updated
+      #   @return [Time, nil]
+    end
   end
 end

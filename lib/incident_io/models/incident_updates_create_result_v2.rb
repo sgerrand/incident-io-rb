@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_update
-    #   @return [IncidentUpdateV2, nil]
     IncidentUpdatesCreateResultV2 = Model.define(
       incident_update: -> { IncidentUpdateV2 }
     )
+
+    class IncidentUpdatesCreateResultV2
+      # @!attribute [r] incident_update
+      #   The incident_update field
+      #   @return [IncidentUpdateV2, nil]
+    end
   end
 end

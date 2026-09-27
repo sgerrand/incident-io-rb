@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] category
-    #   @return [String, nil] Which category of resource One of: primitive, custom, external.
-    # @!attribute [r] description
-    #   @return [String, nil] Human readable description for this resource
-    # @!attribute [r] label
-    #   @return [String, nil] Label for this catalog resource type
-    # @!attribute [r] type
-    #   @return [String, nil] Catalog type name for this resource, as used when setting the type of a catalog type attribute
-    # @!attribute [r] value_docstring
-    #   @return [String, nil] Documentation for the literal string value of this resource
     CatalogResourceV2 = Model.define(
       category: :string,
       description: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       type: :string,
       value_docstring: :string
     )
+
+    class CatalogResourceV2
+      # @!attribute [r] category
+      #   Which category of resource One of: primitive, custom, external
+      #   @return [String, nil]
+      # @!attribute [r] description
+      #   Human readable description for this resource
+      #   @return [String, nil]
+      # @!attribute [r] label
+      #   Label for this catalog resource type
+      #   @return [String, nil]
+      # @!attribute [r] type
+      #   Catalog type name for this resource, as used when setting the type of a…
+      #   @return [String, nil]
+      # @!attribute [r] value_docstring
+      #   Documentation for the literal string value of this resource
+      #   @return [String, nil]
+    end
   end
 end

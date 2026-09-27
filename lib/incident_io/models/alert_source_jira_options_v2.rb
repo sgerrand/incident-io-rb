@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] project_ids
-    #   @return [Array<String>, nil] Which projects in Jira should this alert source watch for new issues?
     AlertSourceJiraOptionsV2 = Model.define(
       project_ids: [:string]
     )
+
+    class AlertSourceJiraOptionsV2
+      # @!attribute [r] project_ids
+      #   Which projects in Jira should this alert source watch for new issues?
+      #   @return [Array<String>, nil]
+    end
   end
 end

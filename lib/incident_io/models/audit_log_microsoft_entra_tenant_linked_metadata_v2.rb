@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] tenant_domain
-    #   @return [String, nil] The email domain we verified the tenant owns
-    # @!attribute [r] tenant_id
-    #   @return [String, nil] The Microsoft Entra tenant that was linked
     AuditLogMicrosoftEntraTenantLinkedMetadataV2 = Model.define(
       tenant_domain: :string,
       tenant_id: :string
     )
+
+    class AuditLogMicrosoftEntraTenantLinkedMetadataV2
+      # @!attribute [r] tenant_domain
+      #   The email domain we verified the tenant owns
+      #   @return [String, nil]
+      # @!attribute [r] tenant_id
+      #   The Microsoft Entra tenant that was linked
+      #   @return [String, nil]
+    end
   end
 end

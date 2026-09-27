@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] max_delay_seconds
-    #   @return [Integer, nil] How quickly the method must fire to count
-    # @!attribute [r] method_types
-    #   @return [Array<String>, nil] One of: slack, email, app, sms, phone, live_call, slack_channel, microsoft_teams, microsoft_teams_channel, whatsapp_message.
     PolicyReadinessRuleV2 = Model.define(
       max_delay_seconds: :integer,
       method_types: [:string]
     )
+
+    class PolicyReadinessRuleV2
+      # @!attribute [r] max_delay_seconds
+      #   How quickly the method must fire to count
+      #   @return [Integer, nil]
+      # @!attribute [r] method_types
+      #   One of: slack, email, app, sms, phone, live_call, slack_channel,…
+      #   @return [Array<String>, nil]
+    end
   end
 end

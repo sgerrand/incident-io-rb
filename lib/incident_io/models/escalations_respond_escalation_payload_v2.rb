@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] response
-    #   @return [String, nil] Whether to acknowledge, decline or snooze the escalation One of: ack, nack, snooze.
-    # @!attribute [r] snooze_details
-    #   @return [EscalationRespondSnoozeDetailsPayloadV2, nil]
     EscalationsRespondEscalationPayloadV2 = Model.define(
       response: :string,
       snooze_details: -> { EscalationRespondSnoozeDetailsPayloadV2 }
     )
+
+    class EscalationsRespondEscalationPayloadV2
+      # @!attribute [r] response
+      #   Whether to acknowledge, decline or snooze the escalation One of: ack, nack,…
+      #   @return [String, nil]
+      # @!attribute [r] snooze_details
+      #   The snooze_details field
+      #   @return [EscalationRespondSnoozeDetailsPayloadV2, nil]
+    end
   end
 end

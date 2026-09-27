@@ -10,7 +10,7 @@ module IncidentIo
       #
       # Collection of utility functions that can help build integrations against this API.
       class Utilities < Resource
-        # Test if your API key is valid, and which roles it has.
+        # Test if your API key is valid, and which roles it has
         #
         # Endpoint: `GET /v1/identity`.
         #
@@ -26,6 +26,8 @@ module IncidentIo
           )
         end
 
+        # List the IP addresses our requests to your systems come from
+        #
         # List the IP addresses our requests to your systems come from.
         #
         # Use this to keep a firewall allowlist up to date without watching our documentation. Poll
@@ -51,7 +53,7 @@ module IncidentIo
           )
         end
 
-        # Get the OpenAPI (v3) definition.
+        # Get the OpenAPI (v3) definition
         #
         # Endpoint: `GET /v1/openapiV3.json`.
         # Does not use your API key; pass the alert source token instead.

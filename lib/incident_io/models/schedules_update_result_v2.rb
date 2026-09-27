@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] schedule
-    #   @return [ScheduleV2, nil]
     SchedulesUpdateResultV2 = Model.define(
       schedule: -> { ScheduleV2 }
     )
+
+    class SchedulesUpdateResultV2
+      # @!attribute [r] schedule
+      #   The schedule field
+      #   @return [ScheduleV2, nil]
+    end
   end
 end

@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] email
-    #   @return [String, nil] The user's email address, matching the email on their Slack account
-    # @!attribute [r] id
-    #   @return [String, nil] The incident.io ID of a user
-    # @!attribute [r] slack_user_id
-    #   @return [String, nil] The ID of the user's Slack account.
     UserReferencePayloadV1 = Model.define(
       email: :string,
       id: :string,
       slack_user_id: :string
     )
+
+    class UserReferencePayloadV1
+      # @!attribute [r] email
+      #   The user's email address, matching the email on their Slack account
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   The incident.io ID of a user
+      #   @return [String, nil]
+      # @!attribute [r] slack_user_id
+      #   The ID of the user's Slack account
+      #   @return [String, nil]
+    end
   end
 end

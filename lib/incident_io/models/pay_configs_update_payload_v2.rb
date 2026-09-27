@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] base_rate_cents
-    #   @return [Integer, nil] Rate paid for any time no rule covers, in the lowest denomination of the currency
-    # @!attribute [r] currency
-    #   @return [String, nil] Currency this config pays in, in ISO 4217 format
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name for this pay config
-    # @!attribute [r] rate_time_unit
-    #   @return [String, nil] The unit of time every rate on this config is quoted per.
-    # @!attribute [r] timezone
-    #   @return [String, nil] IANA timezone this config's rules are interpreted in
     PayConfigsUpdatePayloadV2 = Model.define(
       base_rate_cents: :integer,
       currency: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       rate_time_unit: :string,
       timezone: :string
     )
+
+    class PayConfigsUpdatePayloadV2
+      # @!attribute [r] base_rate_cents
+      #   Rate paid for any time no rule covers, in the lowest denomination of the…
+      #   @return [Integer, nil]
+      # @!attribute [r] currency
+      #   Currency this config pays in, in ISO 4217 format
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name for this pay config
+      #   @return [String, nil]
+      # @!attribute [r] rate_time_unit
+      #   The unit of time every rate on this config is quoted per
+      #   @return [String, nil]
+      # @!attribute [r] timezone
+      #   IANA timezone this config's rules are interpreted in
+      #   @return [String, nil]
+    end
   end
 end

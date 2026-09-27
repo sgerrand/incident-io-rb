@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] label
-    #   @return [String, nil] Human readable label to be displayed for user to select
-    # @!attribute [r] literal
-    #   @return [String, nil] If set, this is the literal value of the step parameter
-    # @!attribute [r] reference
-    #   @return [String, nil] If set, this is the reference into the trigger scope that is the value of this parameter
     EngineParamBindingValueV2 = Model.define(
       label: :string,
       literal: :string,
       reference: :string
     )
+
+    class EngineParamBindingValueV2
+      # @!attribute [r] label
+      #   Human readable label to be displayed for user to select
+      #   @return [String, nil]
+      # @!attribute [r] literal
+      #   If set, this is the literal value of the step parameter
+      #   @return [String, nil]
+      # @!attribute [r] reference
+      #   If set, this is the reference into the trigger scope that is the value of…
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] custom_field
-    #   @return [CustomFieldV2, nil]
     CustomFieldsUpdateResultV2 = Model.define(
       custom_field: -> { CustomFieldV2 }
     )
+
+    class CustomFieldsUpdateResultV2
+      # @!attribute [r] custom_field
+      #   The custom_field field
+      #   @return [CustomFieldV2, nil]
+    end
   end
 end

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] after
-    #   @return [String, nil] If provided, pass this as the 'after' param to load the next page
-    # @!attribute [r] page_size
-    #   @return [Integer, nil] What was the maximum number of results requested
     PaginationMetaResultV2 = Model.define(
       after: :string,
       page_size: :integer
     )
+
+    class PaginationMetaResultV2
+      # @!attribute [r] after
+      #   If provided, pass this as the 'after' param to load the next page
+      #   @return [String, nil]
+      # @!attribute [r] page_size
+      #   What was the maximum number of results requested
+      #   @return [Integer, nil]
+    end
   end
 end

@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] idempotency_key
-    #   @return [String, nil] A unique key to de-duplicate requests.
-    # @!attribute [r] name
-    #   @return [String, nil] A title for the incident
-    # @!attribute [r] status_page_id
-    #   @return [String, nil] ID of the status page.
-    # @!attribute [r] updates
-    #   @return [Array<StatusPageRetrospectiveIncidentUpdateV2>, nil] The reconstructed timeline of updates for this incident, ordered chronologically (earliest first).
     StatusPagesCreateStatusPageRetrospectiveIncidentPayloadV2 = Model.define(
       idempotency_key: :string,
       name: :string,
       status_page_id: :string,
       updates: [-> { StatusPageRetrospectiveIncidentUpdateV2 }]
     )
+
+    class StatusPagesCreateStatusPageRetrospectiveIncidentPayloadV2
+      # @!attribute [r] idempotency_key
+      #   A unique key to de-duplicate requests
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   A title for the incident
+      #   @return [String, nil]
+      # @!attribute [r] status_page_id
+      #   ID of the status page
+      #   @return [String, nil]
+      # @!attribute [r] updates
+      #   The reconstructed timeline of updates for this incident, ordered…
+      #   @return [Array<StatusPageRetrospectiveIncidentUpdateV2>, nil]
+    end
   end
 end

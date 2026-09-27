@@ -13,7 +13,7 @@ module IncidentIo
       #
       # To create an alert, you must first configure an alert source in the incident.io dashboard.
       class AlertEvents < Resource
-        # Create an alert event using an HTTP source.
+        # Create an alert event using an HTTP source
         #
         # Endpoint: `POST /v2/alert_events/http/{alert_source_config_id}`.
         # Does not use your API key; pass the alert source token instead.

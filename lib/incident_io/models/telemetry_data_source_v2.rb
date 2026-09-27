@@ -5,24 +5,6 @@
 
 module IncidentIo
   module Models
-    # A telemetry data source integration
-    #
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When this data source was created
-    # @!attribute [r] enabled
-    #   @return [Boolean, nil] Whether this data source is enabled
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this data source
-    # @!attribute [r] name
-    #   @return [String, nil] Human-readable name of the data source
-    # @!attribute [r] provider
-    #   @return [String, nil] Provider that hosts this data source
-    # @!attribute [r] source_type
-    #   @return [String, nil] Type of data source (e.g., prometheus, loki, tempo)
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When this data source was last updated
-    # @!attribute [r] version
-    #   @return [String, nil] Upstream tool version captured at probe time (e.g.
     TelemetryDataSourceV2 = Model.define(
       created_at: :time,
       enabled: :boolean,
@@ -33,5 +15,33 @@ module IncidentIo
       updated_at: :time,
       version: :string
     )
+
+    # A telemetry data source integration
+    class TelemetryDataSourceV2
+      # @!attribute [r] created_at
+      #   When this data source was created
+      #   @return [Time, nil]
+      # @!attribute [r] enabled
+      #   Whether this data source is enabled
+      #   @return [Boolean, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this data source
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human-readable name of the data source
+      #   @return [String, nil]
+      # @!attribute [r] provider
+      #   Provider that hosts this data source
+      #   @return [String, nil]
+      # @!attribute [r] source_type
+      #   Type of data source (e.g., prometheus, loki, tempo)
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   When this data source was last updated
+      #   @return [Time, nil]
+      # @!attribute [r] version
+      #   Upstream tool version captured at probe time (e.g
+      #   @return [String, nil]
+    end
   end
 end

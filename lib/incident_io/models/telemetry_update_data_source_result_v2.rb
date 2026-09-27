@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] data_source
-    #   @return [TelemetryDataSourceV2, nil]
     TelemetryUpdateDataSourceResultV2 = Model.define(
       data_source: -> { TelemetryDataSourceV2 }
     )
+
+    class TelemetryUpdateDataSourceResultV2
+      # @!attribute [r] data_source
+      #   The data_source field
+      #   @return [TelemetryDataSourceV2, nil]
+    end
   end
 end

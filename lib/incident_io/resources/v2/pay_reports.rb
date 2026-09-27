@@ -8,6 +8,8 @@ module IncidentIo
     module V2
       # View and manage on-call pay reports, which value the time users spent on-call over a date window.
       class PayReports < Resource
+        # Request a pay report
+        #
         # Request a pay report.
         #
         # Generating a report can take minutes for a wide date window, so this returns as soon as
@@ -62,6 +64,8 @@ module IncidentIo
           )
         end
 
+        # Delete a draft pay report, archiving it so it no longer appears in list or show
+        #
         # Delete a draft pay report, archiving it so it no longer appears in list or show.
         #
         # Published reports cannot be deleted. Unpublish them instead.
@@ -79,6 +83,8 @@ module IncidentIo
           )
         end
 
+        # Download a pay report as CSV
+        #
         # Download a pay report as CSV.
         #
         # One row per user, carrying what they earned over the report's window and how long they
@@ -101,6 +107,8 @@ module IncidentIo
           )
         end
 
+        # List pay reports, newest first
+        #
         # List pay reports, newest first.
         #
         # Only reports that have finished generating are listed. A report you have just asked for
@@ -131,6 +139,8 @@ module IncidentIo
           )
         end
 
+        # Publish a draft pay report, making it visible to everyone in the organisation
+        #
         # Publish a draft pay report, making it visible to everyone in the organisation.
         #
         # Publishing emails the report to cc_emails. Set send_user_breakdowns to send if each user
@@ -154,6 +164,8 @@ module IncidentIo
           )
         end
 
+        # Get a single pay report
+        #
         # Get a single pay report.
         #
         # This is how you follow up a report you asked for: status says whether it is still being
@@ -174,6 +186,8 @@ module IncidentIo
           )
         end
 
+        # Unpublish a published pay report, recording a reason it should not be used
+        #
         # Unpublish a published pay report, recording a reason it should not be used.
         #
         # A draft cannot be unpublished: delete it instead.

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] event_type
-    #   @return [String, nil] What type of event is this webhook for?
-    # @!attribute [r] schedule_deleted_v1
-    #   @return [ScheduleSlimV2, nil]
     WebhooksScheduleDeletedV1ResponseBody = Model.define(
       event_type: :string,
       "schedule.deleted_v1": -> { ScheduleSlimV2 }
     )
+
+    class WebhooksScheduleDeletedV1ResponseBody
+      # @!attribute [r] event_type
+      #   What type of event is this webhook for?
+      #   @return [String, nil]
+      # @!attribute [r] schedule_deleted_v1
+      #   The schedule.deleted_v1 field
+      #   @return [ScheduleSlimV2, nil]
+    end
   end
 end

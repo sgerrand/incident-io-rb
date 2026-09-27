@@ -5,20 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] component_statuses
-    #   @return [Array<StatusPageIncidentAffectedComponentV2>, nil] An array of mappings from component ID to current component status
-    # @!attribute [r] idempotency_key
-    #   @return [String, nil] A unique key to de-duplicate requests.
-    # @!attribute [r] incident_status
-    #   @return [String, nil] Current status for this status page incident One of: investigating, identified, monitoring, resolved.
-    # @!attribute [r] message
-    #   @return [String, nil] Markdown initial update on this status page incident
-    # @!attribute [r] name
-    #   @return [String, nil] A title for the incident
-    # @!attribute [r] notify_subscribers
-    #   @return [Boolean, nil] Whether to notify subscribers about this status page incident.
-    # @!attribute [r] status_page_id
-    #   @return [String, nil] ID of the status page.
     StatusPagesCreateStatusPageIncidentPayloadV2 = Model.define(
       component_statuses: [-> { StatusPageIncidentAffectedComponentV2 }],
       idempotency_key: :string,
@@ -28,5 +14,29 @@ module IncidentIo
       notify_subscribers: :boolean,
       status_page_id: :string
     )
+
+    class StatusPagesCreateStatusPageIncidentPayloadV2
+      # @!attribute [r] component_statuses
+      #   An array of mappings from component ID to current component status
+      #   @return [Array<StatusPageIncidentAffectedComponentV2>, nil]
+      # @!attribute [r] idempotency_key
+      #   A unique key to de-duplicate requests
+      #   @return [String, nil]
+      # @!attribute [r] incident_status
+      #   Current status for this status page incident One of: investigating,…
+      #   @return [String, nil]
+      # @!attribute [r] message
+      #   Markdown initial update on this status page incident
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   A title for the incident
+      #   @return [String, nil]
+      # @!attribute [r] notify_subscribers
+      #   Whether to notify subscribers about this status page incident
+      #   @return [Boolean, nil]
+      # @!attribute [r] status_page_id
+      #   ID of the status page
+      #   @return [String, nil]
+    end
   end
 end

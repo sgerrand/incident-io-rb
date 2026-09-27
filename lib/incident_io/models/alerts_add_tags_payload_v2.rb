@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] tags
-    #   @return [Array<String>, nil] Tag names to add to this alert
     AlertsAddTagsPayloadV2 = Model.define(
       tags: [:string]
     )
+
+    class AlertsAddTagsPayloadV2
+      # @!attribute [r] tags
+      #   Tag names to add to this alert
+      #   @return [Array<String>, nil]
+    end
   end
 end

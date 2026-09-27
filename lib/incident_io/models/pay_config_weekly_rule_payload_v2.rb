@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # A weekly rule to write. Send an existing rule's ID to keep it stable, and omit it for a rule you are adding.
-    #
-    # @!attribute [r] end_time
-    #   @return [String, nil] Time of day this rule ends, in 24 hour format.
-    # @!attribute [r] id
-    #   @return [String, nil] An existing rule's ID, to keep it stable.
-    # @!attribute [r] rate_cents
-    #   @return [Integer, nil] Rate paid while this rule applies, in the lowest denomination of the config's currency
-    # @!attribute [r] start_time
-    #   @return [String, nil] Time of day this rule starts, in 24 hour format
-    # @!attribute [r] weekdays
-    #   @return [Array<String>, nil] Days of the week this rule applies on One of: monday, tuesday, wednesday, thursday, friday, saturday, sunday.
     PayConfigWeeklyRulePayloadV2 = Model.define(
       end_time: :string,
       id: :string,
@@ -24,5 +12,24 @@ module IncidentIo
       start_time: :string,
       weekdays: [:string]
     )
+
+    # A weekly rule to write. Send an existing rule's ID to keep it stable, and omit it for a rule you are adding.
+    class PayConfigWeeklyRulePayloadV2
+      # @!attribute [r] end_time
+      #   Time of day this rule ends, in 24 hour format
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   An existing rule's ID, to keep it stable
+      #   @return [String, nil]
+      # @!attribute [r] rate_cents
+      #   Rate paid while this rule applies, in the lowest denomination of the config's…
+      #   @return [Integer, nil]
+      # @!attribute [r] start_time
+      #   Time of day this rule starts, in 24 hour format
+      #   @return [String, nil]
+      # @!attribute [r] weekdays
+      #   Days of the week this rule applies on One of: monday, tuesday, wednesday,…
+      #   @return [Array<String>, nil]
+    end
   end
 end

@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier of this incident membership
-    # @!attribute [r] incident_id
-    #   @return [String, nil] Unique identifier of the incident
-    # @!attribute [r] resource
-    #   @return [ExternalResourceV1, nil]
     IncidentAttachmentV1 = Model.define(
       id: :string,
       incident_id: :string,
       resource: -> { ExternalResourceV1 }
     )
+
+    class IncidentAttachmentV1
+      # @!attribute [r] id
+      #   Unique identifier of this incident membership
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   Unique identifier of the incident
+      #   @return [String, nil]
+      # @!attribute [r] resource
+      #   The resource field
+      #   @return [ExternalResourceV1, nil]
+    end
   end
 end

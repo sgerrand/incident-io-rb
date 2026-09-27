@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] catalog_attribute_id
-    #   @return [String, nil] This must be an attribute of the catalog type of this custom field.
-    # @!attribute [r] values
-    #   @return [Array<String>, nil] The catalog entry IDs (of the type the attribute points at) that the attribute must reference.
     CustomFieldFixedFilterOptionsV2 = Model.define(
       catalog_attribute_id: :string,
       values: [:string]
     )
+
+    class CustomFieldFixedFilterOptionsV2
+      # @!attribute [r] catalog_attribute_id
+      #   This must be an attribute of the catalog type of this custom field
+      #   @return [String, nil]
+      # @!attribute [r] values
+      #   The catalog entry IDs (of the type the attribute points at) that the…
+      #   @return [Array<String>, nil]
+    end
   end
 end

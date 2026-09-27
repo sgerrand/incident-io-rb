@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] minutes_spent_on_incident
-    #   @return [Float, nil] Total minutes the user spent on the incident
-    # @!attribute [r] minutes_spent_on_incident_in_late_hours
-    #   @return [Float, nil] Minutes spent during the user's late hours
-    # @!attribute [r] minutes_spent_on_incident_in_sleeping_hours
-    #   @return [Float, nil] Minutes spent during the user's sleeping hours
-    # @!attribute [r] minutes_spent_on_incident_in_working_hours
-    #   @return [Float, nil] Minutes spent during the user's working hours
     WorkloadMinutesV2 = Model.define(
       minutes_spent_on_incident: :float,
       minutes_spent_on_incident_in_late_hours: :float,
       minutes_spent_on_incident_in_sleeping_hours: :float,
       minutes_spent_on_incident_in_working_hours: :float
     )
+
+    class WorkloadMinutesV2
+      # @!attribute [r] minutes_spent_on_incident
+      #   Total minutes the user spent on the incident
+      #   @return [Float, nil]
+      # @!attribute [r] minutes_spent_on_incident_in_late_hours
+      #   Minutes spent during the user's late hours
+      #   @return [Float, nil]
+      # @!attribute [r] minutes_spent_on_incident_in_sleeping_hours
+      #   Minutes spent during the user's sleeping hours
+      #   @return [Float, nil]
+      # @!attribute [r] minutes_spent_on_incident_in_working_hours
+      #   Minutes spent during the user's working hours
+      #   @return [Float, nil]
+    end
   end
 end

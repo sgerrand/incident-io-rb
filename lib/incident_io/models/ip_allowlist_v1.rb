@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] allowlist
-    #   @return [Array<IPAllowlistItemV1>, nil] A list of IP addresses or CIDR prefixes to allow
-    # @!attribute [r] enabled
-    #   @return [Boolean, nil] Whether this IP allowlist is enabled or not
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] The time this allowlist was last updated
-    # @!attribute [r] version
-    #   @return [Integer, nil] The version of this IP allowlist
     IPAllowlistV1 = Model.define(
       allowlist: [-> { IPAllowlistItemV1 }],
       enabled: :boolean,
       updated_at: :time,
       version: :integer
     )
+
+    class IPAllowlistV1
+      # @!attribute [r] allowlist
+      #   A list of IP addresses or CIDR prefixes to allow
+      #   @return [Array<IPAllowlistItemV1>, nil]
+      # @!attribute [r] enabled
+      #   Whether this IP allowlist is enabled or not
+      #   @return [Boolean, nil]
+      # @!attribute [r] updated_at
+      #   The time this allowlist was last updated
+      #   @return [Time, nil]
+      # @!attribute [r] version
+      #   The version of this IP allowlist
+      #   @return [Integer, nil]
+    end
   end
 end

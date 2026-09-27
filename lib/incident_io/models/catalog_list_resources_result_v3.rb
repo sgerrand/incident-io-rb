@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] resources
-    #   @return [Array<CatalogResourceV3>, nil]
     CatalogListResourcesResultV3 = Model.define(
       resources: [-> { CatalogResourceV3 }]
     )
+
+    class CatalogListResourcesResultV3
+      # @!attribute [r] resources
+      #   The resources field
+      #   @return [Array<CatalogResourceV3>, nil]
+    end
   end
 end

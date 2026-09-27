@@ -5,26 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] created_at
-    #   @return [Time, nil] Timestamp for when the document was created
-    # @!attribute [r] document_url
-    #   @return [String, nil] A URL to view the post-mortem document in the incident.io dashboard
-    # @!attribute [r] editors
-    #   @return [Array<UserV1>, nil] The list of users who have edited this post-mortem document
-    # @!attribute [r] exported_urls
-    #   @return [Array<String>, nil] URLs of any external locations this document has been exported to
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the post-mortem document
-    # @!attribute [r] incident_id
-    #   @return [String, nil] The unique identifier of the incident that this post-mortem document belongs to
-    # @!attribute [r] status
-    #   @return [String, nil] The current status of this post-mortem document One of: in_progress, in_review, completed.
-    # @!attribute [r] title
-    #   @return [String, nil] The display title of the post-mortem document
-    # @!attribute [r] type
-    #   @return [String, nil] Whether this is a native incident.io post-mortem or one hosted in an external provider One of: in_app, external.
-    # @!attribute [r] updated_at
-    #   @return [String, nil] Timestamp for when the document was last updated
     PostmortemDocumentV1 = Model.define(
       created_at: :time,
       document_url: :string,
@@ -37,5 +17,38 @@ module IncidentIo
       type: :string,
       updated_at: :string
     )
+
+    class PostmortemDocumentV1
+      # @!attribute [r] created_at
+      #   Timestamp for when the document was created
+      #   @return [Time, nil]
+      # @!attribute [r] document_url
+      #   A URL to view the post-mortem document in the incident.io dashboard
+      #   @return [String, nil]
+      # @!attribute [r] editors
+      #   The list of users who have edited this post-mortem document
+      #   @return [Array<UserV1>, nil]
+      # @!attribute [r] exported_urls
+      #   URLs of any external locations this document has been exported to
+      #   @return [Array<String>, nil]
+      # @!attribute [r] id
+      #   Unique identifier for the post-mortem document
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   The unique identifier of the incident that this post-mortem document belongs to
+      #   @return [String, nil]
+      # @!attribute [r] status
+      #   The current status of this post-mortem document One of: in_progress,…
+      #   @return [String, nil]
+      # @!attribute [r] title
+      #   The display title of the post-mortem document
+      #   @return [String, nil]
+      # @!attribute [r] type
+      #   Whether this is a native incident.io post-mortem or one hosted in an external…
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   Timestamp for when the document was last updated
+      #   @return [String, nil]
+    end
   end
 end

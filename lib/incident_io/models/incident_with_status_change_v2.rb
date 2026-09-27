@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident
-    #   @return [IncidentV2, nil]
-    # @!attribute [r] message
-    #   @return [String, nil] Message that explains the context behind the update
-    # @!attribute [r] new_status
-    #   @return [IncidentStatusV2, nil]
-    # @!attribute [r] previous_status
-    #   @return [IncidentStatusV2, nil]
     IncidentWithStatusChangeV2 = Model.define(
       incident: -> { IncidentV2 },
       message: :string,
       new_status: -> { IncidentStatusV2 },
       previous_status: -> { IncidentStatusV2 }
     )
+
+    class IncidentWithStatusChangeV2
+      # @!attribute [r] incident
+      #   The incident field
+      #   @return [IncidentV2, nil]
+      # @!attribute [r] message
+      #   Message that explains the context behind the update
+      #   @return [String, nil]
+      # @!attribute [r] new_status
+      #   The new_status field
+      #   @return [IncidentStatusV2, nil]
+      # @!attribute [r] previous_status
+      #   The previous_status field
+      #   @return [IncidentStatusV2, nil]
+    end
   end
 end

@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] status
-    #   @return [String, nil] The new status to set the post-mortem document to One of: in_progress, in_review, completed.
     PostmortemDocumentsUpdateStatusPayloadV1 = Model.define(
       status: :string
     )
+
+    class PostmortemDocumentsUpdateStatusPayloadV1
+      # @!attribute [r] status
+      #   The new status to set the post-mortem document to One of: in_progress,…
+      #   @return [String, nil]
+    end
   end
 end

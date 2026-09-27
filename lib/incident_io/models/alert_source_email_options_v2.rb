@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] email_address
-    #   @return [String, nil] Email address this alert source receives alerts to
-    # @!attribute [r] redactions
-    #   @return [Array<String>, nil] Which PII types to automatically redact from incoming email content before storage One of: credit_card_numbers, us_social_security_numbers, phone_numbers.
-    # @!attribute [r] transform_expression
-    #   @return [String, nil] JavaScript expression to transform email fields into structured alert fields
     AlertSourceEmailOptionsV2 = Model.define(
       email_address: :string,
       redactions: [:string],
       transform_expression: :string
     )
+
+    class AlertSourceEmailOptionsV2
+      # @!attribute [r] email_address
+      #   Email address this alert source receives alerts to
+      #   @return [String, nil]
+      # @!attribute [r] redactions
+      #   Which PII types to automatically redact from incoming email content before…
+      #   @return [Array<String>, nil]
+      # @!attribute [r] transform_expression
+      #   JavaScript expression to transform email fields into structured alert fields
+      #   @return [String, nil]
+    end
   end
 end

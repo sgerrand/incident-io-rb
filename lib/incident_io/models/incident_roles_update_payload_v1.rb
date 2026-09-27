@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] Describes the purpose of the role
-    # @!attribute [r] instructions
-    #   @return [String, nil] Provided to whoever is nominated for the role.
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name of the incident role
-    # @!attribute [r] required
-    #   @return [Boolean, nil] DEPRECATED: this will always be false.
-    # @!attribute [r] shortform
-    #   @return [String, nil] Short human readable name for Slack.
     IncidentRolesUpdatePayloadV1 = Model.define(
       description: :string,
       instructions: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       required: :boolean,
       shortform: :string
     )
+
+    class IncidentRolesUpdatePayloadV1
+      # @!attribute [r] description
+      #   Describes the purpose of the role
+      #   @return [String, nil]
+      # @!attribute [r] instructions
+      #   Provided to whoever is nominated for the role
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name of the incident role
+      #   @return [String, nil]
+      # @!attribute [r] required
+      #   DEPRECATED: this will always be false
+      #   @return [Boolean, nil]
+      # @!attribute [r] shortform
+      #   Short human readable name for Slack
+      #   @return [String, nil]
+    end
   end
 end

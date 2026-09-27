@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] for_each
-    #   @return [String, nil] Reference to an expression that returns resources to run this step over
-    # @!attribute [r] id
-    #   @return [String, nil] Unique ID of this step in a workflow
-    # @!attribute [r] name
-    #   @return [String, nil] Unique name of the step in the engine
-    # @!attribute [r] param_bindings
-    #   @return [Array<EngineParamBindingPayloadV2>, nil] List of parameter bindings
     StepConfigPayloadV2 = Model.define(
       for_each: :string,
       id: :string,
       name: :string,
       param_bindings: [-> { EngineParamBindingPayloadV2 }]
     )
+
+    class StepConfigPayloadV2
+      # @!attribute [r] for_each
+      #   Reference to an expression that returns resources to run this step over
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique ID of this step in a workflow
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Unique name of the step in the engine
+      #   @return [String, nil]
+      # @!attribute [r] param_bindings
+      #   List of parameter bindings
+      #   @return [Array<EngineParamBindingPayloadV2>, nil]
+    end
   end
 end

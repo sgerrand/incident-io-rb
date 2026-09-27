@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] The description of this status page
-    # @!attribute [r] id
-    #   @return [String, nil] Unique ID of this status page
-    # @!attribute [r] name
-    #   @return [String, nil] The title of this status page
-    # @!attribute [r] public_url
-    #   @return [String, nil] The public URL of this status page
     StatusPageV2 = Model.define(
       description: :string,
       id: :string,
       name: :string,
       public_url: :string
     )
+
+    class StatusPageV2
+      # @!attribute [r] description
+      #   The description of this status page
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique ID of this status page
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   The title of this status page
+      #   @return [String, nil]
+      # @!attribute [r] public_url
+      #   The public URL of this status page
+      #   @return [String, nil]
+    end
   end
 end

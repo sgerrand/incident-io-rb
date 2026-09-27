@@ -51,7 +51,7 @@ module IncidentIo
           )
         end
 
-        # List all incident statuses for an organisation.
+        # List all incident statuses for an organisation
         #
         # Endpoint: `GET /v1/incident_statuses`. Scopes: incident_statuses.view.
         #
@@ -67,7 +67,7 @@ module IncidentIo
           )
         end
 
-        # Get a single incident status.
+        # Get a single incident status
         #
         # Endpoint: `GET /v1/incident_statuses/{id}`. Scopes: incident_statuses.view.
         #

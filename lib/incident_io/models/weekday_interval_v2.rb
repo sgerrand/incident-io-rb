@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] end_time
-    #   @return [String, nil] End time of the interval, in 24hr format
-    # @!attribute [r] start_time
-    #   @return [String, nil] Start time of the interval, in 24hr format
-    # @!attribute [r] weekday
-    #   @return [String, nil] Weekdays for use within a schedule or escalation path One of: monday, tuesday, wednesday, thursday, friday, saturday, sunday.
     WeekdayIntervalV2 = Model.define(
       end_time: :string,
       start_time: :string,
       weekday: :string
     )
+
+    class WeekdayIntervalV2
+      # @!attribute [r] end_time
+      #   End time of the interval, in 24hr format
+      #   @return [String, nil]
+      # @!attribute [r] start_time
+      #   Start time of the interval, in 24hr format
+      #   @return [String, nil]
+      # @!attribute [r] weekday
+      #   Weekdays for use within a schedule or escalation path One of: monday,…
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,30 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert_sources
-    #   @return [Array<AlertRouteAlertSourcePayloadV3>, nil] Which alert sources this route matches
-    # @!attribute [r] condition_groups
-    #   @return [Array<ConditionGroupPayloadV3>, nil] Filter: the condition groups that must be true for this route to fire
-    # @!attribute [r] enabled
-    #   @return [Boolean, nil] Whether this alert route is enabled
-    # @!attribute [r] escalation_config
-    #   @return [AlertRouteEscalationConfigPayloadV3, nil]
-    # @!attribute [r] expressions
-    #   @return [Array<ExpressionPayloadV3>, nil] The expressions used by bindings in this route
-    # @!attribute [r] grouping_config
-    #   @return [AlertGroupingConfigV3, nil]
-    # @!attribute [r] incident_config
-    #   @return [AlertRouteIncidentConfigPayloadV3, nil]
-    # @!attribute [r] is_private
-    #   @return [Boolean, nil] Whether this alert route is private.
-    # @!attribute [r] message_config
-    #   @return [AlertMessageConfigPayloadV3, nil]
-    # @!attribute [r] name
-    #   @return [String, nil] The name of this alert route, for the user's reference
-    # @!attribute [r] owning_team_ids
-    #   @return [Array<String>, nil] IDs of teams that own this alert route
-    # @!attribute [r] version
-    #   @return [Integer, nil] The version this update will create.
     AlertRoutesUpdatePayloadV3 = Model.define(
       alert_sources: [-> { AlertRouteAlertSourcePayloadV3 }],
       condition_groups: [-> { ConditionGroupPayloadV3 }],
@@ -43,5 +19,44 @@ module IncidentIo
       owning_team_ids: [:string],
       version: :integer
     )
+
+    class AlertRoutesUpdatePayloadV3
+      # @!attribute [r] alert_sources
+      #   Which alert sources this route matches
+      #   @return [Array<AlertRouteAlertSourcePayloadV3>, nil]
+      # @!attribute [r] condition_groups
+      #   Filter: the condition groups that must be true for this route to fire
+      #   @return [Array<ConditionGroupPayloadV3>, nil]
+      # @!attribute [r] enabled
+      #   Whether this alert route is enabled
+      #   @return [Boolean, nil]
+      # @!attribute [r] escalation_config
+      #   The escalation_config field
+      #   @return [AlertRouteEscalationConfigPayloadV3, nil]
+      # @!attribute [r] expressions
+      #   The expressions used by bindings in this route
+      #   @return [Array<ExpressionPayloadV3>, nil]
+      # @!attribute [r] grouping_config
+      #   The grouping_config field
+      #   @return [AlertGroupingConfigV3, nil]
+      # @!attribute [r] incident_config
+      #   The incident_config field
+      #   @return [AlertRouteIncidentConfigPayloadV3, nil]
+      # @!attribute [r] is_private
+      #   Whether this alert route is private
+      #   @return [Boolean, nil]
+      # @!attribute [r] message_config
+      #   The message_config field
+      #   @return [AlertMessageConfigPayloadV3, nil]
+      # @!attribute [r] name
+      #   The name of this alert route, for the user's reference
+      #   @return [String, nil]
+      # @!attribute [r] owning_team_ids
+      #   IDs of teams that own this alert route
+      #   @return [Array<String>, nil]
+      # @!attribute [r] version
+      #   The version this update will create
+      #   @return [Integer, nil]
+    end
   end
 end

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] event_type
-    #   @return [String, nil] What type of event is this webhook for?
-    # @!attribute [r] private_incident_follow_up_created_v1
-    #   @return [WebhookPrivateResourceV2, nil]
     WebhooksPrivateIncidentFollowUpCreatedV1ResponseBody = Model.define(
       event_type: :string,
       "private_incident.follow_up_created_v1": -> { WebhookPrivateResourceV2 }
     )
+
+    class WebhooksPrivateIncidentFollowUpCreatedV1ResponseBody
+      # @!attribute [r] event_type
+      #   What type of event is this webhook for?
+      #   @return [String, nil]
+      # @!attribute [r] private_incident_follow_up_created_v1
+      #   The private_incident.follow_up_created_v1 field
+      #   @return [WebhookPrivateResourceV2, nil]
+    end
   end
 end

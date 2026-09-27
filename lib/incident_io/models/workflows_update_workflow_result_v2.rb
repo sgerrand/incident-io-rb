@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] management_meta
-    #   @return [ManagementMetaV2, nil]
-    # @!attribute [r] workflow
-    #   @return [WorkflowV2, nil]
     WorkflowsUpdateWorkflowResultV2 = Model.define(
       management_meta: -> { ManagementMetaV2 },
       workflow: -> { WorkflowV2 }
     )
+
+    class WorkflowsUpdateWorkflowResultV2
+      # @!attribute [r] management_meta
+      #   The management_meta field
+      #   @return [ManagementMetaV2, nil]
+      # @!attribute [r] workflow
+      #   The workflow field
+      #   @return [WorkflowV2, nil]
+    end
   end
 end

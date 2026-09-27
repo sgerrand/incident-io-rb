@@ -5,24 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] created_at
-    #   @return [Time, nil]
-    # @!attribute [r] end_at
-    #   @return [Time, nil] End of the override
-    # @!attribute [r] id
-    #   @return [String, nil] Unique internal ID of the schedule override
-    # @!attribute [r] layer_id
-    #   @return [String, nil] The layer on the rotation on the schedule that this override applies to
-    # @!attribute [r] rotation_id
-    #   @return [String, nil] The rotation on the schedule that this override applies to
-    # @!attribute [r] schedule_id
-    #   @return [String, nil] The schedule that this override applies to
-    # @!attribute [r] start_at
-    #   @return [Time, nil] Start of the override
-    # @!attribute [r] updated_at
-    #   @return [Time, nil]
-    # @!attribute [r] user
-    #   @return [UserV2, nil]
     ScheduleOverrideV2 = Model.define(
       created_at: :time,
       end_at: :time,
@@ -34,5 +16,35 @@ module IncidentIo
       updated_at: :time,
       user: -> { UserV2 }
     )
+
+    class ScheduleOverrideV2
+      # @!attribute [r] created_at
+      #   The created_at field
+      #   @return [Time, nil]
+      # @!attribute [r] end_at
+      #   End of the override
+      #   @return [Time, nil]
+      # @!attribute [r] id
+      #   Unique internal ID of the schedule override
+      #   @return [String, nil]
+      # @!attribute [r] layer_id
+      #   The layer on the rotation on the schedule that this override applies to
+      #   @return [String, nil]
+      # @!attribute [r] rotation_id
+      #   The rotation on the schedule that this override applies to
+      #   @return [String, nil]
+      # @!attribute [r] schedule_id
+      #   The schedule that this override applies to
+      #   @return [String, nil]
+      # @!attribute [r] start_at
+      #   Start of the override
+      #   @return [Time, nil]
+      # @!attribute [r] updated_at
+      #   The updated_at field
+      #   @return [Time, nil]
+      # @!attribute [r] user
+      #   The user field
+      #   @return [UserV2, nil]
+    end
   end
 end

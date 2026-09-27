@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] The ID of the target
-    # @!attribute [r] name
-    #   @return [String, nil] The name of the target
-    # @!attribute [r] type
-    #   @return [String, nil] The type of target One of: api_key, alert, alert_chat_message_template, alert_route, alert_schema, alert_source, alert_priority, announcement_rule, announcement_post_template, catalog_type, catalog_entry, catalog_attribute, connector_config, custom_field, debrief_invite_rule, escalation, escalation_path, escalation_path_template, extension_connector, extension_connector_tool, follow_up_category, follow_up_priority, holiday_user_feed, hris_time_off_policy, incident, incident_call_transcription_session, incident_call_setting, incident_duration_metric, incident_template, maintenance_window, incident_role, incident_status, incident_timestamp, incident_timestamp_set_by_rule, incident_type, integration, internal_status_page, ip_allowlist, nudge, on_call_notification_method, on_call_notification_pause, organisation, organisation_settings, schedule_override, schedule_sync_rule, schedule_sync_target, policy, policy_report_schedule, post_incident_task, postmortem_template, postmortem_template_section, private_incident_membership, rbac_role, scim_group, schedule, team_role, secret, severity, status_page, status_page_sub_page, status_page_template, team_settings, telemetry_data_source, twilio_connection, user, workflow, activity_log, timeline_item, on_call_upsell_request.
     AuditLogTargetV2 = Model.define(
       id: :string,
       name: :string,
       type: :string
     )
+
+    class AuditLogTargetV2
+      # @!attribute [r] id
+      #   The ID of the target
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   The name of the target
+      #   @return [String, nil]
+      # @!attribute [r] type
+      #   The type of target One of: api_key, alert, alert_chat_message_template,…
+      #   @return [String, nil]
+    end
   end
 end

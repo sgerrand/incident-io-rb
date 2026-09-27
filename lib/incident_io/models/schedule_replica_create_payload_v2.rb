@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] mirror_window_days
-    #   @return [Integer, nil] How many days ahead to mirror this schedule into the external provider.
-    # @!attribute [r] replica_fallback_user_id
-    #   @return [String, nil] The ID of a user in the external provider that will be assigned whenever nobody is on-call in the incident.io schedule.
-    # @!attribute [r] replica_provider
-    #   @return [String, nil] The external provider where this schedule is replicated to One of: native, pagerduty, opsgenie, jsm.
-    # @!attribute [r] replica_provider_id
-    #   @return [String, nil] The ID of the schedule in the external provider that this replica syncs to.
-    # @!attribute [r] sources
-    #   @return [Array<ScheduleReplicaSourceV2>, nil] The specific rotation and layer combinations from the schedule to replicate.
     ScheduleReplicaCreatePayloadV2 = Model.define(
       mirror_window_days: :integer,
       replica_fallback_user_id: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       replica_provider_id: :string,
       sources: [-> { ScheduleReplicaSourceV2 }]
     )
+
+    class ScheduleReplicaCreatePayloadV2
+      # @!attribute [r] mirror_window_days
+      #   How many days ahead to mirror this schedule into the external provider
+      #   @return [Integer, nil]
+      # @!attribute [r] replica_fallback_user_id
+      #   The ID of a user in the external provider that will be assigned whenever…
+      #   @return [String, nil]
+      # @!attribute [r] replica_provider
+      #   The external provider where this schedule is replicated to One of: native,…
+      #   @return [String, nil]
+      # @!attribute [r] replica_provider_id
+      #   The ID of the schedule in the external provider that this replica syncs to
+      #   @return [String, nil]
+      # @!attribute [r] sources
+      #   The specific rotation and layer combinations from the schedule to replicate
+      #   @return [Array<ScheduleReplicaSourceV2>, nil]
+    end
   end
 end

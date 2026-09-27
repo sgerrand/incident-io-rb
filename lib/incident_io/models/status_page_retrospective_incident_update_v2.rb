@@ -5,21 +5,27 @@
 
 module IncidentIo
   module Models
-    # A single update in the reconstructed timeline of a retrospective status page incident.
-    #
-    # @!attribute [r] component_statuses
-    #   @return [Array<StatusPageIncidentAffectedComponentV2>, nil] An array of mappings from component ID to component status at the time this update was published
-    # @!attribute [r] incident_status
-    #   @return [String, nil] Current status for this incident One of: investigating, identified, monitoring, resolved.
-    # @!attribute [r] message
-    #   @return [String, nil] Markdown update on what's changed about this status page incident
-    # @!attribute [r] published_at
-    #   @return [Time, nil] When this update was published.
     StatusPageRetrospectiveIncidentUpdateV2 = Model.define(
       component_statuses: [-> { StatusPageIncidentAffectedComponentV2 }],
       incident_status: :string,
       message: :string,
       published_at: :time
     )
+
+    # A single update in the reconstructed timeline of a retrospective status page incident.
+    class StatusPageRetrospectiveIncidentUpdateV2
+      # @!attribute [r] component_statuses
+      #   An array of mappings from component ID to component status at the time this…
+      #   @return [Array<StatusPageIncidentAffectedComponentV2>, nil]
+      # @!attribute [r] incident_status
+      #   Current status for this incident One of: investigating, identified,…
+      #   @return [String, nil]
+      # @!attribute [r] message
+      #   Markdown update on what's changed about this status page incident
+      #   @return [String, nil]
+      # @!attribute [r] published_at
+      #   When this update was published
+      #   @return [Time, nil]
+    end
   end
 end

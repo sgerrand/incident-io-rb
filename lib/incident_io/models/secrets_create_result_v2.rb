@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] secret
-    #   @return [SecretV2, nil]
     SecretsCreateResultV2 = Model.define(
       secret: -> { SecretV2 }
     )
+
+    class SecretsCreateResultV2
+      # @!attribute [r] secret
+      #   The secret field
+      #   @return [SecretV2, nil]
+    end
   end
 end

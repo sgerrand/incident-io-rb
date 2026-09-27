@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] current_users
-    #   @return [Array<UserV2>, nil] Users who are now on-call (empty array if shift ending)
-    # @!attribute [r] previous_users
-    #   @return [Array<UserV2>, nil] Users who were previously on-call (empty array if shift starting)
-    # @!attribute [r] schedule
-    #   @return [ScheduleSlimV2, nil]
     ScheduleShiftChangeV2 = Model.define(
       current_users: [-> { UserV2 }],
       previous_users: [-> { UserV2 }],
       schedule: -> { ScheduleSlimV2 }
     )
+
+    class ScheduleShiftChangeV2
+      # @!attribute [r] current_users
+      #   Users who are now on-call (empty array if shift ending)
+      #   @return [Array<UserV2>, nil]
+      # @!attribute [r] previous_users
+      #   Users who were previously on-call (empty array if shift starting)
+      #   @return [Array<UserV2>, nil]
+      # @!attribute [r] schedule
+      #   The schedule field
+      #   @return [ScheduleSlimV2, nil]
+    end
   end
 end

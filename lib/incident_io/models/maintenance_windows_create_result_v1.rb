@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] maintenance_window
-    #   @return [MaintenanceWindowV1, nil]
     MaintenanceWindowsCreateResultV1 = Model.define(
       maintenance_window: -> { MaintenanceWindowV1 }
     )
+
+    class MaintenanceWindowsCreateResultV1
+      # @!attribute [r] maintenance_window
+      #   The maintenance_window field
+      #   @return [MaintenanceWindowV1, nil]
+    end
   end
 end

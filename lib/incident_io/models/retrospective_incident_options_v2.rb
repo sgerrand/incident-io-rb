@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] external_id
-    #   @return [Integer, nil] The external ID (e.g.
-    # @!attribute [r] postmortem_document_url
-    #   @return [String, nil] The URL of the postmortem, if there is one
-    # @!attribute [r] slack_channel_id
-    #   @return [String, nil] Pass the ID of a Slack channel to attach the incident to an existing channel.
     RetrospectiveIncidentOptionsV2 = Model.define(
       external_id: :integer,
       postmortem_document_url: :string,
       slack_channel_id: :string
     )
+
+    class RetrospectiveIncidentOptionsV2
+      # @!attribute [r] external_id
+      #   The external ID (e.g
+      #   @return [Integer, nil]
+      # @!attribute [r] postmortem_document_url
+      #   The URL of the postmortem, if there is one
+      #   @return [String, nil]
+      # @!attribute [r] slack_channel_id
+      #   Pass the ID of a Slack channel to attach the incident to an existing channel
+      #   @return [String, nil]
+    end
   end
 end

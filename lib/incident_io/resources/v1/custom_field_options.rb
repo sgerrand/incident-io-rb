@@ -13,6 +13,8 @@ module IncidentIo
       # field. For example, you might have an Incident Type custom field, with options
       # "Data breach", "Performance degradation", "API downtime", etc.
       class CustomFieldOptions < Resource
+        # Create a custom field option
+        #
         # Create a custom field option. If the sort key is not supplied, it'll default to 1000, so the option appears near the end of the list.
         #
         # Endpoint: `POST /v1/custom_field_options`. Scopes: organisation_settings.update.

@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] status_page_maintenance
-    #   @return [StatusPageMaintenanceV2, nil]
     StatusPagesUpdateStatusPageMaintenanceResultV2 = Model.define(
       status_page_maintenance: -> { StatusPageMaintenanceV2 }
     )
+
+    class StatusPagesUpdateStatusPageMaintenanceResultV2
+      # @!attribute [r] status_page_maintenance
+      #   The status_page_maintenance field
+      #   @return [StatusPageMaintenanceV2, nil]
+    end
   end
 end

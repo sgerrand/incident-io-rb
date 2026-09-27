@@ -5,26 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] condition_groups
-    #   @return [Array<ConditionGroupPayloadV2>, nil] Incidents are announced when they match any of these condition groups
-    # @!attribute [r] conditions_no_longer_apply_behaviour
-    #   @return [String, nil] Whether to remove announcement posts when the incident no longer matches this rule's conditions.
-    # @!attribute [r] microsoft_teams_channel_ids
-    #   @return [Array<String>, nil] Microsoft Teams channels to post announcements into, as team_id/channel_id.
-    # @!attribute [r] mode
-    #   @return [String, nil] Which incidents are announced: live incidents only, or triage incidents too One of: live_and_closed, include_triage, include_triage_and_merged, include_declined_and_merged, include_all.
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name for the rule
-    # @!attribute [r] owning_team_ids
-    #   @return [Array<String>, nil] IDs of the teams that own this rule.
-    # @!attribute [r] private_incident_scope
-    #   @return [String, nil] Which private incidents this rule announces: every private incident (all), those an owning team can see (owning_teams), or none.
-    # @!attribute [r] slack_channel_ids
-    #   @return [Array<String>, nil] IDs of the Slack channels to post announcements into.
-    # @!attribute [r] template_id
-    #   @return [String, nil] ID of the announcement template used to render this rule's posts.
-    # @!attribute [r] update_sharing_mode
-    #   @return [String, nil] Where incident updates are shared once the incident is announced One of: none, thread, thread_and_channel.
     AnnouncementRulesUpdatePayloadV2 = Model.define(
       condition_groups: [-> { ConditionGroupPayloadV2 }],
       conditions_no_longer_apply_behaviour: :string,
@@ -37,5 +17,38 @@ module IncidentIo
       template_id: :string,
       update_sharing_mode: :string
     )
+
+    class AnnouncementRulesUpdatePayloadV2
+      # @!attribute [r] condition_groups
+      #   Incidents are announced when they match any of these condition groups
+      #   @return [Array<ConditionGroupPayloadV2>, nil]
+      # @!attribute [r] conditions_no_longer_apply_behaviour
+      #   Whether to remove announcement posts when the incident no longer matches this…
+      #   @return [String, nil]
+      # @!attribute [r] microsoft_teams_channel_ids
+      #   Microsoft Teams channels to post announcements into, as team_id/channel_id
+      #   @return [Array<String>, nil]
+      # @!attribute [r] mode
+      #   Which incidents are announced: live incidents only, or triage incidents too…
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name for the rule
+      #   @return [String, nil]
+      # @!attribute [r] owning_team_ids
+      #   IDs of the teams that own this rule
+      #   @return [Array<String>, nil]
+      # @!attribute [r] private_incident_scope
+      #   Which private incidents this rule announces: every private incident (all),…
+      #   @return [String, nil]
+      # @!attribute [r] slack_channel_ids
+      #   IDs of the Slack channels to post announcements into
+      #   @return [Array<String>, nil]
+      # @!attribute [r] template_id
+      #   ID of the announcement template used to render this rule's posts
+      #   @return [String, nil]
+      # @!attribute [r] update_sharing_mode
+      #   Where incident updates are shared once the incident is announced One of:…
+      #   @return [String, nil]
+    end
   end
 end

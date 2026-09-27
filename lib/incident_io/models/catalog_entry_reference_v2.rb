@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] archived_at
-    #   @return [Time, nil] When this entry was archived
-    # @!attribute [r] catalog_entry_id
-    #   @return [String, nil] ID of this catalog entry
-    # @!attribute [r] catalog_entry_name
-    #   @return [String, nil] The name of this entry
-    # @!attribute [r] catalog_type_id
-    #   @return [String, nil] ID of this catalog type
     CatalogEntryReferenceV2 = Model.define(
       archived_at: :time,
       catalog_entry_id: :string,
       catalog_entry_name: :string,
       catalog_type_id: :string
     )
+
+    class CatalogEntryReferenceV2
+      # @!attribute [r] archived_at
+      #   When this entry was archived
+      #   @return [Time, nil]
+      # @!attribute [r] catalog_entry_id
+      #   ID of this catalog entry
+      #   @return [String, nil]
+      # @!attribute [r] catalog_entry_name
+      #   The name of this entry
+      #   @return [String, nil]
+      # @!attribute [r] catalog_type_id
+      #   ID of this catalog type
+      #   @return [String, nil]
+    end
   end
 end

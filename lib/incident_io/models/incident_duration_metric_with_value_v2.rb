@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] duration_metric
-    #   @return [IncidentDurationMetricV2, nil]
-    # @!attribute [r] status
-    #   @return [String, nil] Whether value_seconds matches this incident's current timestamps ('success'), or why it doesn't One of: success, timestamps_missing, calculating, invalid_timestamps.
-    # @!attribute [r] value_seconds
-    #   @return [Integer, nil] The duration we last calculated for this metric, omitted if we've never calculated one.
     IncidentDurationMetricWithValueV2 = Model.define(
       duration_metric: -> { IncidentDurationMetricV2 },
       status: :string,
       value_seconds: :integer
     )
+
+    class IncidentDurationMetricWithValueV2
+      # @!attribute [r] duration_metric
+      #   The duration_metric field
+      #   @return [IncidentDurationMetricV2, nil]
+      # @!attribute [r] status
+      #   Whether value_seconds matches this incident's current timestamps ('success'),…
+      #   @return [String, nil]
+      # @!attribute [r] value_seconds
+      #   The duration we last calculated for this metric, omitted if we've never…
+      #   @return [Integer, nil]
+    end
   end
 end

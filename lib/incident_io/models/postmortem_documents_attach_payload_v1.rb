@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] document_provider
-    #   @return [String, nil] The provider hosting the document.
-    # @!attribute [r] incident_id
-    #   @return [String, nil] The unique identifier of the incident to attach the post-mortem document to
-    # @!attribute [r] permalink
-    #   @return [String, nil] A URL pointing to the externally-hosted post-mortem document
     PostmortemDocumentsAttachPayloadV1 = Model.define(
       document_provider: :string,
       incident_id: :string,
       permalink: :string
     )
+
+    class PostmortemDocumentsAttachPayloadV1
+      # @!attribute [r] document_provider
+      #   The provider hosting the document
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   The unique identifier of the incident to attach the post-mortem document to
+      #   @return [String, nil]
+      # @!attribute [r] permalink
+      #   A URL pointing to the externally-hosted post-mortem document
+      #   @return [String, nil]
+    end
   end
 end

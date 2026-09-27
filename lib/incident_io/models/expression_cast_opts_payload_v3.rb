@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] returns
-    #   @return [ReturnsMetaV3, nil]
     ExpressionCastOptsPayloadV3 = Model.define(
       returns: -> { ReturnsMetaV3 }
     )
+
+    class ExpressionCastOptsPayloadV3
+      # @!attribute [r] returns
+      #   The returns field
+      #   @return [ReturnsMetaV3, nil]
+    end
   end
 end

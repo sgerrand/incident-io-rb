@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] postmortem_document
-    #   @return [PostmortemDocumentV1, nil]
     IncidentsImportPostmortemDocumentResultV2 = Model.define(
       postmortem_document: -> { PostmortemDocumentV1 }
     )
+
+    class IncidentsImportPostmortemDocumentResultV2
+      # @!attribute [r] postmortem_document
+      #   The postmortem_document field
+      #   @return [PostmortemDocumentV1, nil]
+    end
   end
 end

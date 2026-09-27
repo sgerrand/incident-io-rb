@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] after
-    #   @return [String, nil] If provided, pass this as the 'after' param to load the next page
-    # @!attribute [r] page_size
-    #   @return [Integer, nil] What was the maximum number of results requested
-    # @!attribute [r] total_record_count
-    #   @return [Integer, nil] How many matching records were there in total, if known
     PaginationMetaResultWithTotalV2 = Model.define(
       after: :string,
       page_size: :integer,
       total_record_count: :integer
     )
+
+    class PaginationMetaResultWithTotalV2
+      # @!attribute [r] after
+      #   If provided, pass this as the 'after' param to load the next page
+      #   @return [String, nil]
+      # @!attribute [r] page_size
+      #   What was the maximum number of results requested
+      #   @return [Integer, nil]
+      # @!attribute [r] total_record_count
+      #   How many matching records were there in total, if known
+      #   @return [Integer, nil]
+    end
   end
 end

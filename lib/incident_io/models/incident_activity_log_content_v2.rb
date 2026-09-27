@@ -5,47 +5,6 @@
 
 module IncidentIo
   module Models
-    # Details of an activity log entry.
-    #
-    # At most one key is set, and it matches the entry's type. Types not listed here carry no
-    # content: the entry's type and title are all there is.
-    #
-    # @!attribute [r] action_created
-    #   @return [ActivityActionRefV2, nil]
-    # @!attribute [r] action_updated
-    #   @return [ActivityActionUpdatedV2, nil]
-    # @!attribute [r] alert_attached_to_incident
-    #   @return [ActivityAlertRefV2, nil]
-    # @!attribute [r] custom_field_value_update
-    #   @return [ActivityCustomFieldValueUpdateV2, nil]
-    # @!attribute [r] escalation_acknowledged
-    #   @return [ActivityEscalationAcknowledgedV2, nil]
-    # @!attribute [r] escalation_created
-    #   @return [ActivityEscalationCreatedV2, nil]
-    # @!attribute [r] follow_up_created
-    #   @return [ActivityFollowUpRefV2, nil]
-    # @!attribute [r] follow_up_updated
-    #   @return [ActivityFollowUpUpdatedV2, nil]
-    # @!attribute [r] incident_merged
-    #   @return [ActivityIncidentMergedV2, nil]
-    # @!attribute [r] incident_rename
-    #   @return [ActivityIncidentRenameV2, nil]
-    # @!attribute [r] incident_timestamp_set
-    #   @return [ActivityIncidentTimestampSetV2, nil]
-    # @!attribute [r] incident_type_changed
-    #   @return [ActivityIncidentTypeChangedV2, nil]
-    # @!attribute [r] incident_update
-    #   @return [ActivityIncidentUpdateV2, nil]
-    # @!attribute [r] incident_visibility_changed
-    #   @return [ActivityIncidentVisibilityChangedV2, nil]
-    # @!attribute [r] role_update
-    #   @return [ActivityRoleUpdateV2, nil]
-    # @!attribute [r] status_change
-    #   @return [ActivityStatusChangeV2, nil]
-    # @!attribute [r] summary_update
-    #   @return [ActivitySummaryUpdateV2, nil]
-    # @!attribute [r] workflow_ran
-    #   @return [ActivityWorkflowRanV2, nil]
     IncidentActivityLogContentV2 = Model.define(
       action_created: -> { ActivityActionRefV2 },
       action_updated: -> { ActivityActionUpdatedV2 },
@@ -66,5 +25,66 @@ module IncidentIo
       summary_update: -> { ActivitySummaryUpdateV2 },
       workflow_ran: -> { ActivityWorkflowRanV2 }
     )
+
+    # Details of an activity log entry.
+    #
+    # At most one key is set, and it matches the entry's type. Types not listed here carry no
+    # content: the entry's type and title are all there is.
+    class IncidentActivityLogContentV2
+      # @!attribute [r] action_created
+      #   The action_created field
+      #   @return [ActivityActionRefV2, nil]
+      # @!attribute [r] action_updated
+      #   The action_updated field
+      #   @return [ActivityActionUpdatedV2, nil]
+      # @!attribute [r] alert_attached_to_incident
+      #   The alert_attached_to_incident field
+      #   @return [ActivityAlertRefV2, nil]
+      # @!attribute [r] custom_field_value_update
+      #   The custom_field_value_update field
+      #   @return [ActivityCustomFieldValueUpdateV2, nil]
+      # @!attribute [r] escalation_acknowledged
+      #   The escalation_acknowledged field
+      #   @return [ActivityEscalationAcknowledgedV2, nil]
+      # @!attribute [r] escalation_created
+      #   The escalation_created field
+      #   @return [ActivityEscalationCreatedV2, nil]
+      # @!attribute [r] follow_up_created
+      #   The follow_up_created field
+      #   @return [ActivityFollowUpRefV2, nil]
+      # @!attribute [r] follow_up_updated
+      #   The follow_up_updated field
+      #   @return [ActivityFollowUpUpdatedV2, nil]
+      # @!attribute [r] incident_merged
+      #   The incident_merged field
+      #   @return [ActivityIncidentMergedV2, nil]
+      # @!attribute [r] incident_rename
+      #   The incident_rename field
+      #   @return [ActivityIncidentRenameV2, nil]
+      # @!attribute [r] incident_timestamp_set
+      #   The incident_timestamp_set field
+      #   @return [ActivityIncidentTimestampSetV2, nil]
+      # @!attribute [r] incident_type_changed
+      #   The incident_type_changed field
+      #   @return [ActivityIncidentTypeChangedV2, nil]
+      # @!attribute [r] incident_update
+      #   The incident_update field
+      #   @return [ActivityIncidentUpdateV2, nil]
+      # @!attribute [r] incident_visibility_changed
+      #   The incident_visibility_changed field
+      #   @return [ActivityIncidentVisibilityChangedV2, nil]
+      # @!attribute [r] role_update
+      #   The role_update field
+      #   @return [ActivityRoleUpdateV2, nil]
+      # @!attribute [r] status_change
+      #   The status_change field
+      #   @return [ActivityStatusChangeV2, nil]
+      # @!attribute [r] summary_update
+      #   The summary_update field
+      #   @return [ActivitySummaryUpdateV2, nil]
+      # @!attribute [r] workflow_ran
+      #   The workflow_ran field
+      #   @return [ActivityWorkflowRanV2, nil]
+    end
   end
 end

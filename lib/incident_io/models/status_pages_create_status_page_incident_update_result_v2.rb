@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] status_page_incident_update
-    #   @return [StatusPageIncidentUpdateV2, nil]
     StatusPagesCreateStatusPageIncidentUpdateResultV2 = Model.define(
       status_page_incident_update: -> { StatusPageIncidentUpdateV2 }
     )
+
+    class StatusPagesCreateStatusPageIncidentUpdateResultV2
+      # @!attribute [r] status_page_incident_update
+      #   The status_page_incident_update field
+      #   @return [StatusPageIncidentUpdateV2, nil]
+    end
   end
 end

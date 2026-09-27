@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # A one-off rule to write. Send an existing rule's ID to keep it stable, and omit it for a rule you are adding.
-    #
-    # @!attribute [r] end_at
-    #   @return [Time, nil] When this rule stops applying
-    # @!attribute [r] id
-    #   @return [String, nil] An existing rule's ID, to keep it stable.
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name for this rule
-    # @!attribute [r] rate_cents
-    #   @return [Integer, nil] Rate paid while this rule applies, in the lowest denomination of the config's currency
-    # @!attribute [r] start_at
-    #   @return [Time, nil] When this rule starts applying
     PayConfigOneOffRulePayloadV2 = Model.define(
       end_at: :time,
       id: :string,
@@ -24,5 +12,24 @@ module IncidentIo
       rate_cents: :integer,
       start_at: :time
     )
+
+    # A one-off rule to write. Send an existing rule's ID to keep it stable, and omit it for a rule you are adding.
+    class PayConfigOneOffRulePayloadV2
+      # @!attribute [r] end_at
+      #   When this rule stops applying
+      #   @return [Time, nil]
+      # @!attribute [r] id
+      #   An existing rule's ID, to keep it stable
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name for this rule
+      #   @return [String, nil]
+      # @!attribute [r] rate_cents
+      #   Rate paid while this rule applies, in the lowest denomination of the config's…
+      #   @return [Integer, nil]
+      # @!attribute [r] start_at
+      #   When this rule starts applying
+      #   @return [Time, nil]
+    end
   end
 end

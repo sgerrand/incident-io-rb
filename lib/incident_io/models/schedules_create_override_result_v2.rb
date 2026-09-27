@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] override
-    #   @return [ScheduleOverrideV2, nil]
     SchedulesCreateOverrideResultV2 = Model.define(
       override: -> { ScheduleOverrideV2 }
     )
+
+    class SchedulesCreateOverrideResultV2
+      # @!attribute [r] override
+      #   The override field
+      #   @return [ScheduleOverrideV2, nil]
+    end
   end
 end

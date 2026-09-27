@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] annotations
-    #   @return [Hash{String => String}, nil] Annotations that track metadata about this resource
-    # @!attribute [r] permanent_member_user_ids
-    #   @return [Array<String>, nil] IDs of users to always keep in the Slack user group, regardless of who is on call.
-    # @!attribute [r] sync_type
-    #   @return [String, nil] Which schedule members sync to the user group One of: on_call, all_users, next_on_call.
     SchedulesUpdateScheduleSyncRulePayloadV2 = Model.define(
       annotations: Model.map_of(:string),
       permanent_member_user_ids: [:string],
       sync_type: :string
     )
+
+    class SchedulesUpdateScheduleSyncRulePayloadV2
+      # @!attribute [r] annotations
+      #   Annotations that track metadata about this resource
+      #   @return [Hash{String => String}, nil]
+      # @!attribute [r] permanent_member_user_ids
+      #   IDs of users to always keep in the Slack user group, regardless of who is on…
+      #   @return [Array<String>, nil]
+      # @!attribute [r] sync_type
+      #   Which schedule members sync to the user group One of: on_call, all_users,…
+      #   @return [String, nil]
+    end
   end
 end

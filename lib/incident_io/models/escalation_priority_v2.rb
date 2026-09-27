@@ -5,12 +5,15 @@
 
 module IncidentIo
   module Models
-    # The priority associated with this escalation.
-    #
-    # @!attribute [r] name
-    #   @return [String, nil] The human readable label for this priority
     EscalationPriorityV2 = Model.define(
       name: :string
     )
+
+    # The priority associated with this escalation.
+    class EscalationPriorityV2
+      # @!attribute [r] name
+      #   The human readable label for this priority
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] deduplication_key_path
-    #   @return [String, nil] JSON path to extract the deduplication key from the payload
-    # @!attribute [r] transform_expression
-    #   @return [String, nil] JavaScript expression that returns an object with all alert fields
     AlertSourceHTTPCustomOptionsV2 = Model.define(
       deduplication_key_path: :string,
       transform_expression: :string
     )
+
+    class AlertSourceHTTPCustomOptionsV2
+      # @!attribute [r] deduplication_key_path
+      #   JSON path to extract the deduplication key from the payload
+      #   @return [String, nil]
+      # @!attribute [r] transform_expression
+      #   JavaScript expression that returns an object with all alert fields
+      #   @return [String, nil]
+    end
   end
 end

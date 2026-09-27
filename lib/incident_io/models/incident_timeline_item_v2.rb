@@ -5,32 +5,6 @@
 
 module IncidentIo
   module Models
-    # An item on an incident's curated timeline.
-    #
-    # The timeline is the narrative of an incident, as opposed to the activity log, which records
-    # everything that happened. Some of that activity - a pinned message, an escalation, an event a
-    # workflow added - is promoted onto the timeline, and those items carry the ID of the activity
-    # log entry they came from. The rest are custom, written by hand in the dashboard or through
-    # the API, and have no activity_log_id.
-    #
-    # @!attribute [r] activity_log_id
-    #   @return [String, nil] ID of the activity log entry this item was promoted from.
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When this item was added to the timeline
-    # @!attribute [r] creator
-    #   @return [ActorV2, nil]
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the timeline item, in markdown.
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier of the timeline item
-    # @!attribute [r] incident_id
-    #   @return [String, nil] ID of the incident this item belongs to.
-    # @!attribute [r] timestamp
-    #   @return [Time, nil] When the thing this item describes happened.
-    # @!attribute [r] title
-    #   @return [String, nil] Title of the timeline item
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When this item was last edited
     IncidentTimelineItemV2 = Model.define(
       activity_log_id: :string,
       created_at: :time,
@@ -42,5 +16,42 @@ module IncidentIo
       title: :string,
       updated_at: :time
     )
+
+    # An item on an incident's curated timeline.
+    #
+    # The timeline is the narrative of an incident, as opposed to the activity log, which records
+    # everything that happened. Some of that activity - a pinned message, an escalation, an event a
+    # workflow added - is promoted onto the timeline, and those items carry the ID of the activity
+    # log entry they came from. The rest are custom, written by hand in the dashboard or through
+    # the API, and have no activity_log_id.
+    class IncidentTimelineItemV2
+      # @!attribute [r] activity_log_id
+      #   ID of the activity log entry this item was promoted from
+      #   @return [String, nil]
+      # @!attribute [r] created_at
+      #   When this item was added to the timeline
+      #   @return [Time, nil]
+      # @!attribute [r] creator
+      #   The creator field
+      #   @return [ActorV2, nil]
+      # @!attribute [r] description
+      #   Description of the timeline item, in markdown
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier of the timeline item
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   ID of the incident this item belongs to
+      #   @return [String, nil]
+      # @!attribute [r] timestamp
+      #   When the thing this item describes happened
+      #   @return [Time, nil]
+      # @!attribute [r] title
+      #   Title of the timeline item
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   When this item was last edited
+      #   @return [Time, nil]
+    end
   end
 end

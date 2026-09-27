@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] component_statuses
-    #   @return [Array<StatusPageMaintenanceAffectedComponentV2>, nil] The updated statuses of affected components
-    # @!attribute [r] id
-    #   @return [String, nil] A unique ID for this status page maintenance update
-    # @!attribute [r] maintenance_status
-    #   @return [String, nil] Current status for this maintenance window One of: maintenance_scheduled, maintenance_in_progress, maintenance_complete.
-    # @!attribute [r] message
-    #   @return [String, nil] Markdown update on what's changed about this status page maintenance window
-    # @!attribute [r] published_at
-    #   @return [Time, nil] When this status page maintenance update was published to the status page
-    # @!attribute [r] status_page_maintenance_id
-    #   @return [String, nil] The ID of the corresponding status page maintenance window
     StatusPageMaintenanceUpdateV2 = Model.define(
       component_statuses: [-> { StatusPageMaintenanceAffectedComponentV2 }],
       id: :string,
@@ -25,5 +13,26 @@ module IncidentIo
       published_at: :time,
       status_page_maintenance_id: :string
     )
+
+    class StatusPageMaintenanceUpdateV2
+      # @!attribute [r] component_statuses
+      #   The updated statuses of affected components
+      #   @return [Array<StatusPageMaintenanceAffectedComponentV2>, nil]
+      # @!attribute [r] id
+      #   A unique ID for this status page maintenance update
+      #   @return [String, nil]
+      # @!attribute [r] maintenance_status
+      #   Current status for this maintenance window One of: maintenance_scheduled,…
+      #   @return [String, nil]
+      # @!attribute [r] message
+      #   Markdown update on what's changed about this status page maintenance window
+      #   @return [String, nil]
+      # @!attribute [r] published_at
+      #   When this status page maintenance update was published to the status page
+      #   @return [Time, nil]
+      # @!attribute [r] status_page_maintenance_id
+      #   The ID of the corresponding status page maintenance window
+      #   @return [String, nil]
+    end
   end
 end

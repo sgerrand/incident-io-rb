@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] new_summary
-    #   @return [String, nil] The summary after this change, in markdown
-    # @!attribute [r] previous_summary
-    #   @return [String, nil] The summary before this change, in markdown
-    # @!attribute [r] updater
-    #   @return [ActorV2, nil]
     ActivitySummaryUpdateV2 = Model.define(
       new_summary: :string,
       previous_summary: :string,
       updater: -> { ActorV2 }
     )
+
+    class ActivitySummaryUpdateV2
+      # @!attribute [r] new_summary
+      #   The summary after this change, in markdown
+      #   @return [String, nil]
+      # @!attribute [r] previous_summary
+      #   The summary before this change, in markdown
+      #   @return [String, nil]
+      # @!attribute [r] updater
+      #   The updater field
+      #   @return [ActorV2, nil]
+    end
   end
 end

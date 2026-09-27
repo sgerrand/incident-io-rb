@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] unpublish_reason
-    #   @return [String, nil] Why this report is being unpublished
     PayReportsUnpublishPayloadV2 = Model.define(
       unpublish_reason: :string
     )
+
+    class PayReportsUnpublishPayloadV2
+      # @!attribute [r] unpublish_reason
+      #   Why this report is being unpublished
+      #   @return [String, nil]
+    end
   end
 end

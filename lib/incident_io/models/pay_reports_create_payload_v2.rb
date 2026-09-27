@@ -5,24 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] end_date
-    #   @return [String, nil] Last date (YYYY-MM-DD) to include shifts from, inclusive
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name for this report
-    # @!attribute [r] overlapping_shifts
-    #   @return [String, nil] Time on more than one of these schedules at once can be paid once or per schedule.
-    # @!attribute [r] pay_config_expression
-    #   @return [ExpressionPayloadV2, nil]
-    # @!attribute [r] pay_config_id
-    #   @return [String, nil] The pay config to price every shift with.
-    # @!attribute [r] rotation_filters
-    #   @return [Array<PayReportRotationFilterV2>, nil] Narrows some of these schedules to a subset of their rotations.
-    # @!attribute [r] schedule_ids
-    #   @return [Array<String>, nil] Which schedules to report on
-    # @!attribute [r] start_date
-    #   @return [String, nil] First date (YYYY-MM-DD) to include shifts from, inclusive
-    # @!attribute [r] unpaid_shifts
-    #   @return [String, nil] Whether shifts that price to zero count towards total_duration_seconds One of: included, excluded.
     PayReportsCreatePayloadV2 = Model.define(
       end_date: :string,
       name: :string,
@@ -34,5 +16,35 @@ module IncidentIo
       start_date: :string,
       unpaid_shifts: :string
     )
+
+    class PayReportsCreatePayloadV2
+      # @!attribute [r] end_date
+      #   Last date (YYYY-MM-DD) to include shifts from, inclusive
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name for this report
+      #   @return [String, nil]
+      # @!attribute [r] overlapping_shifts
+      #   Time on more than one of these schedules at once can be paid once or per…
+      #   @return [String, nil]
+      # @!attribute [r] pay_config_expression
+      #   The pay_config_expression field
+      #   @return [ExpressionPayloadV2, nil]
+      # @!attribute [r] pay_config_id
+      #   The pay config to price every shift with
+      #   @return [String, nil]
+      # @!attribute [r] rotation_filters
+      #   Narrows some of these schedules to a subset of their rotations
+      #   @return [Array<PayReportRotationFilterV2>, nil]
+      # @!attribute [r] schedule_ids
+      #   Which schedules to report on
+      #   @return [Array<String>, nil]
+      # @!attribute [r] start_date
+      #   First date (YYYY-MM-DD) to include shifts from, inclusive
+      #   @return [String, nil]
+      # @!attribute [r] unpaid_shifts
+      #   Whether shifts that price to zero count towards total_duration_seconds One…
+      #   @return [String, nil]
+    end
   end
 end

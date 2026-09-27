@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] literal
-    #   @return [String, nil] If set, this is the literal value of the step parameter
     CatalogEngineParamBindingValuePayloadV3 = Model.define(
       literal: :string
     )
+
+    class CatalogEngineParamBindingValuePayloadV3
+      # @!attribute [r] literal
+      #   If set, this is the literal value of the step parameter
+      #   @return [String, nil]
+    end
   end
 end

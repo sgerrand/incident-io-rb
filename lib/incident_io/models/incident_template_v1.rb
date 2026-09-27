@@ -5,20 +5,6 @@
 
 module IncidentIo
   module Models
-    # A reusable set of values applied to incidents created from alerts.
-    #
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When this incident template was created
-    # @!attribute [r] expressions
-    #   @return [Array<ExpressionV3>, nil] The expressions used by bindings in this template
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this incident template
-    # @!attribute [r] name
-    #   @return [String, nil] The name of this incident template, for the user's reference
-    # @!attribute [r] template
-    #   @return [IncidentTemplateConfigV1, nil]
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When this incident template was last updated
     IncidentTemplateV1 = Model.define(
       created_at: :time,
       expressions: [-> { ExpressionV3 }],
@@ -27,5 +13,27 @@ module IncidentIo
       template: -> { IncidentTemplateConfigV1 },
       updated_at: :time
     )
+
+    # A reusable set of values applied to incidents created from alerts.
+    class IncidentTemplateV1
+      # @!attribute [r] created_at
+      #   When this incident template was created
+      #   @return [Time, nil]
+      # @!attribute [r] expressions
+      #   The expressions used by bindings in this template
+      #   @return [Array<ExpressionV3>, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this incident template
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   The name of this incident template, for the user's reference
+      #   @return [String, nil]
+      # @!attribute [r] template
+      #   The template field
+      #   @return [IncidentTemplateConfigV1, nil]
+      # @!attribute [r] updated_at
+      #   When this incident template was last updated
+      #   @return [Time, nil]
+    end
   end
 end

@@ -5,6 +5,16 @@
 
 module IncidentIo
   module Models
+    ScheduleSyncTargetResourceV2 = Model.define(
+      add_bot_to_group: :boolean,
+      created_at: :time,
+      id: :string,
+      linked_schedules: [-> { LinkedScheduleV2 }],
+      slack_team_id: :string,
+      slack_user_group_id: :string,
+      updated_at: :time
+    )
+
     # A sync target is the link between incident.io and a single Slack user group,
     # used to keep that group's membership in step with who is currently on call.
     #
@@ -17,29 +27,28 @@ module IncidentIo
     #
     # A single target can be referenced by sync rules on several schedules at once;
     # linked_schedules lists every schedule with an active rule pointing at it.
-    #
-    # @!attribute [r] add_bot_to_group
-    #   @return [Boolean, nil] Whether the incident.io bot should be added to the group as a member.
-    # @!attribute [r] created_at
-    #   @return [Time, nil]
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier of the sync target
-    # @!attribute [r] linked_schedules
-    #   @return [Array<LinkedScheduleV2>, nil] Schedules with an active sync rule pointing at this target
-    # @!attribute [r] slack_team_id
-    #   @return [String, nil] Slack team (workspace) ID the user group lives in.
-    # @!attribute [r] slack_user_group_id
-    #   @return [String, nil] Slack ID of the user group whose membership is kept in sync.
-    # @!attribute [r] updated_at
-    #   @return [Time, nil]
-    ScheduleSyncTargetResourceV2 = Model.define(
-      add_bot_to_group: :boolean,
-      created_at: :time,
-      id: :string,
-      linked_schedules: [-> { LinkedScheduleV2 }],
-      slack_team_id: :string,
-      slack_user_group_id: :string,
-      updated_at: :time
-    )
+    class ScheduleSyncTargetResourceV2
+      # @!attribute [r] add_bot_to_group
+      #   Whether the incident.io bot should be added to the group as a member
+      #   @return [Boolean, nil]
+      # @!attribute [r] created_at
+      #   The created_at field
+      #   @return [Time, nil]
+      # @!attribute [r] id
+      #   Unique identifier of the sync target
+      #   @return [String, nil]
+      # @!attribute [r] linked_schedules
+      #   Schedules with an active sync rule pointing at this target
+      #   @return [Array<LinkedScheduleV2>, nil]
+      # @!attribute [r] slack_team_id
+      #   Slack team (workspace) ID the user group lives in
+      #   @return [String, nil]
+      # @!attribute [r] slack_user_group_id
+      #   Slack ID of the user group whose membership is kept in sync
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   The updated_at field
+      #   @return [Time, nil]
+    end
   end
 end

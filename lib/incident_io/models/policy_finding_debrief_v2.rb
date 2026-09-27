@@ -5,12 +5,15 @@
 
 module IncidentIo
   module Models
-    # Set when policy_type is debrief.
-    #
-    # @!attribute [r] incident_id
-    #   @return [String, nil] The incident the debrief belongs to
     PolicyFindingDebriefV2 = Model.define(
       incident_id: :string
     )
+
+    # Set when policy_type is debrief.
+    class PolicyFindingDebriefV2
+      # @!attribute [r] incident_id
+      #   The incident the debrief belongs to
+      #   @return [String, nil]
+    end
   end
 end

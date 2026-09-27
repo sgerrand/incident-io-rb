@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] after_seat_types
-    #   @return [String, nil] The seat types assigned to this SCIM group after the mapping was changed
-    # @!attribute [r] before_seat_types
-    #   @return [String, nil] The seat types assigned to this SCIM group before the mapping was changed
     AuditLogSCIMGroupSeatMappingChangedMetadataV2 = Model.define(
       after_seat_types: :string,
       before_seat_types: :string
     )
+
+    class AuditLogSCIMGroupSeatMappingChangedMetadataV2
+      # @!attribute [r] after_seat_types
+      #   The seat types assigned to this SCIM group after the mapping was changed
+      #   @return [String, nil]
+      # @!attribute [r] before_seat_types
+      #   The seat types assigned to this SCIM group before the mapping was changed
+      #   @return [String, nil]
+    end
   end
 end

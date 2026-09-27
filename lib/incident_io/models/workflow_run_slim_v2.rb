@@ -5,34 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] cancelled_at
-    #   @return [Time, nil] If the run was cancelled, this is when
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When the resource was created
-    # @!attribute [r] enqueued_at
-    #   @return [Time, nil] When the run was enqueued for execution
-    # @!attribute [r] error
-    #   @return [String, nil] Error produced by the workflow, if it failed
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the workflow run
-    # @!attribute [r] incident_id
-    #   @return [String, nil] If this run was against a specific incident, this is the ID of that incident
-    # @!attribute [r] incident_reference
-    #   @return [String, nil] If this run was against a specific incident, this is the reference of that incident
-    # @!attribute [r] progress
-    #   @return [Array<StepProgressSlimV2>, nil] Status of each step as it is worked
-    # @!attribute [r] scheduled_at
-    #   @return [Time, nil] When the run was scheduled for
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When the resource was last updated
-    # @!attribute [r] workflow_id
-    #   @return [String, nil] Unique identifier for the underlying workflow
-    # @!attribute [r] workflow_name
-    #   @return [String, nil] Name of the underlying workflow
-    # @!attribute [r] workflow_version_id
-    #   @return [String, nil] Unique identifier of the workflow version
-    # @!attribute [r] workflow_version_number
-    #   @return [Integer, nil] Monotonically incrementing version number for the version that ran
     WorkflowRunSlimV2 = Model.define(
       cancelled_at: :time,
       created_at: :time,
@@ -49,5 +21,50 @@ module IncidentIo
       workflow_version_id: :string,
       workflow_version_number: :integer
     )
+
+    class WorkflowRunSlimV2
+      # @!attribute [r] cancelled_at
+      #   If the run was cancelled, this is when
+      #   @return [Time, nil]
+      # @!attribute [r] created_at
+      #   When the resource was created
+      #   @return [Time, nil]
+      # @!attribute [r] enqueued_at
+      #   When the run was enqueued for execution
+      #   @return [Time, nil]
+      # @!attribute [r] error
+      #   Error produced by the workflow, if it failed
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier for the workflow run
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   If this run was against a specific incident, this is the ID of that incident
+      #   @return [String, nil]
+      # @!attribute [r] incident_reference
+      #   If this run was against a specific incident, this is the reference of that…
+      #   @return [String, nil]
+      # @!attribute [r] progress
+      #   Status of each step as it is worked
+      #   @return [Array<StepProgressSlimV2>, nil]
+      # @!attribute [r] scheduled_at
+      #   When the run was scheduled for
+      #   @return [Time, nil]
+      # @!attribute [r] updated_at
+      #   When the resource was last updated
+      #   @return [Time, nil]
+      # @!attribute [r] workflow_id
+      #   Unique identifier for the underlying workflow
+      #   @return [String, nil]
+      # @!attribute [r] workflow_name
+      #   Name of the underlying workflow
+      #   @return [String, nil]
+      # @!attribute [r] workflow_version_id
+      #   Unique identifier of the workflow version
+      #   @return [String, nil]
+      # @!attribute [r] workflow_version_number
+      #   Monotonically incrementing version number for the version that ran
+      #   @return [Integer, nil]
+    end
   end
 end

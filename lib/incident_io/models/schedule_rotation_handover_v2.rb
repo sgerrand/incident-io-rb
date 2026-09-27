@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] interval
-    #   @return [Integer, nil]
-    # @!attribute [r] interval_type
-    #   @return [String, nil] How often a handover occurs One of: hourly, daily, weekly.
     ScheduleRotationHandoverV2 = Model.define(
       interval: :integer,
       interval_type: :string
     )
+
+    class ScheduleRotationHandoverV2
+      # @!attribute [r] interval
+      #   The interval field
+      #   @return [Integer, nil]
+      # @!attribute [r] interval_type
+      #   How often a handover occurs One of: hourly, daily, weekly
+      #   @return [String, nil]
+    end
   end
 end

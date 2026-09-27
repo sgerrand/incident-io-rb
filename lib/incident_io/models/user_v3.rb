@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] email
-    #   @return [String, nil] Email address of the user.
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier of the user
-    # @!attribute [r] name
-    #   @return [String, nil] Name of the user
-    # @!attribute [r] slack_user_id
-    #   @return [String, nil] Slack ID of the user
     UserV3 = Model.define(
       email: :string,
       id: :string,
       name: :string,
       slack_user_id: :string
     )
+
+    class UserV3
+      # @!attribute [r] email
+      #   Email address of the user
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier of the user
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name of the user
+      #   @return [String, nil]
+      # @!attribute [r] slack_user_id
+      #   Slack ID of the user
+      #   @return [String, nil]
+    end
   end
 end

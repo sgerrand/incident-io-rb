@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] creator
-    #   @return [ActorV2, nil]
-    # @!attribute [r] escalated_to_users
-    #   @return [Array<UserV2>, nil] Users this escalation paged
-    # @!attribute [r] escalation_id
-    #   @return [String, nil] The escalation.
-    # @!attribute [r] escalation_path_id
-    #   @return [String, nil] The escalation path used, when one was
     ActivityEscalationCreatedV2 = Model.define(
       creator: -> { ActorV2 },
       escalated_to_users: [-> { UserV2 }],
       escalation_id: :string,
       escalation_path_id: :string
     )
+
+    class ActivityEscalationCreatedV2
+      # @!attribute [r] creator
+      #   The creator field
+      #   @return [ActorV2, nil]
+      # @!attribute [r] escalated_to_users
+      #   Users this escalation paged
+      #   @return [Array<UserV2>, nil]
+      # @!attribute [r] escalation_id
+      #   The escalation
+      #   @return [String, nil]
+      # @!attribute [r] escalation_path_id
+      #   The escalation path used, when one was
+      #   @return [String, nil]
+    end
   end
 end

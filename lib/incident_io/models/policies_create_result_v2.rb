@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] policy
-    #   @return [PolicyV2, nil]
     PoliciesCreateResultV2 = Model.define(
       policy: -> { PolicyV2 }
     )
+
+    class PoliciesCreateResultV2
+      # @!attribute [r] policy
+      #   The policy field
+      #   @return [PolicyV2, nil]
+    end
   end
 end

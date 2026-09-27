@@ -5,44 +5,6 @@
 
 module IncidentIo
   module Models
-    # A call route is a phone number your customers can call to reach whoever is
-    # on call, for an urgent support line or a regulator hotline.
-    #
-    # When a call comes in we work down the route's path, ringing each level's targets
-    # in turn until someone answers, then connect them to the caller. A trailing
-    # voicemail node records a message instead. Every call raises an alert, so calls
-    # can open incidents through an alert route.
-    #
-    # List and edit call routes here. Create and delete them in the dashboard.
-    #
-    # @!attribute [r] allowed_callers
-    #   @return [Array<CallRouteAllowedCallerV2>, nil] The numbers allowed to call this route.
-    # @!attribute [r] country_code
-    #   @return [String, nil] The country this route's number belongs to
-    # @!attribute [r] created_at
-    #   @return [Time, nil]
-    # @!attribute [r] current_state
-    #   @return [String, nil] Where this route is in provisioning.
-    # @!attribute [r] custom_language
-    #   @return [String, nil] The language we speak voice prompts in, via text-to-speech One of: en-US, en-GB, fr-FR, es-ES, pt-PT, pt-BR, de-DE, nl-NL.
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this call route
-    # @!attribute [r] name
-    #   @return [String, nil] Name for this call route
-    # @!attribute [r] options
-    #   @return [Array<CallRouteOptionV2>, nil] The phone-tree menu this route presents.
-    # @!attribute [r] path
-    #   @return [Array<CallRoutePathNodeV2>, nil] Who we page when a call comes in.
-    # @!attribute [r] phone_number
-    #   @return [String, nil] The number your customers call to reach this route, once one has been provisioned
-    # @!attribute [r] phone_number_type
-    #   @return [String, nil] The type of phone number, which determines the regulatory requirements for provisioning it One of: toll_free, mobile, national, local.
-    # @!attribute [r] responder_caller_id
-    #   @return [String, nil] Which number responders see when we call them: * route_number: this route's own number * oncall_number: an incident.io on-call number One of: route_number, oncall_number.
-    # @!attribute [r] updated_at
-    #   @return [Time, nil]
-    # @!attribute [r] use_caller_allowlist
-    #   @return [Boolean, nil] Whether this route only answers calls from its allowed callers
     CallRouteV2 = Model.define(
       allowed_callers: [-> { CallRouteAllowedCallerV2 }],
       country_code: :string,
@@ -59,5 +21,59 @@ module IncidentIo
       updated_at: :time,
       use_caller_allowlist: :boolean
     )
+
+    # A call route is a phone number your customers can call to reach whoever is
+    # on call, for an urgent support line or a regulator hotline.
+    #
+    # When a call comes in we work down the route's path, ringing each level's targets
+    # in turn until someone answers, then connect them to the caller. A trailing
+    # voicemail node records a message instead. Every call raises an alert, so calls
+    # can open incidents through an alert route.
+    #
+    # List and edit call routes here. Create and delete them in the dashboard.
+    class CallRouteV2
+      # @!attribute [r] allowed_callers
+      #   The numbers allowed to call this route
+      #   @return [Array<CallRouteAllowedCallerV2>, nil]
+      # @!attribute [r] country_code
+      #   The country this route's number belongs to
+      #   @return [String, nil]
+      # @!attribute [r] created_at
+      #   The created_at field
+      #   @return [Time, nil]
+      # @!attribute [r] current_state
+      #   Where this route is in provisioning
+      #   @return [String, nil]
+      # @!attribute [r] custom_language
+      #   The language we speak voice prompts in, via text-to-speech One of: en-US,…
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this call route
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name for this call route
+      #   @return [String, nil]
+      # @!attribute [r] options
+      #   The phone-tree menu this route presents
+      #   @return [Array<CallRouteOptionV2>, nil]
+      # @!attribute [r] path
+      #   Who we page when a call comes in
+      #   @return [Array<CallRoutePathNodeV2>, nil]
+      # @!attribute [r] phone_number
+      #   The number your customers call to reach this route, once one has been…
+      #   @return [String, nil]
+      # @!attribute [r] phone_number_type
+      #   The type of phone number, which determines the regulatory requirements for…
+      #   @return [String, nil]
+      # @!attribute [r] responder_caller_id
+      #   Which number responders see when we call them: * route_number: this route's…
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   The updated_at field
+      #   @return [Time, nil]
+      # @!attribute [r] use_caller_allowlist
+      #   Whether this route only answers calls from its allowed callers
+      #   @return [Boolean, nil]
+    end
   end
 end

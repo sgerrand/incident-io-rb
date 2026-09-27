@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] additions
-    #   @return [String, nil] A comma-separated array of newly added IPs/CIDRs.
-    # @!attribute [r] additions_count
-    #   @return [String, nil] The number of IPs/CIDRs added to the allowlist
-    # @!attribute [r] enabled
-    #   @return [String, nil] Whether or not the IP allowlist is enabled after the update
-    # @!attribute [r] removals
-    #   @return [String, nil] A comma-separated array of newly removed IPs/CIDRs.
-    # @!attribute [r] removals_count
-    #   @return [String, nil] The number of IPs/CIDRs removed from the allowlist
-    # @!attribute [r] version
-    #   @return [String, nil] The version of the IP allowlist after the update
     AuditLogIPAllowlistUpdatedMetadataV2 = Model.define(
       additions: :string,
       additions_count: :string,
@@ -25,5 +13,26 @@ module IncidentIo
       removals_count: :string,
       version: :string
     )
+
+    class AuditLogIPAllowlistUpdatedMetadataV2
+      # @!attribute [r] additions
+      #   A comma-separated array of newly added IPs/CIDRs
+      #   @return [String, nil]
+      # @!attribute [r] additions_count
+      #   The number of IPs/CIDRs added to the allowlist
+      #   @return [String, nil]
+      # @!attribute [r] enabled
+      #   Whether or not the IP allowlist is enabled after the update
+      #   @return [String, nil]
+      # @!attribute [r] removals
+      #   A comma-separated array of newly removed IPs/CIDRs
+      #   @return [String, nil]
+      # @!attribute [r] removals_count
+      #   The number of IPs/CIDRs removed from the allowlist
+      #   @return [String, nil]
+      # @!attribute [r] version
+      #   The version of the IP allowlist after the update
+      #   @return [String, nil]
+    end
   end
 end

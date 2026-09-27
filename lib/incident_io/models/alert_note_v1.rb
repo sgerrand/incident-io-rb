@@ -5,24 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert_group_id
-    #   @return [String, nil] ID of the alert group this note is attached to.
-    # @!attribute [r] alert_id
-    #   @return [String, nil] ID of the alert this note is attached to.
-    # @!attribute [r] content
-    #   @return [String, nil] Markdown body of the note
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When this note was first created
-    # @!attribute [r] creator
-    #   @return [ActorV1, nil]
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the alert note
-    # @!attribute [r] images
-    #   @return [Array<ImageV1>, nil] Images attached to the current version of the note, with signed URLs valid for 10 minutes
-    # @!attribute [r] last_edited_at
-    #   @return [Time, nil] When this note was last edited, only set if it has been edited at least once since creation
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When this note was last updated
     AlertNoteV1 = Model.define(
       alert_group_id: :string,
       alert_id: :string,
@@ -34,5 +16,35 @@ module IncidentIo
       last_edited_at: :time,
       updated_at: :time
     )
+
+    class AlertNoteV1
+      # @!attribute [r] alert_group_id
+      #   ID of the alert group this note is attached to
+      #   @return [String, nil]
+      # @!attribute [r] alert_id
+      #   ID of the alert this note is attached to
+      #   @return [String, nil]
+      # @!attribute [r] content
+      #   Markdown body of the note
+      #   @return [String, nil]
+      # @!attribute [r] created_at
+      #   When this note was first created
+      #   @return [Time, nil]
+      # @!attribute [r] creator
+      #   The creator field
+      #   @return [ActorV1, nil]
+      # @!attribute [r] id
+      #   Unique identifier for the alert note
+      #   @return [String, nil]
+      # @!attribute [r] images
+      #   Images attached to the current version of the note, with signed URLs valid…
+      #   @return [Array<ImageV1>, nil]
+      # @!attribute [r] last_edited_at
+      #   When this note was last edited, only set if it has been edited at least once…
+      #   @return [Time, nil]
+      # @!attribute [r] updated_at
+      #   When this note was last updated
+      #   @return [Time, nil]
+    end
   end
 end

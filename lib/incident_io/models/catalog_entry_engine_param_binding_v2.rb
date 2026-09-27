@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] array_value
-    #   @return [Array<CatalogEntryEngineParamBindingValueV2>, nil] If array_value is set, this helps render the values
-    # @!attribute [r] value
-    #   @return [CatalogEntryEngineParamBindingValueV2, nil]
     CatalogEntryEngineParamBindingV2 = Model.define(
       array_value: [-> { CatalogEntryEngineParamBindingValueV2 }],
       value: -> { CatalogEntryEngineParamBindingValueV2 }
     )
+
+    class CatalogEntryEngineParamBindingV2
+      # @!attribute [r] array_value
+      #   If array_value is set, this helps render the values
+      #   @return [Array<CatalogEntryEngineParamBindingValueV2>, nil]
+      # @!attribute [r] value
+      #   The value field
+      #   @return [CatalogEntryEngineParamBindingValueV2, nil]
+    end
   end
 end

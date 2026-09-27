@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] escalation_path
-    #   @return [EscalationPathV2, nil]
     EscalationsShowPathResultV2 = Model.define(
       escalation_path: -> { EscalationPathV2 }
     )
+
+    class EscalationsShowPathResultV2
+      # @!attribute [r] escalation_path
+      #   The escalation_path field
+      #   @return [EscalationPathV2, nil]
+    end
   end
 end

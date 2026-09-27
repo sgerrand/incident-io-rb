@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_statuses
-    #   @return [Array<IncidentStatusV1>, nil]
     IncidentStatusesListResultV1 = Model.define(
       incident_statuses: [-> { IncidentStatusV1 }]
     )
+
+    class IncidentStatusesListResultV1
+      # @!attribute [r] incident_statuses
+      #   The incident_statuses field
+      #   @return [Array<IncidentStatusV1>, nil]
+    end
   end
 end

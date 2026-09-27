@@ -13,6 +13,8 @@ module IncidentIo
       # Care should be taken around these endpoints, as automation that creates duplicate
       # incidents can be distracting, and impact reporting.
       class Incidents < Resource
+        # Create a new incident
+        #
         # Create a new incident.
         #
         # Note that if the incident mode is set to "retrospective" then the new incident
@@ -79,6 +81,8 @@ module IncidentIo
           )
         end
 
+        # Edit an existing incident
+        #
         # Edit an existing incident.
         #
         # This endpoint allows you to edit the properties of an existing incident: e.g. set the severity or update custom fields.
@@ -116,6 +120,8 @@ module IncidentIo
           )
         end
 
+        # Import a postmortem document from markdown into an incident
+        #
         # Import a postmortem document from markdown into an incident.
         #
         # The document content should be provided as GitHub-Flavored Markdown. It will be
@@ -143,6 +149,8 @@ module IncidentIo
           )
         end
 
+        # List all incidents for an organisation
+        #
         # List all incidents for an organisation.
         #
         # This endpoint supports a number of filters, which can help find incidents matching certain
@@ -363,6 +371,8 @@ module IncidentIo
           )
         end
 
+        # Get a single incident
+        #
         # Get a single incident.
         #
         # The ID supplied can be either the incident's full ID, or the numeric part of its

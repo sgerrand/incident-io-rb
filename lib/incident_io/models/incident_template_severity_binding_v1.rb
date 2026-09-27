@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] binding
-    #   @return [EngineParamBindingV3, nil]
-    # @!attribute [r] merge_strategy
-    #   @return [String, nil] Strategy for merging severity when multiple alerts create/update the same incident One of: first-wins, max.
     IncidentTemplateSeverityBindingV1 = Model.define(
       binding: -> { EngineParamBindingV3 },
       merge_strategy: :string
     )
+
+    class IncidentTemplateSeverityBindingV1
+      # @!attribute [r] binding
+      #   The binding field
+      #   @return [EngineParamBindingV3, nil]
+      # @!attribute [r] merge_strategy
+      #   Strategy for merging severity when multiple alerts create/update the same…
+      #   @return [String, nil]
+    end
   end
 end

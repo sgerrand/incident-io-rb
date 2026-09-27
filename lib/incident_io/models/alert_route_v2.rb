@@ -5,38 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert_sources
-    #   @return [Array<AlertRouteAlertSourceV2>, nil] Which alert sources should this alert route match?
-    # @!attribute [r] channel_config
-    #   @return [Array<AlertRouteChannelConfigV2>, nil] The channel configuration for this alert route
-    # @!attribute [r] condition_groups
-    #   @return [Array<ConditionGroupV2>, nil] What condition groups must be true for this alert route to fire?
-    # @!attribute [r] created_at
-    #   @return [Time, nil] The time of creation of this alert route
-    # @!attribute [r] enabled
-    #   @return [Boolean, nil] Whether this alert route is enabled or not
-    # @!attribute [r] escalation_config
-    #   @return [AlertRouteEscalationConfigV2, nil]
-    # @!attribute [r] expressions
-    #   @return [Array<ExpressionV2>, nil] The expressions used in this template
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this alert route config
-    # @!attribute [r] incident_config
-    #   @return [AlertRouteIncidentConfigV2, nil]
-    # @!attribute [r] incident_template
-    #   @return [AlertRouteIncidentTemplateV2, nil]
-    # @!attribute [r] is_private
-    #   @return [Boolean, nil] Whether this alert route is private.
-    # @!attribute [r] message_template
-    #   @return [EngineParamBindingV2, nil]
-    # @!attribute [r] name
-    #   @return [String, nil] The name of this alert route config, for the user's reference
-    # @!attribute [r] owning_team_ids
-    #   @return [Array<String>, nil] IDs of teams that own this alert route
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] The time of last update of this alert route
-    # @!attribute [r] version
-    #   @return [Integer, nil] The version of this alert route config
     AlertRouteV2 = Model.define(
       alert_sources: [-> { AlertRouteAlertSourceV2 }],
       channel_config: [-> { AlertRouteChannelConfigV2 }],
@@ -55,5 +23,56 @@ module IncidentIo
       updated_at: :time,
       version: :integer
     )
+
+    class AlertRouteV2
+      # @!attribute [r] alert_sources
+      #   Which alert sources should this alert route match?
+      #   @return [Array<AlertRouteAlertSourceV2>, nil]
+      # @!attribute [r] channel_config
+      #   The channel configuration for this alert route
+      #   @return [Array<AlertRouteChannelConfigV2>, nil]
+      # @!attribute [r] condition_groups
+      #   What condition groups must be true for this alert route to fire?
+      #   @return [Array<ConditionGroupV2>, nil]
+      # @!attribute [r] created_at
+      #   The time of creation of this alert route
+      #   @return [Time, nil]
+      # @!attribute [r] enabled
+      #   Whether this alert route is enabled or not
+      #   @return [Boolean, nil]
+      # @!attribute [r] escalation_config
+      #   The escalation_config field
+      #   @return [AlertRouteEscalationConfigV2, nil]
+      # @!attribute [r] expressions
+      #   The expressions used in this template
+      #   @return [Array<ExpressionV2>, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this alert route config
+      #   @return [String, nil]
+      # @!attribute [r] incident_config
+      #   The incident_config field
+      #   @return [AlertRouteIncidentConfigV2, nil]
+      # @!attribute [r] incident_template
+      #   The incident_template field
+      #   @return [AlertRouteIncidentTemplateV2, nil]
+      # @!attribute [r] is_private
+      #   Whether this alert route is private
+      #   @return [Boolean, nil]
+      # @!attribute [r] message_template
+      #   The message_template field
+      #   @return [EngineParamBindingV2, nil]
+      # @!attribute [r] name
+      #   The name of this alert route config, for the user's reference
+      #   @return [String, nil]
+      # @!attribute [r] owning_team_ids
+      #   IDs of teams that own this alert route
+      #   @return [Array<String>, nil]
+      # @!attribute [r] updated_at
+      #   The time of last update of this alert route
+      #   @return [Time, nil]
+      # @!attribute [r] version
+      #   The version of this alert route config
+      #   @return [Integer, nil]
+    end
   end
 end

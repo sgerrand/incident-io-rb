@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] location
-    #   @return [String, nil] The location of the actor that performed this action
-    # @!attribute [r] user_agent
-    #   @return [String, nil] The user agent of the actor that performed this action
     AuditLogEntryContextV2 = Model.define(
       location: :string,
       user_agent: :string
     )
+
+    class AuditLogEntryContextV2
+      # @!attribute [r] location
+      #   The location of the actor that performed this action
+      #   @return [String, nil]
+      # @!attribute [r] user_agent
+      #   The user agent of the actor that performed this action
+      #   @return [String, nil]
+    end
   end
 end

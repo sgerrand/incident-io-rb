@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] action
-    #   @return [ActionV2, nil]
     ActionsCreateResultV2 = Model.define(
       action: -> { ActionV2 }
     )
+
+    class ActionsCreateResultV2
+      # @!attribute [r] action
+      #   The action field
+      #   @return [ActionV2, nil]
+    end
   end
 end

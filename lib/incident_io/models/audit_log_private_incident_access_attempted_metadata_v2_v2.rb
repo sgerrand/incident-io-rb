@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] access_type
-    #   @return [String, nil] How the user was granted access to the private incident, or N/A when access was denied One of: N/A, global_access, direct_membership, team_membership.
-    # @!attribute [r] outcome
-    #   @return [String, nil] Whether or not the user was able to access the private incident One of: granted, denied.
-    # @!attribute [r] team_id
-    #   @return [String, nil] The ID of the team through which access was granted, or N/A when access_type is not team_membership
     AuditLogPrivateIncidentAccessAttemptedMetadataV2V2 = Model.define(
       access_type: :string,
       outcome: :string,
       team_id: :string
     )
+
+    class AuditLogPrivateIncidentAccessAttemptedMetadataV2V2
+      # @!attribute [r] access_type
+      #   How the user was granted access to the private incident, or N/A when access…
+      #   @return [String, nil]
+      # @!attribute [r] outcome
+      #   Whether or not the user was able to access the private incident One of:…
+      #   @return [String, nil]
+      # @!attribute [r] team_id
+      #   The ID of the team through which access was granted, or N/A when access_type…
+      #   @return [String, nil]
+    end
   end
 end

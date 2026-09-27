@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] after_user_ids
-    #   @return [String, nil] User IDs of users on-call after the override change, comma separated
-    # @!attribute [r] after_user_names
-    #   @return [String, nil] Names of users on-call after the override change, comma separated
-    # @!attribute [r] before_user_ids
-    #   @return [String, nil] User IDs of users on-call before the override change, comma separated
-    # @!attribute [r] before_user_names
-    #   @return [String, nil] Names of users on-call before the override change, comma separated
-    # @!attribute [r] end_at
-    #   @return [String, nil] Override end time in the schedule's local timezone
-    # @!attribute [r] start_at
-    #   @return [String, nil] Override start time in the schedule's local timezone
     AuditLogScheduleOverrideMetadataV2 = Model.define(
       after_user_ids: :string,
       after_user_names: :string,
@@ -25,5 +13,26 @@ module IncidentIo
       end_at: :string,
       start_at: :string
     )
+
+    class AuditLogScheduleOverrideMetadataV2
+      # @!attribute [r] after_user_ids
+      #   User IDs of users on-call after the override change, comma separated
+      #   @return [String, nil]
+      # @!attribute [r] after_user_names
+      #   Names of users on-call after the override change, comma separated
+      #   @return [String, nil]
+      # @!attribute [r] before_user_ids
+      #   User IDs of users on-call before the override change, comma separated
+      #   @return [String, nil]
+      # @!attribute [r] before_user_names
+      #   Names of users on-call before the override change, comma separated
+      #   @return [String, nil]
+      # @!attribute [r] end_at
+      #   Override end time in the schedule's local timezone
+      #   @return [String, nil]
+      # @!attribute [r] start_at
+      #   Override start time in the schedule's local timezone
+      #   @return [String, nil]
+    end
   end
 end

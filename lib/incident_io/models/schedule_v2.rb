@@ -5,30 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] annotations
-    #   @return [Hash{String => String}, nil] Annotations that track metadata about this resource
-    # @!attribute [r] config
-    #   @return [ScheduleConfigV2, nil]
-    # @!attribute [r] created_at
-    #   @return [Time, nil]
-    # @!attribute [r] current_shifts
-    #   @return [Array<ScheduleEntryV2>, nil] Shifts that are ongoing for this schedule
-    # @!attribute [r] holidays_public_config
-    #   @return [ScheduleHolidaysPublicConfigV2, nil]
-    # @!attribute [r] id
-    #   @return [String, nil] Unique internal ID of the schedule
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name synced from external provider
-    # @!attribute [r] next_shifts
-    #   @return [Array<ScheduleEntryV2>, nil] The shifts after the next changeover.
-    # @!attribute [r] permalink
-    #   @return [String, nil] A permanent link to this schedule in the incident.io dashboard
-    # @!attribute [r] team_ids
-    #   @return [Array<String>, nil] IDs of teams that own this schedule
-    # @!attribute [r] timezone
-    #   @return [String, nil] Timezone of the schedule, as interpreted at the point of generating the report
-    # @!attribute [r] updated_at
-    #   @return [Time, nil]
     ScheduleV2 = Model.define(
       annotations: Model.map_of(:string),
       config: -> { ScheduleConfigV2 },
@@ -43,5 +19,44 @@ module IncidentIo
       timezone: :string,
       updated_at: :time
     )
+
+    class ScheduleV2
+      # @!attribute [r] annotations
+      #   Annotations that track metadata about this resource
+      #   @return [Hash{String => String}, nil]
+      # @!attribute [r] config
+      #   The config field
+      #   @return [ScheduleConfigV2, nil]
+      # @!attribute [r] created_at
+      #   The created_at field
+      #   @return [Time, nil]
+      # @!attribute [r] current_shifts
+      #   Shifts that are ongoing for this schedule
+      #   @return [Array<ScheduleEntryV2>, nil]
+      # @!attribute [r] holidays_public_config
+      #   The holidays_public_config field
+      #   @return [ScheduleHolidaysPublicConfigV2, nil]
+      # @!attribute [r] id
+      #   Unique internal ID of the schedule
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name synced from external provider
+      #   @return [String, nil]
+      # @!attribute [r] next_shifts
+      #   The shifts after the next changeover
+      #   @return [Array<ScheduleEntryV2>, nil]
+      # @!attribute [r] permalink
+      #   A permanent link to this schedule in the incident.io dashboard
+      #   @return [String, nil]
+      # @!attribute [r] team_ids
+      #   IDs of teams that own this schedule
+      #   @return [Array<String>, nil]
+      # @!attribute [r] timezone
+      #   Timezone of the schedule, as interpreted at the point of generating the report
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   The updated_at field
+      #   @return [Time, nil]
+    end
   end
 end

@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] Optional description of what this secret is for
-    # @!attribute [r] name
-    #   @return [String, nil] Human-readable name, unique within the organisation amongst unarchived secrets
-    # @!attribute [r] owning_team_ids
-    #   @return [Array<String>, nil] IDs of the teams that own this secret.
-    # @!attribute [r] value
-    #   @return [String, nil] The secret's plaintext value.
     SecretsCreatePayloadV2 = Model.define(
       description: :string,
       name: :string,
       owning_team_ids: [:string],
       value: :string
     )
+
+    class SecretsCreatePayloadV2
+      # @!attribute [r] description
+      #   Optional description of what this secret is for
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human-readable name, unique within the organisation amongst unarchived secrets
+      #   @return [String, nil]
+      # @!attribute [r] owning_team_ids
+      #   IDs of the teams that own this secret
+      #   @return [Array<String>, nil]
+      # @!attribute [r] value
+      #   The secret's plaintext value
+      #   @return [String, nil]
+    end
   end
 end

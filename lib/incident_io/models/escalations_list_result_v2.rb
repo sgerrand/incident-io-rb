@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] escalations
-    #   @return [Array<EscalationV2>, nil]
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV2, nil]
     EscalationsListResultV2 = Model.define(
       escalations: [-> { EscalationV2 }],
       pagination_meta: -> { PaginationMetaResultV2 }
     )
+
+    class EscalationsListResultV2
+      # @!attribute [r] escalations
+      #   The escalations field
+      #   @return [Array<EscalationV2>, nil]
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV2, nil]
+    end
   end
 end

@@ -5,22 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When the role was created
-    # @!attribute [r] description
-    #   @return [String, nil] Describes the purpose of the role
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the role
-    # @!attribute [r] instructions
-    #   @return [String, nil] Provided to whoever is nominated for the role.
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name of the incident role
-    # @!attribute [r] role_type
-    #   @return [String, nil] Type of incident role One of: lead, reporter, custom.
-    # @!attribute [r] shortform
-    #   @return [String, nil] Short human readable name for Slack.
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When the role was last updated
     IncidentRoleV2 = Model.define(
       created_at: :time,
       description: :string,
@@ -31,5 +15,32 @@ module IncidentIo
       shortform: :string,
       updated_at: :time
     )
+
+    class IncidentRoleV2
+      # @!attribute [r] created_at
+      #   When the role was created
+      #   @return [Time, nil]
+      # @!attribute [r] description
+      #   Describes the purpose of the role
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier for the role
+      #   @return [String, nil]
+      # @!attribute [r] instructions
+      #   Provided to whoever is nominated for the role
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name of the incident role
+      #   @return [String, nil]
+      # @!attribute [r] role_type
+      #   Type of incident role One of: lead, reporter, custom
+      #   @return [String, nil]
+      # @!attribute [r] shortform
+      #   Short human readable name for Slack
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   When the role was last updated
+      #   @return [Time, nil]
+    end
   end
 end

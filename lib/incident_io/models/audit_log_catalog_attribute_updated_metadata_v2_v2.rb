@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] after_values
-    #   @return [String, nil] The user IDs that were in the attribute before the change, comma separated
-    # @!attribute [r] before_values
-    #   @return [String, nil] The user IDs that were in the attribute before the change, comma separated
     AuditLogCatalogAttributeUpdatedMetadataV2V2 = Model.define(
       after_values: :string,
       before_values: :string
     )
+
+    class AuditLogCatalogAttributeUpdatedMetadataV2V2
+      # @!attribute [r] after_values
+      #   The user IDs that were in the attribute before the change, comma separated
+      #   @return [String, nil]
+      # @!attribute [r] before_values
+      #   The user IDs that were in the attribute before the change, comma separated
+      #   @return [String, nil]
+    end
   end
 end

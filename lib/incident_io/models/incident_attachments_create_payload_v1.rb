@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_id
-    #   @return [String, nil] ID of the incident to add an attachment to
-    # @!attribute [r] resource
-    #   @return [Hash, nil]
     IncidentAttachmentsCreatePayloadV1 = Model.define(
       incident_id: :string,
       resource: :any
     )
+
+    class IncidentAttachmentsCreatePayloadV1
+      # @!attribute [r] incident_id
+      #   ID of the incident to add an attachment to
+      #   @return [String, nil]
+      # @!attribute [r] resource
+      #   The resource field
+      #   @return [Hash, nil]
+    end
   end
 end

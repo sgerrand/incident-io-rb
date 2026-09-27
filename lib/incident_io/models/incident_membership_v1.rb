@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When the membership was created
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier of this incident membership
-    # @!attribute [r] incident_id
-    #   @return [String, nil] Unique identifier of the incident
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When the membership was last updated
-    # @!attribute [r] user
-    #   @return [UserV1, nil]
     IncidentMembershipV1 = Model.define(
       created_at: :time,
       id: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       updated_at: :time,
       user: -> { UserV1 }
     )
+
+    class IncidentMembershipV1
+      # @!attribute [r] created_at
+      #   When the membership was created
+      #   @return [Time, nil]
+      # @!attribute [r] id
+      #   Unique identifier of this incident membership
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   Unique identifier of the incident
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   When the membership was last updated
+      #   @return [Time, nil]
+      # @!attribute [r] user
+      #   The user field
+      #   @return [UserV1, nil]
+    end
   end
 end

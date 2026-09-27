@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] value_catalog_entry
-    #   @return [EmbeddedCatalogEntryV1, nil]
-    # @!attribute [r] value_link
-    #   @return [String, nil] If the custom field type is 'link', this will contain the value assigned.
-    # @!attribute [r] value_numeric
-    #   @return [String, nil] If the custom field type is 'numeric', this will contain the value assigned.
-    # @!attribute [r] value_option
-    #   @return [CustomFieldOptionV1, nil]
-    # @!attribute [r] value_text
-    #   @return [String, nil] If the custom field type is 'text', this will contain the value assigned.
     CustomFieldValueV1 = Model.define(
       value_catalog_entry: -> { EmbeddedCatalogEntryV1 },
       value_link: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       value_option: -> { CustomFieldOptionV1 },
       value_text: :string
     )
+
+    class CustomFieldValueV1
+      # @!attribute [r] value_catalog_entry
+      #   The value_catalog_entry field
+      #   @return [EmbeddedCatalogEntryV1, nil]
+      # @!attribute [r] value_link
+      #   If the custom field type is 'link', this will contain the value assigned
+      #   @return [String, nil]
+      # @!attribute [r] value_numeric
+      #   If the custom field type is 'numeric', this will contain the value assigned
+      #   @return [String, nil]
+      # @!attribute [r] value_option
+      #   The value_option field
+      #   @return [CustomFieldOptionV1, nil]
+      # @!attribute [r] value_text
+      #   If the custom field type is 'text', this will contain the value assigned
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] event_type
-    #   @return [String, nil] What type of event is this webhook for?
-    # @!attribute [r] public_escalation_escalation_created_v1
-    #   @return [EscalationV2, nil]
     WebhooksPublicEscalationCreatedV1ResponseBody = Model.define(
       event_type: :string,
       "public_escalation.escalation_created_v1": -> { EscalationV2 }
     )
+
+    class WebhooksPublicEscalationCreatedV1ResponseBody
+      # @!attribute [r] event_type
+      #   What type of event is this webhook for?
+      #   @return [String, nil]
+      # @!attribute [r] public_escalation_escalation_created_v1
+      #   The public_escalation.escalation_created_v1 field
+      #   @return [EscalationV2, nil]
+    end
   end
 end

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this API key
-    # @!attribute [r] name
-    #   @return [String, nil] The name of the API key, for the user's reference
     APIKeyActorV1 = Model.define(
       id: :string,
       name: :string
     )
+
+    class APIKeyActorV1
+      # @!attribute [r] id
+      #   Unique identifier for this API key
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   The name of the API key, for the user's reference
+      #   @return [String, nil]
+    end
   end
 end

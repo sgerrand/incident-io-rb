@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] supports_sms
-    #   @return [Boolean, nil] Whether this phone number can receive SMS notifications.
-    # @!attribute [r] supports_voice
-    #   @return [Boolean, nil] Whether this phone number can receive voice call notifications.
     OnCallNotificationMethodPhoneDetailsPublicV2 = Model.define(
       supports_sms: :boolean,
       supports_voice: :boolean
     )
+
+    class OnCallNotificationMethodPhoneDetailsPublicV2
+      # @!attribute [r] supports_sms
+      #   Whether this phone number can receive SMS notifications
+      #   @return [Boolean, nil]
+      # @!attribute [r] supports_voice
+      #   Whether this phone number can receive voice call notifications
+      #   @return [Boolean, nil]
+    end
   end
 end

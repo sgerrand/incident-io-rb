@@ -5,15 +5,19 @@
 
 module IncidentIo
   module Models
-    # Datadog-specific credential updates
-    #
-    # @!attribute [r] api_key
-    #   @return [String, nil] New Datadog API key
-    # @!attribute [r] app_key
-    #   @return [String, nil] New Datadog Application key
     TelemetryDatadogUpdateConfigV2 = Model.define(
       api_key: :string,
       app_key: :string
     )
+
+    # Datadog-specific credential updates
+    class TelemetryDatadogUpdateConfigV2
+      # @!attribute [r] api_key
+      #   New Datadog API key
+      #   @return [String, nil]
+      # @!attribute [r] app_key
+      #   New Datadog Application key
+      #   @return [String, nil]
+    end
   end
 end

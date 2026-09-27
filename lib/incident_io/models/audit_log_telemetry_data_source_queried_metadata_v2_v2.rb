@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] access_mode
-    #   @return [String, nil] The data source's access mode at query time (default, restricted)
-    # @!attribute [r] investigation_id
-    #   @return [String, nil] The investigation the query ran for, when investigation-driven
-    # @!attribute [r] outcome
-    #   @return [String, nil] Whether the query was granted or denied
-    # @!attribute [r] surface
-    #   @return [String, nil] The product surface the query ran from (chat, investigation, explore, mcp_client, verify), or internal for system paths with no surface
-    # @!attribute [r] telemetry_query_id
-    #   @return [String, nil] ID of the recorded query, pointing at our full stored record of it
     AuditLogTelemetryDataSourceQueriedMetadataV2V2 = Model.define(
       access_mode: :string,
       investigation_id: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       surface: :string,
       telemetry_query_id: :string
     )
+
+    class AuditLogTelemetryDataSourceQueriedMetadataV2V2
+      # @!attribute [r] access_mode
+      #   The data source's access mode at query time (default, restricted)
+      #   @return [String, nil]
+      # @!attribute [r] investigation_id
+      #   The investigation the query ran for, when investigation-driven
+      #   @return [String, nil]
+      # @!attribute [r] outcome
+      #   Whether the query was granted or denied
+      #   @return [String, nil]
+      # @!attribute [r] surface
+      #   The product surface the query ran from (chat, investigation, explore,…
+      #   @return [String, nil]
+      # @!attribute [r] telemetry_query_id
+      #   ID of the recorded query, pointing at our full stored record of it
+      #   @return [String, nil]
+    end
   end
 end

@@ -12,6 +12,8 @@ module IncidentIo
       #
       # For read-only access (listing status pages, viewing structure, incidents, maintenance windows, and component availability), any valid API key will work. For write requests (creating incidents, maintenance windows, and publishing updates), you will need an API key with the "Create status page incidents, status page maintenance windows, and publish status page updates" scope.
       class StatusPages < Resource
+        # Create a status page incident
+        #
         # Create a status page incident.
         #
         # This endpoint requires an API key with the "Create status page incidents, status page maintenance windows, and publish status page updates" scope.
@@ -56,6 +58,8 @@ module IncidentIo
           )
         end
 
+        # Post an update on a Status Page incident
+        #
         # Post an update on a Status Page incident.
         #
         # This is the endpoint to use when resolving an incident - set incident_status to "resolved" to end the incident. There is a limit of 100 updates per incident.
@@ -95,6 +99,8 @@ module IncidentIo
           )
         end
 
+        # Schedule a Status Page maintenance window
+        #
         # Schedule a Status Page maintenance window.
         #
         # This endpoint requires an API key with the "Create status page incidents, status page maintenance windows, and publish status page updates" scope.
@@ -148,6 +154,8 @@ module IncidentIo
           )
         end
 
+        # Post an update on a Status Page maintenance window
+        #
         # Post an update on a Status Page maintenance window.
         #
         # This is the endpoint to use when completing a maintenance window - set maintenance_status to "maintenance_complete" to end the maintenance. There is a limit of 100 updates per maintenance window.
@@ -187,6 +195,8 @@ module IncidentIo
           )
         end
 
+        # Create a retrospective (historical) status page incident
+        #
         # Create a retrospective (historical) status page incident.
         #
         # Use this to backfill a completed incident with a reconstructed timeline of past updates, for example when migrating from another status page provider. Every update's published_at must be in the past, the updates must be ordered chronologically (earliest first), and the final update must set incident_status to "resolved".
@@ -223,6 +233,8 @@ module IncidentIo
           )
         end
 
+        # Delete a Status Page maintenance window
+        #
         # Delete a Status Page maintenance window.
         #
         # The maintenance window and its updates stop appearing on your public status page, links to it stop working, and a window that has not yet run publishes no further automated updates. This cannot be undone.
@@ -244,6 +256,8 @@ module IncidentIo
           )
         end
 
+        # List status page incidents
+        #
         # List status page incidents.
         #
         # This endpoint requires a valid API key but no specific scopes.
@@ -289,6 +303,8 @@ module IncidentIo
           )
         end
 
+        # List status page maintenances
+        #
         # List status page maintenances.
         #
         # This endpoint requires a valid API key but no specific scopes.
@@ -334,6 +350,8 @@ module IncidentIo
           )
         end
 
+        # List all status pages for your organisation
+        #
         # List all status pages for your organisation.
         #
         # This endpoint requires a valid API key but no specific scopes. Use this to find status page IDs for use in other endpoints.
@@ -354,6 +372,8 @@ module IncidentIo
           )
         end
 
+        # Show availability for a status page component over a time window
+        #
         # Show availability for a status page component over a time window.
         #
         # Pass start_at and end_at as RFC3339 timestamps. The window cannot be longer than 366 days. Availability uses the same rules as the public status page: full and partial outages count as downtime, overlapping impacts are merged, and time before we have data for the component is excluded rather than counted as up.
@@ -385,6 +405,8 @@ module IncidentIo
           )
         end
 
+        # Show a status page incident
+        #
         # Show a status page incident.
         #
         # This endpoint requires a valid API key but no specific scopes.
@@ -404,6 +426,8 @@ module IncidentIo
           )
         end
 
+        # Show a status page maintenance window
+        #
         # Show a status page maintenance window.
         #
         # This endpoint requires a valid API key but no specific scopes.
@@ -423,6 +447,8 @@ module IncidentIo
           )
         end
 
+        # Show the structure of a status page
+        #
         # Show the structure of a status page.
         #
         # This endpoint requires a valid API key but no specific scopes. Returns the components and component groups configured on a status page. Use this to find component IDs when specifying affected components for incidents or maintenance windows.
@@ -442,6 +468,8 @@ module IncidentIo
           )
         end
 
+        # Update a status page incident
+        #
         # Update a status page incident.
         #
         # This endpoint requires an API key with the "Create status page incidents, status page maintenance windows, and publish status page updates" scope.
@@ -463,6 +491,8 @@ module IncidentIo
           )
         end
 
+        # Update the name and scheduled window of a Status Page maintenance window
+        #
         # Update the name and scheduled window of a Status Page maintenance window.
         #
         # The new start_at and end_at apply to every component this maintenance window affects.

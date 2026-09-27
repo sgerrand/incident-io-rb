@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] api_key
-    #   @return [APIKeyActorV1, nil]
-    # @!attribute [r] user
-    #   @return [UserV1, nil]
     ActorV1 = Model.define(
       api_key: -> { APIKeyActorV1 },
       user: -> { UserV1 }
     )
+
+    class ActorV1
+      # @!attribute [r] api_key
+      #   The api_key field
+      #   @return [APIKeyActorV1, nil]
+      # @!attribute [r] user
+      #   The user field
+      #   @return [UserV1, nil]
+    end
   end
 end

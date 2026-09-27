@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] schedule_sync_rule
-    #   @return [ScheduleSyncRuleV2, nil]
     SchedulesUpdateScheduleSyncRuleResultV2 = Model.define(
       schedule_sync_rule: -> { ScheduleSyncRuleV2 }
     )
+
+    class SchedulesUpdateScheduleSyncRuleResultV2
+      # @!attribute [r] schedule_sync_rule
+      #   The schedule_sync_rule field
+      #   @return [ScheduleSyncRuleV2, nil]
+    end
   end
 end

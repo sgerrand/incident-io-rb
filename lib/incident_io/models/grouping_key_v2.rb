@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] reference
-    #   @return [String, nil] A reference to a property of the alert to group on
     GroupingKeyV2 = Model.define(
       reference: :string
     )
+
+    class GroupingKeyV2
+      # @!attribute [r] reference
+      #   A reference to a property of the alert to group on
+      #   @return [String, nil]
+    end
   end
 end

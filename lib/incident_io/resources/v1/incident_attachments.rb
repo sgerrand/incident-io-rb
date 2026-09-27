@@ -11,6 +11,8 @@ module IncidentIo
       # Incident Attachments allows you to connect resources from external systems into incidents.
       # Examples include: PagerDuty incidents and GitHub pull requests.
       class IncidentAttachments < Resource
+        # Attaches an external resource to an incident
+        #
         # Attaches an external resource to an incident.
         #
         # You must provide a resource with resource_type and either external_id or url, but not both.
@@ -51,6 +53,8 @@ module IncidentIo
           )
         end
 
+        # List all incident attachments for a given external resource or incident
+        #
         # List all incident attachments for a given external resource or incident. You must provide either a specific incident ID or a specific external resource type and external ID.
         #
         # Endpoint: `GET /v1/incident_attachments`. Scopes: attachments.view.

@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] targets
-    #   @return [Array<EscalationPathTargetWithBindingV2>, nil] The channels to notify, each concrete or a parameter binding.
-    # @!attribute [r] time_to_ack_interval_condition
-    #   @return [String, nil] If the time to ack is relative to a time window, this defines whether we move when the window is active or inactive One of: active, inactive.
-    # @!attribute [r] time_to_ack_seconds
-    #   @return [Integer, nil] How long should we wait for this level to acknowledge before moving on to the next node in the path?
-    # @!attribute [r] time_to_ack_weekday_interval_config_id
-    #   @return [String, nil] If the time to ack is relative to a time window, this identifies which window it is relative to
     EscalationPathNodeNotifyChannelWithBindingV2 = Model.define(
       targets: [-> { EscalationPathTargetWithBindingV2 }],
       time_to_ack_interval_condition: :string,
       time_to_ack_seconds: :integer,
       time_to_ack_weekday_interval_config_id: :string
     )
+
+    class EscalationPathNodeNotifyChannelWithBindingV2
+      # @!attribute [r] targets
+      #   The channels to notify, each concrete or a parameter binding
+      #   @return [Array<EscalationPathTargetWithBindingV2>, nil]
+      # @!attribute [r] time_to_ack_interval_condition
+      #   If the time to ack is relative to a time window, this defines whether we move…
+      #   @return [String, nil]
+      # @!attribute [r] time_to_ack_seconds
+      #   How long should we wait for this level to acknowledge before moving on to the…
+      #   @return [Integer, nil]
+      # @!attribute [r] time_to_ack_weekday_interval_config_id
+      #   If the time to ack is relative to a time window, this identifies which window…
+      #   @return [String, nil]
+    end
   end
 end

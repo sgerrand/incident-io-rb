@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] escalation_paths
-    #   @return [EngineParamBindingV3, nil]
-    # @!attribute [r] users
-    #   @return [EngineParamBindingV3, nil]
     AlertRouteEscalationTargetV3 = Model.define(
       escalation_paths: -> { EngineParamBindingV3 },
       users: -> { EngineParamBindingV3 }
     )
+
+    class AlertRouteEscalationTargetV3
+      # @!attribute [r] escalation_paths
+      #   The escalation_paths field
+      #   @return [EngineParamBindingV3, nil]
+      # @!attribute [r] users
+      #   The users field
+      #   @return [EngineParamBindingV3, nil]
+    end
   end
 end

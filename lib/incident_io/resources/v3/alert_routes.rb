@@ -10,7 +10,7 @@ module IncidentIo
       #
       # Alert routes define how alerts from different sources are processed, grouped, and routed to the right teams and people.
       class AlertRoutes < Resource
-        # Create a new alert route in your account.
+        # Create a new alert route in your account
         #
         # Endpoint: `POST /v3/alert_routes`. Scopes: alert_route.create.
         #
@@ -63,7 +63,7 @@ module IncidentIo
           )
         end
 
-        # Delete an existing alert route in your account.
+        # Delete an existing alert route in your account
         #
         # Endpoint: `DELETE /v3/alert_routes/{id}`. Scopes: alert_route.destroy.
         #
@@ -78,7 +78,7 @@ module IncidentIo
           )
         end
 
-        # List all alert routes in your account.
+        # List all alert routes in your account
         #
         # Endpoint: `GET /v3/alert_routes`. Scopes: alert_routes.view.
         #
@@ -96,7 +96,7 @@ module IncidentIo
           )
         end
 
-        # Load details about a specific alert route in your account.
+        # Load details about a specific alert route in your account
         #
         # Endpoint: `GET /v3/alert_routes/{id}`. Scopes: alert_routes.view.
         #
@@ -113,7 +113,7 @@ module IncidentIo
           )
         end
 
-        # Update an existing alert route in your account.
+        # Update an existing alert route in your account
         #
         # Endpoint: `PUT /v3/alert_routes/{id}`. Scopes: alert_route.update.
         #

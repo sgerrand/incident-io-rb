@@ -5,22 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] delay
-    #   @return [EscalationPathNodeDelayV2, nil]
-    # @!attribute [r] escalation_path
-    #   @return [EscalationPathNodeEscalationPathV2, nil]
-    # @!attribute [r] id
-    #   @return [String, nil] An ID for this node, unique within the escalation path.
-    # @!attribute [r] if_else
-    #   @return [EscalationPathTemplateNodeIfElseV2, nil]
-    # @!attribute [r] level
-    #   @return [EscalationPathNodeLevelWithBindingV2, nil]
-    # @!attribute [r] notify_channel
-    #   @return [EscalationPathNodeNotifyChannelWithBindingV2, nil]
-    # @!attribute [r] repeat
-    #   @return [EscalationPathNodeRepeatV2, nil]
-    # @!attribute [r] type
-    #   @return [String, nil] The type of this node.
     EscalationPathTemplateNodeV2 = Model.define(
       delay: -> { EscalationPathNodeDelayV2 },
       escalation_path: -> { EscalationPathNodeEscalationPathV2 },
@@ -31,5 +15,32 @@ module IncidentIo
       repeat: -> { EscalationPathNodeRepeatV2 },
       type: :string
     )
+
+    class EscalationPathTemplateNodeV2
+      # @!attribute [r] delay
+      #   The delay field
+      #   @return [EscalationPathNodeDelayV2, nil]
+      # @!attribute [r] escalation_path
+      #   The escalation_path field
+      #   @return [EscalationPathNodeEscalationPathV2, nil]
+      # @!attribute [r] id
+      #   An ID for this node, unique within the escalation path
+      #   @return [String, nil]
+      # @!attribute [r] if_else
+      #   The if_else field
+      #   @return [EscalationPathTemplateNodeIfElseV2, nil]
+      # @!attribute [r] level
+      #   The level field
+      #   @return [EscalationPathNodeLevelWithBindingV2, nil]
+      # @!attribute [r] notify_channel
+      #   The notify_channel field
+      #   @return [EscalationPathNodeNotifyChannelWithBindingV2, nil]
+      # @!attribute [r] repeat
+      #   The repeat field
+      #   @return [EscalationPathNodeRepeatV2, nil]
+      # @!attribute [r] type
+      #   The type of this node
+      #   @return [String, nil]
+    end
   end
 end

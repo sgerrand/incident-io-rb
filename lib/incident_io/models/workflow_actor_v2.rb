@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the workflow
-    # @!attribute [r] name
-    #   @return [String, nil] Name provided by the user when creating the workflow
     WorkflowActorV2 = Model.define(
       id: :string,
       name: :string
     )
+
+    class WorkflowActorV2
+      # @!attribute [r] id
+      #   Unique identifier for the workflow
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name provided by the user when creating the workflow
+      #   @return [String, nil]
+    end
   end
 end

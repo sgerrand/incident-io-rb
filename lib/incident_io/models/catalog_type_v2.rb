@@ -5,46 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] annotations
-    #   @return [Hash{String => String}, nil] Annotations that can track metadata about this type
-    # @!attribute [r] categories
-    #   @return [Array<String>, nil] What categories is this type considered part of One of: customer, issue-tracker, product-feature, service, on-call, team, user.
-    # @!attribute [r] color
-    #   @return [String, nil] Sets the display color of this type in the dashboard One of: yellow, green, blue, violet, pink, cyan, orange.
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When this type was created
-    # @!attribute [r] description
-    #   @return [String, nil] Human readble description of this type
-    # @!attribute [r] dynamic_resource_parameter
-    #   @return [String, nil] If this is a dynamic catalog type, this will be the unique parameter for identitfying this resource externally.
-    # @!attribute [r] estimated_count
-    #   @return [Integer, nil] If populated, gives an estimated count of entries for this type
-    # @!attribute [r] icon
-    #   @return [String, nil] Sets the display icon of this type in the dashboard One of: alert, bolt, box, briefcase, browser, bulb, calendar, clock, cog, components, database, doc, email, escalation-path, files, flag, folder, globe, incident-template, money, server, severity, status-page, store, star, tag, user, users.
-    # @!attribute [r] id
-    #   @return [String, nil] ID of this catalog type
-    # @!attribute [r] is_editable
-    #   @return [Boolean, nil] Catalog types that are synced with external resources can't be edited
-    # @!attribute [r] last_synced_at
-    #   @return [Time, nil] When this type was last synced (if it's ever been sync'd)
-    # @!attribute [r] name
-    #   @return [String, nil] Name is the human readable name of this type
-    # @!attribute [r] ranked
-    #   @return [Boolean, nil] If this type should be ranked
-    # @!attribute [r] registry_type
-    #   @return [String, nil] The registry resource this type is synced from, if any
-    # @!attribute [r] required_integrations
-    #   @return [Array<String>, nil] If populated, the integrations required for this type
-    # @!attribute [r] schema
-    #   @return [CatalogTypeSchemaV2, nil]
-    # @!attribute [r] semantic_type
-    #   @return [String, nil] This type has been deprecated, and will always be empty.
-    # @!attribute [r] source_repo_url
-    #   @return [String, nil] The url of the external repository where this type is managed
-    # @!attribute [r] type_name
-    #   @return [String, nil] The type name of this catalog type, to be used when defining attributes.
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When this type was last updated
     CatalogTypeV2 = Model.define(
       annotations: Model.map_of(:string),
       categories: [:string],
@@ -67,5 +27,68 @@ module IncidentIo
       type_name: :string,
       updated_at: :time
     )
+
+    class CatalogTypeV2
+      # @!attribute [r] annotations
+      #   Annotations that can track metadata about this type
+      #   @return [Hash{String => String}, nil]
+      # @!attribute [r] categories
+      #   What categories is this type considered part of One of: customer,…
+      #   @return [Array<String>, nil]
+      # @!attribute [r] color
+      #   Sets the display color of this type in the dashboard One of: yellow, green,…
+      #   @return [String, nil]
+      # @!attribute [r] created_at
+      #   When this type was created
+      #   @return [Time, nil]
+      # @!attribute [r] description
+      #   Human readble description of this type
+      #   @return [String, nil]
+      # @!attribute [r] dynamic_resource_parameter
+      #   If this is a dynamic catalog type, this will be the unique parameter for…
+      #   @return [String, nil]
+      # @!attribute [r] estimated_count
+      #   If populated, gives an estimated count of entries for this type
+      #   @return [Integer, nil]
+      # @!attribute [r] icon
+      #   Sets the display icon of this type in the dashboard One of: alert, bolt, box,…
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   ID of this catalog type
+      #   @return [String, nil]
+      # @!attribute [r] is_editable
+      #   Catalog types that are synced with external resources can't be edited
+      #   @return [Boolean, nil]
+      # @!attribute [r] last_synced_at
+      #   When this type was last synced (if it's ever been sync'd)
+      #   @return [Time, nil]
+      # @!attribute [r] name
+      #   Name is the human readable name of this type
+      #   @return [String, nil]
+      # @!attribute [r] ranked
+      #   If this type should be ranked
+      #   @return [Boolean, nil]
+      # @!attribute [r] registry_type
+      #   The registry resource this type is synced from, if any
+      #   @return [String, nil]
+      # @!attribute [r] required_integrations
+      #   If populated, the integrations required for this type
+      #   @return [Array<String>, nil]
+      # @!attribute [r] schema
+      #   The schema field
+      #   @return [CatalogTypeSchemaV2, nil]
+      # @!attribute [r] semantic_type
+      #   This type has been deprecated, and will always be empty
+      #   @return [String, nil]
+      # @!attribute [r] source_repo_url
+      #   The url of the external repository where this type is managed
+      #   @return [String, nil]
+      # @!attribute [r] type_name
+      #   The type name of this catalog type, to be used when defining attributes
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   When this type was last updated
+      #   @return [Time, nil]
+    end
   end
 end

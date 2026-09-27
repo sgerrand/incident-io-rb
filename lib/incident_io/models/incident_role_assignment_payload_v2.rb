@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] assignee
-    #   @return [UserReferencePayloadV2, nil]
-    # @!attribute [r] incident_role_id
-    #   @return [String, nil] Unique ID of an incident role.
     IncidentRoleAssignmentPayloadV2 = Model.define(
       assignee: -> { UserReferencePayloadV2 },
       incident_role_id: :string
     )
+
+    class IncidentRoleAssignmentPayloadV2
+      # @!attribute [r] assignee
+      #   The assignee field
+      #   @return [UserReferencePayloadV2, nil]
+      # @!attribute [r] incident_role_id
+      #   Unique ID of an incident role
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] attempts
-    #   @return [Integer, nil] The total number of times we page this level, counting the initial page.
-    # @!attribute [r] interval_seconds
-    #   @return [Integer, nil] How long we wait between attempts at this level, in seconds.
     EscalationPathRetryConfigV2 = Model.define(
       attempts: :integer,
       interval_seconds: :integer
     )
+
+    class EscalationPathRetryConfigV2
+      # @!attribute [r] attempts
+      #   The total number of times we page this level, counting the initial page
+      #   @return [Integer, nil]
+      # @!attribute [r] interval_seconds
+      #   How long we wait between attempts at this level, in seconds
+      #   @return [Integer, nil]
+    end
   end
 end

@@ -5,12 +5,15 @@
 
 module IncidentIo
   module Models
-    # Set when policy_type is post_mortem.
-    #
-    # @!attribute [r] incident_id
-    #   @return [String, nil] The incident whose post-mortem fell short of the policy
     PolicyFindingPostMortemV2 = Model.define(
       incident_id: :string
     )
+
+    # Set when policy_type is post_mortem.
+    class PolicyFindingPostMortemV2
+      # @!attribute [r] incident_id
+      #   The incident whose post-mortem fell short of the policy
+      #   @return [String, nil]
+    end
   end
 end

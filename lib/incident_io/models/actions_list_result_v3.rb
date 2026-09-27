@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] actions
-    #   @return [Array<ActionV3>, nil]
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV3, nil]
     ActionsListResultV3 = Model.define(
       actions: [-> { ActionV3 }],
       pagination_meta: -> { PaginationMetaResultV3 }
     )
+
+    class ActionsListResultV3
+      # @!attribute [r] actions
+      #   The actions field
+      #   @return [Array<ActionV3>, nil]
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV3, nil]
+    end
   end
 end

@@ -15,7 +15,7 @@ module IncidentIo
       #
       # List and edit call routes here. Create and delete them in the dashboard.
       class CallRoutes < Resource
-        # Allow a number to call this route.
+        # Allow a number to call this route
         #
         # Endpoint: `POST /v2/call_routes/{call_route_id}/allowed_callers`. Scopes: call_routes.update.
         #
@@ -35,6 +35,8 @@ module IncidentIo
           )
         end
 
+        # Add an option to a call route's phone-tree menu
+        #
         # Add an option to a call route's phone-tree menu.
         #
         # Callers hear the menu instead of being routed down the route's own path, so
@@ -61,6 +63,8 @@ module IncidentIo
           )
         end
 
+        # Stop allowing a number to call this route
+        #
         # Stop allowing a number to call this route.
         #
         # A route that only answers its allowed callers must keep at least one, so turn
@@ -80,6 +84,8 @@ module IncidentIo
           )
         end
 
+        # Remove an option from a call route's phone-tree menu
+        #
         # Remove an option from a call route's phone-tree menu.
         #
         # A route has to route calls somewhere, so give it a path before removing its last
@@ -99,7 +105,7 @@ module IncidentIo
           )
         end
 
-        # List all call routes for this organisation.
+        # List all call routes for this organisation
         #
         # Endpoint: `GET /v2/call_routes`. Scopes: call_routes.view.
         #
@@ -117,7 +123,7 @@ module IncidentIo
           )
         end
 
-        # List the numbers allowed to call a route.
+        # List the numbers allowed to call a route
         #
         # Endpoint: `GET /v2/call_routes/{call_route_id}/allowed_callers`. Scopes: call_routes.view.
         #
@@ -134,7 +140,7 @@ module IncidentIo
           )
         end
 
-        # List a call route's phone-tree options, in the order callers hear them.
+        # List a call route's phone-tree options, in the order callers hear them
         #
         # Endpoint: `GET /v2/call_routes/{call_route_id}/options`. Scopes: call_routes.view.
         #
@@ -151,7 +157,7 @@ module IncidentIo
           )
         end
 
-        # Show a single call route.
+        # Show a single call route
         #
         # Endpoint: `GET /v2/call_routes/{id}`. Scopes: call_routes.view.
         #
@@ -168,7 +174,7 @@ module IncidentIo
           )
         end
 
-        # Show a single allowed caller.
+        # Show a single allowed caller
         #
         # Endpoint: `GET /v2/call_routes/{call_route_id}/allowed_callers/{id}`. Scopes: call_routes.view.
         #
@@ -186,7 +192,7 @@ module IncidentIo
           )
         end
 
-        # Show a single phone-tree option.
+        # Show a single phone-tree option
         #
         # Endpoint: `GET /v2/call_routes/{call_route_id}/options/{id}`. Scopes: call_routes.view.
         #
@@ -204,6 +210,8 @@ module IncidentIo
           )
         end
 
+        # Replace a call route's configuration
+        #
         # Replace a call route's configuration.
         #
         # Sending a path retires any phone-tree menu on the route. Send an empty path to
@@ -238,7 +246,7 @@ module IncidentIo
           )
         end
 
-        # Replace an allowed caller's number and label.
+        # Replace an allowed caller's number and label
         #
         # Endpoint: `PUT /v2/call_routes/{call_route_id}/allowed_callers/{id}`. Scopes: call_routes.update.
         #
@@ -259,6 +267,8 @@ module IncidentIo
           )
         end
 
+        # Replace a phone-tree option
+        #
         # Replace a phone-tree option.
         #
         # Two live options can't share a digit, so moving an option onto a digit the menu

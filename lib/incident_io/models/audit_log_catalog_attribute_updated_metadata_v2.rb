@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] after_values
-    #   @return [Array<String>, nil] The user IDs that are in the attribute after the change
-    # @!attribute [r] before_values
-    #   @return [Array<String>, nil] The user IDs that were in the attribute before the change
     AuditLogCatalogAttributeUpdatedMetadataV2 = Model.define(
       after_values: [:string],
       before_values: [:string]
     )
+
+    class AuditLogCatalogAttributeUpdatedMetadataV2
+      # @!attribute [r] after_values
+      #   The user IDs that are in the attribute after the change
+      #   @return [Array<String>, nil]
+      # @!attribute [r] before_values
+      #   The user IDs that were in the attribute before the change
+      #   @return [Array<String>, nil]
+    end
   end
 end

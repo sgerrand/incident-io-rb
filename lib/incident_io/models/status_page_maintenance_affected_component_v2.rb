@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] component_id
-    #   @return [String, nil] The ID of the affected component.
-    # @!attribute [r] component_status
-    #   @return [String, nil] The status of the relevant component in a status page maintenance window One of: operational, under_maintenance.
     StatusPageMaintenanceAffectedComponentV2 = Model.define(
       component_id: :string,
       component_status: :string
     )
+
+    class StatusPageMaintenanceAffectedComponentV2
+      # @!attribute [r] component_id
+      #   The ID of the affected component
+      #   @return [String, nil]
+      # @!attribute [r] component_status
+      #   The status of the relevant component in a status page maintenance window One…
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] after_base_role_slug
-    #   @return [String, nil] The base role slug of this SCIM group after the mapping was changed (if any)
-    # @!attribute [r] after_custom_role_slugs
-    #   @return [String, nil] The custom role slugs of this SCIM group after the mapping was changed (if any), separated by commas
-    # @!attribute [r] before_base_role_slug
-    #   @return [String, nil] The base role slug assigned to this SCIM group before the mapping was changed (if any)
-    # @!attribute [r] before_custom_role_slugs
-    #   @return [String, nil] The custom role slugs of this SCIM group before the mapping was changed (if any), separated by commas
     AuditLogUserSCIMGroupMappingChangedMetadataV2 = Model.define(
       after_base_role_slug: :string,
       after_custom_role_slugs: :string,
       before_base_role_slug: :string,
       before_custom_role_slugs: :string
     )
+
+    class AuditLogUserSCIMGroupMappingChangedMetadataV2
+      # @!attribute [r] after_base_role_slug
+      #   The base role slug of this SCIM group after the mapping was changed (if any)
+      #   @return [String, nil]
+      # @!attribute [r] after_custom_role_slugs
+      #   The custom role slugs of this SCIM group after the mapping was changed (if…
+      #   @return [String, nil]
+      # @!attribute [r] before_base_role_slug
+      #   The base role slug assigned to this SCIM group before the mapping was changed…
+      #   @return [String, nil]
+      # @!attribute [r] before_custom_role_slugs
+      #   The custom role slugs of this SCIM group before the mapping was changed (if…
+      #   @return [String, nil]
+    end
   end
 end

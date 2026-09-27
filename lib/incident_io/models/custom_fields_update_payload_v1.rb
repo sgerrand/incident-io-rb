@@ -5,22 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the custom field
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name for the custom field
-    # @!attribute [r] required
-    #   @return [String, nil] When this custom field must be set during the incident lifecycle.
-    # @!attribute [r] required_v2
-    #   @return [String, nil] When this custom field must be set during the incident lifecycle.
-    # @!attribute [r] show_before_closure
-    #   @return [Boolean, nil] Whether a custom field should be shown in the incident resolve modal.
-    # @!attribute [r] show_before_creation
-    #   @return [Boolean, nil] Whether a custom field should be shown in the incident creation modal.
-    # @!attribute [r] show_before_update
-    #   @return [Boolean, nil] Whether a custom field should be shown in the incident update modal.
-    # @!attribute [r] show_in_announcement_post
-    #   @return [Boolean, nil] Whether a custom field should be shown in the list of fields as part of the announcement post when set.
     CustomFieldsUpdatePayloadV1 = Model.define(
       description: :string,
       name: :string,
@@ -31,5 +15,32 @@ module IncidentIo
       show_before_update: :boolean,
       show_in_announcement_post: :boolean
     )
+
+    class CustomFieldsUpdatePayloadV1
+      # @!attribute [r] description
+      #   Description of the custom field
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name for the custom field
+      #   @return [String, nil]
+      # @!attribute [r] required
+      #   When this custom field must be set during the incident lifecycle
+      #   @return [String, nil]
+      # @!attribute [r] required_v2
+      #   When this custom field must be set during the incident lifecycle
+      #   @return [String, nil]
+      # @!attribute [r] show_before_closure
+      #   Whether a custom field should be shown in the incident resolve modal
+      #   @return [Boolean, nil]
+      # @!attribute [r] show_before_creation
+      #   Whether a custom field should be shown in the incident creation modal
+      #   @return [Boolean, nil]
+      # @!attribute [r] show_before_update
+      #   Whether a custom field should be shown in the incident update modal
+      #   @return [Boolean, nil]
+      # @!attribute [r] show_in_announcement_post
+      #   Whether a custom field should be shown in the list of fields as part of the…
+      #   @return [Boolean, nil]
+    end
   end
 end

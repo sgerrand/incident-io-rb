@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] pay_config
-    #   @return [PayConfigV2, nil]
     PayConfigsUpdateResultV2 = Model.define(
       pay_config: -> { PayConfigV2 }
     )
+
+    class PayConfigsUpdateResultV2
+      # @!attribute [r] pay_config
+      #   The pay_config field
+      #   @return [PayConfigV2, nil]
+    end
   end
 end

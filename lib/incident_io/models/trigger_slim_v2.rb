@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] label
-    #   @return [String, nil] Human readable identifier for this trigger
-    # @!attribute [r] name
-    #   @return [String, nil] Unique name of the trigger
     TriggerSlimV2 = Model.define(
       label: :string,
       name: :string
     )
+
+    class TriggerSlimV2
+      # @!attribute [r] label
+      #   Human readable identifier for this trigger
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Unique name of the trigger
+      #   @return [String, nil]
+    end
   end
 end

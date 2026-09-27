@@ -5,30 +5,6 @@
 
 module IncidentIo
   module Models
-    # A secret is a named credential that workflows can reference, for example
-    # an auth token for an outgoing webhook.
-    #
-    # Its value can be set and rotated but never read back: the API stores it
-    # encrypted and only ever returns masked metadata (the last four characters of
-    # the current value). Update the value with the rotate action, which appends a
-    # new version and retires the previous one.
-    #
-    # @!attribute [r] created_at
-    #   @return [Time, nil]
-    # @!attribute [r] description
-    #   @return [String, nil] Optional description of what this secret is for
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this secret
-    # @!attribute [r] last_four_chars
-    #   @return [String, nil] The last four characters of the current value, for masked display.
-    # @!attribute [r] name
-    #   @return [String, nil] Human-readable name, unique within the organisation amongst unarchived secrets
-    # @!attribute [r] owning_team_ids
-    #   @return [Array<String>, nil] IDs of the teams that own this secret.
-    # @!attribute [r] updated_at
-    #   @return [Time, nil]
-    # @!attribute [r] version
-    #   @return [Integer, nil] The current version number, incremented on each rotation
     SecretV2 = Model.define(
       created_at: :time,
       description: :string,
@@ -39,5 +15,39 @@ module IncidentIo
       updated_at: :time,
       version: :integer
     )
+
+    # A secret is a named credential that workflows can reference, for example
+    # an auth token for an outgoing webhook.
+    #
+    # Its value can be set and rotated but never read back: the API stores it
+    # encrypted and only ever returns masked metadata (the last four characters of
+    # the current value). Update the value with the rotate action, which appends a
+    # new version and retires the previous one.
+    class SecretV2
+      # @!attribute [r] created_at
+      #   The created_at field
+      #   @return [Time, nil]
+      # @!attribute [r] description
+      #   Optional description of what this secret is for
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this secret
+      #   @return [String, nil]
+      # @!attribute [r] last_four_chars
+      #   The last four characters of the current value, for masked display
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human-readable name, unique within the organisation amongst unarchived secrets
+      #   @return [String, nil]
+      # @!attribute [r] owning_team_ids
+      #   IDs of the teams that own this secret
+      #   @return [Array<String>, nil]
+      # @!attribute [r] updated_at
+      #   The updated_at field
+      #   @return [Time, nil]
+      # @!attribute [r] version
+      #   The current version number, incremented on each rotation
+      #   @return [Integer, nil]
+    end
   end
 end

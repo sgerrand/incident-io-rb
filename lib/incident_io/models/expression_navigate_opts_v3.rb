@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] reference
-    #   @return [String, nil] The reference within the scope to navigate to
-    # @!attribute [r] reference_label
-    #   @return [String, nil] The name of the reference to navigate to
     ExpressionNavigateOptsV3 = Model.define(
       reference: :string,
       reference_label: :string
     )
+
+    class ExpressionNavigateOptsV3
+      # @!attribute [r] reference
+      #   The reference within the scope to navigate to
+      #   @return [String, nil]
+      # @!attribute [r] reference_label
+      #   The name of the reference to navigate to
+      #   @return [String, nil]
+    end
   end
 end

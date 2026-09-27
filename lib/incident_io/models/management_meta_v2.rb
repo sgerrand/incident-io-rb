@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] annotations
-    #   @return [Hash{String => String}, nil] Annotations that track metadata about this resource
-    # @!attribute [r] managed_by
-    #   @return [String, nil] How is this resource managed One of: dashboard, terraform, external.
-    # @!attribute [r] source_url
-    #   @return [String, nil] The url of the external repository where this resource is managed (if there is one)
     ManagementMetaV2 = Model.define(
       annotations: Model.map_of(:string),
       managed_by: :string,
       source_url: :string
     )
+
+    class ManagementMetaV2
+      # @!attribute [r] annotations
+      #   Annotations that track metadata about this resource
+      #   @return [Hash{String => String}, nil]
+      # @!attribute [r] managed_by
+      #   How is this resource managed One of: dashboard, terraform, external
+      #   @return [String, nil]
+      # @!attribute [r] source_url
+      #   The url of the external repository where this resource is managed (if there…
+      #   @return [String, nil]
+    end
   end
 end

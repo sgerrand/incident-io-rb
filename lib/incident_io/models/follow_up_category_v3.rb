@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the follow-up category
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the follow-up category
-    # @!attribute [r] name
-    #   @return [String, nil] Name of the follow-up category
-    # @!attribute [r] rank
-    #   @return [Integer, nil] Rank is used to order the follow-up categories correctly
     FollowUpCategoryV3 = Model.define(
       description: :string,
       id: :string,
       name: :string,
       rank: :integer
     )
+
+    class FollowUpCategoryV3
+      # @!attribute [r] description
+      #   Description of the follow-up category
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier for the follow-up category
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name of the follow-up category
+      #   @return [String, nil]
+      # @!attribute [r] rank
+      #   Rank is used to order the follow-up categories correctly
+      #   @return [Integer, nil]
+    end
   end
 end

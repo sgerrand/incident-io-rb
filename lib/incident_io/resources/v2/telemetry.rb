@@ -8,6 +8,8 @@ module IncidentIo
     module V2
       # Manage telemetry data source integrations.
       class Telemetry < Resource
+        # Update the credentials or configuration of a telemetry data source
+        #
         # Update the credentials or configuration of a telemetry data source. Provide only the config block that matches your data source type (e.g. grafana_config for Grafana, datadog_config for Datadog). New credentials are validated against the provider before being saved.
         #
         # Endpoint: `PUT /v2/telemetry/data_sources/{id}`. Scopes: telemetry_data_source.update.

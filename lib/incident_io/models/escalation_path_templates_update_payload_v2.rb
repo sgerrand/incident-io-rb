@@ -5,20 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] A description of what this template is for.
-    # @!attribute [r] expressions
-    #   @return [Array<ExpressionPayloadV2>, nil] Expressions backing the template's binding targets.
-    # @!attribute [r] name
-    #   @return [String, nil] The name of this template, for the user's reference.
-    # @!attribute [r] params
-    #   @return [Array<EngineParamV2>, nil] The parameters declared by this template, bound per templated path.
-    # @!attribute [r] path
-    #   @return [Array<EscalationPathTemplateNodePayloadV2>, nil] The nodes that form the levels and branches of this template.
-    # @!attribute [r] repeat_config
-    #   @return [EscalationPathRepeatConfigV2, nil]
-    # @!attribute [r] working_hours
-    #   @return [Array<WeekdayIntervalConfigV2>, nil] The working hours for this template.
     EscalationPathTemplatesUpdatePayloadV2 = Model.define(
       description: :string,
       expressions: [-> { ExpressionPayloadV2 }],
@@ -28,5 +14,29 @@ module IncidentIo
       repeat_config: -> { EscalationPathRepeatConfigV2 },
       working_hours: [-> { WeekdayIntervalConfigV2 }]
     )
+
+    class EscalationPathTemplatesUpdatePayloadV2
+      # @!attribute [r] description
+      #   A description of what this template is for
+      #   @return [String, nil]
+      # @!attribute [r] expressions
+      #   Expressions backing the template's binding targets
+      #   @return [Array<ExpressionPayloadV2>, nil]
+      # @!attribute [r] name
+      #   The name of this template, for the user's reference
+      #   @return [String, nil]
+      # @!attribute [r] params
+      #   The parameters declared by this template, bound per templated path
+      #   @return [Array<EngineParamV2>, nil]
+      # @!attribute [r] path
+      #   The nodes that form the levels and branches of this template
+      #   @return [Array<EscalationPathTemplateNodePayloadV2>, nil]
+      # @!attribute [r] repeat_config
+      #   The repeat_config field
+      #   @return [EscalationPathRepeatConfigV2, nil]
+      # @!attribute [r] working_hours
+      #   The working hours for this template
+      #   @return [Array<WeekdayIntervalConfigV2>, nil]
+    end
   end
 end

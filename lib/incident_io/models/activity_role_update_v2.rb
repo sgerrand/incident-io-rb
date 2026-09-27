@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] new_assignee
-    #   @return [UserV2, nil]
-    # @!attribute [r] previous_assignee
-    #   @return [UserV2, nil]
-    # @!attribute [r] role
-    #   @return [IncidentRoleV2, nil]
-    # @!attribute [r] updater
-    #   @return [ActorV2, nil]
     ActivityRoleUpdateV2 = Model.define(
       new_assignee: -> { UserV2 },
       previous_assignee: -> { UserV2 },
       role: -> { IncidentRoleV2 },
       updater: -> { ActorV2 }
     )
+
+    class ActivityRoleUpdateV2
+      # @!attribute [r] new_assignee
+      #   The new_assignee field
+      #   @return [UserV2, nil]
+      # @!attribute [r] previous_assignee
+      #   The previous_assignee field
+      #   @return [UserV2, nil]
+      # @!attribute [r] role
+      #   The role field
+      #   @return [IncidentRoleV2, nil]
+      # @!attribute [r] updater
+      #   The updater field
+      #   @return [ActorV2, nil]
+    end
   end
 end

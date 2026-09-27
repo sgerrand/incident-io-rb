@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] Additional details about the escalation
-    # @!attribute [r] escalation_path_id
-    #   @return [String, nil] ID of the escalation path to follow
-    # @!attribute [r] idempotency_key
-    #   @return [String, nil] Unique key to prevent duplicate escalations.
-    # @!attribute [r] incident_id
-    #   @return [String, nil] ID of an incident to associate with this escalation.
-    # @!attribute [r] title
-    #   @return [String, nil] The title of the escalation.
-    # @!attribute [r] user_ids
-    #   @return [Array<String>, nil] IDs of users to escalate directly to
     EscalationsCreatePayloadV2 = Model.define(
       description: :string,
       escalation_path_id: :string,
@@ -25,5 +13,26 @@ module IncidentIo
       title: :string,
       user_ids: [:string]
     )
+
+    class EscalationsCreatePayloadV2
+      # @!attribute [r] description
+      #   Additional details about the escalation
+      #   @return [String, nil]
+      # @!attribute [r] escalation_path_id
+      #   ID of the escalation path to follow
+      #   @return [String, nil]
+      # @!attribute [r] idempotency_key
+      #   Unique key to prevent duplicate escalations
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   ID of an incident to associate with this escalation
+      #   @return [String, nil]
+      # @!attribute [r] title
+      #   The title of the escalation
+      #   @return [String, nil]
+      # @!attribute [r] user_ids
+      #   IDs of users to escalate directly to
+      #   @return [Array<String>, nil]
+    end
   end
 end

@@ -5,20 +5,6 @@
 
 module IncidentIo
   module Models
-    # An announcement template controls which fields and actions appear on an announcement post.
-    #
-    # @!attribute [r] actions
-    #   @return [Array<AnnouncementTemplateActionV2>, nil] Actions shown on the announcement post, in rank order
-    # @!attribute [r] fields
-    #   @return [Array<AnnouncementTemplateFieldV2>, nil] Fields shown on the announcement post, in rank order
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this announcement template
-    # @!attribute [r] is_default
-    #   @return [Boolean, nil] Whether this is the organisation's default template, used by rules that don't choose one
-    # @!attribute [r] name
-    #   @return [String, nil] Name of this announcement template
-    # @!attribute [r] owning_team_ids
-    #   @return [Array<String>, nil] IDs of the teams that own this template
     AnnouncementTemplateV2 = Model.define(
       actions: [-> { AnnouncementTemplateActionV2 }],
       fields: [-> { AnnouncementTemplateFieldV2 }],
@@ -27,5 +13,27 @@ module IncidentIo
       name: :string,
       owning_team_ids: [:string]
     )
+
+    # An announcement template controls which fields and actions appear on an announcement post.
+    class AnnouncementTemplateV2
+      # @!attribute [r] actions
+      #   Actions shown on the announcement post, in rank order
+      #   @return [Array<AnnouncementTemplateActionV2>, nil]
+      # @!attribute [r] fields
+      #   Fields shown on the announcement post, in rank order
+      #   @return [Array<AnnouncementTemplateFieldV2>, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this announcement template
+      #   @return [String, nil]
+      # @!attribute [r] is_default
+      #   Whether this is the organisation's default template, used by rules that don't…
+      #   @return [Boolean, nil]
+      # @!attribute [r] name
+      #   Name of this announcement template
+      #   @return [String, nil]
+      # @!attribute [r] owning_team_ids
+      #   IDs of the teams that own this template
+      #   @return [Array<String>, nil]
+    end
   end
 end

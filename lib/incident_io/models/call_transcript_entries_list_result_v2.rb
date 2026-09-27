@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] call_transcript_entries
-    #   @return [Array<CallTranscriptEntryV2>, nil]
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV2, nil]
     CallTranscriptEntriesListResultV2 = Model.define(
       call_transcript_entries: [-> { CallTranscriptEntryV2 }],
       pagination_meta: -> { PaginationMetaResultV2 }
     )
+
+    class CallTranscriptEntriesListResultV2
+      # @!attribute [r] call_transcript_entries
+      #   The call_transcript_entries field
+      #   @return [Array<CallTranscriptEntryV2>, nil]
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV2, nil]
+    end
   end
 end

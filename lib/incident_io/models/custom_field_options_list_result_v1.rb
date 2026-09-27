@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] custom_field_options
-    #   @return [Array<CustomFieldOptionV1>, nil]
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV1, nil]
     CustomFieldOptionsListResultV1 = Model.define(
       custom_field_options: [-> { CustomFieldOptionV1 }],
       pagination_meta: -> { PaginationMetaResultV1 }
     )
+
+    class CustomFieldOptionsListResultV1
+      # @!attribute [r] custom_field_options
+      #   The custom_field_options field
+      #   @return [Array<CustomFieldOptionV1>, nil]
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV1, nil]
+    end
   end
 end

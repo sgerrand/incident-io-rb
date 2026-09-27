@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] field
-    #   @return [String, nil] Field name that is the source of the error
-    # @!attribute [r] pointer
-    #   @return [String, nil] JSON pointer to the request field that is the source of the error
     ErrorSource = Model.define(
       field: :string,
       pointer: :string
     )
+
+    class ErrorSource
+      # @!attribute [r] field
+      #   Field name that is the source of the error
+      #   @return [String, nil]
+      # @!attribute [r] pointer
+      #   JSON pointer to the request field that is the source of the error
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] catalog_entry
-    #   @return [CatalogEntrySlimV3V3, nil]
-    # @!attribute [r] id
-    #   @return [String, nil] Unique ID of the team
-    # @!attribute [r] members_
-    #   @return [Array<UserV3>, nil] Members of the team
-    # @!attribute [r] name
-    #   @return [String, nil] Name of the team
     TeamV3 = Model.define(
       catalog_entry: -> { CatalogEntrySlimV3V3 },
       id: :string,
       members: [-> { UserV3 }],
       name: :string
     )
+
+    class TeamV3
+      # @!attribute [r] catalog_entry
+      #   The catalog_entry field
+      #   @return [CatalogEntrySlimV3V3, nil]
+      # @!attribute [r] id
+      #   Unique ID of the team
+      #   @return [String, nil]
+      # @!attribute [r] members_
+      #   Members of the team
+      #   @return [Array<UserV3>, nil]
+      # @!attribute [r] name
+      #   Name of the team
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,25 +5,31 @@
 
 module IncidentIo
   module Models
-    # A single step in a call route's path.
-    #
-    # Levels page a set of targets, and a trailing voicemail node records a message
-    # from the caller. A path made up of only a voicemail node sends callers straight
-    # to voicemail without paging anyone.
-    #
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this node
-    # @!attribute [r] level
-    #   @return [CallRoutePathNodeLevelV2, nil]
-    # @!attribute [r] type
-    #   @return [String, nil] The type of this node.
-    # @!attribute [r] voicemail
-    #   @return [CallRoutePathNodeVoicemailV2, nil]
     CallRoutePathNodeV2 = Model.define(
       id: :string,
       level: -> { CallRoutePathNodeLevelV2 },
       type: :string,
       voicemail: -> { CallRoutePathNodeVoicemailV2 }
     )
+
+    # A single step in a call route's path.
+    #
+    # Levels page a set of targets, and a trailing voicemail node records a message
+    # from the caller. A path made up of only a voicemail node sends callers straight
+    # to voicemail without paging anyone.
+    class CallRoutePathNodeV2
+      # @!attribute [r] id
+      #   Unique identifier for this node
+      #   @return [String, nil]
+      # @!attribute [r] level
+      #   The level field
+      #   @return [CallRoutePathNodeLevelV2, nil]
+      # @!attribute [r] type
+      #   The type of this node
+      #   @return [String, nil]
+      # @!attribute [r] voicemail
+      #   The voicemail field
+      #   @return [CallRoutePathNodeVoicemailV2, nil]
+    end
   end
 end

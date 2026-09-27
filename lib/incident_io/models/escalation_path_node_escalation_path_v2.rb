@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] escalation_path_id
-    #   @return [String, nil] The ID of the escalation path to reassign to
     EscalationPathNodeEscalationPathV2 = Model.define(
       escalation_path_id: :string
     )
+
+    class EscalationPathNodeEscalationPathV2
+      # @!attribute [r] escalation_path_id
+      #   The ID of the escalation path to reassign to
+      #   @return [String, nil]
+    end
   end
 end

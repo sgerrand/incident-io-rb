@@ -5,20 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] base_rate_cents
-    #   @return [Integer, nil] Rate paid for any time no rule covers, in the lowest denomination of the currency
-    # @!attribute [r] currency
-    #   @return [String, nil] Currency this config pays in, in ISO 4217 format
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name for this pay config
-    # @!attribute [r] one_off_rules
-    #   @return [Array<PayConfigOneOffRulePayloadV2>, nil] Rules that apply over a single window of time
-    # @!attribute [r] rate_time_unit
-    #   @return [String, nil] The unit of time every rate on this config is quoted per One of: hour, day.
-    # @!attribute [r] timezone
-    #   @return [String, nil] IANA timezone this config's rules are interpreted in
-    # @!attribute [r] weekly_rules
-    #   @return [Array<PayConfigWeeklyRulePayloadV2>, nil] Rules that apply every week, in the order they should be evaluated
     PayConfigsCreatePayloadV2 = Model.define(
       base_rate_cents: :integer,
       currency: :string,
@@ -28,5 +14,29 @@ module IncidentIo
       timezone: :string,
       weekly_rules: [-> { PayConfigWeeklyRulePayloadV2 }]
     )
+
+    class PayConfigsCreatePayloadV2
+      # @!attribute [r] base_rate_cents
+      #   Rate paid for any time no rule covers, in the lowest denomination of the…
+      #   @return [Integer, nil]
+      # @!attribute [r] currency
+      #   Currency this config pays in, in ISO 4217 format
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name for this pay config
+      #   @return [String, nil]
+      # @!attribute [r] one_off_rules
+      #   Rules that apply over a single window of time
+      #   @return [Array<PayConfigOneOffRulePayloadV2>, nil]
+      # @!attribute [r] rate_time_unit
+      #   The unit of time every rate on this config is quoted per One of: hour, day
+      #   @return [String, nil]
+      # @!attribute [r] timezone
+      #   IANA timezone this config's rules are interpreted in
+      #   @return [String, nil]
+      # @!attribute [r] weekly_rules
+      #   Rules that apply every week, in the order they should be evaluated
+      #   @return [Array<PayConfigWeeklyRulePayloadV2>, nil]
+    end
   end
 end

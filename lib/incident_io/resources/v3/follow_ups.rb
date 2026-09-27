@@ -15,6 +15,8 @@ module IncidentIo
       # You can manage follow-ups in the incident Slack channel with <code>/incident follow-ups</code>, or on
       # the incident homepage.
       class FollowUps < Resource
+        # Connect a follow-up to an existing issue in an issue tracker, using the URL…
+        #
         # Connect a follow-up to an existing issue in an issue tracker, using the URL of the issue.
         #
         # This will not work if the follow-up is already connected to an external issue.
@@ -37,7 +39,7 @@ module IncidentIo
           )
         end
 
-        # Create a new incident follow-up.
+        # Create a new incident follow-up
         #
         # Endpoint: `POST /v3/follow_ups`. Scopes: follow_ups.create.
         #
@@ -84,6 +86,8 @@ module IncidentIo
           )
         end
 
+        # Create a follow-up from the URL of an issue that already exists in an issue…
+        #
         # Create a follow-up from the URL of an issue that already exists in an issue tracker.
         #
         # The follow-up is created already connected to that issue, so it will not also be exported to
@@ -120,7 +124,7 @@ module IncidentIo
           )
         end
 
-        # Delete an incident follow-up.
+        # Delete an incident follow-up
         #
         # Endpoint: `DELETE /v3/follow_ups/{id}`. Scopes: follow_ups.destroy.
         #
@@ -135,6 +139,8 @@ module IncidentIo
           )
         end
 
+        # List follow-ups for an organisation
+        #
         # List follow-ups for an organisation.
         #
         # Results are paginated and ordered by follow-up ID, oldest first. Use the <code>after</code>
@@ -203,7 +209,7 @@ module IncidentIo
           )
         end
 
-        # Get a single incident follow-up.
+        # Get a single incident follow-up
         #
         # Endpoint: `GET /v3/follow_ups/{id}`. Scopes: actions.view.
         #
@@ -220,7 +226,7 @@ module IncidentIo
           )
         end
 
-        # Update an existing incident follow-up.
+        # Update an existing incident follow-up
         #
         # Endpoint: `PUT /v3/follow_ups/{id}`. Scopes: follow_ups.update.
         #

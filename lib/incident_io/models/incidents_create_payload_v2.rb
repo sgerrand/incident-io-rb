@@ -5,34 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] custom_field_entries
-    #   @return [Array<CustomFieldEntryPayloadV2>, nil] Set the incident's custom fields to these values
-    # @!attribute [r] idempotency_key
-    #   @return [String, nil] Unique string used to de-duplicate incident create requests
-    # @!attribute [r] incident_role_assignments
-    #   @return [Array<IncidentRoleAssignmentPayloadV2>, nil] Assign incident roles to these people
-    # @!attribute [r] incident_status_id
-    #   @return [String, nil] Incident status to assign to the incident
-    # @!attribute [r] incident_timestamp_values
-    #   @return [Array<IncidentTimestampValuePayloadV2>, nil] Assign the incident's timestamps to these values
-    # @!attribute [r] incident_type_id
-    #   @return [String, nil] Incident type to create this incident as
-    # @!attribute [r] mode
-    #   @return [String, nil] Whether the incident is real, a test, a tutorial, or importing as a retrospective incident One of: standard, retrospective, test, tutorial.
-    # @!attribute [r] name
-    #   @return [String, nil] Explanation of the incident
-    # @!attribute [r] retrospective_incident_options
-    #   @return [RetrospectiveIncidentOptionsV2, nil]
-    # @!attribute [r] severity_id
-    #   @return [String, nil] Severity to create incident as
-    # @!attribute [r] slack_channel_name_override
-    #   @return [String, nil] Name of the Slack channel to create for this incident
-    # @!attribute [r] slack_team_id
-    #   @return [String, nil] Slack Team to create the incident in
-    # @!attribute [r] summary
-    #   @return [String, nil] Detailed description of the incident
-    # @!attribute [r] visibility
-    #   @return [String, nil] Whether the incident should be open to anyone in your Slack workspace (public), or invite-only (private).
     IncidentsCreatePayloadV2 = Model.define(
       custom_field_entries: [-> { CustomFieldEntryPayloadV2 }],
       idempotency_key: :string,
@@ -49,5 +21,50 @@ module IncidentIo
       summary: :string,
       visibility: :string
     )
+
+    class IncidentsCreatePayloadV2
+      # @!attribute [r] custom_field_entries
+      #   Set the incident's custom fields to these values
+      #   @return [Array<CustomFieldEntryPayloadV2>, nil]
+      # @!attribute [r] idempotency_key
+      #   Unique string used to de-duplicate incident create requests
+      #   @return [String, nil]
+      # @!attribute [r] incident_role_assignments
+      #   Assign incident roles to these people
+      #   @return [Array<IncidentRoleAssignmentPayloadV2>, nil]
+      # @!attribute [r] incident_status_id
+      #   Incident status to assign to the incident
+      #   @return [String, nil]
+      # @!attribute [r] incident_timestamp_values
+      #   Assign the incident's timestamps to these values
+      #   @return [Array<IncidentTimestampValuePayloadV2>, nil]
+      # @!attribute [r] incident_type_id
+      #   Incident type to create this incident as
+      #   @return [String, nil]
+      # @!attribute [r] mode
+      #   Whether the incident is real, a test, a tutorial, or importing as a…
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Explanation of the incident
+      #   @return [String, nil]
+      # @!attribute [r] retrospective_incident_options
+      #   The retrospective_incident_options field
+      #   @return [RetrospectiveIncidentOptionsV2, nil]
+      # @!attribute [r] severity_id
+      #   Severity to create incident as
+      #   @return [String, nil]
+      # @!attribute [r] slack_channel_name_override
+      #   Name of the Slack channel to create for this incident
+      #   @return [String, nil]
+      # @!attribute [r] slack_team_id
+      #   Slack Team to create the incident in
+      #   @return [String, nil]
+      # @!attribute [r] summary
+      #   Detailed description of the incident
+      #   @return [String, nil]
+      # @!attribute [r] visibility
+      #   Whether the incident should be open to anyone in your Slack workspace…
+      #   @return [String, nil]
+    end
   end
 end

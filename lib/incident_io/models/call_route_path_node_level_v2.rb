@@ -5,16 +5,19 @@
 
 module IncidentIo
   module Models
+    CallRoutePathNodeLevelV2 = Model.define(
+      targets: [-> { CallRouteTargetV2 }]
+    )
+
     # The targets a level pages.
     #
     # We call each target for 30 seconds, rotating to the next after 60 seconds, and
     # move to the next node if nobody acknowledges within 5 minutes. Those timings are
     # fixed for call routes.
-    #
-    # @!attribute [r] targets
-    #   @return [Array<CallRouteTargetV2>, nil] The users and schedules to page
-    CallRoutePathNodeLevelV2 = Model.define(
-      targets: [-> { CallRouteTargetV2 }]
-    )
+    class CallRoutePathNodeLevelV2
+      # @!attribute [r] targets
+      #   The users and schedules to page
+      #   @return [Array<CallRouteTargetV2>, nil]
+    end
   end
 end

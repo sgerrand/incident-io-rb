@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] actor_user_id
-    #   @return [String, nil] The ID of the user who performed this action.
-    # @!attribute [r] incident_id
-    #   @return [String, nil] The ID of the incident
-    # @!attribute [r] user_id
-    #   @return [String, nil] The ID of the user
     WebhookIncidentUserV2 = Model.define(
       actor_user_id: :string,
       incident_id: :string,
       user_id: :string
     )
+
+    class WebhookIncidentUserV2
+      # @!attribute [r] actor_user_id
+      #   The ID of the user who performed this action
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   The ID of the incident
+      #   @return [String, nil]
+      # @!attribute [r] user_id
+      #   The ID of the user
+      #   @return [String, nil]
+    end
   end
 end

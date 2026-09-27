@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] address
-    #   @return [String, nil] The address of this method (e.g.
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this notification method
-    # @!attribute [r] is_usable
-    #   @return [Boolean, nil] Whether this method is ready to receive notifications.
-    # @!attribute [r] method_type
-    #   @return [String, nil] The high-level type of notification method.
-    # @!attribute [r] phone_details
-    #   @return [OnCallNotificationMethodPhoneDetailsPublicV2, nil]
     OnCallNotificationMethodPublicV2 = Model.define(
       address: :string,
       id: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       method_type: :string,
       phone_details: -> { OnCallNotificationMethodPhoneDetailsPublicV2 }
     )
+
+    class OnCallNotificationMethodPublicV2
+      # @!attribute [r] address
+      #   The address of this method (e.g
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this notification method
+      #   @return [String, nil]
+      # @!attribute [r] is_usable
+      #   Whether this method is ready to receive notifications
+      #   @return [Boolean, nil]
+      # @!attribute [r] method_type
+      #   The high-level type of notification method
+      #   @return [String, nil]
+      # @!attribute [r] phone_details
+      #   The phone_details field
+      #   @return [OnCallNotificationMethodPhoneDetailsPublicV2, nil]
+    end
   end
 end

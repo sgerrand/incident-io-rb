@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] custom_field_id
-    #   @return [String, nil] ID of the custom field this entry is linked against
-    # @!attribute [r] values
-    #   @return [Array<CustomFieldValuePayloadV1>, nil] List of values to associate with this entry.
     CustomFieldEntryPayloadV1 = Model.define(
       custom_field_id: :string,
       values: [-> { CustomFieldValuePayloadV1 }]
     )
+
+    class CustomFieldEntryPayloadV1
+      # @!attribute [r] custom_field_id
+      #   ID of the custom field this entry is linked against
+      #   @return [String, nil]
+      # @!attribute [r] values
+      #   List of values to associate with this entry
+      #   @return [Array<CustomFieldValuePayloadV1>, nil]
+    end
   end
 end

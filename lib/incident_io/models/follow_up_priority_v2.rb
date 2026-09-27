@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the follow-up priority option
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the follow-up priority option
-    # @!attribute [r] name
-    #   @return [String, nil] Name of the follow-up priority option
-    # @!attribute [r] rank
-    #   @return [Integer, nil] Rank is used to order the follow-up priority options correctly
     FollowUpPriorityV2 = Model.define(
       description: :string,
       id: :string,
       name: :string,
       rank: :integer
     )
+
+    class FollowUpPriorityV2
+      # @!attribute [r] description
+      #   Description of the follow-up priority option
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier for the follow-up priority option
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name of the follow-up priority option
+      #   @return [String, nil]
+      # @!attribute [r] rank
+      #   Rank is used to order the follow-up priority options correctly
+      #   @return [Integer, nil]
+    end
   end
 end

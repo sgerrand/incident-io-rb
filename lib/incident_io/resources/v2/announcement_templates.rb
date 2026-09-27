@@ -11,7 +11,7 @@ module IncidentIo
       # An announcement template controls which fields and actions appear on an announcement post.
       # Each announcement rule renders its posts with one template.
       class AnnouncementTemplates < Resource
-        # Create an announcement template.
+        # Create an announcement template
         #
         # Endpoint: `POST /v2/announcement_templates`. Scopes: announcement_templates.create.
         #
@@ -38,6 +38,8 @@ module IncidentIo
           )
         end
 
+        # Delete an announcement template
+        #
         # Delete an announcement template. The default template, and templates still used by an announcement rule or workflow, can't be deleted.
         #
         # Endpoint: `DELETE /v2/announcement_templates/{id}`. Scopes: announcement_templates.destroy.
@@ -53,7 +55,7 @@ module IncidentIo
           )
         end
 
-        # List announcement templates for this organisation.
+        # List announcement templates for this organisation
         #
         # Endpoint: `GET /v2/announcement_templates`. Scopes: announcement_templates.view.
         #
@@ -69,7 +71,7 @@ module IncidentIo
           )
         end
 
-        # Show an announcement template.
+        # Show an announcement template
         #
         # Endpoint: `GET /v2/announcement_templates/{id}`. Scopes: announcement_templates.view.
         #
@@ -86,6 +88,8 @@ module IncidentIo
           )
         end
 
+        # Update an announcement template
+        #
         # Update an announcement template. Fields and actions are replaced wholesale, so send the full set you want.
         #
         # Endpoint: `PUT /v2/announcement_templates/{id}`. Scopes: announcement_templates.update.

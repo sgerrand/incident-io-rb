@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] secret
-    #   @return [SecretV2, nil]
-    # @!attribute [r] versions
-    #   @return [Array<SecretVersionV2>, nil] The secret's versions, newest first
     SecretsShowResultV2 = Model.define(
       secret: -> { SecretV2 },
       versions: [-> { SecretVersionV2 }]
     )
+
+    class SecretsShowResultV2
+      # @!attribute [r] secret
+      #   The secret field
+      #   @return [SecretV2, nil]
+      # @!attribute [r] versions
+      #   The secret's versions, newest first
+      #   @return [Array<SecretVersionV2>, nil]
+    end
   end
 end

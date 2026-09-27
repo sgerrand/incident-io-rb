@@ -5,30 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When this escalation was created
-    # @!attribute [r] creator
-    #   @return [EscalationCreatorV2, nil]
-    # @!attribute [r] description
-    #   @return [String, nil] Additional detail provided with this escalation.
-    # @!attribute [r] escalation_path_id
-    #   @return [String, nil] Unique identifier of the escalation path that the escalation was created from
-    # @!attribute [r] events
-    #   @return [Array<EscalationEventV2>, nil] Events which describe the history of this escalation.
-    # @!attribute [r] id
-    #   @return [String, nil] Unique ID of the escalation
-    # @!attribute [r] priority
-    #   @return [EscalationPriorityV2, nil]
-    # @!attribute [r] related_alerts
-    #   @return [Array<AlertSlimV2>, nil] Alerts related to this escalation
-    # @!attribute [r] related_incidents
-    #   @return [Array<IncidentSlimV2>, nil] Incidents related to this escalation
-    # @!attribute [r] status
-    #   @return [String, nil] Status of the escalation One of: pending, triggered, acked, resolved, expired, cancelled, snoozed, delayed, pending_repeat.
-    # @!attribute [r] title
-    #   @return [String, nil] The title of this escalation
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When this escalation was last updated
     EscalationV2 = Model.define(
       created_at: :time,
       creator: -> { EscalationCreatorV2 },
@@ -43,5 +19,44 @@ module IncidentIo
       title: :string,
       updated_at: :time
     )
+
+    class EscalationV2
+      # @!attribute [r] created_at
+      #   When this escalation was created
+      #   @return [Time, nil]
+      # @!attribute [r] creator
+      #   The creator field
+      #   @return [EscalationCreatorV2, nil]
+      # @!attribute [r] description
+      #   Additional detail provided with this escalation
+      #   @return [String, nil]
+      # @!attribute [r] escalation_path_id
+      #   Unique identifier of the escalation path that the escalation was created from
+      #   @return [String, nil]
+      # @!attribute [r] events
+      #   Events which describe the history of this escalation
+      #   @return [Array<EscalationEventV2>, nil]
+      # @!attribute [r] id
+      #   Unique ID of the escalation
+      #   @return [String, nil]
+      # @!attribute [r] priority
+      #   The priority field
+      #   @return [EscalationPriorityV2, nil]
+      # @!attribute [r] related_alerts
+      #   Alerts related to this escalation
+      #   @return [Array<AlertSlimV2>, nil]
+      # @!attribute [r] related_incidents
+      #   Incidents related to this escalation
+      #   @return [Array<IncidentSlimV2>, nil]
+      # @!attribute [r] status
+      #   Status of the escalation One of: pending, triggered, acked, resolved,…
+      #   @return [String, nil]
+      # @!attribute [r] title
+      #   The title of this escalation
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   When this escalation was last updated
+      #   @return [Time, nil]
+    end
   end
 end

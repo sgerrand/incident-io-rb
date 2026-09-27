@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_participant_workloads
-    #   @return [Array<IncidentParticipantWorkloadV2>, nil]
-    # @!attribute [r] metadata
-    #   @return [WorkloadMetadataV2, nil]
     IncidentParticipantWorkloadsListResultV2 = Model.define(
       incident_participant_workloads: [-> { IncidentParticipantWorkloadV2 }],
       metadata: -> { WorkloadMetadataV2 }
     )
+
+    class IncidentParticipantWorkloadsListResultV2
+      # @!attribute [r] incident_participant_workloads
+      #   The incident_participant_workloads field
+      #   @return [Array<IncidentParticipantWorkloadV2>, nil]
+      # @!attribute [r] metadata
+      #   The metadata field
+      #   @return [WorkloadMetadataV2, nil]
+    end
   end
 end

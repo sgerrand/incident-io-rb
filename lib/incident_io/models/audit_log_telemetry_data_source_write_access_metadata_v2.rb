@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] tools
-    #   @return [String, nil] The tools whose permission changed, comma separated
     AuditLogTelemetryDataSourceWriteAccessMetadataV2 = Model.define(
       tools: :string
     )
+
+    class AuditLogTelemetryDataSourceWriteAccessMetadataV2
+      # @!attribute [r] tools
+      #   The tools whose permission changed, comma separated
+      #   @return [String, nil]
+    end
   end
 end

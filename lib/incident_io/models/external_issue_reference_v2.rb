@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] issue_name
-    #   @return [String, nil] Human readable ID for the issue
-    # @!attribute [r] issue_permalink
-    #   @return [String, nil] URL linking directly to the action in the issue tracker
-    # @!attribute [r] provider
-    #   @return [String, nil] ID of the issue tracker provider One of: asana, azure_devops, click_up, freshservice, linear, jira, salesforce, jira_server, github, gitlab, service_now, shortcut, notion.
     ExternalIssueReferenceV2 = Model.define(
       issue_name: :string,
       issue_permalink: :string,
       provider: :string
     )
+
+    class ExternalIssueReferenceV2
+      # @!attribute [r] issue_name
+      #   Human readable ID for the issue
+      #   @return [String, nil]
+      # @!attribute [r] issue_permalink
+      #   URL linking directly to the action in the issue tracker
+      #   @return [String, nil]
+      # @!attribute [r] provider
+      #   ID of the issue tracker provider One of: asana, azure_devops, click_up,…
+      #   @return [String, nil]
+    end
   end
 end

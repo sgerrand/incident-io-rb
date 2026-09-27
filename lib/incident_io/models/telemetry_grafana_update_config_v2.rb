@@ -5,15 +5,19 @@
 
 module IncidentIo
   module Models
-    # Grafana-specific credential and endpoint updates
-    #
-    # @!attribute [r] api_key
-    #   @return [String, nil] New Grafana service account token
-    # @!attribute [r] api_url
-    #   @return [String, nil] Grafana API URL (without protocol)
     TelemetryGrafanaUpdateConfigV2 = Model.define(
       api_key: :string,
       api_url: :string
     )
+
+    # Grafana-specific credential and endpoint updates
+    class TelemetryGrafanaUpdateConfigV2
+      # @!attribute [r] api_key
+      #   New Grafana service account token
+      #   @return [String, nil]
+      # @!attribute [r] api_url
+      #   Grafana API URL (without protocol)
+      #   @return [String, nil]
+    end
   end
 end

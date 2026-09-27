@@ -5,18 +5,23 @@
 
 module IncidentIo
   module Models
-    # Set when policy_type is follow_up.
-    #
-    # @!attribute [r] due_date_config
-    #   @return [PolicyDueDateConfigV2, nil]
-    # @!attribute [r] requirements
-    #   @return [Array<ConditionGroupV2>, nil] Conditions a follow-up must satisfy to be compliant, e.g.
-    # @!attribute [r] run_on_private_incidents
-    #   @return [Boolean, nil] Requires the policies.run_on_private scope
     PolicyFollowUpV2 = Model.define(
       due_date_config: -> { PolicyDueDateConfigV2 },
       requirements: [-> { ConditionGroupV2 }],
       run_on_private_incidents: :boolean
     )
+
+    # Set when policy_type is follow_up.
+    class PolicyFollowUpV2
+      # @!attribute [r] due_date_config
+      #   The due_date_config field
+      #   @return [PolicyDueDateConfigV2, nil]
+      # @!attribute [r] requirements
+      #   Conditions a follow-up must satisfy to be compliant, e.g
+      #   @return [Array<ConditionGroupV2>, nil]
+      # @!attribute [r] run_on_private_incidents
+      #   Requires the policies.run_on_private scope
+      #   @return [Boolean, nil]
+    end
   end
 end

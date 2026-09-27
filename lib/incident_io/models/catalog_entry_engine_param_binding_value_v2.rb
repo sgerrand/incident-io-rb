@@ -5,26 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] catalog_entry
-    #   @return [CatalogEntryReferenceV2, nil]
-    # @!attribute [r] helptext
-    #   @return [String, nil] This field is deprecated.
-    # @!attribute [r] image_url
-    #   @return [String, nil] This field is deprecated.
-    # @!attribute [r] is_image_slack_icon
-    #   @return [Boolean, nil] This field is deprecated.
-    # @!attribute [r] label
-    #   @return [String, nil] Human readable label to be displayed for user to select
-    # @!attribute [r] literal
-    #   @return [String, nil] If set, this is the literal value of the step parameter
-    # @!attribute [r] reference
-    #   @return [String, nil] This field is deprecated.
-    # @!attribute [r] sort_key
-    #   @return [String, nil] This field is deprecated.
-    # @!attribute [r] unavailable
-    #   @return [Boolean, nil] This field is deprecated.
-    # @!attribute [r] value
-    #   @return [String, nil] This field is deprecated.
     CatalogEntryEngineParamBindingValueV2 = Model.define(
       catalog_entry: -> { CatalogEntryReferenceV2 },
       helptext: :string,
@@ -37,5 +17,38 @@ module IncidentIo
       unavailable: :boolean,
       value: :string
     )
+
+    class CatalogEntryEngineParamBindingValueV2
+      # @!attribute [r] catalog_entry
+      #   The catalog_entry field
+      #   @return [CatalogEntryReferenceV2, nil]
+      # @!attribute [r] helptext
+      #   This field is deprecated
+      #   @return [String, nil]
+      # @!attribute [r] image_url
+      #   This field is deprecated
+      #   @return [String, nil]
+      # @!attribute [r] is_image_slack_icon
+      #   This field is deprecated
+      #   @return [Boolean, nil]
+      # @!attribute [r] label
+      #   Human readable label to be displayed for user to select
+      #   @return [String, nil]
+      # @!attribute [r] literal
+      #   If set, this is the literal value of the step parameter
+      #   @return [String, nil]
+      # @!attribute [r] reference
+      #   This field is deprecated
+      #   @return [String, nil]
+      # @!attribute [r] sort_key
+      #   This field is deprecated
+      #   @return [String, nil]
+      # @!attribute [r] unavailable
+      #   This field is deprecated
+      #   @return [Boolean, nil]
+      # @!attribute [r] value
+      #   This field is deprecated
+      #   @return [String, nil]
+    end
   end
 end

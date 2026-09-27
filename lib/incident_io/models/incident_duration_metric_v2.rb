@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] Unique ID of this incident duration metric
-    # @!attribute [r] name
-    #   @return [String, nil] Unique name of this duration metric
     IncidentDurationMetricV2 = Model.define(
       id: :string,
       name: :string
     )
+
+    class IncidentDurationMetricV2
+      # @!attribute [r] id
+      #   Unique ID of this incident duration metric
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Unique name of this duration metric
+      #   @return [String, nil]
+    end
   end
 end

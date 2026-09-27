@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] value
-    #   @return [Time, nil] The current value of this timestamp, for this incident
     IncidentTimestampValueV2 = Model.define(
       value: :time
     )
+
+    class IncidentTimestampValueV2
+      # @!attribute [r] value
+      #   The current value of this timestamp, for this incident
+      #   @return [Time, nil]
+    end
   end
 end

@@ -15,6 +15,8 @@ module IncidentIo
       #
       # Runs on private incidents are returned only to an API key with global incident access.
       class WorkflowRuns < Resource
+        # List workflow runs, newest first
+        #
         # List workflow runs, newest first. Cancelled runs are never returned.
         #
         # The webhook delivery on each step omits the headers and bodies. Fetch a single run to see them.
@@ -62,6 +64,8 @@ module IncidentIo
           )
         end
 
+        # Show a single workflow run, including the full webhook delivery for any step…
+        #
         # Show a single workflow run, including the full webhook delivery for any step that sent one.
         #
         # A delivery is kept for 7 days. After that `webhook_delivery_state` becomes

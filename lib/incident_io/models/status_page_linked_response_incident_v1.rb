@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] ID of the Response incident
-    # @!attribute [r] linked_at
-    #   @return [Time, nil] When the Response incident was linked to the status page incident
     StatusPageLinkedResponseIncidentV1 = Model.define(
       id: :string,
       linked_at: :time
     )
+
+    class StatusPageLinkedResponseIncidentV1
+      # @!attribute [r] id
+      #   ID of the Response incident
+      #   @return [String, nil]
+      # @!attribute [r] linked_at
+      #   When the Response incident was linked to the status page incident
+      #   @return [Time, nil]
+    end
   end
 end

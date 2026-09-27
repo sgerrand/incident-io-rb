@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] reference
-    #   @return [String, nil] The reference within the scope to concatenate with
-    # @!attribute [r] reference_label
-    #   @return [String, nil] The name of the reference to concatenate with
     ExpressionConcatenateOptsV2 = Model.define(
       reference: :string,
       reference_label: :string
     )
+
+    class ExpressionConcatenateOptsV2
+      # @!attribute [r] reference
+      #   The reference within the scope to concatenate with
+      #   @return [String, nil]
+      # @!attribute [r] reference_label
+      #   The name of the reference to concatenate with
+      #   @return [String, nil]
+    end
   end
 end

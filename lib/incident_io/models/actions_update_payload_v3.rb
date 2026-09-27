@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] assignee_id
-    #   @return [String, nil] ID of the user this action is assigned to.
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the action.
-    # @!attribute [r] status
-    #   @return [String, nil] Status of the action.
     ActionsUpdatePayloadV3 = Model.define(
       assignee_id: :string,
       description: :string,
       status: :string
     )
+
+    class ActionsUpdatePayloadV3
+      # @!attribute [r] assignee_id
+      #   ID of the user this action is assigned to
+      #   @return [String, nil]
+      # @!attribute [r] description
+      #   Description of the action
+      #   @return [String, nil]
+      # @!attribute [r] status
+      #   Status of the action
+      #   @return [String, nil]
+    end
   end
 end

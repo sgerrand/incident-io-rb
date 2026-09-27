@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the tag
-    # @!attribute [r] name
-    #   @return [String, nil] The tag name
     AlertTagV2 = Model.define(
       id: :string,
       name: :string
     )
+
+    class AlertTagV2
+      # @!attribute [r] id
+      #   Unique identifier for the tag
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   The tag name
+      #   @return [String, nil]
+    end
   end
 end

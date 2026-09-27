@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV3, nil]
-    # @!attribute [r] teams
-    #   @return [Array<TeamV3>, nil]
     TeamsListResultV3 = Model.define(
       pagination_meta: -> { PaginationMetaResultV3 },
       teams: [-> { TeamV3 }]
     )
+
+    class TeamsListResultV3
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV3, nil]
+      # @!attribute [r] teams
+      #   The teams field
+      #   @return [Array<TeamV3>, nil]
+    end
   end
 end

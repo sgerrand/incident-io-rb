@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] Human readable description of the role
-    # @!attribute [r] name
-    #   @return [String, nil] API key role name that may be granted for team-scoped access One of: catalog_editor, schedules_editor, schedules_reader, schedule_overrides_editor, on_call_editor, escalation_creator, api_keys_manage, workflows_editor, private_workflows_editor, secrets_manage, secrets_use, heartbeats_ping, telemetry_query_restricted, telemetry_data_source_update.
     APIKeyTeamRoleV1 = Model.define(
       description: :string,
       name: :string
     )
+
+    class APIKeyTeamRoleV1
+      # @!attribute [r] description
+      #   Human readable description of the role
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   API key role name that may be granted for team-scoped access One of:…
+      #   @return [String, nil]
+    end
   end
 end

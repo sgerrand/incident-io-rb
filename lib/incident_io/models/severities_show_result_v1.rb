@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] severity
-    #   @return [SeverityV1, nil]
     SeveritiesShowResultV1 = Model.define(
       severity: -> { SeverityV1 }
     )
+
+    class SeveritiesShowResultV1
+      # @!attribute [r] severity
+      #   The severity field
+      #   @return [SeverityV1, nil]
+    end
   end
 end

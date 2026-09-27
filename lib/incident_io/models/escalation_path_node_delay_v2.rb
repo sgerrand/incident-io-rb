@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] delay_interval_condition
-    #   @return [String, nil] If the delay is relative to a time window, this defines whether we advance when the window is active or inactive One of: active, inactive.
-    # @!attribute [r] delay_seconds
-    #   @return [Integer, nil] How long to delay before advancing to the next node in the path, in seconds
-    # @!attribute [r] delay_weekday_interval_config_id
-    #   @return [String, nil] If the delay is relative to a time window, this identifies which window it is relative to
     EscalationPathNodeDelayV2 = Model.define(
       delay_interval_condition: :string,
       delay_seconds: :integer,
       delay_weekday_interval_config_id: :string
     )
+
+    class EscalationPathNodeDelayV2
+      # @!attribute [r] delay_interval_condition
+      #   If the delay is relative to a time window, this defines whether we advance…
+      #   @return [String, nil]
+      # @!attribute [r] delay_seconds
+      #   How long to delay before advancing to the next node in the path, in seconds
+      #   @return [Integer, nil]
+      # @!attribute [r] delay_weekday_interval_config_id
+      #   If the delay is relative to a time window, this identifies which window it is…
+      #   @return [String, nil]
+    end
   end
 end

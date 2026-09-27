@@ -8,7 +8,7 @@ module IncidentIo
     module V1
       # This API currently only allows linked Response incidents for a status page incident to be listed.
       class StatusPages < Resource
-        # List the linked Response incidents for a status page incident.
+        # List the linked Response incidents for a status page incident
         #
         # Endpoint: `GET /v1/status-pages/{id}/incidents/{incident_id}/response-incidents`.
         #

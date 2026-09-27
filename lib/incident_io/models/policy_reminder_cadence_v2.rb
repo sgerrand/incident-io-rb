@@ -5,12 +5,15 @@
 
 module IncidentIo
   module Models
-    # A recurring reminder, which repeats once per interval until the finding is resolved.
-    #
-    # @!attribute [r] interval
-    #   @return [String, nil] How often to send the reminder, stepping in fixed durations from the due date.
     PolicyReminderCadenceV2 = Model.define(
       interval: :string
     )
+
+    # A recurring reminder, which repeats once per interval until the finding is resolved.
+    class PolicyReminderCadenceV2
+      # @!attribute [r] interval
+      #   How often to send the reminder, stepping in fixed durations from the due date
+      #   @return [String, nil]
+    end
   end
 end

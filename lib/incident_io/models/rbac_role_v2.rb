@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the purpose for the RBAC role
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier of the RBAC role
-    # @!attribute [r] name
-    #   @return [String, nil] Name of the RBAC role
-    # @!attribute [r] slug
-    #   @return [String, nil] Unique human-readable slug for the RBAC role
     RBACRoleV2 = Model.define(
       description: :string,
       id: :string,
       name: :string,
       slug: :string
     )
+
+    class RBACRoleV2
+      # @!attribute [r] description
+      #   Description of the purpose for the RBAC role
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier of the RBAC role
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name of the RBAC role
+      #   @return [String, nil]
+      # @!attribute [r] slug
+      #   Unique human-readable slug for the RBAC role
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] created_at
-    #   @return [Time, nil]
-    # @!attribute [r] id
-    #   @return [String, nil] Unique internal ID of the schedule
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name synced from external provider
-    # @!attribute [r] team_ids
-    #   @return [Array<String>, nil] IDs of teams that own this schedule
-    # @!attribute [r] timezone
-    #   @return [String, nil] Timezone of the schedule, as interpreted at the point of generating the report
-    # @!attribute [r] updated_at
-    #   @return [Time, nil]
     ScheduleSlimV2 = Model.define(
       created_at: :time,
       id: :string,
@@ -25,5 +13,26 @@ module IncidentIo
       timezone: :string,
       updated_at: :time
     )
+
+    class ScheduleSlimV2
+      # @!attribute [r] created_at
+      #   The created_at field
+      #   @return [Time, nil]
+      # @!attribute [r] id
+      #   Unique internal ID of the schedule
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name synced from external provider
+      #   @return [String, nil]
+      # @!attribute [r] team_ids
+      #   IDs of teams that own this schedule
+      #   @return [Array<String>, nil]
+      # @!attribute [r] timezone
+      #   Timezone of the schedule, as interpreted at the point of generating the report
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   The updated_at field
+      #   @return [Time, nil]
+    end
   end
 end

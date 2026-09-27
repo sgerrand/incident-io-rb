@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] repeat_times
-    #   @return [Integer, nil] How many times to repeat these nodes
-    # @!attribute [r] to_node
-    #   @return [String, nil] Which node ID we begin repeating from.
     EscalationPathNodeRepeatV2 = Model.define(
       repeat_times: :integer,
       to_node: :string
     )
+
+    class EscalationPathNodeRepeatV2
+      # @!attribute [r] repeat_times
+      #   How many times to repeat these nodes
+      #   @return [Integer, nil]
+      # @!attribute [r] to_node
+      #   Which node ID we begin repeating from
+      #   @return [String, nil]
+    end
   end
 end

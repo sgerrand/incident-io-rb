@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] array
-    #   @return [Boolean, nil] Whether the return value should be single or multi-value
-    # @!attribute [r] type
-    #   @return [String, nil] Expected return type of this expression (what to try casting the result to)
     ReturnsMetaV3 = Model.define(
       array: :boolean,
       type: :string
     )
+
+    class ReturnsMetaV3
+      # @!attribute [r] array
+      #   Whether the return value should be single or multi-value
+      #   @return [Boolean, nil]
+      # @!attribute [r] type
+      #   Expected return type of this expression (what to try casting the result to)
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] catalog_attribute_id
-    #   @return [String, nil] This must be an attribute of the catalog type of this custom field.
-    # @!attribute [r] custom_field_id
-    #   @return [String, nil] This must be the ID of a custom field, which must have values of the same type as the attribute you are filtering by.
     CustomFieldFilterByOptionsV2 = Model.define(
       catalog_attribute_id: :string,
       custom_field_id: :string
     )
+
+    class CustomFieldFilterByOptionsV2
+      # @!attribute [r] catalog_attribute_id
+      #   This must be an attribute of the catalog type of this custom field
+      #   @return [String, nil]
+      # @!attribute [r] custom_field_id
+      #   This must be the ID of a custom field, which must have values of the same…
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert_attribute_id
-    #   @return [String, nil] ID of the alert attribute to set with this binding
-    # @!attribute [r] binding
-    #   @return [AlertTemplateAttributeBindingV2, nil]
     AlertTemplateAttributeV2 = Model.define(
       alert_attribute_id: :string,
       binding: -> { AlertTemplateAttributeBindingV2 }
     )
+
+    class AlertTemplateAttributeV2
+      # @!attribute [r] alert_attribute_id
+      #   ID of the alert attribute to set with this binding
+      #   @return [String, nil]
+      # @!attribute [r] binding
+      #   The binding field
+      #   @return [AlertTemplateAttributeBindingV2, nil]
+    end
   end
 end

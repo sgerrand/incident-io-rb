@@ -50,7 +50,7 @@ module IncidentIo
           )
         end
 
-        # List all incident roles for an organisation.
+        # List all incident roles for an organisation
         #
         # Endpoint: `GET /v2/incident_roles`. Scopes: incident_roles.view.
         #
@@ -66,7 +66,7 @@ module IncidentIo
           )
         end
 
-        # Get a single incident role.
+        # Get a single incident role
         #
         # Endpoint: `GET /v2/incident_roles/{id}`. Scopes: incident_roles.view.
         #

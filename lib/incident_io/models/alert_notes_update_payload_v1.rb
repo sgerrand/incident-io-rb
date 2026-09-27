@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] content
-    #   @return [String, nil] Markdown body of the note
     AlertNotesUpdatePayloadV1 = Model.define(
       content: :string
     )
+
+    class AlertNotesUpdatePayloadV1
+      # @!attribute [r] content
+      #   Markdown body of the note
+      #   @return [String, nil]
+    end
   end
 end

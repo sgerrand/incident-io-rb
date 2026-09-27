@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] state
-    #   @return [String, nil] What state to move the connection to One of: related, unrelated.
     AlertsTransitionIncidentAlertPayloadV2 = Model.define(
       state: :string
     )
+
+    class AlertsTransitionIncidentAlertPayloadV2
+      # @!attribute [r] state
+      #   What state to move the connection to One of: related, unrelated
+      #   @return [String, nil]
+    end
   end
 end

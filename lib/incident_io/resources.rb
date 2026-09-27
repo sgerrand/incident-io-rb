@@ -30,105 +30,149 @@ module IncidentIo
 
       # Every v1 resource, e.g. `client.v1.actions`.
       class Namespace
+        # Creates the namespace for a client
+        #
+        # @param client [IncidentIo::Client]
         def initialize(client)
           @client = client
           @resources = {}
         end
 
+        # A short description that leaves out the client
+        #
+        # @return [String]
         def inspect
           "#<#{self.class.name}>"
         end
 
+        # The v1 actions resource
+        #
         # @return [Actions]
         def actions
           @resources[:actions] ||= Actions.new(@client)
         end
 
+        # The v1 alert notes resource
+        #
         # @return [AlertNotes]
         def alert_notes
           @resources[:alert_notes] ||= AlertNotes.new(@client)
         end
 
+        # The v1 api keys resource
+        #
         # @return [ApiKeys]
         def api_keys
           @resources[:api_keys] ||= ApiKeys.new(@client)
         end
 
+        # The v1 custom field options resource
+        #
         # @return [CustomFieldOptions]
         def custom_field_options
           @resources[:custom_field_options] ||= CustomFieldOptions.new(@client)
         end
 
+        # The v1 custom fields resource
+        #
         # @return [CustomFields]
         def custom_fields
           @resources[:custom_fields] ||= CustomFields.new(@client)
         end
 
+        # The v1 incident attachments resource
+        #
         # @return [IncidentAttachments]
         def incident_attachments
           @resources[:incident_attachments] ||= IncidentAttachments.new(@client)
         end
 
+        # The v1 incident memberships resource
+        #
         # @return [IncidentMemberships]
         def incident_memberships
           @resources[:incident_memberships] ||= IncidentMemberships.new(@client)
         end
 
+        # The v1 incident relationships resource
+        #
         # @return [IncidentRelationships]
         def incident_relationships
           @resources[:incident_relationships] ||= IncidentRelationships.new(@client)
         end
 
+        # The v1 incident roles resource
+        #
         # @return [IncidentRoles]
         def incident_roles
           @resources[:incident_roles] ||= IncidentRoles.new(@client)
         end
 
+        # The v1 incident statuses resource
+        #
         # @return [IncidentStatuses]
         def incident_statuses
           @resources[:incident_statuses] ||= IncidentStatuses.new(@client)
         end
 
+        # The v1 incident templates resource
+        #
         # @return [IncidentTemplates]
         def incident_templates
           @resources[:incident_templates] ||= IncidentTemplates.new(@client)
         end
 
+        # The v1 incident types resource
+        #
         # @return [IncidentTypes]
         def incident_types
           @resources[:incident_types] ||= IncidentTypes.new(@client)
         end
 
+        # The v1 incidents resource
+        #
         # @return [Incidents]
         def incidents
           @resources[:incidents] ||= Incidents.new(@client)
         end
 
+        # The v1 ip allowlists resource
+        #
         # @return [IpAllowlists]
         def ip_allowlists
           @resources[:ip_allowlists] ||= IpAllowlists.new(@client)
         end
 
+        # The v1 maintenance windows resource
+        #
         # @return [MaintenanceWindows]
         def maintenance_windows
           @resources[:maintenance_windows] ||= MaintenanceWindows.new(@client)
         end
 
+        # The v1 postmortem documents resource
+        #
         # @return [PostmortemDocuments]
         def postmortem_documents
           @resources[:postmortem_documents] ||= PostmortemDocuments.new(@client)
         end
 
+        # The v1 severities resource
+        #
         # @return [Severities]
         def severities
           @resources[:severities] ||= Severities.new(@client)
         end
 
+        # The v1 status pages resource
+        #
         # @return [StatusPages]
         def status_pages
           @resources[:status_pages] ||= StatusPages.new(@client)
         end
 
+        # The v1 utilities resource
+        #
         # @return [Utilities]
         def utilities
           @resources[:utilities] ||= Utilities.new(@client)
@@ -177,195 +221,275 @@ module IncidentIo
 
       # Every v2 resource, e.g. `client.v2.actions`.
       class Namespace
+        # Creates the namespace for a client
+        #
+        # @param client [IncidentIo::Client]
         def initialize(client)
           @client = client
           @resources = {}
         end
 
+        # A short description that leaves out the client
+        #
+        # @return [String]
         def inspect
           "#<#{self.class.name}>"
         end
 
+        # The v2 actions resource
+        #
         # @return [Actions]
         def actions
           @resources[:actions] ||= Actions.new(@client)
         end
 
+        # The v2 alert attributes resource
+        #
         # @return [AlertAttributes]
         def alert_attributes
           @resources[:alert_attributes] ||= AlertAttributes.new(@client)
         end
 
+        # The v2 alert events resource
+        #
         # @return [AlertEvents]
         def alert_events
           @resources[:alert_events] ||= AlertEvents.new(@client)
         end
 
+        # The v2 alert routes resource
+        #
         # @return [AlertRoutes]
         def alert_routes
           @resources[:alert_routes] ||= AlertRoutes.new(@client)
         end
 
+        # The v2 alert sources resource
+        #
         # @return [AlertSources]
         def alert_sources
           @resources[:alert_sources] ||= AlertSources.new(@client)
         end
 
+        # The v2 alerts resource
+        #
         # @return [Alerts]
         def alerts
           @resources[:alerts] ||= Alerts.new(@client)
         end
 
+        # The v2 announcement rules resource
+        #
         # @return [AnnouncementRules]
         def announcement_rules
           @resources[:announcement_rules] ||= AnnouncementRules.new(@client)
         end
 
+        # The v2 announcement templates resource
+        #
         # @return [AnnouncementTemplates]
         def announcement_templates
           @resources[:announcement_templates] ||= AnnouncementTemplates.new(@client)
         end
 
+        # The v2 call routes resource
+        #
         # @return [CallRoutes]
         def call_routes
           @resources[:call_routes] ||= CallRoutes.new(@client)
         end
 
+        # The v2 call sessions resource
+        #
         # @return [CallSessions]
         def call_sessions
           @resources[:call_sessions] ||= CallSessions.new(@client)
         end
 
+        # The v2 call transcript entries resource
+        #
         # @return [CallTranscriptEntries]
         def call_transcript_entries
           @resources[:call_transcript_entries] ||= CallTranscriptEntries.new(@client)
         end
 
+        # The v2 catalog resource
+        #
         # @return [Catalog]
         def catalog
           @resources[:catalog] ||= Catalog.new(@client)
         end
 
+        # The v2 custom fields resource
+        #
         # @return [CustomFields]
         def custom_fields
           @resources[:custom_fields] ||= CustomFields.new(@client)
         end
 
+        # The v2 escalation path templates resource
+        #
         # @return [EscalationPathTemplates]
         def escalation_path_templates
           @resources[:escalation_path_templates] ||= EscalationPathTemplates.new(@client)
         end
 
+        # The v2 escalations resource
+        #
         # @return [Escalations]
         def escalations
           @resources[:escalations] ||= Escalations.new(@client)
         end
 
+        # The v2 follow ups resource
+        #
         # @return [FollowUps]
         def follow_ups
           @resources[:follow_ups] ||= FollowUps.new(@client)
         end
 
+        # The v2 heartbeat resource
+        #
         # @return [Heartbeat]
         def heartbeat
           @resources[:heartbeat] ||= Heartbeat.new(@client)
         end
 
+        # The v2 incident activity log entries resource
+        #
         # @return [IncidentActivityLogEntries]
         def incident_activity_log_entries
           @resources[:incident_activity_log_entries] ||= IncidentActivityLogEntries.new(@client)
         end
 
+        # The v2 incident participant workloads resource
+        #
         # @return [IncidentParticipantWorkloads]
         def incident_participant_workloads
           @resources[:incident_participant_workloads] ||= IncidentParticipantWorkloads.new(@client)
         end
 
+        # The v2 incident participants resource
+        #
         # @return [IncidentParticipants]
         def incident_participants
           @resources[:incident_participants] ||= IncidentParticipants.new(@client)
         end
 
+        # The v2 incident roles resource
+        #
         # @return [IncidentRoles]
         def incident_roles
           @resources[:incident_roles] ||= IncidentRoles.new(@client)
         end
 
+        # The v2 incident timeline items resource
+        #
         # @return [IncidentTimelineItems]
         def incident_timeline_items
           @resources[:incident_timeline_items] ||= IncidentTimelineItems.new(@client)
         end
 
+        # The v2 incident timestamps resource
+        #
         # @return [IncidentTimestamps]
         def incident_timestamps
           @resources[:incident_timestamps] ||= IncidentTimestamps.new(@client)
         end
 
+        # The v2 incident updates resource
+        #
         # @return [IncidentUpdates]
         def incident_updates
           @resources[:incident_updates] ||= IncidentUpdates.new(@client)
         end
 
+        # The v2 incidents resource
+        #
         # @return [Incidents]
         def incidents
           @resources[:incidents] ||= Incidents.new(@client)
         end
 
+        # The v2 pay configs resource
+        #
         # @return [PayConfigs]
         def pay_configs
           @resources[:pay_configs] ||= PayConfigs.new(@client)
         end
 
+        # The v2 pay reports resource
+        #
         # @return [PayReports]
         def pay_reports
           @resources[:pay_reports] ||= PayReports.new(@client)
         end
 
+        # The v2 policies resource
+        #
         # @return [Policies]
         def policies
           @resources[:policies] ||= Policies.new(@client)
         end
 
+        # The v2 policy findings resource
+        #
         # @return [PolicyFindings]
         def policy_findings
           @resources[:policy_findings] ||= PolicyFindings.new(@client)
         end
 
+        # The v2 schedule sync targets resource
+        #
         # @return [ScheduleSyncTargets]
         def schedule_sync_targets
           @resources[:schedule_sync_targets] ||= ScheduleSyncTargets.new(@client)
         end
 
+        # The v2 schedules resource
+        #
         # @return [Schedules]
         def schedules
           @resources[:schedules] ||= Schedules.new(@client)
         end
 
+        # The v2 secrets resource
+        #
         # @return [Secrets]
         def secrets
           @resources[:secrets] ||= Secrets.new(@client)
         end
 
+        # The v2 status pages resource
+        #
         # @return [StatusPages]
         def status_pages
           @resources[:status_pages] ||= StatusPages.new(@client)
         end
 
+        # The v2 telemetry resource
+        #
         # @return [Telemetry]
         def telemetry
           @resources[:telemetry] ||= Telemetry.new(@client)
         end
 
+        # The v2 users resource
+        #
         # @return [Users]
         def users
           @resources[:users] ||= Users.new(@client)
         end
 
+        # The v2 workflow runs resource
+        #
         # @return [WorkflowRuns]
         def workflow_runs
           @resources[:workflow_runs] ||= WorkflowRuns.new(@client)
         end
 
+        # The v2 workflows resource
+        #
         # @return [Workflows]
         def workflows
           @resources[:workflows] ||= Workflows.new(@client)
@@ -382,35 +506,51 @@ module IncidentIo
 
       # Every v3 resource, e.g. `client.v3.actions`.
       class Namespace
+        # Creates the namespace for a client
+        #
+        # @param client [IncidentIo::Client]
         def initialize(client)
           @client = client
           @resources = {}
         end
 
+        # A short description that leaves out the client
+        #
+        # @return [String]
         def inspect
           "#<#{self.class.name}>"
         end
 
+        # The v3 actions resource
+        #
         # @return [Actions]
         def actions
           @resources[:actions] ||= Actions.new(@client)
         end
 
+        # The v3 alert routes resource
+        #
         # @return [AlertRoutes]
         def alert_routes
           @resources[:alert_routes] ||= AlertRoutes.new(@client)
         end
 
+        # The v3 catalog resource
+        #
         # @return [Catalog]
         def catalog
           @resources[:catalog] ||= Catalog.new(@client)
         end
 
+        # The v3 follow ups resource
+        #
         # @return [FollowUps]
         def follow_ups
           @resources[:follow_ups] ||= FollowUps.new(@client)
         end
 
+        # The v3 teams resource
+        #
         # @return [Teams]
         def teams
           @resources[:teams] ||= Teams.new(@client)
@@ -422,276 +562,386 @@ module IncidentIo
     # newest version of each resource; `client.v1.<name>` and so on reach a
     # specific version.
     module Accessors
+      # Every v1 resource
+      #
       # @return [V1::Namespace]
       def v1
         resource_cache[:v1] ||= V1::Namespace.new(self)
       end
 
+      # Every v2 resource
+      #
       # @return [V2::Namespace]
       def v2
         resource_cache[:v2] ||= V2::Namespace.new(self)
       end
 
+      # Every v3 resource
+      #
       # @return [V3::Namespace]
       def v3
         resource_cache[:v3] ||= V3::Namespace.new(self)
       end
 
+      # The actions resource, using its newest version (v3)
+      #
       # @return [V3::Actions]
       def actions
         resource_cache[:actions] ||= V3::Actions.new(self)
       end
 
+      # The alert attributes resource, using its newest version (v2)
+      #
       # @return [V2::AlertAttributes]
       def alert_attributes
         resource_cache[:alert_attributes] ||= V2::AlertAttributes.new(self)
       end
 
+      # The alert events resource, using its newest version (v2)
+      #
       # @return [V2::AlertEvents]
       def alert_events
         resource_cache[:alert_events] ||= V2::AlertEvents.new(self)
       end
 
+      # The alert notes resource, using its newest version (v1)
+      #
       # @return [V1::AlertNotes]
       def alert_notes
         resource_cache[:alert_notes] ||= V1::AlertNotes.new(self)
       end
 
+      # The alert routes resource, using its newest version (v3)
+      #
       # @return [V3::AlertRoutes]
       def alert_routes
         resource_cache[:alert_routes] ||= V3::AlertRoutes.new(self)
       end
 
+      # The alert sources resource, using its newest version (v2)
+      #
       # @return [V2::AlertSources]
       def alert_sources
         resource_cache[:alert_sources] ||= V2::AlertSources.new(self)
       end
 
+      # The alerts resource, using its newest version (v2)
+      #
       # @return [V2::Alerts]
       def alerts
         resource_cache[:alerts] ||= V2::Alerts.new(self)
       end
 
+      # The announcement rules resource, using its newest version (v2)
+      #
       # @return [V2::AnnouncementRules]
       def announcement_rules
         resource_cache[:announcement_rules] ||= V2::AnnouncementRules.new(self)
       end
 
+      # The announcement templates resource, using its newest version (v2)
+      #
       # @return [V2::AnnouncementTemplates]
       def announcement_templates
         resource_cache[:announcement_templates] ||= V2::AnnouncementTemplates.new(self)
       end
 
+      # The api keys resource, using its newest version (v1)
+      #
       # @return [V1::ApiKeys]
       def api_keys
         resource_cache[:api_keys] ||= V1::ApiKeys.new(self)
       end
 
+      # The call routes resource, using its newest version (v2)
+      #
       # @return [V2::CallRoutes]
       def call_routes
         resource_cache[:call_routes] ||= V2::CallRoutes.new(self)
       end
 
+      # The call sessions resource, using its newest version (v2)
+      #
       # @return [V2::CallSessions]
       def call_sessions
         resource_cache[:call_sessions] ||= V2::CallSessions.new(self)
       end
 
+      # The call transcript entries resource, using its newest version (v2)
+      #
       # @return [V2::CallTranscriptEntries]
       def call_transcript_entries
         resource_cache[:call_transcript_entries] ||= V2::CallTranscriptEntries.new(self)
       end
 
+      # The catalog resource, using its newest version (v3)
+      #
       # @return [V3::Catalog]
       def catalog
         resource_cache[:catalog] ||= V3::Catalog.new(self)
       end
 
+      # The custom field options resource, using its newest version (v1)
+      #
       # @return [V1::CustomFieldOptions]
       def custom_field_options
         resource_cache[:custom_field_options] ||= V1::CustomFieldOptions.new(self)
       end
 
+      # The custom fields resource, using its newest version (v2)
+      #
       # @return [V2::CustomFields]
       def custom_fields
         resource_cache[:custom_fields] ||= V2::CustomFields.new(self)
       end
 
+      # The escalation path templates resource, using its newest version (v2)
+      #
       # @return [V2::EscalationPathTemplates]
       def escalation_path_templates
         resource_cache[:escalation_path_templates] ||= V2::EscalationPathTemplates.new(self)
       end
 
+      # The escalations resource, using its newest version (v2)
+      #
       # @return [V2::Escalations]
       def escalations
         resource_cache[:escalations] ||= V2::Escalations.new(self)
       end
 
+      # The follow ups resource, using its newest version (v3)
+      #
       # @return [V3::FollowUps]
       def follow_ups
         resource_cache[:follow_ups] ||= V3::FollowUps.new(self)
       end
 
+      # The heartbeat resource, using its newest version (v2)
+      #
       # @return [V2::Heartbeat]
       def heartbeat
         resource_cache[:heartbeat] ||= V2::Heartbeat.new(self)
       end
 
+      # The incident activity log entries resource, using its newest version (v2)
+      #
       # @return [V2::IncidentActivityLogEntries]
       def incident_activity_log_entries
         resource_cache[:incident_activity_log_entries] ||= V2::IncidentActivityLogEntries.new(self)
       end
 
+      # The incident attachments resource, using its newest version (v1)
+      #
       # @return [V1::IncidentAttachments]
       def incident_attachments
         resource_cache[:incident_attachments] ||= V1::IncidentAttachments.new(self)
       end
 
+      # The incident memberships resource, using its newest version (v1)
+      #
       # @return [V1::IncidentMemberships]
       def incident_memberships
         resource_cache[:incident_memberships] ||= V1::IncidentMemberships.new(self)
       end
 
+      # The incident participant workloads resource, using its newest version (v2)
+      #
       # @return [V2::IncidentParticipantWorkloads]
       def incident_participant_workloads
         resource_cache[:incident_participant_workloads] ||= V2::IncidentParticipantWorkloads.new(self)
       end
 
+      # The incident participants resource, using its newest version (v2)
+      #
       # @return [V2::IncidentParticipants]
       def incident_participants
         resource_cache[:incident_participants] ||= V2::IncidentParticipants.new(self)
       end
 
+      # The incident relationships resource, using its newest version (v1)
+      #
       # @return [V1::IncidentRelationships]
       def incident_relationships
         resource_cache[:incident_relationships] ||= V1::IncidentRelationships.new(self)
       end
 
+      # The incident roles resource, using its newest version (v2)
+      #
       # @return [V2::IncidentRoles]
       def incident_roles
         resource_cache[:incident_roles] ||= V2::IncidentRoles.new(self)
       end
 
+      # The incident statuses resource, using its newest version (v1)
+      #
       # @return [V1::IncidentStatuses]
       def incident_statuses
         resource_cache[:incident_statuses] ||= V1::IncidentStatuses.new(self)
       end
 
+      # The incident templates resource, using its newest version (v1)
+      #
       # @return [V1::IncidentTemplates]
       def incident_templates
         resource_cache[:incident_templates] ||= V1::IncidentTemplates.new(self)
       end
 
+      # The incident timeline items resource, using its newest version (v2)
+      #
       # @return [V2::IncidentTimelineItems]
       def incident_timeline_items
         resource_cache[:incident_timeline_items] ||= V2::IncidentTimelineItems.new(self)
       end
 
+      # The incident timestamps resource, using its newest version (v2)
+      #
       # @return [V2::IncidentTimestamps]
       def incident_timestamps
         resource_cache[:incident_timestamps] ||= V2::IncidentTimestamps.new(self)
       end
 
+      # The incident types resource, using its newest version (v1)
+      #
       # @return [V1::IncidentTypes]
       def incident_types
         resource_cache[:incident_types] ||= V1::IncidentTypes.new(self)
       end
 
+      # The incident updates resource, using its newest version (v2)
+      #
       # @return [V2::IncidentUpdates]
       def incident_updates
         resource_cache[:incident_updates] ||= V2::IncidentUpdates.new(self)
       end
 
+      # The incidents resource, using its newest version (v2)
+      #
       # @return [V2::Incidents]
       def incidents
         resource_cache[:incidents] ||= V2::Incidents.new(self)
       end
 
+      # The ip allowlists resource, using its newest version (v1)
+      #
       # @return [V1::IpAllowlists]
       def ip_allowlists
         resource_cache[:ip_allowlists] ||= V1::IpAllowlists.new(self)
       end
 
+      # The maintenance windows resource, using its newest version (v1)
+      #
       # @return [V1::MaintenanceWindows]
       def maintenance_windows
         resource_cache[:maintenance_windows] ||= V1::MaintenanceWindows.new(self)
       end
 
+      # The pay configs resource, using its newest version (v2)
+      #
       # @return [V2::PayConfigs]
       def pay_configs
         resource_cache[:pay_configs] ||= V2::PayConfigs.new(self)
       end
 
+      # The pay reports resource, using its newest version (v2)
+      #
       # @return [V2::PayReports]
       def pay_reports
         resource_cache[:pay_reports] ||= V2::PayReports.new(self)
       end
 
+      # The policies resource, using its newest version (v2)
+      #
       # @return [V2::Policies]
       def policies
         resource_cache[:policies] ||= V2::Policies.new(self)
       end
 
+      # The policy findings resource, using its newest version (v2)
+      #
       # @return [V2::PolicyFindings]
       def policy_findings
         resource_cache[:policy_findings] ||= V2::PolicyFindings.new(self)
       end
 
+      # The postmortem documents resource, using its newest version (v1)
+      #
       # @return [V1::PostmortemDocuments]
       def postmortem_documents
         resource_cache[:postmortem_documents] ||= V1::PostmortemDocuments.new(self)
       end
 
+      # The schedule sync targets resource, using its newest version (v2)
+      #
       # @return [V2::ScheduleSyncTargets]
       def schedule_sync_targets
         resource_cache[:schedule_sync_targets] ||= V2::ScheduleSyncTargets.new(self)
       end
 
+      # The schedules resource, using its newest version (v2)
+      #
       # @return [V2::Schedules]
       def schedules
         resource_cache[:schedules] ||= V2::Schedules.new(self)
       end
 
+      # The secrets resource, using its newest version (v2)
+      #
       # @return [V2::Secrets]
       def secrets
         resource_cache[:secrets] ||= V2::Secrets.new(self)
       end
 
+      # The severities resource, using its newest version (v1)
+      #
       # @return [V1::Severities]
       def severities
         resource_cache[:severities] ||= V1::Severities.new(self)
       end
 
+      # The status pages resource, using its newest version (v2)
+      #
       # @return [V2::StatusPages]
       def status_pages
         resource_cache[:status_pages] ||= V2::StatusPages.new(self)
       end
 
+      # The teams resource, using its newest version (v3)
+      #
       # @return [V3::Teams]
       def teams
         resource_cache[:teams] ||= V3::Teams.new(self)
       end
 
+      # The telemetry resource, using its newest version (v2)
+      #
       # @return [V2::Telemetry]
       def telemetry
         resource_cache[:telemetry] ||= V2::Telemetry.new(self)
       end
 
+      # The users resource, using its newest version (v2)
+      #
       # @return [V2::Users]
       def users
         resource_cache[:users] ||= V2::Users.new(self)
       end
 
+      # The utilities resource, using its newest version (v1)
+      #
       # @return [V1::Utilities]
       def utilities
         resource_cache[:utilities] ||= V1::Utilities.new(self)
       end
 
+      # The workflow runs resource, using its newest version (v2)
+      #
       # @return [V2::WorkflowRuns]
       def workflow_runs
         resource_cache[:workflow_runs] ||= V2::WorkflowRuns.new(self)
       end
 
+      # The workflows resource, using its newest version (v2)
+      #
       # @return [V2::Workflows]
       def workflows
         resource_cache[:workflows] ||= V2::Workflows.new(self)
@@ -699,6 +949,9 @@ module IncidentIo
 
       private
 
+      # Resources created so far, by accessor name
+      #
+      # @return [Hash{Symbol => Object}]
       def resource_cache
         @resource_cache ||= {}
       end

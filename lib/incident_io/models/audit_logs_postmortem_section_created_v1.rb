@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] action
-    #   @return [String, nil] The type of log entry that this is
-    # @!attribute [r] actor
-    #   @return [AuditLogActorV2, nil]
-    # @!attribute [r] context
-    #   @return [AuditLogEntryContextV2, nil]
-    # @!attribute [r] occurred_at
-    #   @return [Time, nil] When the entry occurred
-    # @!attribute [r] targets
-    #   @return [Array<AuditLogTargetV2>, nil] The custom field that was created
-    # @!attribute [r] version
-    #   @return [Integer, nil] Which version the event is
     AuditLogsPostmortemSectionCreatedV1 = Model.define(
       action: :string,
       actor: -> { AuditLogActorV2 },
@@ -25,5 +13,26 @@ module IncidentIo
       targets: [-> { AuditLogTargetV2 }],
       version: :integer
     )
+
+    class AuditLogsPostmortemSectionCreatedV1
+      # @!attribute [r] action
+      #   The type of log entry that this is
+      #   @return [String, nil]
+      # @!attribute [r] actor
+      #   The actor field
+      #   @return [AuditLogActorV2, nil]
+      # @!attribute [r] context
+      #   The context field
+      #   @return [AuditLogEntryContextV2, nil]
+      # @!attribute [r] occurred_at
+      #   When the entry occurred
+      #   @return [Time, nil]
+      # @!attribute [r] targets
+      #   The custom field that was created
+      #   @return [Array<AuditLogTargetV2>, nil]
+      # @!attribute [r] version
+      #   Which version the event is
+      #   @return [Integer, nil]
+    end
   end
 end

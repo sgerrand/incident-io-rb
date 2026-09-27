@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] all
-    #   @return [OnCallNotificationRuleMethodTargetAllPublicV2, nil]
-    # @!attribute [r] specific
-    #   @return [OnCallNotificationRuleMethodTargetSpecificPublicV2, nil]
-    # @!attribute [r] type
-    #   @return [String, nil] Whether this targets a specific method or all methods of a given type.
     OnCallNotificationRuleMethodTargetPublicV2 = Model.define(
       all: -> { OnCallNotificationRuleMethodTargetAllPublicV2 },
       specific: -> { OnCallNotificationRuleMethodTargetSpecificPublicV2 },
       type: :string
     )
+
+    class OnCallNotificationRuleMethodTargetPublicV2
+      # @!attribute [r] all
+      #   The all field
+      #   @return [OnCallNotificationRuleMethodTargetAllPublicV2, nil]
+      # @!attribute [r] specific
+      #   The specific field
+      #   @return [OnCallNotificationRuleMethodTargetSpecificPublicV2, nil]
+      # @!attribute [r] type
+      #   Whether this targets a specific method or all methods of a given type
+      #   @return [String, nil]
+    end
   end
 end

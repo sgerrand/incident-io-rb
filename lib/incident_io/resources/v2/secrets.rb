@@ -8,7 +8,7 @@ module IncidentIo
     module V2
       # Manage secrets: named credentials that workflows can reference. A secret's value can be set and rotated but is never returned by the API.
       class Secrets < Resource
-        # Create a new secret with its initial value.
+        # Create a new secret with its initial value
         #
         # Endpoint: `POST /v2/secrets`. Scopes: secrets.create.
         #
@@ -29,6 +29,8 @@ module IncidentIo
           )
         end
 
+        # Delete a secret, permanently removing its value
+        #
         # Delete a secret, permanently removing its value. Fails if the secret is still referenced by a workflow.
         #
         # Endpoint: `DELETE /v2/secrets/{id}`. Scopes: secrets.delete.
@@ -44,6 +46,8 @@ module IncidentIo
           )
         end
 
+        # List all secrets for this organisation
+        #
         # List all secrets for this organisation. Returns metadata only, never values.
         #
         # Endpoint: `GET /v2/secrets`. Scopes: secrets.view_metadata.
@@ -63,6 +67,8 @@ module IncidentIo
           )
         end
 
+        # Rotate a secret's value, replacing the current value with a new one
+        #
         # Rotate a secret's value, replacing the current value with a new one. The previous value is retired and can no longer be read.
         #
         # Endpoint: `POST /v2/secrets/{id}/actions/rotate`. Scopes: secrets.update.
@@ -82,6 +88,8 @@ module IncidentIo
           )
         end
 
+        # Show a single secret's metadata, including its version history
+        #
         # Show a single secret's metadata, including its version history. Never returns values.
         #
         # Endpoint: `GET /v2/secrets/{id}`. Scopes: secrets.view_metadata.
@@ -98,6 +106,8 @@ module IncidentIo
           )
         end
 
+        # Update a secret's metadata
+        #
         # Update a secret's metadata. Does not change the value: use the rotate action for that.
         #
         # Endpoint: `PUT /v2/secrets/{id}`. Scopes: secrets.update.

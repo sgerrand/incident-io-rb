@@ -8,6 +8,8 @@ module IncidentIo
     module V2
       # Manage on-call pay configs: the rates that pay reports price on-call shifts against.
       class PayConfigs < Resource
+        # Create a pay config
+        #
         # Create a pay config.
         #
         # The config is created as a draft, and becomes visible to everyone in the
@@ -52,6 +54,8 @@ module IncidentIo
           )
         end
 
+        # Add a one-off rule to a pay config
+        #
         # Add a one-off rule to a pay config. It may not overlap a rule the config already has. Where it lands in the list has no effect on pricing.
         #
         # Endpoint: `POST /v2/pay_configs/{pay_config_id}/one_off_rules`. Scopes: schedule_pay_configs.update.
@@ -74,6 +78,8 @@ module IncidentIo
           )
         end
 
+        # Add a weekly rule to a pay config
+        #
         # Add a weekly rule to a pay config.
         #
         # The rule is added last, so it is evaluated after every rule already on the
@@ -106,6 +112,8 @@ module IncidentIo
           )
         end
 
+        # Delete a pay config
+        #
         # Delete a pay config.
         #
         # Reports already published against this config keep their own copy of it, so
@@ -125,6 +133,8 @@ module IncidentIo
           )
         end
 
+        # Remove a one-off rule from a pay config
+        #
         # Remove a one-off rule from a pay config. Time it covered falls back to the weekly rules.
         #
         # Endpoint: `DELETE /v2/pay_configs/{pay_config_id}/one_off_rules/{id}`. Scopes: schedule_pay_configs.update.
@@ -141,6 +151,8 @@ module IncidentIo
           )
         end
 
+        # Remove a weekly rule from a pay config
+        #
         # Remove a weekly rule from a pay config. Time it covered falls back to the base rate, or to a later rule that also covers it.
         #
         # Endpoint: `DELETE /v2/pay_configs/{pay_config_id}/weekly_rules/{id}`. Scopes: schedule_pay_configs.update.
@@ -157,6 +169,8 @@ module IncidentIo
           )
         end
 
+        # List pay configs for this organisation
+        #
         # List pay configs for this organisation.
         #
         # Returns published configs, and drafts created through the API, which belong to
@@ -179,6 +193,8 @@ module IncidentIo
           )
         end
 
+        # List a pay config's one-off rules, in no particular order
+        #
         # List a pay config's one-off rules, in no particular order. They take precedence over weekly rules, and may not overlap, so at most one applies to any moment.
         #
         # Endpoint: `GET /v2/pay_configs/{pay_config_id}/one_off_rules`. Scopes: schedule_pay_configs.view.
@@ -196,6 +212,8 @@ module IncidentIo
           )
         end
 
+        # List a pay config's weekly rules, in evaluation order
+        #
         # List a pay config's weekly rules, in evaluation order.
         #
         # A shift is priced by the first rule that covers it, so order is meaningful. A
@@ -217,7 +235,7 @@ module IncidentIo
           )
         end
 
-        # Show a single pay config.
+        # Show a single pay config
         #
         # Endpoint: `GET /v2/pay_configs/{id}`. Scopes: schedule_pay_configs.view.
         #
@@ -234,7 +252,7 @@ module IncidentIo
           )
         end
 
-        # Show a single one-off rule.
+        # Show a single one-off rule
         #
         # Endpoint: `GET /v2/pay_configs/{pay_config_id}/one_off_rules/{id}`. Scopes: schedule_pay_configs.view.
         #
@@ -252,7 +270,7 @@ module IncidentIo
           )
         end
 
-        # Show a single weekly rule.
+        # Show a single weekly rule
         #
         # Endpoint: `GET /v2/pay_configs/{pay_config_id}/weekly_rules/{id}`. Scopes: schedule_pay_configs.view.
         #
@@ -270,6 +288,8 @@ module IncidentIo
           )
         end
 
+        # Update a pay config's attributes
+        #
         # Update a pay config's attributes.
         #
         # This changes the config's name, timezone, currency and base rate. It does not
@@ -300,6 +320,8 @@ module IncidentIo
           )
         end
 
+        # Update a one-off rule
+        #
         # Update a one-off rule. It may not be moved to overlap another rule on the same config.
         #
         # Endpoint: `PUT /v2/pay_configs/{pay_config_id}/one_off_rules/{id}`. Scopes: schedule_pay_configs.update.
@@ -331,7 +353,7 @@ module IncidentIo
           )
         end
 
-        # Update a weekly rule, leaving its position in the evaluation order alone.
+        # Update a weekly rule, leaving its position in the evaluation order alone
         #
         # Endpoint: `PUT /v2/pay_configs/{pay_config_id}/weekly_rules/{id}`. Scopes: schedule_pay_configs.update.
         #

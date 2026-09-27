@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] actor
-    #   @return [ActorV2, nil]
-    # @!attribute [r] escalation
-    #   @return [EscalationV2, nil]
-    # @!attribute [r] new_status
-    #   @return [String, nil] The new status of the escalation One of: pending, triggered, acked, resolved, expired, cancelled, snoozed, delayed, pending_repeat.
-    # @!attribute [r] previous_status
-    #   @return [String, nil] The previous status of the escalation One of: pending, triggered, acked, resolved, expired, cancelled, snoozed, delayed, pending_repeat.
     EscalationWithStatusChangeV2 = Model.define(
       actor: -> { ActorV2 },
       escalation: -> { EscalationV2 },
       new_status: :string,
       previous_status: :string
     )
+
+    class EscalationWithStatusChangeV2
+      # @!attribute [r] actor
+      #   The actor field
+      #   @return [ActorV2, nil]
+      # @!attribute [r] escalation
+      #   The escalation field
+      #   @return [EscalationV2, nil]
+      # @!attribute [r] new_status
+      #   The new status of the escalation One of: pending, triggered, acked, resolved,…
+      #   @return [String, nil]
+      # @!attribute [r] previous_status
+      #   The previous status of the escalation One of: pending, triggered, acked,…
+      #   @return [String, nil]
+    end
   end
 end

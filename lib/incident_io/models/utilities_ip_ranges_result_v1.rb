@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] ip_ranges
-    #   @return [Array<IPRangeV1>, nil] Every address our traffic to you may originate from
     UtilitiesIPRangesResultV1 = Model.define(
       ip_ranges: [-> { IPRangeV1 }]
     )
+
+    class UtilitiesIPRangesResultV1
+      # @!attribute [r] ip_ranges
+      #   Every address our traffic to you may originate from
+      #   @return [Array<IPRangeV1>, nil]
+    end
   end
 end

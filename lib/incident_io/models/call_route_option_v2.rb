@@ -5,22 +5,28 @@
 
 module IncidentIo
   module Models
-    # One entry in a call route's phone-tree menu: the digit a caller presses, the
-    # prompt we read out to offer it, and who we page when they choose it.
-    #
-    # @!attribute [r] digit
-    #   @return [String, nil] The keypad digit a caller presses to choose this option One of: 1, 2, 3, 4, 5, 6, 7, 8, 9.
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this option
-    # @!attribute [r] path
-    #   @return [Array<CallRoutePathNodeV2>, nil] Who we page when a caller chooses this option
-    # @!attribute [r] prompt
-    #   @return [String, nil] What we read out to offer this option, via text-to-speech in the route's language, exactly as written
     CallRouteOptionV2 = Model.define(
       digit: :string,
       id: :string,
       path: [-> { CallRoutePathNodeV2 }],
       prompt: :string
     )
+
+    # One entry in a call route's phone-tree menu: the digit a caller presses, the
+    # prompt we read out to offer it, and who we page when they choose it.
+    class CallRouteOptionV2
+      # @!attribute [r] digit
+      #   The keypad digit a caller presses to choose this option One of: 1, 2, 3, 4,…
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this option
+      #   @return [String, nil]
+      # @!attribute [r] path
+      #   Who we page when a caller chooses this option
+      #   @return [Array<CallRoutePathNodeV2>, nil]
+      # @!attribute [r] prompt
+      #   What we read out to offer this option, via text-to-speech in the route's…
+      #   @return [String, nil]
+    end
   end
 end

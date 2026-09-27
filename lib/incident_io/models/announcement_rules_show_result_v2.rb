@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] announcement_rule
-    #   @return [AnnouncementRuleV2, nil]
     AnnouncementRulesShowResultV2 = Model.define(
       announcement_rule: -> { AnnouncementRuleV2 }
     )
+
+    class AnnouncementRulesShowResultV2
+      # @!attribute [r] announcement_rule
+      #   The announcement_rule field
+      #   @return [AnnouncementRuleV2, nil]
+    end
   end
 end

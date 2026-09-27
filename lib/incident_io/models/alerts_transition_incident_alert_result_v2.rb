@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_alert
-    #   @return [IncidentAlertV2, nil]
     AlertsTransitionIncidentAlertResultV2 = Model.define(
       incident_alert: -> { IncidentAlertV2 }
     )
+
+    class AlertsTransitionIncidentAlertResultV2
+      # @!attribute [r] incident_alert
+      #   The incident_alert field
+      #   @return [IncidentAlertV2, nil]
+    end
   end
 end

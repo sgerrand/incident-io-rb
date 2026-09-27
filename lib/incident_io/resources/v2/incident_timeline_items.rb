@@ -19,6 +19,8 @@ module IncidentIo
       # report, a record you keep outside incident.io - and to put the things you know about back on
       # it, like a deploy, a config change or a load test you halted.
       class IncidentTimelineItems < Resource
+        # Add a custom item to an incident's timeline
+        #
         # Add a custom item to an incident's timeline.
         #
         # Items created here are custom, so they carry no activity_log_id and their timestamp stays
@@ -57,6 +59,8 @@ module IncidentIo
           )
         end
 
+        # List the timeline items for an incident, oldest first
+        #
         # List the timeline items for an incident, oldest first.
         #
         # Items are ordered by timestamp, then by ID to break ties, which is the order the dashboard
@@ -84,6 +88,8 @@ module IncidentIo
           )
         end
 
+        # Edit a timeline item
+        #
         # Edit a timeline item.
         #
         # Fields you leave out are unchanged, and an empty description removes it. Timestamp can only

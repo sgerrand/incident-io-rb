@@ -50,7 +50,7 @@ module IncidentIo
           )
         end
 
-        # List all incident severities for an organisation.
+        # List all incident severities for an organisation
         #
         # Endpoint: `GET /v1/severities`. Scopes: severities.view.
         #
@@ -66,7 +66,7 @@ module IncidentIo
           )
         end
 
-        # Get a single incident severity.
+        # Get a single incident severity
         #
         # Endpoint: `GET /v1/severities/{id}`. Scopes: severities.view.
         #

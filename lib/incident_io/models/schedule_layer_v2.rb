@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier of the layer
-    # @!attribute [r] name
-    #   @return [String, nil] Name of the layer
     ScheduleLayerV2 = Model.define(
       id: :string,
       name: :string
     )
+
+    class ScheduleLayerV2
+      # @!attribute [r] id
+      #   Unique identifier of the layer
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name of the layer
+      #   @return [String, nil]
+    end
   end
 end

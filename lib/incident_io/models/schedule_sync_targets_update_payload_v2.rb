@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] add_bot_to_group
-    #   @return [Boolean, nil] Whether the incident.io bot should be added to the group
-    # @!attribute [r] annotations
-    #   @return [Hash{String => String}, nil] Annotations that track metadata about this resource
     ScheduleSyncTargetsUpdatePayloadV2 = Model.define(
       add_bot_to_group: :boolean,
       annotations: Model.map_of(:string)
     )
+
+    class ScheduleSyncTargetsUpdatePayloadV2
+      # @!attribute [r] add_bot_to_group
+      #   Whether the incident.io bot should be added to the group
+      #   @return [Boolean, nil]
+      # @!attribute [r] annotations
+      #   Annotations that track metadata about this resource
+      #   @return [Hash{String => String}, nil]
+    end
   end
 end

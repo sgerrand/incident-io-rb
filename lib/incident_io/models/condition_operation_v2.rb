@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] label
-    #   @return [String, nil] Human readable label to be displayed for user to select
-    # @!attribute [r] value
-    #   @return [String, nil] Unique identifier for this option
     ConditionOperationV2 = Model.define(
       label: :string,
       value: :string
     )
+
+    class ConditionOperationV2
+      # @!attribute [r] label
+      #   Human readable label to be displayed for user to select
+      #   @return [String, nil]
+      # @!attribute [r] value
+      #   Unique identifier for this option
+      #   @return [String, nil]
+    end
   end
 end

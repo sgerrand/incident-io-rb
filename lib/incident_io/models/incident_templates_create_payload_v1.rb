@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] expressions
-    #   @return [Array<ExpressionPayloadV3>, nil] The expressions used by bindings in this template
-    # @!attribute [r] name
-    #   @return [String, nil] The name of this incident template, for the user's reference
-    # @!attribute [r] template
-    #   @return [IncidentTemplateConfigPayloadV1, nil]
     IncidentTemplatesCreatePayloadV1 = Model.define(
       expressions: [-> { ExpressionPayloadV3 }],
       name: :string,
       template: -> { IncidentTemplateConfigPayloadV1 }
     )
+
+    class IncidentTemplatesCreatePayloadV1
+      # @!attribute [r] expressions
+      #   The expressions used by bindings in this template
+      #   @return [Array<ExpressionPayloadV3>, nil]
+      # @!attribute [r] name
+      #   The name of this incident template, for the user's reference
+      #   @return [String, nil]
+      # @!attribute [r] template
+      #   The template field
+      #   @return [IncidentTemplateConfigPayloadV1, nil]
+    end
   end
 end

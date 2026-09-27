@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # Someone a call route pages when a call comes in.
-    #
-    # @!attribute [r] id
-    #   @return [String, nil] Uniquely identifies an entity of this type
-    # @!attribute [r] schedule_mode
-    #   @return [String, nil] Only set for schedule targets, this specifies which users to fetch from the schedule.
-    # @!attribute [r] selected_rota_id
-    #   @return [String, nil] For schedule targets, identifies which rota on the schedule the schedule_mode applies to.
-    # @!attribute [r] type
-    #   @return [String, nil] Whether a call route target is a user or a schedule One of: user, schedule.
-    # @!attribute [r] urgency
-    #   @return [String, nil] The urgency of this escalation path target One of: high, low.
     CallRouteTargetV2 = Model.define(
       id: :string,
       schedule_mode: :string,
@@ -24,5 +12,24 @@ module IncidentIo
       type: :string,
       urgency: :string
     )
+
+    # Someone a call route pages when a call comes in.
+    class CallRouteTargetV2
+      # @!attribute [r] id
+      #   Uniquely identifies an entity of this type
+      #   @return [String, nil]
+      # @!attribute [r] schedule_mode
+      #   Only set for schedule targets, this specifies which users to fetch from the…
+      #   @return [String, nil]
+      # @!attribute [r] selected_rota_id
+      #   For schedule targets, identifies which rota on the schedule the schedule_mode…
+      #   @return [String, nil]
+      # @!attribute [r] type
+      #   Whether a call route target is a user or a schedule One of: user, schedule
+      #   @return [String, nil]
+      # @!attribute [r] urgency
+      #   The urgency of this escalation path target One of: high, low
+      #   @return [String, nil]
+    end
   end
 end

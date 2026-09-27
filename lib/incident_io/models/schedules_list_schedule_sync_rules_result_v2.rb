@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV2, nil]
-    # @!attribute [r] schedule_sync_rules
-    #   @return [Array<ScheduleSyncRuleV2>, nil]
     SchedulesListScheduleSyncRulesResultV2 = Model.define(
       pagination_meta: -> { PaginationMetaResultV2 },
       schedule_sync_rules: [-> { ScheduleSyncRuleV2 }]
     )
+
+    class SchedulesListScheduleSyncRulesResultV2
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV2, nil]
+      # @!attribute [r] schedule_sync_rules
+      #   The schedule_sync_rules field
+      #   @return [Array<ScheduleSyncRuleV2>, nil]
+    end
   end
 end

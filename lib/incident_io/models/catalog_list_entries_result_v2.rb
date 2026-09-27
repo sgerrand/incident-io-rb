@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] catalog_entries
-    #   @return [Array<CatalogEntryV2>, nil]
-    # @!attribute [r] catalog_type
-    #   @return [CatalogTypeV2, nil]
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV2, nil]
     CatalogListEntriesResultV2 = Model.define(
       catalog_entries: [-> { CatalogEntryV2 }],
       catalog_type: -> { CatalogTypeV2 },
       pagination_meta: -> { PaginationMetaResultV2 }
     )
+
+    class CatalogListEntriesResultV2
+      # @!attribute [r] catalog_entries
+      #   The catalog_entries field
+      #   @return [Array<CatalogEntryV2>, nil]
+      # @!attribute [r] catalog_type
+      #   The catalog_type field
+      #   @return [CatalogTypeV2, nil]
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV2, nil]
+    end
   end
 end

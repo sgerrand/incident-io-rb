@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] condition_groups
-    #   @return [Array<ConditionGroupV2>, nil] The condition groups to apply in this filter.
     ExpressionFilterOptsV2 = Model.define(
       condition_groups: [-> { ConditionGroupV2 }]
     )
+
+    class ExpressionFilterOptsV2
+      # @!attribute [r] condition_groups
+      #   The condition groups to apply in this filter
+      #   @return [Array<ConditionGroupV2>, nil]
+    end
   end
 end

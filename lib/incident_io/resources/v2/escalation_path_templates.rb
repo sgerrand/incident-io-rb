@@ -11,7 +11,7 @@ module IncidentIo
       # An escalation path template declares parameters and a binding-aware path. Escalation
       # paths built from a template bind those parameters to concrete values.
       class EscalationPathTemplates < Resource
-        # Create a new escalation path template.
+        # Create a new escalation path template
         #
         # Endpoint: `POST /v2/escalation_path_templates`. Scopes: escalation_path_templates.create.
         #
@@ -44,7 +44,7 @@ module IncidentIo
           )
         end
 
-        # Archives a particular escalation path template.
+        # Archives a particular escalation path template
         #
         # Endpoint: `DELETE /v2/escalation_path_templates/{id}`. Scopes: escalation_path_templates.destroy.
         #
@@ -59,7 +59,7 @@ module IncidentIo
           )
         end
 
-        # List active escalation path templates.
+        # List active escalation path templates
         #
         # Endpoint: `GET /v2/escalation_path_templates`. Scopes: escalation_path_templates.view.
         #
@@ -78,7 +78,7 @@ module IncidentIo
           )
         end
 
-        # Show a particular escalation path template.
+        # Show a particular escalation path template
         #
         # Endpoint: `GET /v2/escalation_path_templates/{id}`. Scopes: escalation_path_templates.view.
         #
@@ -95,7 +95,7 @@ module IncidentIo
           )
         end
 
-        # Update a particular escalation path template.
+        # Update a particular escalation path template
         #
         # Endpoint: `PUT /v2/escalation_path_templates/{id}`. Scopes: escalation_path_templates.update.
         #

@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] duration_ms
-    #   @return [Integer, nil] Time taken by the request, in milliseconds
-    # @!attribute [r] endpoint
-    #   @return [String, nil] The interpolated URL the request was sent to.
-    # @!attribute [r] method_
-    #   @return [String, nil] HTTP method used for the request
-    # @!attribute [r] outcome
-    #   @return [String, nil] The result of the delivery attempt.
-    # @!attribute [r] status_code
-    #   @return [Integer, nil] HTTP status code returned by the endpoint.
     WebhookDeliverySlimV2 = Model.define(
       duration_ms: :integer,
       endpoint: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       outcome: :string,
       status_code: :integer
     )
+
+    class WebhookDeliverySlimV2
+      # @!attribute [r] duration_ms
+      #   Time taken by the request, in milliseconds
+      #   @return [Integer, nil]
+      # @!attribute [r] endpoint
+      #   The interpolated URL the request was sent to
+      #   @return [String, nil]
+      # @!attribute [r] method_
+      #   HTTP method used for the request
+      #   @return [String, nil]
+      # @!attribute [r] outcome
+      #   The result of the delivery attempt
+      #   @return [String, nil]
+      # @!attribute [r] status_code
+      #   HTTP status code returned by the endpoint
+      #   @return [Integer, nil]
+    end
   end
 end

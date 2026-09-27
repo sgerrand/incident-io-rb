@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_id
-    #   @return [String, nil] Unique identifier of the incident the follow-up belongs to
-    # @!attribute [r] url
-    #   @return [String, nil] URL of the issue in the external provider
     FollowUpsCreateFromLinkPayloadV3 = Model.define(
       incident_id: :string,
       url: :string
     )
+
+    class FollowUpsCreateFromLinkPayloadV3
+      # @!attribute [r] incident_id
+      #   Unique identifier of the incident the follow-up belongs to
+      #   @return [String, nil]
+      # @!attribute [r] url
+      #   URL of the issue in the external provider
+      #   @return [String, nil]
+    end
   end
 end

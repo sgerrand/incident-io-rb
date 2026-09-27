@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] layer_id
-    #   @return [String, nil] The ID of the layer within the rotation to replicate.
-    # @!attribute [r] rotation_id
-    #   @return [String, nil] The ID of the rotation within the schedule to replicate.
     ScheduleReplicaSourceV2 = Model.define(
       layer_id: :string,
       rotation_id: :string
     )
+
+    class ScheduleReplicaSourceV2
+      # @!attribute [r] layer_id
+      #   The ID of the layer within the rotation to replicate
+      #   @return [String, nil]
+      # @!attribute [r] rotation_id
+      #   The ID of the rotation within the schedule to replicate
+      #   @return [String, nil]
+    end
   end
 end

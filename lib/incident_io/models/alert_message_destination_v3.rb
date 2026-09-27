@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] condition_groups
-    #   @return [Array<ConditionGroupV3>, nil] The conditions that must be met for this channel config to be used
-    # @!attribute [r] ms_teams_targets
-    #   @return [AlertRouteChannelTargetV3, nil]
-    # @!attribute [r] slack_targets
-    #   @return [AlertRouteChannelTargetV3, nil]
     AlertMessageDestinationV3 = Model.define(
       condition_groups: [-> { ConditionGroupV3 }],
       ms_teams_targets: -> { AlertRouteChannelTargetV3 },
       slack_targets: -> { AlertRouteChannelTargetV3 }
     )
+
+    class AlertMessageDestinationV3
+      # @!attribute [r] condition_groups
+      #   The conditions that must be met for this channel config to be used
+      #   @return [Array<ConditionGroupV3>, nil]
+      # @!attribute [r] ms_teams_targets
+      #   The ms_teams_targets field
+      #   @return [AlertRouteChannelTargetV3, nil]
+      # @!attribute [r] slack_targets
+      #   The slack_targets field
+      #   @return [AlertRouteChannelTargetV3, nil]
+    end
   end
 end

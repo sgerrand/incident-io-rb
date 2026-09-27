@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] creator
-    #   @return [ActorV2, nil]
-    # @!attribute [r] event_description
-    #   @return [String, nil] Description of the event the workflow added, in markdown
-    # @!attribute [r] event_title
-    #   @return [String, nil] Title of the event the workflow added
     ActivityWorkflowRanV2 = Model.define(
       creator: -> { ActorV2 },
       event_description: :string,
       event_title: :string
     )
+
+    class ActivityWorkflowRanV2
+      # @!attribute [r] creator
+      #   The creator field
+      #   @return [ActorV2, nil]
+      # @!attribute [r] event_description
+      #   Description of the event the workflow added, in markdown
+      #   @return [String, nil]
+      # @!attribute [r] event_title
+      #   Title of the event the workflow added
+      #   @return [String, nil]
+    end
   end
 end

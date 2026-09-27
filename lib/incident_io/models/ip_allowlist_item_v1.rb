@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] label
-    #   @return [String, nil] A label to help identify this IP or prefix
-    # @!attribute [r] value
-    #   @return [String, nil] An IP address or a CIDR IP prefix to allow
     IPAllowlistItemV1 = Model.define(
       label: :string,
       value: :string
     )
+
+    class IPAllowlistItemV1
+      # @!attribute [r] label
+      #   A label to help identify this IP or prefix
+      #   @return [String, nil]
+      # @!attribute [r] value
+      #   An IP address or a CIDR IP prefix to allow
+      #   @return [String, nil]
+    end
   end
 end

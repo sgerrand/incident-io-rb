@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] aliases
-    #   @return [Array<String>, nil] Optional aliases that can be used to reference this entry
-    # @!attribute [r] external_id
-    #   @return [String, nil] An optional alternative ID for this entry, which is ensured to be unique for the type
-    # @!attribute [r] id
-    #   @return [String, nil] ID of this catalog entry
-    # @!attribute [r] name
-    #   @return [String, nil] Name is the human readable name of this entry
     EmbeddedCatalogEntryV2 = Model.define(
       aliases: [:string],
       external_id: :string,
       id: :string,
       name: :string
     )
+
+    class EmbeddedCatalogEntryV2
+      # @!attribute [r] aliases
+      #   Optional aliases that can be used to reference this entry
+      #   @return [Array<String>, nil]
+      # @!attribute [r] external_id
+      #   An optional alternative ID for this entry, which is ensured to be unique for…
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   ID of this catalog entry
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name is the human readable name of this entry
+      #   @return [String, nil]
+    end
   end
 end

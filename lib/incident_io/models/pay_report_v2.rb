@@ -5,54 +5,6 @@
 
 module IncidentIo
   module Models
-    # A pay report values the time a set of users spent on-call over a date window, using the rates from a pay config.
-    #
-    # This is a summary: the headline totals, and the parameters the report was generated
-    # with. The shifts behind those totals, and the per-user and per-schedule breakdowns, come
-    # from downloading the report as CSV.
-    #
-    # Reports are immutable snapshots: once generated, changing the pay config or the
-    # schedules behind it will not change the report. Generate a new one instead.
-    #
-    # A report starts as a draft and becomes visible to everyone in your organisation when
-    # you publish it.
-    #
-    # Reports are generated in the background, so a report you have just asked for has no
-    # totals yet. Its status says whether they are still coming, and a report that failed
-    # carries the reason it will never have them.
-    #
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When this report was created
-    # @!attribute [r] creator
-    #   @return [ActorV2, nil]
-    # @!attribute [r] end_date
-    #   @return [String, nil] Last date (YYYY-MM-DD) this report includes shifts from, inclusive
-    # @!attribute [r] error_code
-    #   @return [String, nil] Why a report could not be generated One of: invalid_request, timed_out.
-    # @!attribute [r] error_message
-    #   @return [String, nil] What went wrong, written for whoever asked for the report.
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this pay report
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name for this report
-    # @!attribute [r] overlapping_shifts
-    #   @return [String, nil] How time spent on more than one schedule at once was paid One of: paid_once, paid_per_schedule.
-    # @!attribute [r] published_at
-    #   @return [Time, nil] When this report was published.
-    # @!attribute [r] schedule_ids
-    #   @return [Array<String>, nil] The schedules this report covers
-    # @!attribute [r] start_date
-    #   @return [String, nil] First date (YYYY-MM-DD) this report includes shifts from, inclusive
-    # @!attribute [r] status
-    #   @return [String, nil] How far a report has got through being generated One of: pending, generating, complete, failed.
-    # @!attribute [r] total_duration_seconds
-    #   @return [Integer, nil] Total time spent on-call across every shift in this report, in seconds.
-    # @!attribute [r] total_pay_by_currency
-    #   @return [Hash{String => Integer}, nil] Total owed for this report, keyed by ISO 4217 currency code, in the lowest denomination of that currency.
-    # @!attribute [r] unpaid_shifts
-    #   @return [String, nil] Whether shifts that priced to zero are part of the report One of: included, excluded.
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When this report was last updated
     PayReportV2 = Model.define(
       created_at: :time,
       creator: -> { ActorV2 },
@@ -71,5 +23,71 @@ module IncidentIo
       unpaid_shifts: :string,
       updated_at: :time
     )
+
+    # A pay report values the time a set of users spent on-call over a date window, using the rates from a pay config.
+    #
+    # This is a summary: the headline totals, and the parameters the report was generated
+    # with. The shifts behind those totals, and the per-user and per-schedule breakdowns, come
+    # from downloading the report as CSV.
+    #
+    # Reports are immutable snapshots: once generated, changing the pay config or the
+    # schedules behind it will not change the report. Generate a new one instead.
+    #
+    # A report starts as a draft and becomes visible to everyone in your organisation when
+    # you publish it.
+    #
+    # Reports are generated in the background, so a report you have just asked for has no
+    # totals yet. Its status says whether they are still coming, and a report that failed
+    # carries the reason it will never have them.
+    class PayReportV2
+      # @!attribute [r] created_at
+      #   When this report was created
+      #   @return [Time, nil]
+      # @!attribute [r] creator
+      #   The creator field
+      #   @return [ActorV2, nil]
+      # @!attribute [r] end_date
+      #   Last date (YYYY-MM-DD) this report includes shifts from, inclusive
+      #   @return [String, nil]
+      # @!attribute [r] error_code
+      #   Why a report could not be generated One of: invalid_request, timed_out
+      #   @return [String, nil]
+      # @!attribute [r] error_message
+      #   What went wrong, written for whoever asked for the report
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this pay report
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name for this report
+      #   @return [String, nil]
+      # @!attribute [r] overlapping_shifts
+      #   How time spent on more than one schedule at once was paid One of: paid_once,…
+      #   @return [String, nil]
+      # @!attribute [r] published_at
+      #   When this report was published
+      #   @return [Time, nil]
+      # @!attribute [r] schedule_ids
+      #   The schedules this report covers
+      #   @return [Array<String>, nil]
+      # @!attribute [r] start_date
+      #   First date (YYYY-MM-DD) this report includes shifts from, inclusive
+      #   @return [String, nil]
+      # @!attribute [r] status
+      #   How far a report has got through being generated One of: pending, generating,…
+      #   @return [String, nil]
+      # @!attribute [r] total_duration_seconds
+      #   Total time spent on-call across every shift in this report, in seconds
+      #   @return [Integer, nil]
+      # @!attribute [r] total_pay_by_currency
+      #   Total owed for this report, keyed by ISO 4217 currency code, in the lowest…
+      #   @return [Hash{String => Integer}, nil]
+      # @!attribute [r] unpaid_shifts
+      #   Whether shifts that priced to zero are part of the report One of: included,…
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   When this report was last updated
+      #   @return [Time, nil]
+    end
   end
 end

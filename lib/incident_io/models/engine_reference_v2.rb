@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] array
-    #   @return [Boolean, nil] If true, the reference can refer to 0 to many items
-    # @!attribute [r] key
-    #   @return [String, nil] Unique identifier of field will set
-    # @!attribute [r] label
-    #   @return [String, nil] Human readable label for the field (with context)
-    # @!attribute [r] type
-    #   @return [String, nil] The type of this resource in the engine
     EngineReferenceV2 = Model.define(
       array: :boolean,
       key: :string,
       label: :string,
       type: :string
     )
+
+    class EngineReferenceV2
+      # @!attribute [r] array
+      #   If true, the reference can refer to 0 to many items
+      #   @return [Boolean, nil]
+      # @!attribute [r] key
+      #   Unique identifier of field will set
+      #   @return [String, nil]
+      # @!attribute [r] label
+      #   Human readable label for the field (with context)
+      #   @return [String, nil]
+      # @!attribute [r] type
+      #   The type of this resource in the engine
+      #   @return [String, nil]
+    end
   end
 end

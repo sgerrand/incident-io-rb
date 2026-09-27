@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] provider
-    #   @return [String, nil] The issue tracker provider the issue belongs to One of: asana, azure_devops, click_up, freshservice, linear, jira, salesforce, jira_server, github, gitlab, service_now, shortcut, notion.
-    # @!attribute [r] url
-    #   @return [String, nil] URL of the issue in the external provider
     FollowUpsConnectExternalIssuePayloadV2 = Model.define(
       provider: :string,
       url: :string
     )
+
+    class FollowUpsConnectExternalIssuePayloadV2
+      # @!attribute [r] provider
+      #   The issue tracker provider the issue belongs to One of: asana, azure_devops,…
+      #   @return [String, nil]
+      # @!attribute [r] url
+      #   URL of the issue in the external provider
+      #   @return [String, nil]
+    end
   end
 end

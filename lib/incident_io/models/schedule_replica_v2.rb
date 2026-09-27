@@ -5,30 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When this schedule replica was first created
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier of the schedule replica
-    # @!attribute [r] last_sync_error
-    #   @return [String, nil] The most recent error encountered while syncing this replica to the external provider, if any.
-    # @!attribute [r] last_synced_at
-    #   @return [Time, nil] When the replica was last successfully synced to the external provider.
-    # @!attribute [r] mirror_window_days
-    #   @return [Integer, nil] How many days ahead to mirror this schedule into the external provider.
-    # @!attribute [r] replica_fallback_user_id
-    #   @return [String, nil] The ID of a user in the external provider that will be assigned whenever nobody is on-call in the incident.io schedule.
-    # @!attribute [r] replica_provider
-    #   @return [String, nil] The external provider where this schedule is replicated to One of: native, pagerduty, opsgenie, jsm.
-    # @!attribute [r] replica_provider_id
-    #   @return [String, nil] The ID of the schedule in the external provider that this replica syncs to.
-    # @!attribute [r] schedule_id
-    #   @return [String, nil] The ID of the incident.io schedule that this replica is syncing from
-    # @!attribute [r] sources
-    #   @return [Array<ScheduleReplicaSourceV2>, nil] The specific rotation and layer combinations from the schedule that are being replicated.
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When this schedule replica was last updated
-    # @!attribute [r] user_statuses
-    #   @return [Array<ScheduleReplicaUserStatusV2>, nil] The mapping status of each incident.io user in the schedule to their corresponding user in the external provider.
     ScheduleReplicaV2 = Model.define(
       created_at: :time,
       id: :string,
@@ -43,5 +19,44 @@ module IncidentIo
       updated_at: :time,
       user_statuses: [-> { ScheduleReplicaUserStatusV2 }]
     )
+
+    class ScheduleReplicaV2
+      # @!attribute [r] created_at
+      #   When this schedule replica was first created
+      #   @return [Time, nil]
+      # @!attribute [r] id
+      #   Unique identifier of the schedule replica
+      #   @return [String, nil]
+      # @!attribute [r] last_sync_error
+      #   The most recent error encountered while syncing this replica to the external…
+      #   @return [String, nil]
+      # @!attribute [r] last_synced_at
+      #   When the replica was last successfully synced to the external provider
+      #   @return [Time, nil]
+      # @!attribute [r] mirror_window_days
+      #   How many days ahead to mirror this schedule into the external provider
+      #   @return [Integer, nil]
+      # @!attribute [r] replica_fallback_user_id
+      #   The ID of a user in the external provider that will be assigned whenever…
+      #   @return [String, nil]
+      # @!attribute [r] replica_provider
+      #   The external provider where this schedule is replicated to One of: native,…
+      #   @return [String, nil]
+      # @!attribute [r] replica_provider_id
+      #   The ID of the schedule in the external provider that this replica syncs to
+      #   @return [String, nil]
+      # @!attribute [r] schedule_id
+      #   The ID of the incident.io schedule that this replica is syncing from
+      #   @return [String, nil]
+      # @!attribute [r] sources
+      #   The specific rotation and layer combinations from the schedule that are being…
+      #   @return [Array<ScheduleReplicaSourceV2>, nil]
+      # @!attribute [r] updated_at
+      #   When this schedule replica was last updated
+      #   @return [Time, nil]
+      # @!attribute [r] user_statuses
+      #   The mapping status of each incident.io user in the schedule to their…
+      #   @return [Array<ScheduleReplicaUserStatusV2>, nil]
+    end
   end
 end

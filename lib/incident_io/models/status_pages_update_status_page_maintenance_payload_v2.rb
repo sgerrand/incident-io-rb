@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] end_at
-    #   @return [Time, nil] The time the maintenance window ends
-    # @!attribute [r] name
-    #   @return [String, nil] A title for the maintenance window
-    # @!attribute [r] start_at
-    #   @return [Time, nil] The time the maintenance window starts
     StatusPagesUpdateStatusPageMaintenancePayloadV2 = Model.define(
       end_at: :time,
       name: :string,
       start_at: :time
     )
+
+    class StatusPagesUpdateStatusPageMaintenancePayloadV2
+      # @!attribute [r] end_at
+      #   The time the maintenance window ends
+      #   @return [Time, nil]
+      # @!attribute [r] name
+      #   A title for the maintenance window
+      #   @return [String, nil]
+      # @!attribute [r] start_at
+      #   The time the maintenance window starts
+      #   @return [Time, nil]
+    end
   end
 end

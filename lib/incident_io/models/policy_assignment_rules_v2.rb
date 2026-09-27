@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] bindings
-    #   @return [Array<EngineParamBindingV2>, nil] Bindings which define the user to be assigned.
-    # @!attribute [r] reminder_cadence_after
-    #   @return [PolicyReminderCadenceV2, nil]
-    # @!attribute [r] reminder_cadence_before
-    #   @return [PolicyReminderCadenceV2, nil]
-    # @!attribute [r] reminder_detected_date_offset_hours
-    #   @return [Array<Integer>, nil] List of hours relative to when the finding was detected to remind the assignee.
-    # @!attribute [r] reminder_due_date_offset_hours
-    #   @return [Array<Integer>, nil] List of hours relative to the due date to remind the assignee.
     PolicyAssignmentRulesV2 = Model.define(
       bindings: [-> { EngineParamBindingV2 }],
       reminder_cadence_after: -> { PolicyReminderCadenceV2 },
@@ -22,5 +12,23 @@ module IncidentIo
       reminder_detected_date_offset_hours: [:integer],
       reminder_due_date_offset_hours: [:integer]
     )
+
+    class PolicyAssignmentRulesV2
+      # @!attribute [r] bindings
+      #   Bindings which define the user to be assigned
+      #   @return [Array<EngineParamBindingV2>, nil]
+      # @!attribute [r] reminder_cadence_after
+      #   The reminder_cadence_after field
+      #   @return [PolicyReminderCadenceV2, nil]
+      # @!attribute [r] reminder_cadence_before
+      #   The reminder_cadence_before field
+      #   @return [PolicyReminderCadenceV2, nil]
+      # @!attribute [r] reminder_detected_date_offset_hours
+      #   List of hours relative to when the finding was detected to remind the assignee
+      #   @return [Array<Integer>, nil]
+      # @!attribute [r] reminder_due_date_offset_hours
+      #   List of hours relative to the due date to remind the assignee
+      #   @return [Array<Integer>, nil]
+    end
   end
 end

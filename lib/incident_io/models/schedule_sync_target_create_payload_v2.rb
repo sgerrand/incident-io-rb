@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] add_bot_to_group
-    #   @return [Boolean, nil] Whether the incident.io bot should be added to the group
-    # @!attribute [r] annotations
-    #   @return [Hash{String => String}, nil] Annotations that track metadata about this resource
-    # @!attribute [r] new_slack_user_group
-    #   @return [NewSlackUserGroupPayloadV2, nil]
-    # @!attribute [r] slack_user_group_id
-    #   @return [String, nil] Slack ID of an existing user group to sync to.
     ScheduleSyncTargetCreatePayloadV2 = Model.define(
       add_bot_to_group: :boolean,
       annotations: Model.map_of(:string),
       new_slack_user_group: -> { NewSlackUserGroupPayloadV2 },
       slack_user_group_id: :string
     )
+
+    class ScheduleSyncTargetCreatePayloadV2
+      # @!attribute [r] add_bot_to_group
+      #   Whether the incident.io bot should be added to the group
+      #   @return [Boolean, nil]
+      # @!attribute [r] annotations
+      #   Annotations that track metadata about this resource
+      #   @return [Hash{String => String}, nil]
+      # @!attribute [r] new_slack_user_group
+      #   The new_slack_user_group field
+      #   @return [NewSlackUserGroupPayloadV2, nil]
+      # @!attribute [r] slack_user_group_id
+      #   Slack ID of an existing user group to sync to
+      #   @return [String, nil]
+    end
   end
 end

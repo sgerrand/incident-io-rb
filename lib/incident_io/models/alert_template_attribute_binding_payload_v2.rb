@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] array_value
-    #   @return [Array<EngineParamBindingValuePayloadV2>, nil] If set, this is the array value of the step parameter
-    # @!attribute [r] merge_strategy
-    #   @return [String, nil] Merge strategy for this attribute when alert updates One of: first_wins, last_wins, append, max, min.
-    # @!attribute [r] value
-    #   @return [EngineParamBindingValuePayloadV2, nil]
     AlertTemplateAttributeBindingPayloadV2 = Model.define(
       array_value: [-> { EngineParamBindingValuePayloadV2 }],
       merge_strategy: :string,
       value: -> { EngineParamBindingValuePayloadV2 }
     )
+
+    class AlertTemplateAttributeBindingPayloadV2
+      # @!attribute [r] array_value
+      #   If set, this is the array value of the step parameter
+      #   @return [Array<EngineParamBindingValuePayloadV2>, nil]
+      # @!attribute [r] merge_strategy
+      #   Merge strategy for this attribute when alert updates One of: first_wins,…
+      #   @return [String, nil]
+      # @!attribute [r] value
+      #   The value field
+      #   @return [EngineParamBindingValuePayloadV2, nil]
+    end
   end
 end

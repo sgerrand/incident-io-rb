@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] assignee
-    #   @return [UserV1, nil]
-    # @!attribute [r] role
-    #   @return [IncidentRoleV1, nil]
     IncidentRoleAssignmentV1 = Model.define(
       assignee: -> { UserV1 },
       role: -> { IncidentRoleV1 }
     )
+
+    class IncidentRoleAssignmentV1
+      # @!attribute [r] assignee
+      #   The assignee field
+      #   @return [UserV1, nil]
+      # @!attribute [r] role
+      #   The role field
+      #   @return [IncidentRoleV1, nil]
+    end
   end
 end

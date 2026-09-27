@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] schedule
-    #   @return [ScheduleCreatePayloadV2, nil]
     SchedulesCreatePayloadV2 = Model.define(
       schedule: -> { ScheduleCreatePayloadV2 }
     )
+
+    class SchedulesCreatePayloadV2
+      # @!attribute [r] schedule
+      #   The schedule field
+      #   @return [ScheduleCreatePayloadV2, nil]
+    end
   end
 end

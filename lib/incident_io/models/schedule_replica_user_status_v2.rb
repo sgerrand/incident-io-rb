@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] external_user_id
-    #   @return [String, nil] The corresponding user ID in the external provider (e.g.
-    # @!attribute [r] user_id
-    #   @return [String, nil] The incident.io user ID for a user who appears in the schedule rotation.
     ScheduleReplicaUserStatusV2 = Model.define(
       external_user_id: :string,
       user_id: :string
     )
+
+    class ScheduleReplicaUserStatusV2
+      # @!attribute [r] external_user_id
+      #   The corresponding user ID in the external provider (e.g
+      #   @return [String, nil]
+      # @!attribute [r] user_id
+      #   The incident.io user ID for a user who appears in the schedule rotation
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,22 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] branches
-    #   @return [ExpressionBranchesOptsV3, nil]
-    # @!attribute [r] cast
-    #   @return [ExpressionCastOptsV3, nil]
-    # @!attribute [r] concatenate
-    #   @return [ExpressionConcatenateOptsV3, nil]
-    # @!attribute [r] filter
-    #   @return [ExpressionFilterOptsV3, nil]
-    # @!attribute [r] navigate
-    #   @return [ExpressionNavigateOptsV3, nil]
-    # @!attribute [r] operation_type
-    #   @return [String, nil] The type of the operation One of: navigate, filter, concatenate, count, min, max, sum, random, first, parse, branches, cast.
-    # @!attribute [r] parse
-    #   @return [ExpressionParseOptsV3, nil]
-    # @!attribute [r] returns
-    #   @return [ReturnsMetaV3, nil]
     ExpressionOperationV3 = Model.define(
       branches: -> { ExpressionBranchesOptsV3 },
       cast: -> { ExpressionCastOptsV3 },
@@ -31,5 +15,32 @@ module IncidentIo
       parse: -> { ExpressionParseOptsV3 },
       returns: -> { ReturnsMetaV3 }
     )
+
+    class ExpressionOperationV3
+      # @!attribute [r] branches
+      #   The branches field
+      #   @return [ExpressionBranchesOptsV3, nil]
+      # @!attribute [r] cast
+      #   The cast field
+      #   @return [ExpressionCastOptsV3, nil]
+      # @!attribute [r] concatenate
+      #   The concatenate field
+      #   @return [ExpressionConcatenateOptsV3, nil]
+      # @!attribute [r] filter
+      #   The filter field
+      #   @return [ExpressionFilterOptsV3, nil]
+      # @!attribute [r] navigate
+      #   The navigate field
+      #   @return [ExpressionNavigateOptsV3, nil]
+      # @!attribute [r] operation_type
+      #   The type of the operation One of: navigate, filter, concatenate, count, min,…
+      #   @return [String, nil]
+      # @!attribute [r] parse
+      #   The parse field
+      #   @return [ExpressionParseOptsV3, nil]
+      # @!attribute [r] returns
+      #   The returns field
+      #   @return [ReturnsMetaV3, nil]
+    end
   end
 end

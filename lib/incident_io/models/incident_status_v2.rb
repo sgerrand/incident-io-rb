@@ -5,20 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] category
-    #   @return [String, nil] What category of status it is.
-    # @!attribute [r] created_at
-    #   @return [Time, nil]
-    # @!attribute [r] description
-    #   @return [String, nil] Rich text description of the incident status
-    # @!attribute [r] id
-    #   @return [String, nil] Unique ID of this incident status
-    # @!attribute [r] name
-    #   @return [String, nil] Unique name of this status
-    # @!attribute [r] rank
-    #   @return [Integer, nil] Order of this incident status
-    # @!attribute [r] updated_at
-    #   @return [Time, nil]
     IncidentStatusV2 = Model.define(
       category: :string,
       created_at: :time,
@@ -28,5 +14,29 @@ module IncidentIo
       rank: :integer,
       updated_at: :time
     )
+
+    class IncidentStatusV2
+      # @!attribute [r] category
+      #   What category of status it is
+      #   @return [String, nil]
+      # @!attribute [r] created_at
+      #   The created_at field
+      #   @return [Time, nil]
+      # @!attribute [r] description
+      #   Rich text description of the incident status
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique ID of this incident status
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Unique name of this status
+      #   @return [String, nil]
+      # @!attribute [r] rank
+      #   Order of this incident status
+      #   @return [Integer, nil]
+      # @!attribute [r] updated_at
+      #   The updated_at field
+      #   @return [Time, nil]
+    end
   end
 end

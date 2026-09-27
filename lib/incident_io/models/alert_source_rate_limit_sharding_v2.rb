@@ -5,12 +5,15 @@
 
 module IncidentIo
   module Models
-    # Controls how this source's ingest rate limit is split into buckets.
-    #
-    # @!attribute [r] rate_limit_shard_key_path
-    #   @return [String, nil] JSON path to a value that splits this source's rate limit into per-value buckets.
     AlertSourceRateLimitShardingV2 = Model.define(
       rate_limit_shard_key_path: :string
     )
+
+    # Controls how this source's ingest rate limit is split into buckets.
+    class AlertSourceRateLimitShardingV2
+      # @!attribute [r] rate_limit_shard_key_path
+      #   JSON path to a value that splits this source's rate limit into per-value…
+      #   @return [String, nil]
+    end
   end
 end

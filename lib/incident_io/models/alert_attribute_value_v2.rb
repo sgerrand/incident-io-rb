@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] catalog_entry
-    #   @return [AlertAttributeCatalogEntryV2, nil]
-    # @!attribute [r] label
-    #   @return [String, nil] The human readable label of this value for convenience.
-    # @!attribute [r] literal
-    #   @return [String, nil] If set, this is the literal value of the step parameter
     AlertAttributeValueV2 = Model.define(
       catalog_entry: -> { AlertAttributeCatalogEntryV2 },
       label: :string,
       literal: :string
     )
+
+    class AlertAttributeValueV2
+      # @!attribute [r] catalog_entry
+      #   The catalog_entry field
+      #   @return [AlertAttributeCatalogEntryV2, nil]
+      # @!attribute [r] label
+      #   The human readable label of this value for convenience
+      #   @return [String, nil]
+      # @!attribute [r] literal
+      #   If set, this is the literal value of the step parameter
+      #   @return [String, nil]
+    end
   end
 end

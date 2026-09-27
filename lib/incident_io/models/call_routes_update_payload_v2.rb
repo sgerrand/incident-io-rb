@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] custom_language
-    #   @return [String, nil] The language we speak voice prompts in, via text-to-speech One of: en-US, en-GB, fr-FR, es-ES, pt-PT, pt-BR, de-DE, nl-NL.
-    # @!attribute [r] name
-    #   @return [String, nil] Name for this call route
-    # @!attribute [r] path
-    #   @return [Array<CallRoutePathNodePayloadV2>, nil] Who to page when a call comes in.
-    # @!attribute [r] responder_caller_id
-    #   @return [String, nil] Which number responders see when we call them: * route_number: this route's own number * oncall_number: an incident.io on-call number One of: route_number, oncall_number.
-    # @!attribute [r] use_caller_allowlist
-    #   @return [Boolean, nil] Whether to only answer calls from this route's allowed callers.
     CallRoutesUpdatePayloadV2 = Model.define(
       custom_language: :string,
       name: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       responder_caller_id: :string,
       use_caller_allowlist: :boolean
     )
+
+    class CallRoutesUpdatePayloadV2
+      # @!attribute [r] custom_language
+      #   The language we speak voice prompts in, via text-to-speech One of: en-US,…
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name for this call route
+      #   @return [String, nil]
+      # @!attribute [r] path
+      #   Who to page when a call comes in
+      #   @return [Array<CallRoutePathNodePayloadV2>, nil]
+      # @!attribute [r] responder_caller_id
+      #   Which number responders see when we call them: * route_number: this route's…
+      #   @return [String, nil]
+      # @!attribute [r] use_caller_allowlist
+      #   Whether to only answer calls from this route's allowed callers
+      #   @return [Boolean, nil]
+    end
   end
 end

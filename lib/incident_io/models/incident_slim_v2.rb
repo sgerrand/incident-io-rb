@@ -5,22 +5,6 @@
 
 module IncidentIo
   module Models
-    # Incident slim is a subset of the full incident object, listing key fields.
-    #
-    # @!attribute [r] external_id
-    #   @return [Integer, nil] External identifier for the incident - often displayed with an INC- prefix
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the incident
-    # @!attribute [r] name
-    #   @return [String, nil] Explanation of the incident
-    # @!attribute [r] reference
-    #   @return [String, nil] Reference to this incident, as displayed across the product
-    # @!attribute [r] status_category
-    #   @return [String, nil] The category of the incidents status One of: triage, declined, merged, canceled, active, post-incident, closed, paused.
-    # @!attribute [r] summary
-    #   @return [String, nil] Detailed description of the incident
-    # @!attribute [r] visibility
-    #   @return [String, nil] Whether the incident should be open to anyone in your Slack workspace (public), or invite-only (private).
     IncidentSlimV2 = Model.define(
       external_id: :integer,
       id: :string,
@@ -30,5 +14,30 @@ module IncidentIo
       summary: :string,
       visibility: :string
     )
+
+    # Incident slim is a subset of the full incident object, listing key fields.
+    class IncidentSlimV2
+      # @!attribute [r] external_id
+      #   External identifier for the incident - often displayed with an INC- prefix
+      #   @return [Integer, nil]
+      # @!attribute [r] id
+      #   Unique identifier for the incident
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Explanation of the incident
+      #   @return [String, nil]
+      # @!attribute [r] reference
+      #   Reference to this incident, as displayed across the product
+      #   @return [String, nil]
+      # @!attribute [r] status_category
+      #   The category of the incidents status One of: triage, declined, merged,…
+      #   @return [String, nil]
+      # @!attribute [r] summary
+      #   Detailed description of the incident
+      #   @return [String, nil]
+      # @!attribute [r] visibility
+      #   Whether the incident should be open to anyone in your Slack workspace…
+      #   @return [String, nil]
+    end
   end
 end

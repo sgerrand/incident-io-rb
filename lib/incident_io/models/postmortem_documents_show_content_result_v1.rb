@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] markdown
-    #   @return [String, nil] The full content of the post-mortem document, rendered as markdown.
     PostmortemDocumentsShowContentResultV1 = Model.define(
       markdown: :string
     )
+
+    class PostmortemDocumentsShowContentResultV1
+      # @!attribute [r] markdown
+      #   The full content of the post-mortem document, rendered as markdown
+      #   @return [String, nil]
+    end
   end
 end

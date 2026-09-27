@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] new_name
-    #   @return [String, nil] The incident's name after the rename
-    # @!attribute [r] previous_name
-    #   @return [String, nil] The incident's name before the rename
-    # @!attribute [r] updater
-    #   @return [ActorV2, nil]
     ActivityIncidentRenameV2 = Model.define(
       new_name: :string,
       previous_name: :string,
       updater: -> { ActorV2 }
     )
+
+    class ActivityIncidentRenameV2
+      # @!attribute [r] new_name
+      #   The incident's name after the rename
+      #   @return [String, nil]
+      # @!attribute [r] previous_name
+      #   The incident's name before the rename
+      #   @return [String, nil]
+      # @!attribute [r] updater
+      #   The updater field
+      #   @return [ActorV2, nil]
+    end
   end
 end

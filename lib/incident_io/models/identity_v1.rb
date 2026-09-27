@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] dashboard_url
-    #   @return [String, nil] The dashboard URL for this organisation
-    # @!attribute [r] name
-    #   @return [String, nil] The name assigned to the current API Key
-    # @!attribute [r] roles
-    #   @return [Array<String>, nil] Which roles have been enabled for this key One of: viewer, incident_creator, incident_editor, manage_settings, global_access, catalog_viewer, catalog_editor, incident_memberships_editor, schedules_editor, schedules_reader, schedule_overrides_editor, workflows_editor, workflows_viewer, private_workflows_editor, private_escalation_workflows_editor, on_call_editor, on_call_viewer, escalation_creator, post_incident_flow_opt_out, security_settings_editor, investigation_download, team_memberships_manage, status_page_publisher, status_page_viewer, postmortems_manage, api_keys_manage, notification_methods_manage, notification_methods_unredacted_viewer, incident_workload_viewer, incident_workload_private_viewer, act_on_behalf_of_users, secrets_manage, secrets_use, call_transcripts_viewer, heartbeats_ping, telemetry_query_restricted, telemetry_data_source_update, policies_viewer, policy_findings_manage, pay_reports_viewer, pay_reports_editor, pay_configs_viewer, pay_configs_editor, investigations_editor, telemetry_viewer, documents_viewer.
-    # @!attribute [r] team_roles
-    #   @return [Array<String>, nil] If set, these roles apply to requests that operate on resources owned by any of the teams in the 'teams' array.
-    # @!attribute [r] teams
-    #   @return [Array<IdentityTeamV1>, nil] Teams that this API key is scoped to.
     IdentityV1 = Model.define(
       dashboard_url: :string,
       name: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       team_roles: [:string],
       teams: [-> { IdentityTeamV1 }]
     )
+
+    class IdentityV1
+      # @!attribute [r] dashboard_url
+      #   The dashboard URL for this organisation
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   The name assigned to the current API Key
+      #   @return [String, nil]
+      # @!attribute [r] roles
+      #   Which roles have been enabled for this key One of: viewer, incident_creator,…
+      #   @return [Array<String>, nil]
+      # @!attribute [r] team_roles
+      #   If set, these roles apply to requests that operate on resources owned by any…
+      #   @return [Array<String>, nil]
+      # @!attribute [r] teams
+      #   Teams that this API key is scoped to
+      #   @return [Array<IdentityTeamV1>, nil]
+    end
   end
 end

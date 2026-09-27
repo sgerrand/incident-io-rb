@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] archived_at
-    #   @return [Time, nil] When the user left the incident, if they are no longer an active participant
-    # @!attribute [r] participant_type
-    #   @return [String, nil] The role they had in the incident One of: observer, collaborator, responder.
-    # @!attribute [r] user
-    #   @return [UserV2, nil]
-    # @!attribute [r] workload
-    #   @return [WorkloadMinutesV2, nil]
     IncidentParticipantWorkloadV2 = Model.define(
       archived_at: :time,
       participant_type: :string,
       user: -> { UserV2 },
       workload: -> { WorkloadMinutesV2 }
     )
+
+    class IncidentParticipantWorkloadV2
+      # @!attribute [r] archived_at
+      #   When the user left the incident, if they are no longer an active participant
+      #   @return [Time, nil]
+      # @!attribute [r] participant_type
+      #   The role they had in the incident One of: observer, collaborator, responder
+      #   @return [String, nil]
+      # @!attribute [r] user
+      #   The user field
+      #   @return [UserV2, nil]
+      # @!attribute [r] workload
+      #   The workload field
+      #   @return [WorkloadMinutesV2, nil]
+    end
   end
 end

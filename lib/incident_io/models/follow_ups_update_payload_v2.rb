@@ -5,22 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] assignee_id
-    #   @return [String, nil] ID of the user this follow-up is assigned to.
-    # @!attribute [r] assignee_team_id
-    #   @return [String, nil] ID of the team this follow-up is assigned to.
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the follow-up.
-    # @!attribute [r] follow_up_category_id
-    #   @return [String, nil] ID of the category for this follow-up
-    # @!attribute [r] follow_up_priority_option_id
-    #   @return [String, nil] ID of the priority for this follow-up
-    # @!attribute [r] labels
-    #   @return [Array<String>, nil] Labels associated with this follow-up
-    # @!attribute [r] status
-    #   @return [String, nil] Status of the follow-up.
-    # @!attribute [r] title
-    #   @return [String, nil] Title of the follow-up
     FollowUpsUpdatePayloadV2 = Model.define(
       assignee_id: :string,
       assignee_team_id: :string,
@@ -31,5 +15,32 @@ module IncidentIo
       status: :string,
       title: :string
     )
+
+    class FollowUpsUpdatePayloadV2
+      # @!attribute [r] assignee_id
+      #   ID of the user this follow-up is assigned to
+      #   @return [String, nil]
+      # @!attribute [r] assignee_team_id
+      #   ID of the team this follow-up is assigned to
+      #   @return [String, nil]
+      # @!attribute [r] description
+      #   Description of the follow-up
+      #   @return [String, nil]
+      # @!attribute [r] follow_up_category_id
+      #   ID of the category for this follow-up
+      #   @return [String, nil]
+      # @!attribute [r] follow_up_priority_option_id
+      #   ID of the priority for this follow-up
+      #   @return [String, nil]
+      # @!attribute [r] labels
+      #   Labels associated with this follow-up
+      #   @return [Array<String>, nil]
+      # @!attribute [r] status
+      #   Status of the follow-up
+      #   @return [String, nil]
+      # @!attribute [r] title
+      #   Title of the follow-up
+      #   @return [String, nil]
+    end
   end
 end

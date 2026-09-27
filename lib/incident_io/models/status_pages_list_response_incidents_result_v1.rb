@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incidents
-    #   @return [Array<StatusPageLinkedResponseIncidentV1>, nil]
     StatusPagesListResponseIncidentsResultV1 = Model.define(
       incidents: [-> { StatusPageLinkedResponseIncidentV1 }]
     )
+
+    class StatusPagesListResponseIncidentsResultV1
+      # @!attribute [r] incidents
+      #   The incidents field
+      #   @return [Array<StatusPageLinkedResponseIncidentV1>, nil]
+    end
   end
 end

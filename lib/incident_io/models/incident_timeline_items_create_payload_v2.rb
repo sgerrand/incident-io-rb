@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the timeline item, in markdown
-    # @!attribute [r] idempotency_key
-    #   @return [String, nil] Unique string used to de-duplicate timeline item requests.
-    # @!attribute [r] incident_id
-    #   @return [String, nil] Incident to add this item to
-    # @!attribute [r] timestamp
-    #   @return [Time, nil] When the thing this item describes happened.
-    # @!attribute [r] title
-    #   @return [String, nil] Title of the timeline item
     IncidentTimelineItemsCreatePayloadV2 = Model.define(
       description: :string,
       idempotency_key: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       timestamp: :time,
       title: :string
     )
+
+    class IncidentTimelineItemsCreatePayloadV2
+      # @!attribute [r] description
+      #   Description of the timeline item, in markdown
+      #   @return [String, nil]
+      # @!attribute [r] idempotency_key
+      #   Unique string used to de-duplicate timeline item requests
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   Incident to add this item to
+      #   @return [String, nil]
+      # @!attribute [r] timestamp
+      #   When the thing this item describes happened
+      #   @return [Time, nil]
+      # @!attribute [r] title
+      #   Title of the timeline item
+      #   @return [String, nil]
+    end
   end
 end

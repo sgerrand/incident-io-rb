@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultWithTotalV2, nil]
-    # @!attribute [r] workflow_runs
-    #   @return [Array<WorkflowRunSlimV2>, nil]
     WorkflowRunsListResultV2 = Model.define(
       pagination_meta: -> { PaginationMetaResultWithTotalV2 },
       workflow_runs: [-> { WorkflowRunSlimV2 }]
     )
+
+    class WorkflowRunsListResultV2
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultWithTotalV2, nil]
+      # @!attribute [r] workflow_runs
+      #   The workflow_runs field
+      #   @return [Array<WorkflowRunSlimV2>, nil]
+    end
   end
 end

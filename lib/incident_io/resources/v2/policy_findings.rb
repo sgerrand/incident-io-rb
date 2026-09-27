@@ -15,6 +15,8 @@ module IncidentIo
       # Findings are materialised by a job that runs hourly, so every finding carries a
       # <code>last_checked_at</code> telling you how fresh it is.
       class PolicyFindings < Resource
+        # Dismiss a finding, so it stops being counted as open
+        #
         # Dismiss a finding, so it stops being counted as open.
         #
         # Dismissing is a judgement that the finding doesn't need acting on, not that the
@@ -38,7 +40,7 @@ module IncidentIo
           )
         end
 
-        # List the findings your policies have raised, whatever state they are in.
+        # List the findings your policies have raised, whatever state they are in
         #
         # Endpoint: `GET /v2/policy_findings`. Scopes: policies.view.
         #
@@ -57,7 +59,7 @@ module IncidentIo
           )
         end
 
-        # Undo a dismissal, returning the finding to its open state.
+        # Undo a dismissal, returning the finding to its open state
         #
         # Endpoint: `POST /v2/policy_findings/{id}/actions/restore`. Scopes: policy_findings.restore.
         #
@@ -74,7 +76,7 @@ module IncidentIo
           )
         end
 
-        # Get a single finding.
+        # Get a single finding
         #
         # Endpoint: `GET /v2/policy_findings/{id}`. Scopes: policies.view.
         #

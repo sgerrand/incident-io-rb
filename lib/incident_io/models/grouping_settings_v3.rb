@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] enabled
-    #   @return [Boolean, nil] Whether grouping is enabled
-    # @!attribute [r] grouping_keys
-    #   @return [Array<GroupingKeyV3>, nil] Which attributes should this alert route use to group alerts?
-    # @!attribute [r] window_seconds
-    #   @return [Integer, nil] How long the grouping window is, in seconds.
-    # @!attribute [r] window_type
-    #   @return [String, nil] Controls how the grouping window behaves.
     GroupingSettingsV3 = Model.define(
       enabled: :boolean,
       grouping_keys: [-> { GroupingKeyV3 }],
       window_seconds: :integer,
       window_type: :string
     )
+
+    class GroupingSettingsV3
+      # @!attribute [r] enabled
+      #   Whether grouping is enabled
+      #   @return [Boolean, nil]
+      # @!attribute [r] grouping_keys
+      #   Which attributes should this alert route use to group alerts?
+      #   @return [Array<GroupingKeyV3>, nil]
+      # @!attribute [r] window_seconds
+      #   How long the grouping window is, in seconds
+      #   @return [Integer, nil]
+      # @!attribute [r] window_type
+      #   Controls how the grouping window behaves
+      #   @return [String, nil]
+    end
   end
 end

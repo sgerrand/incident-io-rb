@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] cc_emails
-    #   @return [Array<String>, nil] Email addresses to send a copy of the report to
-    # @!attribute [r] send_user_breakdowns
-    #   @return [String, nil] Whether each user in the report is emailed their own pay breakdown One of: send, skip.
     PayReportsPublishPayloadV2 = Model.define(
       cc_emails: [:string],
       send_user_breakdowns: :string
     )
+
+    class PayReportsPublishPayloadV2
+      # @!attribute [r] cc_emails
+      #   Email addresses to send a copy of the report to
+      #   @return [Array<String>, nil]
+      # @!attribute [r] send_user_breakdowns
+      #   Whether each user in the report is emailed their own pay breakdown One of:…
+      #   @return [String, nil]
+    end
   end
 end

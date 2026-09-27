@@ -5,15 +5,19 @@
 
 module IncidentIo
   module Models
-    # Narrows one of a report's schedules to some of its rotations.
-    #
-    # @!attribute [r] rotation_ids
-    #   @return [Array<String>, nil] Which of the schedule's rotations to include.
-    # @!attribute [r] schedule_id
-    #   @return [String, nil] The schedule to narrow.
     PayReportRotationFilterV2 = Model.define(
       rotation_ids: [:string],
       schedule_id: :string
     )
+
+    # Narrows one of a report's schedules to some of its rotations.
+    class PayReportRotationFilterV2
+      # @!attribute [r] rotation_ids
+      #   Which of the schedule's rotations to include
+      #   @return [Array<String>, nil]
+      # @!attribute [r] schedule_id
+      #   The schedule to narrow
+      #   @return [String, nil]
+    end
   end
 end

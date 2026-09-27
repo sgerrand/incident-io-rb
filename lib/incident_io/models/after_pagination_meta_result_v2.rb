@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] after
-    #   @return [String, nil] The time, if it exists, of the last entry's end time
-    # @!attribute [r] after_url
-    #   @return [String, nil] The URL to fetch the next page of entries
     AfterPaginationMetaResultV2 = Model.define(
       after: :string,
       after_url: :string
     )
+
+    class AfterPaginationMetaResultV2
+      # @!attribute [r] after
+      #   The time, if it exists, of the last entry's end time
+      #   @return [String, nil]
+      # @!attribute [r] after_url
+      #   The URL to fetch the next page of entries
+      #   @return [String, nil]
+    end
   end
 end

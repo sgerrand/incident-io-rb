@@ -5,30 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] assignment_rules
-    #   @return [PolicyAssignmentRulesPayloadV2, nil]
-    # @!attribute [r] conditions
-    #   @return [Array<ConditionGroupPayloadV2>, nil] Conditions which determine which resources are in scope for this policy
-    # @!attribute [r] debrief
-    #   @return [PolicyDebriefPayloadV2, nil]
-    # @!attribute [r] description
-    #   @return [String, nil] Human readable description of the policy
-    # @!attribute [r] expressions
-    #   @return [Array<ExpressionPayloadV2>, nil] The expressions to use in this policy
-    # @!attribute [r] follow_up
-    #   @return [PolicyFollowUpPayloadV2, nil]
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name of the policy
-    # @!attribute [r] on_call_readiness
-    #   @return [PolicyOnCallReadinessV2, nil]
-    # @!attribute [r] policy_type
-    #   @return [String, nil] Type of the policy, specifying what this applies to.
-    # @!attribute [r] post_mortem
-    #   @return [PolicyPostMortemPayloadV2, nil]
-    # @!attribute [r] schedule
-    #   @return [PolicyScheduleV2, nil]
-    # @!attribute [r] status
-    #   @return [String, nil] Defaults to enabled on create.
     PoliciesCreatePayloadV2 = Model.define(
       assignment_rules: -> { PolicyAssignmentRulesPayloadV2 },
       conditions: [-> { ConditionGroupPayloadV2 }],
@@ -43,5 +19,44 @@ module IncidentIo
       schedule: -> { PolicyScheduleV2 },
       status: :string
     )
+
+    class PoliciesCreatePayloadV2
+      # @!attribute [r] assignment_rules
+      #   The assignment_rules field
+      #   @return [PolicyAssignmentRulesPayloadV2, nil]
+      # @!attribute [r] conditions
+      #   Conditions which determine which resources are in scope for this policy
+      #   @return [Array<ConditionGroupPayloadV2>, nil]
+      # @!attribute [r] debrief
+      #   The debrief field
+      #   @return [PolicyDebriefPayloadV2, nil]
+      # @!attribute [r] description
+      #   Human readable description of the policy
+      #   @return [String, nil]
+      # @!attribute [r] expressions
+      #   The expressions to use in this policy
+      #   @return [Array<ExpressionPayloadV2>, nil]
+      # @!attribute [r] follow_up
+      #   The follow_up field
+      #   @return [PolicyFollowUpPayloadV2, nil]
+      # @!attribute [r] name
+      #   Human readable name of the policy
+      #   @return [String, nil]
+      # @!attribute [r] on_call_readiness
+      #   The on_call_readiness field
+      #   @return [PolicyOnCallReadinessV2, nil]
+      # @!attribute [r] policy_type
+      #   Type of the policy, specifying what this applies to
+      #   @return [String, nil]
+      # @!attribute [r] post_mortem
+      #   The post_mortem field
+      #   @return [PolicyPostMortemPayloadV2, nil]
+      # @!attribute [r] schedule
+      #   The schedule field
+      #   @return [PolicyScheduleV2, nil]
+      # @!attribute [r] status
+      #   Defaults to enabled on create
+      #   @return [String, nil]
+    end
   end
 end

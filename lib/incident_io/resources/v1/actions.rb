@@ -22,7 +22,7 @@ module IncidentIo
       #
       # Exporting follow-ups to external issue trackers can be done in the incident homepage.
       class Actions < Resource
-        # List all actions for an organisation.
+        # List all actions for an organisation
         #
         # Endpoint: `GET /v1/actions`. Scopes: actions.view.
         #
@@ -44,7 +44,7 @@ module IncidentIo
           )
         end
 
-        # Get a single incident action.
+        # Get a single incident action
         #
         # Endpoint: `GET /v1/actions/{id}`. Scopes: actions.view.
         #

@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] conditions
-    #   @return [Array<ConditionPayloadV2>, nil] All conditions in this list must be satisfied for the group to be satisfied
     ConditionGroupPayloadV2 = Model.define(
       conditions: [-> { ConditionPayloadV2 }]
     )
+
+    class ConditionGroupPayloadV2
+      # @!attribute [r] conditions
+      #   All conditions in this list must be satisfied for the group to be satisfied
+      #   @return [Array<ConditionPayloadV2>, nil]
+    end
   end
 end

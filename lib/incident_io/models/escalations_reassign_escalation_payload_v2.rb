@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] Additional details about the new escalation.
-    # @!attribute [r] escalation_path_id
-    #   @return [String, nil] ID of the escalation path to reassign to
-    # @!attribute [r] resolve_original
-    #   @return [Boolean, nil] Whether to resolve the original escalation, stopping it paging its targets.
-    # @!attribute [r] title
-    #   @return [String, nil] The title of the new escalation.
-    # @!attribute [r] user_ids
-    #   @return [Array<String>, nil] IDs of users to reassign directly to
     EscalationsReassignEscalationPayloadV2 = Model.define(
       description: :string,
       escalation_path_id: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       title: :string,
       user_ids: [:string]
     )
+
+    class EscalationsReassignEscalationPayloadV2
+      # @!attribute [r] description
+      #   Additional details about the new escalation
+      #   @return [String, nil]
+      # @!attribute [r] escalation_path_id
+      #   ID of the escalation path to reassign to
+      #   @return [String, nil]
+      # @!attribute [r] resolve_original
+      #   Whether to resolve the original escalation, stopping it paging its targets
+      #   @return [Boolean, nil]
+      # @!attribute [r] title
+      #   The title of the new escalation
+      #   @return [String, nil]
+      # @!attribute [r] user_ids
+      #   IDs of users to reassign directly to
+      #   @return [Array<String>, nil]
+    end
   end
 end

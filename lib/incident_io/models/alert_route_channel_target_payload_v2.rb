@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] binding
-    #   @return [EngineParamBindingPayloadV2, nil]
-    # @!attribute [r] channel_visibility
-    #   @return [String, nil] The visibility of the channel
     AlertRouteChannelTargetPayloadV2 = Model.define(
       binding: -> { EngineParamBindingPayloadV2 },
       channel_visibility: :string
     )
+
+    class AlertRouteChannelTargetPayloadV2
+      # @!attribute [r] binding
+      #   The binding field
+      #   @return [EngineParamBindingPayloadV2, nil]
+      # @!attribute [r] channel_visibility
+      #   The visibility of the channel
+      #   @return [String, nil]
+    end
   end
 end

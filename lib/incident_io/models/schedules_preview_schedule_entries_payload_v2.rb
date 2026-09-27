@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] entry_window_end
-    #   @return [Time, nil] The end of the window to preview entries for.
-    # @!attribute [r] entry_window_start
-    #   @return [Time, nil] The start of the window to preview entries for.
-    # @!attribute [r] schedule
-    #   @return [ScheduleUpdatePayloadV2, nil]
     SchedulesPreviewScheduleEntriesPayloadV2 = Model.define(
       entry_window_end: :time,
       entry_window_start: :time,
       schedule: -> { ScheduleUpdatePayloadV2 }
     )
+
+    class SchedulesPreviewScheduleEntriesPayloadV2
+      # @!attribute [r] entry_window_end
+      #   The end of the window to preview entries for
+      #   @return [Time, nil]
+      # @!attribute [r] entry_window_start
+      #   The start of the window to preview entries for
+      #   @return [Time, nil]
+      # @!attribute [r] schedule
+      #   The schedule field
+      #   @return [ScheduleUpdatePayloadV2, nil]
+    end
   end
 end

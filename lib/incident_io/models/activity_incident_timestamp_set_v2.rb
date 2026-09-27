@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_timestamp
-    #   @return [IncidentTimestampV2, nil]
-    # @!attribute [r] new_value
-    #   @return [Time, nil] What it was set to
-    # @!attribute [r] previous_value
-    #   @return [Time, nil] What it was before.
-    # @!attribute [r] updater
-    #   @return [ActorV2, nil]
     ActivityIncidentTimestampSetV2 = Model.define(
       incident_timestamp: -> { IncidentTimestampV2 },
       new_value: :time,
       previous_value: :time,
       updater: -> { ActorV2 }
     )
+
+    class ActivityIncidentTimestampSetV2
+      # @!attribute [r] incident_timestamp
+      #   The incident_timestamp field
+      #   @return [IncidentTimestampV2, nil]
+      # @!attribute [r] new_value
+      #   What it was set to
+      #   @return [Time, nil]
+      # @!attribute [r] previous_value
+      #   What it was before
+      #   @return [Time, nil]
+      # @!attribute [r] updater
+      #   The updater field
+      #   @return [ActorV2, nil]
+    end
   end
 end

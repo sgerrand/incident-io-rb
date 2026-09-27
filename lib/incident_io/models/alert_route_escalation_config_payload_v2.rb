@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] auto_cancel_escalations
-    #   @return [Boolean, nil] Should we auto cancel escalations when all alerts are resolved?
-    # @!attribute [r] escalation_targets
-    #   @return [Array<AlertRouteEscalationTargetPayloadV2>, nil] Targets for escalation
     AlertRouteEscalationConfigPayloadV2 = Model.define(
       auto_cancel_escalations: :boolean,
       escalation_targets: [-> { AlertRouteEscalationTargetPayloadV2 }]
     )
+
+    class AlertRouteEscalationConfigPayloadV2
+      # @!attribute [r] auto_cancel_escalations
+      #   Should we auto cancel escalations when all alerts are resolved?
+      #   @return [Boolean, nil]
+      # @!attribute [r] escalation_targets
+      #   Targets for escalation
+      #   @return [Array<AlertRouteEscalationTargetPayloadV2>, nil]
+    end
   end
 end

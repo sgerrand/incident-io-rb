@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV2, nil]
-    # @!attribute [r] policy_findings
-    #   @return [Array<PolicyFindingV2>, nil]
     PolicyFindingsListResultV2 = Model.define(
       pagination_meta: -> { PaginationMetaResultV2 },
       policy_findings: [-> { PolicyFindingV2 }]
     )
+
+    class PolicyFindingsListResultV2
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV2, nil]
+      # @!attribute [r] policy_findings
+      #   The policy_findings field
+      #   @return [Array<PolicyFindingV2>, nil]
+    end
   end
 end

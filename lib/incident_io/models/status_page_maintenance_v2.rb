@@ -5,22 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] automate_maintenance_status
-    #   @return [Boolean, nil] Whether updates are published automatically, moving this maintenance window to in progress at its start time and to complete at its end time
-    # @!attribute [r] component_maintenance_periods
-    #   @return [Array<StatusPageMaintenanceComponentMaintenancePeriodV2>, nil] A list of time periods where components were under maintenance during this status page maintenance window
-    # @!attribute [r] id
-    #   @return [String, nil] A unique ID for this status page maintenance window
-    # @!attribute [r] maintenance_status
-    #   @return [String, nil] Current status for this maintenance window One of: maintenance_scheduled, maintenance_in_progress, maintenance_complete.
-    # @!attribute [r] name
-    #   @return [String, nil] A title for the maintenance window
-    # @!attribute [r] published_at
-    #   @return [Time, nil] When this status page maintenance window was published to the status page
-    # @!attribute [r] status_page_id
-    #   @return [String, nil] The ID of the corresponding status page
-    # @!attribute [r] updates
-    #   @return [Array<StatusPageMaintenanceUpdateV2>, nil] A list of updates posted to this status page maintenance window
     StatusPageMaintenanceV2 = Model.define(
       automate_maintenance_status: :boolean,
       component_maintenance_periods: [-> { StatusPageMaintenanceComponentMaintenancePeriodV2 }],
@@ -31,5 +15,32 @@ module IncidentIo
       status_page_id: :string,
       updates: [-> { StatusPageMaintenanceUpdateV2 }]
     )
+
+    class StatusPageMaintenanceV2
+      # @!attribute [r] automate_maintenance_status
+      #   Whether updates are published automatically, moving this maintenance window…
+      #   @return [Boolean, nil]
+      # @!attribute [r] component_maintenance_periods
+      #   A list of time periods where components were under maintenance during this…
+      #   @return [Array<StatusPageMaintenanceComponentMaintenancePeriodV2>, nil]
+      # @!attribute [r] id
+      #   A unique ID for this status page maintenance window
+      #   @return [String, nil]
+      # @!attribute [r] maintenance_status
+      #   Current status for this maintenance window One of: maintenance_scheduled,…
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   A title for the maintenance window
+      #   @return [String, nil]
+      # @!attribute [r] published_at
+      #   When this status page maintenance window was published to the status page
+      #   @return [Time, nil]
+      # @!attribute [r] status_page_id
+      #   The ID of the corresponding status page
+      #   @return [String, nil]
+      # @!attribute [r] updates
+      #   A list of updates posted to this status page maintenance window
+      #   @return [Array<StatusPageMaintenanceUpdateV2>, nil]
+    end
   end
 end

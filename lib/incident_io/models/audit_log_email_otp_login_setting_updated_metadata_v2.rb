@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] enabled
-    #   @return [String, nil] Whether email OTP login is enabled after the update
     AuditLogEmailOtpLoginSettingUpdatedMetadataV2 = Model.define(
       enabled: :string
     )
+
+    class AuditLogEmailOtpLoginSettingUpdatedMetadataV2
+      # @!attribute [r] enabled
+      #   Whether email OTP login is enabled after the update
+      #   @return [String, nil]
+    end
   end
 end

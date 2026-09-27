@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] The ID of the actor
-    # @!attribute [r] metadata
-    #   @return [AuditLogActorMetadataV2, nil]
-    # @!attribute [r] name
-    #   @return [String, nil] The name of the actor
-    # @!attribute [r] type
-    #   @return [String, nil] The type of actor One of: user, system, api_key, workflow, external_resource.
     AuditLogActorV2 = Model.define(
       id: :string,
       metadata: -> { AuditLogActorMetadataV2 },
       name: :string,
       type: :string
     )
+
+    class AuditLogActorV2
+      # @!attribute [r] id
+      #   The ID of the actor
+      #   @return [String, nil]
+      # @!attribute [r] metadata
+      #   The metadata field
+      #   @return [AuditLogActorMetadataV2, nil]
+      # @!attribute [r] name
+      #   The name of the actor
+      #   @return [String, nil]
+      # @!attribute [r] type
+      #   The type of actor One of: user, system, api_key, workflow, external_resource
+      #   @return [String, nil]
+    end
   end
 end

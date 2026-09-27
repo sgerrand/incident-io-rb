@@ -5,26 +5,32 @@
 
 module IncidentIo
   module Models
-    # A call session is a single occurrence of a call that Scribe attended,
-    # for example one Zoom or Google Meet meeting. Several call sessions can exist for
-    # the same context: one for each time a call was started.
-    #
-    # Use the Call Transcript Entries endpoint to page through what Scribe transcribed
-    # during a session.
-    #
-    # @!attribute [r] ended_at
-    #   @return [Time, nil] When the call session ended.
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this call session
-    # @!attribute [r] incident_id
-    #   @return [String, nil] The incident this call session belongs to
-    # @!attribute [r] started_at
-    #   @return [Time, nil] When the call session started
     CallSessionV2 = Model.define(
       ended_at: :time,
       id: :string,
       incident_id: :string,
       started_at: :time
     )
+
+    # A call session is a single occurrence of a call that Scribe attended,
+    # for example one Zoom or Google Meet meeting. Several call sessions can exist for
+    # the same context: one for each time a call was started.
+    #
+    # Use the Call Transcript Entries endpoint to page through what Scribe transcribed
+    # during a session.
+    class CallSessionV2
+      # @!attribute [r] ended_at
+      #   When the call session ended
+      #   @return [Time, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this call session
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   The incident this call session belongs to
+      #   @return [String, nil]
+      # @!attribute [r] started_at
+      #   When the call session started
+      #   @return [Time, nil]
+    end
   end
 end

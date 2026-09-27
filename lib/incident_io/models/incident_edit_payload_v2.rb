@@ -5,24 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] call_url
-    #   @return [String, nil] The call URL attached to this incident
-    # @!attribute [r] custom_field_entries
-    #   @return [Array<CustomFieldEntryPayloadV2>, nil] Set the incident's custom fields to these values
-    # @!attribute [r] incident_role_assignments
-    #   @return [Array<IncidentRoleAssignmentPayloadV2>, nil] Assign incident roles to these people
-    # @!attribute [r] incident_status_id
-    #   @return [String, nil] Incident status to move the incident to.
-    # @!attribute [r] incident_timestamp_values
-    #   @return [Array<IncidentTimestampValuePayloadV2>, nil] Assign the incident's timestamps to these values
-    # @!attribute [r] name
-    #   @return [String, nil] Explanation of the incident
-    # @!attribute [r] severity_id
-    #   @return [String, nil] The ID of the current severity of this incident
-    # @!attribute [r] slack_channel_name_override
-    #   @return [String, nil] Override the name of the incident Slack channel
-    # @!attribute [r] summary
-    #   @return [String, nil] Detailed description of the incident
     IncidentEditPayloadV2 = Model.define(
       call_url: :string,
       custom_field_entries: [-> { CustomFieldEntryPayloadV2 }],
@@ -34,5 +16,35 @@ module IncidentIo
       slack_channel_name_override: :string,
       summary: :string
     )
+
+    class IncidentEditPayloadV2
+      # @!attribute [r] call_url
+      #   The call URL attached to this incident
+      #   @return [String, nil]
+      # @!attribute [r] custom_field_entries
+      #   Set the incident's custom fields to these values
+      #   @return [Array<CustomFieldEntryPayloadV2>, nil]
+      # @!attribute [r] incident_role_assignments
+      #   Assign incident roles to these people
+      #   @return [Array<IncidentRoleAssignmentPayloadV2>, nil]
+      # @!attribute [r] incident_status_id
+      #   Incident status to move the incident to
+      #   @return [String, nil]
+      # @!attribute [r] incident_timestamp_values
+      #   Assign the incident's timestamps to these values
+      #   @return [Array<IncidentTimestampValuePayloadV2>, nil]
+      # @!attribute [r] name
+      #   Explanation of the incident
+      #   @return [String, nil]
+      # @!attribute [r] severity_id
+      #   The ID of the current severity of this incident
+      #   @return [String, nil]
+      # @!attribute [r] slack_channel_name_override
+      #   Override the name of the incident Slack channel
+      #   @return [String, nil]
+      # @!attribute [r] summary
+      #   Detailed description of the incident
+      #   @return [String, nil]
+    end
   end
 end

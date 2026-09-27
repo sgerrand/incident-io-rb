@@ -5,26 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] assignee
-    #   @return [UserV1, nil]
-    # @!attribute [r] completed_at
-    #   @return [Time, nil] When the action was completed
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When the action was created
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the action
-    # @!attribute [r] external_issue_reference
-    #   @return [ExternalIssueReferenceV1, nil]
-    # @!attribute [r] follow_up
-    #   @return [Boolean, nil] Whether an action is marked as follow-up
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the action
-    # @!attribute [r] incident_id
-    #   @return [String, nil] Unique identifier of the incident the action belongs to
-    # @!attribute [r] status
-    #   @return [String, nil] Status of the action One of: outstanding, completed, deleted, not_doing.
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When the action was last updated
     ActionV1 = Model.define(
       assignee: -> { UserV1 },
       completed_at: :time,
@@ -37,5 +17,38 @@ module IncidentIo
       status: :string,
       updated_at: :time
     )
+
+    class ActionV1
+      # @!attribute [r] assignee
+      #   The assignee field
+      #   @return [UserV1, nil]
+      # @!attribute [r] completed_at
+      #   When the action was completed
+      #   @return [Time, nil]
+      # @!attribute [r] created_at
+      #   When the action was created
+      #   @return [Time, nil]
+      # @!attribute [r] description
+      #   Description of the action
+      #   @return [String, nil]
+      # @!attribute [r] external_issue_reference
+      #   The external_issue_reference field
+      #   @return [ExternalIssueReferenceV1, nil]
+      # @!attribute [r] follow_up
+      #   Whether an action is marked as follow-up
+      #   @return [Boolean, nil]
+      # @!attribute [r] id
+      #   Unique identifier for the action
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   Unique identifier of the incident the action belongs to
+      #   @return [String, nil]
+      # @!attribute [r] status
+      #   Status of the action One of: outstanding, completed, deleted, not_doing
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   When the action was last updated
+      #   @return [Time, nil]
+    end
   end
 end

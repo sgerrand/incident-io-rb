@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] tags
-    #   @return [Array<String>, nil] The complete set of tag names for this alert
     AlertsSetTagsPayloadV2 = Model.define(
       tags: [:string]
     )
+
+    class AlertsSetTagsPayloadV2
+      # @!attribute [r] tags
+      #   The complete set of tag names for this alert
+      #   @return [Array<String>, nil]
+    end
   end
 end

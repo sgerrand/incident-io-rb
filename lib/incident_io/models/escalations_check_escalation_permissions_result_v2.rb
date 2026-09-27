@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] response_options
-    #   @return [Array<EscalationUserResponseOptionsV2>, nil] The response options available to each requested user, in the same order as the request.
     EscalationsCheckEscalationPermissionsResultV2 = Model.define(
       response_options: [-> { EscalationUserResponseOptionsV2 }]
     )
+
+    class EscalationsCheckEscalationPermissionsResultV2
+      # @!attribute [r] response_options
+      #   The response options available to each requested user, in the same order as…
+      #   @return [Array<EscalationUserResponseOptionsV2>, nil]
+    end
   end
 end

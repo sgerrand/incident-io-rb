@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # A rule that applies over a single window of time, such as a public holiday. One-off rules take precedence over weekly rules, and may not overlap each other.
-    #
-    # @!attribute [r] end_at
-    #   @return [Time, nil] When this rule stops applying
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this rule, stable across edits to the config
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name for this rule
-    # @!attribute [r] rate_cents
-    #   @return [Integer, nil] Rate paid while this rule applies, in the lowest denomination of the config's currency
-    # @!attribute [r] start_at
-    #   @return [Time, nil] When this rule starts applying
     PayConfigOneOffRuleV2 = Model.define(
       end_at: :time,
       id: :string,
@@ -24,5 +12,24 @@ module IncidentIo
       rate_cents: :integer,
       start_at: :time
     )
+
+    # A rule that applies over a single window of time, such as a public holiday. One-off rules take precedence over weekly rules, and may not overlap each other.
+    class PayConfigOneOffRuleV2
+      # @!attribute [r] end_at
+      #   When this rule stops applying
+      #   @return [Time, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this rule, stable across edits to the config
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name for this rule
+      #   @return [String, nil]
+      # @!attribute [r] rate_cents
+      #   Rate paid while this rule applies, in the lowest denomination of the config's…
+      #   @return [Integer, nil]
+      # @!attribute [r] start_at
+      #   When this rule starts applying
+      #   @return [Time, nil]
+    end
   end
 end

@@ -10,7 +10,7 @@ module IncidentIo
       #
       # Maintenance windows allow you to suppress or redirect alerts during scheduled maintenance periods, preventing unnecessary escalations and noise.
       class MaintenanceWindows < Resource
-        # Create a new maintenance window.
+        # Create a new maintenance window
         #
         # Endpoint: `POST /v1/maintenance_windows`. Scopes: maintenance_window.create.
         #
@@ -75,6 +75,8 @@ module IncidentIo
           )
         end
 
+        # Archives a maintenance window
+        #
         # Archives a maintenance window. Set force to archive an active window.
         #
         # Endpoint: `DELETE /v1/maintenance_windows/{id}`. Scopes: maintenance_window.destroy.
@@ -92,7 +94,7 @@ module IncidentIo
           )
         end
 
-        # List maintenance windows for your organisation.
+        # List maintenance windows for your organisation
         #
         # Endpoint: `GET /v1/maintenance_windows`. Scopes: maintenance_windows.view.
         #
@@ -111,7 +113,7 @@ module IncidentIo
           )
         end
 
-        # Show a particular maintenance window.
+        # Show a particular maintenance window
         #
         # Endpoint: `GET /v1/maintenance_windows/{id}`. Scopes: maintenance_windows.view.
         #
@@ -128,7 +130,7 @@ module IncidentIo
           )
         end
 
-        # Update an existing maintenance window.
+        # Update an existing maintenance window
         #
         # Endpoint: `PUT /v1/maintenance_windows/{id}`. Scopes: maintenance_window.update.
         #

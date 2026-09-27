@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] after
-    #   @return [String, nil] The policy after the change, as JSON
-    # @!attribute [r] before
-    #   @return [String, nil] The policy before the change, as JSON; empty when the connector had no access policy
-    # @!attribute [r] change_id
-    #   @return [String, nil] Shared by every entry the same save produced, so the decision that changed and the access it reached can be read together
-    # @!attribute [r] set_by
-    #   @return [String, nil] ID of the user who saved the policy, absent when staff tooling saved it
     AuditLogTelemetryDataSourceAccessPolicyChangedMetadataV2 = Model.define(
       after: :string,
       before: :string,
       change_id: :string,
       set_by: :string
     )
+
+    class AuditLogTelemetryDataSourceAccessPolicyChangedMetadataV2
+      # @!attribute [r] after
+      #   The policy after the change, as JSON
+      #   @return [String, nil]
+      # @!attribute [r] before
+      #   The policy before the change, as JSON; empty when the connector had no access…
+      #   @return [String, nil]
+      # @!attribute [r] change_id
+      #   Shared by every entry the same save produced, so the decision that changed…
+      #   @return [String, nil]
+      # @!attribute [r] set_by
+      #   ID of the user who saved the policy, absent when staff tooling saved it
+      #   @return [String, nil]
+    end
   end
 end

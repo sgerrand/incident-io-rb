@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] login_method
-    #   @return [String, nil] The method the user authenticated with
     AuditLogUserLoggedInMetadataV2 = Model.define(
       login_method: :string
     )
+
+    class AuditLogUserLoggedInMetadataV2
+      # @!attribute [r] login_method
+      #   The method the user authenticated with
+      #   @return [String, nil]
+    end
   end
 end

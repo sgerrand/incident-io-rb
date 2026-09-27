@@ -5,44 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] alert_condition_groups
-    #   @return [Array<ConditionGroupV2>, nil] Condition groups that determine which alerts this maintenance window applies to
-    # @!attribute [r] archived_at
-    #   @return [Time, nil] When this maintenance window was archived, if it has been
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When this maintenance window was created
-    # @!attribute [r] end_at
-    #   @return [Time, nil] When the maintenance window ends
-    # @!attribute [r] escalation_targets
-    #   @return [Array<MaintenanceWindowEscalationTargetV1>, nil] If set, alerts matching this window will be escalated to these targets
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this maintenance window
-    # @!attribute [r] incident_id
-    #   @return [String, nil] If set, alerts matching this window will be automatically attached to this incident
-    # @!attribute [r] lead
-    #   @return [ActorV2, nil]
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name for the maintenance window
-    # @!attribute [r] notification_message
-    #   @return [String, nil] Custom message included in notifications about this maintenance window
-    # @!attribute [r] notify_channels
-    #   @return [Array<MaintenanceWindowNotifyChannelV1>, nil] Channels to notify about the maintenance window starting and ending
-    # @!attribute [r] notify_end_minutes_before
-    #   @return [Integer, nil] Minutes before the end to send a notification to the configured channels
-    # @!attribute [r] notify_start_minutes_before
-    #   @return [Integer, nil] Minutes before the start to send a notification to the configured channels
-    # @!attribute [r] owning_team_ids
-    #   @return [Array<String>, nil] IDs of teams that own this maintenance window.
-    # @!attribute [r] reroute_on_end
-    #   @return [Boolean, nil] Whether to retrigger firing alerts through alert routing when the window ends
-    # @!attribute [r] resolve_on_end
-    #   @return [Boolean, nil] Whether to automatically resolve all firing alerts that matched this window when it ends
-    # @!attribute [r] show_in_sidebar
-    #   @return [Boolean, nil] Whether to show this maintenance window in the dashboard sidebar when active
-    # @!attribute [r] start_at
-    #   @return [Time, nil] When the maintenance window starts
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When this maintenance window was last updated
     MaintenanceWindowV1 = Model.define(
       alert_condition_groups: [-> { ConditionGroupV2 }],
       archived_at: :time,
@@ -64,5 +26,65 @@ module IncidentIo
       start_at: :time,
       updated_at: :time
     )
+
+    class MaintenanceWindowV1
+      # @!attribute [r] alert_condition_groups
+      #   Condition groups that determine which alerts this maintenance window applies to
+      #   @return [Array<ConditionGroupV2>, nil]
+      # @!attribute [r] archived_at
+      #   When this maintenance window was archived, if it has been
+      #   @return [Time, nil]
+      # @!attribute [r] created_at
+      #   When this maintenance window was created
+      #   @return [Time, nil]
+      # @!attribute [r] end_at
+      #   When the maintenance window ends
+      #   @return [Time, nil]
+      # @!attribute [r] escalation_targets
+      #   If set, alerts matching this window will be escalated to these targets
+      #   @return [Array<MaintenanceWindowEscalationTargetV1>, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this maintenance window
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   If set, alerts matching this window will be automatically attached to this…
+      #   @return [String, nil]
+      # @!attribute [r] lead
+      #   The lead field
+      #   @return [ActorV2, nil]
+      # @!attribute [r] name
+      #   Human readable name for the maintenance window
+      #   @return [String, nil]
+      # @!attribute [r] notification_message
+      #   Custom message included in notifications about this maintenance window
+      #   @return [String, nil]
+      # @!attribute [r] notify_channels
+      #   Channels to notify about the maintenance window starting and ending
+      #   @return [Array<MaintenanceWindowNotifyChannelV1>, nil]
+      # @!attribute [r] notify_end_minutes_before
+      #   Minutes before the end to send a notification to the configured channels
+      #   @return [Integer, nil]
+      # @!attribute [r] notify_start_minutes_before
+      #   Minutes before the start to send a notification to the configured channels
+      #   @return [Integer, nil]
+      # @!attribute [r] owning_team_ids
+      #   IDs of teams that own this maintenance window
+      #   @return [Array<String>, nil]
+      # @!attribute [r] reroute_on_end
+      #   Whether to retrigger firing alerts through alert routing when the window ends
+      #   @return [Boolean, nil]
+      # @!attribute [r] resolve_on_end
+      #   Whether to automatically resolve all firing alerts that matched this window…
+      #   @return [Boolean, nil]
+      # @!attribute [r] show_in_sidebar
+      #   Whether to show this maintenance window in the dashboard sidebar when active
+      #   @return [Boolean, nil]
+      # @!attribute [r] start_at
+      #   When the maintenance window starts
+      #   @return [Time, nil]
+      # @!attribute [r] updated_at
+      #   When this maintenance window was last updated
+      #   @return [Time, nil]
+    end
   end
 end

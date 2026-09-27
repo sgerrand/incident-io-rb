@@ -12,6 +12,8 @@ module IncidentIo
       # speaking. To export a full transcript, page through with 'page_size' and 'after'
       # until the response no longer includes a 'pagination_meta.after' value.
       class CallTranscriptEntries < Resource
+        # List transcript entries for a call session, oldest first
+        #
         # List transcript entries for a call session, oldest first.
         #
         # Returns an empty list if your organisation has disabled viewing transcripts.

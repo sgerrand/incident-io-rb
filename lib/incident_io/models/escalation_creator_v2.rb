@@ -5,18 +5,23 @@
 
 module IncidentIo
   module Models
-    # The creator of this escalation. Can be a user, a workflow, or an alert. If the escalation came from a call route, this will be empty.
-    #
-    # @!attribute [r] alert
-    #   @return [AlertActorV2, nil]
-    # @!attribute [r] user
-    #   @return [UserV2, nil]
-    # @!attribute [r] workflow
-    #   @return [WorkflowActorV2, nil]
     EscalationCreatorV2 = Model.define(
       alert: -> { AlertActorV2 },
       user: -> { UserV2 },
       workflow: -> { WorkflowActorV2 }
     )
+
+    # The creator of this escalation. Can be a user, a workflow, or an alert. If the escalation came from a call route, this will be empty.
+    class EscalationCreatorV2
+      # @!attribute [r] alert
+      #   The alert field
+      #   @return [AlertActorV2, nil]
+      # @!attribute [r] user
+      #   The user field
+      #   @return [UserV2, nil]
+      # @!attribute [r] workflow
+      #   The workflow field
+      #   @return [WorkflowActorV2, nil]
+    end
   end
 end

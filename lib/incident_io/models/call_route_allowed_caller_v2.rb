@@ -5,18 +5,23 @@
 
 module IncidentIo
   module Models
-    # A phone number allowed to reach a call route.
-    #
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this allowed caller
-    # @!attribute [r] name
-    #   @return [String, nil] Label for whose number this is
-    # @!attribute [r] phone_number
-    #   @return [String, nil] The number allowed to call this route, in international format
     CallRouteAllowedCallerV2 = Model.define(
       id: :string,
       name: :string,
       phone_number: :string
     )
+
+    # A phone number allowed to reach a call route.
+    class CallRouteAllowedCallerV2
+      # @!attribute [r] id
+      #   Unique identifier for this allowed caller
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Label for whose number this is
+      #   @return [String, nil]
+      # @!attribute [r] phone_number
+      #   The number allowed to call this route, in international format
+      #   @return [String, nil]
+    end
   end
 end

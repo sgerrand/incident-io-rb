@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] items
-    #   @return [Array<StatusPageStructureItemV2>, nil] Array of components and groups to display in the status page
     StatusPageStructureV2 = Model.define(
       items: [-> { StatusPageStructureItemV2 }]
     )
+
+    class StatusPageStructureV2
+      # @!attribute [r] items
+      #   Array of components and groups to display in the status page
+      #   @return [Array<StatusPageStructureItemV2>, nil]
+    end
   end
 end

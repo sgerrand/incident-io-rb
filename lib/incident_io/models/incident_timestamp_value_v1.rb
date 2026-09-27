@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] last_occurred_at
-    #   @return [Time, nil] When this last occurred, if it did
-    # @!attribute [r] name
-    #   @return [String, nil] Name of the lifecycle event
     IncidentTimestampValueV1 = Model.define(
       last_occurred_at: :time,
       name: :string
     )
+
+    class IncidentTimestampValueV1
+      # @!attribute [r] last_occurred_at
+      #   When this last occurred, if it did
+      #   @return [Time, nil]
+      # @!attribute [r] name
+      #   Name of the lifecycle event
+      #   @return [String, nil]
+    end
   end
 end

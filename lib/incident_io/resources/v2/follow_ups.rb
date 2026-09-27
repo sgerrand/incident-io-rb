@@ -20,6 +20,8 @@ module IncidentIo
       # You can manage follow-ups in the incident Slack channel with <code>/incident follow-ups</code>, or on
       # the incident homepage.
       class FollowUps < Resource
+        # Deprecated: this endpoint will be removed on 31 December 2026
+        #
         # Deprecated: this endpoint will be removed on 31 December 2026. Use <code>POST /v3/follow_ups/{id}/actions/connect_external_issue</code> instead.
         #
         # Connect a follow-up to an existing issue in an issue tracker, using the URL of the issue.
@@ -46,6 +48,8 @@ module IncidentIo
           )
         end
 
+        # Deprecated: this endpoint will be removed on 31 December 2026
+        #
         # Deprecated: this endpoint will be removed on 31 December 2026. Use <code>POST /v3/follow_ups</code> instead.
         #
         # Create a new incident follow-up.
@@ -97,6 +101,8 @@ module IncidentIo
           )
         end
 
+        # Deprecated: this endpoint will be removed on 31 December 2026
+        #
         # Deprecated: this endpoint will be removed on 31 December 2026. Use <code>DELETE /v3/follow_ups/{id}</code> instead.
         #
         # Delete an incident follow-up.
@@ -116,6 +122,8 @@ module IncidentIo
           )
         end
 
+        # Deprecated: this endpoint will be removed on 31 December 2026
+        #
         # Deprecated: this endpoint will be removed on 31 December 2026. Use <code>GET /v3/follow_ups</code> instead.
         #
         # List all follow-ups for an organisation.
@@ -140,6 +148,8 @@ module IncidentIo
           )
         end
 
+        # Deprecated: this endpoint will be removed on 31 December 2026
+        #
         # Deprecated: this endpoint will be removed on 31 December 2026. Use <code>GET /v3/follow_ups/{id}</code> instead.
         #
         # Get a single incident follow-up.
@@ -161,6 +171,8 @@ module IncidentIo
           )
         end
 
+        # Deprecated: this endpoint will be removed on 31 December 2026
+        #
         # Deprecated: this endpoint will be removed on 31 December 2026. Use <code>PUT /v3/follow_ups/{id}</code> instead.
         #
         # Update an existing incident follow-up.

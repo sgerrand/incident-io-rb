@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] array_value
-    #   @return [Array<AlertAttributeValueV2>, nil] The value of the attribute if it is an array
-    # @!attribute [r] attribute
-    #   @return [AlertAttributeV2, nil]
-    # @!attribute [r] value
-    #   @return [AlertAttributeValueV2, nil]
     AlertAttributeEntryV2 = Model.define(
       array_value: [-> { AlertAttributeValueV2 }],
       attribute: -> { AlertAttributeV2 },
       value: -> { AlertAttributeValueV2 }
     )
+
+    class AlertAttributeEntryV2
+      # @!attribute [r] array_value
+      #   The value of the attribute if it is an array
+      #   @return [Array<AlertAttributeValueV2>, nil]
+      # @!attribute [r] attribute
+      #   The attribute field
+      #   @return [AlertAttributeV2, nil]
+      # @!attribute [r] value
+      #   The value field
+      #   @return [AlertAttributeValueV2, nil]
+    end
   end
 end

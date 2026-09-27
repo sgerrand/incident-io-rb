@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] acknowledger
-    #   @return [UserV2, nil]
-    # @!attribute [r] escalation_id
-    #   @return [String, nil] The escalation that was acknowledged
     ActivityEscalationAcknowledgedV2 = Model.define(
       acknowledger: -> { UserV2 },
       escalation_id: :string
     )
+
+    class ActivityEscalationAcknowledgedV2
+      # @!attribute [r] acknowledger
+      #   The acknowledger field
+      #   @return [UserV2, nil]
+      # @!attribute [r] escalation_id
+      #   The escalation that was acknowledged
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the image
-    # @!attribute [r] url
-    #   @return [String, nil] Pre-signed URL to fetch the image, valid for 10 minutes
     ImageV1 = Model.define(
       id: :string,
       url: :string
     )
+
+    class ImageV1
+      # @!attribute [r] id
+      #   Unique identifier for the image
+      #   @return [String, nil]
+      # @!attribute [r] url
+      #   Pre-signed URL to fetch the image, valid for 10 minutes
+      #   @return [String, nil]
+    end
   end
 end

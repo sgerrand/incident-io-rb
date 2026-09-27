@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] component
-    #   @return [StatusPageStructureComponentV2, nil]
-    # @!attribute [r] group
-    #   @return [StatusPageStructureGroupV2, nil]
-    # @!attribute [r] sub_page
-    #   @return [StatusPageStructureSubPageV2, nil]
     StatusPageStructureItemV2 = Model.define(
       component: -> { StatusPageStructureComponentV2 },
       group: -> { StatusPageStructureGroupV2 },
       sub_page: -> { StatusPageStructureSubPageV2 }
     )
+
+    class StatusPageStructureItemV2
+      # @!attribute [r] component
+      #   The component field
+      #   @return [StatusPageStructureComponentV2, nil]
+      # @!attribute [r] group
+      #   The group field
+      #   @return [StatusPageStructureGroupV2, nil]
+      # @!attribute [r] sub_page
+      #   The sub_page field
+      #   @return [StatusPageStructureSubPageV2, nil]
+    end
   end
 end

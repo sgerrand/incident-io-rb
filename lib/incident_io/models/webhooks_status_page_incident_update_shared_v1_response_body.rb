@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] event_type
-    #   @return [String, nil] What type of event is this webhook for?
-    # @!attribute [r] status_page_incident_update_shared_v1
-    #   @return [StatusPageIncidentWithUpdateV2, nil]
     WebhooksStatusPageIncidentUpdateSharedV1ResponseBody = Model.define(
       event_type: :string,
       "status_page_incident.update_shared_v1": -> { StatusPageIncidentWithUpdateV2 }
     )
+
+    class WebhooksStatusPageIncidentUpdateSharedV1ResponseBody
+      # @!attribute [r] event_type
+      #   What type of event is this webhook for?
+      #   @return [String, nil]
+      # @!attribute [r] status_page_incident_update_shared_v1
+      #   The status_page_incident.update_shared_v1 field
+      #   @return [StatusPageIncidentWithUpdateV2, nil]
+    end
   end
 end

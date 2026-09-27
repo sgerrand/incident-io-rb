@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] grace_period_seconds
-    #   @return [Integer, nil] How long to wait before escalating once an alert joins the group, in seconds.
-    # @!attribute [r] mode
-    #   @return [String, nil] When a subsequent alert joins an existing group, when should we escalate again?
     AlertRouteWhenAlertJoinsGroupV3 = Model.define(
       grace_period_seconds: :integer,
       mode: :string
     )
+
+    class AlertRouteWhenAlertJoinsGroupV3
+      # @!attribute [r] grace_period_seconds
+      #   How long to wait before escalating once an alert joins the group, in seconds
+      #   @return [Integer, nil]
+      # @!attribute [r] mode
+      #   When a subsequent alert joins an existing group, when should we escalate again?
+      #   @return [String, nil]
+    end
   end
 end

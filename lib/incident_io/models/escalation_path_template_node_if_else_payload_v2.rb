@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] conditions
-    #   @return [Array<ConditionPayloadV2>, nil] The condition that defines which branch to take
-    # @!attribute [r] else_path
-    #   @return [Array<EscalationPathTemplateNodePayloadV2>, nil] The nodes taken if the condition is not met
-    # @!attribute [r] then_path
-    #   @return [Array<EscalationPathTemplateNodePayloadV2>, nil] The nodes taken if the condition is met
     EscalationPathTemplateNodeIfElsePayloadV2 = Model.define(
       conditions: [-> { ConditionPayloadV2 }],
       else_path: [-> { EscalationPathTemplateNodePayloadV2 }],
       then_path: [-> { EscalationPathTemplateNodePayloadV2 }]
     )
+
+    class EscalationPathTemplateNodeIfElsePayloadV2
+      # @!attribute [r] conditions
+      #   The condition that defines which branch to take
+      #   @return [Array<ConditionPayloadV2>, nil]
+      # @!attribute [r] else_path
+      #   The nodes taken if the condition is not met
+      #   @return [Array<EscalationPathTemplateNodePayloadV2>, nil]
+      # @!attribute [r] then_path
+      #   The nodes taken if the condition is met
+      #   @return [Array<EscalationPathTemplateNodePayloadV2>, nil]
+    end
   end
 end

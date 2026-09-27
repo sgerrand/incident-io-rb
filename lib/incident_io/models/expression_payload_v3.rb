@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] else_branch
-    #   @return [ExpressionElseBranchPayloadV3, nil]
-    # @!attribute [r] label
-    #   @return [String, nil] The human readable label of the expression
-    # @!attribute [r] operations
-    #   @return [Array<ExpressionOperationPayloadV3>, nil]
-    # @!attribute [r] reference
-    #   @return [String, nil] A short ID that can be used to reference the expression
-    # @!attribute [r] root_reference
-    #   @return [String, nil] The root reference for this expression (i.e.
     ExpressionPayloadV3 = Model.define(
       else_branch: -> { ExpressionElseBranchPayloadV3 },
       label: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       reference: :string,
       root_reference: :string
     )
+
+    class ExpressionPayloadV3
+      # @!attribute [r] else_branch
+      #   The else_branch field
+      #   @return [ExpressionElseBranchPayloadV3, nil]
+      # @!attribute [r] label
+      #   The human readable label of the expression
+      #   @return [String, nil]
+      # @!attribute [r] operations
+      #   The operations field
+      #   @return [Array<ExpressionOperationPayloadV3>, nil]
+      # @!attribute [r] reference
+      #   A short ID that can be used to reference the expression
+      #   @return [String, nil]
+      # @!attribute [r] root_reference
+      #   The root reference for this expression (i.e
+      #   @return [String, nil]
+    end
   end
 end

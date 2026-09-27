@@ -5,20 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] array
-    #   @return [Boolean, nil] Whether this field holds a list of values rather than a single value
-    # @!attribute [r] description
-    #   @return [String, nil] Optional help text shown beneath the field
-    # @!attribute [r] id
-    #   @return [String, nil] Stable identifier for this field; omit to create a new field
-    # @!attribute [r] key
-    #   @return [String, nil] The key used to reference this field in the workflow scope
-    # @!attribute [r] required
-    #   @return [Boolean, nil] Whether this field must be filled in when running the workflow
-    # @!attribute [r] title
-    #   @return [String, nil] Human readable title shown in the form
-    # @!attribute [r] type
-    #   @return [String, nil] The engine resource type of this field
     WorkflowFormFieldPayloadV2 = Model.define(
       array: :boolean,
       description: :string,
@@ -28,5 +14,29 @@ module IncidentIo
       title: :string,
       type: :string
     )
+
+    class WorkflowFormFieldPayloadV2
+      # @!attribute [r] array
+      #   Whether this field holds a list of values rather than a single value
+      #   @return [Boolean, nil]
+      # @!attribute [r] description
+      #   Optional help text shown beneath the field
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Stable identifier for this field; omit to create a new field
+      #   @return [String, nil]
+      # @!attribute [r] key
+      #   The key used to reference this field in the workflow scope
+      #   @return [String, nil]
+      # @!attribute [r] required
+      #   Whether this field must be filled in when running the workflow
+      #   @return [Boolean, nil]
+      # @!attribute [r] title
+      #   Human readable title shown in the form
+      #   @return [String, nil]
+      # @!attribute [r] type
+      #   The engine resource type of this field
+      #   @return [String, nil]
+    end
   end
 end

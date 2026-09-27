@@ -5,24 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] create_in_triage
-    #   @return [String, nil] Whether incidents of this must always, or can optionally, be created in triage One of: always, optional.
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When this resource was created
-    # @!attribute [r] description
-    #   @return [String, nil] What is this incident type for?
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this Incident Type
-    # @!attribute [r] is_default
-    #   @return [Boolean, nil] The default Incident Type is used when no other type is explicitly specified
-    # @!attribute [r] name
-    #   @return [String, nil] The name of this Incident Type
-    # @!attribute [r] owning_team_ids
-    #   @return [Array<String>, nil] IDs of the teams that own this incident type
-    # @!attribute [r] private_incidents_only
-    #   @return [Boolean, nil] Should all incidents created with this Incident Type be private?
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When this resource was last updated
     IncidentTypeV1 = Model.define(
       create_in_triage: :string,
       created_at: :time,
@@ -34,5 +16,35 @@ module IncidentIo
       private_incidents_only: :boolean,
       updated_at: :time
     )
+
+    class IncidentTypeV1
+      # @!attribute [r] create_in_triage
+      #   Whether incidents of this must always, or can optionally, be created in…
+      #   @return [String, nil]
+      # @!attribute [r] created_at
+      #   When this resource was created
+      #   @return [Time, nil]
+      # @!attribute [r] description
+      #   What is this incident type for?
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this Incident Type
+      #   @return [String, nil]
+      # @!attribute [r] is_default
+      #   The default Incident Type is used when no other type is explicitly specified
+      #   @return [Boolean, nil]
+      # @!attribute [r] name
+      #   The name of this Incident Type
+      #   @return [String, nil]
+      # @!attribute [r] owning_team_ids
+      #   IDs of the teams that own this incident type
+      #   @return [Array<String>, nil]
+      # @!attribute [r] private_incidents_only
+      #   Should all incidents created with this Incident Type be private?
+      #   @return [Boolean, nil]
+      # @!attribute [r] updated_at
+      #   When this resource was last updated
+      #   @return [Time, nil]
+    end
   end
 end

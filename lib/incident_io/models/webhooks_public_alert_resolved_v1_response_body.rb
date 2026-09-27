@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] event_type
-    #   @return [String, nil] What type of event is this webhook for?
-    # @!attribute [r] public_alert_alert_resolved_v1
-    #   @return [AlertV2, nil]
     WebhooksPublicAlertResolvedV1ResponseBody = Model.define(
       event_type: :string,
       "public_alert.alert_resolved_v1": -> { AlertV2 }
     )
+
+    class WebhooksPublicAlertResolvedV1ResponseBody
+      # @!attribute [r] event_type
+      #   What type of event is this webhook for?
+      #   @return [String, nil]
+      # @!attribute [r] public_alert_alert_resolved_v1
+      #   The public_alert.alert_resolved_v1 field
+      #   @return [AlertV2, nil]
+    end
   end
 end

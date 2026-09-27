@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] code
-    #   @return [String, nil] Machine-readable identifier for this specific error
-    # @!attribute [r] message
-    #   @return [String, nil] Human readable description of the error
-    # @!attribute [r] metadata
-    #   @return [Hash{String => String}, nil] Additional metadata about the error, keyed by a string identifier
-    # @!attribute [r] source
-    #   @return [ErrorSource, nil]
     ErrorSingle = Model.define(
       code: :string,
       message: :string,
       metadata: Model.map_of(:string),
       source: -> { ErrorSource }
     )
+
+    class ErrorSingle
+      # @!attribute [r] code
+      #   Machine-readable identifier for this specific error
+      #   @return [String, nil]
+      # @!attribute [r] message
+      #   Human readable description of the error
+      #   @return [String, nil]
+      # @!attribute [r] metadata
+      #   Additional metadata about the error, keyed by a string identifier
+      #   @return [Hash{String => String}, nil]
+      # @!attribute [r] source
+      #   The source field
+      #   @return [ErrorSource, nil]
+    end
   end
 end

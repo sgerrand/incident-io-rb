@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] announcement_rules
-    #   @return [Array<AnnouncementRuleV2>, nil]
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV2, nil]
     AnnouncementRulesListResultV2 = Model.define(
       announcement_rules: [-> { AnnouncementRuleV2 }],
       pagination_meta: -> { PaginationMetaResultV2 }
     )
+
+    class AnnouncementRulesListResultV2
+      # @!attribute [r] announcement_rules
+      #   The announcement_rules field
+      #   @return [Array<AnnouncementRuleV2>, nil]
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV2, nil]
+    end
   end
 end

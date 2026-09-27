@@ -5,22 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] ID of the incident update
-    # @!attribute [r] message
-    #   @return [String, nil] The update the responder wrote, in markdown
-    # @!attribute [r] new_severity
-    #   @return [SeverityV2, nil]
-    # @!attribute [r] new_status
-    #   @return [IncidentStatusV2, nil]
-    # @!attribute [r] next_update_in_minutes
-    #   @return [Integer, nil] When the responder said the next update would come
-    # @!attribute [r] previous_severity
-    #   @return [SeverityV2, nil]
-    # @!attribute [r] previous_status
-    #   @return [IncidentStatusV2, nil]
-    # @!attribute [r] updater
-    #   @return [ActorV2, nil]
     ActivityIncidentUpdateV2 = Model.define(
       id: :string,
       message: :string,
@@ -31,5 +15,32 @@ module IncidentIo
       previous_status: -> { IncidentStatusV2 },
       updater: -> { ActorV2 }
     )
+
+    class ActivityIncidentUpdateV2
+      # @!attribute [r] id
+      #   ID of the incident update
+      #   @return [String, nil]
+      # @!attribute [r] message
+      #   The update the responder wrote, in markdown
+      #   @return [String, nil]
+      # @!attribute [r] new_severity
+      #   The new_severity field
+      #   @return [SeverityV2, nil]
+      # @!attribute [r] new_status
+      #   The new_status field
+      #   @return [IncidentStatusV2, nil]
+      # @!attribute [r] next_update_in_minutes
+      #   When the responder said the next update would come
+      #   @return [Integer, nil]
+      # @!attribute [r] previous_severity
+      #   The previous_severity field
+      #   @return [SeverityV2, nil]
+      # @!attribute [r] previous_status
+      #   The previous_status field
+      #   @return [IncidentStatusV2, nil]
+      # @!attribute [r] updater
+      #   The updater field
+      #   @return [ActorV2, nil]
+    end
   end
 end

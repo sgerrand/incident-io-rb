@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] binding
-    #   @return [EngineParamBindingPayloadV3, nil]
     AlertRouteTemplateBindingPayloadV3 = Model.define(
       binding: -> { EngineParamBindingPayloadV3 }
     )
+
+    class AlertRouteTemplateBindingPayloadV3
+      # @!attribute [r] binding
+      #   The binding field
+      #   @return [EngineParamBindingPayloadV3, nil]
+    end
   end
 end

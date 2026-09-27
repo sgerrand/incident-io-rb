@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] outcome
-    #   @return [String, nil] Whether or not the user was able to access the private escalation One of: granted, denied.
     AuditLogPrivateEscalationAccessAttemptedMetadataV2 = Model.define(
       outcome: :string
     )
+
+    class AuditLogPrivateEscalationAccessAttemptedMetadataV2
+      # @!attribute [r] outcome
+      #   Whether or not the user was able to access the private escalation One of:…
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] active
-    #   @return [Array<IncidentParticipantV2>, nil] Participants who are actively helping with the incident
-    # @!attribute [r] passive
-    #   @return [Array<IncidentParticipantV2>, nil] Participants who are just observing the incident
     IncidentParticipantsV2 = Model.define(
       active: [-> { IncidentParticipantV2 }],
       passive: [-> { IncidentParticipantV2 }]
     )
+
+    class IncidentParticipantsV2
+      # @!attribute [r] active
+      #   Participants who are actively helping with the incident
+      #   @return [Array<IncidentParticipantV2>, nil]
+      # @!attribute [r] passive
+      #   Participants who are just observing the incident
+      #   @return [Array<IncidentParticipantV2>, nil]
+    end
   end
 end

@@ -5,21 +5,27 @@
 
 module IncidentIo
   module Models
-    # A single version of a secret's value. Only metadata is exposed; the value itself is never returned.
-    #
-    # @!attribute [r] created_at
-    #   @return [Time, nil]
-    # @!attribute [r] created_by
-    #   @return [ActorV2, nil]
-    # @!attribute [r] last_four_chars
-    #   @return [String, nil] The last four characters of this version's value, for masked display.
-    # @!attribute [r] version
-    #   @return [Integer, nil] The version number, incremented on each rotation
     SecretVersionV2 = Model.define(
       created_at: :time,
       created_by: -> { ActorV2 },
       last_four_chars: :string,
       version: :integer
     )
+
+    # A single version of a secret's value. Only metadata is exposed; the value itself is never returned.
+    class SecretVersionV2
+      # @!attribute [r] created_at
+      #   The created_at field
+      #   @return [Time, nil]
+      # @!attribute [r] created_by
+      #   The created_by field
+      #   @return [ActorV2, nil]
+      # @!attribute [r] last_four_chars
+      #   The last four characters of this version's value, for masked display
+      #   @return [String, nil]
+      # @!attribute [r] version
+      #   The version number, incremented on each rotation
+      #   @return [Integer, nil]
+    end
   end
 end

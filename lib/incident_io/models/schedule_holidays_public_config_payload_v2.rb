@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] country_codes
-    #   @return [Array<String>, nil] ISO 3166-1 alpha-2 country codes for the countries that this schedule is configured to view holidays for
     ScheduleHolidaysPublicConfigPayloadV2 = Model.define(
       country_codes: [:string]
     )
+
+    class ScheduleHolidaysPublicConfigPayloadV2
+      # @!attribute [r] country_codes
+      #   ISO 3166-1 alpha-2 country codes for the countries that this schedule is…
+      #   @return [Array<String>, nil]
+    end
   end
 end

@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the custom field
-    # @!attribute [r] field_type
-    #   @return [String, nil] Type of custom field One of: single_select, multi_select, text, link, numeric.
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the custom field
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name for the custom field
-    # @!attribute [r] options
-    #   @return [Array<CustomFieldOptionV2>, nil] What options are available for this custom field, if this field has options
     CustomFieldTypeInfoV2 = Model.define(
       description: :string,
       field_type: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       name: :string,
       options: [-> { CustomFieldOptionV2 }]
     )
+
+    class CustomFieldTypeInfoV2
+      # @!attribute [r] description
+      #   Description of the custom field
+      #   @return [String, nil]
+      # @!attribute [r] field_type
+      #   Type of custom field One of: single_select, multi_select, text, link, numeric
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier for the custom field
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name for the custom field
+      #   @return [String, nil]
+      # @!attribute [r] options
+      #   What options are available for this custom field, if this field has options
+      #   @return [Array<CustomFieldOptionV2>, nil]
+    end
   end
 end

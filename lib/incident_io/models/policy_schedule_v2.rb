@@ -5,15 +5,19 @@
 
 module IncidentIo
   module Models
-    # Detects gaps in on-call coverage. Set when policy_type is schedule.
-    #
-    # @!attribute [r] evaluation_level
-    #   @return [String, nil] Evaluate coverage across the whole schedule, or per rotation.
-    # @!attribute [r] requirement_type
-    #   @return [String, nil] One of: contiguous.
     PolicyScheduleV2 = Model.define(
       evaluation_level: :string,
       requirement_type: :string
     )
+
+    # Detects gaps in on-call coverage. Set when policy_type is schedule.
+    class PolicyScheduleV2
+      # @!attribute [r] evaluation_level
+      #   Evaluate coverage across the whole schedule, or per rotation
+      #   @return [String, nil]
+      # @!attribute [r] requirement_type
+      #   One of: contiguous
+      #   @return [String, nil]
+    end
   end
 end

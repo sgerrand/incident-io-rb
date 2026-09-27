@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] content
-    #   @return [String, nil] The document content as GitHub-Flavored Markdown
-    # @!attribute [r] title
-    #   @return [String, nil] Title of the postmortem document
     IncidentsImportPostmortemDocumentPayloadV2 = Model.define(
       content: :string,
       title: :string
     )
+
+    class IncidentsImportPostmortemDocumentPayloadV2
+      # @!attribute [r] content
+      #   The document content as GitHub-Flavored Markdown
+      #   @return [String, nil]
+      # @!attribute [r] title
+      #   Title of the postmortem document
+      #   @return [String, nil]
+    end
   end
 end

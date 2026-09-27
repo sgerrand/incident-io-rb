@@ -5,26 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] affected_component_ids
-    #   @return [Array<String>, nil] An array of IDs of component affected by the maintenance window
-    # @!attribute [r] automate_maintenance_status
-    #   @return [Boolean, nil] Whether to publish updates automatically, moving this maintenance window to in progress at start_at and to complete at end_at.
-    # @!attribute [r] end_at
-    #   @return [Time, nil] The time the maintenance window ends
-    # @!attribute [r] idempotency_key
-    #   @return [String, nil] A unique key to de-duplicate requests.
-    # @!attribute [r] maintenance_status
-    #   @return [String, nil] Current status for this status page maintenance window One of: maintenance_scheduled, maintenance_in_progress, maintenance_complete.
-    # @!attribute [r] message
-    #   @return [String, nil] Markdown initial update on this status page maintenance window
-    # @!attribute [r] name
-    #   @return [String, nil] A title for the maintenance window
-    # @!attribute [r] notify_subscribers
-    #   @return [Boolean, nil] Whether to notify subscribers about this status page maintenance.
-    # @!attribute [r] start_at
-    #   @return [Time, nil] The time the maintenance window starts
-    # @!attribute [r] status_page_id
-    #   @return [String, nil] ID of the status page.
     StatusPagesCreateStatusPageMaintenancePayloadV2 = Model.define(
       affected_component_ids: [:string],
       automate_maintenance_status: :boolean,
@@ -37,5 +17,38 @@ module IncidentIo
       start_at: :time,
       status_page_id: :string
     )
+
+    class StatusPagesCreateStatusPageMaintenancePayloadV2
+      # @!attribute [r] affected_component_ids
+      #   An array of IDs of component affected by the maintenance window
+      #   @return [Array<String>, nil]
+      # @!attribute [r] automate_maintenance_status
+      #   Whether to publish updates automatically, moving this maintenance window to…
+      #   @return [Boolean, nil]
+      # @!attribute [r] end_at
+      #   The time the maintenance window ends
+      #   @return [Time, nil]
+      # @!attribute [r] idempotency_key
+      #   A unique key to de-duplicate requests
+      #   @return [String, nil]
+      # @!attribute [r] maintenance_status
+      #   Current status for this status page maintenance window One of:…
+      #   @return [String, nil]
+      # @!attribute [r] message
+      #   Markdown initial update on this status page maintenance window
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   A title for the maintenance window
+      #   @return [String, nil]
+      # @!attribute [r] notify_subscribers
+      #   Whether to notify subscribers about this status page maintenance
+      #   @return [Boolean, nil]
+      # @!attribute [r] start_at
+      #   The time the maintenance window starts
+      #   @return [Time, nil]
+      # @!attribute [r] status_page_id
+      #   ID of the status page
+      #   @return [String, nil]
+    end
   end
 end

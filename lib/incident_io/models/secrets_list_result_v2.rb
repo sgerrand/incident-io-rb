@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV2, nil]
-    # @!attribute [r] secrets
-    #   @return [Array<SecretV2>, nil]
     SecretsListResultV2 = Model.define(
       pagination_meta: -> { PaginationMetaResultV2 },
       secrets: [-> { SecretV2 }]
     )
+
+    class SecretsListResultV2
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV2, nil]
+      # @!attribute [r] secrets
+      #   The secrets field
+      #   @return [Array<SecretV2>, nil]
+    end
   end
 end

@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] call_routes
-    #   @return [Array<CallRouteV2>, nil]
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV2, nil]
     CallRoutesListResultV2 = Model.define(
       call_routes: [-> { CallRouteV2 }],
       pagination_meta: -> { PaginationMetaResultV2 }
     )
+
+    class CallRoutesListResultV2
+      # @!attribute [r] call_routes
+      #   The call_routes field
+      #   @return [Array<CallRouteV2>, nil]
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV2, nil]
+    end
   end
 end

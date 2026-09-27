@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] end_time
-    #   @return [String, nil] End time of the interval, in 24hr format
-    # @!attribute [r] start_time
-    #   @return [String, nil] Start time of the interval, in 24hr format
-    # @!attribute [r] weekday
-    #   @return [String, nil] Weekdays for use with a schedule One of: monday, tuesday, wednesday, thursday, friday, saturday, sunday.
     ScheduleRotationWorkingIntervalV2 = Model.define(
       end_time: :string,
       start_time: :string,
       weekday: :string
     )
+
+    class ScheduleRotationWorkingIntervalV2
+      # @!attribute [r] end_time
+      #   End time of the interval, in 24hr format
+      #   @return [String, nil]
+      # @!attribute [r] start_time
+      #   Start time of the interval, in 24hr format
+      #   @return [String, nil]
+      # @!attribute [r] weekday
+      #   Weekdays for use with a schedule One of: monday, tuesday, wednesday,…
+      #   @return [String, nil]
+    end
   end
 end

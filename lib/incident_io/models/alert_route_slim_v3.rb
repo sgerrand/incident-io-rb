@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] enabled
-    #   @return [Boolean, nil] Whether this alert route is enabled or not
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this alert route config
-    # @!attribute [r] name
-    #   @return [String, nil] The name of this alert route config, for the user's reference
     AlertRouteSlimV3 = Model.define(
       enabled: :boolean,
       id: :string,
       name: :string
     )
+
+    class AlertRouteSlimV3
+      # @!attribute [r] enabled
+      #   Whether this alert route is enabled or not
+      #   @return [Boolean, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this alert route config
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   The name of this alert route config, for the user's reference
+      #   @return [String, nil]
+    end
   end
 end

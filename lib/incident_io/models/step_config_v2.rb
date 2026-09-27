@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] for_each
-    #   @return [String, nil] Reference to an expression that returns resources to run this step over
-    # @!attribute [r] id
-    #   @return [String, nil] Unique ID of this step in a workflow
-    # @!attribute [r] label
-    #   @return [String, nil] Human readable identifier for this step
-    # @!attribute [r] name
-    #   @return [String, nil] Unique name of the step in the engine
-    # @!attribute [r] param_bindings
-    #   @return [Array<EngineParamBindingV2>, nil] Bindings for the step parameters
     StepConfigV2 = Model.define(
       for_each: :string,
       id: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       name: :string,
       param_bindings: [-> { EngineParamBindingV2 }]
     )
+
+    class StepConfigV2
+      # @!attribute [r] for_each
+      #   Reference to an expression that returns resources to run this step over
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique ID of this step in a workflow
+      #   @return [String, nil]
+      # @!attribute [r] label
+      #   Human readable identifier for this step
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Unique name of the step in the engine
+      #   @return [String, nil]
+      # @!attribute [r] param_bindings
+      #   Bindings for the step parameters
+      #   @return [Array<EngineParamBindingV2>, nil]
+    end
   end
 end

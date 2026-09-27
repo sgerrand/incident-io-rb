@@ -5,26 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] annotations
-    #   @return [Hash{String => String}, nil] Annotations that can track metadata about this type
-    # @!attribute [r] categories
-    #   @return [Array<String>, nil] What categories is this type considered part of One of: customer, issue-tracker, product-feature, service, on-call, team, user.
-    # @!attribute [r] color
-    #   @return [String, nil] Sets the display color of this type in the dashboard One of: yellow, green, blue, violet, pink, cyan, orange.
-    # @!attribute [r] description
-    #   @return [String, nil] Human readble description of this type
-    # @!attribute [r] icon
-    #   @return [String, nil] Sets the display icon of this type in the dashboard One of: alert, bolt, box, briefcase, browser, bulb, calendar, clock, cog, components, database, doc, email, escalation-path, files, flag, folder, globe, incident-template, money, server, severity, status-page, store, star, tag, user, users.
-    # @!attribute [r] name
-    #   @return [String, nil] Name is the human readable name of this type
-    # @!attribute [r] owning_team_ids
-    #   @return [Array<String>, nil] IDs of the teams that own this catalog type
-    # @!attribute [r] ranked
-    #   @return [Boolean, nil] If this type should be ranked
-    # @!attribute [r] source_repo_url
-    #   @return [String, nil] The url of the external repository where this type is managed
-    # @!attribute [r] use_name_as_identifier
-    #   @return [Boolean, nil] If enabled, you can refer to entries of this type by their name, as well as their external ID and any aliases.
     CatalogUpdateTypePayloadV3 = Model.define(
       annotations: Model.map_of(:string),
       categories: [:string],
@@ -37,5 +17,38 @@ module IncidentIo
       source_repo_url: :string,
       use_name_as_identifier: :boolean
     )
+
+    class CatalogUpdateTypePayloadV3
+      # @!attribute [r] annotations
+      #   Annotations that can track metadata about this type
+      #   @return [Hash{String => String}, nil]
+      # @!attribute [r] categories
+      #   What categories is this type considered part of One of: customer,…
+      #   @return [Array<String>, nil]
+      # @!attribute [r] color
+      #   Sets the display color of this type in the dashboard One of: yellow, green,…
+      #   @return [String, nil]
+      # @!attribute [r] description
+      #   Human readble description of this type
+      #   @return [String, nil]
+      # @!attribute [r] icon
+      #   Sets the display icon of this type in the dashboard One of: alert, bolt, box,…
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name is the human readable name of this type
+      #   @return [String, nil]
+      # @!attribute [r] owning_team_ids
+      #   IDs of the teams that own this catalog type
+      #   @return [Array<String>, nil]
+      # @!attribute [r] ranked
+      #   If this type should be ranked
+      #   @return [Boolean, nil]
+      # @!attribute [r] source_repo_url
+      #   The url of the external repository where this type is managed
+      #   @return [String, nil]
+      # @!attribute [r] use_name_as_identifier
+      #   If enabled, you can refer to entries of this type by their name, as well as…
+      #   @return [Boolean, nil]
+    end
   end
 end

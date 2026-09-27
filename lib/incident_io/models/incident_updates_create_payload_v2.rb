@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] idempotency_key
-    #   @return [String, nil] Unique string used to de-duplicate incident update requests.
-    # @!attribute [r] incident_id
-    #   @return [String, nil] The incident you want to update
-    # @!attribute [r] message
-    #   @return [String, nil] Message that explains the context behind the update, in markdown
-    # @!attribute [r] to_incident_status_id
-    #   @return [String, nil] Move the incident to this status
-    # @!attribute [r] to_severity_id
-    #   @return [String, nil] Move the incident to this severity
     IncidentUpdatesCreatePayloadV2 = Model.define(
       idempotency_key: :string,
       incident_id: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       to_incident_status_id: :string,
       to_severity_id: :string
     )
+
+    class IncidentUpdatesCreatePayloadV2
+      # @!attribute [r] idempotency_key
+      #   Unique string used to de-duplicate incident update requests
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   The incident you want to update
+      #   @return [String, nil]
+      # @!attribute [r] message
+      #   Message that explains the context behind the update, in markdown
+      #   @return [String, nil]
+      # @!attribute [r] to_incident_status_id
+      #   Move the incident to this status
+      #   @return [String, nil]
+      # @!attribute [r] to_severity_id
+      #   Move the incident to this severity
+      #   @return [String, nil]
+    end
   end
 end

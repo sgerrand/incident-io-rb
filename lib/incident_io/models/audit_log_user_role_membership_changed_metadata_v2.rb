@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] after_base_role_slug
-    #   @return [String, nil] The base role slug of the user after their role memberships changed
-    # @!attribute [r] after_custom_role_slugs
-    #   @return [String, nil] The custom role slugs of the user after their role memberships changed, separated by commas
-    # @!attribute [r] before_base_role_slug
-    #   @return [String, nil] The base role slug of the user before their role memberships changed
-    # @!attribute [r] before_custom_role_slugs
-    #   @return [String, nil] The custom role slugs of the user before their role memberships changed, separated by commas
     AuditLogUserRoleMembershipChangedMetadataV2 = Model.define(
       after_base_role_slug: :string,
       after_custom_role_slugs: :string,
       before_base_role_slug: :string,
       before_custom_role_slugs: :string
     )
+
+    class AuditLogUserRoleMembershipChangedMetadataV2
+      # @!attribute [r] after_base_role_slug
+      #   The base role slug of the user after their role memberships changed
+      #   @return [String, nil]
+      # @!attribute [r] after_custom_role_slugs
+      #   The custom role slugs of the user after their role memberships changed,…
+      #   @return [String, nil]
+      # @!attribute [r] before_base_role_slug
+      #   The base role slug of the user before their role memberships changed
+      #   @return [String, nil]
+      # @!attribute [r] before_custom_role_slugs
+      #   The custom role slugs of the user before their role memberships changed,…
+      #   @return [String, nil]
+    end
   end
 end

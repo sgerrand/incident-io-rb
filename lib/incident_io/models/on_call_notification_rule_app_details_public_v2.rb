@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] push_notification_criticality
-    #   @return [String, nil] Controls the interruption level of push notifications.
     OnCallNotificationRuleAppDetailsPublicV2 = Model.define(
       push_notification_criticality: :string
     )
+
+    class OnCallNotificationRuleAppDetailsPublicV2
+      # @!attribute [r] push_notification_criticality
+      #   Controls the interruption level of push notifications
+      #   @return [String, nil]
+    end
   end
 end

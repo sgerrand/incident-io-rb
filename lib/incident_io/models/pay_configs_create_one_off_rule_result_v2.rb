@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] one_off_rule
-    #   @return [PayConfigOneOffRuleV2, nil]
     PayConfigsCreateOneOffRuleResultV2 = Model.define(
       one_off_rule: -> { PayConfigOneOffRuleV2 }
     )
+
+    class PayConfigsCreateOneOffRuleResultV2
+      # @!attribute [r] one_off_rule
+      #   The one_off_rule field
+      #   @return [PayConfigOneOffRuleV2, nil]
+    end
   end
 end

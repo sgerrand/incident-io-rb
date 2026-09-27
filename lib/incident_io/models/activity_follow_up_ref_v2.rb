@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] actor
-    #   @return [ActorV2, nil]
-    # @!attribute [r] follow_up_id
-    #   @return [String, nil] The follow-up.
     ActivityFollowUpRefV2 = Model.define(
       actor: -> { ActorV2 },
       follow_up_id: :string
     )
+
+    class ActivityFollowUpRefV2
+      # @!attribute [r] actor
+      #   The actor field
+      #   @return [ActorV2, nil]
+      # @!attribute [r] follow_up_id
+      #   The follow-up
+      #   @return [String, nil]
+    end
   end
 end

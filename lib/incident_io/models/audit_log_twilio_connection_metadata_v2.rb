@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] account_sid
-    #   @return [String, nil] The Twilio account SID for the connection
     AuditLogTwilioConnectionMetadataV2 = Model.define(
       account_sid: :string
     )
+
+    class AuditLogTwilioConnectionMetadataV2
+      # @!attribute [r] account_sid
+      #   The Twilio account SID for the connection
+      #   @return [String, nil]
+    end
   end
 end

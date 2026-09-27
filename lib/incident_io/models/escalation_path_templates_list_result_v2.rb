@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] escalation_path_templates
-    #   @return [Array<EscalationPathTemplateV2>, nil]
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV2, nil]
     EscalationPathTemplatesListResultV2 = Model.define(
       escalation_path_templates: [-> { EscalationPathTemplateV2 }],
       pagination_meta: -> { PaginationMetaResultV2 }
     )
+
+    class EscalationPathTemplatesListResultV2
+      # @!attribute [r] escalation_path_templates
+      #   The escalation_path_templates field
+      #   @return [Array<EscalationPathTemplateV2>, nil]
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV2, nil]
+    end
   end
 end

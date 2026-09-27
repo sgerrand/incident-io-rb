@@ -5,20 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] array
-    #   @return [Boolean, nil] Whether this attribute is an array
-    # @!attribute [r] backlink_attribute
-    #   @return [String, nil] The attribute to use (if this is a backlink)
-    # @!attribute [r] id
-    #   @return [String, nil] The ID of this attribute
-    # @!attribute [r] mode
-    #   @return [String, nil] Controls how this attribute is modified One of: , api, dashboard, external, internal, dynamic, backlink, path.
-    # @!attribute [r] name
-    #   @return [String, nil] Unique name of this attribute
-    # @!attribute [r] path
-    #   @return [Array<CatalogTypeAttributePathItemV3>, nil] The path to use (if this is a path attribute)
-    # @!attribute [r] type
-    #   @return [String, nil] Catalog type name for this attribute
     CatalogTypeAttributeV3 = Model.define(
       array: :boolean,
       backlink_attribute: :string,
@@ -28,5 +14,29 @@ module IncidentIo
       path: [-> { CatalogTypeAttributePathItemV3 }],
       type: :string
     )
+
+    class CatalogTypeAttributeV3
+      # @!attribute [r] array
+      #   Whether this attribute is an array
+      #   @return [Boolean, nil]
+      # @!attribute [r] backlink_attribute
+      #   The attribute to use (if this is a backlink)
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   The ID of this attribute
+      #   @return [String, nil]
+      # @!attribute [r] mode
+      #   Controls how this attribute is modified One of: , api, dashboard, external,…
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Unique name of this attribute
+      #   @return [String, nil]
+      # @!attribute [r] path
+      #   The path to use (if this is a path attribute)
+      #   @return [Array<CatalogTypeAttributePathItemV3>, nil]
+      # @!attribute [r] type
+      #   Catalog type name for this attribute
+      #   @return [String, nil]
+    end
   end
 end

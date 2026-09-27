@@ -5,20 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] ack_mode
-    #   @return [String, nil] Controls the behaviour of acknowledgements for this level, with 'first' cancelling all other escalations on the same level when someone acks One of: all, first.
-    # @!attribute [r] retry_config
-    #   @return [EscalationPathRetryConfigV2, nil]
-    # @!attribute [r] round_robin_config
-    #   @return [EscalationPathRoundRobinConfigV2, nil]
-    # @!attribute [r] targets
-    #   @return [Array<EscalationPathTargetWithBindingPayloadV2>, nil] The targets (users or schedules), each concrete or a parameter binding.
-    # @!attribute [r] time_to_ack_interval_condition
-    #   @return [String, nil] If the time to ack is relative to a time window, this defines whether we move when the window is active or inactive One of: active, inactive.
-    # @!attribute [r] time_to_ack_seconds
-    #   @return [Integer, nil] How long should we wait for this level to acknowledge before proceeding to the next node in the path?
-    # @!attribute [r] time_to_ack_weekday_interval_config_id
-    #   @return [String, nil] If the time to ack is relative to a time window, this identifies which window it is relative to
     EscalationPathNodeLevelWithBindingPayloadV2 = Model.define(
       ack_mode: :string,
       retry_config: -> { EscalationPathRetryConfigV2 },
@@ -28,5 +14,29 @@ module IncidentIo
       time_to_ack_seconds: :integer,
       time_to_ack_weekday_interval_config_id: :string
     )
+
+    class EscalationPathNodeLevelWithBindingPayloadV2
+      # @!attribute [r] ack_mode
+      #   Controls the behaviour of acknowledgements for this level, with 'first'…
+      #   @return [String, nil]
+      # @!attribute [r] retry_config
+      #   The retry_config field
+      #   @return [EscalationPathRetryConfigV2, nil]
+      # @!attribute [r] round_robin_config
+      #   The round_robin_config field
+      #   @return [EscalationPathRoundRobinConfigV2, nil]
+      # @!attribute [r] targets
+      #   The targets (users or schedules), each concrete or a parameter binding
+      #   @return [Array<EscalationPathTargetWithBindingPayloadV2>, nil]
+      # @!attribute [r] time_to_ack_interval_condition
+      #   If the time to ack is relative to a time window, this defines whether we move…
+      #   @return [String, nil]
+      # @!attribute [r] time_to_ack_seconds
+      #   How long should we wait for this level to acknowledge before proceeding to…
+      #   @return [Integer, nil]
+      # @!attribute [r] time_to_ack_weekday_interval_config_id
+      #   If the time to ack is relative to a time window, this identifies which window…
+      #   @return [String, nil]
+    end
   end
 end

@@ -30,6 +30,8 @@ module IncidentIo
       #
       # To find valid values for `role_names`, `team_ids`, and `team_role_names`, go to Settings → API keys in the dashboard. Click to either edit an existing key or create a new one, select the desired roles and teams, and then use the copy button to get hold of the role and team identifiers as JSON.
       class ApiKeys < Resource
+        # Create a new API key
+        #
         # Create a new API key. The calling API key can only assign roles whose scopes are a subset of its own. The `api_keys_manage` role cannot be assigned via the API. An organization can have a maximum of 5000 active API keys.
         #
         # This endpoint requires a valid API key with the `api_keys_manage` role at either the account level or team level.
@@ -53,6 +55,8 @@ module IncidentIo
           )
         end
 
+        # Delete an existing API key
+        #
         # Delete an existing API key. The calling API key does not need to hold the scopes of the key being deleted, but a team-scoped key can only delete keys belonging to its teams.
         #
         # This endpoint requires a valid API key with the `api_keys_manage` role at either the account level or team level.
@@ -70,6 +74,8 @@ module IncidentIo
           )
         end
 
+        # List API keys visible to the calling API key, with pagination
+        #
         # List API keys visible to the calling API key, with pagination. An API key with account-level `api_keys_manage` access will see all keys, while a key with the `api_keys_manage` role scoped to specific teams will only see keys belonging to those teams.
         #
         # This endpoint requires a valid API key with the `api_keys_manage` role at either the account level or team level.
@@ -90,6 +96,8 @@ module IncidentIo
           )
         end
 
+        # Rotate the access token for an API key
+        #
         # Rotate the access token for an API key. This generates a new bearer token and optionally keeps the old token valid for a configurable grace period (up to 60 minutes), allowing a seamless rollover without downtime. The calling API key must have all the scopes of the key being rotated.
         #
         # This endpoint requires a valid API key with the `api_keys_manage` role at either the account level or team level.
@@ -110,6 +118,8 @@ module IncidentIo
           )
         end
 
+        # Show details of a specific API key, including its roles, team assignments and…
+        #
         # Show details of a specific API key, including its roles, team assignments and when its token was last issued.
         #
         # This endpoint requires a valid API key with the `api_keys_manage` role at either the account level or team level.
@@ -129,6 +139,8 @@ module IncidentIo
           )
         end
 
+        # Update an existing API key's name, roles, or team assignments
+        #
         # Update an existing API key's name, roles, or team assignments. All fields must be provided (PUT semantics). The calling API key can only assign roles whose scopes are a subset of its own. An API key cannot edit itself, and the `api_keys_manage` role cannot be assigned via the API.
         #
         # This endpoint requires a valid API key with the `api_keys_manage` role at either the account level or team level.

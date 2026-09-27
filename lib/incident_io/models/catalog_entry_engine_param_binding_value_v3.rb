@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] label
-    #   @return [String, nil] A label for this attribute value.
-    # @!attribute [r] literal
-    #   @return [String, nil] The underlying value of the attribute, serialized as a string.
     CatalogEntryEngineParamBindingValueV3 = Model.define(
       label: :string,
       literal: :string
     )
+
+    class CatalogEntryEngineParamBindingValueV3
+      # @!attribute [r] label
+      #   A label for this attribute value
+      #   @return [String, nil]
+      # @!attribute [r] literal
+      #   The underlying value of the attribute, serialized as a string
+      #   @return [String, nil]
+    end
   end
 end

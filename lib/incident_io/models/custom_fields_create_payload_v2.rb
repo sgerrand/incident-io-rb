@@ -5,22 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] catalog_type_id
-    #   @return [String, nil] For catalog fields, the ID of the associated catalog type
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the custom field
-    # @!attribute [r] field_type
-    #   @return [String, nil] Type of custom field One of: single_select, multi_select, text, link, numeric.
-    # @!attribute [r] filter_by
-    #   @return [CustomFieldFilterByOptionsV2, nil]
-    # @!attribute [r] fixed_filter
-    #   @return [CustomFieldFixedFilterOptionsV2, nil]
-    # @!attribute [r] group_by_catalog_attribute_id
-    #   @return [String, nil] For catalog fields, the ID of the attribute used to group catalog entries (if applicable)
-    # @!attribute [r] helptext_catalog_attribute_id
-    #   @return [String, nil] Which catalog attribute provides helptext for the options
-    # @!attribute [r] name
-    #   @return [String, nil] Human readable name for the custom field
     CustomFieldsCreatePayloadV2 = Model.define(
       catalog_type_id: :string,
       description: :string,
@@ -31,5 +15,32 @@ module IncidentIo
       helptext_catalog_attribute_id: :string,
       name: :string
     )
+
+    class CustomFieldsCreatePayloadV2
+      # @!attribute [r] catalog_type_id
+      #   For catalog fields, the ID of the associated catalog type
+      #   @return [String, nil]
+      # @!attribute [r] description
+      #   Description of the custom field
+      #   @return [String, nil]
+      # @!attribute [r] field_type
+      #   Type of custom field One of: single_select, multi_select, text, link, numeric
+      #   @return [String, nil]
+      # @!attribute [r] filter_by
+      #   The filter_by field
+      #   @return [CustomFieldFilterByOptionsV2, nil]
+      # @!attribute [r] fixed_filter
+      #   The fixed_filter field
+      #   @return [CustomFieldFixedFilterOptionsV2, nil]
+      # @!attribute [r] group_by_catalog_attribute_id
+      #   For catalog fields, the ID of the attribute used to group catalog entries (if…
+      #   @return [String, nil]
+      # @!attribute [r] helptext_catalog_attribute_id
+      #   Which catalog attribute provides helptext for the options
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human readable name for the custom field
+      #   @return [String, nil]
+    end
   end
 end

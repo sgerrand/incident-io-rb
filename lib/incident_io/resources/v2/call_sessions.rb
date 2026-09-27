@@ -12,7 +12,7 @@ module IncidentIo
       # over time. Use this endpoint together with Call Transcript Entries to export what
       # Scribe transcribed during each session.
       class CallSessions < Resource
-        # List Scribe call sessions, newest first, filtered by incident.
+        # List Scribe call sessions, newest first, filtered by incident
         #
         # Endpoint: `GET /v2/call_sessions`. Scopes: call_transcripts.view.
         #

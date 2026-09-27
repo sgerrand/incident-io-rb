@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] preferred_escalation_provider
-    #   @return [String, nil] The preferred escalation provider for the user.
     UsersUpdatePagingProviderPayloadV2 = Model.define(
       preferred_escalation_provider: :string
     )
+
+    class UsersUpdatePagingProviderPayloadV2
+      # @!attribute [r] preferred_escalation_provider
+      #   The preferred escalation provider for the user
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,32 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] custom_field_entries
-    #   @return [Array<CustomFieldEntryPayloadV1>, nil] Set the incident's custom fields to these values
-    # @!attribute [r] idempotency_key
-    #   @return [String, nil] Unique string used to de-duplicate incident create requests
-    # @!attribute [r] incident_role_assignments
-    #   @return [Array<IncidentRoleAssignmentPayloadV1>, nil] Assign incident roles to these people
-    # @!attribute [r] incident_type_id
-    #   @return [String, nil] Incident type to create this incident as
-    # @!attribute [r] mode
-    #   @return [String, nil] Whether the incident is real or test One of: real, test.
-    # @!attribute [r] name
-    #   @return [String, nil] Explanation of the incident
-    # @!attribute [r] severity_id
-    #   @return [String, nil] Severity to create incident as
-    # @!attribute [r] slack_team_id
-    #   @return [String, nil] ID of the Slack team / workspace.
-    # @!attribute [r] source_message_channel_id
-    #   @return [String, nil] Channel ID of the source message, if this incident was created from one
-    # @!attribute [r] source_message_timestamp
-    #   @return [String, nil] Timestamp of the source message, if this incident was created from one
-    # @!attribute [r] status
-    #   @return [String, nil] Current status of the incident One of: triage, investigating, fixing, monitoring, closed, declined.
-    # @!attribute [r] summary
-    #   @return [String, nil] Detailed description of the incident
-    # @!attribute [r] visibility
-    #   @return [String, nil] Whether the incident should be open to anyone in your Slack workspace (public), or invite-only (private).
     IncidentsCreatePayloadV1 = Model.define(
       custom_field_entries: [-> { CustomFieldEntryPayloadV1 }],
       idempotency_key: :string,
@@ -46,5 +20,47 @@ module IncidentIo
       summary: :string,
       visibility: :string
     )
+
+    class IncidentsCreatePayloadV1
+      # @!attribute [r] custom_field_entries
+      #   Set the incident's custom fields to these values
+      #   @return [Array<CustomFieldEntryPayloadV1>, nil]
+      # @!attribute [r] idempotency_key
+      #   Unique string used to de-duplicate incident create requests
+      #   @return [String, nil]
+      # @!attribute [r] incident_role_assignments
+      #   Assign incident roles to these people
+      #   @return [Array<IncidentRoleAssignmentPayloadV1>, nil]
+      # @!attribute [r] incident_type_id
+      #   Incident type to create this incident as
+      #   @return [String, nil]
+      # @!attribute [r] mode
+      #   Whether the incident is real or test One of: real, test
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Explanation of the incident
+      #   @return [String, nil]
+      # @!attribute [r] severity_id
+      #   Severity to create incident as
+      #   @return [String, nil]
+      # @!attribute [r] slack_team_id
+      #   ID of the Slack team / workspace
+      #   @return [String, nil]
+      # @!attribute [r] source_message_channel_id
+      #   Channel ID of the source message, if this incident was created from one
+      #   @return [String, nil]
+      # @!attribute [r] source_message_timestamp
+      #   Timestamp of the source message, if this incident was created from one
+      #   @return [String, nil]
+      # @!attribute [r] status
+      #   Current status of the incident One of: triage, investigating, fixing,…
+      #   @return [String, nil]
+      # @!attribute [r] summary
+      #   Detailed description of the incident
+      #   @return [String, nil]
+      # @!attribute [r] visibility
+      #   Whether the incident should be open to anyone in your Slack workspace…
+      #   @return [String, nil]
+    end
   end
 end

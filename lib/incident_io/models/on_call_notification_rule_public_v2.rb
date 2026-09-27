@@ -5,20 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] app
-    #   @return [OnCallNotificationRuleAppDetailsPublicV2, nil]
-    # @!attribute [r] delay_seconds
-    #   @return [Integer, nil] Delay in seconds before this rule activates.
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this notification rule
-    # @!attribute [r] method_target
-    #   @return [OnCallNotificationRuleMethodTargetPublicV2, nil]
-    # @!attribute [r] method_type
-    #   @return [String, nil] The high-level type of notification method.
-    # @!attribute [r] phone
-    #   @return [OnCallNotificationRulePhoneDetailsPublicV2, nil]
-    # @!attribute [r] rule_type
-    #   @return [String, nil] The urgency level this rule applies to One of: high_urgency, low_urgency.
     OnCallNotificationRulePublicV2 = Model.define(
       app: -> { OnCallNotificationRuleAppDetailsPublicV2 },
       delay_seconds: :integer,
@@ -28,5 +14,29 @@ module IncidentIo
       phone: -> { OnCallNotificationRulePhoneDetailsPublicV2 },
       rule_type: :string
     )
+
+    class OnCallNotificationRulePublicV2
+      # @!attribute [r] app
+      #   The app field
+      #   @return [OnCallNotificationRuleAppDetailsPublicV2, nil]
+      # @!attribute [r] delay_seconds
+      #   Delay in seconds before this rule activates
+      #   @return [Integer, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this notification rule
+      #   @return [String, nil]
+      # @!attribute [r] method_target
+      #   The method_target field
+      #   @return [OnCallNotificationRuleMethodTargetPublicV2, nil]
+      # @!attribute [r] method_type
+      #   The high-level type of notification method
+      #   @return [String, nil]
+      # @!attribute [r] phone
+      #   The phone field
+      #   @return [OnCallNotificationRulePhoneDetailsPublicV2, nil]
+      # @!attribute [r] rule_type
+      #   The urgency level this rule applies to One of: high_urgency, low_urgency
+      #   @return [String, nil]
+    end
   end
 end

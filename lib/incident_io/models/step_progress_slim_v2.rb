@@ -5,22 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] completed_at
-    #   @return [Time, nil] Status of the step
-    # @!attribute [r] error
-    #   @return [String, nil] The cause of an errored step
-    # @!attribute [r] incident_id
-    #   @return [String, nil] If this step ran for a specific incident (e.g.
-    # @!attribute [r] incident_reference
-    #   @return [String, nil] If this step ran for a specific incident (e.g.
-    # @!attribute [r] status
-    #   @return [String, nil] Status of the step One of: complete, pending, error.
-    # @!attribute [r] step
-    #   @return [String, nil] Name of the step
-    # @!attribute [r] webhook_delivery
-    #   @return [WebhookDeliverySlimV2, nil]
-    # @!attribute [r] webhook_delivery_state
-    #   @return [String, nil] Whether this step's delivery can be shown, for a webhook.send step.
     StepProgressSlimV2 = Model.define(
       completed_at: :time,
       error: :string,
@@ -31,5 +15,32 @@ module IncidentIo
       webhook_delivery: -> { WebhookDeliverySlimV2 },
       webhook_delivery_state: :string
     )
+
+    class StepProgressSlimV2
+      # @!attribute [r] completed_at
+      #   Status of the step
+      #   @return [Time, nil]
+      # @!attribute [r] error
+      #   The cause of an errored step
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   If this step ran for a specific incident (e.g
+      #   @return [String, nil]
+      # @!attribute [r] incident_reference
+      #   If this step ran for a specific incident (e.g
+      #   @return [String, nil]
+      # @!attribute [r] status
+      #   Status of the step One of: complete, pending, error
+      #   @return [String, nil]
+      # @!attribute [r] step
+      #   Name of the step
+      #   @return [String, nil]
+      # @!attribute [r] webhook_delivery
+      #   The webhook_delivery field
+      #   @return [WebhookDeliverySlimV2, nil]
+      # @!attribute [r] webhook_delivery_state
+      #   Whether this step's delivery can be shown, for a webhook.send step
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] api_key
-    #   @return [APIKeyV1, nil]
     APIKeysUpdateResultV1 = Model.define(
       api_key: -> { APIKeyV1 }
     )
+
+    class APIKeysUpdateResultV1
+      # @!attribute [r] api_key
+      #   The api_key field
+      #   @return [APIKeyV1, nil]
+    end
   end
 end

@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] attributes
-    #   @return [Array<AlertTemplateAttributeV2>, nil] Attributes to set on alerts coming from this source, with a binding describing how to set them.
-    # @!attribute [r] description
-    #   @return [EngineParamBindingValueV2, nil]
-    # @!attribute [r] expressions
-    #   @return [Array<ExpressionV2>, nil] Expressions available for use in bindings within this template
-    # @!attribute [r] is_private
-    #   @return [Boolean, nil] Whether or not alerts produced by this source should be private
-    # @!attribute [r] title
-    #   @return [EngineParamBindingValueV2, nil]
-    # @!attribute [r] visible_to_teams
-    #   @return [EngineParamBindingV2, nil]
     AlertTemplateV2 = Model.define(
       attributes: [-> { AlertTemplateAttributeV2 }],
       description: -> { EngineParamBindingValueV2 },
@@ -25,5 +13,26 @@ module IncidentIo
       title: -> { EngineParamBindingValueV2 },
       visible_to_teams: -> { EngineParamBindingV2 }
     )
+
+    class AlertTemplateV2
+      # @!attribute [r] attributes
+      #   Attributes to set on alerts coming from this source, with a binding…
+      #   @return [Array<AlertTemplateAttributeV2>, nil]
+      # @!attribute [r] description
+      #   The description field
+      #   @return [EngineParamBindingValueV2, nil]
+      # @!attribute [r] expressions
+      #   Expressions available for use in bindings within this template
+      #   @return [Array<ExpressionV2>, nil]
+      # @!attribute [r] is_private
+      #   Whether or not alerts produced by this source should be private
+      #   @return [Boolean, nil]
+      # @!attribute [r] title
+      #   The title field
+      #   @return [EngineParamBindingValueV2, nil]
+      # @!attribute [r] visible_to_teams
+      #   The visible_to_teams field
+      #   @return [EngineParamBindingV2, nil]
+    end
   end
 end

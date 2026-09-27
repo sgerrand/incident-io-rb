@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] cause
-    #   @return [String, nil] Why this user's entries don't count as cover One of: no_on_call_seat, user_deactivated, notifications_paused.
-    # @!attribute [r] name
-    #   @return [String, nil]
-    # @!attribute [r] user_id
-    #   @return [String, nil]
     PolicyFindingScheduleImpactedUserV2 = Model.define(
       cause: :string,
       name: :string,
       user_id: :string
     )
+
+    class PolicyFindingScheduleImpactedUserV2
+      # @!attribute [r] cause
+      #   Why this user's entries don't count as cover One of: no_on_call_seat,…
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   The name field
+      #   @return [String, nil]
+      # @!attribute [r] user_id
+      #   The user_id field
+      #   @return [String, nil]
+    end
   end
 end

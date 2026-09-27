@@ -28,6 +28,8 @@ module IncidentIo
       # It can be used to sync catalog data from sources like local files or GitHub and push
       # them into the incident.io catalog without having to directly interact with our public API.
       class Catalog < Resource
+        # Update multiple catalog entries in a single operation
+        #
         # Update multiple catalog entries in a single operation. You can update up to 250 entries at once. This operation is atomic - either all entries are updated successfully, or none are updated.
         #
         # Endpoint: `POST /v3/catalog_entries/actions/bulk_update`. Scopes: catalog_entries.edit.
@@ -46,6 +48,8 @@ module IncidentIo
           )
         end
 
+        # Create an entry within the catalog
+        #
         # Create an entry within the catalog. We support a maximum of 50,000 entries per type.
         #
         # If you call this API with a payload where the external_id and catalog_type_id match an existing entry, the existing entry will be updated.
@@ -79,6 +83,8 @@ module IncidentIo
           )
         end
 
+        # Create a catalog type
+        #
         # Create a catalog type. The schema must be updated using the UpdateTypeSchema endpoint.
         #
         # Endpoint: `POST /v3/catalog_types`. Scopes: catalog_types.create.
@@ -132,7 +138,7 @@ module IncidentIo
           )
         end
 
-        # Archives a catalog entry.
+        # Archives a catalog entry
         #
         # Endpoint: `DELETE /v3/catalog_entries/{id}`. Scopes: catalog_entries.destroy.
         #
@@ -147,7 +153,7 @@ module IncidentIo
           )
         end
 
-        # Archives a catalog type and associated entries.
+        # Archives a catalog type and associated entries
         #
         # Endpoint: `DELETE /v3/catalog_types/{id}`. Scopes: catalog_types.destroy.
         #
@@ -162,7 +168,7 @@ module IncidentIo
           )
         end
 
-        # List entries for a catalog type.
+        # List entries for a catalog type
         #
         # Endpoint: `GET /v3/catalog_entries`. Scopes: catalog_entries.view.
         #
@@ -182,6 +188,8 @@ module IncidentIo
           )
         end
 
+        # List available engine resources for the catalog
+        #
         # List available engine resources for the catalog.
         #
         # A resource represents a type of data that can be held within the catalog, so this
@@ -202,6 +210,8 @@ module IncidentIo
           )
         end
 
+        # List all catalog types for an organisation, including those synced from…
+        #
         # List all catalog types for an organisation, including those synced from external resources.
         #
         # Endpoint: `GET /v3/catalog_types`. Scopes: catalog_types.view.
@@ -218,7 +228,7 @@ module IncidentIo
           )
         end
 
-        # Show a single catalog entry.
+        # Show a single catalog entry
         #
         # Endpoint: `GET /v3/catalog_entries/{id}`. Scopes: catalog_entries.view.
         #
@@ -236,7 +246,7 @@ module IncidentIo
           )
         end
 
-        # Show a single catalog type.
+        # Show a single catalog type
         #
         # Endpoint: `GET /v3/catalog_types/{id}`. Scopes: catalog_types.view.
         #
@@ -253,7 +263,7 @@ module IncidentIo
           )
         end
 
-        # Updates an existing catalog entry.
+        # Updates an existing catalog entry
         #
         # Endpoint: `PUT /v3/catalog_entries/{id}`. Scopes: catalog_entries.edit.
         #
@@ -285,6 +295,8 @@ module IncidentIo
           )
         end
 
+        # Updates an existing catalog type
+        #
         # Updates an existing catalog type. The schema must be updated using the UpdateTypeSchema endpoint.
         #
         # Endpoint: `PUT /v3/catalog_types/{id}`. Scopes: catalog_types.edit.
@@ -337,6 +349,8 @@ module IncidentIo
           )
         end
 
+        # Update an existing catalog types schema, adding or removing attributes
+        #
         # Update an existing catalog types schema, adding or removing attributes.
         #
         # Updating the schema is handled separately from creating and updating types, so that you don't

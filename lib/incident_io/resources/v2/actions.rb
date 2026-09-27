@@ -18,6 +18,8 @@ module IncidentIo
       # You can manage actions in the incident Slack channel with <code>/incident actions</code>, or on
       # the incident homepage.
       class Actions < Resource
+        # Deprecated: this endpoint will be removed on 31 December 2026
+        #
         # Deprecated: this endpoint will be removed on 31 December 2026. Use <code>POST /v3/actions</code> instead.
         #
         # Create a new incident action.
@@ -42,6 +44,8 @@ module IncidentIo
           )
         end
 
+        # Deprecated: this endpoint will be removed on 31 December 2026
+        #
         # Deprecated: this endpoint will be removed on 31 December 2026. Use <code>DELETE /v3/actions/{id}</code> instead.
         #
         # Delete an incident action.
@@ -61,6 +65,8 @@ module IncidentIo
           )
         end
 
+        # Deprecated: this endpoint will be removed on 31 December 2026
+        #
         # Deprecated: this endpoint will be removed on 31 December 2026. Use <code>GET /v3/actions</code> instead.
         #
         # List all actions for an organisation.
@@ -84,6 +90,8 @@ module IncidentIo
           )
         end
 
+        # Deprecated: this endpoint will be removed on 31 December 2026
+        #
         # Deprecated: this endpoint will be removed on 31 December 2026. Use <code>GET /v3/actions/{id}</code> instead.
         #
         # Get a single incident action.
@@ -105,6 +113,8 @@ module IncidentIo
           )
         end
 
+        # Deprecated: this endpoint will be removed on 31 December 2026
+        #
         # Deprecated: this endpoint will be removed on 31 December 2026. Use <code>PUT /v3/actions/{id}</code> instead.
         #
         # Update an existing incident action.

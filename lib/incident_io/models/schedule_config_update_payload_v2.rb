@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] rotations
-    #   @return [Array<ScheduleRotationUpdatePayloadV2>, nil]
     ScheduleConfigUpdatePayloadV2 = Model.define(
       rotations: [-> { ScheduleRotationUpdatePayloadV2 }]
     )
+
+    class ScheduleConfigUpdatePayloadV2
+      # @!attribute [r] rotations
+      #   The rotations field
+      #   @return [Array<ScheduleRotationUpdatePayloadV2>, nil]
+    end
   end
 end

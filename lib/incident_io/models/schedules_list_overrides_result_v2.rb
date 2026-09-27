@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] overrides
-    #   @return [Array<ScheduleOverrideV2>, nil]
-    # @!attribute [r] pagination_meta
-    #   @return [PaginationMetaResultV2, nil]
     SchedulesListOverridesResultV2 = Model.define(
       overrides: [-> { ScheduleOverrideV2 }],
       pagination_meta: -> { PaginationMetaResultV2 }
     )
+
+    class SchedulesListOverridesResultV2
+      # @!attribute [r] overrides
+      #   The overrides field
+      #   @return [Array<ScheduleOverrideV2>, nil]
+      # @!attribute [r] pagination_meta
+      #   The pagination_meta field
+      #   @return [PaginationMetaResultV2, nil]
+    end
   end
 end

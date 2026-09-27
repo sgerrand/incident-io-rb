@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] on_call
-    #   @return [String, nil] On-call seat access level One of: full_access, viewer_only, none.
-    # @!attribute [r] response
-    #   @return [String, nil] Response seat access level One of: full_access, viewer_only, none.
     UserSeatsV2 = Model.define(
       on_call: :string,
       response: :string
     )
+
+    class UserSeatsV2
+      # @!attribute [r] on_call
+      #   On-call seat access level One of: full_access, viewer_only, none
+      #   @return [String, nil]
+      # @!attribute [r] response
+      #   Response seat access level One of: full_access, viewer_only, none
+      #   @return [String, nil]
+    end
   end
 end

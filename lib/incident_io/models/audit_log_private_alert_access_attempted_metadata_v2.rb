@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] outcome
-    #   @return [String, nil] Whether or not the user was able to access the private alert One of: granted, denied.
     AuditLogPrivateAlertAccessAttemptedMetadataV2 = Model.define(
       outcome: :string
     )
+
+    class AuditLogPrivateAlertAccessAttemptedMetadataV2
+      # @!attribute [r] outcome
+      #   Whether or not the user was able to access the private alert One of: granted,…
+      #   @return [String, nil]
+    end
   end
 end

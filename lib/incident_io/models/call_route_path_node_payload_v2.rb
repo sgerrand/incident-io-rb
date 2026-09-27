@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this node.
-    # @!attribute [r] level
-    #   @return [CallRoutePathNodeLevelV2, nil]
-    # @!attribute [r] type
-    #   @return [String, nil] The type of this node.
-    # @!attribute [r] voicemail
-    #   @return [CallRoutePathNodeVoicemailV2, nil]
     CallRoutePathNodePayloadV2 = Model.define(
       id: :string,
       level: -> { CallRoutePathNodeLevelV2 },
       type: :string,
       voicemail: -> { CallRoutePathNodeVoicemailV2 }
     )
+
+    class CallRoutePathNodePayloadV2
+      # @!attribute [r] id
+      #   Unique identifier for this node
+      #   @return [String, nil]
+      # @!attribute [r] level
+      #   The level field
+      #   @return [CallRoutePathNodeLevelV2, nil]
+      # @!attribute [r] type
+      #   The type of this node
+      #   @return [String, nil]
+      # @!attribute [r] voicemail
+      #   The voicemail field
+      #   @return [CallRoutePathNodeVoicemailV2, nil]
+    end
   end
 end

@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] dismissed_at
-    #   @return [Time, nil]
-    # @!attribute [r] dismissed_by
-    #   @return [ActorV2, nil]
-    # @!attribute [r] reason
-    #   @return [String, nil] Why it was dismissed
     PolicyFindingDismissalV2 = Model.define(
       dismissed_at: :time,
       dismissed_by: -> { ActorV2 },
       reason: :string
     )
+
+    class PolicyFindingDismissalV2
+      # @!attribute [r] dismissed_at
+      #   The dismissed_at field
+      #   @return [Time, nil]
+      # @!attribute [r] dismissed_by
+      #   The dismissed_by field
+      #   @return [ActorV2, nil]
+      # @!attribute [r] reason
+      #   Why it was dismissed
+      #   @return [String, nil]
+    end
   end
 end

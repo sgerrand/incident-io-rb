@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] enabled
-    #   @return [Boolean, nil] Whether round robin is enabled for this level
-    # @!attribute [r] rotate_after_seconds
-    #   @return [Integer, nil] How long should we wait before rotating to the next target in a round robin, if not set will stick with a single target per level.
     EscalationPathRoundRobinConfigV2 = Model.define(
       enabled: :boolean,
       rotate_after_seconds: :integer
     )
+
+    class EscalationPathRoundRobinConfigV2
+      # @!attribute [r] enabled
+      #   Whether round robin is enabled for this level
+      #   @return [Boolean, nil]
+      # @!attribute [r] rotate_after_seconds
+      #   How long should we wait before rotating to the next target in a round robin,…
+      #   @return [Integer, nil]
+    end
   end
 end

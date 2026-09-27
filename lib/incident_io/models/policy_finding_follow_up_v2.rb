@@ -5,15 +5,19 @@
 
 module IncidentIo
   module Models
-    # Set when policy_type is follow_up.
-    #
-    # @!attribute [r] follow_up_id
-    #   @return [String, nil] The follow-up that fell short of the policy
-    # @!attribute [r] incident_id
-    #   @return [String, nil] The incident the follow-up belongs to
     PolicyFindingFollowUpV2 = Model.define(
       follow_up_id: :string,
       incident_id: :string
     )
+
+    # Set when policy_type is follow_up.
+    class PolicyFindingFollowUpV2
+      # @!attribute [r] follow_up_id
+      #   The follow-up that fell short of the policy
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   The incident the follow-up belongs to
+      #   @return [String, nil]
+    end
   end
 end

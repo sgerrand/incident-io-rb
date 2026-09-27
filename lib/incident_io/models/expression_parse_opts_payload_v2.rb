@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] returns
-    #   @return [ReturnsMetaV2, nil]
-    # @!attribute [r] source
-    #   @return [String, nil] Source expression that is evaluated to a result
     ExpressionParseOptsPayloadV2 = Model.define(
       returns: -> { ReturnsMetaV2 },
       source: :string
     )
+
+    class ExpressionParseOptsPayloadV2
+      # @!attribute [r] returns
+      #   The returns field
+      #   @return [ReturnsMetaV2, nil]
+      # @!attribute [r] source
+      #   Source expression that is evaluated to a result
+      #   @return [String, nil]
+    end
   end
 end

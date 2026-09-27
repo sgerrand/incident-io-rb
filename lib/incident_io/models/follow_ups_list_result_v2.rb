@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] follow_ups
-    #   @return [Array<FollowUpV2>, nil]
     FollowUpsListResultV2 = Model.define(
       follow_ups: [-> { FollowUpV2 }]
     )
+
+    class FollowUpsListResultV2
+      # @!attribute [r] follow_ups
+      #   The follow_ups field
+      #   @return [Array<FollowUpV2>, nil]
+    end
   end
 end

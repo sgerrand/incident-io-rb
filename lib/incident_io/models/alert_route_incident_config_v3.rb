@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] auto_decline_enabled
-    #   @return [Boolean, nil] Should triage incidents be declined when alerts are resolved?
-    # @!attribute [r] condition_groups
-    #   @return [Array<ConditionGroupV3>, nil] What condition groups must be true for this alert route to create an incident?
-    # @!attribute [r] enabled
-    #   @return [Boolean, nil] Whether incident creation is enabled for this alert route
-    # @!attribute [r] incident_template
-    #   @return [EngineParamBindingV3, nil]
-    # @!attribute [r] membership_teams
-    #   @return [EngineParamBindingV3, nil]
-    # @!attribute [r] template
-    #   @return [AlertRouteIncidentTemplateV3, nil]
     AlertRouteIncidentConfigV3 = Model.define(
       auto_decline_enabled: :boolean,
       condition_groups: [-> { ConditionGroupV3 }],
@@ -25,5 +13,26 @@ module IncidentIo
       membership_teams: -> { EngineParamBindingV3 },
       template: -> { AlertRouteIncidentTemplateV3 }
     )
+
+    class AlertRouteIncidentConfigV3
+      # @!attribute [r] auto_decline_enabled
+      #   Should triage incidents be declined when alerts are resolved?
+      #   @return [Boolean, nil]
+      # @!attribute [r] condition_groups
+      #   What condition groups must be true for this alert route to create an incident?
+      #   @return [Array<ConditionGroupV3>, nil]
+      # @!attribute [r] enabled
+      #   Whether incident creation is enabled for this alert route
+      #   @return [Boolean, nil]
+      # @!attribute [r] incident_template
+      #   The incident_template field
+      #   @return [EngineParamBindingV3, nil]
+      # @!attribute [r] membership_teams
+      #   The membership_teams field
+      #   @return [EngineParamBindingV3, nil]
+      # @!attribute [r] template
+      #   The template field
+      #   @return [AlertRouteIncidentTemplateV3, nil]
+    end
   end
 end

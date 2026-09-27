@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] default
-    #   @return [GroupingSettingsV3, nil]
     AlertGroupingConfigV3 = Model.define(
       default: -> { GroupingSettingsV3 }
     )
+
+    class AlertGroupingConfigV3
+      # @!attribute [r] default
+      #   The default field
+      #   @return [GroupingSettingsV3, nil]
+    end
   end
 end

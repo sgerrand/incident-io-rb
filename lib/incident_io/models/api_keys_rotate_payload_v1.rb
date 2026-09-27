@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] grace_period_minutes
-    #   @return [Integer, nil] How many minutes to keep the old access token alive.
     APIKeysRotatePayloadV1 = Model.define(
       grace_period_minutes: :integer
     )
+
+    class APIKeysRotatePayloadV1
+      # @!attribute [r] grace_period_minutes
+      #   How many minutes to keep the old access token alive
+      #   @return [Integer, nil]
+    end
   end
 end

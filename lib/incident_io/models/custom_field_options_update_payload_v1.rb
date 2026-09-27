@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] sort_key
-    #   @return [Integer, nil] Sort key used to order the custom field options correctly
-    # @!attribute [r] value
-    #   @return [String, nil] Human readable name for the custom field option.
     CustomFieldOptionsUpdatePayloadV1 = Model.define(
       sort_key: :integer,
       value: :string
     )
+
+    class CustomFieldOptionsUpdatePayloadV1
+      # @!attribute [r] sort_key
+      #   Sort key used to order the custom field options correctly
+      #   @return [Integer, nil]
+      # @!attribute [r] value
+      #   Human readable name for the custom field option
+      #   @return [String, nil]
+    end
   end
 end

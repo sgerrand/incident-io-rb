@@ -12,6 +12,8 @@ module IncidentIo
       # fire automatically. Use the ping endpoints to signal that your job or service
       # is still healthy.
       class Heartbeat < Resource
+        # Send a heartbeat ping for the specified alert source
+        #
         # Send a heartbeat ping for the specified alert source.
         #
         # Records a ping, indicating that the monitored job or service is healthy. The
@@ -34,6 +36,8 @@ module IncidentIo
           )
         end
 
+        # Send a heartbeat ping for the specified alert source
+        #
         # Send a heartbeat ping for the specified alert source.
         #
         # Records a ping, indicating that the monitored job or service is healthy. The

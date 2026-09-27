@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] Unique ID of the team
-    # @!attribute [r] name
-    #   @return [String, nil] Name of the team
     TeamSlimV2 = Model.define(
       id: :string,
       name: :string
     )
+
+    class TeamSlimV2
+      # @!attribute [r] id
+      #   Unique ID of the team
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name of the team
+      #   @return [String, nil]
+    end
   end
 end

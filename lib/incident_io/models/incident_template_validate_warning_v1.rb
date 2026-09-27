@@ -5,15 +5,19 @@
 
 module IncidentIo
   module Models
-    # Something suspect about a template config that isn't severe enough to reject it.
-    #
-    # @!attribute [r] detail
-    #   @return [String, nil] More detail about the warning and what to do about it
-    # @!attribute [r] summary
-    #   @return [String, nil] A short description of the warning
     IncidentTemplateValidateWarningV1 = Model.define(
       detail: :string,
       summary: :string
     )
+
+    # Something suspect about a template config that isn't severe enough to reject it.
+    class IncidentTemplateValidateWarningV1
+      # @!attribute [r] detail
+      #   More detail about the warning and what to do about it
+      #   @return [String, nil]
+      # @!attribute [r] summary
+      #   A short description of the warning
+      #   @return [String, nil]
+    end
   end
 end

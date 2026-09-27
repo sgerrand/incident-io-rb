@@ -5,22 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] allowed_value_types
-    #   @return [Array<String>, nil] Which kinds of binding the dashboard should offer for this parameter.
-    # @!attribute [r] array
-    #   @return [Boolean, nil] Whether this parameter is an array
-    # @!attribute [r] default_value
-    #   @return [EngineParamBindingV2, nil]
-    # @!attribute [r] description
-    #   @return [String, nil] A string describing the param
-    # @!attribute [r] label
-    #   @return [String, nil] Human readable label for this parameter
-    # @!attribute [r] name
-    #   @return [String, nil] The unique identifier for the parameter
-    # @!attribute [r] optional
-    #   @return [Boolean, nil] Whether this parameter is optional
-    # @!attribute [r] type
-    #   @return [String, nil] The type of the parameter
     EngineParamV2 = Model.define(
       allowed_value_types: [:string],
       array: :boolean,
@@ -31,5 +15,32 @@ module IncidentIo
       optional: :boolean,
       type: :string
     )
+
+    class EngineParamV2
+      # @!attribute [r] allowed_value_types
+      #   Which kinds of binding the dashboard should offer for this parameter
+      #   @return [Array<String>, nil]
+      # @!attribute [r] array
+      #   Whether this parameter is an array
+      #   @return [Boolean, nil]
+      # @!attribute [r] default_value
+      #   The default_value field
+      #   @return [EngineParamBindingV2, nil]
+      # @!attribute [r] description
+      #   A string describing the param
+      #   @return [String, nil]
+      # @!attribute [r] label
+      #   Human readable label for this parameter
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   The unique identifier for the parameter
+      #   @return [String, nil]
+      # @!attribute [r] optional
+      #   Whether this parameter is optional
+      #   @return [Boolean, nil]
+      # @!attribute [r] type
+      #   The type of the parameter
+      #   @return [String, nil]
+    end
   end
 end

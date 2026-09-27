@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] aliases
-    #   @return [Array<String>, nil] Optional aliases that can be used to reference this entry
-    # @!attribute [r] attribute_values
-    #   @return [Hash{String => EngineParamBindingPayloadV2}, nil] Values of this entry
-    # @!attribute [r] external_id
-    #   @return [String, nil] An optional alternative ID for this entry, which is ensured to be unique for the type
-    # @!attribute [r] name
-    #   @return [String, nil] Name is the human readable name of this entry
-    # @!attribute [r] rank
-    #   @return [Integer, nil] When catalog type is ranked, this is used to help order things
     CatalogUpdateEntryPayloadV2 = Model.define(
       aliases: [:string],
       attribute_values: Model.map_of(-> { EngineParamBindingPayloadV2 }),
@@ -22,5 +12,23 @@ module IncidentIo
       name: :string,
       rank: :integer
     )
+
+    class CatalogUpdateEntryPayloadV2
+      # @!attribute [r] aliases
+      #   Optional aliases that can be used to reference this entry
+      #   @return [Array<String>, nil]
+      # @!attribute [r] attribute_values
+      #   Values of this entry
+      #   @return [Hash{String => EngineParamBindingPayloadV2}, nil]
+      # @!attribute [r] external_id
+      #   An optional alternative ID for this entry, which is ensured to be unique for…
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name is the human readable name of this entry
+      #   @return [String, nil]
+      # @!attribute [r] rank
+      #   When catalog type is ranked, this is used to help order things
+      #   @return [Integer, nil]
+    end
   end
 end

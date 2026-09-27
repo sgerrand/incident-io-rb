@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] The ID of this alert
-    # @!attribute [r] title
-    #   @return [String, nil] The title of the alert, parsed from the alert payload according to the alert source configuration
     AlertActorV2 = Model.define(
       id: :string,
       title: :string
     )
+
+    class AlertActorV2
+      # @!attribute [r] id
+      #   The ID of this alert
+      #   @return [String, nil]
+      # @!attribute [r] title
+      #   The title of the alert, parsed from the alert payload according to the alert…
+      #   @return [String, nil]
+    end
   end
 end

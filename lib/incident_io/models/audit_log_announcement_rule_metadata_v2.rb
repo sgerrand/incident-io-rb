@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] after_owning_team_ids
-    #   @return [String, nil] Catalog entry IDs of the owning teams after the change, comma separated
-    # @!attribute [r] after_private_incident_scope
-    #   @return [String, nil] Which private incidents the rule acts on after the change (all, owning_teams, none)
-    # @!attribute [r] before_owning_team_ids
-    #   @return [String, nil] Catalog entry IDs of the owning teams before the change, comma separated
-    # @!attribute [r] before_private_incident_scope
-    #   @return [String, nil] Which private incidents the rule acted on before the change (all, owning_teams, none; empty on create)
     AuditLogAnnouncementRuleMetadataV2 = Model.define(
       after_owning_team_ids: :string,
       after_private_incident_scope: :string,
       before_owning_team_ids: :string,
       before_private_incident_scope: :string
     )
+
+    class AuditLogAnnouncementRuleMetadataV2
+      # @!attribute [r] after_owning_team_ids
+      #   Catalog entry IDs of the owning teams after the change, comma separated
+      #   @return [String, nil]
+      # @!attribute [r] after_private_incident_scope
+      #   Which private incidents the rule acts on after the change (all, owning_teams,…
+      #   @return [String, nil]
+      # @!attribute [r] before_owning_team_ids
+      #   Catalog entry IDs of the owning teams before the change, comma separated
+      #   @return [String, nil]
+      # @!attribute [r] before_private_incident_scope
+      #   Which private incidents the rule acted on before the change (all,…
+      #   @return [String, nil]
+    end
   end
 end

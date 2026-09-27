@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] comments
-    #   @return [String, nil] Freeform notes about the API key
-    # @!attribute [r] name
-    #   @return [String, nil] Human-readable name for the new API key
-    # @!attribute [r] role_names
-    #   @return [Array<String>, nil] Account-level roles to assign to the API key.
-    # @!attribute [r] team_ids
-    #   @return [Array<String>, nil] IDs of teams to scope the `team_role_names` to.
-    # @!attribute [r] team_role_names
-    #   @return [Array<String>, nil] Roles to grant for the teams specified in `team_ids`.
     APIKeysCreatePayloadV1 = Model.define(
       comments: :string,
       name: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       team_ids: [:string],
       team_role_names: [:string]
     )
+
+    class APIKeysCreatePayloadV1
+      # @!attribute [r] comments
+      #   Freeform notes about the API key
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Human-readable name for the new API key
+      #   @return [String, nil]
+      # @!attribute [r] role_names
+      #   Account-level roles to assign to the API key
+      #   @return [Array<String>, nil]
+      # @!attribute [r] team_ids
+      #   IDs of teams to scope the `team_role_names` to
+      #   @return [Array<String>, nil]
+      # @!attribute [r] team_role_names
+      #   Roles to grant for the teams specified in `team_ids`
+      #   @return [Array<String>, nil]
+    end
   end
 end

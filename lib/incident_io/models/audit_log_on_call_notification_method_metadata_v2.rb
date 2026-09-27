@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] target_user
-    #   @return [String, nil] The user whose notification method was created or destroyed
     AuditLogOnCallNotificationMethodMetadataV2 = Model.define(
       target_user: :string
     )
+
+    class AuditLogOnCallNotificationMethodMetadataV2
+      # @!attribute [r] target_user
+      #   The user whose notification method was created or destroyed
+      #   @return [String, nil]
+    end
   end
 end

@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_update_id
-    #   @return [String, nil] The incident update that carried the merge.
-    # @!attribute [r] merger
-    #   @return [ActorV2, nil]
-    # @!attribute [r] source_incident
-    #   @return [IncidentSlimV2, nil]
     ActivityIncidentMergedV2 = Model.define(
       incident_update_id: :string,
       merger: -> { ActorV2 },
       source_incident: -> { IncidentSlimV2 }
     )
+
+    class ActivityIncidentMergedV2
+      # @!attribute [r] incident_update_id
+      #   The incident update that carried the merge
+      #   @return [String, nil]
+      # @!attribute [r] merger
+      #   The merger field
+      #   @return [ActorV2, nil]
+      # @!attribute [r] source_incident
+      #   The source_incident field
+      #   @return [IncidentSlimV2, nil]
+    end
   end
 end

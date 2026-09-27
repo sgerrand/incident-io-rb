@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] channel
-    #   @return [String, nil] Which channel of a phone notification method this rule uses.
     OnCallNotificationRulePhoneDetailsPublicV2 = Model.define(
       channel: :string
     )
+
+    class OnCallNotificationRulePhoneDetailsPublicV2
+      # @!attribute [r] channel
+      #   Which channel of a phone notification method this rule uses
+      #   @return [String, nil]
+    end
   end
 end

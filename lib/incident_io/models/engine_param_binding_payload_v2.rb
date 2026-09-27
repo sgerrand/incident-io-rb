@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] array_value
-    #   @return [Array<EngineParamBindingValuePayloadV2>, nil] If set, this is the array value of the step parameter
-    # @!attribute [r] value
-    #   @return [EngineParamBindingValuePayloadV2, nil]
     EngineParamBindingPayloadV2 = Model.define(
       array_value: [-> { EngineParamBindingValuePayloadV2 }],
       value: -> { EngineParamBindingValuePayloadV2 }
     )
+
+    class EngineParamBindingPayloadV2
+      # @!attribute [r] array_value
+      #   If set, this is the array value of the step parameter
+      #   @return [Array<EngineParamBindingValuePayloadV2>, nil]
+      # @!attribute [r] value
+      #   The value field
+      #   @return [EngineParamBindingValuePayloadV2, nil]
+    end
   end
 end

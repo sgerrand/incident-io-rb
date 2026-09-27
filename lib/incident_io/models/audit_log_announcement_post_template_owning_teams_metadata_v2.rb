@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] after_owning_team_ids
-    #   @return [String, nil] Catalog entry IDs of the owning teams after the change, comma separated
-    # @!attribute [r] before_owning_team_ids
-    #   @return [String, nil] Catalog entry IDs of the owning teams before the change, comma separated
     AuditLogAnnouncementPostTemplateOwningTeamsMetadataV2 = Model.define(
       after_owning_team_ids: :string,
       before_owning_team_ids: :string
     )
+
+    class AuditLogAnnouncementPostTemplateOwningTeamsMetadataV2
+      # @!attribute [r] after_owning_team_ids
+      #   Catalog entry IDs of the owning teams after the change, comma separated
+      #   @return [String, nil]
+      # @!attribute [r] before_owning_team_ids
+      #   Catalog entry IDs of the owning teams before the change, comma separated
+      #   @return [String, nil]
+    end
   end
 end

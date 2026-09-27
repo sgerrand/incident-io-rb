@@ -5,26 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] current_responders
-    #   @return [Array<UserV2>, nil] Users who are currently on-call for this escalation path
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this escalation path.
-    # @!attribute [r] kind
-    #   @return [String, nil] Whether this path carries its own nodes, or is built from an escalation path template.
-    # @!attribute [r] name
-    #   @return [String, nil] The name of this escalation path, for the user's reference.
-    # @!attribute [r] param_bindings
-    #   @return [Hash{String => EngineParamBindingV2}, nil] For a templated path, the values bound to the template's declared parameters, keyed by parameter name.
-    # @!attribute [r] path
-    #   @return [Array<EscalationPathNodeV2>, nil] The nodes that form the levels and branches of this escalation path.
-    # @!attribute [r] repeat_config
-    #   @return [EscalationPathRepeatConfigV2, nil]
-    # @!attribute [r] team_ids
-    #   @return [Array<String>, nil] IDs of the teams that own this escalation path.
-    # @!attribute [r] template_id
-    #   @return [String, nil] For a templated path, the template it is built from.
-    # @!attribute [r] working_hours
-    #   @return [Array<WeekdayIntervalConfigV2>, nil] The working hours for this escalation path.
     EscalationPathV2 = Model.define(
       current_responders: [-> { UserV2 }],
       id: :string,
@@ -37,5 +17,38 @@ module IncidentIo
       template_id: :string,
       working_hours: [-> { WeekdayIntervalConfigV2 }]
     )
+
+    class EscalationPathV2
+      # @!attribute [r] current_responders
+      #   Users who are currently on-call for this escalation path
+      #   @return [Array<UserV2>, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this escalation path
+      #   @return [String, nil]
+      # @!attribute [r] kind
+      #   Whether this path carries its own nodes, or is built from an escalation path…
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   The name of this escalation path, for the user's reference
+      #   @return [String, nil]
+      # @!attribute [r] param_bindings
+      #   For a templated path, the values bound to the template's declared parameters,…
+      #   @return [Hash{String => EngineParamBindingV2}, nil]
+      # @!attribute [r] path
+      #   The nodes that form the levels and branches of this escalation path
+      #   @return [Array<EscalationPathNodeV2>, nil]
+      # @!attribute [r] repeat_config
+      #   The repeat_config field
+      #   @return [EscalationPathRepeatConfigV2, nil]
+      # @!attribute [r] team_ids
+      #   IDs of the teams that own this escalation path
+      #   @return [Array<String>, nil]
+      # @!attribute [r] template_id
+      #   For a templated path, the template it is built from
+      #   @return [String, nil]
+      # @!attribute [r] working_hours
+      #   The working hours for this escalation path
+      #   @return [Array<WeekdayIntervalConfigV2>, nil]
+    end
   end
 end

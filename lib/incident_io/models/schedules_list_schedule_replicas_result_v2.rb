@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] schedule_replicas
-    #   @return [Array<ScheduleReplicaV2>, nil]
     SchedulesListScheduleReplicasResultV2 = Model.define(
       schedule_replicas: [-> { ScheduleReplicaV2 }]
     )
+
+    class SchedulesListScheduleReplicasResultV2
+      # @!attribute [r] schedule_replicas
+      #   The schedule_replicas field
+      #   @return [Array<ScheduleReplicaV2>, nil]
+    end
   end
 end

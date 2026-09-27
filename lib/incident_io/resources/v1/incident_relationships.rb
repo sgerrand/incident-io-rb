@@ -8,7 +8,7 @@ module IncidentIo
     module V1
       # View related incidents for an incident
       class IncidentRelationships < Resource
-        # List related incidents for a specific incident.
+        # List related incidents for a specific incident
         #
         # Endpoint: `GET /v1/incident_relationships`. Scopes: incidents.view.
         #

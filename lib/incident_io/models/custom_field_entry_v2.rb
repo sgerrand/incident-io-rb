@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] custom_field
-    #   @return [CustomFieldTypeInfoV2, nil]
-    # @!attribute [r] values
-    #   @return [Array<CustomFieldValueV2>, nil] List of custom field values set on this entry
     CustomFieldEntryV2 = Model.define(
       custom_field: -> { CustomFieldTypeInfoV2 },
       values: [-> { CustomFieldValueV2 }]
     )
+
+    class CustomFieldEntryV2
+      # @!attribute [r] custom_field
+      #   The custom_field field
+      #   @return [CustomFieldTypeInfoV2, nil]
+      # @!attribute [r] values
+      #   List of custom field values set on this entry
+      #   @return [Array<CustomFieldValueV2>, nil]
+    end
   end
 end

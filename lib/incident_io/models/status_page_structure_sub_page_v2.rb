@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] Unique ID of this subpage
-    # @!attribute [r] items
-    #   @return [Array<StatusPageStructureSubPageItemV2>, nil] Array of components and groups belonging to this subpage
-    # @!attribute [r] name
-    #   @return [String, nil] The name of this subpage
     StatusPageStructureSubPageV2 = Model.define(
       id: :string,
       items: [-> { StatusPageStructureSubPageItemV2 }],
       name: :string
     )
+
+    class StatusPageStructureSubPageV2
+      # @!attribute [r] id
+      #   Unique ID of this subpage
+      #   @return [String, nil]
+      # @!attribute [r] items
+      #   Array of components and groups belonging to this subpage
+      #   @return [Array<StatusPageStructureSubPageItemV2>, nil]
+      # @!attribute [r] name
+      #   The name of this subpage
+      #   @return [String, nil]
+    end
   end
 end

@@ -27,7 +27,7 @@ module IncidentIo
       # Raw HTML, image syntax (`![alt](url)`), task lists, and footnotes are not
       # supported, and will be stripped or rendered as plain text.
       class AlertNotes < Resource
-        # Add a note to an alert.
+        # Add a note to an alert
         #
         # Endpoint: `POST /v1/alert_notes`. Scopes: alerts.edit.
         #
@@ -47,7 +47,7 @@ module IncidentIo
           )
         end
 
-        # Delete an alert note.
+        # Delete an alert note
         #
         # Endpoint: `DELETE /v1/alert_notes/{id}`. Scopes: alerts.edit.
         #
@@ -62,7 +62,7 @@ module IncidentIo
           )
         end
 
-        # List alert notes attached to an alert.
+        # List alert notes attached to an alert
         #
         # Endpoint: `GET /v1/alert_notes`. Scopes: alerts.view.
         #
@@ -82,7 +82,7 @@ module IncidentIo
           )
         end
 
-        # Get a single alert note.
+        # Get a single alert note
         #
         # Endpoint: `GET /v1/alert_notes/{id}`. Scopes: alerts.view.
         #
@@ -99,7 +99,7 @@ module IncidentIo
           )
         end
 
-        # Replace the content of an alert note.
+        # Replace the content of an alert note
         #
         # Endpoint: `PUT /v1/alert_notes/{id}`. Scopes: alerts.edit.
         #

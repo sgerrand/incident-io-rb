@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] aliases
-    #   @return [Array<String>, nil] Optional aliases that can be used to reference this entry
-    # @!attribute [r] attribute_values
-    #   @return [Hash{String => CatalogEngineParamBindingPayloadV3}, nil] Values of this entry
-    # @!attribute [r] external_id
-    #   @return [String, nil] An optional alternative ID for this entry, which is ensured to be unique for the type
-    # @!attribute [r] name
-    #   @return [String, nil] Name is the human readable name of this entry
-    # @!attribute [r] rank
-    #   @return [Integer, nil] When catalog type is ranked, this is used to help order things
-    # @!attribute [r] update_attributes
-    #   @return [Array<String>, nil] If provided, only update these attribute_values keys.
     CatalogUpdateEntryPayloadV3 = Model.define(
       aliases: [:string],
       attribute_values: Model.map_of(-> { CatalogEngineParamBindingPayloadV3 }),
@@ -25,5 +13,26 @@ module IncidentIo
       rank: :integer,
       update_attributes: [:string]
     )
+
+    class CatalogUpdateEntryPayloadV3
+      # @!attribute [r] aliases
+      #   Optional aliases that can be used to reference this entry
+      #   @return [Array<String>, nil]
+      # @!attribute [r] attribute_values
+      #   Values of this entry
+      #   @return [Hash{String => CatalogEngineParamBindingPayloadV3}, nil]
+      # @!attribute [r] external_id
+      #   An optional alternative ID for this entry, which is ensured to be unique for…
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Name is the human readable name of this entry
+      #   @return [String, nil]
+      # @!attribute [r] rank
+      #   When catalog type is ranked, this is used to help order things
+      #   @return [Integer, nil]
+      # @!attribute [r] update_attributes
+      #   If provided, only update these attribute_values keys
+      #   @return [Array<String>, nil]
+    end
   end
 end

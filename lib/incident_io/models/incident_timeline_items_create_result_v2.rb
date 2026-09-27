@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_timeline_item
-    #   @return [IncidentTimelineItemV2, nil]
     IncidentTimelineItemsCreateResultV2 = Model.define(
       incident_timeline_item: -> { IncidentTimelineItemV2 }
     )
+
+    class IncidentTimelineItemsCreateResultV2
+      # @!attribute [r] incident_timeline_item
+      #   The incident_timeline_item field
+      #   @return [IncidentTimelineItemV2, nil]
+    end
   end
 end

@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] attributes
-    #   @return [Array<AlertTemplateAttributePayloadV2>, nil] Attributes to set on alerts coming from this source, with a binding describing how to set them.
-    # @!attribute [r] description
-    #   @return [EngineParamBindingValuePayloadV2, nil]
-    # @!attribute [r] expressions
-    #   @return [Array<ExpressionPayloadV2>, nil] Expressions available for use in bindings within this template
-    # @!attribute [r] is_private
-    #   @return [Boolean, nil] Whether or not alerts produced by this source should be private
-    # @!attribute [r] title
-    #   @return [EngineParamBindingValuePayloadV2, nil]
-    # @!attribute [r] visible_to_teams
-    #   @return [EngineParamBindingPayloadV2, nil]
     AlertTemplatePayloadV2 = Model.define(
       attributes: [-> { AlertTemplateAttributePayloadV2 }],
       description: -> { EngineParamBindingValuePayloadV2 },
@@ -25,5 +13,26 @@ module IncidentIo
       title: -> { EngineParamBindingValuePayloadV2 },
       visible_to_teams: -> { EngineParamBindingPayloadV2 }
     )
+
+    class AlertTemplatePayloadV2
+      # @!attribute [r] attributes
+      #   Attributes to set on alerts coming from this source, with a binding…
+      #   @return [Array<AlertTemplateAttributePayloadV2>, nil]
+      # @!attribute [r] description
+      #   The description field
+      #   @return [EngineParamBindingValuePayloadV2, nil]
+      # @!attribute [r] expressions
+      #   Expressions available for use in bindings within this template
+      #   @return [Array<ExpressionPayloadV2>, nil]
+      # @!attribute [r] is_private
+      #   Whether or not alerts produced by this source should be private
+      #   @return [Boolean, nil]
+      # @!attribute [r] title
+      #   The title field
+      #   @return [EngineParamBindingValuePayloadV2, nil]
+      # @!attribute [r] visible_to_teams
+      #   The visible_to_teams field
+      #   @return [EngineParamBindingPayloadV2, nil]
+    end
   end
 end

@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] binding
-    #   @return [EngineParamBindingV3, nil]
-    # @!attribute [r] custom_field_id
-    #   @return [String, nil] ID of the custom field
-    # @!attribute [r] merge_strategy
-    #   @return [String, nil] The strategy to use when multiple alerts match this route One of: first-wins, last-wins, append.
     IncidentTemplateCustomFieldBindingV1 = Model.define(
       binding: -> { EngineParamBindingV3 },
       custom_field_id: :string,
       merge_strategy: :string
     )
+
+    class IncidentTemplateCustomFieldBindingV1
+      # @!attribute [r] binding
+      #   The binding field
+      #   @return [EngineParamBindingV3, nil]
+      # @!attribute [r] custom_field_id
+      #   ID of the custom field
+      #   @return [String, nil]
+      # @!attribute [r] merge_strategy
+      #   The strategy to use when multiple alerts match this route One of: first-wins,…
+      #   @return [String, nil]
+    end
   end
 end

@@ -8,7 +8,7 @@ module IncidentIo
     module V2
       # Manage schedule sync targets (Slack user groups that schedules can sync to).
       class ScheduleSyncTargets < Resource
-        # Create a new schedule sync target for a Slack user group.
+        # Create a new schedule sync target for a Slack user group
         #
         # Endpoint: `POST /v2/schedule_sync_targets`. Scopes: schedule_sync_targets.create.
         #
@@ -26,6 +26,8 @@ module IncidentIo
           )
         end
 
+        # Archive a schedule sync target
+        #
         # Archive a schedule sync target. Will fail if any active sync rules reference this target.
         #
         # Endpoint: `DELETE /v2/schedule_sync_targets/{id}`. Scopes: schedule_sync_targets.destroy.
@@ -41,7 +43,7 @@ module IncidentIo
           )
         end
 
-        # List all schedule sync targets for this organisation.
+        # List all schedule sync targets for this organisation
         #
         # Endpoint: `GET /v2/schedule_sync_targets`. Scopes: schedules.view.
         #
@@ -59,7 +61,7 @@ module IncidentIo
           )
         end
 
-        # Get a single schedule sync target.
+        # Get a single schedule sync target
         #
         # Endpoint: `GET /v2/schedule_sync_targets/{id}`. Scopes: schedules.view.
         #
@@ -76,6 +78,8 @@ module IncidentIo
           )
         end
 
+        # Update the add_bot_to_group flag on a sync target
+        #
         # Update the add_bot_to_group flag on a sync target. The change propagates to every schedule with an active sync rule pointing at this target; the entire operation aborts if the caller lacks edit permission on any of those schedules.
         #
         # Endpoint: `PUT /v2/schedule_sync_targets/{id}`. Scopes: schedule_sync_targets.update.

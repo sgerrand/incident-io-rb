@@ -5,34 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] assignee
-    #   @return [UserV2, nil]
-    # @!attribute [r] assignee_team
-    #   @return [TeamSlimV2, nil]
-    # @!attribute [r] completed_at
-    #   @return [Time, nil] When the follow-up was completed
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When the follow-up was created
-    # @!attribute [r] creator
-    #   @return [ActorV2, nil]
-    # @!attribute [r] description
-    #   @return [String, nil] Description of the follow-up
-    # @!attribute [r] external_issue_reference
-    #   @return [ExternalIssueReferenceV2, nil]
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the follow-up
-    # @!attribute [r] incident_id
-    #   @return [String, nil] Unique identifier of the incident the follow-up belongs to
-    # @!attribute [r] labels
-    #   @return [Array<String>, nil] Labels associated with this follow-up
-    # @!attribute [r] priority
-    #   @return [FollowUpPriorityV2, nil]
-    # @!attribute [r] status
-    #   @return [String, nil] Status of the follow-up One of: outstanding, completed, deleted, not_doing.
-    # @!attribute [r] title
-    #   @return [String, nil] Title of the follow-up
-    # @!attribute [r] updated_at
-    #   @return [Time, nil] When the follow-up was last updated
     FollowUpV2 = Model.define(
       assignee: -> { UserV2 },
       assignee_team: -> { TeamSlimV2 },
@@ -49,5 +21,50 @@ module IncidentIo
       title: :string,
       updated_at: :time
     )
+
+    class FollowUpV2
+      # @!attribute [r] assignee
+      #   The assignee field
+      #   @return [UserV2, nil]
+      # @!attribute [r] assignee_team
+      #   The assignee_team field
+      #   @return [TeamSlimV2, nil]
+      # @!attribute [r] completed_at
+      #   When the follow-up was completed
+      #   @return [Time, nil]
+      # @!attribute [r] created_at
+      #   When the follow-up was created
+      #   @return [Time, nil]
+      # @!attribute [r] creator
+      #   The creator field
+      #   @return [ActorV2, nil]
+      # @!attribute [r] description
+      #   Description of the follow-up
+      #   @return [String, nil]
+      # @!attribute [r] external_issue_reference
+      #   The external_issue_reference field
+      #   @return [ExternalIssueReferenceV2, nil]
+      # @!attribute [r] id
+      #   Unique identifier for the follow-up
+      #   @return [String, nil]
+      # @!attribute [r] incident_id
+      #   Unique identifier of the incident the follow-up belongs to
+      #   @return [String, nil]
+      # @!attribute [r] labels
+      #   Labels associated with this follow-up
+      #   @return [Array<String>, nil]
+      # @!attribute [r] priority
+      #   The priority field
+      #   @return [FollowUpPriorityV2, nil]
+      # @!attribute [r] status
+      #   Status of the follow-up One of: outstanding, completed, deleted, not_doing
+      #   @return [String, nil]
+      # @!attribute [r] title
+      #   Title of the follow-up
+      #   @return [String, nil]
+      # @!attribute [r] updated_at
+      #   When the follow-up was last updated
+      #   @return [Time, nil]
+    end
   end
 end

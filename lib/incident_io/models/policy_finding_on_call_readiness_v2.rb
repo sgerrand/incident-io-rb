@@ -5,18 +5,23 @@
 
 module IncidentIo
   module Models
-    # Set when policy_type is on_call_readiness. The user is always the one the finding is about.
-    #
-    # @!attribute [r] high_urgency
-    #   @return [Array<PolicyFindingReadinessRuleV2>, nil] The high urgency rules the policy requires, and whether each was met
-    # @!attribute [r] low_urgency
-    #   @return [Array<PolicyFindingReadinessRuleV2>, nil] The low urgency rules the policy requires, and whether each was met
-    # @!attribute [r] user_id
-    #   @return [String, nil] The user whose notification rules fell short
     PolicyFindingOnCallReadinessV2 = Model.define(
       high_urgency: [-> { PolicyFindingReadinessRuleV2 }],
       low_urgency: [-> { PolicyFindingReadinessRuleV2 }],
       user_id: :string
     )
+
+    # Set when policy_type is on_call_readiness. The user is always the one the finding is about.
+    class PolicyFindingOnCallReadinessV2
+      # @!attribute [r] high_urgency
+      #   The high urgency rules the policy requires, and whether each was met
+      #   @return [Array<PolicyFindingReadinessRuleV2>, nil]
+      # @!attribute [r] low_urgency
+      #   The low urgency rules the policy requires, and whether each was met
+      #   @return [Array<PolicyFindingReadinessRuleV2>, nil]
+      # @!attribute [r] user_id
+      #   The user whose notification rules fell short
+      #   @return [String, nil]
+    end
   end
 end

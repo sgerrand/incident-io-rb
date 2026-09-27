@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] data_synced_at
-    #   @return [Time, nil] The time the workload figures are calculated up to.
     WorkloadMetadataV2 = Model.define(
       data_synced_at: :time
     )
+
+    class WorkloadMetadataV2
+      # @!attribute [r] data_synced_at
+      #   The time the workload figures are calculated up to
+      #   @return [Time, nil]
+    end
   end
 end

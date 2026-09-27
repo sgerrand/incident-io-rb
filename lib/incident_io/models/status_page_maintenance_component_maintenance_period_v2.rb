@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] component_id
-    #   @return [String, nil] The ID of the affected component.
-    # @!attribute [r] end_at
-    #   @return [Time, nil] When the component stopped being under maintenance.
-    # @!attribute [r] start_at
-    #   @return [Time, nil] When the component started being under maintenance
     StatusPageMaintenanceComponentMaintenancePeriodV2 = Model.define(
       component_id: :string,
       end_at: :time,
       start_at: :time
     )
+
+    class StatusPageMaintenanceComponentMaintenancePeriodV2
+      # @!attribute [r] component_id
+      #   The ID of the affected component
+      #   @return [String, nil]
+      # @!attribute [r] end_at
+      #   When the component stopped being under maintenance
+      #   @return [Time, nil]
+      # @!attribute [r] start_at
+      #   When the component started being under maintenance
+      #   @return [Time, nil]
+    end
   end
 end

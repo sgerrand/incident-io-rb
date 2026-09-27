@@ -5,18 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] debug
-    #   @return [ErrorDebug, nil]
-    # @!attribute [r] errors
-    #   @return [Array<ErrorSingle>, nil] List of errors that caused this request to fail
-    # @!attribute [r] rate_limit
-    #   @return [ErrorRateLimit, nil]
-    # @!attribute [r] request_id
-    #   @return [String, nil] Unique identifier of the request
-    # @!attribute [r] status
-    #   @return [Integer, nil] HTTP status of the response
-    # @!attribute [r] type
-    #   @return [String, nil] Machine-readable identifier for the general category of error One of: invalid_request_error, authentication_error, resource_forbidden, not_found, not_acceptable, method_not_allowed, request_timeout, conflict, precondition_failed, payload_too_large, validation_error, too_many_requests, api_error, rate_limit_reached, client_timeout.
     ErrorResponse = Model.define(
       debug: -> { ErrorDebug },
       errors: [-> { ErrorSingle }],
@@ -25,5 +13,26 @@ module IncidentIo
       status: :integer,
       type: :string
     )
+
+    class ErrorResponse
+      # @!attribute [r] debug
+      #   The debug field
+      #   @return [ErrorDebug, nil]
+      # @!attribute [r] errors
+      #   List of errors that caused this request to fail
+      #   @return [Array<ErrorSingle>, nil]
+      # @!attribute [r] rate_limit
+      #   The rate_limit field
+      #   @return [ErrorRateLimit, nil]
+      # @!attribute [r] request_id
+      #   Unique identifier of the request
+      #   @return [String, nil]
+      # @!attribute [r] status
+      #   HTTP status of the response
+      #   @return [Integer, nil]
+      # @!attribute [r] type
+      #   Machine-readable identifier for the general category of error One of:…
+      #   @return [String, nil]
+    end
   end
 end

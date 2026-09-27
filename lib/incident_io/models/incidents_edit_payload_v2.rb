@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident
-    #   @return [IncidentEditPayloadV2, nil]
-    # @!attribute [r] notify_incident_channel
-    #   @return [Boolean, nil] Should we send Slack channel notifications to inform responders of this update?
     IncidentsEditPayloadV2 = Model.define(
       incident: -> { IncidentEditPayloadV2 },
       notify_incident_channel: :boolean
     )
+
+    class IncidentsEditPayloadV2
+      # @!attribute [r] incident
+      #   The incident field
+      #   @return [IncidentEditPayloadV2, nil]
+      # @!attribute [r] notify_incident_channel
+      #   Should we send Slack channel notifications to inform responders of this update?
+      #   @return [Boolean, nil]
+    end
   end
 end

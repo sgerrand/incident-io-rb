@@ -168,6 +168,23 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
       expect(writer.call(ops["list"].with(result: ops["show"].result), 0)).to include("query: {page_size:, after:, kind:}")
     end
 
+    it "puts a one-line summary before a longer description" do
+      op = ops["show"].with(description: "Shows a widget. Includes its parts.")
+
+      expect(writer.method_docs(op, 0)).to start_with("# Shows a widget\n#\n# Shows a widget. Includes its parts.\n#\n")
+      expect(writer.method_docs(ops["show"], 0)).to start_with("# Does Widgets V2#Show\n#\n# Endpoint:")
+    end
+
+    it "makes one-line summaries" do
+      expect(writer.summary("Create a new incident.\n\nMore detail.", "x")).to eq("Create a new incident")
+      expect(writer.summary("Lists these:", "x")).to eq("Lists these")
+      expect(writer.summary(nil, "The id field")).to eq("The id field")
+
+      long = writer.summary("word " * 30, "x")
+      expect(long.length).to be < 80
+      expect(long).to end_with("word…")
+    end
+
     it "handles sentences" do
       expect(writer.sentence("Done.")).to eq("Done.")
       expect(writer.sentence("Done")).to eq("Done.")

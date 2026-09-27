@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier of this incident relationship
-    # @!attribute [r] incident
-    #   @return [IncidentRelationshipDetailsV1, nil]
     IncidentRelationshipV1 = Model.define(
       id: :string,
       incident: -> { IncidentRelationshipDetailsV1 }
     )
+
+    class IncidentRelationshipV1
+      # @!attribute [r] id
+      #   Unique identifier of this incident relationship
+      #   @return [String, nil]
+      # @!attribute [r] incident
+      #   The incident field
+      #   @return [IncidentRelationshipDetailsV1, nil]
+    end
   end
 end

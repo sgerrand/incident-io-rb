@@ -5,16 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] component_statuses
-    #   @return [Array<StatusPageMaintenanceAffectedComponentV2>, nil] An array of mappings from component ID to component status.
-    # @!attribute [r] maintenance_status
-    #   @return [String, nil] Optional new status for this status page maintenance window.
-    # @!attribute [r] message
-    #   @return [String, nil] Markdown update on what's changed about this status page maintenance window
-    # @!attribute [r] notify_subscribers
-    #   @return [Boolean, nil] Whether to notify subscribers about this status page maintenance update.
-    # @!attribute [r] status_page_maintenance_id
-    #   @return [String, nil] ID of the status page maintenance window
     StatusPagesCreateStatusPageMaintenanceUpdatePayloadV2 = Model.define(
       component_statuses: [-> { StatusPageMaintenanceAffectedComponentV2 }],
       maintenance_status: :string,
@@ -22,5 +12,23 @@ module IncidentIo
       notify_subscribers: :boolean,
       status_page_maintenance_id: :string
     )
+
+    class StatusPagesCreateStatusPageMaintenanceUpdatePayloadV2
+      # @!attribute [r] component_statuses
+      #   An array of mappings from component ID to component status
+      #   @return [Array<StatusPageMaintenanceAffectedComponentV2>, nil]
+      # @!attribute [r] maintenance_status
+      #   Optional new status for this status page maintenance window
+      #   @return [String, nil]
+      # @!attribute [r] message
+      #   Markdown update on what's changed about this status page maintenance window
+      #   @return [String, nil]
+      # @!attribute [r] notify_subscribers
+      #   Whether to notify subscribers about this status page maintenance update
+      #   @return [Boolean, nil]
+      # @!attribute [r] status_page_maintenance_id
+      #   ID of the status page maintenance window
+      #   @return [String, nil]
+    end
   end
 end

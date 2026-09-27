@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] new_status
-    #   @return [IncidentStatusV2, nil]
-    # @!attribute [r] previous_status
-    #   @return [IncidentStatusV2, nil]
-    # @!attribute [r] updater
-    #   @return [ActorV2, nil]
     ActivityStatusChangeV2 = Model.define(
       new_status: -> { IncidentStatusV2 },
       previous_status: -> { IncidentStatusV2 },
       updater: -> { ActorV2 }
     )
+
+    class ActivityStatusChangeV2
+      # @!attribute [r] new_status
+      #   The new_status field
+      #   @return [IncidentStatusV2, nil]
+      # @!attribute [r] previous_status
+      #   The previous_status field
+      #   @return [IncidentStatusV2, nil]
+      # @!attribute [r] updater
+      #   The updater field
+      #   @return [ActorV2, nil]
+    end
   end
 end

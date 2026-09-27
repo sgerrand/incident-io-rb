@@ -5,19 +5,26 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] custom_field_id
-    #   @return [String, nil] ID of the custom field this option belongs to
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for the custom field option
-    # @!attribute [r] sort_key
-    #   @return [Integer, nil] Sort key used to order the custom field options correctly
-    # @!attribute [r] value
-    #   @return [String, nil] Human readable name for the custom field option.
     CustomFieldOptionV2 = Model.define(
       custom_field_id: :string,
       id: :string,
       sort_key: :integer,
       value: :string
     )
+
+    class CustomFieldOptionV2
+      # @!attribute [r] custom_field_id
+      #   ID of the custom field this option belongs to
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier for the custom field option
+      #   @return [String, nil]
+      # @!attribute [r] sort_key
+      #   Sort key used to order the custom field options correctly
+      #   @return [Integer, nil]
+      # @!attribute [r] value
+      #   Human readable name for the custom field option
+      #   @return [String, nil]
+    end
   end
 end

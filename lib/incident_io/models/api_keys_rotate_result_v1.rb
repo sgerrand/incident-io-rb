@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] api_key
-    #   @return [APIKeyV1, nil]
-    # @!attribute [r] token
-    #   @return [String, nil] The new bearer token to use in API requests.
     APIKeysRotateResultV1 = Model.define(
       api_key: -> { APIKeyV1 },
       token: :string
     )
+
+    class APIKeysRotateResultV1
+      # @!attribute [r] api_key
+      #   The api_key field
+      #   @return [APIKeyV1, nil]
+      # @!attribute [r] token
+      #   The new bearer token to use in API requests
+      #   @return [String, nil]
+    end
   end
 end

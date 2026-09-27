@@ -4,14 +4,6 @@
 
 module IncidentIo
   module Models
-<%= helpers.comment(model.description, 4) -%>
-<% if model.description && model.fields.any? -%>
-    #
-<% end -%>
-<% model.fields.each do |f| -%>
-    # @!attribute [r] <%= f.member %>
-    #   @return [<%= f.yard %>, nil]<%= " #{helpers.first_sentence(f.description)}" if f.description %>
-<% end -%>
 <% if model.fields.empty? -%>
     <%= model.name %> = Model.define
 <% else -%>
@@ -21,5 +13,15 @@ module IncidentIo
 <% end -%>
     )
 <% end -%>
+
+<%# Reopened so YARD documents the model as a class, with its fields. -%>
+<%= helpers.comment(model.description, 4) -%>
+    class <%= model.name %>
+<% model.fields.each do |f| -%>
+      # @!attribute [r] <%= f.member %>
+      #   <%= helpers.summary(f.description, "The #{f.api_name} field") %>
+      #   @return [<%= f.yard %>, nil]
+<% end -%>
+    end
   end
 end

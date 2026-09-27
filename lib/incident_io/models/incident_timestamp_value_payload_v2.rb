@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] incident_timestamp_id
-    #   @return [String, nil] The id of the incident timestamp that this incident timestamp value is associated with.
-    # @!attribute [r] value
-    #   @return [Time, nil] The current value of this timestamp, for this incident
     IncidentTimestampValuePayloadV2 = Model.define(
       incident_timestamp_id: :string,
       value: :time
     )
+
+    class IncidentTimestampValuePayloadV2
+      # @!attribute [r] incident_timestamp_id
+      #   The id of the incident timestamp that this incident timestamp value is…
+      #   @return [String, nil]
+      # @!attribute [r] value
+      #   The current value of this timestamp, for this incident
+      #   @return [Time, nil]
+    end
   end
 end

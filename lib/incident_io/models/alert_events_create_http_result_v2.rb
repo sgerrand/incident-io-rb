@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] deduplication_key
-    #   @return [String, nil] The deduplication key that the event has been processed with
-    # @!attribute [r] message
-    #   @return [String, nil] Human readable message giving detail about the event
-    # @!attribute [r] status
-    #   @return [String, nil] Status of the event
     AlertEventsCreateHTTPResultV2 = Model.define(
       deduplication_key: :string,
       message: :string,
       status: :string
     )
+
+    class AlertEventsCreateHTTPResultV2
+      # @!attribute [r] deduplication_key
+      #   The deduplication key that the event has been processed with
+      #   @return [String, nil]
+      # @!attribute [r] message
+      #   Human readable message giving detail about the event
+      #   @return [String, nil]
+      # @!attribute [r] status
+      #   Status of the event
+      #   @return [String, nil]
+    end
   end
 end

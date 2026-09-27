@@ -5,24 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] base_role
-    #   @return [RBACRoleV2, nil]
-    # @!attribute [r] custom_roles
-    #   @return [Array<RBACRoleV2>, nil]
-    # @!attribute [r] email
-    #   @return [String, nil] Email address of the user.
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier of the user
-    # @!attribute [r] is_active
-    #   @return [Boolean, nil] Whether the user is active.
-    # @!attribute [r] name
-    #   @return [String, nil] Name of the user
-    # @!attribute [r] role
-    #   @return [String, nil] DEPRECATED: Role of the user as of March 9th 2023, this value is no longer updated.
-    # @!attribute [r] seats
-    #   @return [UserSeatsV2, nil]
-    # @!attribute [r] slack_user_id
-    #   @return [String, nil] Slack ID of the user
     UserWithRolesV2 = Model.define(
       base_role: -> { RBACRoleV2 },
       custom_roles: [-> { RBACRoleV2 }],
@@ -34,5 +16,35 @@ module IncidentIo
       seats: -> { UserSeatsV2 },
       slack_user_id: :string
     )
+
+    class UserWithRolesV2
+      # @!attribute [r] base_role
+      #   The base_role field
+      #   @return [RBACRoleV2, nil]
+      # @!attribute [r] custom_roles
+      #   The custom_roles field
+      #   @return [Array<RBACRoleV2>, nil]
+      # @!attribute [r] email
+      #   Email address of the user
+      #   @return [String, nil]
+      # @!attribute [r] id
+      #   Unique identifier of the user
+      #   @return [String, nil]
+      # @!attribute [r] is_active
+      #   Whether the user is active
+      #   @return [Boolean, nil]
+      # @!attribute [r] name
+      #   Name of the user
+      #   @return [String, nil]
+      # @!attribute [r] role
+      #   DEPRECATED: Role of the user as of March 9th 2023, this value is no longer…
+      #   @return [String, nil]
+      # @!attribute [r] seats
+      #   The seats field
+      #   @return [UserSeatsV2, nil]
+      # @!attribute [r] slack_user_id
+      #   Slack ID of the user
+      #   @return [String, nil]
+    end
   end
 end

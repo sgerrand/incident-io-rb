@@ -11,6 +11,8 @@ module IncidentIo
       # With incident.io On-call you can create escalation paths that describe how a page should
       # be escalated to people and schedules.
       class Escalations < Resource
+        # Cancel an escalation
+        #
         # Cancel an escalation.
         #
         # Cancelling an escalation stops any further paging: notifications cease and the
@@ -35,6 +37,8 @@ module IncidentIo
           )
         end
 
+        # Check whether the given users can currently acknowledge, decline, or snooze…
+        #
         # Check whether the given users can currently acknowledge, decline, or snooze an escalation.
         #
         # This is a read-only projection of the escalation's current state, intended for deciding
@@ -59,6 +63,8 @@ module IncidentIo
           )
         end
 
+        # Create an escalation
+        #
         # Create an escalation.
         #
         # An escalation pages people, either according to an escalation path, or directly to
@@ -111,6 +117,8 @@ module IncidentIo
           )
         end
 
+        # Create an escalation path
+        #
         # Create an escalation path.
         #
         # An escalation path is a series of steps that describe how a page should be escalated,
@@ -162,6 +170,8 @@ module IncidentIo
           )
         end
 
+        # Archives an escalation path
+        #
         # Archives an escalation path.
         #
         # We recommend you create escalation paths in the incident.io dashboard where our path
@@ -180,6 +190,8 @@ module IncidentIo
           )
         end
 
+        # List all escalations for your account
+        #
         # List all escalations for your account.
         #
         # This endpoint supports a number of filters, which can help find escalations matching certain
@@ -290,6 +302,8 @@ module IncidentIo
           )
         end
 
+        # List all escalation paths in your account
+        #
         # List all escalation paths in your account.
         #
         # An escalation path is a series of steps that describe how a page should be escalated,
@@ -312,6 +326,8 @@ module IncidentIo
           )
         end
 
+        # Reassign an escalation to a different escalation path or set of users
+        #
         # Reassign an escalation to a different escalation path or set of users.
         #
         # Use this when a page reached the wrong people. Reassigning creates a new escalation
@@ -373,6 +389,8 @@ module IncidentIo
           )
         end
 
+        # Respond to an escalation
+        #
         # Respond to an escalation.
         #
         # An API key can acknowledge or snooze an escalation on its own, and the response is
@@ -399,7 +417,7 @@ module IncidentIo
           )
         end
 
-        # Show a specific escalation.
+        # Show a specific escalation
         #
         # Endpoint: `GET /v2/escalations/{id}`. Scopes: escalations.view.
         #
@@ -416,6 +434,8 @@ module IncidentIo
           )
         end
 
+        # Show an escalation path
+        #
         # Show an escalation path.
         #
         # We recommend you create escalation paths in the incident.io dashboard where our path
@@ -436,6 +456,8 @@ module IncidentIo
           )
         end
 
+        # Updates an escalation path
+        #
         # Updates an escalation path.
         #
         # We recommend you create escalation paths in the incident.io dashboard where our path

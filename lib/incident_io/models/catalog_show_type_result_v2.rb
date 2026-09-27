@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] catalog_type
-    #   @return [CatalogTypeV2, nil]
     CatalogShowTypeResultV2 = Model.define(
       catalog_type: -> { CatalogTypeV2 }
     )
+
+    class CatalogShowTypeResultV2
+      # @!attribute [r] catalog_type
+      #   The catalog_type field
+      #   @return [CatalogTypeV2, nil]
+    end
   end
 end

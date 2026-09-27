@@ -12,7 +12,7 @@ module IncidentIo
       # resources. Teams are built on top of catalog entries, allowing you to enrich them with
       # custom attributes.
       class Teams < Resource
-        # List all teams in the organisation.
+        # List all teams in the organisation
         #
         # Endpoint: `GET /v3/teams`. Scopes: catalog_entries.view.
         #
@@ -30,7 +30,7 @@ module IncidentIo
           )
         end
 
-        # Get a single team.
+        # Get a single team
         #
         # Endpoint: `GET /v3/teams/{id}`. Scopes: catalog_entries.view.
         #

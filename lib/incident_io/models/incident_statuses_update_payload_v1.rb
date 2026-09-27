@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] description
-    #   @return [String, nil] Rich text description of the incident status
-    # @!attribute [r] name
-    #   @return [String, nil] Unique name of this status
-    # @!attribute [r] rank
-    #   @return [Integer, nil] Where this status sits within its category, lowest rank first.
     IncidentStatusesUpdatePayloadV1 = Model.define(
       description: :string,
       name: :string,
       rank: :integer
     )
+
+    class IncidentStatusesUpdatePayloadV1
+      # @!attribute [r] description
+      #   Rich text description of the incident status
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   Unique name of this status
+      #   @return [String, nil]
+      # @!attribute [r] rank
+      #   Where this status sits within its category, lowest rank first
+      #   @return [Integer, nil]
+    end
   end
 end

@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] pay_report
-    #   @return [PayReportV2, nil]
     PayReportsPublishResultV2 = Model.define(
       pay_report: -> { PayReportV2 }
     )
+
+    class PayReportsPublishResultV2
+      # @!attribute [r] pay_report
+      #   The pay_report field
+      #   @return [PayReportV2, nil]
+    end
   end
 end

@@ -5,20 +5,6 @@
 
 module IncidentIo
   module Models
-    # Represents a partial entry update, allowing selective field updates
-    #
-    # @!attribute [r] aliases
-    #   @return [Array<String>, nil] If specified, will update the aliases of the entry.
-    # @!attribute [r] attribute_values
-    #   @return [Hash{String => CatalogEngineParamBindingPayloadV3}, nil] The attribute values to apply to this entry
-    # @!attribute [r] entry_id
-    #   @return [String, nil] ID of the relevant catalog entry
-    # @!attribute [r] external_id
-    #   @return [String, nil] If specified, will update the external ID of the entry.
-    # @!attribute [r] name
-    #   @return [String, nil] If specified, will update the name of the entry.
-    # @!attribute [r] rank
-    #   @return [Integer, nil] If specified, will update the rank of the entry.
     PartialEntryPayloadV3 = Model.define(
       aliases: [:string],
       attribute_values: Model.map_of(-> { CatalogEngineParamBindingPayloadV3 }),
@@ -27,5 +13,27 @@ module IncidentIo
       name: :string,
       rank: :integer
     )
+
+    # Represents a partial entry update, allowing selective field updates
+    class PartialEntryPayloadV3
+      # @!attribute [r] aliases
+      #   If specified, will update the aliases of the entry
+      #   @return [Array<String>, nil]
+      # @!attribute [r] attribute_values
+      #   The attribute values to apply to this entry
+      #   @return [Hash{String => CatalogEngineParamBindingPayloadV3}, nil]
+      # @!attribute [r] entry_id
+      #   ID of the relevant catalog entry
+      #   @return [String, nil]
+      # @!attribute [r] external_id
+      #   If specified, will update the external ID of the entry
+      #   @return [String, nil]
+      # @!attribute [r] name
+      #   If specified, will update the name of the entry
+      #   @return [String, nil]
+      # @!attribute [r] rank
+      #   If specified, will update the rank of the entry
+      #   @return [Integer, nil]
+    end
   end
 end

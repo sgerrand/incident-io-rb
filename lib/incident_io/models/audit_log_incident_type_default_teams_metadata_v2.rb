@@ -5,13 +5,18 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] after_default_team_ids
-    #   @return [String, nil] Catalog entry IDs of the default teams after the change, comma separated
-    # @!attribute [r] before_default_team_ids
-    #   @return [String, nil] Catalog entry IDs of the default teams before the change, comma separated
     AuditLogIncidentTypeDefaultTeamsMetadataV2 = Model.define(
       after_default_team_ids: :string,
       before_default_team_ids: :string
     )
+
+    class AuditLogIncidentTypeDefaultTeamsMetadataV2
+      # @!attribute [r] after_default_team_ids
+      #   Catalog entry IDs of the default teams after the change, comma separated
+      #   @return [String, nil]
+      # @!attribute [r] before_default_team_ids
+      #   Catalog entry IDs of the default teams before the change, comma separated
+      #   @return [String, nil]
+    end
   end
 end

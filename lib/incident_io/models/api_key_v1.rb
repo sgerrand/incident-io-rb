@@ -5,26 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] comments
-    #   @return [String, nil] Freeform notes about this API key
-    # @!attribute [r] created_at
-    #   @return [Time, nil] When the API key was created
-    # @!attribute [r] creator
-    #   @return [ActorV1, nil]
-    # @!attribute [r] id
-    #   @return [String, nil] Unique identifier for this API key
-    # @!attribute [r] last_used_at
-    #   @return [Time, nil] When the key was last used to authenticate a request
-    # @!attribute [r] name
-    #   @return [String, nil] The name of the API key, for the user's reference
-    # @!attribute [r] roles
-    #   @return [Array<APIKeyRoleV1>, nil] The account-level roles assigned to this API key
-    # @!attribute [r] team_ids
-    #   @return [Array<String>, nil] IDs of teams that this API key is scoped to
-    # @!attribute [r] team_roles
-    #   @return [Array<APIKeyTeamRoleV1>, nil] The team-level roles assigned to this API key
-    # @!attribute [r] token_last_issued_at
-    #   @return [Time, nil] When the current token for this API was last issued.
     APIKeyV1 = Model.define(
       comments: :string,
       created_at: :time,
@@ -37,5 +17,38 @@ module IncidentIo
       team_roles: [-> { APIKeyTeamRoleV1 }],
       token_last_issued_at: :time
     )
+
+    class APIKeyV1
+      # @!attribute [r] comments
+      #   Freeform notes about this API key
+      #   @return [String, nil]
+      # @!attribute [r] created_at
+      #   When the API key was created
+      #   @return [Time, nil]
+      # @!attribute [r] creator
+      #   The creator field
+      #   @return [ActorV1, nil]
+      # @!attribute [r] id
+      #   Unique identifier for this API key
+      #   @return [String, nil]
+      # @!attribute [r] last_used_at
+      #   When the key was last used to authenticate a request
+      #   @return [Time, nil]
+      # @!attribute [r] name
+      #   The name of the API key, for the user's reference
+      #   @return [String, nil]
+      # @!attribute [r] roles
+      #   The account-level roles assigned to this API key
+      #   @return [Array<APIKeyRoleV1>, nil]
+      # @!attribute [r] team_ids
+      #   IDs of teams that this API key is scoped to
+      #   @return [Array<String>, nil]
+      # @!attribute [r] team_roles
+      #   The team-level roles assigned to this API key
+      #   @return [Array<APIKeyTeamRoleV1>, nil]
+      # @!attribute [r] token_last_issued_at
+      #   When the current token for this API was last issued
+      #   @return [Time, nil]
+    end
   end
 end

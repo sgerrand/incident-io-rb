@@ -5,16 +5,22 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] datadog_config
-    #   @return [TelemetryDatadogUpdateConfigV2, nil]
-    # @!attribute [r] grafana_config
-    #   @return [TelemetryGrafanaUpdateConfigV2, nil]
-    # @!attribute [r] name
-    #   @return [String, nil] Updated display name
     TelemetryUpdateDataSourcePayloadV2 = Model.define(
       datadog_config: -> { TelemetryDatadogUpdateConfigV2 },
       grafana_config: -> { TelemetryGrafanaUpdateConfigV2 },
       name: :string
     )
+
+    class TelemetryUpdateDataSourcePayloadV2
+      # @!attribute [r] datadog_config
+      #   The datadog_config field
+      #   @return [TelemetryDatadogUpdateConfigV2, nil]
+      # @!attribute [r] grafana_config
+      #   The grafana_config field
+      #   @return [TelemetryGrafanaUpdateConfigV2, nil]
+      # @!attribute [r] name
+      #   Updated display name
+      #   @return [String, nil]
+    end
   end
 end

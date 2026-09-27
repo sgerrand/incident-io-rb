@@ -5,22 +5,6 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] custom_field_id
-    #   @return [String, nil] ID of the custom field to show, for custom field fields
-    # @!attribute [r] emoji
-    #   @return [String, nil] Emoji shown next to this field
-    # @!attribute [r] field_type
-    #   @return [String, nil] Type of this field One of: announcement_post_fields_status, announcement_post_fields_incident_type, announcement_post_fields_severity, announcement_post_fields_role, announcement_post_fields_description, announcement_post_fields_custom_field, announcement_post_fields_timestamp, announcement_post_fields_creator, announcement_post_fields_slack, announcement_post_fields_rich_text.
-    # @!attribute [r] incident_role_id
-    #   @return [String, nil] ID of the incident role to show, for incident role fields
-    # @!attribute [r] incident_timestamp_id
-    #   @return [String, nil] ID of the incident timestamp to show, for incident timestamp fields
-    # @!attribute [r] rank
-    #   @return [Integer, nil] Position of this field on the post, lowest first
-    # @!attribute [r] rich_text
-    #   @return [AnnouncementTemplateRichTextV2, nil]
-    # @!attribute [r] title
-    #   @return [String, nil] Title shown next to this field, derived from its type
     AnnouncementTemplateFieldV2 = Model.define(
       custom_field_id: :string,
       emoji: :string,
@@ -31,5 +15,32 @@ module IncidentIo
       rich_text: -> { AnnouncementTemplateRichTextV2 },
       title: :string
     )
+
+    class AnnouncementTemplateFieldV2
+      # @!attribute [r] custom_field_id
+      #   ID of the custom field to show, for custom field fields
+      #   @return [String, nil]
+      # @!attribute [r] emoji
+      #   Emoji shown next to this field
+      #   @return [String, nil]
+      # @!attribute [r] field_type
+      #   Type of this field One of: announcement_post_fields_status,…
+      #   @return [String, nil]
+      # @!attribute [r] incident_role_id
+      #   ID of the incident role to show, for incident role fields
+      #   @return [String, nil]
+      # @!attribute [r] incident_timestamp_id
+      #   ID of the incident timestamp to show, for incident timestamp fields
+      #   @return [String, nil]
+      # @!attribute [r] rank
+      #   Position of this field on the post, lowest first
+      #   @return [Integer, nil]
+      # @!attribute [r] rich_text
+      #   The rich_text field
+      #   @return [AnnouncementTemplateRichTextV2, nil]
+      # @!attribute [r] title
+      #   Title shown next to this field, derived from its type
+      #   @return [String, nil]
+    end
   end
 end

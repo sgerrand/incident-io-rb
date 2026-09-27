@@ -5,10 +5,14 @@
 
 module IncidentIo
   module Models
-    # @!attribute [r] workflows
-    #   @return [Array<WorkflowSlimV2>, nil]
     WorkflowsListWorkflowsResultV2 = Model.define(
       workflows: [-> { WorkflowSlimV2 }]
     )
+
+    class WorkflowsListWorkflowsResultV2
+      # @!attribute [r] workflows
+      #   The workflows field
+      #   @return [Array<WorkflowSlimV2>, nil]
+    end
   end
 end

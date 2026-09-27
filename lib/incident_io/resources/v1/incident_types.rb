@@ -11,7 +11,7 @@ module IncidentIo
       # With incident types enabled, you can tailor your process to the situation you're
       # responding to with different custom fields and roles for each incident type.
       class IncidentTypes < Resource
-        # List all incident types for an organisation.
+        # List all incident types for an organisation
         #
         # Endpoint: `GET /v1/incident_types`. Scopes: incident_types.view.
         #
@@ -27,7 +27,7 @@ module IncidentIo
           )
         end
 
-        # Get a single incident type.
+        # Get a single incident type
         #
         # Endpoint: `GET /v1/incident_types/{id}`. Scopes: incident_types.view.
         #
