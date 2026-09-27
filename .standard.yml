@@ -1,1 +1,4 @@
 ruby_version: 3.3
+plugins:
+  # Checks YARD tags, e.g. that @param names match the method's arguments.
+  - rubocop-yard

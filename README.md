@@ -123,7 +123,7 @@ The client retries up to 2 times (change this with `max_retries:`):
 bundle install
 bundle exec rake            # run the specs
 COVERAGE=1 bundle exec rake # run the specs and write coverage/index.html
-bundle exec rake standard   # lint with Standard (standard:fix to fix)
+bundle exec rake standard   # lint code and YARD tags (standard:fix to fix)
 bundle exec rake typecheck  # type-check with Steep
 bundle exec rake yardstick  # check the YARD docs with Yardstick
 ```

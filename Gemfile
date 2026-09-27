@@ -20,6 +20,7 @@ end
 # lint job.
 group :lint do
   gem "rubocop"
+  gem "rubocop-yard", "~> 1.3"
   gem "standard", "~> 1.56"
 end
 
