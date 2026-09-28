@@ -2,6 +2,7 @@
 
 [![Test](https://github.com/sgerrand/incident-io-rb/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/sgerrand/incident-io-rb/actions/workflows/test.yml)
 [![Gem Version](https://img.shields.io/gem/v/incident-io)](https://rubygems.org/gems/incident-io)
+[![Docs](https://img.shields.io/badge/docs-gemdocs.org-blue)](https://gemdocs.org/gems/incident-io/latest)
 [![Coverage Status](https://coveralls.io/repos/github/sgerrand/incident-io-rb/badge.svg?branch=main)](https://coveralls.io/github/sgerrand/incident-io-rb?branch=main)
 
 A Ruby client for the incident.io API.

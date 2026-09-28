@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
     "source_code_uri" => s.homepage,
     "bug_tracker_uri" => "#{s.homepage}/issues",
     "changelog_uri" => "#{s.homepage}/blob/main/CHANGELOG.md",
+    "documentation_uri" => "https://gemdocs.org/gems/#{s.name}/#{s.version}/",
     "rubygems_mfa_required" => "true"
   }
 
