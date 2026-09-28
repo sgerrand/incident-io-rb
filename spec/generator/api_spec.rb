@@ -138,6 +138,9 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
       "a resource named like a Client method" => [/resource name request clashes with a Client method/, ->(s) {
         s["paths"]["/v1/request"] = {"get" => operation("Request V1#Show", "WidgetsShowResultV2")}
       }],
+      "a resource named like a private Client method" => [/resource name log clashes with a Client method/, ->(s) {
+        s["paths"]["/v2/log"] = {"get" => operation("Log V2#Show", "WidgetsShowResultV2")}
+      }],
       "a paginated GET with a body" => [/Widgets V2#List: paginated operations must be GETs without a body/, ->(s) {
         s["paths"]["/v2/widgets"]["get"]["requestBody"] = s["paths"]["/v2/widgets"]["post"]["requestBody"]
       }],
@@ -170,6 +173,16 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
 
         expect { described_class.new(spec) }.to raise_error(IncidentIoGenerator::Error, message)
       end
+    end
+
+    it "reserves every method Client defines" do
+      client_methods = IncidentIo::Client.instance_methods(false) + IncidentIo::Client.private_instance_methods(false) +
+        IncidentIo::Resources::Accessors.private_instance_methods(false)
+
+      # `rake spec:rbs` wraps each checked method in extra "__RBS_TEST_" ones.
+      names = client_methods.map(&:to_s).grep_v(/__RBS_TEST_/)
+
+      expect(described_class::CLIENT_METHODS).to include(*names)
     end
 
     it "rejects a method named like a Resource helper" do

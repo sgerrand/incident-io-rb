@@ -58,8 +58,14 @@ module IncidentIoGenerator
 
   # Reads the OpenAPI spec into the resources and models to generate.
   class Api
-    # Methods already on IncidentIo::Client; resources can't use these names.
-    CLIENT_METHODS = %w[request execute paginate inspect base_url timeout open_timeout max_retries logger].freeze
+    # Methods already on IncidentIo::Client, public and private; resources
+    # can't use these names. Kept by hand because Client needs the generated
+    # code to load.
+    CLIENT_METHODS = %w[
+      request execute paginate inspect base_url timeout open_timeout max_retries logger
+      initialize with_retries perform retry_delay backoff build_url build_headers normalize_options redact log
+      resource_cache
+    ].freeze
     # Methods on IncidentIo::Resource; operations can't use these names.
     RESOURCE_METHODS = (IncidentIo::Resource.instance_methods(false) + IncidentIo::Resource.private_instance_methods(false))
       .map(&:to_s).freeze
