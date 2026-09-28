@@ -125,7 +125,7 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
       "http_method" => "post", "path" => "/v2/widgets", "path_args" => [],
       "keyword_args" => {"name" => "name-value"}, "body_keys" => ["name"], "body" => true, "null_body_key" => "part",
       "idempotency_key" => true,
-      "result" => {"kind" => "json", "unwrap" => "widget", "items_key" => nil, "model" => "WidgetV2", "array" => false}
+      "result" => {"kind" => "json", "unwrap" => "widget", "items_key" => nil, "model" => "WidgetV2", "depth" => 0}
     )
     expect(manifest["list"]).to include(
       "keyword_args" => {"kind" => {"one_of" => ["kind-value"]}}, "query_keys" => ["kind"],

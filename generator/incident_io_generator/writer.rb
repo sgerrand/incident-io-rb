@@ -251,7 +251,7 @@ module IncidentIoGenerator
               "unwrap" => op.result.unwrap,
               "items_key" => op.result.items_key,
               "model" => op.result.model_name,
-              "array" => op.result.array
+              "depth" => op.result.depth
             }
           }
         end

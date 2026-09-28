@@ -18,10 +18,19 @@ RSpec.describe IncidentIoGenerator::Types do
   end
 
   it "maps response schemas to result models" do
-    expect(described_class.result_model({"$ref" => "#/components/schemas/X"})).to eq(model_name: "X", array: false)
-    expect(described_class.result_model({"type" => "array", "items" => {"$ref" => "#/c/X"}})).to eq(model_name: "X", array: true)
+    expect(described_class.result_model({"$ref" => "#/components/schemas/X"})).to eq(model_name: "X", depth: 0)
+    expect(described_class.result_model({"type" => "array", "items" => {"$ref" => "#/c/X"}})).to eq(model_name: "X", depth: 1)
+    expect(described_class.result_model({"type" => "array", "items" => {"type" => "string"}})).to eq({})
+    expect(described_class.result_model({"type" => "array"})).to eq({})
     expect(described_class.result_model({"type" => "string"})).to eq({})
     expect(described_class.result_model(nil)).to eq({})
+  end
+
+  it "keeps models in arrays of arrays" do
+    nested = {"type" => "array", "items" => {"type" => "array", "items" => {"$ref" => "#/c/X"}}}
+
+    expect(described_class.result_model(nested)).to eq(model_name: "X", depth: 2)
+    expect(described_class.rbs_result(nested)).to eq("Array[Array[Models::X]]")
   end
 
   it "maps schemas to YARD types" do

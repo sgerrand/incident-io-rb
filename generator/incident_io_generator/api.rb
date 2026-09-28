@@ -18,16 +18,16 @@ module IncidentIoGenerator
   #   rbs: RBS return type
   #   unwrap: response key to return instead of the whole body
   #   model_name: schema the result is built with, or nil for raw data
-  #   array: whether the result is an array of model_name
+  #   depth: how many arrays model_name is nested in, e.g. 1 for an array
   #   items_key: array key for paginated responses
-  Result = Data.define(:kind, :yard, :rbs, :unwrap, :model_name, :array, :items_key) do
-    def initialize(kind:, yard:, rbs:, unwrap: nil, model_name: nil, array: false, items_key: nil) = super
+  Result = Data.define(:kind, :yard, :rbs, :unwrap, :model_name, :depth, :items_key) do
+    def initialize(kind:, yard:, rbs:, unwrap: nil, model_name: nil, depth: 0, items_key: nil) = super
 
     # Ruby source for the `model:` argument, or nil for raw data.
     def model
       return nil unless model_name
 
-      array ? "[Models::#{model_name}]" : "Models::#{model_name}"
+      "#{"[" * depth}Models::#{model_name}#{"]" * depth}"
     end
   end
 

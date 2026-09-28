@@ -24,10 +24,10 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
     expect(ops["show"].path_params.map(&:name)).to eq(["id"])
   end
 
-  it "writes the model source for array results" do
-    result = IncidentIoGenerator::Result.new(kind: :json, yard: "Array", rbs: "Array", model_name: "WidgetV2", array: true)
+  it "writes the model source for nested array results" do
+    result = IncidentIoGenerator::Result.new(kind: :json, yard: "Array", rbs: "Array", model_name: "WidgetV2", depth: 2)
 
-    expect(result.model).to eq("[Models::WidgetV2]")
+    expect(result.model).to eq("[[Models::WidgetV2]]")
   end
 
   it "handles bodies and idempotency keys" do

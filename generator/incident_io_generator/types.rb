@@ -30,15 +30,16 @@ module IncidentIoGenerator
     end
 
     # The model a resource call builds its result with, as Result fields:
-    # the schema name and whether the result is an array of it. Empty when
-    # the raw value should be returned.
+    # the schema name and how many arrays it is nested in. Empty when the raw
+    # value should be returned.
     def result_model(schema)
       return {} if schema.nil?
 
       if (ref = ref_name(schema))
-        {model_name: ref, array: false}
-      elsif schema["type"] == "array" && (ref = ref_name(schema["items"] || {}))
-        {model_name: ref, array: true}
+        {model_name: ref, depth: 0}
+      elsif schema["type"] == "array"
+        inner = result_model(schema["items"])
+        inner.empty? ? {} : inner.merge(depth: inner[:depth] + 1)
       else
         {}
       end
@@ -118,7 +119,7 @@ module IncidentIoGenerator
       model = result_model(schema)
       return "untyped" if model.empty?
 
-      model[:array] ? "Array[Models::#{model[:model_name]}]" : "Models::#{model[:model_name]}"
+      "#{"Array[" * model[:depth]}Models::#{model[:model_name]}#{"]" * model[:depth]}"
     end
 
     # A JSON value that fits the schema, for tests. Models are passed as
