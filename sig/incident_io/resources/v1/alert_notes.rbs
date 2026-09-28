@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V1
       class AlertNotes < Resource
-        # Add a note to an alert.
+        # Add a note to an alert
         def create: (
           content: String,
           ?alert_group_id: (String | NotGiven)?,
@@ -13,10 +13,10 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::AlertNoteV1
 
-        # Delete an alert note.
+        # Delete an alert note
         def delete: (String id, ?request_options: request_options) -> nil
 
-        # List alert notes attached to an alert.
+        # List alert notes attached to an alert
         def list: (
           ?alert_id: String?,
           ?alert_group_id: String?,
@@ -25,10 +25,10 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::AlertNoteV1]
 
-        # Get a single alert note.
+        # Get a single alert note
         def show: (String id, ?request_options: request_options) -> Models::AlertNoteV1
 
-        # Replace the content of an alert note.
+        # Replace the content of an alert note
         def update: (String id, content: String, ?request_options: request_options) -> Models::AlertNoteV1
       end
     end

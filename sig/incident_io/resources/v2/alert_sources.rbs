@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class AlertSources < Resource
-        # Create a new alert source in your account.
+        # Create a new alert source in your account
         def create: (
           name: String,
           source_type: String,
@@ -24,16 +24,16 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::AlertSourceV2
 
-        # Delete an existing alert source in your account.
+        # Delete an existing alert source in your account
         def delete: (String id, ?request_options: request_options) -> nil
 
-        # List all alert sources in your account.
+        # List all alert sources in your account
         def list: (?request_options: request_options) -> Array[Models::AlertSourceV2]
 
-        # Load details about a specific alert source in your account.
+        # Load details about a specific alert source in your account
         def show: (String id, ?request_options: request_options) -> Models::AlertSourceV2
 
-        # Update an existing alert source in your account.
+        # Update an existing alert source in your account
         def update: (
           String id,
           name: String,
@@ -53,7 +53,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::AlertSourceV2
 
-        # Check whether an alert source template is valid, without creating or updating anything.
+        # Check whether an alert source template is valid, without creating or updating…
         def validate: (
           source_type: String,
           template: Models::AlertTemplatePayloadV2 | Hash[untyped, untyped],

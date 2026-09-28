@@ -66,6 +66,12 @@ RSpec.describe IncidentIo::APIError do
       expect(error.retry_after).to eq(3.0)
     end
 
+    it "treats a negative Retry-After header as no wait" do
+      error = described_class.from_response(response(429, nil, "retry-after" => "-5"))
+
+      expect(error.retry_after).to eq(0.0)
+    end
+
     it "reads a Retry-After header as an HTTP date" do
       at = (Time.now + 5).httpdate
       error = described_class.from_response(response(429, nil, "retry-after" => at))

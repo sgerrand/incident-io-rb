@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V1
       class IncidentTemplates < Resource
-        # Create an incident template.
+        # Create an incident template
         def create: (
           name: String,
           template: Models::IncidentTemplateConfigPayloadV1 | Hash[untyped, untyped],
@@ -13,20 +13,20 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::IncidentTemplateV1
 
-        # Archive an incident template.
+        # Archive an incident template
         def destroy: (String id, ?request_options: request_options) -> nil
 
-        # List all incident templates for this organisation.
+        # List all incident templates for this organisation
         def list: (
           ?page_size: Integer?,
           ?after: String?,
           ?request_options: request_options
         ) -> Pager[Models::IncidentTemplateV1]
 
-        # Show a single incident template.
+        # Show a single incident template
         def show: (String id, ?request_options: request_options) -> Models::IncidentTemplateV1
 
-        # Update an incident template.
+        # Update an incident template
         def update: (
           String id,
           name: String,
@@ -35,7 +35,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::IncidentTemplateV1
 
-        # Check whether an incident template's config is valid, without creating or updating anything.
+        # Check whether an incident template's config is valid, without creating or…
         def validate: (
           name: String,
           template: Models::IncidentTemplateConfigPayloadV1 | Hash[untyped, untyped],

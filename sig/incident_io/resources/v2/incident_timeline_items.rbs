@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class IncidentTimelineItems < Resource
-        # Add a custom item to an incident's timeline.
+        # Add a custom item to an incident's timeline
         def create: (
           incident_id: String,
           timestamp: Time | String,
@@ -15,7 +15,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::IncidentTimelineItemV2
 
-        # List the timeline items for an incident, oldest first.
+        # List the timeline items for an incident, oldest first
         def list: (
           incident_id: String,
           ?page_size: Integer?,
@@ -23,7 +23,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::IncidentTimelineItemV2]
 
-        # Edit a timeline item.
+        # Edit a timeline item
         def update: (
           String id,
           ?description: (String | NotGiven)?,

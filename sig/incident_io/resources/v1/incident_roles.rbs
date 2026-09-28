@@ -20,11 +20,11 @@ module IncidentIo
         # @deprecated Use `client.incident_roles.delete` instead.
         def delete: (String id, ?request_options: request_options) -> nil
 
-        # List all incident roles for an organisation.
+        # List all incident roles for an organisation
         # @deprecated Use `client.incident_roles.list` instead.
         def list: (?request_options: request_options) -> Array[Models::IncidentRoleV1]
 
-        # Get a single incident role.
+        # Get a single incident role
         # @deprecated Use `client.incident_roles.show` instead.
         def show: (String id, ?request_options: request_options) -> Models::IncidentRoleV1
 

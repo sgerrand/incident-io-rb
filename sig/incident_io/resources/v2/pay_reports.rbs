@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class PayReports < Resource
-        # Request a pay report.
+        # Request a pay report
         def create: (
           end_date: String,
           name: String,
@@ -19,20 +19,20 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::PayReportV2
 
-        # Delete a draft pay report, archiving it so it no longer appears in list or show.
+        # Delete a draft pay report, archiving it so it no longer appears in list or show
         def destroy: (String id, ?request_options: request_options) -> nil
 
-        # Download a pay report as CSV.
+        # Download a pay report as CSV
         def download: (String id, ?request_options: request_options) -> String
 
-        # List pay reports, newest first.
+        # List pay reports, newest first
         def list: (
           ?page_size: Integer?,
           ?after: String?,
           ?request_options: request_options
         ) -> Pager[Models::PayReportV2]
 
-        # Publish a draft pay report, making it visible to everyone in the organisation.
+        # Publish a draft pay report, making it visible to everyone in the organisation
         def publish: (
           String id,
           cc_emails: Array[String],
@@ -40,10 +40,10 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::PayReportV2
 
-        # Get a single pay report.
+        # Get a single pay report
         def show: (String id, ?request_options: request_options) -> Models::PayReportV2
 
-        # Unpublish a published pay report, recording a reason it should not be used.
+        # Unpublish a published pay report, recording a reason it should not be used
         def unpublish: (
           String id,
           unpublish_reason: String,

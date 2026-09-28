@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V1
       class IncidentAttachments < Resource
-        # Attaches an external resource to an incident.
+        # Attaches an external resource to an incident
         def create: (
           incident_id: String,
           resource: Hash[untyped, untyped],
@@ -15,7 +15,7 @@ module IncidentIo
         # Unattaches an external resource from an incident
         def delete: (String id, ?request_options: request_options) -> nil
 
-        # List all incident attachments for a given external resource or incident.
+        # List all incident attachments for a given external resource or incident
         def list: (
           ?incident_id: String?,
           ?external_id: String?,

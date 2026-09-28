@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class WorkflowRuns < Resource
-        # List workflow runs, newest first.
+        # List workflow runs, newest first
         def list: (
           ?workflow_id: String?,
           ?incident_id: String?,
@@ -15,7 +15,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::WorkflowRunSlimV2]
 
-        # Show a single workflow run, including the full webhook delivery for any step that sent one.
+        # Show a single workflow run, including the full webhook delivery for any step…
         def show: (String id, ?request_options: request_options) -> Models::WorkflowRunV2
       end
     end

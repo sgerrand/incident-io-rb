@@ -6,7 +6,7 @@ require "stringio"
 RSpec.describe IncidentIo::Client do
   subject(:client) { described_class.new(api_key: "secret-key") }
 
-  before { allow(client).to receive(:sleep_for) }
+  before { allow(client).to receive(:sleep) }
 
   describe ".new" do
     it "raises without an API key" do
@@ -143,7 +143,7 @@ RSpec.describe IncidentIo::Client do
 
       expect(client.request(:get, "/v2/incidents")).to eq("incidents" => [])
       expect(stub).to have_been_requested.twice
-      expect(client).to have_received(:sleep_for).once
+      expect(client).to have_received(:sleep).once
     end
 
     it "gives up after max_retries" do
@@ -190,7 +190,7 @@ RSpec.describe IncidentIo::Client do
       client.request(:post, "/v2/incidents", body: {})
 
       expect(stub).to have_been_requested.twice
-      expect(client).to have_received(:sleep_for).with(2.0)
+      expect(client).to have_received(:sleep).with(2.0)
     end
 
     it "raises instead of waiting a very long time" do
@@ -199,14 +199,14 @@ RSpec.describe IncidentIo::Client do
 
       expect { client.request(:get, "/v2/incidents") }.to raise_error(IncidentIo::RateLimitError)
       expect(stub).to have_been_requested.once
-      expect(client).not_to have_received(:sleep_for)
+      expect(client).not_to have_received(:sleep)
     end
 
     it "backs off when rate limited without a hint" do
       limited = json_response(error_body(status: 429, type: "rate_limit_reached"), status: 429)
       stub_request(:get, url).to_return(limited, ok)
       delays = []
-      allow(client).to receive(:sleep_for) { |s| delays << s }
+      allow(client).to receive(:sleep) { |s| delays << s }
 
       client.request(:get, "/v2/incidents")
 
@@ -219,13 +219,13 @@ RSpec.describe IncidentIo::Client do
 
       client.request(:get, "/v2/incidents")
 
-      expect(client).to have_received(:sleep_for).with(1.0)
+      expect(client).to have_received(:sleep).with(1.0)
     end
 
     it "uses exponential backoff when the API gives no hint" do
       stub_request(:get, url).to_return(server_error, server_error, ok)
       delays = []
-      allow(client).to receive(:sleep_for) { |s| delays << s }
+      allow(client).to receive(:sleep) { |s| delays << s }
 
       client.request(:get, "/v2/incidents")
 
@@ -260,17 +260,6 @@ RSpec.describe IncidentIo::Client do
       expect(io.string).to include("POST #{BASE_URL}/v2/alert_events/http/src?token=[REDACTED] -> 202")
       expect(io.string).not_to include("very-secret")
       expect(io.string).not_to include("secret-key")
-    end
-  end
-
-  describe "sleeping between retries" do
-    it "sleeps for the given time" do
-      client = described_class.new(api_key: "k")
-      allow(client).to receive(:sleep)
-
-      client.send(:sleep_for, 0.25)
-
-      expect(client).to have_received(:sleep).with(0.25)
     end
   end
 end

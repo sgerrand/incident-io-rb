@@ -17,10 +17,10 @@ module IncidentIo
         # Removes an existing role
         def delete: (String id, ?request_options: request_options) -> nil
 
-        # List all incident roles for an organisation.
+        # List all incident roles for an organisation
         def list: (?request_options: request_options) -> Array[Models::IncidentRoleV2]
 
-        # Get a single incident role.
+        # Get a single incident role
         def show: (String id, ?request_options: request_options) -> Models::IncidentRoleV2
 
         # Update an existing incident role

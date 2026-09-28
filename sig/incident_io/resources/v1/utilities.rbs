@@ -5,13 +5,13 @@ module IncidentIo
   module Resources
     module V1
       class Utilities < Resource
-        # Test if your API key is valid, and which roles it has.
+        # Test if your API key is valid, and which roles it has
         def identity: (?request_options: request_options) -> Models::IdentityV1
 
-        # List the IP addresses our requests to your systems come from.
+        # List the IP addresses our requests to your systems come from
         def ip_ranges: (?request_options: request_options) -> Array[Models::IPRangeV1]
 
-        # Get the OpenAPI (v3) definition.
+        # Get the OpenAPI (v3) definition
         def openapi_spec: (?request_options: request_options) -> untyped
       end
     end

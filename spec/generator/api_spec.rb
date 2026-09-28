@@ -24,12 +24,22 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
     expect(ops["show"].path_params.map(&:name)).to eq(["id"])
   end
 
+  it "writes the model source for nested array results" do
+    result = IncidentIoGenerator::Result.new(kind: :json, yard: "Array", rbs: "Array", model_name: "WidgetV2", depth: 2)
+
+    expect(result.model).to eq("[[Models::WidgetV2]]")
+  end
+
   it "handles bodies and idempotency keys" do
     create = ops["create"]
 
     expect(create.idempotent).to be(true)
-    expect(create.keyword_params.map { |p| [p.name, p.required, p.default] })
-      .to eq([["name", true, nil], ["idempotency_key", false, "SecureRandom.uuid"], ["part", false, nil]])
+    expect(create.keyword_params.map { |p| [p.name, p.location, p.required, p.default, p.not_given?] })
+      .to eq([
+        ["name", :body, true, nil, false],
+        ["idempotency_key", :body, false, "SecureRandom.uuid", false],
+        ["part", :body, false, nil, true]
+      ])
   end
 
   it "handles empty and non-JSON responses" do
@@ -128,6 +138,16 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
       "a resource named like a Client method" => [/resource name request clashes with a Client method/, ->(s) {
         s["paths"]["/v1/request"] = {"get" => operation("Request V1#Show", "WidgetsShowResultV2")}
       }],
+      "a resource named like a private Client method" => [/resource name log clashes with a Client method/, ->(s) {
+        s["paths"]["/v2/log"] = {"get" => operation("Log V2#Show", "WidgetsShowResultV2")}
+      }],
+      "a paginated GET with a body" => [/Widgets V2#List: paginated operations must be GETs without a body/, ->(s) {
+        s["paths"]["/v2/widgets"]["get"]["requestBody"] = s["paths"]["/v2/widgets"]["post"]["requestBody"]
+      }],
+      "a paginated POST" => [/Searches V2#List: paginated operations must be GETs without a body/, ->(s) {
+        after = {"in" => "query", "name" => "after", "schema" => {"type" => "string"}}
+        s["paths"]["/v2/searches"] = {"post" => operation("Searches V2#List", "WidgetsListResultV2", parameters: [after])}
+      }],
       "a resource named like a version accessor" => [/resource name v2 clashes with a version accessor/, ->(s) {
         s["paths"]["/v1/v2"] = {"get" => operation("V2 V1#Show", "WidgetsShowResultV2")}
       }],
@@ -153,6 +173,16 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
 
         expect { described_class.new(spec) }.to raise_error(IncidentIoGenerator::Error, message)
       end
+    end
+
+    it "reserves every method Client defines" do
+      client_methods = IncidentIo::Client.instance_methods(false) + IncidentIo::Client.private_instance_methods(false) +
+        IncidentIo::Resources::Accessors.private_instance_methods(false)
+
+      # `rake spec:rbs` wraps each checked method in extra "__RBS_TEST_" ones.
+      names = client_methods.map(&:to_s).grep_v(/__RBS_TEST_/)
+
+      expect(described_class::CLIENT_METHODS).to include(*names)
     end
 
     it "rejects a method named like a Resource helper" do

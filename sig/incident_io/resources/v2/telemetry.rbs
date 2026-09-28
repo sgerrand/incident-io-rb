@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class Telemetry < Resource
-        # Update the credentials or configuration of a telemetry data source.
+        # Update the credentials or configuration of a telemetry data source
         def update_data_source: (
           String id,
           ?datadog_config: (Models::TelemetryDatadogUpdateConfigV2 | Hash[untyped, untyped] | NotGiven)?,

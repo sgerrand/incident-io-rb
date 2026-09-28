@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V1
       class Actions < Resource
-        # List all actions for an organisation.
+        # List all actions for an organisation
         # @deprecated Use `client.actions.list` instead.
         def list: (
           ?incident_id: String?,
@@ -14,7 +14,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Array[Models::ActionV1]
 
-        # Get a single incident action.
+        # Get a single incident action
         # @deprecated Use `client.actions.show` instead.
         def show: (String id, ?request_options: request_options) -> Models::ActionV1
       end

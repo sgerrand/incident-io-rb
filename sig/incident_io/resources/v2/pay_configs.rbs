@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class PayConfigs < Resource
-        # Create a pay config.
+        # Create a pay config
         def create: (
           base_rate_cents: Integer,
           currency: String,
@@ -17,7 +17,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::PayConfigV2
 
-        # Add a one-off rule to a pay config.
+        # Add a one-off rule to a pay config
         def create_one_off_rule: (
           String pay_config_id,
           end_at: Time | String,
@@ -27,7 +27,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::PayConfigOneOffRuleV2
 
-        # Add a weekly rule to a pay config.
+        # Add a weekly rule to a pay config
         def create_weekly_rule: (
           String pay_config_id,
           end_time: String,
@@ -37,52 +37,52 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::PayConfigWeeklyRuleV2
 
-        # Delete a pay config.
+        # Delete a pay config
         def destroy: (String id, ?request_options: request_options) -> nil
 
-        # Remove a one-off rule from a pay config.
+        # Remove a one-off rule from a pay config
         def destroy_one_off_rule: (String pay_config_id, String id, ?request_options: request_options) -> nil
 
-        # Remove a weekly rule from a pay config.
+        # Remove a weekly rule from a pay config
         def destroy_weekly_rule: (String pay_config_id, String id, ?request_options: request_options) -> nil
 
-        # List pay configs for this organisation.
+        # List pay configs for this organisation
         def list: (
           ?page_size: Integer?,
           ?after: String?,
           ?request_options: request_options
         ) -> Pager[Models::PayConfigV2]
 
-        # List a pay config's one-off rules, in no particular order.
+        # List a pay config's one-off rules, in no particular order
         def list_one_off_rules: (
           String pay_config_id,
           ?request_options: request_options
         ) -> Array[Models::PayConfigOneOffRuleV2]
 
-        # List a pay config's weekly rules, in evaluation order.
+        # List a pay config's weekly rules, in evaluation order
         def list_weekly_rules: (
           String pay_config_id,
           ?request_options: request_options
         ) -> Array[Models::PayConfigWeeklyRuleV2]
 
-        # Show a single pay config.
+        # Show a single pay config
         def show: (String id, ?request_options: request_options) -> Models::PayConfigV2
 
-        # Show a single one-off rule.
+        # Show a single one-off rule
         def show_one_off_rule: (
           String pay_config_id,
           String id,
           ?request_options: request_options
         ) -> Models::PayConfigOneOffRuleV2
 
-        # Show a single weekly rule.
+        # Show a single weekly rule
         def show_weekly_rule: (
           String pay_config_id,
           String id,
           ?request_options: request_options
         ) -> Models::PayConfigWeeklyRuleV2
 
-        # Update a pay config's attributes.
+        # Update a pay config's attributes
         def update: (
           String id,
           base_rate_cents: Integer,
@@ -93,7 +93,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::PayConfigV2
 
-        # Update a one-off rule.
+        # Update a one-off rule
         def update_one_off_rule: (
           String pay_config_id,
           String id,
@@ -104,7 +104,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::PayConfigOneOffRuleV2
 
-        # Update a weekly rule, leaving its position in the evaluation order alone.
+        # Update a weekly rule, leaving its position in the evaluation order alone
         def update_weekly_rule: (
           String pay_config_id,
           String id,

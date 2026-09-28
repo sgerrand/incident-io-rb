@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V1
       class IncidentRelationships < Resource
-        # List related incidents for a specific incident.
+        # List related incidents for a specific incident
         def list: (
           incident_id: String,
           ?page_size: Integer?,

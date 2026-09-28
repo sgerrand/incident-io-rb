@@ -5,10 +5,10 @@ module IncidentIo
   module Resources
     module V2
       class Heartbeat < Resource
-        # Send a heartbeat ping for the specified alert source.
+        # Send a heartbeat ping for the specified alert source
         def ping: (String alert_source_config_id, ?token: String?, ?request_options: request_options) -> nil
 
-        # Send a heartbeat ping for the specified alert source.
+        # Send a heartbeat ping for the specified alert source
         def ping_with_get: (
           String alert_source_config_id,
           ?token: String?,

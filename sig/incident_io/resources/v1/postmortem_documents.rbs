@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V1
       class PostmortemDocuments < Resource
-        # Link an externally-hosted post-mortem document to an incident.
+        # Link an externally-hosted post-mortem document to an incident
         def attach: (
           incident_id: String,
           permalink: String,
@@ -13,7 +13,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::PostmortemDocumentV1
 
-        # List post-mortem documents for the organisation.
+        # List post-mortem documents for the organisation
         def list: (
           ?page_size: Integer?,
           ?after: String?,
@@ -22,13 +22,13 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::PostmortemDocumentV1]
 
-        # Get a single post-mortem document by ID.
+        # Get a single post-mortem document by ID
         def show: (String id, ?request_options: request_options) -> Models::PostmortemDocumentV1
 
-        # Fetch the content of a post-mortem document, rendered as markdown.
+        # Fetch the content of a post-mortem document, rendered as markdown
         def show_content: (String id, ?request_options: request_options) -> untyped
 
-        # Update the status of a post-mortem document.
+        # Update the status of a post-mortem document
         def update_status: (
           String id,
           status: String,

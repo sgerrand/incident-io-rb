@@ -48,19 +48,6 @@ module IncidentIo
       klass.extend(ClassMethods)
       klass.include(InstanceMethods)
       klass.instance_variable_set(:@fields, fields)
-
-      # Every field is optional: the API leaves some out and adds others.
-      # Fields that were passed, even as nil, are remembered so to_api sends
-      # them and leaves the rest out.
-      klass.define_method(:initialize) do |raw: nil, **attrs|
-        unknown = attrs.keys - members
-        raise ArgumentError, "unknown keyword#{"s" if unknown.size > 1}: #{unknown.join(", ")}" if unknown.any?
-
-        @_raw = raw.nil? ? nil : raw.dup.freeze
-        @_given = attrs.keys.freeze
-        super(**members.to_h { |m| [m, attrs[m]] })
-      end
-
       klass.class_eval(&block) if block
       klass
     end
@@ -142,6 +129,27 @@ module IncidentIo
 
     # Added to every model instance.
     module InstanceMethods
+      # Creates a model
+      #
+      # Every field is optional: the API leaves some out and adds others.
+      # Fields that were passed, even as nil, are remembered so to_api sends
+      # them and leaves the rest out.
+      #
+      # @param raw [Hash, nil] the payload the model was built from
+      # @param attrs [Hash{Symbol => Object}] field values
+      # @raise [ArgumentError] for unknown fields
+      # @return [void]
+      def initialize(raw: nil, **attrs)
+        model_class = _ = self.class #: ClassMethods
+        fields = model_class.fields
+        unknown = attrs.keys.reject { |key| fields.key?(key) }
+        raise ArgumentError, "unknown keyword#{"s" if unknown.size > 1}: #{unknown.join(", ")}" if unknown.any?
+
+        @_raw = raw.nil? ? nil : raw.dup.freeze
+        @_given = attrs.keys.freeze
+        super(**fields.to_h { |member, _| [member, attrs[member]] })
+      end
+
       # The payload this model was built from
       #
       # @return [Hash, nil] nil if the model was built by hand

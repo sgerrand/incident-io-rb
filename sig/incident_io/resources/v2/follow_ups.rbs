@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class FollowUps < Resource
-        # Deprecated: this endpoint will be removed on 31 December 2026.
+        # Deprecated: this endpoint will be removed on 31 December 2026
         # @deprecated Use `client.follow_ups.connect_external_issue` instead.
         def connect_external_issue: (
           String id,
@@ -14,7 +14,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::FollowUpV2
 
-        # Deprecated: this endpoint will be removed on 31 December 2026.
+        # Deprecated: this endpoint will be removed on 31 December 2026
         # @deprecated Use `client.follow_ups.create` instead.
         def create: (
           incident_id: String,
@@ -29,11 +29,11 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::FollowUpV2
 
-        # Deprecated: this endpoint will be removed on 31 December 2026.
+        # Deprecated: this endpoint will be removed on 31 December 2026
         # @deprecated Use `client.follow_ups.delete` instead.
         def delete: (String id, ?request_options: request_options) -> nil
 
-        # Deprecated: this endpoint will be removed on 31 December 2026.
+        # Deprecated: this endpoint will be removed on 31 December 2026
         # @deprecated Use `client.follow_ups.list` instead.
         def list: (
           ?incident_id: String?,
@@ -42,11 +42,11 @@ module IncidentIo
           ?request_options: request_options
         ) -> Array[Models::FollowUpV2]
 
-        # Deprecated: this endpoint will be removed on 31 December 2026.
+        # Deprecated: this endpoint will be removed on 31 December 2026
         # @deprecated Use `client.follow_ups.show` instead.
         def show: (String id, ?request_options: request_options) -> Models::FollowUpV2
 
-        # Deprecated: this endpoint will be removed on 31 December 2026.
+        # Deprecated: this endpoint will be removed on 31 December 2026
         # @deprecated Use `client.follow_ups.update` instead.
         def update: (
           String id,

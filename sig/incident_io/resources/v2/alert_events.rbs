@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class AlertEvents < Resource
-        # Create an alert event using an HTTP source.
+        # Create an alert event using an HTTP source
         def create_http: (
           String alert_source_config_id,
           status: String,

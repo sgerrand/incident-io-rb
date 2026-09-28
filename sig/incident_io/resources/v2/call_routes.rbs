@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class CallRoutes < Resource
-        # Allow a number to call this route.
+        # Allow a number to call this route
         def create_allowed_caller: (
           String call_route_id,
           phone_number: String,
@@ -13,7 +13,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::CallRouteAllowedCallerV2
 
-        # Add an option to a call route's phone-tree menu.
+        # Add an option to a call route's phone-tree menu
         def create_option: (
           String call_route_id,
           digit: String,
@@ -22,53 +22,53 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::CallRouteOptionV2
 
-        # Stop allowing a number to call this route.
+        # Stop allowing a number to call this route
         def destroy_allowed_caller: (
           String call_route_id,
           String id,
           ?request_options: request_options
         ) -> nil
 
-        # Remove an option from a call route's phone-tree menu.
+        # Remove an option from a call route's phone-tree menu
         def destroy_option: (String call_route_id, String id, ?request_options: request_options) -> nil
 
-        # List all call routes for this organisation.
+        # List all call routes for this organisation
         def list: (
           ?page_size: Integer?,
           ?after: String?,
           ?request_options: request_options
         ) -> Pager[Models::CallRouteV2]
 
-        # List the numbers allowed to call a route.
+        # List the numbers allowed to call a route
         def list_allowed_callers: (
           String call_route_id,
           ?request_options: request_options
         ) -> Array[Models::CallRouteAllowedCallerV2]
 
-        # List a call route's phone-tree options, in the order callers hear them.
+        # List a call route's phone-tree options, in the order callers hear them
         def list_options: (
           String call_route_id,
           ?request_options: request_options
         ) -> Array[Models::CallRouteOptionV2]
 
-        # Show a single call route.
+        # Show a single call route
         def show: (String id, ?request_options: request_options) -> Models::CallRouteV2
 
-        # Show a single allowed caller.
+        # Show a single allowed caller
         def show_allowed_caller: (
           String call_route_id,
           String id,
           ?request_options: request_options
         ) -> Models::CallRouteAllowedCallerV2
 
-        # Show a single phone-tree option.
+        # Show a single phone-tree option
         def show_option: (
           String call_route_id,
           String id,
           ?request_options: request_options
         ) -> Models::CallRouteOptionV2
 
-        # Replace a call route's configuration.
+        # Replace a call route's configuration
         def update: (
           String id,
           custom_language: String,
@@ -79,7 +79,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::CallRouteV2
 
-        # Replace an allowed caller's number and label.
+        # Replace an allowed caller's number and label
         def update_allowed_caller: (
           String call_route_id,
           String id,
@@ -88,7 +88,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::CallRouteAllowedCallerV2
 
-        # Replace a phone-tree option.
+        # Replace a phone-tree option
         def update_option: (
           String call_route_id,
           String id,

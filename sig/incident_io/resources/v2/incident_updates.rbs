@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class IncidentUpdates < Resource
-        # Share an update against an incident.
+        # Share an update against an incident
         def create: (
           incident_id: String,
           ?idempotency_key: String,
@@ -15,7 +15,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::IncidentUpdateV2
 
-        # List all incident updates for an organisation, or for a specific incident.
+        # List all incident updates for an organisation, or for a specific incident
         def list: (
           ?incident_id: String?,
           ?page_size: Integer?,

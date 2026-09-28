@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V1
       class MaintenanceWindows < Resource
-        # Create a new maintenance window.
+        # Create a new maintenance window
         def create: (
           alert_condition_groups: Array[Models::ConditionGroupPayloadV2 | Hash[untyped, untyped]],
           end_at: Time | String,
@@ -25,10 +25,10 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::MaintenanceWindowV1
 
-        # Archives a maintenance window.
+        # Archives a maintenance window
         def delete: (String id, ?force: bool?, ?request_options: request_options) -> nil
 
-        # List maintenance windows for your organisation.
+        # List maintenance windows for your organisation
         def list: (
           ?page_size: Integer?,
           ?after: String?,
@@ -36,10 +36,10 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::MaintenanceWindowV1]
 
-        # Show a particular maintenance window.
+        # Show a particular maintenance window
         def show: (String id, ?request_options: request_options) -> Models::MaintenanceWindowV1
 
-        # Update an existing maintenance window.
+        # Update an existing maintenance window
         def update: (
           String id,
           alert_condition_groups: Array[Models::ConditionGroupPayloadV2 | Hash[untyped, untyped]],

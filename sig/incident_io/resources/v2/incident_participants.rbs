@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class IncidentParticipants < Resource
-        # List the participants of an incident with the role they took.
+        # List the participants of an incident with the role they took
         def list: (incident_id: String, ?request_options: request_options) -> Models::IncidentParticipantsV2
       end
     end

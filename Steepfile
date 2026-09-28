@@ -1,4 +1,5 @@
 D = Steep::Diagnostic
+LIBRARIES = %w[date json logger net-http openssl securerandom time uri].freeze
 
 target :lib do
   signature "sig"
@@ -9,7 +10,7 @@ target :lib do
   # memoised accessors, which pass the client as `self`.
   ignore "lib/incident_io/models", "lib/incident_io/resources.rb"
 
-  library "date", "json", "logger", "net-http", "openssl", "securerandom", "time", "uri"
+  library(*LIBRARIES)
 
   configure_code_diagnostics(D::Ruby.default)
 end
@@ -20,7 +21,7 @@ target :usage do
 
   check "typecheck"
 
-  library "date", "json", "logger", "net-http", "openssl", "securerandom", "time", "uri"
+  library(*LIBRARIES)
 
   configure_code_diagnostics(D::Ruby.default)
 end

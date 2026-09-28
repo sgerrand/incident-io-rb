@@ -4,16 +4,32 @@ module IncidentIoGenerator
   class Error < StandardError; end
 
   # A keyword or positional argument of a generated method.
-  Param = Data.define(:name, :required, :schema, :description, :default)
+  #   location: :path, :query or :body
+  #   default: Ruby source for a generated default, e.g. "SecureRandom.uuid"
+  Param = Data.define(:name, :location, :required, :schema, :description, :default) do
+    # Optional body arguments default to NOT_GIVEN so that nil can be sent as
+    # null; optional query arguments default to nil, which is left out.
+    def not_given? = location == :body && !required && !default
+  end
 
   # What a generated method returns.
   #   kind: :none (no body), :text (e.g. CSV), :json or :paginated
-  #   unwrap: response key to return instead of the whole body
-  #   model: Ruby source for the `model:` argument, or nil for raw data
-  #   items_key: array key for paginated responses
   #   yard: YARD return type
   #   rbs: RBS return type
-  Result = Data.define(:kind, :unwrap, :model, :items_key, :yard, :rbs)
+  #   unwrap: response key to return instead of the whole body
+  #   model_name: schema the result is built with, or nil for raw data
+  #   depth: how many arrays model_name is nested in, e.g. 1 for an array
+  #   items_key: array key for paginated responses
+  Result = Data.define(:kind, :yard, :rbs, :unwrap, :model_name, :depth, :items_key) do
+    def initialize(kind:, yard:, rbs:, unwrap: nil, model_name: nil, depth: 0, items_key: nil) = super
+
+    # Ruby source for the `model:` argument, or nil for raw data.
+    def model
+      return nil unless model_name
+
+      "#{"[" * depth}Models::#{model_name}#{"]" * depth}"
+    end
+  end
 
   Operation = Data.define(
     :operation_id, :http_method, :path, :method_name, :full_name, :summary, :description,
@@ -37,15 +53,22 @@ module IncidentIoGenerator
   # An audit log entry type and its schema.
   AuditLogEntry = Data.define(:action, :version, :description, :model)
 
-  Field = Data.define(:api_name, :member, :type, :yard, :rbs, :description, :required)
+  Field = Data.define(:api_name, :member, :type, :yard, :rbs, :description)
   ModelSchema = Data.define(:name, :file_name, :description, :fields)
 
   # Reads the OpenAPI spec into the resources and models to generate.
   class Api
-    # Methods already on IncidentIo::Client; resources can't use these names.
-    CLIENT_METHODS = %w[request execute paginate inspect base_url timeout open_timeout max_retries logger].freeze
-    # Private helpers on IncidentIo::Resource; operations can't use these names.
-    RESOURCE_METHODS = %w[request paginate path client inspect deprecated! initialize].freeze
+    # Methods already on IncidentIo::Client, public and private; resources
+    # can't use these names. Kept by hand because Client needs the generated
+    # code to load.
+    CLIENT_METHODS = %w[
+      request execute paginate inspect base_url timeout open_timeout max_retries logger
+      initialize with_retries perform retry_delay backoff build_url build_headers normalize_options redact log
+      resource_cache
+    ].freeze
+    # Methods on IncidentIo::Resource; operations can't use these names.
+    RESOURCE_METHODS = (IncidentIo::Resource.instance_methods(false) + IncidentIo::Resource.private_instance_methods(false))
+      .map(&:to_s).freeze
     RESERVED_PARAMS = %w[request_options].freeze
     TAG_PATTERN = /\A(?<base>.+) (?<version>V\d+)\z/
     HTTP_METHODS = %w[get post put patch delete].freeze
@@ -64,22 +87,20 @@ module IncidentIoGenerator
     end
 
     # Resources grouped by version, e.g. { "V1" => [...], "V2" => [...] }.
+    # Resources are already sorted by version, and group_by keeps that order.
     def versions
-      resources.group_by(&:version).sort_by { |v, _| v.delete_prefix("V").to_i }.to_h
+      resources.group_by(&:version)
     end
 
     # The newest version of each resource, keyed by accessor name.
     def latest_resources
-      @latest_resources ||= resources.group_by(&:name)
-        .transform_values { |rs| rs.max_by(&:version_number) }
-        .sort.to_h
+      @latest_resources ||= newest_by_name(resources).sort.to_h
     end
 
     private
 
     def build_models
       models = @schemas.sort.map do |name, schema|
-        required = schema["required"] || []
         fields = (schema["properties"] || {}).map do |api_name, prop|
           Field.new(
             api_name:,
@@ -87,8 +108,7 @@ module IncidentIoGenerator
             type: Types.model_type(prop),
             yard: Types.yard_type(prop, namespace: ""),
             rbs: Types.rbs_type(prop, namespace: ""),
-            description: describe(prop),
-            required: required.include?(api_name)
+            description: describe(prop)
           )
         end
         ModelSchema.new(name:, file_name: Naming.underscore(name), description: schema["description"], fields:)
@@ -176,15 +196,22 @@ module IncidentIoGenerator
       params = op["parameters"] || []
       path_params = path.scan(/\{(\w+)\}/).flatten.map do |name|
         param = params.find { |p| p["in"] == "path" && p["name"] == name } or raise Error, "#{id}: no path param #{name}"
-        build_param(param, required: true)
+        build_param(param, location: :path, required: true)
       end
-      query_params = params.select { |p| p["in"] == "query" }.map { |p| build_param(p, required: p["required"] == true) }
+      query_params = params.select { |p| p["in"] == "query" }
+        .map { |p| build_param(p, location: :query, required: p["required"] == true) }
 
       body_schema = resolve(op.dig("requestBody", "content", "application/json", "schema"))
       body_params = body_params(body_schema)
       idempotent = body_params.any? { |p| p.name == "idempotency_key" }
 
       check_params!(id, path_params + query_params + body_params)
+
+      result = build_result(id, op, query_params)
+      # Pager only sends GETs with a query, so it can't send a body.
+      if result.kind == :paginated && (http_method != "get" || body_schema)
+        raise Error, "#{id}: paginated operations must be GETs without a body"
+      end
 
       Operation.new(
         operation_id: id,
@@ -203,14 +230,15 @@ module IncidentIoGenerator
         body_params:,
         body: !body_schema.nil?,
         idempotent:,
-        result: build_result(id, op, query_params)
+        result:
       )
     end
 
-    def build_param(param, required:)
+    def build_param(param, location:, required:)
       schema = param["schema"] || {}
       Param.new(
         name: param.fetch("name"),
+        location:,
         required:,
         schema:,
         description: describe(schema, param["description"]),
@@ -223,12 +251,13 @@ module IncidentIoGenerator
 
       required = schema["required"] || []
       (schema["properties"] || {}).map do |name, prop|
-        # Generated per call so retries of the same call reuse the key.
-        if name == "idempotency_key"
-          Param.new(name:, required: false, schema: prop, description: describe(prop), default: "SecureRandom.uuid")
-        else
-          Param.new(name:, required: required.include?(name), schema: prop, description: describe(prop), default: nil)
-        end
+        # The idempotency key is generated per call so retries of the same
+        # call reuse it.
+        idempotency_key = name == "idempotency_key"
+        Param.new(
+          name:, location: :body, required: !idempotency_key && required.include?(name), schema: prop,
+          description: describe(prop), default: ("SecureRandom.uuid" if idempotency_key)
+        )
       end
     end
 
@@ -239,9 +268,9 @@ module IncidentIoGenerator
       content = response["content"] || {}
       json = content.dig("application/json", "schema")
       unless json
-        return Result.new(kind: :none, unwrap: nil, model: nil, items_key: nil, yard: "nil", rbs: "nil") if content.empty?
+        return Result.new(kind: :none, yard: "nil", rbs: "nil") if content.empty?
 
-        return Result.new(kind: :text, unwrap: nil, model: nil, items_key: nil, yard: "String", rbs: "String")
+        return Result.new(kind: :text, yard: "String", rbs: "String")
       end
 
       schema = resolve(json)
@@ -252,24 +281,21 @@ module IncidentIoGenerator
         raise Error, "#{id}: paginated response needs exactly one array, got #{arrays.keys}" unless arrays.size == 1
 
         items_key, items = arrays.first
-        item_type = Types.result_type(items["items"])
-        Result.new(kind: :paginated, unwrap: nil, model: item_type, items_key:,
+        Result.new(kind: :paginated, items_key:, **Types.result_model(items["items"]),
           yard: "IncidentIo::Pager<#{Types.yard_type(items["items"])}>",
           rbs: "Pager[#{Types.rbs_result(items["items"])}]")
       elsif props.size == 1
         key, prop = props.first
-        Result.new(kind: :json, unwrap: key, model: Types.result_type(prop), items_key: nil,
-          yard: Types.yard_type(prop), rbs: Types.rbs_result(prop))
+        Result.new(kind: :json, unwrap: key, **Types.result_model(prop), yard: Types.yard_type(prop), rbs: Types.rbs_result(prop))
       else
-        Result.new(kind: :json, unwrap: nil, model: Types.result_type(json), items_key: nil,
-          yard: Types.yard_type(json), rbs: Types.rbs_result(json))
+        Result.new(kind: :json, **Types.result_model(json), yard: Types.yard_type(json), rbs: Types.rbs_result(json))
       end
     end
 
     # Points deprecated operations at the same method on the newest version
     # of their resource, when there is one.
     def add_replacements(resources)
-      latest = resources.group_by(&:name).transform_values { |rs| rs.max_by(&:version_number) }
+      latest = newest_by_name(resources)
 
       resources.map do |resource|
         newest = latest.fetch(resource.name)
@@ -281,6 +307,10 @@ module IncidentIoGenerator
         end
         resource.with(operations:)
       end
+    end
+
+    def newest_by_name(resources)
+      resources.group_by(&:name).transform_values { |rs| rs.max_by(&:version_number) }
     end
 
     def check_params!(id, params)

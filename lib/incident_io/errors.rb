@@ -105,18 +105,11 @@ module IncidentIo
     # @return [Float, nil] seconds, or nil when the API gave no hint
     def retry_after
       header = headers["retry-after"]
-      if header
-        seconds = Float(header, exception: false)
-        return seconds if seconds
+      seconds = header && Float(header, exception: false)
+      return [seconds, 0.0].max if seconds
 
-        at = Util.parse_time(header, httpdate: true)
-        return [at - Time.now, 0.0].max if at
-      end
-
-      at = rate_limit&.retry_after
-      return nil unless at
-
-      [at - Time.now, 0.0].max
+      at = (header && Util.parse_time(header, httpdate: true)) || rate_limit&.retry_after
+      at && [at - Time.now, 0.0].max
     end
 
     private

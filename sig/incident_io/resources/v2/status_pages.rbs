@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class StatusPages < Resource
-        # Create a status page incident.
+        # Create a status page incident
         def create_status_page_incident: (
           incident_status: String,
           message: String,
@@ -17,7 +17,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::StatusPageIncidentV2
 
-        # Post an update on a Status Page incident.
+        # Post an update on a Status Page incident
         def create_status_page_incident_update: (
           message: String,
           notify_subscribers: bool,
@@ -27,7 +27,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::StatusPageIncidentUpdateV2
 
-        # Schedule a Status Page maintenance window.
+        # Schedule a Status Page maintenance window
         def create_status_page_maintenance: (
           affected_component_ids: Array[String],
           end_at: Time | String,
@@ -42,7 +42,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::StatusPageMaintenanceV2
 
-        # Post an update on a Status Page maintenance window.
+        # Post an update on a Status Page maintenance window
         def create_status_page_maintenance_update: (
           message: String,
           notify_subscribers: bool,
@@ -52,7 +52,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::StatusPageMaintenanceUpdateV2
 
-        # Create a retrospective (historical) status page incident.
+        # Create a retrospective (historical) status page incident
         def create_status_page_retrospective_incident: (
           name: String,
           status_page_id: String,
@@ -61,13 +61,13 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::StatusPageIncidentV2
 
-        # Delete a Status Page maintenance window.
+        # Delete a Status Page maintenance window
         def delete_status_page_maintenance: (
           String status_page_maintenance_id,
           ?request_options: request_options
         ) -> nil
 
-        # List status page incidents.
+        # List status page incidents
         def list_status_page_incidents: (
           status_page_id: String,
           ?component_id: String?,
@@ -80,7 +80,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::StatusPageIncidentV2]
 
-        # List status page maintenances.
+        # List status page maintenances
         def list_status_page_maintenances: (
           status_page_id: String,
           ?component_id: String?,
@@ -93,14 +93,14 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::StatusPageMaintenanceV2]
 
-        # List all status pages for your organisation.
+        # List all status pages for your organisation
         def list_status_pages: (
           ?page_size: Integer?,
           ?after: String?,
           ?request_options: request_options
         ) -> Pager[Models::StatusPageV2]
 
-        # Show availability for a status page component over a time window.
+        # Show availability for a status page component over a time window
         def show_status_page_component_availability: (
           String status_page_id,
           String component_id,
@@ -109,32 +109,32 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::StatusPageComponentAvailabilityV2
 
-        # Show a status page incident.
+        # Show a status page incident
         def show_status_page_incident: (
           String status_page_incident_id,
           ?request_options: request_options
         ) -> Models::StatusPageIncidentV2
 
-        # Show a status page maintenance window.
+        # Show a status page maintenance window
         def show_status_page_maintenance: (
           String status_page_maintenance_id,
           ?request_options: request_options
         ) -> Models::StatusPageMaintenanceV2
 
-        # Show the structure of a status page.
+        # Show the structure of a status page
         def show_status_page_structure: (
           String status_page_id,
           ?request_options: request_options
         ) -> Models::StatusPageStructureV2
 
-        # Update a status page incident.
+        # Update a status page incident
         def update_status_page_incident: (
           String status_page_incident_id,
           name: String,
           ?request_options: request_options
         ) -> Models::StatusPageIncidentV2
 
-        # Update the name and scheduled window of a Status Page maintenance window.
+        # Update the name and scheduled window of a Status Page maintenance window
         def update_status_page_maintenance: (
           String status_page_maintenance_id,
           end_at: Time | String,

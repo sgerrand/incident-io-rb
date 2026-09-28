@@ -41,6 +41,8 @@ module IncidentIo
       @_raw: Hash[String, untyped]?
       @_given: Array[Symbol]
 
+      def initialize: (?raw: Hash[String, untyped]?, **untyped attrs) -> void
+
       # The payload this model was built from, or nil if built by hand.
       def raw: () -> Hash[String, untyped]?
 

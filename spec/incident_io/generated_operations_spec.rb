@@ -12,11 +12,16 @@ RSpec.describe "generated resource methods" do
     case result["kind"]
     when "none" then {status: 204}
     when "text" then {status: 200, body: "a,b\n", headers: {"Content-Type" => "text/csv"}}
-    when "paginated" then json_response({result["items_key"] => [{}], "pagination_meta" => {}})
+    when "paginated" then json_response({result["items_key"] => [nest({}, result["depth"])], "pagination_meta" => {}})
     else
-      value = result["array"] ? [{}] : {}
+      value = nest({}, result["depth"])
       json_response(result["unwrap"] ? {result["unwrap"] => value} : value)
     end
+  end
+
+  # The value wrapped in depth arrays, e.g. nest({}, 2) is [[{}]].
+  def nest(value, depth)
+    depth.times.reduce(value) { |inner, _| [inner] }
   end
 
   def model_class(result)
@@ -60,12 +65,10 @@ RSpec.describe "generated resource methods" do
       when "text" then expect(result).to eq("a,b\n")
       when "paginated"
         expect(result.size).to eq(1)
-        expect(result.first).to be_a(model) if model
+        expect(result.first).to match(nest(be_a(model), op["result"]["depth"])) if model
       else
-        if model.nil? then expect(result).to eq(op["result"]["array"] ? [{}] : {})
-        elsif op["result"]["array"] then expect(result).to all(be_a(model))
-        else expect(result).to be_a(model)
-        end
+        expected = model ? be_a(model) : {}
+        expect(result).to match(nest(expected, op["result"]["depth"]))
       end
     end
   end

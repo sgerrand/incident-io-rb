@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V3
       class FollowUps < Resource
-        # Connect a follow-up to an existing issue in an issue tracker, using the URL of the issue.
+        # Connect a follow-up to an existing issue in an issue tracker, using the URL…
         def connect_external_issue: (
           String id,
           provider: String,
@@ -13,7 +13,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::FollowUpV3
 
-        # Create a new incident follow-up.
+        # Create a new incident follow-up
         def create: (
           incident_id: String,
           title: String,
@@ -27,17 +27,17 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::FollowUpV3
 
-        # Create a follow-up from the URL of an issue that already exists in an issue tracker.
+        # Create a follow-up from the URL of an issue that already exists in an issue…
         def create_from_link: (
           incident_id: String,
           url: String,
           ?request_options: request_options
         ) -> Models::FollowUpV3
 
-        # Delete an incident follow-up.
+        # Delete an incident follow-up
         def delete: (String id, ?request_options: request_options) -> nil
 
-        # List follow-ups for an organisation.
+        # List follow-ups for an organisation
         def list: (
           ?page_size: Integer?,
           ?after: String?,
@@ -49,10 +49,10 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::FollowUpV3]
 
-        # Get a single incident follow-up.
+        # Get a single incident follow-up
         def show: (String id, ?request_options: request_options) -> Models::FollowUpV3
 
-        # Update an existing incident follow-up.
+        # Update an existing incident follow-up
         def update: (
           String id,
           status: String,

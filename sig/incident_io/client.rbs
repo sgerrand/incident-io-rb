@@ -61,7 +61,7 @@ module IncidentIo
       String path,
       items_key: String,
       ?query: Hash[untyped, untyped]?,
-      ?model: _FromApi?,
+      ?model: untyped,
       ?request_options: request_options
     ) -> Pager[untyped]
 
@@ -76,8 +76,6 @@ module IncidentIo
     def retry_delay: (APIError error, Integer attempt, idempotent: bool, max_retries: Integer) -> Float?
 
     def backoff: (Integer attempt) -> Float
-
-    def sleep_for: (seconds seconds) -> void
 
     def build_url: (String path, Hash[untyped, untyped]? query) -> String
 

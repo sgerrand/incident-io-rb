@@ -31,10 +31,10 @@ module IncidentIo
     @path: String
     @items_key: String
     @query: Hash[untyped, untyped]
-    @model: _FromApi?
+    @model: untyped
     @request_options: request_options
 
-    def initialize: (Client client, String path, items_key: String, ?query: Hash[untyped, untyped]?, ?model: _FromApi?, ?request_options: request_options) -> void
+    def initialize: (Client client, String path, items_key: String, ?query: Hash[untyped, untyped]?, ?model: untyped, ?request_options: request_options) -> void
 
     def first_page: () -> Page[T]
 

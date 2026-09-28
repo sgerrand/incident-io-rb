@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V1
       class Incidents < Resource
-        # Create a new incident.
+        # Create a new incident
         # @deprecated Use `client.incidents.create` instead.
         def create: (
           visibility: String,
@@ -24,7 +24,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::IncidentV1
 
-        # List all incidents for an organisation.
+        # List all incidents for an organisation
         # @deprecated Use `client.incidents.list` instead.
         def list: (
           ?page_size: Integer?,
@@ -33,7 +33,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::IncidentV1]
 
-        # Get a single incident.
+        # Get a single incident
         # @deprecated Use `client.incidents.show` instead.
         def show: (String id, ?request_options: request_options) -> Models::IncidentV1
       end

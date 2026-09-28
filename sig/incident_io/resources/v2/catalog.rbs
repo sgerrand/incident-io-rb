@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class Catalog < Resource
-        # Create an entry within the catalog.
+        # Create an entry within the catalog
         # @deprecated Use `client.catalog.create_entry` instead.
         def create_entry: (
           attribute_values: Hash[untyped, untyped],
@@ -17,7 +17,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::CatalogEntryV2
 
-        # Create a catalog type.
+        # Create a catalog type
         # @deprecated Use `client.catalog.create_type` instead.
         def create_type: (
           description: String,
@@ -32,15 +32,15 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::CatalogTypeV2
 
-        # Archives a catalog entry.
+        # Archives a catalog entry
         # @deprecated Use `client.catalog.destroy_entry` instead.
         def destroy_entry: (String id, ?request_options: request_options) -> nil
 
-        # Archives a catalog type and associated entries.
+        # Archives a catalog type and associated entries
         # @deprecated Use `client.catalog.destroy_type` instead.
         def destroy_type: (String id, ?request_options: request_options) -> nil
 
-        # List entries for a catalog type.
+        # List entries for a catalog type
         # @deprecated Use `client.catalog.list_entries` instead.
         def list_entries: (
           catalog_type_id: String,
@@ -49,23 +49,23 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::CatalogEntryV2]
 
-        # List available engine resources for the catalog.
+        # List available engine resources for the catalog
         # @deprecated Use `client.catalog.list_resources` instead.
         def list_resources: (?request_options: request_options) -> Array[Models::CatalogResourceV2]
 
-        # List all catalog types for an organisation, including those synced from external resources.
+        # List all catalog types for an organisation, including those synced from…
         # @deprecated Use `client.catalog.list_types` instead.
         def list_types: (?request_options: request_options) -> Array[Models::CatalogTypeV2]
 
-        # Show a single catalog entry.
+        # Show a single catalog entry
         # @deprecated Use `client.catalog.show_entry` instead.
         def show_entry: (String id, ?request_options: request_options) -> Models::CatalogShowEntryResultV2
 
-        # Show a single catalog type.
+        # Show a single catalog type
         # @deprecated Use `client.catalog.show_type` instead.
         def show_type: (String id, ?request_options: request_options) -> Models::CatalogTypeV2
 
-        # Updates an existing catalog entry.
+        # Updates an existing catalog entry
         # @deprecated Use `client.catalog.update_entry` instead.
         def update_entry: (
           String id,
@@ -77,7 +77,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::CatalogUpdateEntryResultV2
 
-        # Updates an existing catalog type.
+        # Updates an existing catalog type
         # @deprecated Use `client.catalog.update_type` instead.
         def update_type: (
           String id,
@@ -92,7 +92,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::CatalogTypeV2
 
-        # Update an existing catalog types schema, adding or removing attributes.
+        # Update an existing catalog types schema, adding or removing attributes
         # @deprecated Use `client.catalog.update_type_schema` instead.
         def update_type_schema: (
           String id,

@@ -13,9 +13,4 @@ module IncidentIo
     ?max_retries: Integer,
     ?headers: Hash[String, String]
   }
-
-  # Anything that can build a result from parsed JSON, e.g. a model class.
-  interface _FromApi
-    def from_api: (untyped data) -> untyped
-  end
 end

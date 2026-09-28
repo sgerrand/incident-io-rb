@@ -5,26 +5,26 @@ module IncidentIo
   module Resources
     module V2
       class ScheduleSyncTargets < Resource
-        # Create a new schedule sync target for a Slack user group.
+        # Create a new schedule sync target for a Slack user group
         def create: (
           schedule_sync_target: Models::ScheduleSyncTargetCreatePayloadV2 | Hash[untyped, untyped],
           ?request_options: request_options
         ) -> Models::ScheduleSyncTargetResourceV2
 
-        # Archive a schedule sync target.
+        # Archive a schedule sync target
         def destroy: (String id, ?request_options: request_options) -> nil
 
-        # List all schedule sync targets for this organisation.
+        # List all schedule sync targets for this organisation
         def list: (
           ?page_size: Integer?,
           ?after: String?,
           ?request_options: request_options
         ) -> Pager[Models::ScheduleSyncTargetResourceV2]
 
-        # Get a single schedule sync target.
+        # Get a single schedule sync target
         def show: (String id, ?request_options: request_options) -> Models::ScheduleSyncTargetResourceV2
 
-        # Update the add_bot_to_group flag on a sync target.
+        # Update the add_bot_to_group flag on a sync target
         def update: (
           String id,
           add_bot_to_group: bool,

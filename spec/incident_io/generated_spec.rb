@@ -42,7 +42,7 @@ RSpec.describe "generated resources" do
       .with { |req| bodies << JSON.parse(req.body) }
       .to_return(json_response(error_body(status: 500, type: "internal_error"), status: 500),
         json_response({"incident" => {"id" => "1"}}, status: 201))
-    allow(client).to receive(:sleep_for)
+    allow(client).to receive(:sleep)
 
     incident = client.incidents.create(visibility: "public", name: "DB down")
 
@@ -122,15 +122,7 @@ RSpec.describe "generated resources" do
     end
   end
 
-  describe "deprecated endpoints" do
-    around do |example|
-      before = Warning[:deprecated]
-      Warning[:deprecated] = true
-      example.run
-    ensure
-      Warning[:deprecated] = before
-    end
-
+  describe "deprecated endpoints", :deprecation_warnings do
     it "warns once, pointing at the newer method" do
       stub_request(:get, "#{BASE_URL}/v2/catalog_types/1").to_return(json_response({"catalog_type" => {"id" => "1"}}))
       allow(IncidentIo::Resource).to receive(:first_deprecation_warning?).and_return(true, false)

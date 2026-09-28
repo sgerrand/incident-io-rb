@@ -1,15 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe IncidentIo::Webhook do
-  # Builds a signing secret ("whsec_" + base64 key) from raw key bytes, so no
-  # secret-shaped string appears in the source for scanners to flag.
-  def secret_for(key)
-    "#{IncidentIo::Webhook::SECRET_PREFIX}#{[key].pack("m0")}"
-  end
-
   # Svix's published test vector, also used in incident.io's webhook docs.
   # The key is written as hex; it is not a real secret.
-  let(:secret) { secret_for(["31f290f6bf06298aab4f08d43c3f082cf648a362da2da4b0"].pack("H*")) }
+  let(:secret) { webhook_secret(["31f290f6bf06298aab4f08d43c3f082cf648a362da2da4b0"].pack("H*")) }
   let(:payload) { '{"test": 2432232314}' }
   let(:sent_at) { 1_614_265_330 }
   let(:now) { Time.at(sent_at) }
@@ -61,7 +55,7 @@ RSpec.describe IncidentIo::Webhook do
     end
 
     it "rejects the wrong secret" do
-      expect { verify(secret: secret_for("not the secret")) }.to raise_error(described_class::SignatureError)
+      expect { verify(secret: webhook_secret("not the secret")) }.to raise_error(described_class::SignatureError)
     end
 
     it "ignores signatures with other versions" do
@@ -131,11 +125,8 @@ RSpec.describe IncidentIo::Webhook do
   describe ".construct_event" do
     it "checks the signature, then parses the webhook with its ID" do
       body = JSON.generate("event_type" => "schedule.deleted_v1", "schedule.deleted_v1" => {"id" => "01S"})
-      sent_at = Time.now.to_i
-      signature = described_class.sign(body, id: "msg_1", timestamp: sent_at, secret:)
-      headers = {"webhook-id" => "msg_1", "webhook-timestamp" => sent_at.to_s, "webhook-signature" => "v1,#{signature}"}
 
-      event = described_class.construct_event(body, headers, secret:)
+      event = described_class.construct_event(body, signed_webhook_headers(body, secret:), secret:)
 
       expect(event).to have_attributes(id: "msg_1", type: "schedule.deleted_v1")
       expect(event.data).to be_a(IncidentIo::Models::ScheduleSlimV2)

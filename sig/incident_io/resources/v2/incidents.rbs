@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class Incidents < Resource
-        # Create a new incident.
+        # Create a new incident
         def create: (
           visibility: String,
           ?custom_field_entries: (Array[Models::CustomFieldEntryPayloadV2 | Hash[untyped, untyped]] | NotGiven)?,
@@ -24,7 +24,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::IncidentV2
 
-        # Edit an existing incident.
+        # Edit an existing incident
         def edit: (
           String id,
           incident: Models::IncidentEditPayloadV2 | Hash[untyped, untyped],
@@ -32,7 +32,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::IncidentV2
 
-        # Import a postmortem document from markdown into an incident.
+        # Import a postmortem document from markdown into an incident
         def import_postmortem_document: (
           String id,
           content: String,
@@ -40,7 +40,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::PostmortemDocumentV1
 
-        # List all incidents for an organisation.
+        # List all incidents for an organisation
         def list: (
           ?page_size: Integer?,
           ?after: String?,
@@ -58,7 +58,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::IncidentV2]
 
-        # Get a single incident.
+        # Get a single incident
         def show: (String id, ?request_options: request_options) -> Models::IncidentV2
       end
     end
