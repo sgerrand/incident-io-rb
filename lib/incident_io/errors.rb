@@ -106,7 +106,7 @@ module IncidentIo
     def retry_after
       header = headers["retry-after"]
       seconds = header && Float(header, exception: false)
-      return seconds if seconds
+      return [seconds, 0.0].max if seconds
 
       at = (header && Util.parse_time(header, httpdate: true)) || rate_limit&.retry_after
       at && [at - Time.now, 0.0].max
