@@ -201,6 +201,12 @@ module IncidentIoGenerator
 
       check_params!(id, path_params + query_params + body_params)
 
+      result = build_result(id, op, query_params)
+      # Pager only sends GETs with a query, so it can't send a body.
+      if result.kind == :paginated && (http_method != "get" || body_schema)
+        raise Error, "#{id}: paginated operations must be GETs without a body"
+      end
+
       Operation.new(
         operation_id: id,
         http_method:,
@@ -218,7 +224,7 @@ module IncidentIoGenerator
         body_params:,
         body: !body_schema.nil?,
         idempotent:,
-        result: build_result(id, op, query_params)
+        result:
       )
     end
 

@@ -138,6 +138,13 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
       "a resource named like a Client method" => [/resource name request clashes with a Client method/, ->(s) {
         s["paths"]["/v1/request"] = {"get" => operation("Request V1#Show", "WidgetsShowResultV2")}
       }],
+      "a paginated GET with a body" => [/Widgets V2#List: paginated operations must be GETs without a body/, ->(s) {
+        s["paths"]["/v2/widgets"]["get"]["requestBody"] = s["paths"]["/v2/widgets"]["post"]["requestBody"]
+      }],
+      "a paginated POST" => [/Searches V2#List: paginated operations must be GETs without a body/, ->(s) {
+        after = {"in" => "query", "name" => "after", "schema" => {"type" => "string"}}
+        s["paths"]["/v2/searches"] = {"post" => operation("Searches V2#List", "WidgetsListResultV2", parameters: [after])}
+      }],
       "a resource named like a version accessor" => [/resource name v2 clashes with a version accessor/, ->(s) {
         s["paths"]["/v1/v2"] = {"get" => operation("V2 V1#Show", "WidgetsShowResultV2")}
       }],
