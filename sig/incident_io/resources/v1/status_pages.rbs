@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V1
       class StatusPages < Resource
-        # List the linked Response incidents for a status page incident.
+        # List the linked Response incidents for a status page incident
         def list_response_incidents: (
           String id,
           String incident_id,

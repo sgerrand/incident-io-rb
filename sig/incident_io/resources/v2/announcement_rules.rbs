@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class AnnouncementRules < Resource
-        # Create an announcement rule.
+        # Create an announcement rule
         def create: (
           condition_groups: Array[Models::ConditionGroupPayloadV2 | Hash[untyped, untyped]],
           mode: String,
@@ -20,20 +20,20 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::AnnouncementRuleV2
 
-        # Delete an announcement rule.
+        # Delete an announcement rule
         def destroy: (String id, ?request_options: request_options) -> nil
 
-        # List announcement rules for this organisation.
+        # List announcement rules for this organisation
         def list: (
           ?page_size: Integer?,
           ?after: String?,
           ?request_options: request_options
         ) -> Pager[Models::AnnouncementRuleV2]
 
-        # Show an announcement rule.
+        # Show an announcement rule
         def show: (String id, ?request_options: request_options) -> Models::AnnouncementRuleV2
 
-        # Update an announcement rule.
+        # Update an announcement rule
         def update: (
           String id,
           condition_groups: Array[Models::ConditionGroupPayloadV2 | Hash[untyped, untyped]],

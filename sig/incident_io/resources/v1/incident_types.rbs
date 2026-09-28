@@ -5,10 +5,10 @@ module IncidentIo
   module Resources
     module V1
       class IncidentTypes < Resource
-        # List all incident types for an organisation.
+        # List all incident types for an organisation
         def list: (?request_options: request_options) -> Array[Models::IncidentTypeV1]
 
-        # Get a single incident type.
+        # Get a single incident type
         def show: (String id, ?request_options: request_options) -> Models::IncidentTypeV1
       end
     end

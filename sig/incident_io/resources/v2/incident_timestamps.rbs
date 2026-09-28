@@ -5,10 +5,10 @@ module IncidentIo
   module Resources
     module V2
       class IncidentTimestamps < Resource
-        # List all incident timestamps for an organisation.
+        # List all incident timestamps for an organisation
         def list: (?request_options: request_options) -> Array[Models::IncidentTimestampV2]
 
-        # Get a single incident timestamp.
+        # Get a single incident timestamp
         def show: (String id, ?request_options: request_options) -> Models::IncidentTimestampV2
       end
     end

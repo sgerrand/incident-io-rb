@@ -8,7 +8,7 @@ module IncidentIo
 <% if i > 0 -%>
 
 <% end -%>
-        # <%= helpers.first_sentence((op.description || op.summary).to_s.strip.lines.first.to_s.strip) %>
+        # <%= helpers.method_summary(op) %>
 <% if op.deprecated -%>
         # @deprecated<%= " Use `#{op.replacement}` instead." if op.replacement %>
 <% end -%>

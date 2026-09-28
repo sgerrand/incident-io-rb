@@ -21,10 +21,10 @@ module IncidentIo
         # Delete a custom field
         def delete: (String id, ?request_options: request_options) -> nil
 
-        # List all custom fields for an organisation.
+        # List all custom fields for an organisation
         def list: (?request_options: request_options) -> Array[Models::CustomFieldV2]
 
-        # Get a single custom field.
+        # Get a single custom field
         def show: (String id, ?request_options: request_options) -> Models::CustomFieldV2
 
         # Update the details of a custom field

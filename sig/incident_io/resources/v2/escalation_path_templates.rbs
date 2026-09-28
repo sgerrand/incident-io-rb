@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class EscalationPathTemplates < Resource
-        # Create a new escalation path template.
+        # Create a new escalation path template
         def create: (
           name: String,
           path: Array[Models::EscalationPathTemplateNodePayloadV2 | Hash[untyped, untyped]],
@@ -17,10 +17,10 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::EscalationPathTemplateV2
 
-        # Archives a particular escalation path template.
+        # Archives a particular escalation path template
         def destroy: (String id, ?request_options: request_options) -> nil
 
-        # List active escalation path templates.
+        # List active escalation path templates
         def list: (
           ?page_size: Integer?,
           ?after: String?,
@@ -28,10 +28,10 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::EscalationPathTemplateV2]
 
-        # Show a particular escalation path template.
+        # Show a particular escalation path template
         def show: (String id, ?request_options: request_options) -> Models::EscalationPathTemplateV2
 
-        # Update a particular escalation path template.
+        # Update a particular escalation path template
         def update: (
           String id,
           name: String,

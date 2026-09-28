@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V1
       class ApiKeys < Resource
-        # Create a new API key.
+        # Create a new API key
         def create: (
           name: String,
           role_names: Array[String],
@@ -15,27 +15,27 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::APIKeysCreateResultV1
 
-        # Delete an existing API key.
+        # Delete an existing API key
         def delete: (String id, ?request_options: request_options) -> nil
 
-        # List API keys visible to the calling API key, with pagination.
+        # List API keys visible to the calling API key, with pagination
         def list: (
           ?page_size: Integer?,
           ?after: String?,
           ?request_options: request_options
         ) -> Pager[Models::APIKeyV1]
 
-        # Rotate the access token for an API key.
+        # Rotate the access token for an API key
         def rotate: (
           String id,
           grace_period_minutes: Integer,
           ?request_options: request_options
         ) -> Models::APIKeysRotateResultV1
 
-        # Show details of a specific API key, including its roles, team assignments and when its token was last issued.
+        # Show details of a specific API key, including its roles, team assignments and…
         def show: (String id, ?request_options: request_options) -> Models::APIKeyV1
 
-        # Update an existing API key's name, roles, or team assignments.
+        # Update an existing API key's name, roles, or team assignments
         def update: (
           String id,
           name: String,

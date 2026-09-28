@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V3
       class Actions < Resource
-        # Create a new incident action.
+        # Create a new incident action
         def create: (
           description: String,
           incident_id: String,
@@ -13,10 +13,10 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::ActionV3
 
-        # Delete an incident action.
+        # Delete an incident action
         def delete: (String id, ?request_options: request_options) -> nil
 
-        # List actions for an organisation.
+        # List actions for an organisation
         def list: (
           ?page_size: Integer?,
           ?after: String?,
@@ -27,10 +27,10 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::ActionV3]
 
-        # Get a single incident action.
+        # Get a single incident action
         def show: (String id, ?request_options: request_options) -> Models::ActionV3
 
-        # Update an existing incident action.
+        # Update an existing incident action
         def update: (
           String id,
           description: String,

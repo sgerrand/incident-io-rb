@@ -24,11 +24,11 @@ module IncidentIo
         # @deprecated Use `client.custom_fields.delete` instead.
         def delete: (String id, ?request_options: request_options) -> nil
 
-        # List all custom fields for an organisation.
+        # List all custom fields for an organisation
         # @deprecated Use `client.custom_fields.list` instead.
         def list: (?request_options: request_options) -> Array[Models::CustomFieldV1]
 
-        # Get a single custom field.
+        # Get a single custom field
         # @deprecated Use `client.custom_fields.show` instead.
         def show: (String id, ?request_options: request_options) -> Models::CustomFieldV1
 

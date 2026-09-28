@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class Policies < Resource
-        # Create a new policy.
+        # Create a new policy
         def create: (
           conditions: Array[Models::ConditionGroupPayloadV2 | Hash[untyped, untyped]],
           description: String,
@@ -22,10 +22,10 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::PolicyV2
 
-        # Archive a policy.
+        # Archive a policy
         def delete: (String id, ?request_options: request_options) -> nil
 
-        # List all policies for an organisation.
+        # List all policies for an organisation
         def list: (
           ?page_size: Integer?,
           ?after: String?,
@@ -33,10 +33,10 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::PolicyV2]
 
-        # Get a single policy.
+        # Get a single policy
         def show: (String id, ?request_options: request_options) -> Models::PolicyV2
 
-        # Update an existing policy.
+        # Update an existing policy
         def update: (
           String id,
           conditions: Array[Models::ConditionGroupPayloadV2 | Hash[untyped, untyped]],

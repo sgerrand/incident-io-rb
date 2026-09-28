@@ -5,10 +5,10 @@ module IncidentIo
   module Resources
     module V2
       class Alerts < Resource
-        # Add tags to an alert without changing its existing tags.
+        # Add tags to an alert without changing its existing tags
         def add_tags: (String id, tags: Array[String], ?request_options: request_options) -> Models::AlertV2
 
-        # Attach an alert to an incident, creating the connection between them.
+        # Attach an alert to an incident, creating the connection between them
         def create_incident_alert: (
           alert_id: String,
           incident_id: String,
@@ -16,7 +16,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::IncidentAlertV2
 
-        # List all alerts for your account.
+        # List all alerts for your account
         def list: (
           page_size: Integer,
           ?after: String?,
@@ -33,7 +33,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::AlertV2]
 
-        # List the alert tags in your organisation's vocabulary.
+        # List the alert tags in your organisation's vocabulary
         def list_alert_tags: (
           ?page_size: Integer?,
           ?after: String?,
@@ -50,23 +50,23 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::IncidentAlertV2]
 
-        # Remove tags from an alert without changing its other tags.
+        # Remove tags from an alert without changing its other tags
         def remove_tags: (
           String id,
           tags: Array[String],
           ?request_options: request_options
         ) -> Models::AlertV2
 
-        # Resolve a currently firing alert.
+        # Resolve a currently firing alert
         def resolve: (String id, ?request_options: request_options) -> Models::AlertV2
 
-        # Replace all tags on an alert.
+        # Replace all tags on an alert
         def set_tags: (String id, tags: Array[String], ?request_options: request_options) -> Models::AlertV2
 
         # Show a single alert for your account
         def show: (String id, ?request_options: request_options) -> Models::AlertV2
 
-        # Confirm or detach the connection between an alert and an incident.
+        # Confirm or detach the connection between an alert and an incident
         def transition_incident_alert: (
           String id,
           state: String,

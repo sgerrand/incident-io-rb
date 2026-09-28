@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class Users < Resource
-        # List users in your account.
+        # List users in your account
         def list: (
           ?email: String?,
           ?slack_user_id: String?,
@@ -15,25 +15,25 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::UserWithRolesV2]
 
-        # List notification methods for a user.
+        # List notification methods for a user
         def list_notification_methods: (
           String user_id,
           ?request_options: request_options
         ) -> Array[Models::OnCallNotificationMethodPublicV2]
 
-        # List notification rules for a user.
+        # List notification rules for a user
         def list_notification_rules: (
           String user_id,
           ?request_options: request_options
         ) -> Array[Models::OnCallNotificationRulePublicV2]
 
-        # Get a single user.
+        # Get a single user
         def show: (String id, ?request_options: request_options) -> Models::UserWithRolesV2
 
-        # Show the paging provider that would be used to escalate to this user.
+        # Show the paging provider that would be used to escalate to this user
         def show_paging_provider: (String user_id, ?request_options: request_options) -> untyped
 
-        # Update a user's preferred paging provider.
+        # Update a user's preferred paging provider
         def update_paging_provider: (
           String user_id,
           preferred_escalation_provider: String,

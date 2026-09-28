@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class Actions < Resource
-        # Deprecated: this endpoint will be removed on 31 December 2026.
+        # Deprecated: this endpoint will be removed on 31 December 2026
         # @deprecated Use `client.actions.create` instead.
         def create: (
           description: String,
@@ -14,11 +14,11 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::ActionV2
 
-        # Deprecated: this endpoint will be removed on 31 December 2026.
+        # Deprecated: this endpoint will be removed on 31 December 2026
         # @deprecated Use `client.actions.delete` instead.
         def delete: (String id, ?request_options: request_options) -> nil
 
-        # Deprecated: this endpoint will be removed on 31 December 2026.
+        # Deprecated: this endpoint will be removed on 31 December 2026
         # @deprecated Use `client.actions.list` instead.
         def list: (
           ?incident_id: String?,
@@ -26,11 +26,11 @@ module IncidentIo
           ?request_options: request_options
         ) -> Array[Models::ActionV2]
 
-        # Deprecated: this endpoint will be removed on 31 December 2026.
+        # Deprecated: this endpoint will be removed on 31 December 2026
         # @deprecated Use `client.actions.show` instead.
         def show: (String id, ?request_options: request_options) -> Models::ActionV2
 
-        # Deprecated: this endpoint will be removed on 31 December 2026.
+        # Deprecated: this endpoint will be removed on 31 December 2026
         # @deprecated Use `client.actions.update` instead.
         def update: (
           String id,

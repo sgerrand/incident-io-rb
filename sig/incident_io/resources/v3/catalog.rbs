@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V3
       class Catalog < Resource
-        # Update multiple catalog entries in a single operation.
+        # Update multiple catalog entries in a single operation
         def bulk_update_entries: (
           catalog_type_id: String,
           entries: Array[Models::PartialEntryPayloadV3 | Hash[untyped, untyped]],
@@ -13,7 +13,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> nil
 
-        # Create an entry within the catalog.
+        # Create an entry within the catalog
         def create_entry: (
           attribute_values: Hash[untyped, untyped],
           catalog_type_id: String,
@@ -24,7 +24,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::CatalogEntryV3
 
-        # Create a catalog type.
+        # Create a catalog type
         def create_type: (
           description: String,
           name: String,
@@ -40,13 +40,13 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::CatalogTypeV3
 
-        # Archives a catalog entry.
+        # Archives a catalog entry
         def destroy_entry: (String id, ?request_options: request_options) -> nil
 
-        # Archives a catalog type and associated entries.
+        # Archives a catalog type and associated entries
         def destroy_type: (String id, ?request_options: request_options) -> nil
 
-        # List entries for a catalog type.
+        # List entries for a catalog type
         def list_entries: (
           catalog_type_id: String,
           page_size: Integer,
@@ -55,23 +55,23 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::CatalogEntryV3]
 
-        # List available engine resources for the catalog.
+        # List available engine resources for the catalog
         def list_resources: (?request_options: request_options) -> Array[Models::CatalogResourceV3]
 
-        # List all catalog types for an organisation, including those synced from external resources.
+        # List all catalog types for an organisation, including those synced from…
         def list_types: (?request_options: request_options) -> Array[Models::CatalogTypeV3]
 
-        # Show a single catalog entry.
+        # Show a single catalog entry
         def show_entry: (
           String id,
           ?expand: bool?,
           ?request_options: request_options
         ) -> Models::CatalogShowEntryResultV3
 
-        # Show a single catalog type.
+        # Show a single catalog type
         def show_type: (String id, ?request_options: request_options) -> Models::CatalogTypeV3
 
-        # Updates an existing catalog entry.
+        # Updates an existing catalog entry
         def update_entry: (
           String id,
           attribute_values: Hash[untyped, untyped],
@@ -83,7 +83,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::CatalogUpdateEntryResultV3
 
-        # Updates an existing catalog type.
+        # Updates an existing catalog type
         def update_type: (
           String id,
           description: String,
@@ -99,7 +99,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::CatalogTypeV3
 
-        # Update an existing catalog types schema, adding or removing attributes.
+        # Update an existing catalog types schema, adding or removing attributes
         def update_type_schema: (
           String id,
           attributes: Array[Models::CatalogTypeAttributePayloadV3 | Hash[untyped, untyped]],

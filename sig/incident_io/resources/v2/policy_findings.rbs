@@ -5,10 +5,10 @@ module IncidentIo
   module Resources
     module V2
       class PolicyFindings < Resource
-        # Dismiss a finding, so it stops being counted as open.
+        # Dismiss a finding, so it stops being counted as open
         def dismiss: (String id, reason: String, ?request_options: request_options) -> Models::PolicyFindingV2
 
-        # List the findings your policies have raised, whatever state they are in.
+        # List the findings your policies have raised, whatever state they are in
         def list: (
           ?page_size: Integer?,
           ?after: String?,
@@ -16,10 +16,10 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::PolicyFindingV2]
 
-        # Undo a dismissal, returning the finding to its open state.
+        # Undo a dismissal, returning the finding to its open state
         def restore: (String id, ?request_options: request_options) -> Models::PolicyFindingV2
 
-        # Get a single finding.
+        # Get a single finding
         def show: (String id, ?request_options: request_options) -> Models::PolicyFindingV2
       end
     end

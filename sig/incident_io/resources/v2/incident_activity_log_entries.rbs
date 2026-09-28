@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class IncidentActivityLogEntries < Resource
-        # List the activity log entries for an incident, oldest first.
+        # List the activity log entries for an incident, oldest first
         def list: (
           incident_id: String,
           ?id: Array[String]?,

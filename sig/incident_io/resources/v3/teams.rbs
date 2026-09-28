@@ -5,14 +5,14 @@ module IncidentIo
   module Resources
     module V3
       class Teams < Resource
-        # List all teams in the organisation.
+        # List all teams in the organisation
         def list: (
           ?page_size: Integer?,
           ?after: String?,
           ?request_options: request_options
         ) -> Pager[Models::TeamV3]
 
-        # Get a single team.
+        # Get a single team
         def show: (String id, ?request_options: request_options) -> Models::TeamV3
       end
     end

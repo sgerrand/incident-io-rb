@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class CallTranscriptEntries < Resource
-        # List transcript entries for a call session, oldest first.
+        # List transcript entries for a call session, oldest first
         def list: (
           call_session_id: String,
           ?page_size: Integer?,

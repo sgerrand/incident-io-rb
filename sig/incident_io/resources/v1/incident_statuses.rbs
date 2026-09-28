@@ -17,10 +17,10 @@ module IncidentIo
         # Delete an incident status
         def delete: (String id, ?request_options: request_options) -> nil
 
-        # List all incident statuses for an organisation.
+        # List all incident statuses for an organisation
         def list: (?request_options: request_options) -> Array[Models::IncidentStatusV1]
 
-        # Get a single incident status.
+        # Get a single incident status
         def show: (String id, ?request_options: request_options) -> Models::IncidentStatusV1
 
         # Update an existing incident status

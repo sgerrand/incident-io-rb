@@ -5,17 +5,17 @@ module IncidentIo
   module Resources
     module V2
       class Escalations < Resource
-        # Cancel an escalation.
+        # Cancel an escalation
         def cancel_escalation: (String id, ?request_options: request_options) -> nil
 
-        # Check whether the given users can currently acknowledge, decline, or snooze an escalation.
+        # Check whether the given users can currently acknowledge, decline, or snooze…
         def check_escalation_permissions: (
           String escalation_id,
           user_ids: Array[String],
           ?request_options: request_options
         ) -> Array[Models::EscalationUserResponseOptionsV2]
 
-        # Create an escalation.
+        # Create an escalation
         def create: (
           title: String,
           ?description: (String | NotGiven)?,
@@ -26,7 +26,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::EscalationV2
 
-        # Create an escalation path.
+        # Create an escalation path
         def create_path: (
           name: String,
           path: Array[Models::EscalationPathNodePayloadV2 | Hash[untyped, untyped]],
@@ -39,10 +39,10 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::EscalationPathV2
 
-        # Archives an escalation path.
+        # Archives an escalation path
         def destroy_path: (String id, ?request_options: request_options) -> nil
 
-        # List all escalations for your account.
+        # List all escalations for your account
         def list: (
           ?page_size: Integer?,
           ?after: String?,
@@ -56,14 +56,14 @@ module IncidentIo
           ?request_options: request_options
         ) -> Pager[Models::EscalationV2]
 
-        # List all escalation paths in your account.
+        # List all escalation paths in your account
         def list_paths: (
           ?page_size: Integer?,
           ?after: String?,
           ?request_options: request_options
         ) -> Pager[Models::EscalationPathV2]
 
-        # Reassign an escalation to a different escalation path or set of users.
+        # Reassign an escalation to a different escalation path or set of users
         def reassign_escalation: (
           String escalation_id,
           ?description: (String | NotGiven)?,
@@ -74,7 +74,7 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::EscalationV2
 
-        # Respond to an escalation.
+        # Respond to an escalation
         def respond_escalation: (
           String escalation_id,
           response: String,
@@ -82,13 +82,13 @@ module IncidentIo
           ?request_options: request_options
         ) -> nil
 
-        # Show a specific escalation.
+        # Show a specific escalation
         def show: (String id, ?request_options: request_options) -> Models::EscalationV2
 
-        # Show an escalation path.
+        # Show an escalation path
         def show_path: (String id, ?request_options: request_options) -> Models::EscalationPathV2
 
-        # Updates an escalation path.
+        # Updates an escalation path
         def update_path: (
           String id,
           name: String,

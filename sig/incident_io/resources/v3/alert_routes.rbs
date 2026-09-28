@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V3
       class AlertRoutes < Resource
-        # Create a new alert route in your account.
+        # Create a new alert route in your account
         def create: (
           alert_sources: Array[Models::AlertRouteAlertSourcePayloadV3 | Hash[untyped, untyped]],
           condition_groups: Array[Models::ConditionGroupPayloadV3 | Hash[untyped, untyped]],
@@ -21,20 +21,20 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::AlertRouteV3
 
-        # Delete an existing alert route in your account.
+        # Delete an existing alert route in your account
         def delete: (String id, ?request_options: request_options) -> nil
 
-        # List all alert routes in your account.
+        # List all alert routes in your account
         def list: (
           ?page_size: Integer?,
           ?after: String?,
           ?request_options: request_options
         ) -> Pager[Models::AlertRouteSlimV3]
 
-        # Load details about a specific alert route in your account.
+        # Load details about a specific alert route in your account
         def show: (String id, ?request_options: request_options) -> Models::AlertRouteV3
 
-        # Update an existing alert route in your account.
+        # Update an existing alert route in your account
         def update: (
           String id,
           alert_sources: Array[Models::AlertRouteAlertSourcePayloadV3 | Hash[untyped, untyped]],

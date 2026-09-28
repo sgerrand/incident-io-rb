@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V2
       class IncidentParticipantWorkloads < Resource
-        # List the participants of an incident with their workload.
+        # List the participants of an incident with their workload
         def list: (
           incident_id: String,
           ?request_options: request_options
