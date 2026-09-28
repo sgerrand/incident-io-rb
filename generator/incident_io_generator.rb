@@ -6,6 +6,7 @@ require "json"
 require "yaml"
 
 require_relative "../lib/incident_io/model"
+require_relative "../lib/incident_io/resource"
 require_relative "incident_io_generator/naming"
 require_relative "incident_io_generator/types"
 require_relative "incident_io_generator/api"

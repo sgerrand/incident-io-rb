@@ -44,8 +44,9 @@ module IncidentIoGenerator
   class Api
     # Methods already on IncidentIo::Client; resources can't use these names.
     CLIENT_METHODS = %w[request execute paginate inspect base_url timeout open_timeout max_retries logger].freeze
-    # Private helpers on IncidentIo::Resource; operations can't use these names.
-    RESOURCE_METHODS = %w[request paginate path client inspect deprecated! initialize].freeze
+    # Methods on IncidentIo::Resource; operations can't use these names.
+    RESOURCE_METHODS = (IncidentIo::Resource.instance_methods(false) + IncidentIo::Resource.private_instance_methods(false))
+      .map(&:to_s).freeze
     RESERVED_PARAMS = %w[request_options].freeze
     TAG_PATTERN = /\A(?<base>.+) (?<version>V\d+)\z/
     HTTP_METHODS = %w[get post put patch delete].freeze
