@@ -44,15 +44,7 @@ RSpec.describe IncidentIo::Resource do
     expect(resource.inspect).not_to include("k")
   end
 
-  describe "deprecation warnings" do
-    around do |example|
-      before = Warning[:deprecated]
-      Warning[:deprecated] = true
-      example.run
-    ensure
-      Warning[:deprecated] = before
-    end
-
+  describe "deprecation warnings", :deprecation_warnings do
     it "warns once per name" do
       name = "client.test.#{rand(1_000_000)}"
 

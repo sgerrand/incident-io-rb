@@ -122,15 +122,7 @@ RSpec.describe "generated resources" do
     end
   end
 
-  describe "deprecated endpoints" do
-    around do |example|
-      before = Warning[:deprecated]
-      Warning[:deprecated] = true
-      example.run
-    ensure
-      Warning[:deprecated] = before
-    end
-
+  describe "deprecated endpoints", :deprecation_warnings do
     it "warns once, pointing at the newer method" do
       stub_request(:get, "#{BASE_URL}/v2/catalog_types/1").to_return(json_response({"catalog_type" => {"id" => "1"}}))
       allow(IncidentIo::Resource).to receive(:first_deprecation_warning?).and_return(true, false)

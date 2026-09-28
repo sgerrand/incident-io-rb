@@ -50,6 +50,20 @@ module SpecHelpers
     {"status" => status, "type" => type, "request_id" => request_id,
      "errors" => [{"code" => type, "message" => message}]}.merge(extra)
   end
+
+  # Builds a webhook signing secret ("whsec_" + base64 key) from raw key
+  # bytes, so no secret-shaped string appears in the source for scanners to
+  # flag.
+  def webhook_secret(key)
+    "#{IncidentIo::Webhook::SECRET_PREFIX}#{[key].pack("m0")}"
+  end
+
+  # Headers for a webhook body signed with the secret, sent now.
+  def signed_webhook_headers(body, secret:, id: "msg_1")
+    sent_at = Time.now.to_i
+    signature = IncidentIo::Webhook.sign(body, id:, timestamp: sent_at, secret:)
+    {"webhook-id" => id, "webhook-timestamp" => sent_at.to_s, "webhook-signature" => "v1,#{signature}"}
+  end
 end
 
 RSpec.configure do |config|
@@ -57,4 +71,13 @@ RSpec.configure do |config|
   config.disable_monkey_patching!
   config.order = :random
   Kernel.srand config.seed
+
+  # Turns on deprecation warnings for examples tagged :deprecation_warnings.
+  config.around(:example, :deprecation_warnings) do |example|
+    before = Warning[:deprecated]
+    Warning[:deprecated] = true
+    example.run
+  ensure
+    Warning[:deprecated] = before
+  end
 end

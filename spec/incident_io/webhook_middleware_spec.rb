@@ -3,18 +3,14 @@
 require "stringio"
 
 RSpec.describe IncidentIo::Webhook::Middleware do
-  let(:secret) { "#{IncidentIo::Webhook::SECRET_PREFIX}#{["middleware test key"].pack("m0")}" }
+  let(:secret) { webhook_secret("middleware test key") }
   let(:body) { JSON.generate("event_type" => "schedule.deleted_v1", "schedule.deleted_v1" => {"id" => "01S"}) }
   let(:app_calls) { [] }
   let(:app) { ->(env) { app_calls << env && [200, {}, ["from app"]] } }
 
   def signed_env(body: self.body, path: "/incident_io/webhooks", method: "POST", input: StringIO.new(body))
-    sent_at = Time.now.to_i
-    signature = IncidentIo::Webhook.sign(body, id: "msg_1", timestamp: sent_at, secret:)
-    {
-      "REQUEST_METHOD" => method, "PATH_INFO" => path, "rack.input" => input,
-      "HTTP_WEBHOOK_ID" => "msg_1", "HTTP_WEBHOOK_TIMESTAMP" => sent_at.to_s, "HTTP_WEBHOOK_SIGNATURE" => "v1,#{signature}"
-    }
+    headers = signed_webhook_headers(body, secret:).transform_keys { |key| "HTTP_#{key.upcase.tr("-", "_")}" }
+    {"REQUEST_METHOD" => method, "PATH_INFO" => path, "rack.input" => input, **headers}
   end
 
   it "calls the block with the event and replies 204" do
