@@ -61,7 +61,7 @@ module IncidentIo
       String path,
       items_key: String,
       ?query: Hash[untyped, untyped]?,
-      ?model: _FromApi?,
+      ?model: untyped,
       ?request_options: request_options
     ) -> Pager[untyped]
 

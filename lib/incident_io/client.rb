@@ -146,7 +146,8 @@ module IncidentIo
     # @param items_key [String] key of the item array in the response,
     #   e.g. "incidents"
     # @param query [Hash, nil] query parameters; `after` sets the first cursor
-    # @param model [#from_api, nil] builds each item; raw hashes when nil
+    # @param model [Object, nil] any Model type, e.g. `Models::IncidentV2` or
+    #   `[Models::SeverityV1]`, to build each item with; raw hashes when nil
     # @param request_options [Hash] see #request
     # @return [Pager]
     def paginate(path, items_key:, query: nil, model: nil, request_options: {})

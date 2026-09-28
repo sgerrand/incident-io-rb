@@ -79,6 +79,15 @@ RSpec.describe IncidentIo::Pager do
     expect(client.paginate("/v2/incidents", items_key: "incidents", query: {after: "x"}).to_a.size).to eq(1)
   end
 
+  it "builds items with any model type, including arrays of models" do
+    stub_request(:get, "#{BASE_URL}/v2/groups")
+      .to_return(json_response({"groups" => [[{"id" => "1"}, {"id" => "2"}]], "pagination_meta" => {}}))
+
+    groups = client.paginate("/v2/groups", items_key: "groups", model: [incident]).to_a
+
+    expect(groups).to eq([[incident.new(id: "1"), incident.new(id: "2")]])
+  end
+
   it "stops on an empty page" do
     stub_request(:get, url).with(query: {"after" => "y"}).to_return(page([], after: "z"))
 
