@@ -77,7 +77,7 @@ module IncidentIoGenerator
     # description when there's more to it.
     def method_docs(op, indent)
       description = (op.description || op.summary).to_s.strip
-      short = summary(description, "Calls #{op.operation_id}")
+      short = method_summary(op)
       lines = [short, ""]
       lines += [description, ""] unless [short, "#{short}."].include?(description)
       endpoint = "Endpoint: `#{op.http_method.upcase} #{op.path}`."
@@ -99,62 +99,45 @@ module IncidentIoGenerator
       comment(lines.join("\n"), indent)
     end
 
-    # The parameter list of a generated method. Optional body arguments
-    # default to NOT_GIVEN so that nil can be sent as null; optional query
-    # arguments default to nil, which is left out.
+    # The one-line summary of a generated method, for its YARD and RBS docs.
+    def method_summary(op)
+      summary((op.description || op.summary).to_s.strip, "Calls #{op.operation_id}")
+    end
+
+    # The parameter list of a generated method.
     def signature(op, indent)
       args = op.path_params.map(&:name)
       op.keyword_params.each do |p|
         args << if p.required then "#{p.name}:"
         elsif p.default then "#{p.name}: #{p.default}"
-        elsif op.body_params.include?(p) then "#{p.name}: NOT_GIVEN"
+        elsif p.not_given? then "#{p.name}: NOT_GIVEN"
         else "#{p.name}: nil"
         end
       end
       args << "request_options: {}"
-
-      one_line = "def #{op.method_name}(#{args.join(", ")})"
-      return one_line if indent + one_line.length <= MAX_LINE
-
-      pad = " " * (indent + 2)
-      "def #{op.method_name}(\n#{args.map { |a| "#{pad}#{a}" }.join(",\n")}\n#{" " * indent})"
+      wrap("def #{op.method_name}(", args, ")", indent)
     end
 
     # The body of a generated method: one request or paginate call.
     def call(op, indent)
-      pad = " " * (indent + 2)
-      args = []
-
-      if op.result.kind == :paginated
-        args << path_expression(op)
-        args << "items_key: #{op.result.items_key.inspect}"
-        args << "query: #{hash_expression(op.query_params, indent + 2)}" if op.query_params.any?
-        args << "model: #{op.result.model}" if op.result.model
-        args << "request_options:"
-        return "#{" " * indent}paginate(\n#{args.map { |a| "#{pad}#{a}" }.join(",\n")}\n#{" " * indent})"
-      end
-
-      args << ":#{op.http_method}"
+      paginated = op.result.kind == :paginated
+      args = paginated ? [] : [":#{op.http_method}"]
       args << path_expression(op)
+      args << "items_key: #{op.result.items_key.inspect}" if paginated
       args << "query: #{hash_expression(op.query_params, indent + 2)}" if op.query_params.any?
       args << "body: #{body_expression(op.body_params, indent + 2)}" if op.body
       args << "idempotent: true" if op.idempotent
       args << "unwrap: #{op.result.unwrap.inspect}" if op.result.unwrap
       args << "model: #{op.result.model}" if op.result.model
       args << "request_options:"
-      "#{" " * indent}request(\n#{args.map { |a| "#{pad}#{a}" }.join(",\n")}\n#{" " * indent})"
+      "#{" " * indent}#{one_per_line(paginated ? "paginate(" : "request(", args, ")", indent)}"
     end
 
     # Ruby source of a hash literal, a key per line when it doesn't fit.
     def hash_expression(params, indent)
       return "{}" if params.empty?
 
-      entries = params.map { |p| "#{p.name}:" }
-      one_line = "{#{entries.join(", ")}}"
-      return one_line if indent + one_line.length + 10 <= MAX_LINE
-
-      pad = " " * (indent + 2)
-      "{\n#{entries.map { |e| "#{pad}#{e}" }.join(",\n")}\n#{" " * indent}}"
+      wrap("{", params.map { |p| "#{p.name}:" }, "}", indent, reserve: 10)
     end
 
     # Request body source: `given({...})` drops arguments that weren't passed.
@@ -179,11 +162,7 @@ module IncidentIoGenerator
     # An RBS method definition, one line when it fits:
     #   def show: (String id, ?request_options: request_options) -> Models::X
     def rbs_def(name, params, returns, indent)
-      one_line = "def #{name}: (#{params.join(", ")}) -> #{returns}"
-      return one_line if indent + one_line.length <= MAX_LINE
-
-      pad = " " * (indent + 2)
-      "def #{name}: (\n#{params.map { |p| "#{pad}#{p}" }.join(",\n")}\n#{" " * indent}) -> #{returns}"
+      wrap("def #{name}: (", params, ") -> #{returns}", indent)
     end
 
     # RBS parameters for a generated resource method.
@@ -193,7 +172,7 @@ module IncidentIoGenerator
         type = Types.rbs_type(p.schema, input: true)
         params << if p.required then "#{p.name}: #{type}"
         elsif p.default then "?#{p.name}: #{type}"
-        elsif op.body_params.include?(p) then "?#{p.name}: #{Types.rbs_optional("#{type} | NotGiven")}"
+        elsif p.not_given? then "?#{p.name}: #{Types.rbs_optional("#{type} | NotGiven")}"
         else "?#{p.name}: #{Types.rbs_optional(type)}"
         end
       end
@@ -213,6 +192,21 @@ module IncidentIoGenerator
       return line if line.length < 80
 
       "#{line[0, 78].sub(/\s+\S*\z/, "")}…"
+    end
+
+    # Items between open and close on one line when they fit in MAX_LINE,
+    # less reserve characters for what follows; otherwise one per line.
+    def wrap(open, items, close, indent, reserve: 0)
+      one_line = "#{open}#{items.join(", ")}#{close}"
+      return one_line if indent + one_line.length + reserve <= MAX_LINE
+
+      one_per_line(open, items, close, indent)
+    end
+
+    # Items between open and close, one per line.
+    def one_per_line(open, items, close, indent)
+      pad = " " * (indent + 2)
+      "#{open}\n#{items.map { |item| "#{pad}#{item}" }.join(",\n")}\n#{" " * indent}#{close}"
     end
 
     # Ends text with a full stop unless it already ends a sentence.
@@ -236,7 +230,6 @@ module IncidentIoGenerator
       api.resources.flat_map do |resource|
         resource.operations.map do |op|
           keyword_params = op.keyword_params.select(&:required)
-          model = op.result.model
           {
             "operation_id" => op.operation_id,
             "version" => resource.version.downcase,
@@ -247,18 +240,18 @@ module IncidentIoGenerator
             "path" => op.path,
             "path_args" => op.path_params.map { |p| "#{p.name}-value" },
             "keyword_args" => keyword_params.to_h { |p| [p.name, Types.sample_value(p.schema, p.name)] },
-            "query_keys" => keyword_params.select { |p| op.query_params.include?(p) }.map(&:name),
-            "body_keys" => keyword_params.select { |p| op.body_params.include?(p) }.map(&:name),
+            "query_keys" => keyword_params.select { |p| p.location == :query }.map(&:name),
+            "body_keys" => keyword_params.select { |p| p.location == :body }.map(&:name),
             "body" => op.body,
             # An optional body field to pass as nil, which should be sent as null.
-            "null_body_key" => op.body_params.find { |p| !p.required && !p.default }&.name,
+            "null_body_key" => op.body_params.find(&:not_given?)&.name,
             "idempotency_key" => op.idempotent,
             "result" => {
               "kind" => op.result.kind.to_s,
               "unwrap" => op.result.unwrap,
               "items_key" => op.result.items_key,
-              "model" => model&.delete_prefix("[")&.delete_suffix("]")&.delete_prefix("Models::"),
-              "array" => model&.start_with?("[") || false
+              "model" => op.result.model_name,
+              "array" => op.result.array
             }
           }
         end

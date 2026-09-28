@@ -24,12 +24,22 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
     expect(ops["show"].path_params.map(&:name)).to eq(["id"])
   end
 
+  it "writes the model source for array results" do
+    result = IncidentIoGenerator::Result.new(kind: :json, yard: "Array", rbs: "Array", model_name: "WidgetV2", array: true)
+
+    expect(result.model).to eq("[Models::WidgetV2]")
+  end
+
   it "handles bodies and idempotency keys" do
     create = ops["create"]
 
     expect(create.idempotent).to be(true)
-    expect(create.keyword_params.map { |p| [p.name, p.required, p.default] })
-      .to eq([["name", true, nil], ["idempotency_key", false, "SecureRandom.uuid"], ["part", false, nil]])
+    expect(create.keyword_params.map { |p| [p.name, p.location, p.required, p.default, p.not_given?] })
+      .to eq([
+        ["name", :body, true, nil, false],
+        ["idempotency_key", :body, false, "SecureRandom.uuid", false],
+        ["part", :body, false, nil, true]
+      ])
   end
 
   it "handles empty and non-JSON responses" do

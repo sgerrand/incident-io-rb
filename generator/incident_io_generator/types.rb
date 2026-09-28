@@ -29,15 +29,18 @@ module IncidentIoGenerator
       end
     end
 
-    # Ruby source for the `model:` argument of a resource call, or nil when
-    # the raw value should be returned. Written to run inside a resource.
-    def result_type(schema)
-      return nil if schema.nil?
+    # The model a resource call builds its result with, as Result fields:
+    # the schema name and whether the result is an array of it. Empty when
+    # the raw value should be returned.
+    def result_model(schema)
+      return {} if schema.nil?
 
       if (ref = ref_name(schema))
-        "Models::#{ref}"
-      elsif schema["type"] == "array" && (inner = result_type(schema["items"]))
-        "[#{inner}]"
+        {model_name: ref, array: false}
+      elsif schema["type"] == "array" && (ref = ref_name(schema["items"] || {}))
+        {model_name: ref, array: true}
+      else
+        {}
       end
     end
 
@@ -112,15 +115,10 @@ module IncidentIoGenerator
 
     # RBS return type for a resource call's `model:`, or untyped for raw data.
     def rbs_result(schema)
-      return "untyped" if schema.nil?
+      model = result_model(schema)
+      return "untyped" if model.empty?
 
-      if (ref = ref_name(schema))
-        "Models::#{ref}"
-      elsif schema["type"] == "array" && ref_name(schema["items"] || {})
-        "Array[#{rbs_result(schema["items"])}]"
-      else
-        "untyped"
-      end
+      model[:array] ? "Array[Models::#{model[:model_name]}]" : "Models::#{model[:model_name]}"
     end
 
     # A JSON value that fits the schema, for tests. Models are passed as

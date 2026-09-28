@@ -160,7 +160,7 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
     end
 
     it "writes paginated calls without a query or model, and bodies without fields" do
-      bare_list = ops["list"].with(query_params: [], result: ops["list"].result.with(model: nil))
+      bare_list = ops["list"].with(query_params: [], result: ops["list"].result.with(model_name: nil))
       empty_body = ops["create"].with(body_params: [])
 
       expect(writer.call(bare_list, 0)).not_to include("query:", "model:")

@@ -17,10 +17,11 @@ RSpec.describe IncidentIoGenerator::Types do
     expect(described_class.model_type({})).to eq(":any")
   end
 
-  it "maps response schemas to result types" do
-    expect(described_class.result_type({"$ref" => "#/components/schemas/X"})).to eq("Models::X")
-    expect(described_class.result_type({"type" => "array", "items" => {"$ref" => "#/c/X"}})).to eq("[Models::X]")
-    expect(described_class.result_type({"type" => "string"})).to be_nil
+  it "maps response schemas to result models" do
+    expect(described_class.result_model({"$ref" => "#/components/schemas/X"})).to eq(model_name: "X", array: false)
+    expect(described_class.result_model({"type" => "array", "items" => {"$ref" => "#/c/X"}})).to eq(model_name: "X", array: true)
+    expect(described_class.result_model({"type" => "string"})).to eq({})
+    expect(described_class.result_model(nil)).to eq({})
   end
 
   it "maps schemas to YARD types" do
@@ -71,7 +72,6 @@ RSpec.describe IncidentIoGenerator::Types do
     expect(described_class.rbs_result({"$ref" => "#/c/X"})).to eq("Models::X")
     expect(described_class.rbs_result({"type" => "array", "items" => {"$ref" => "#/c/X"}})).to eq("Array[Models::X]")
     expect(described_class.rbs_result({"type" => "string"})).to eq("untyped")
-    expect(described_class.result_type(nil)).to be_nil
   end
 
   it "makes sample values for tests" do
