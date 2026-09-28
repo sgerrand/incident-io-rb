@@ -69,7 +69,7 @@ module IncidentIo
     #
     # @return [Boolean]
     def next_page?
-      !after.nil? && !after.to_s.empty? && items.any? && after != @cursor
+      !after.to_s.empty? && items.any? && after != @cursor
     end
 
     # Fetches the next page
