@@ -77,8 +77,6 @@ module IncidentIo
 
     def backoff: (Integer attempt) -> Float
 
-    def sleep_for: (seconds seconds) -> void
-
     def build_url: (String path, Hash[untyped, untyped]? query) -> String
 
     def build_headers: (Hash[Symbol, untyped] options, json_body: bool) -> Hash[String, String]

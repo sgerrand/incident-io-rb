@@ -172,22 +172,22 @@ module IncidentIo
     def with_retries(request, idempotent:, max_retries:)
       attempt = 0
       loop do
-        response = perform(request, attempt)
-        return response if response.success?
+        begin
+          response = perform(request, attempt)
+          return response if response.success?
 
-        error = APIError.from_response(response)
-        delay = retry_delay(error, attempt, idempotent:, max_retries:)
+          error = APIError.from_response(response)
+          delay = retry_delay(error, attempt, idempotent:, max_retries:)
+          reason = response.status
+        rescue APIConnectionError => e
+          error = e
+          delay = (backoff(attempt) if idempotent && attempt < max_retries)
+          reason = e.class
+        end
         raise error unless delay
 
-        log { "retrying #{request.method.upcase} after #{response.status} in #{delay.round(2)}s" }
-        sleep_for(delay)
-        attempt += 1
-      rescue APIConnectionError => e
-        raise e unless idempotent && attempt < max_retries
-
-        delay = backoff(attempt)
-        log { "retrying #{request.method.upcase} after #{e.class} in #{delay.round(2)}s" }
-        sleep_for(delay)
+        log { "retrying #{request.method.upcase} after #{reason} in #{delay.round(2)}s" }
+        sleep(delay)
         attempt += 1
       end
     end
@@ -239,14 +239,6 @@ module IncidentIo
     def backoff(attempt)
       delay = [INITIAL_RETRY_DELAY * (2**attempt), MAX_RETRY_DELAY].min
       delay * (1 - (rand * 0.25))
-    end
-
-    # Waits between attempts
-    #
-    # @param seconds [Integer, Float]
-    # @return [void]
-    def sleep_for(seconds)
-      sleep(seconds)
     end
 
     # The full URL for a path and query

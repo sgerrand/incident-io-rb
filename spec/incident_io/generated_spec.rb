@@ -42,7 +42,7 @@ RSpec.describe "generated resources" do
       .with { |req| bodies << JSON.parse(req.body) }
       .to_return(json_response(error_body(status: 500, type: "internal_error"), status: 500),
         json_response({"incident" => {"id" => "1"}}, status: 201))
-    allow(client).to receive(:sleep_for)
+    allow(client).to receive(:sleep)
 
     incident = client.incidents.create(visibility: "public", name: "DB down")
 
