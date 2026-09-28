@@ -140,14 +140,14 @@ module IncidentIo
       # @raise [ArgumentError] for unknown fields
       # @return [void]
       def initialize(raw: nil, **attrs)
-        model_class = _ = self.class
-        members = model_class.members
-        unknown = attrs.keys - members
+        model_class = _ = self.class #: ClassMethods
+        fields = model_class.fields
+        unknown = attrs.keys.reject { |key| fields.key?(key) }
         raise ArgumentError, "unknown keyword#{"s" if unknown.size > 1}: #{unknown.join(", ")}" if unknown.any?
 
         @_raw = raw.nil? ? nil : raw.dup.freeze
         @_given = attrs.keys.freeze
-        super(**members.to_h { |m| [m, attrs[m]] })
+        super(**fields.to_h { |member, _| [member, attrs[member]] })
       end
 
       # The payload this model was built from
