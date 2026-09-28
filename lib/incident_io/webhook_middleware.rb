@@ -52,7 +52,10 @@ module IncidentIo
         end
 
         handler = @handler
-        return @app.call(env.merge(ENV_KEY => event)) unless handler
+        unless handler
+          env[ENV_KEY] = event
+          return @app.call(env)
+        end
 
         handler.call(event)
         headers = {} #: Hash[String, String]
