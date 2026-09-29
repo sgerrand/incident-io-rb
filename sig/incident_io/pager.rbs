@@ -12,7 +12,7 @@ module IncidentIo
     @cursor: String?
     @fetch_next: ^(String) -> Page[T]
 
-    def initialize: (items: Array[T], pagination_meta: Hash[String, untyped]?, cursor: String?, data: Hash[String, untyped]) { (String) -> Page[T] } -> void
+    def initialize: (items: Array[T], pagination_meta: Hash[String, untyped]?, cursor: String?, ?data: Hash[String, untyped]) { (String) -> Page[T] } -> void
 
     def each: () { (T) -> void } -> Array[T]
             | () -> Enumerator[T, Array[T]]
