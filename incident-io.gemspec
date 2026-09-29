@@ -16,10 +16,11 @@ Gem::Specification.new do |s|
     "source_code_uri" => s.homepage,
     "bug_tracker_uri" => "#{s.homepage}/issues",
     "changelog_uri" => "#{s.homepage}/blob/main/CHANGELOG.md",
+    "documentation_uri" => "https://gemdocs.org/gems/#{s.name}/#{s.version}/",
     "rubygems_mfa_required" => "true"
   }
 
-  s.files = Dir["CHANGELOG.md", "LICENSE", "README.md", "lib/**/*.rb", "sig/**/*.rbs"]
+  s.files = Dir[".yardopts", "CHANGELOG.md", "LICENSE", "README.md", "lib/**/*.rb", "sig/**/*.rbs"]
   s.executables = []
   s.require_paths = ["lib"]
 end
