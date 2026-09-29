@@ -15,19 +15,29 @@ module IncidentIoGenerator
   # What a generated method returns.
   #   kind: :none (no body), :text (e.g. CSV), :json or :paginated
   #   yard: YARD return type
-  #   rbs: RBS return type
   #   unwrap: response key to return instead of the whole body
   #   model_name: schema the result is built with, or nil for raw data
   #   depth: how many arrays model_name is nested in, e.g. 1 for an array
   #   items_key: array key for paginated responses
-  Result = Data.define(:kind, :yard, :rbs, :unwrap, :model_name, :depth, :items_key) do
-    def initialize(kind:, yard:, rbs:, unwrap: nil, model_name: nil, depth: 0, items_key: nil) = super
+  Result = Data.define(:kind, :yard, :unwrap, :model_name, :depth, :items_key) do
+    def initialize(kind:, yard:, unwrap: nil, model_name: nil, depth: 0, items_key: nil) = super
 
     # Ruby source for the `model:` argument, or nil for raw data.
     def model
       return nil unless model_name
 
       "#{"[" * depth}Models::#{model_name}#{"]" * depth}"
+    end
+
+    # RBS return type.
+    def rbs
+      case kind
+      when :none then "nil"
+      when :text then "String"
+      else
+        item = model_name ? "#{"Array[" * depth}Models::#{model_name}#{"]" * depth}" : "untyped"
+        (kind == :paginated) ? "Pager[#{item}]" : item
+      end
     end
   end
 
@@ -51,7 +61,7 @@ module IncidentIoGenerator
   # A webhook event type and the schema of its payload.
   WebhookEvent = Data.define(:type, :description, :model)
   # An audit log entry type and its schema.
-  AuditLogEntry = Data.define(:action, :version, :description, :model)
+  AuditLogEntry = Data.define(:action, :version, :model)
 
   Field = Data.define(:api_name, :member, :type, :yard, :rbs, :description)
   ModelSchema = Data.define(:name, :file_name, :description, :fields)
@@ -141,8 +151,7 @@ module IncidentIoGenerator
           webhook_events << WebhookEvent.new(type:, description: op["description"], model: payload)
         when %r{\A/x-audit-logs/(?<action>.+)\.(?<version>\d+)\z}
           audit_log_entries << AuditLogEntry.new(
-            action: Regexp.last_match(:action), version: Regexp.last_match(:version).to_i,
-            description: op["description"], model: body
+            action: Regexp.last_match(:action), version: Regexp.last_match(:version).to_i, model: body
           )
         else
           raise Error, "unknown x-webhooks entry: #{key}"
@@ -186,8 +195,6 @@ module IncidentIoGenerator
     def build_operation(path, http_method, op, resource_name, version)
       id = op.fetch("operationId")
       override = @overrides.fetch(id, {})
-      @used_overrides ||= []
-      @used_overrides << id if @overrides.key?(id)
 
       action = id.split("#")[1] or raise Error, "operationId has no action: #{id}"
       method_name = override.fetch("method", Naming.underscore(action))
@@ -268,9 +275,9 @@ module IncidentIoGenerator
       content = response["content"] || {}
       json = content.dig("application/json", "schema")
       unless json
-        return Result.new(kind: :none, yard: "nil", rbs: "nil") if content.empty?
+        return Result.new(kind: :none, yard: "nil") if content.empty?
 
-        return Result.new(kind: :text, yard: "String", rbs: "String")
+        return Result.new(kind: :text, yard: "String")
       end
 
       schema = resolve(json)
@@ -282,13 +289,12 @@ module IncidentIoGenerator
 
         items_key, items = arrays.first
         Result.new(kind: :paginated, items_key:, **Types.result_model(items["items"]),
-          yard: "IncidentIo::Pager<#{Types.yard_type(items["items"])}>",
-          rbs: "Pager[#{Types.rbs_result(items["items"])}]")
+          yard: "IncidentIo::Pager<#{Types.yard_type(items["items"])}>")
       elsif props.size == 1
         key, prop = props.first
-        Result.new(kind: :json, unwrap: key, **Types.result_model(prop), yard: Types.yard_type(prop), rbs: Types.rbs_result(prop))
+        Result.new(kind: :json, unwrap: key, **Types.result_model(prop), yard: Types.yard_type(prop))
       else
-        Result.new(kind: :json, **Types.result_model(json), yard: Types.yard_type(json), rbs: Types.rbs_result(json))
+        Result.new(kind: :json, **Types.result_model(json), yard: Types.yard_type(json))
       end
     end
 
@@ -332,7 +338,7 @@ module IncidentIoGenerator
     end
 
     def check_overrides_used!
-      unused = @overrides.keys - (@used_overrides || [])
+      unused = @overrides.keys - resources.flat_map { |r| r.operations.map(&:operation_id) }
       raise Error, "overrides for unknown operations: #{unused.join(", ")}" if unused.any?
     end
 
