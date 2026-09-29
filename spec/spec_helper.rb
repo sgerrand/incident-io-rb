@@ -58,6 +58,16 @@ module SpecHelpers
     "#{IncidentIo::Webhook::SECRET_PREFIX}#{[key].pack("m0")}"
   end
 
+  # A schedule.deleted_v1 webhook body.
+  def schedule_deleted_body
+    JSON.generate("event_type" => "schedule.deleted_v1", "schedule.deleted_v1" => {"id" => "01S"})
+  end
+
+  # Headers as Rack env keys, e.g. "webhook-id" => "HTTP_WEBHOOK_ID".
+  def rack_headers(headers)
+    headers.transform_keys { |key| "HTTP_#{key.upcase.tr("-", "_")}" }
+  end
+
   # Headers for a webhook body signed with the secret, sent now.
   def signed_webhook_headers(body, secret:, id: "msg_1")
     sent_at = Time.now.to_i

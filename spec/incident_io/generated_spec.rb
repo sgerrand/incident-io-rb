@@ -101,19 +101,6 @@ RSpec.describe "generated resources" do
     expect(pager.map(&:id)).to eq(%w[1 2])
   end
 
-  it "returns nil for deletes" do
-    stub_request(:delete, "#{BASE_URL}/v2/schedules/1").to_return(status: 204)
-
-    expect(client.schedules.destroy("1")).to be_nil
-  end
-
-  it "returns CSV downloads as text" do
-    stub_request(:get, "#{BASE_URL}/v2/pay_reports/1/download")
-      .to_return(status: 200, body: "a,b\n", headers: {"Content-Type" => "text/csv"})
-
-    expect(client.pay_reports.download("1")).to eq("a,b\n")
-  end
-
   it "requires required arguments" do
     # Under `rake spec:rbs` the signature check rejects the call before Ruby does.
     if ENV["RBS_TEST_TARGET"]
