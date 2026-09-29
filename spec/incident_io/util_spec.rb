@@ -15,6 +15,15 @@ RSpec.describe IncidentIo::Util do
     end
   end
 
+  describe ".format_time" do
+    it "formats in UTC without changing or needing to change the time passed in" do
+      time = Time.new(2024, 5, 1, 22, 0, 0, "+10:00").freeze
+
+      expect(described_class.format_time(time)).to eq("2024-05-01T12:00:00Z")
+      expect(time.utc_offset).to eq(36_000)
+    end
+  end
+
   describe ".escape_path" do
     it "escapes characters that would change the path" do
       expect(described_class.escape_path("a/../b c")).to eq("a%2F..%2Fb%20c")

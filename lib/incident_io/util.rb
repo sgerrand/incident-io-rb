@@ -31,8 +31,8 @@ module IncidentIo
     # @return [Object] other values unchanged
     def format_time(value, digits: 0)
       case value
-      when Time then value.utc.iso8601(digits)
-      when DateTime then value.to_time.utc.iso8601(digits)
+      when Time then value.getutc.iso8601(digits)
+      when DateTime then value.to_time.getutc.iso8601(digits)
       when Date then value.iso8601
       else value
       end
