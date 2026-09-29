@@ -18,10 +18,22 @@ module IncidentIo
       when Array then value.map { |v| serialize(v) }
       when Model::InstanceMethods then value.to_api
       when Data then serialize(value.to_h)
-      when Time then value.utc.iso8601(3)
-      when DateTime then value.to_time.utc.iso8601(3)
-      when Date then value.iso8601
+      when Time, Date then format_time(value, digits: 3)
       when Symbol then value.to_s
+      else value
+      end
+    end
+
+    # Formats times as UTC ISO 8601 and dates as ISO 8601 dates
+    #
+    # @param value [Object]
+    # @param digits [Integer] decimal places for the seconds of times
+    # @return [Object] other values unchanged
+    def format_time(value, digits: 0)
+      case value
+      when Time then value.utc.iso8601(digits)
+      when DateTime then value.to_time.utc.iso8601(digits)
+      when Date then value.iso8601
       else value
       end
     end

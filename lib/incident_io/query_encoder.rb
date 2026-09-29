@@ -44,12 +44,7 @@ module IncidentIo
     # @param value [Object]
     # @return [String]
     def scalar(value)
-      case value
-      when Time then value.utc.iso8601
-      when DateTime then value.to_time.utc.iso8601
-      when Date then value.iso8601
-      else value.to_s
-      end
+      Util.format_time(value).to_s
     end
     private_class_method :scalar
   end

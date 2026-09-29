@@ -2,6 +2,8 @@ module IncidentIo
   module Util
     def self?.serialize: (untyped value) -> untyped
 
+    def self?.format_time: (untyped value, ?digits: Integer) -> untyped
+
     def self?.escape_path: (_ToS segment) -> String
 
     def self?.parse_time: (untyped value, ?httpdate: bool) -> Time?
