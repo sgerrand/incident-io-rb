@@ -76,6 +76,10 @@ module IncidentIoGenerator
       initialize with_retries perform retry_delay backoff build_url build_headers normalize_options redact log
       resource_cache
     ].freeze
+    # Methods on IncidentIo::Resources::Namespace; resources can't use these
+    # names.
+    NAMESPACE_METHODS = (IncidentIo::Resources::Namespace.instance_methods(false) +
+      IncidentIo::Resources::Namespace.private_instance_methods(false)).map(&:to_s).freeze
     # Methods on IncidentIo::Resource; operations can't use these names.
     RESOURCE_METHODS = (IncidentIo::Resource.instance_methods(false) + IncidentIo::Resource.private_instance_methods(false))
       .map(&:to_s).freeze
@@ -169,6 +173,7 @@ module IncidentIoGenerator
         match = TAG_PATTERN.match(tag) or raise Error, "tag has no version: #{tag.inspect}"
         name = Naming.underscore(match[:base])
         raise Error, "resource name #{name} clashes with a Client method" if CLIENT_METHODS.include?(name)
+        raise Error, "resource name #{name} clashes with a Namespace method" if NAMESPACE_METHODS.include?(name)
         raise Error, "resource name #{name} clashes with a version accessor" if name.match?(/\Av\d+\z/)
 
         operations = entries.map { |path, http_method, op| build_operation(path, http_method, op, name, match[:version]) }

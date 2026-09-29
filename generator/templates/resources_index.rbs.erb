@@ -5,15 +5,9 @@ module IncidentIo
 <% api.versions.each do |version, resources| -%>
     module <%= version %>
       # Every <%= version.downcase %> resource, e.g. `client.<%= version.downcase %>.<%= resources.first.name %>`.
-      class Namespace
-        @client: Client
-        @resources: Hash[Symbol, untyped]
-
-        def initialize: (Client client) -> void
-
-        def inspect: () -> String
-<% resources.each do |resource| -%>
-
+      class Namespace < Resources::Namespace
+<% resources.each_with_index do |resource, i| -%>
+<%= "\n" if i > 0 -%>
         def <%= resource.name %>: () -> <%= resource.class_name %>
 <% end -%>
       end

@@ -1,0 +1,18 @@
+module IncidentIo
+  module Resources
+    # Base class for the generated namespaces that hold every resource of one
+    # API version.
+    class Namespace
+      @client: Client
+      @resources: Hash[Class, untyped]
+
+      def initialize: (Client client) -> void
+
+      def inspect: () -> String
+
+      private
+
+      def resource: (untyped klass) -> untyped
+    end
+  end
+end

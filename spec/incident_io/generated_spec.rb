@@ -21,6 +21,7 @@ RSpec.describe "generated resources" do
     expect(client.catalog).to be_a(IncidentIo::Resources::V3::Catalog)
     expect(client.v1.incidents).to be_a(IncidentIo::Resources::V1::Incidents)
     expect(client.incidents).to be(client.incidents)
+    expect(client.incidents).to be(client.v2.incidents)
   end
 
   it "shows an incident" do
