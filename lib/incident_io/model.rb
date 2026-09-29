@@ -48,6 +48,7 @@ module IncidentIo
       klass.extend(ClassMethods)
       klass.include(InstanceMethods)
       klass.instance_variable_set(:@fields, fields)
+      klass.instance_variable_set(:@nil_fields, members.to_h { |member| [member, nil] }.freeze)
       klass.class_eval(&block) if block
       klass
     end
@@ -108,6 +109,13 @@ module IncidentIo
         @fields
       end
 
+      # Every field set to nil, for fields that weren't given
+      #
+      # @return [Hash{Symbol => nil}]
+      def nil_fields
+        @nil_fields
+      end
+
       # Builds a model from a parsed JSON hash
       #
       # Only the keys in the hash count as given, so a key the API left out
@@ -142,12 +150,12 @@ module IncidentIo
       def initialize(raw: nil, **attrs)
         model_class = _ = self.class #: ClassMethods
         fields = model_class.fields
-        unknown = attrs.keys.reject { |key| fields.key?(key) }
+        unknown = attrs.keys - fields.keys
         raise ArgumentError, "unknown keyword#{"s" if unknown.size > 1}: #{unknown.join(", ")}" if unknown.any?
 
         @_raw = raw.nil? ? nil : raw.dup.freeze
-        @_given = attrs.keys.freeze
-        super(**fields.to_h { |member, _| [member, attrs[member]] })
+        @_given = attrs.keys.to_set.freeze
+        super(**model_class.nil_fields, **attrs)
       end
 
       # The payload this model was built from
