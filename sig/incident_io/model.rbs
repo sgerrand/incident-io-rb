@@ -44,7 +44,7 @@ module IncidentIo
     # Added to every model instance.
     module InstanceMethods
       @_raw: Hash[String, untyped]?
-      @_given: Set[Symbol]
+      @_given: Array[Symbol]
 
       def initialize: (?raw: Hash[String, untyped]?, **untyped attrs) -> void
 
