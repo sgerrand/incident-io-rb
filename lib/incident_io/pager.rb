@@ -41,7 +41,7 @@ module IncidentIo
     # @param data [Hash] the whole parsed response
     # @yieldparam after [String] cursor for the next page
     # @yieldreturn [Page] the next page
-    def initialize(items:, pagination_meta:, cursor:, data: {}, &fetch_next)
+    def initialize(items:, pagination_meta:, cursor:, data:, &fetch_next)
       meta = pagination_meta || {}
       @data = data
       @items = items
@@ -141,13 +141,7 @@ module IncidentIo
       each_page { |page| page.each(&block) }
     end
 
-    # Same as #each
-    #
-    # @yieldparam item [Object]
-    # @return [void, Enumerator] an Enumerator without a block
-    def auto_paging_each(&block)
-      block ? each(&block) : each
-    end
+    alias_method :auto_paging_each, :each
 
     private
 
