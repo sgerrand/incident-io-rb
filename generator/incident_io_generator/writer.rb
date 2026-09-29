@@ -205,8 +205,11 @@ module IncidentIoGenerator
       one_per_line(open, items, close, indent)
     end
 
-    # Items between open and close, one per line.
+    # Items between open and close, one per line, or just open and close
+    # when there are none.
     def one_per_line(open, items, close, indent)
+      return "#{open}#{close}" if items.empty?
+
       pad = " " * (indent + 2)
       "#{open}\n#{items.map { |item| "#{pad}#{item}" }.join(",\n")}\n#{" " * indent}#{close}"
     end

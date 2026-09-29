@@ -24,9 +24,7 @@ module IncidentIoGenerator
 
     # Ruby source for the `model:` argument, or nil for raw data.
     def model
-      return nil unless model_name
-
-      "#{"[" * depth}Models::#{model_name}#{"]" * depth}"
+      model_name && nested("[", "]")
     end
 
     # RBS return type.
@@ -35,9 +33,16 @@ module IncidentIoGenerator
       when :none then "nil"
       when :text then "String"
       else
-        item = model_name ? "#{"Array[" * depth}Models::#{model_name}#{"]" * depth}" : "untyped"
+        item = model_name ? nested("Array[", "]") : "untyped"
         (kind == :paginated) ? "Pager[#{item}]" : item
       end
+    end
+
+    private
+
+    # The model's name wrapped in depth pairs of open and close.
+    def nested(open, close)
+      "#{open * depth}Models::#{model_name}#{close * depth}"
     end
   end
 
@@ -182,13 +187,13 @@ module IncidentIoGenerator
         raise Error, "resource name #{name} clashes with a Client method" if CLIENT_METHODS.include?(name)
         raise Error, "resource name #{name} clashes with a Namespace method" if NAMESPACE_METHODS.include?(name)
         raise Error, "resource name #{name} clashes with a version accessor" if name.match?(/\Av\d+\z/)
+        class_name = Naming.camelize(match[:base])
+        raise Error, "resource class name #{class_name} is reserved" if RESERVED_CLASS_NAMES.include?(class_name)
 
         operations = entries.map { |path, http_method, op| build_operation(path, http_method, op, name, match[:version]) }
           .sort_by(&:method_name)
         check_unique_methods!(tag, operations)
 
-        class_name = Naming.camelize(match[:base])
-        raise Error, "resource class name #{class_name} is reserved" if RESERVED_CLASS_NAMES.include?(class_name)
         Resource.new(
           tag:, version: match[:version], name:, class_name:,
           description: @tag_descriptions[tag], operations:
