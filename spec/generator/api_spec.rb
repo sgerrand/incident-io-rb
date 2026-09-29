@@ -155,6 +155,12 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
       "a resource named like a Namespace method" => [/resource name resource clashes with a Namespace method/, ->(s) {
         s["paths"]["/v1/resource"] = {"get" => operation("Resource V1#Show", "WidgetsShowResultV2")}
       }],
+      "a resource named like an Object method" => [/resource name hash clashes with a Namespace method/, ->(s) {
+        s["paths"]["/v2/hash"] = {"get" => operation("Hash V2#Show", "WidgetsShowResultV2")}
+      }],
+      "a resource with a reserved class name" => [/resource class name Namespace is reserved/, ->(s) {
+        s["paths"]["/v2/namespace"] = {"get" => operation("Namespace V2#Show", "WidgetsShowResultV2")}
+      }],
       "a paginated GET with a body" => [/Widgets V2#List: paginated operations must be GETs without a body/, ->(s) {
         s["paths"]["/v2/widgets"]["get"]["requestBody"] = s["paths"]["/v2/widgets"]["post"]["requestBody"]
       }],

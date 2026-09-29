@@ -76,13 +76,20 @@ module IncidentIoGenerator
       initialize with_retries perform retry_delay backoff build_url build_headers normalize_options redact log
       resource_cache
     ].freeze
-    # Methods on IncidentIo::Resources::Namespace; resources can't use these
-    # names.
-    NAMESPACE_METHODS = (IncidentIo::Resources::Namespace.instance_methods(false) +
-      IncidentIo::Resources::Namespace.private_instance_methods(false)).map(&:to_s).freeze
+    # Public and private instance method names of a class, with or without
+    # the ones it inherits.
+    def self.method_names(klass, inherited:)
+      (klass.instance_methods(inherited) + klass.private_instance_methods(inherited)).map(&:to_s).uniq.freeze
+    end
+
+    # Methods on IncidentIo::Resources::Namespace, including those from
+    # Object; resources can't use these names.
+    NAMESPACE_METHODS = method_names(IncidentIo::Resources::Namespace, inherited: true)
     # Methods on IncidentIo::Resource; operations can't use these names.
-    RESOURCE_METHODS = (IncidentIo::Resource.instance_methods(false) + IncidentIo::Resource.private_instance_methods(false))
-      .map(&:to_s).freeze
+    RESOURCE_METHODS = method_names(IncidentIo::Resource, inherited: false)
+    # Constants the generated version modules already use; resources can't
+    # use these class names.
+    RESERVED_CLASS_NAMES = %w[Namespace Resources].freeze
     RESERVED_PARAMS = %w[request_options].freeze
     TAG_PATTERN = /\A(?<base>.+) (?<version>V\d+)\z/
     HTTP_METHODS = %w[get post put patch delete].freeze
@@ -180,8 +187,10 @@ module IncidentIoGenerator
           .sort_by(&:method_name)
         check_unique_methods!(tag, operations)
 
+        class_name = Naming.camelize(match[:base])
+        raise Error, "resource class name #{class_name} is reserved" if RESERVED_CLASS_NAMES.include?(class_name)
         Resource.new(
-          tag:, version: match[:version], name:, class_name: Naming.camelize(match[:base]),
+          tag:, version: match[:version], name:, class_name:,
           description: @tag_descriptions[tag], operations:
         )
       end

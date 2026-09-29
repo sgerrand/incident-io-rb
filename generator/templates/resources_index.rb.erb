@@ -13,7 +13,7 @@ module IncidentIo
 <% end -%>
 
       # Every <%= version.downcase %> resource, e.g. `client.<%= version.downcase %>.<%= resources.first.name %>`.
-      class Namespace < Resources::Namespace
+      class Namespace < ::IncidentIo::Resources::Namespace
 <% resources.each_with_index do |resource, i| -%>
 <%= "\n" if i > 0 -%>
         # The <%= version.downcase %> <%= resource.name.tr("_", " ") %> resource

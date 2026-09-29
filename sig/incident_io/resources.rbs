@@ -5,7 +5,7 @@ module IncidentIo
   module Resources
     module V1
       # Every v1 resource, e.g. `client.v1.actions`.
-      class Namespace < Resources::Namespace
+      class Namespace < ::IncidentIo::Resources::Namespace
         def actions: () -> Actions
 
         def alert_notes: () -> AlertNotes
@@ -48,7 +48,7 @@ module IncidentIo
 
     module V2
       # Every v2 resource, e.g. `client.v2.actions`.
-      class Namespace < Resources::Namespace
+      class Namespace < ::IncidentIo::Resources::Namespace
         def actions: () -> Actions
 
         def alert_attributes: () -> AlertAttributes
@@ -127,7 +127,7 @@ module IncidentIo
 
     module V3
       # Every v3 resource, e.g. `client.v3.actions`.
-      class Namespace < Resources::Namespace
+      class Namespace < ::IncidentIo::Resources::Namespace
         def actions: () -> Actions
 
         def alert_routes: () -> AlertRoutes

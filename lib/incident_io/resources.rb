@@ -29,7 +29,7 @@ module IncidentIo
       autoload :Utilities, "#{__dir__}/resources/v1/utilities"
 
       # Every v1 resource, e.g. `client.v1.actions`.
-      class Namespace < Resources::Namespace
+      class Namespace < ::IncidentIo::Resources::Namespace
         # The v1 actions resource
         #
         # @return [Actions]
@@ -205,7 +205,7 @@ module IncidentIo
       autoload :Workflows, "#{__dir__}/resources/v2/workflows"
 
       # Every v2 resource, e.g. `client.v2.actions`.
-      class Namespace < Resources::Namespace
+      class Namespace < ::IncidentIo::Resources::Namespace
         # The v2 actions resource
         #
         # @return [Actions]
@@ -475,7 +475,7 @@ module IncidentIo
       autoload :Teams, "#{__dir__}/resources/v3/teams"
 
       # Every v3 resource, e.g. `client.v3.actions`.
-      class Namespace < Resources::Namespace
+      class Namespace < ::IncidentIo::Resources::Namespace
         # The v3 actions resource
         #
         # @return [Actions]
