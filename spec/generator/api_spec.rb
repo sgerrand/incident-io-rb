@@ -25,9 +25,21 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
   end
 
   it "writes the model source for nested array results" do
-    result = IncidentIoGenerator::Result.new(kind: :json, yard: "Array", rbs: "Array", model_name: "WidgetV2", depth: 2)
+    result = IncidentIoGenerator::Result.new(kind: :json, yard: "Array", model_name: "WidgetV2", depth: 2)
 
     expect(result.model).to eq("[[Models::WidgetV2]]")
+    expect(result.rbs).to eq("Array[Array[Models::WidgetV2]]")
+  end
+
+  it "writes RBS return types for results" do
+    result = ->(**attrs) { IncidentIoGenerator::Result.new(yard: "", **attrs).rbs }
+
+    expect(result.call(kind: :none)).to eq("nil")
+    expect(result.call(kind: :text)).to eq("String")
+    expect(result.call(kind: :json)).to eq("untyped")
+    expect(result.call(kind: :json, model_name: "X")).to eq("Models::X")
+    expect(result.call(kind: :paginated, model_name: "X")).to eq("Pager[Models::X]")
+    expect(result.call(kind: :paginated)).to eq("Pager[untyped]")
   end
 
   it "handles bodies and idempotency keys" do
@@ -80,8 +92,7 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
         model: "WidgetV2")
     ])
     expect(api.audit_log_entries).to eq([
-      IncidentIoGenerator::AuditLogEntry.new(action: "widget.deleted", version: 2, description: "Widget deleted.",
-        model: "AuditLogsWidgetDeletedV2")
+      IncidentIoGenerator::AuditLogEntry.new(action: "widget.deleted", version: 2, model: "AuditLogsWidgetDeletedV2")
     ])
   end
 
@@ -140,6 +151,15 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
       }],
       "a resource named like a private Client method" => [/resource name log clashes with a Client method/, ->(s) {
         s["paths"]["/v2/log"] = {"get" => operation("Log V2#Show", "WidgetsShowResultV2")}
+      }],
+      "a resource named like a Namespace method" => [/resource name resource clashes with a Namespace method/, ->(s) {
+        s["paths"]["/v1/resource"] = {"get" => operation("Resource V1#Show", "WidgetsShowResultV2")}
+      }],
+      "a resource named like an Object method" => [/resource name hash clashes with a Namespace method/, ->(s) {
+        s["paths"]["/v2/hash"] = {"get" => operation("Hash V2#Show", "WidgetsShowResultV2")}
+      }],
+      "a resource with a reserved class name" => [/resource class name Namespace is reserved/, ->(s) {
+        s["paths"]["/v2/namespace"] = {"get" => operation("Namespace V2#Show", "WidgetsShowResultV2")}
       }],
       "a paginated GET with a body" => [/Widgets V2#List: paginated operations must be GETs without a body/, ->(s) {
         s["paths"]["/v2/widgets"]["get"]["requestBody"] = s["paths"]["/v2/widgets"]["post"]["requestBody"]

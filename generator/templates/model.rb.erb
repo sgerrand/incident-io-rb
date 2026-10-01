@@ -7,11 +7,7 @@ module IncidentIo
 <% if model.fields.empty? -%>
     <%= model.name %> = Model.define
 <% else -%>
-    <%= model.name %> = Model.define(
-<% model.fields.each_with_index do |f, i| -%>
-      <%= helpers.model_key(f.api_name) %> <%= f.type %><%= "," if i < model.fields.size - 1 %>
-<% end -%>
-    )
+    <%= model.name %> = <%= helpers.one_per_line("Model.define(", model.fields.map { |f| "#{helpers.model_key(f.api_name)} #{f.type}" }, ")", 4) %>
 <% end -%>
 
 <%# Reopened so YARD documents the model as a class, with its fields. -%>

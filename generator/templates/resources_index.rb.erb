@@ -13,28 +13,14 @@ module IncidentIo
 <% end -%>
 
       # Every <%= version.downcase %> resource, e.g. `client.<%= version.downcase %>.<%= resources.first.name %>`.
-      class Namespace
-        # Creates the namespace for a client
-        #
-        # @param client [IncidentIo::Client]
-        def initialize(client)
-          @client = client
-          @resources = {}
-        end
-
-        # A short description that leaves out the client
-        #
-        # @return [String]
-        def inspect
-          "#<#{self.class.name}>"
-        end
-<% resources.each do |resource| -%>
-
+      class Namespace < ::IncidentIo::Resources::Namespace
+<% resources.each_with_index do |resource, i| -%>
+<%= "\n" if i > 0 -%>
         # The <%= version.downcase %> <%= resource.name.tr("_", " ") %> resource
         #
         # @return [<%= resource.class_name %>]
         def <%= resource.name %>
-          @resources[:<%= resource.name %>] ||= <%= resource.class_name %>.new(@client)
+          resource(<%= resource.class_name %>)
         end
 <% end -%>
       end
@@ -59,13 +45,13 @@ module IncidentIo
       #
       # @return [<%= resource.version %>::<%= resource.class_name %>]
       def <%= name %>
-        resource_cache[:<%= name %>] ||= <%= resource.version %>::<%= resource.class_name %>.new(self)
+        <%= resource.version.downcase %>.<%= name %>
       end
 
 <% end -%>
       private
 
-      # Resources created so far, by accessor name
+      # Version namespaces created so far, by accessor name
       #
       # @return [Hash{Symbol => Object}]
       def resource_cache

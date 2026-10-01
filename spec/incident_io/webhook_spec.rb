@@ -43,7 +43,7 @@ RSpec.describe IncidentIo::Webhook do
     end
 
     it "accepts header names in any case, Svix's old names and Rack env keys" do
-      rack_env = headers.to_h { |k, v| ["HTTP_#{k.upcase.tr("-", "_")}", v] }.merge("rack.input" => StringIO.new)
+      rack_env = rack_headers(headers).merge("rack.input" => StringIO.new)
       svix = headers.transform_keys { |k| k.sub("webhook-", "svix-") }
       title_case = headers.transform_keys { |k| k.split("-").map(&:capitalize).join("-") }
 
@@ -124,7 +124,7 @@ RSpec.describe IncidentIo::Webhook do
 
   describe ".construct_event" do
     it "checks the signature, then parses the webhook with its ID" do
-      body = JSON.generate("event_type" => "schedule.deleted_v1", "schedule.deleted_v1" => {"id" => "01S"})
+      body = schedule_deleted_body
 
       event = described_class.construct_event(body, signed_webhook_headers(body, secret:), secret:)
 

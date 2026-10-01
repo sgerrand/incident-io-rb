@@ -157,6 +157,7 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
       expect(writer.signature(long, 8)).to include("(\n")
       expect(writer.hash_expression(ops["create"].body_params, 90)).to start_with("{\n")
       expect(writer.hash_expression([], 0)).to eq("{}")
+      expect(writer.one_per_line("{", [], "}.freeze", 4)).to eq("{}.freeze")
     end
 
     it "writes paginated calls without a query or model, and bodies without fields" do

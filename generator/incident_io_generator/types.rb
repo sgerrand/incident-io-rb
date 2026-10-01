@@ -114,14 +114,6 @@ module IncidentIoGenerator
       false
     end
 
-    # RBS return type for a resource call's `model:`, or untyped for raw data.
-    def rbs_result(schema)
-      model = result_model(schema)
-      return "untyped" if model.empty?
-
-      "#{"Array[" * model[:depth]}Models::#{model[:model_name]}#{"]" * model[:depth]}"
-    end
-
     # A JSON value that fits the schema, for tests. Models are passed as
     # plain hashes, which generated methods accept.
     def sample_value(schema, name)

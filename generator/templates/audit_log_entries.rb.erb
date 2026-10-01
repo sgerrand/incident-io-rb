@@ -5,10 +5,6 @@
 module IncidentIo
   module AuditLog
     # Audit log entry types, keyed by action and version, and their models.
-    ENTRIES = {
-<% api.audit_log_entries.each_with_index do |entry, i| -%>
-      [<%= entry.action.inspect %>, <%= entry.version %>] => :<%= entry.model %><%= "," if i < api.audit_log_entries.size - 1 %>
-<% end -%>
-    }.freeze
+    ENTRIES = <%= helpers.one_per_line("{", api.audit_log_entries.map { |e| "[#{e.action.inspect}, #{e.version}] => :#{e.model}" }, "}.freeze", 4) %>
   end
 end

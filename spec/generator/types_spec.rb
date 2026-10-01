@@ -30,7 +30,6 @@ RSpec.describe IncidentIoGenerator::Types do
     nested = {"type" => "array", "items" => {"type" => "array", "items" => {"$ref" => "#/c/X"}}}
 
     expect(described_class.result_model(nested)).to eq(model_name: "X", depth: 2)
-    expect(described_class.rbs_result(nested)).to eq("Array[Array[Models::X]]")
   end
 
   it "maps schemas to YARD types" do
@@ -74,13 +73,6 @@ RSpec.describe IncidentIoGenerator::Types do
     expect(described_class.rbs_type({"type" => "integer"})).to eq("Integer")
     expect(described_class.rbs_type({"type" => "object"})).to eq("Hash[String, untyped]")
     expect(described_class.rbs_type({"type" => "array", "items" => {"type" => "string"}})).to eq("Array[String]")
-  end
-
-  it "maps results to RBS return types" do
-    expect(described_class.rbs_result(nil)).to eq("untyped")
-    expect(described_class.rbs_result({"$ref" => "#/c/X"})).to eq("Models::X")
-    expect(described_class.rbs_result({"type" => "array", "items" => {"$ref" => "#/c/X"}})).to eq("Array[Models::X]")
-    expect(described_class.rbs_result({"type" => "string"})).to eq("untyped")
   end
 
   it "makes sample values for tests" do

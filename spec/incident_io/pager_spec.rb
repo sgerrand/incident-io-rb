@@ -4,6 +4,11 @@ RSpec.describe IncidentIo::Pager do
   let(:client) { IncidentIo::Client.new(api_key: "k") }
   let(:url) { "#{BASE_URL}/v2/incidents" }
   let(:incident) { IncidentIo::Model.define(id: :string) }
+  let(:pager) { incidents }
+
+  def incidents(query: {page_size: 2}, **options)
+    client.paginate("/v2/incidents", items_key: "incidents", query:, **options)
+  end
 
   def page(ids, after:, total: nil)
     meta = {"page_size" => 2, "after" => after}
@@ -18,26 +23,20 @@ RSpec.describe IncidentIo::Pager do
   end
 
   it "walks every page" do
-    pager = client.paginate("/v2/incidents", items_key: "incidents", query: {page_size: 2})
-
     expect(pager.map { |i| i["id"] }).to eq(%w[1 2 3 4 5])
   end
 
   it "fetches only the pages it needs" do
-    pager = client.paginate("/v2/incidents", items_key: "incidents", query: {page_size: 2})
-
     expect(pager.first(3).map { |i| i["id"] }).to eq(%w[1 2 3])
     expect(a_request(:get, url).with(query: {"page_size" => "2", "after" => "4"})).not_to have_been_made
   end
 
   it "builds models" do
-    pager = client.paginate("/v2/incidents", items_key: "incidents", query: {page_size: 2}, model: incident)
-
-    expect(pager.first).to eq(incident.new(id: "1"))
+    expect(incidents(model: incident).first).to eq(incident.new(id: "1"))
   end
 
   it "exposes page metadata" do
-    first = client.paginate("/v2/incidents", items_key: "incidents", query: {page_size: 2}).first_page
+    first = pager.first_page
 
     expect(first).to have_attributes(after: "2", page_size: 2, total_record_count: 5)
     expect(first.next_page?).to be(true)
@@ -45,8 +44,6 @@ RSpec.describe IncidentIo::Pager do
   end
 
   it "walks every page with auto_paging_each too" do
-    pager = client.paginate("/v2/incidents", items_key: "incidents", query: {page_size: 2})
-
     ids = []
     pager.auto_paging_each { |i| ids << i["id"] }
 
@@ -55,28 +52,24 @@ RSpec.describe IncidentIo::Pager do
   end
 
   it "returns enumerators without a block" do
-    pager = client.paginate("/v2/incidents", items_key: "incidents", query: {page_size: 2})
-
     expect(pager.each).to be_a(Enumerator)
     expect(pager.first_page.each.map { |i| i["id"] }).to eq(%w[1 2])
   end
 
   it "yields pages" do
-    pages = client.paginate("/v2/incidents", items_key: "incidents", query: {page_size: 2}).each_page.to_a
+    pages = pager.each_page.to_a
 
     expect(pages.map(&:count)).to eq([2, 2, 1])
   end
 
   it "starts from a given cursor" do
-    pager = client.paginate("/v2/incidents", items_key: "incidents", query: {page_size: 2, after: "4"})
-
-    expect(pager.map { |i| i["id"] }).to eq(%w[5])
+    expect(incidents(query: {page_size: 2, after: "4"}).map { |i| i["id"] }).to eq(%w[5])
   end
 
   it "stops if the API repeats the cursor" do
     stub_request(:get, url).with(query: {"after" => "x"}).to_return(page(%w[9], after: "x"))
 
-    expect(client.paginate("/v2/incidents", items_key: "incidents", query: {after: "x"}).to_a.size).to eq(1)
+    expect(incidents(query: {after: "x"}).to_a.size).to eq(1)
   end
 
   it "builds items with any model type, including arrays of models" do
@@ -91,6 +84,6 @@ RSpec.describe IncidentIo::Pager do
   it "stops on an empty page" do
     stub_request(:get, url).with(query: {"after" => "y"}).to_return(page([], after: "z"))
 
-    expect(client.paginate("/v2/incidents", items_key: "incidents", query: {after: "y"}).to_a).to eq([])
+    expect(incidents(query: {after: "y"}).to_a).to eq([])
   end
 end

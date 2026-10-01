@@ -33,6 +33,11 @@ module IncidentIo
       # Model fields: Ruby member name => [API field name, type].
       def fields: () -> Hash[Symbol, [String, untyped]]
 
+      @nil_fields: Hash[Symbol, nil]
+
+      # Every field set to nil, for fields that weren't given.
+      def nil_fields: () -> Hash[Symbol, nil]
+
       def from_api: (untyped hash) -> untyped
     end
 
