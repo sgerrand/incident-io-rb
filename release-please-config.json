@@ -5,7 +5,6 @@
   "bump-minor-pre-major": true,
   "packages": {
     ".": {
-      "package-name": "incident-io",
       "version-file": "lib/incident_io/version.rb",
       "initial-version": "0.1.0"
     }
