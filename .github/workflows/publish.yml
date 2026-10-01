@@ -19,6 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUNDLE_WITHOUT: docs:lint:typecheck
+      # Only install the gem versions in Gemfile.lock. Fail if it is out of
+      # date rather than pick newer ones.
+      BUNDLE_FROZEN: "true"
     environment:
       name: rubygems
       url: https://rubygems.org/gems/incident-io

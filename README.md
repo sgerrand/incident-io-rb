@@ -205,13 +205,20 @@ To rename a generated method, add it to `generator/overrides.yml`.
 `bundle exec rake generate:check` fails if the generated code does not match
 your local copy of the spec.
 
+`Gemfile.lock` is stored in git, so CI and the Publish workflow use the same
+gem versions each time. They fail if it is out of date. After changing the
+`Gemfile`, run `bundle install` and commit the new `Gemfile.lock`.
+
+Keep the `CHECKSUMS` section out of `Gemfile.lock`. The release pull request
+can't update it, so installing gems would fail after each release.
+
 ## Releasing
 
 Releases are automated. Use [Conventional Commits](https://www.conventionalcommits.org/)
 (`feat:`, `fix:` and so on) so the version and changelog can be worked out.
 
 1. Each push to `main` updates an open release pull request. It bumps the
-   version and adds the new changes to `CHANGELOG.md`.
+   version, in `Gemfile.lock` too, and adds the new changes to `CHANGELOG.md`.
 2. Merging that pull request tags the version and creates a GitHub Release.
 3. The release starts the Publish workflow, which pushes the gem to
    RubyGems.org using trusted publishing. No API key is stored in GitHub.

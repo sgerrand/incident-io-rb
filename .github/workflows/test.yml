@@ -31,9 +31,15 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      # Ruby head comes with a newer Bundler than the one named in
+      # Gemfile.lock and can't run the older one. Tell Bundler to stay on
+      # the version it came with.
+      - if: matrix.ruby == 'head'
+        run: echo "BUNDLE_VERSION=system" >> "$GITHUB_ENV"
       - uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
         with:
           ruby-version: ${{ matrix.ruby }}
+          bundler: ${{ matrix.ruby == 'head' && 'default' || 'Gemfile.lock' }}
           bundler-cache: true
       # spec:rbs runs the specs with rbs test, checking every call into the
       # gem against the signatures in sig/.

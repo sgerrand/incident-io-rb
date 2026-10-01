@@ -11,6 +11,7 @@ on:
       - "typecheck/**"
       - "Steepfile"
       - "Gemfile"
+      - "Gemfile.lock"
       - "incident-io.gemspec"
       - ".github/workflows/typecheck.yml"
   pull_request:
