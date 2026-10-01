@@ -4,4 +4,3 @@
 /coverage/
 *.gem
 /openapi/openapi.json
-/Gemfile.lock
