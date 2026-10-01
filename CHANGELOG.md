@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.1](https://github.com/sgerrand/incident-io-rb/compare/v0.1.0...v0.1.1) (2026-10-01)
+
+
+### Bug Fixes
+
+* **transport:** stop Net::HTTP re-sending timed out requests ([#9](https://github.com/sgerrand/incident-io-rb/issues/9)) ([599bc55](https://github.com/sgerrand/incident-io-rb/commit/599bc554df3139b43f01ff246eb87cfd6db12b03))
+
+
+### Performance Improvements
+
+* simplify the generator, resources, models and specs ([#5](https://github.com/sgerrand/incident-io-rb/issues/5)) ([e0c93f7](https://github.com/sgerrand/incident-io-rb/commit/e0c93f717aa21ff2e85064f32d09f2377acb6963))
+
 ## 0.1.0 (2026-09-27)
 
 
