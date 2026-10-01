@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/sgerrand/incident-io-rb/compare/v0.1.0...v0.1.1) (2026-10-01)
+
+
+### Performance Improvements
+
+* simplify the generator, resources, models and specs ([#5](https://github.com/sgerrand/incident-io-rb/issues/5)) ([e0c93f7](https://github.com/sgerrand/incident-io-rb/commit/e0c93f717aa21ff2e85064f32d09f2377acb6963))
+
 ## 0.1.0 (2026-09-27)
 
 
