@@ -33,6 +33,9 @@ module IncidentIo
         http.open_timeout = request.open_timeout
         http.read_timeout = request.timeout
         http.write_timeout = request.timeout
+        # The client does the retrying. Left alone, Net::HTTP sends a GET, PUT
+        # or DELETE that timed out a second time by itself.
+        http.max_retries = 0
 
         # e.g. Net::HTTP::Get for :get
         http_request = Net::HTTP.const_get(request.method.to_s.capitalize).new(uri.request_uri, request.headers)
