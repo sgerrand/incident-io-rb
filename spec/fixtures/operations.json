@@ -1087,6 +1087,64 @@
     }
   },
   {
+    "operation_id": "Incident Team Memberships V1#Create",
+    "version": "v1",
+    "resource": "incident_team_memberships",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/incident_team_memberships",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value",
+      "team_id": "team_id-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "incident_id",
+      "team_id"
+    ],
+    "body": true,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_team_membership",
+      "items_key": null,
+      "model": "IncidentTeamMembershipV1",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Incident Team Memberships V1#Revoke",
+    "version": "v1",
+    "resource": "incident_team_memberships",
+    "method": "revoke",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/incident_team_memberships/actions/revoke",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value",
+      "team_id": "team_id-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "incident_id",
+      "team_id"
+    ],
+    "body": true,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "depth": 0
+    }
+  },
+  {
     "operation_id": "Incident Templates V1#Create",
     "version": "v1",
     "resource": "incident_templates",

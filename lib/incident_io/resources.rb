@@ -18,6 +18,7 @@ module IncidentIo
       autoload :IncidentRelationships, "#{__dir__}/resources/v1/incident_relationships"
       autoload :IncidentRoles, "#{__dir__}/resources/v1/incident_roles"
       autoload :IncidentStatuses, "#{__dir__}/resources/v1/incident_statuses"
+      autoload :IncidentTeamMemberships, "#{__dir__}/resources/v1/incident_team_memberships"
       autoload :IncidentTemplates, "#{__dir__}/resources/v1/incident_templates"
       autoload :IncidentTypes, "#{__dir__}/resources/v1/incident_types"
       autoload :Incidents, "#{__dir__}/resources/v1/incidents"
@@ -98,6 +99,13 @@ module IncidentIo
         # @return [IncidentStatuses]
         def incident_statuses
           resource(IncidentStatuses)
+        end
+
+        # The v1 incident team memberships resource
+        #
+        # @return [IncidentTeamMemberships]
+        def incident_team_memberships
+          resource(IncidentTeamMemberships)
         end
 
         # The v1 incident templates resource
@@ -732,6 +740,13 @@ module IncidentIo
       # @return [V1::IncidentStatuses]
       def incident_statuses
         v1.incident_statuses
+      end
+
+      # The incident team memberships resource, using its newest version (v1)
+      #
+      # @return [V1::IncidentTeamMemberships]
+      def incident_team_memberships
+        v1.incident_team_memberships
       end
 
       # The incident templates resource, using its newest version (v1)
