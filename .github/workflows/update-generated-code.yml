@@ -51,6 +51,13 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
+      # Removing a type can break code that uses the gem, so the pull
+      # request lists any type the new spec no longer has. Compares with
+      # the last commit, so it runs before the new code is committed.
+      - name: List removed types
+        if: steps.changes.outputs.changed == 'true'
+        run: bundle exec rake generate:removed > "$RUNNER_TEMP/removed-types.md"
+
       # Pull requests opened with GITHUB_TOKEN don't trigger the Test
       # workflow, so run the specs here before opening one.
       - name: Run specs and type check
@@ -71,18 +78,24 @@ jobs:
           git commit --message "feat: update generated code from the latest OpenAPI spec"
           git push --force origin "$BRANCH"
 
-          if [ "$(gh pr view "$BRANCH" --json state --jq .state 2>/dev/null)" = "OPEN" ]; then
-            echo "Updated the open pull request."
-          else
-            gh pr create \
-              --base "$GITHUB_REF_NAME" \
-              --head "$BRANCH" \
-              --title "feat: update generated code from the latest OpenAPI spec" \
-              --body-file - <<'BODY'
+          cat > "$RUNNER_TEMP/body.md" <<'BODY'
           :tipping_hand_person: These changes update the generated models, resources and signatures from the latest incident.io OpenAPI spec.
 
           The spec itself is not stored in git, so review the changes to the generated code. The specs passed in the workflow run that opened this pull request.
 
           The Test workflow does not run on pull requests opened by GitHub Actions. To run it, close and reopen this pull request.
           BODY
+          { echo; cat "$RUNNER_TEMP/removed-types.md"; } >> "$RUNNER_TEMP/body.md"
+
+          # An open pull request gets the new body too, so its list of
+          # removed types stays true.
+          if [ "$(gh pr view "$BRANCH" --json state --jq .state 2>/dev/null)" = "OPEN" ]; then
+            gh pr edit "$BRANCH" --body-file "$RUNNER_TEMP/body.md"
+            echo "Updated the open pull request."
+          else
+            gh pr create \
+              --base "$GITHUB_REF_NAME" \
+              --head "$BRANCH" \
+              --title "feat: update generated code from the latest OpenAPI spec" \
+              --body-file "$RUNNER_TEMP/body.md"
           fi
