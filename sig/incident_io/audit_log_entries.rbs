@@ -81,6 +81,7 @@ module IncidentIo
                | Models::AuditLogsIncidentRoleCreatedV1
                | Models::AuditLogsIncidentRoleDeletedV1
                | Models::AuditLogsIncidentRoleUpdatedV1
+               | Models::AuditLogsIncidentScrubbedV1
                | Models::AuditLogsIncidentStatusCreatedV1
                | Models::AuditLogsIncidentStatusDeletedV1
                | Models::AuditLogsIncidentStatusUpdatedV1
@@ -117,8 +118,12 @@ module IncidentIo
                | Models::AuditLogsOnCallNotificationMethodDestroyedV1
                | Models::AuditLogsOnCallNotificationMethodDestroyedV2
                | Models::AuditLogsOnCallNotificationPauseCreatedV1
+               | Models::AuditLogsOnCallNotificationPauseCreatedV2
                | Models::AuditLogsOnCallNotificationPauseDeletedV1
+               | Models::AuditLogsOnCallNotificationPauseDeletedV2
+               | Models::AuditLogsOnCallNotificationPauseResumedV1
                | Models::AuditLogsOnCallNotificationPauseUpdatedV1
+               | Models::AuditLogsOnCallNotificationPauseUpdatedV2
                | Models::AuditLogsOnCallUpsellRequestedV1
                | Models::AuditLogsOrganisationSettingsUpdatedV1
                | Models::AuditLogsPolicyCreatedV1
@@ -216,6 +221,8 @@ module IncidentIo
                | Models::AuditLogsTwilioConnectionCreatedV1
                | Models::AuditLogsTwilioConnectionDeletedV1
                | Models::AuditLogsTwilioConnectionUpdatedV1
+               | Models::AuditLogsUserAPIKeyCreatedV1
+               | Models::AuditLogsUserAPIKeyDeletedV1
                | Models::AuditLogsUserCreatedV1
                | Models::AuditLogsUserDeactivatedV1
                | Models::AuditLogsUserLoggedInV1

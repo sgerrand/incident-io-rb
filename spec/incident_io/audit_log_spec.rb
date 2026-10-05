@@ -25,6 +25,6 @@ RSpec.describe IncidentIo::AuditLog do
   end
 
   it "knows every entry type in the spec" do
-    expect(described_class::ENTRIES.size).to eq(219)
+    expect(described_class::ENTRIES.size).to eq(226)
   end
 end
