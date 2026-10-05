@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.2.0](https://github.com/sgerrand/incident-io-rb/compare/v0.1.0...v0.2.0) (2026-10-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* ScheduleEntryV2 no longer has a layer_id field.
+
+### Features
+
+* update generated code from the latest OpenAPI spec ([#11](https://github.com/sgerrand/incident-io-rb/issues/11)) ([e9c9df1](https://github.com/sgerrand/incident-io-rb/commit/e9c9df17b8d2a918447cbd0905a46c8c2c03862f))
+
+
+### Bug Fixes
+
+* **transport:** stop Net::HTTP re-sending timed out requests ([#9](https://github.com/sgerrand/incident-io-rb/issues/9)) ([599bc55](https://github.com/sgerrand/incident-io-rb/commit/599bc554df3139b43f01ff246eb87cfd6db12b03))
+
+
+### Performance Improvements
+
+* simplify the generator, resources, models and specs ([#5](https://github.com/sgerrand/incident-io-rb/issues/5)) ([e0c93f7](https://github.com/sgerrand/incident-io-rb/commit/e0c93f717aa21ff2e85064f32d09f2377acb6963))
+
 ## 0.1.0 (2026-09-27)
 
 
