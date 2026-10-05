@@ -20,6 +20,7 @@ module IncidentIo
       post_mortem: -> { PolicyFindingPostMortemV2 },
       responsible_users: [-> { UserV2 }],
       schedule: -> { PolicyFindingScheduleV2 },
+      shift_conflict: -> { PolicyFindingShiftConflictV2 },
       state: :string,
       updated_at: :time,
       vacation_conflict: -> { PolicyFindingVacationConflictV2 }
@@ -68,6 +69,9 @@ module IncidentIo
       # @!attribute [r] schedule
       #   The schedule field
       #   @return [PolicyFindingScheduleV2, nil]
+      # @!attribute [r] shift_conflict
+      #   The shift_conflict field
+      #   @return [PolicyFindingShiftConflictV2, nil]
       # @!attribute [r] state
       #   Where this finding is in its lifecycle One of: pending, active, resolved,…
       #   @return [String, nil]

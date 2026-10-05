@@ -6,6 +6,7 @@
 module IncidentIo
   module Models
     GroupingSettingsV3 = Model.define(
+      ai_enabled: :boolean,
       enabled: :boolean,
       grouping_keys: [-> { GroupingKeyV3 }],
       window_seconds: :integer,
@@ -13,6 +14,9 @@ module IncidentIo
     )
 
     class GroupingSettingsV3
+      # @!attribute [r] ai_enabled
+      #   Use AI to group similar looking alerts
+      #   @return [Boolean, nil]
       # @!attribute [r] enabled
       #   Whether grouping is enabled
       #   @return [Boolean, nil]
