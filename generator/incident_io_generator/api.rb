@@ -174,6 +174,10 @@ module IncidentIoGenerator
         end
       end
 
+      # An empty list means the spec moved them, not that there are none.
+      raise Error, "x-webhooks: no webhook events" if webhook_events.empty?
+      raise Error, "x-webhooks: no audit log entries" if audit_log_entries.empty?
+
       [webhook_events, audit_log_entries]
     end
 
