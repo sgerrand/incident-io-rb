@@ -1087,6 +1087,64 @@
     }
   },
   {
+    "operation_id": "Incident Team Memberships V1#Create",
+    "version": "v1",
+    "resource": "incident_team_memberships",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/incident_team_memberships",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value",
+      "team_id": "team_id-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "incident_id",
+      "team_id"
+    ],
+    "body": true,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_team_membership",
+      "items_key": null,
+      "model": "IncidentTeamMembershipV1",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Incident Team Memberships V1#Revoke",
+    "version": "v1",
+    "resource": "incident_team_memberships",
+    "method": "revoke",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v1/incident_team_memberships/actions/revoke",
+    "path_args": [],
+    "keyword_args": {
+      "incident_id": "incident_id-value",
+      "team_id": "team_id-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "incident_id",
+      "team_id"
+    ],
+    "body": true,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "depth": 0
+    }
+  },
+  {
     "operation_id": "Incident Templates V1#Create",
     "version": "v1",
     "resource": "incident_templates",
@@ -7285,6 +7343,31 @@
       "kind": "paginated",
       "unwrap": null,
       "items_key": "status_pages",
+      "model": "StatusPageV2",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Status Pages V2#ShowStatusPage",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "show_status_page",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/status_pages/{status_page_id}",
+    "path_args": [
+      "status_page_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page",
+      "items_key": null,
       "model": "StatusPageV2",
       "depth": 0
     }

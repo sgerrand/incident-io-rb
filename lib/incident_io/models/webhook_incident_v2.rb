@@ -10,6 +10,7 @@ module IncidentIo
       created_at: :time,
       creator: -> { ActorV2 },
       custom_field_entries: [-> { CustomFieldEntryV2 }],
+      debriefs: [-> { IncidentDebriefV2 }],
       duration_metrics: [-> { IncidentDurationMetricWithValueV2 }],
       external_issue_reference: -> { ExternalIssueReferenceV2 },
       has_debrief: :boolean,
@@ -56,6 +57,9 @@ module IncidentIo
       # @!attribute [r] custom_field_entries
       #   Custom field entries for this incident
       #   @return [Array<CustomFieldEntryV2>, nil]
+      # @!attribute [r] debriefs
+      #   Debriefs scheduled for this incident, ordered by start time
+      #   @return [Array<IncidentDebriefV2>, nil]
       # @!attribute [r] duration_metrics
       #   Incident duration metrics and their measurements for this incident
       #   @return [Array<IncidentDurationMetricWithValueV2>, nil]

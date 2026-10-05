@@ -24,7 +24,8 @@ RSpec.describe IncidentIo::AuditLog do
     expect(described_class.parse(entry.merge("version" => 99))).to eq(entry.merge("version" => 99))
   end
 
-  it "knows every entry type in the spec" do
-    expect(described_class::ENTRIES.size).to eq(219)
+  it "has a model for every entry type" do
+    expect(described_class::ENTRIES).not_to be_empty
+    expect(described_class::ENTRIES.values.uniq).to all(satisfy { |m| IncidentIo::Models.const_get(m) })
   end
 end

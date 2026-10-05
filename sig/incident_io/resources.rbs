@@ -26,6 +26,8 @@ module IncidentIo
 
         def incident_statuses: () -> IncidentStatuses
 
+        def incident_team_memberships: () -> IncidentTeamMemberships
+
         def incident_templates: () -> IncidentTemplates
 
         def incident_types: () -> IncidentTypes
@@ -203,6 +205,8 @@ module IncidentIo
       def incident_roles: () -> V2::IncidentRoles
 
       def incident_statuses: () -> V1::IncidentStatuses
+
+      def incident_team_memberships: () -> V1::IncidentTeamMemberships
 
       def incident_templates: () -> V1::IncidentTemplates
 

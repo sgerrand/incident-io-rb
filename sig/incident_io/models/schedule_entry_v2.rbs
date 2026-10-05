@@ -4,11 +4,10 @@
 module IncidentIo
   module Models
     # A single shift on a schedule, representing who is on-call between a start
-    # and end time. When present, `rotation_id` and `layer_id` tell you which
-    # rotation and which layer within that rotation the entry belongs to. A
-    # schedule may have multiple rotations (for example, a primary and a secondary
-    # rotation) and each rotation can be made up of several layers — entries are
-    # returned for every rotation and layer on the schedule.
+    # and end time. When present, `rotation_id` tells you which rotation the
+    # entry belongs to. A schedule may have multiple rotations (for example, a
+    # primary and a secondary rotation) and each rotation can be made up of several
+    # layers — entries are returned for every rotation and layer on the schedule.
     #
     # Entries come from two places: they are either generated from a schedule's
     # rotation configuration (the regular pattern of who is on-call) or created by
@@ -31,8 +30,6 @@ module IncidentIo
       attr_reader entry_id: String?
       # A unique identifier for this entry, used to determine a unique shift
       attr_reader fingerprint: String?
-      # If present, the layer this entry applies to on the rotation
-      attr_reader layer_id: String?
       # If present, the rotation this entry applies to on the schedule
       attr_reader rotation_id: String?
       attr_reader start_at: Time?
@@ -42,7 +39,6 @@ module IncidentIo
         ?end_at: Time?,
         ?entry_id: String?,
         ?fingerprint: String?,
-        ?layer_id: String?,
         ?rotation_id: String?,
         ?start_at: Time?,
         ?user: UserV2?,
@@ -53,7 +49,6 @@ module IncidentIo
         ?end_at: Time?,
         ?entry_id: String?,
         ?fingerprint: String?,
-        ?layer_id: String?,
         ?rotation_id: String?,
         ?start_at: Time?,
         ?user: UserV2?,
@@ -64,7 +59,6 @@ module IncidentIo
         ?end_at: Time?,
         ?entry_id: String?,
         ?fingerprint: String?,
-        ?layer_id: String?,
         ?rotation_id: String?,
         ?start_at: Time?,
         ?user: UserV2?

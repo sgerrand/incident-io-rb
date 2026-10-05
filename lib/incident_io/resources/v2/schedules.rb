@@ -246,7 +246,7 @@ module IncidentIo
         # overrides that apply in the window) and `final` (the effective schedule
         # after overrides have been merged in — this is normally the list you want).
         #
-        # Each entry includes the `rotation_id` and `layer_id` it belongs to.
+        # Each entry includes the `rotation_id` it belongs to.
         # Schedules can be made up of multiple rotations (for example, a primary and
         # a secondary rotation) and each rotation can have several layers, and we
         # return entries for every rotation and layer on the schedule.

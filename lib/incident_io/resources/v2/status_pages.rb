@@ -372,6 +372,27 @@ module IncidentIo
           )
         end
 
+        # Show a single status page
+        #
+        # Show a single status page.
+        #
+        # This endpoint requires a valid API key but no specific scopes. Use ShowStatusPageStructure to see the components and groups configured on the page.
+        #
+        # Endpoint: `GET /v2/status_pages/{status_page_id}`.
+        #
+        # @param status_page_id [String] ID of the status page. You can find this by calling the ListStatusPages endpoint.
+        # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
+        # @return [Models::StatusPageV2]
+        def show_status_page(status_page_id, request_options: {})
+          request(
+            :get,
+            path("/v2/status_pages/%s", status_page_id),
+            unwrap: "status_page",
+            model: Models::StatusPageV2,
+            request_options:
+          )
+        end
+
         # Show availability for a status page component over a time window
         #
         # Show availability for a status page component over a time window.

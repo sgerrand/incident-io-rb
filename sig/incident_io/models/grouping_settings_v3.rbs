@@ -7,6 +7,8 @@ module IncidentIo
       extend Model::ClassMethods
       include Model::InstanceMethods
 
+      # Use AI to group similar looking alerts.
+      attr_reader ai_enabled: bool?
       # Whether grouping is enabled
       attr_reader enabled: bool?
       # Which attributes should this alert route use to group alerts?
@@ -17,6 +19,7 @@ module IncidentIo
       attr_reader window_type: String?
 
       def self.new: (
+        ?ai_enabled: bool?,
         ?enabled: bool?,
         ?grouping_keys: Array[GroupingKeyV3]?,
         ?window_seconds: Integer?,
@@ -25,6 +28,7 @@ module IncidentIo
       ) -> instance
 
       def initialize: (
+        ?ai_enabled: bool?,
         ?enabled: bool?,
         ?grouping_keys: Array[GroupingKeyV3]?,
         ?window_seconds: Integer?,
@@ -33,6 +37,7 @@ module IncidentIo
       ) -> void
 
       def with: (
+        ?ai_enabled: bool?,
         ?enabled: bool?,
         ?grouping_keys: Array[GroupingKeyV3]?,
         ?window_seconds: Integer?,

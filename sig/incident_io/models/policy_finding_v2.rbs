@@ -28,6 +28,7 @@ module IncidentIo
       # Who is expected to resolve this finding
       attr_reader responsible_users: Array[UserV2]?
       attr_reader schedule: PolicyFindingScheduleV2?
+      attr_reader shift_conflict: PolicyFindingShiftConflictV2?
       # Where this finding is in its lifecycle One of: pending, active, resolved, cancelled, dismissed.
       attr_reader state: String?
       attr_reader updated_at: Time?
@@ -48,6 +49,7 @@ module IncidentIo
         ?post_mortem: PolicyFindingPostMortemV2?,
         ?responsible_users: Array[UserV2]?,
         ?schedule: PolicyFindingScheduleV2?,
+        ?shift_conflict: PolicyFindingShiftConflictV2?,
         ?state: String?,
         ?updated_at: Time?,
         ?vacation_conflict: PolicyFindingVacationConflictV2?,
@@ -69,6 +71,7 @@ module IncidentIo
         ?post_mortem: PolicyFindingPostMortemV2?,
         ?responsible_users: Array[UserV2]?,
         ?schedule: PolicyFindingScheduleV2?,
+        ?shift_conflict: PolicyFindingShiftConflictV2?,
         ?state: String?,
         ?updated_at: Time?,
         ?vacation_conflict: PolicyFindingVacationConflictV2?,
@@ -90,6 +93,7 @@ module IncidentIo
         ?post_mortem: PolicyFindingPostMortemV2?,
         ?responsible_users: Array[UserV2]?,
         ?schedule: PolicyFindingScheduleV2?,
+        ?shift_conflict: PolicyFindingShiftConflictV2?,
         ?state: String?,
         ?updated_at: Time?,
         ?vacation_conflict: PolicyFindingVacationConflictV2?

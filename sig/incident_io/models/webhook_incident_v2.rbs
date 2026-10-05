@@ -14,6 +14,8 @@ module IncidentIo
       attr_reader creator: ActorV2?
       # Custom field entries for this incident
       attr_reader custom_field_entries: Array[CustomFieldEntryV2]?
+      # Debriefs scheduled for this incident, ordered by start time.
+      attr_reader debriefs: Array[IncidentDebriefV2]?
       # Incident duration metrics and their measurements for this incident
       attr_reader duration_metrics: Array[IncidentDurationMetricWithValueV2]?
       attr_reader external_issue_reference: ExternalIssueReferenceV2?
@@ -78,6 +80,7 @@ module IncidentIo
         ?created_at: Time?,
         ?creator: ActorV2?,
         ?custom_field_entries: Array[CustomFieldEntryV2]?,
+        ?debriefs: Array[IncidentDebriefV2]?,
         ?duration_metrics: Array[IncidentDurationMetricWithValueV2]?,
         ?external_issue_reference: ExternalIssueReferenceV2?,
         ?has_debrief: bool?,
@@ -117,6 +120,7 @@ module IncidentIo
         ?created_at: Time?,
         ?creator: ActorV2?,
         ?custom_field_entries: Array[CustomFieldEntryV2]?,
+        ?debriefs: Array[IncidentDebriefV2]?,
         ?duration_metrics: Array[IncidentDurationMetricWithValueV2]?,
         ?external_issue_reference: ExternalIssueReferenceV2?,
         ?has_debrief: bool?,
@@ -156,6 +160,7 @@ module IncidentIo
         ?created_at: Time?,
         ?creator: ActorV2?,
         ?custom_field_entries: Array[CustomFieldEntryV2]?,
+        ?debriefs: Array[IncidentDebriefV2]?,
         ?duration_metrics: Array[IncidentDurationMetricWithValueV2]?,
         ?external_issue_reference: ExternalIssueReferenceV2?,
         ?has_debrief: bool?,
