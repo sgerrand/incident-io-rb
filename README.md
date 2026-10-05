@@ -204,6 +204,8 @@ It is saved to `openapi/openapi.json`, which git ignores.
 To rename a generated method, add it to `generator/overrides.yml`.
 `bundle exec rake generate:check` fails if the generated code does not match
 your local copy of the spec.
+`bundle exec rake generate:removed` lists the webhook event and audit log
+entry types that the generated code has lost since the last commit.
 
 ## Releasing
 

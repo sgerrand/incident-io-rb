@@ -81,6 +81,17 @@ task :generate do
 end
 
 namespace :generate do
+  desc "List the webhook event and audit log entry types removed since the last commit"
+  task :removed do
+    require_relative "generator/incident_io_generator"
+
+    paths = IncidentIoGenerator::RemovedTypes::FILES.keys
+    before = paths.to_h { |path| [path, IO.popen(["git", "show", "HEAD:#{path}"], err: File::NULL, &:read)] }
+    after = paths.to_h { |path| [path, File.exist?(path) ? File.read(path) : ""] }
+
+    print IncidentIoGenerator::RemovedTypes.report(before, after)
+  end
+
   desc "Fail if the generated code does not match #{SPEC_FILE}"
   task :check do
     require_spec!
