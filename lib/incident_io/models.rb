@@ -1090,6 +1090,7 @@ module IncidentIo
     autoload :StatusPagesShowStatusPageStructureResultV2, "#{__dir__}/models/status_pages_show_status_page_structure_result_v2"
     autoload :StatusPagesUpdateStatusPageIncidentPayloadV2, "#{__dir__}/models/status_pages_update_status_page_incident_payload_v2"
     autoload :StatusPagesUpdateStatusPageIncidentResultV2, "#{__dir__}/models/status_pages_update_status_page_incident_result_v2"
+    autoload :StatusPagesShowStatusPageResultV2, "#{__dir__}/models/status_pages_show_status_page_result_v2"
     autoload :StatusPagesUpdateStatusPageMaintenancePayloadV2, "#{__dir__}/models/status_pages_update_status_page_maintenance_payload_v2"
     autoload :StatusPagesUpdateStatusPageMaintenanceResultV2, "#{__dir__}/models/status_pages_update_status_page_maintenance_result_v2"
     autoload :StepConfigPayloadV2, "#{__dir__}/models/step_config_payload_v2"

@@ -7348,6 +7348,31 @@
     }
   },
   {
+    "operation_id": "Status Pages V2#ShowStatusPage",
+    "version": "v2",
+    "resource": "status_pages",
+    "method": "show_status_page",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/status_pages/{status_page_id}",
+    "path_args": [
+      "status_page_id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page",
+      "items_key": null,
+      "model": "StatusPageV2",
+      "depth": 0
+    }
+  },
+  {
     "operation_id": "Status Pages V2#ShowStatusPageComponentAvailability",
     "version": "v2",
     "resource": "status_pages",
