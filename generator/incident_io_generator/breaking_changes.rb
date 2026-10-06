@@ -7,15 +7,17 @@ module IncidentIoGenerator
   #
   # - a webhook event type, audit log entry type, model, model field or
   #   resource method that was removed
-  # - a model field that changed type
-  # - a resource method whose arguments or return type changed
+  # - a model field that changed type or allows other values
+  # - a resource method whose arguments or return type changed, or with an
+  #   argument that allows fewer values
   module BreakingChanges
     EVENTS_PATH = "lib/incident_io/webhook_events.rb"
     ENTRIES_PATH = "lib/incident_io/audit_log_entries.rb"
     MODELS_PATH = "lib/incident_io/models"
     OPERATIONS_PATH = "spec/fixtures/operations.json"
+    VALUES_PATH = "spec/fixtures/allowed_values.json"
     # The generated code that is read, relative to the repository root.
-    PATHS = [EVENTS_PATH, ENTRIES_PATH, MODELS_PATH, OPERATIONS_PATH].freeze
+    PATHS = [EVENTS_PATH, ENTRIES_PATH, MODELS_PATH, OPERATIONS_PATH, VALUES_PATH].freeze
 
     # A line of the webhook event map, like
     # `"schedule.deleted_v1" => :ScheduleSlimV2,`.
@@ -37,17 +39,22 @@ module IncidentIoGenerator
     # What the generated code under a root offers.
     def surface(root)
       read = ->(path) { File.read(File.join(root, path)) }
+      allowed = JSON.parse(read[VALUES_PATH])
       {
         events: read[EVENTS_PATH].scan(EVENT).flatten,
         entries: read[ENTRIES_PATH].scan(ENTRY).map { |action, version| "`#{action}` (version #{version})" },
-        # Each model's fields and their types, keyed by the model's name.
+        # Each model's fields, keyed by the model's name. A field has a type
+        # and the values it is limited to, or nil when it takes any value.
         models: Dir.glob("#{MODELS_PATH}/*.rb", base: root).sort.to_h do |path|
           source = read[path]
-          [source[MODEL, 1], source.scan(FIELD).to_h]
+          model = source[MODEL, 1]
+          [model, source.scan(FIELD).to_h { |field, type| [field, {type:, values: allowed["fields"].dig(model, field)}] }]
         end,
-        # How each method is called, keyed by the call.
+        # How each method is called, keyed by the call. `values` has the
+        # arguments that are limited to some values.
         methods: JSON.parse(read[OPERATIONS_PATH]).to_h do |op|
-          ["client.#{op["version"]}.#{op["resource"]}.#{op["method"]}", signature(op)]
+          call = "client.#{op["version"]}.#{op["resource"]}.#{op["method"]}"
+          [call, signature(op).merge(values: allowed["arguments"].fetch(call, {}))]
         end
       }
     end
@@ -73,24 +80,60 @@ module IncidentIoGenerator
       ]
     end
 
-    # Fields that were removed or changed type, in models that both have.
-    # The fields of a removed model aren't listed one by one.
+    # Fields that were removed, changed type or allow other values, in
+    # models that both have. The fields of a removed model aren't listed one
+    # by one.
     def field_changes(before, after)
       after.flat_map do |model, fields|
-        before.fetch(model, {}).filter_map do |field, type|
-          if !fields.key?(field)
-            "Field `#{model}##{field}` was removed"
-          elsif fields[field] != type
-            "Field `#{model}##{field}` changed type from `#{type}` to `#{fields[field]}`"
-          end
+        before.fetch(model, {}).flat_map do |field, was|
+          name = "Field `#{model}##{field}`"
+          now = fields[field]
+          next ["#{name} was removed"] unless now
+
+          [
+            *("#{name} changed type from `#{was[:type]}` to `#{now[:type]}`" if was[:type] != now[:type]),
+            *field_value_changes(name, was[:values], now[:values])
+          ]
         end
       end
     end
 
+    # How the values a field allows changed. Code that reads the field can
+    # meet a value it doesn't know, or wait for one that no longer comes. A
+    # field that took any value before can't surprise it.
+    def field_value_changes(name, was, now)
+      return [] unless was
+      return ["#{name} now allows any value"] unless now
+
+      [
+        *("#{name} no longer allows #{quote(was - now)}" if (was - now).any?),
+        *("#{name} now also allows #{quote(now - was)}" if (now - was).any?)
+      ]
+    end
+
+    # Arguments of a method that allow fewer values than before. Allowing
+    # more can't break a call, and nor can a limit on a new argument.
+    def argument_value_changes(name, was, now)
+      now[:values].filter_map do |arg, values|
+        next unless was[:types].key?(arg)
+
+        allowed = was[:values][arg]
+        if allowed.nil?
+          "Method `#{name}` now only allows #{quote(values)} for `#{arg}`"
+        elsif (allowed - values).any?
+          "Method `#{name}` no longer allows #{quote(allowed - values)} for `#{arg}`"
+        end
+      end
+    end
+
+    def quote(values)
+      values.map { |value| "`#{value}`" }.join(", ")
+    end
+
     # Methods that were removed, and methods that can no longer be used the
     # same way: their positional arguments changed, they lost a keyword
-    # argument, they need a new one, an argument changed type or they
-    # return something else.
+    # argument, they need a new one, an argument changed type or allows
+    # fewer values, or they return something else.
     def method_changes(before, after)
       before.flat_map do |name, was|
         now = after[name]
@@ -105,6 +148,7 @@ module IncidentIoGenerator
             now_type = now[:types].fetch(arg, type)
             "Method `#{name}` changed the type of argument `#{arg}` from `#{type}` to `#{now_type}`" if now_type != type
           end,
+          *argument_value_changes(name, was, now),
           *("Method `#{name}` changed what it returns from `#{was[:returns]}` to `#{now[:returns]}`" if was[:returns] != now[:returns])
         ]
       end

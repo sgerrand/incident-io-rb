@@ -17,8 +17,9 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
   end
 
   # The mini spec before a breaking update. It has an extra event, entry,
-  # model, field and method, a field of another type, and methods with
-  # other arguments, argument types and return types.
+  # model, field and method, a field of another type, fields and an
+  # argument that allow other values, and methods with other arguments,
+  # argument types and return types.
   def older_spec
     mini_spec.tap do |spec|
       schemas = spec["components"]["schemas"]
@@ -31,6 +32,9 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       schemas["PartV2"]["properties"]["id"] = {"type" => "integer"}
       schemas["WidgetsCreatePayloadV2"]["required"] = ["idempotency_key"]
       schemas["WidgetsCreatePayloadV2"]["properties"]["colour"] = {"type" => "string"}
+      schemas["WidgetV2"]["properties"]["kind"]["enum"] = %w[big tiny]
+      schemas["WidgetV2"]["properties"]["class"]["enum"] = %w[a b]
+      schemas["WidgetsCreatePayloadV2"]["properties"]["name"]["enum"] = %w[red green blue]
 
       spec["x-webhooks"]["/x-webhooks/public_widget.deleted_v1"] = event("WidgetDeletedBody", "Widget deleted.")
       spec["x-webhooks"]["/x-audit-logs/widget.created.1"] = event("AuditLogsWidgetDeletedV2", "Widget created.")
@@ -49,8 +53,17 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     end
   end
 
+  # The mini spec after the update, with two arguments limited to some
+  # values.
+  def newer_spec
+    mini_spec.tap do |spec|
+      spec["components"]["schemas"]["WidgetsCreatePayloadV2"]["properties"]["name"]["enum"] = %w[red green]
+      spec["paths"]["/v2/widgets"]["get"]["parameters"][0]["schema"]["enum"] = [25, 50]
+    end
+  end
+
   it "lists what the newer code removed or changed" do
-    report = described_class.report(generate("before", older_spec), generate("after", mini_spec))
+    report = described_class.report(generate("before", older_spec), generate("after", newer_spec))
 
     expect(report).to eq(<<~MARKDOWN)
       ## Breaking changes
@@ -62,36 +75,51 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Model `GadgetV1` was removed
       - Model `WidgetDeletedBody` was removed
       - Field `PartV2#id` changed type from `Integer` to `String`
+      - Field `WidgetV2#class_` now allows any value
+      - Field `WidgetV2#kind` no longer allows `tiny`
+      - Field `WidgetV2#kind` now also allows `small`
       - Field `WidgetV2#colour` was removed
+      - Field `WidgetsCreatePayloadV2#name` no longer allows `blue`
       - Field `WidgetsCreatePayloadV2#colour` was removed
       - Method `client.v2.widgets.archive` was removed
       - Method `client.v2.widgets.create` no longer takes `colour:`
       - Method `client.v2.widgets.create` now needs `name:`
+      - Method `client.v2.widgets.create` no longer allows `blue` for `name`
       - Method `client.v2.widgets.destroy` changed what it returns from `Models::WidgetV2` to `nil`
       - Method `client.v2.widgets.export` changed its positional arguments from `(shelf_id, id)` to `(id)`
       - Method `client.v2.widgets.list` changed the type of argument `page_size` from `String` to `Integer`
+      - Method `client.v2.widgets.list` now only allows `25`, `50` for `page_size`
     MARKDOWN
   end
 
-  it "is empty when things were only added or made optional" do
-    expect(described_class.report(generate("before", mini_spec), generate("after", mini_spec.tap do |spec|
+  it "is empty when things were only added, made optional or allow more" do
+    before = mini_spec.tap do |spec|
+      list = spec["paths"]["/v2/widgets"]["get"]["parameters"]
+      list[0]["schema"]["enum"] = [25]
+      list[1]["schema"]["enum"] = %w[start]
+    end
+    after = mini_spec.tap do |spec|
       schemas = spec["components"]["schemas"]
       schemas["GadgetV1"] = {"type" => "object"}
       schemas["WidgetV2"]["properties"]["colour"] = {"type" => "string"}
+      schemas["WidgetV2"]["properties"]["class"]["enum"] = %w[a b]
       schemas["WidgetsCreatePayloadV2"]["required"] = ["idempotency_key"]
-      schemas["WidgetsCreatePayloadV2"]["properties"]["colour"] = {"type" => "string"}
-    end))).to eq("")
+      schemas["WidgetsCreatePayloadV2"]["properties"]["colour"] = {"type" => "string", "enum" => %w[red]}
+      spec["paths"]["/v2/widgets"]["get"]["parameters"][0]["schema"]["enum"] = [25, 50]
+    end
+
+    expect(described_class.report(generate("before", before), generate("after", after))).to eq("")
   end
 
   it "stops at the limit and counts the rest" do
     stub_const("#{described_class}::LIMIT", 2)
 
-    report = described_class.report(generate("before", older_spec), generate("after", mini_spec))
+    report = described_class.report(generate("before", older_spec), generate("after", newer_spec))
 
     expect(report.lines.last(3)).to eq([
       "- Webhook event `public_widget.deleted_v1` was removed\n",
       "- Audit log entry `widget.created` (version 1) was removed\n",
-      "- and 11 more\n"
+      "- and 17 more\n"
     ])
   end
 
@@ -107,7 +135,16 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       models = IncidentIo::Models.constants.to_h { |name| [name.to_s, IncidentIo::Models.const_get(name).members.map(&:to_s)] }
 
       expect(surface[:models].transform_values(&:keys)).to eq(models)
-      expect(surface[:models].values.flat_map(&:values)).to all(match(/\A[A-Z]/))
+      expect(surface[:models].values.flat_map(&:values).map { |field| field[:type] }).to all(match(/\A[A-Z]/))
+    end
+
+    it "has allowed values only for fields and arguments it read" do
+      allowed = JSON.parse(File.read(File.join(IncidentIoGenerator::ROOT, described_class::VALUES_PATH)))
+
+      expect(allowed["fields"]).not_to be_empty
+      expect(allowed["arguments"]).not_to be_empty
+      allowed["fields"].each { |model, fields| expect(surface[:models].fetch(model).keys).to include(*fields.keys) }
+      allowed["arguments"].each { |call, args| expect(surface[:methods].fetch(call)[:types].keys).to include(*args.keys) }
     end
 
     # rbs test wraps every method, which hides the arguments it takes.
