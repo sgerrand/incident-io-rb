@@ -2022,6 +2022,27 @@
         "workflow_ran"
       ]
     },
+    "IncidentAttachmentsCreatePayloadV1": {
+      "resource.resource_type": [
+        "pager_duty_incident",
+        "opsgenie_alert",
+        "datadog_monitor_alert",
+        "github_pull_request",
+        "gitlab_merge_request",
+        "sentry_issue",
+        "jira_issue",
+        "jsm_alert",
+        "atlassian_statuspage_incident",
+        "zendesk_ticket",
+        "google_calendar_event",
+        "outlook_calendar_event",
+        "slack_file",
+        "salesforce_case",
+        "arbitrary_url",
+        "scrubbed",
+        "statuspage_incident"
+      ]
+    },
     "IncidentDurationMetricWithValueV2": {
       "status": [
         "success",
@@ -4385,6 +4406,27 @@
         "always"
       ]
     },
+    "client.v1.incident_attachments.create": {
+      "resource.resource_type": [
+        "pager_duty_incident",
+        "opsgenie_alert",
+        "datadog_monitor_alert",
+        "github_pull_request",
+        "gitlab_merge_request",
+        "sentry_issue",
+        "jira_issue",
+        "jsm_alert",
+        "atlassian_statuspage_incident",
+        "zendesk_ticket",
+        "google_calendar_event",
+        "outlook_calendar_event",
+        "slack_file",
+        "salesforce_case",
+        "arbitrary_url",
+        "scrubbed",
+        "statuspage_incident"
+      ]
+    },
     "client.v1.incident_attachments.list": {
       "resource_type": [
         "pager_duty_incident",
@@ -5215,6 +5257,145 @@
         "completed",
         "deleted",
         "not_doing"
+      ]
+    }
+  },
+  "operators": {
+    "client.v2.alerts.list": {
+      "deduplication_key": [
+        "is"
+      ],
+      "status": [
+        "one_of",
+        "not_in"
+      ],
+      "alert_source": [
+        "one_of",
+        "not_in"
+      ],
+      "alert_group_id": [
+        "one_of"
+      ],
+      "created_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ],
+      "updated_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ],
+      "has_notes": [
+        "is"
+      ],
+      "tags": [
+        "one_of",
+        "all_of",
+        "not_in"
+      ],
+      "include_maintenance_window": [
+        "is"
+      ]
+    },
+    "client.v2.escalations.list": {
+      "escalation_path": [
+        "one_of",
+        "not_in"
+      ],
+      "status": [
+        "one_of",
+        "not_in"
+      ],
+      "alert": [
+        "one_of",
+        "not_in"
+      ],
+      "incident": [
+        "one_of",
+        "not_in"
+      ],
+      "created_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ],
+      "updated_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ],
+      "idempotency_key": [
+        "is",
+        "starts_with"
+      ]
+    },
+    "client.v2.incidents.list": {
+      "status": [
+        "one_of",
+        "not_in"
+      ],
+      "status_category": [
+        "one_of",
+        "not_in"
+      ],
+      "created_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ],
+      "updated_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ],
+      "severity": [
+        "one_of",
+        "not_in",
+        "gte",
+        "lte"
+      ],
+      "incident_type": [
+        "one_of",
+        "not_in"
+      ],
+      "incident_role": [
+        "one_of",
+        "is_blank"
+      ],
+      "mode": [
+        "one_of"
+      ]
+    },
+    "client.v2.workflow_runs.list": {
+      "created_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ]
+    },
+    "client.v3.actions.list": {
+      "created_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ],
+      "updated_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ]
+    },
+    "client.v3.follow_ups.list": {
+      "created_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ],
+      "updated_at": [
+        "gte",
+        "lte",
+        "date_range"
       ]
     }
   }

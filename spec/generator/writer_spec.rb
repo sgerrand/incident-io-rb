@@ -116,15 +116,19 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
       .to include(%(["widget.deleted", 2] => :AuditLogsWidgetDeletedV2\n))
     expect(generated("sig/incident_io/audit_log_entries.rbs")).to include("type entry = Models::AuditLogsWidgetDeletedV2")
   end
-  it "writes the values that fields and arguments are limited to" do
+  it "writes the values and operators that fields and arguments are limited to" do
     spec = mini_spec
     spec["paths"]["/v2/widgets"]["get"]["parameters"][0]["schema"]["enum"] = [25, 50]
-    spec["components"]["schemas"]["WidgetV2"]["properties"]["labels"]["additionalProperties"]["enum"] = %w[hot cold]
+    spec["paths"]["/v2/widgets"]["get"]["parameters"][2]["description"] = "The accepted operators are 'one_of', or 'not_in'."
+    schemas = spec["components"]["schemas"]
+    schemas["WidgetV2"]["properties"]["labels"]["additionalProperties"]["enum"] = %w[hot cold]
+    schemas["WidgetV2"]["properties"]["box"] = {"type" => "object", "properties" => {"size" => {"type" => "string", "enum" => %w[s m]}}}
     described_class.new(IncidentIoGenerator::Api.new(spec), @dir).write
 
     expect(JSON.parse(generated("spec/fixtures/allowed_values.json"))).to eq(
-      "fields" => {"WidgetV2" => {"kind" => %w[big small], "labels" => %w[hot cold]}},
-      "arguments" => {"client.v2.widgets.list" => {"page_size" => [25, 50]}}
+      "fields" => {"WidgetV2" => {"kind" => %w[big small], "labels" => %w[hot cold], "box.size" => %w[s m]}},
+      "arguments" => {"client.v2.widgets.list" => {"page_size" => [25, 50]}},
+      "operators" => {"client.v2.widgets.list" => {"kind" => %w[one_of not_in]}}
     )
   end
 

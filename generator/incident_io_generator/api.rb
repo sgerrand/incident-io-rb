@@ -68,8 +68,8 @@ module IncidentIoGenerator
   # An audit log entry type and its schema.
   AuditLogEntry = Data.define(:action, :version, :model)
 
-  #   values: the values the field is limited to, or nil when it takes any
-  Field = Data.define(:api_name, :member, :type, :yard, :rbs, :description, :values)
+  #   limits: the values the field and keys inside it allow, see Types.limits
+  Field = Data.define(:api_name, :member, :type, :yard, :rbs, :description, :limits)
   ModelSchema = Data.define(:name, :file_name, :description, :fields)
 
   # Reads the OpenAPI spec into the resources and models to generate.
@@ -136,7 +136,7 @@ module IncidentIoGenerator
             yard: Types.yard_type(prop, namespace: ""),
             rbs: Types.rbs_type(prop, namespace: ""),
             description: describe(prop),
-            values: Types.allowed_values(prop)
+            limits: Types.limits(prop, IncidentIo::Model.member_name(api_name).to_s)
           )
         end
         ModelSchema.new(name:, file_name: Naming.underscore(name), description: schema["description"], fields:)

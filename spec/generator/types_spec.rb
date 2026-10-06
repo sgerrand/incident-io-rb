@@ -109,4 +109,25 @@ RSpec.describe IncidentIoGenerator::Types do
     expect(described_class.allowed_values({"type" => "object", "additionalProperties" => true})).to be_nil
     expect(described_class.allowed_values({"type" => "array", "items" => {"type" => "object"}})).to be_nil
   end
+  it "reads the limits of a schema and of the keys inside it" do
+    size = {"type" => "string", "enum" => %w[s m]}
+    box = {"type" => "object", "properties" => {"size" => size, "label" => {"type" => "string"}}}
+
+    expect(described_class.limits(size, "size")).to eq("size" => %w[s m])
+    expect(described_class.limits({"type" => "string"}, "name")).to eq({})
+    expect(described_class.limits(box, "box")).to eq("box.size" => %w[s m])
+    expect(described_class.limits({"type" => "array", "items" => box}, "boxes")).to eq("boxes.size" => %w[s m])
+    expect(described_class.limits({"type" => "object", "properties" => {"inner" => box}}, "outer")).to eq("outer.inner.size" => %w[s m])
+  end
+
+  it "reads the operators a description names" do
+    {
+      "Filter on status. The accepted operators are 'one_of', or 'not_in'." => %w[one_of not_in],
+      "Accepted operators are 'gte', 'lte' and 'date_range'." => %w[gte lte date_range],
+      "The accepted operator is 'is'." => %w[is],
+      "The accepted operators are 'one_of, or 'not_in'." => %w[one_of not_in],
+      "Custom field ID should be sent, followed by the operator and values." => nil,
+      nil => nil
+    }.each { |text, operators| expect(described_class.operators(text)).to eq(operators) }
+  end
 end

@@ -20,6 +20,22 @@ module IncidentIoGenerator
       schema["enum"] || allowed_values(schema["items"]) || allowed_values(schema["additionalProperties"])
     end
 
+    # Every limit in a schema, keyed by name: its own allowed values under
+    # the given name, and those of the keys of an inline object, or of an
+    # array of them, under names like "name.key".
+    def limits(schema, name)
+      own = {name => allowed_values(schema)}.compact
+      keys = schema["properties"] || schema.dig("items", "properties") || {}
+      keys.reduce(own) { |all, (key, prop)| all.merge(limits(prop, "#{name}.#{key}")) }
+    end
+
+    # The operators a filter argument's description names, or nil when it
+    # names none. The spec has them only in text like "The accepted
+    # operators are 'one_of', or 'not_in'."
+    def operators(description)
+      description.to_s[/accepted operators? (?:is|are)[^.]*/i]&.scan(/'(\w+)/)&.flatten
+    end
+
     # Ruby source for a field type in `Model.define`. Model references are
     # lazy (`-> { IncidentV2 }`) so models can refer to each other in any
     # order. Written to run inside `IncidentIo::Models`.

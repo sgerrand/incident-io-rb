@@ -84,7 +84,7 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
       %w[kind kind :string]
     ])
     expect(widget.fields.last.description).to eq("One of: big, small.")
-    expect(widget.fields.map(&:values)).to eq([nil, nil, nil, nil, nil, %w[big small]])
+    expect(widget.fields.map(&:limits)).to eq([{}, {}, {}, {}, {}, {"kind" => %w[big small]}])
   end
 
   it "reads webhook events and audit log entries" do

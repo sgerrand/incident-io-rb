@@ -272,16 +272,23 @@ module IncidentIoGenerator
     end
 
     # The values each model field and each method argument is limited to,
-    # for BreakingChanges. Those that take any value are left out.
+    # and the operators each filter argument allows, for BreakingChanges.
+    # Those without limits are left out.
     def allowed_values_manifest
-      fields = api.models.to_h { |model| [model.name, model.fields.select(&:values).to_h { |f| [f.member, f.values] }] }
-      arguments = api.resources.flat_map do |resource|
-        resource.operations.map do |op|
-          limited = (op.path_params + op.keyword_params).to_h { |p| [p.name, Types.allowed_values(p.schema)] }.compact
-          ["client.#{resource.version.downcase}.#{resource.name}.#{op.method_name}", limited]
+      fields = api.models.to_h { |model| [model.name, model.fields.map(&:limits).reduce({}, :merge)] }
+      arguments = {}
+      operators = {}
+      api.resources.each do |resource|
+        resource.operations.each do |op|
+          call = "client.#{resource.version.downcase}.#{resource.name}.#{op.method_name}"
+          params = op.path_params + op.keyword_params
+          arguments[call] = params.map { |p| Types.limits(p.schema, p.name) }.reduce({}, :merge)
+          operators[call] = params.to_h { |p| [p.name, Types.operators(p.description)] }.compact
         end
       end
-      {"fields" => fields.reject { |_, values| values.empty? }, "arguments" => arguments.to_h.reject { |_, values| values.empty? }}
+      {"fields" => fields, "arguments" => arguments, "operators" => operators}.transform_values do |limits|
+        limits.reject { |_, values| values.empty? }
+      end
     end
 
     private
