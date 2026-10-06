@@ -53,8 +53,8 @@ jobs:
 
       # The pull request lists the changes that can break code that uses
       # the gem: anything removed, fields that changed type and methods
-      # whose arguments changed. Compares with the last commit, so it runs
-      # before the new code is committed.
+      # whose arguments or return type changed. Compares with the last
+      # commit, so it runs before the new code is committed.
       - name: List breaking changes
         if: steps.changes.outputs.changed == 'true'
         run: bundle exec rake generate:breaking > "$RUNNER_TEMP/breaking.md"
