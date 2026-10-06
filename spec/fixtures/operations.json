@@ -9,6 +9,11 @@
     "path": "/v1/actions",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "incident_id",
+      "is_follow_up",
+      "incident_mode"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -34,6 +39,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -59,6 +65,10 @@
     "keyword_args": {
       "content": "content-value"
     },
+    "optional_args": [
+      "alert_group_id",
+      "alert_id"
+    ],
     "query_keys": [],
     "body_keys": [
       "content"
@@ -86,6 +96,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -109,6 +120,12 @@
     "path": "/v1/alert_notes",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "alert_id",
+      "alert_group_id",
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -134,6 +151,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -161,6 +179,7 @@
     "keyword_args": {
       "content": "content-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "content"
@@ -197,6 +216,9 @@
         "catalog_editor"
       ]
     },
+    "optional_args": [
+      "comments"
+    ],
     "query_keys": [],
     "body_keys": [
       "name",
@@ -227,6 +249,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -250,6 +273,10 @@
     "path": "/v1/api_keys",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -277,6 +304,7 @@
     "keyword_args": {
       "grace_period_minutes": 1
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "grace_period_minutes"
@@ -304,6 +332,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -340,6 +369,9 @@
         "catalog_editor"
       ]
     },
+    "optional_args": [
+      "comments"
+    ],
     "query_keys": [],
     "body_keys": [
       "name",
@@ -371,6 +403,9 @@
       "custom_field_id": "custom_field_id-value",
       "value": "value-value"
     },
+    "optional_args": [
+      "sort_key"
+    ],
     "query_keys": [],
     "body_keys": [
       "custom_field_id",
@@ -399,6 +434,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -424,6 +460,10 @@
     "keyword_args": {
       "custom_field_id": "custom_field_id-value"
     },
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [
       "custom_field_id"
     ],
@@ -451,6 +491,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -479,6 +520,7 @@
       "sort_key": 1,
       "value": "value-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "sort_key",
@@ -512,6 +554,11 @@
       "show_before_creation": true,
       "show_before_update": true
     },
+    "optional_args": [
+      "required",
+      "required_v2",
+      "show_in_announcement_post"
+    ],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -544,6 +591,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -567,6 +615,7 @@
     "path": "/v1/custom_fields",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -592,6 +641,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -623,6 +673,11 @@
       "show_before_creation": true,
       "show_before_update": true
     },
+    "optional_args": [
+      "required",
+      "required_v2",
+      "show_in_announcement_post"
+    ],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -659,6 +714,7 @@
         ]
       }
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "incident_id",
@@ -687,6 +743,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -710,6 +767,11 @@
     "path": "/v1/incident_attachments",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "incident_id",
+      "external_id",
+      "resource_type"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -736,6 +798,7 @@
       "incident_id": "incident_id-value",
       "user_id": "user_id-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "incident_id",
@@ -765,6 +828,7 @@
       "incident_id": "incident_id-value",
       "user_id": "user_id-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "incident_id",
@@ -793,6 +857,10 @@
     "keyword_args": {
       "incident_id": "incident_id-value"
     },
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [
       "incident_id"
     ],
@@ -824,6 +892,7 @@
       "required": true,
       "shortform": "shortform-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -855,6 +924,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -878,6 +948,7 @@
     "path": "/v1/incident_roles",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -903,6 +974,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -933,6 +1005,9 @@
       "name": "name-value",
       "shortform": "shortform-value"
     },
+    "optional_args": [
+      "required"
+    ],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -965,6 +1040,9 @@
       "description": "description-value",
       "name": "name-value"
     },
+    "optional_args": [
+      "rank"
+    ],
     "query_keys": [],
     "body_keys": [
       "category",
@@ -994,6 +1072,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1017,6 +1096,7 @@
     "path": "/v1/incident_statuses",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1042,6 +1122,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1070,6 +1151,9 @@
       "description": "description-value",
       "name": "name-value"
     },
+    "optional_args": [
+      "rank"
+    ],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -1099,6 +1183,7 @@
       "incident_id": "incident_id-value",
       "team_id": "team_id-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "incident_id",
@@ -1128,6 +1213,7 @@
       "incident_id": "incident_id-value",
       "team_id": "team_id-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "incident_id",
@@ -1157,6 +1243,9 @@
       "name": "name-value",
       "template": {}
     },
+    "optional_args": [
+      "expressions"
+    ],
     "query_keys": [],
     "body_keys": [
       "name",
@@ -1185,6 +1274,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1208,6 +1298,10 @@
     "path": "/v1/incident_templates",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1233,6 +1327,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1261,6 +1356,9 @@
       "name": "name-value",
       "template": {}
     },
+    "optional_args": [
+      "expressions"
+    ],
     "query_keys": [],
     "body_keys": [
       "name",
@@ -1290,6 +1388,9 @@
       "name": "name-value",
       "template": {}
     },
+    "optional_args": [
+      "expressions"
+    ],
     "query_keys": [],
     "body_keys": [
       "name",
@@ -1316,6 +1417,7 @@
     "path": "/v1/incident_types",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1341,6 +1443,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1366,6 +1469,20 @@
     "keyword_args": {
       "visibility": "public"
     },
+    "optional_args": [
+      "custom_field_entries",
+      "idempotency_key",
+      "incident_role_assignments",
+      "incident_type_id",
+      "mode",
+      "name",
+      "severity_id",
+      "slack_team_id",
+      "source_message_channel_id",
+      "source_message_timestamp",
+      "status",
+      "summary"
+    ],
     "query_keys": [],
     "body_keys": [
       "visibility"
@@ -1391,6 +1508,11 @@
     "path": "/v1/incidents",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after",
+      "status"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1416,6 +1538,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1439,6 +1562,7 @@
     "path": "/v1/ip_allowlists",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1468,6 +1592,7 @@
       "enabled": true,
       "version": 1
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "allowlist",
@@ -1504,6 +1629,17 @@
       "show_in_sidebar": true,
       "start_at": "2024-01-01T00:00:00Z"
     },
+    "optional_args": [
+      "escalation_targets",
+      "incident_id",
+      "notification_message",
+      "notify_channels",
+      "notify_end_minutes_before",
+      "notify_start_minutes_before",
+      "owning_team_ids",
+      "reroute_on_end",
+      "resolve_on_end"
+    ],
     "query_keys": [],
     "body_keys": [
       "alert_condition_groups",
@@ -1536,6 +1672,9 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [
+      "force"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1559,6 +1698,11 @@
     "path": "/v1/maintenance_windows",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after",
+      "status"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1584,6 +1728,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1618,6 +1763,17 @@
       "show_in_sidebar": true,
       "start_at": "2024-01-01T00:00:00Z"
     },
+    "optional_args": [
+      "escalation_targets",
+      "incident_id",
+      "notification_message",
+      "notify_channels",
+      "notify_end_minutes_before",
+      "notify_start_minutes_before",
+      "owning_team_ids",
+      "reroute_on_end",
+      "resolve_on_end"
+    ],
     "query_keys": [],
     "body_keys": [
       "alert_condition_groups",
@@ -1651,6 +1807,9 @@
       "incident_id": "incident_id-value",
       "permalink": "permalink-value"
     },
+    "optional_args": [
+      "document_provider"
+    ],
     "query_keys": [],
     "body_keys": [
       "incident_id",
@@ -1677,6 +1836,12 @@
     "path": "/v1/postmortem_documents",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after",
+      "incident_id",
+      "sort_by"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1702,6 +1867,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1727,6 +1893,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1754,6 +1921,7 @@
     "keyword_args": {
       "status": "in_progress"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "status"
@@ -1782,6 +1950,9 @@
       "description": "description-value",
       "name": "name-value"
     },
+    "optional_args": [
+      "rank"
+    ],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -1810,6 +1981,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1833,6 +2005,7 @@
     "path": "/v1/severities",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1858,6 +2031,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1886,6 +2060,9 @@
       "description": "description-value",
       "name": "name-value"
     },
+    "optional_args": [
+      "rank"
+    ],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -1915,6 +2092,7 @@
       "incident_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1938,6 +2116,7 @@
     "path": "/v1/identity",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1961,6 +2140,7 @@
     "path": "/v1/ip_ranges",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -1984,6 +2164,7 @@
     "path": "/v1/openapiV3.json",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -2010,6 +2191,9 @@
       "description": "description-value",
       "incident_id": "incident_id-value"
     },
+    "optional_args": [
+      "assignee_id"
+    ],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -2038,6 +2222,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -2061,6 +2246,10 @@
     "path": "/v2/actions",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "incident_id",
+      "incident_mode"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -2086,6 +2275,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -2114,6 +2304,9 @@
       "description": "description-value",
       "status": "outstanding"
     },
+    "optional_args": [
+      "assignee_id"
+    ],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -2144,6 +2337,10 @@
       "name": "name-value",
       "type": "type-value"
     },
+    "optional_args": [
+      "emoji",
+      "required"
+    ],
     "query_keys": [],
     "body_keys": [
       "array",
@@ -2173,6 +2370,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -2196,6 +2394,7 @@
     "path": "/v2/alert_attributes",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -2221,6 +2420,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -2250,6 +2450,10 @@
       "name": "name-value",
       "type": "type-value"
     },
+    "optional_args": [
+      "emoji",
+      "required"
+    ],
     "query_keys": [],
     "body_keys": [
       "array",
@@ -2282,6 +2486,14 @@
       "status": "firing",
       "title": "title-value"
     },
+    "optional_args": [
+      "token",
+      "query",
+      "deduplication_key",
+      "description",
+      "metadata",
+      "source_url"
+    ],
     "query_keys": [],
     "body_keys": [
       "status",
@@ -2327,6 +2539,12 @@
       "is_private": true,
       "name": "name-value"
     },
+    "optional_args": [
+      "created_at",
+      "message_template",
+      "owning_team_ids",
+      "updated_at"
+    ],
     "query_keys": [],
     "body_keys": [
       "alert_sources",
@@ -2363,6 +2581,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -2388,6 +2607,9 @@
     "keyword_args": {
       "page_size": 1
     },
+    "optional_args": [
+      "after"
+    ],
     "query_keys": [
       "page_size"
     ],
@@ -2415,6 +2637,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -2460,6 +2683,12 @@
       "name": "name-value",
       "version": 1
     },
+    "optional_args": [
+      "created_at",
+      "message_template",
+      "owning_team_ids",
+      "updated_at"
+    ],
     "query_keys": [],
     "body_keys": [
       "alert_sources",
@@ -2499,6 +2728,19 @@
       "source_type": "alertmanager",
       "template": {}
     },
+    "optional_args": [
+      "auto_resolve_incident_alerts",
+      "auto_resolve_timeout_minutes",
+      "azure_devops_options",
+      "email_options",
+      "filter_condition_groups",
+      "fixed_team_id",
+      "heartbeat_options",
+      "http_custom_options",
+      "jira_options",
+      "owning_team_ids",
+      "rate_limit_sharding"
+    ],
     "query_keys": [],
     "body_keys": [
       "name",
@@ -2528,6 +2770,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -2551,6 +2794,7 @@
     "path": "/v2/alert_sources",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -2576,6 +2820,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -2604,6 +2849,20 @@
       "name": "name-value",
       "template": {}
     },
+    "optional_args": [
+      "auto_resolve_incident_alerts",
+      "auto_resolve_timeout_minutes",
+      "azure_devops_options",
+      "disabled",
+      "email_options",
+      "filter_condition_groups",
+      "fixed_team_id",
+      "heartbeat_options",
+      "http_custom_options",
+      "jira_options",
+      "owning_team_ids",
+      "rate_limit_sharding"
+    ],
     "query_keys": [],
     "body_keys": [
       "name",
@@ -2633,6 +2892,9 @@
       "source_type": "alertmanager",
       "template": {}
     },
+    "optional_args": [
+      "owning_team_ids"
+    ],
     "query_keys": [],
     "body_keys": [
       "source_type",
@@ -2665,6 +2927,7 @@
         "tags-value"
       ]
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "tags"
@@ -2693,6 +2956,9 @@
       "alert_id": "alert_id-value",
       "incident_id": "incident_id-value"
     },
+    "optional_args": [
+      "re_relate"
+    ],
     "query_keys": [],
     "body_keys": [
       "alert_id",
@@ -2721,6 +2987,19 @@
     "keyword_args": {
       "page_size": 1
     },
+    "optional_args": [
+      "after",
+      "deduplication_key",
+      "status",
+      "alert_source",
+      "alert_group_id",
+      "created_at",
+      "updated_at",
+      "attributes",
+      "has_notes",
+      "tags",
+      "include_maintenance_window"
+    ],
     "query_keys": [
       "page_size"
     ],
@@ -2746,6 +3025,11 @@
     "path": "/v2/alert_tags",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after",
+      "search"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -2771,6 +3055,11 @@
     "keyword_args": {
       "page_size": 1
     },
+    "optional_args": [
+      "after",
+      "alert_id",
+      "incident_id"
+    ],
     "query_keys": [
       "page_size"
     ],
@@ -2802,6 +3091,7 @@
         "tags-value"
       ]
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "tags"
@@ -2829,6 +3119,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -2858,6 +3149,7 @@
         "tags-value"
       ]
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "tags"
@@ -2885,6 +3177,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -2912,6 +3205,7 @@
     "keyword_args": {
       "state": "related"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "state"
@@ -2944,6 +3238,14 @@
       "name": "name-value",
       "update_sharing_mode": "none"
     },
+    "optional_args": [
+      "conditions_no_longer_apply_behaviour",
+      "microsoft_teams_channel_ids",
+      "owning_team_ids",
+      "private_incident_scope",
+      "slack_channel_ids",
+      "template_id"
+    ],
     "query_keys": [],
     "body_keys": [
       "condition_groups",
@@ -2974,6 +3276,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -2997,6 +3300,10 @@
     "path": "/v2/announcement_rules",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3022,6 +3329,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3054,6 +3362,14 @@
       "name": "name-value",
       "update_sharing_mode": "none"
     },
+    "optional_args": [
+      "conditions_no_longer_apply_behaviour",
+      "microsoft_teams_channel_ids",
+      "owning_team_ids",
+      "private_incident_scope",
+      "slack_channel_ids",
+      "template_id"
+    ],
     "query_keys": [],
     "body_keys": [
       "condition_groups",
@@ -3084,6 +3400,11 @@
     "keyword_args": {
       "name": "name-value"
     },
+    "optional_args": [
+      "actions",
+      "fields",
+      "owning_team_ids"
+    ],
     "query_keys": [],
     "body_keys": [
       "name"
@@ -3111,6 +3432,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3134,6 +3456,7 @@
     "path": "/v2/announcement_templates",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3159,6 +3482,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3192,6 +3516,9 @@
       ],
       "name": "name-value"
     },
+    "optional_args": [
+      "owning_team_ids"
+    ],
     "query_keys": [],
     "body_keys": [
       "actions",
@@ -3223,6 +3550,9 @@
     "keyword_args": {
       "phone_number": "phone_number-value"
     },
+    "optional_args": [
+      "name"
+    ],
     "query_keys": [],
     "body_keys": [
       "phone_number"
@@ -3256,6 +3586,7 @@
       ],
       "prompt": "prompt-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "digit",
@@ -3286,6 +3617,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3312,6 +3644,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3335,6 +3668,10 @@
     "path": "/v2/call_routes",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3360,6 +3697,7 @@
       "call_route_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3385,6 +3723,7 @@
       "call_route_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3410,6 +3749,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3436,6 +3776,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3462,6 +3803,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3495,6 +3837,7 @@
       "responder_caller_id": "route_number",
       "use_caller_allowlist": true
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "custom_language",
@@ -3529,6 +3872,9 @@
     "keyword_args": {
       "phone_number": "phone_number-value"
     },
+    "optional_args": [
+      "name"
+    ],
     "query_keys": [],
     "body_keys": [
       "phone_number"
@@ -3563,6 +3909,7 @@
       ],
       "prompt": "prompt-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "digit",
@@ -3592,6 +3939,10 @@
     "keyword_args": {
       "incident_id": "incident_id-value"
     },
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [
       "incident_id"
     ],
@@ -3619,6 +3970,10 @@
     "keyword_args": {
       "call_session_id": "call_session_id-value"
     },
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [
       "call_session_id"
     ],
@@ -3652,6 +4007,11 @@
       "catalog_type_id": "catalog_type_id-value",
       "name": "name-value"
     },
+    "optional_args": [
+      "aliases",
+      "external_id",
+      "rank"
+    ],
     "query_keys": [],
     "body_keys": [
       "attribute_values",
@@ -3682,6 +4042,15 @@
       "description": "description-value",
       "name": "name-value"
     },
+    "optional_args": [
+      "annotations",
+      "categories",
+      "color",
+      "icon",
+      "ranked",
+      "source_repo_url",
+      "type_name"
+    ],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -3710,6 +4079,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3735,6 +4105,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3760,6 +4131,10 @@
     "keyword_args": {
       "catalog_type_id": "catalog_type_id-value"
     },
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [
       "catalog_type_id"
     ],
@@ -3785,6 +4160,7 @@
     "path": "/v2/catalog_resources",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3808,6 +4184,7 @@
     "path": "/v2/catalog_types",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3833,6 +4210,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3858,6 +4236,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -3890,6 +4269,11 @@
       },
       "name": "name-value"
     },
+    "optional_args": [
+      "aliases",
+      "external_id",
+      "rank"
+    ],
     "query_keys": [],
     "body_keys": [
       "attribute_values",
@@ -3921,6 +4305,14 @@
       "description": "description-value",
       "name": "name-value"
     },
+    "optional_args": [
+      "annotations",
+      "categories",
+      "color",
+      "icon",
+      "ranked",
+      "source_repo_url"
+    ],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -3954,6 +4346,7 @@
       ],
       "version": 1
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "attributes",
@@ -3984,6 +4377,13 @@
       "field_type": "single_select",
       "name": "name-value"
     },
+    "optional_args": [
+      "catalog_type_id",
+      "filter_by",
+      "fixed_filter",
+      "group_by_catalog_attribute_id",
+      "helptext_catalog_attribute_id"
+    ],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -4013,6 +4413,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4036,6 +4437,7 @@
     "path": "/v2/custom_fields",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4061,6 +4463,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4089,6 +4492,12 @@
       "description": "description-value",
       "name": "name-value"
     },
+    "optional_args": [
+      "filter_by",
+      "fixed_filter",
+      "group_by_catalog_attribute_id",
+      "helptext_catalog_attribute_id"
+    ],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -4120,6 +4529,13 @@
         {}
       ]
     },
+    "optional_args": [
+      "description",
+      "expressions",
+      "params",
+      "repeat_config",
+      "working_hours"
+    ],
     "query_keys": [],
     "body_keys": [
       "name",
@@ -4148,6 +4564,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4171,6 +4588,11 @@
     "path": "/v2/escalation_path_templates",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after",
+      "search"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4196,6 +4618,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4226,6 +4649,13 @@
         {}
       ]
     },
+    "optional_args": [
+      "description",
+      "expressions",
+      "params",
+      "repeat_config",
+      "working_hours"
+    ],
     "query_keys": [],
     "body_keys": [
       "name",
@@ -4254,6 +4684,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4283,6 +4714,7 @@
         "user_ids-value"
       ]
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "user_ids"
@@ -4310,6 +4742,13 @@
     "keyword_args": {
       "title": "title-value"
     },
+    "optional_args": [
+      "description",
+      "escalation_path_id",
+      "idempotency_key",
+      "incident_id",
+      "user_ids"
+    ],
     "query_keys": [],
     "body_keys": [
       "title"
@@ -4340,6 +4779,14 @@
         {}
       ]
     },
+    "optional_args": [
+      "kind",
+      "param_bindings",
+      "repeat_config",
+      "team_ids",
+      "template_id",
+      "working_hours"
+    ],
     "query_keys": [],
     "body_keys": [
       "name",
@@ -4368,6 +4815,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4391,6 +4839,17 @@
     "path": "/v2/escalations",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after",
+      "escalation_path",
+      "status",
+      "alert",
+      "incident",
+      "created_at",
+      "updated_at",
+      "idempotency_key"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4414,6 +4873,10 @@
     "path": "/v2/escalation_paths",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4439,6 +4902,13 @@
       "escalation_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [
+      "description",
+      "escalation_path_id",
+      "resolve_original",
+      "title",
+      "user_ids"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": true,
@@ -4466,6 +4936,9 @@
     "keyword_args": {
       "response": "ack"
     },
+    "optional_args": [
+      "snooze_details"
+    ],
     "query_keys": [],
     "body_keys": [
       "response"
@@ -4493,6 +4966,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4518,6 +4992,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4548,6 +5023,14 @@
         {}
       ]
     },
+    "optional_args": [
+      "kind",
+      "param_bindings",
+      "repeat_config",
+      "team_ids",
+      "template_id",
+      "working_hours"
+    ],
     "query_keys": [],
     "body_keys": [
       "name",
@@ -4579,6 +5062,7 @@
       "provider": "asana",
       "url": "url-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "provider",
@@ -4608,6 +5092,15 @@
       "incident_id": "incident_id-value",
       "title": "title-value"
     },
+    "optional_args": [
+      "assignee_id",
+      "assignee_team_id",
+      "description",
+      "external_issue_reference_id",
+      "follow_up_category_id",
+      "follow_up_priority_option_id",
+      "labels"
+    ],
     "query_keys": [],
     "body_keys": [
       "incident_id",
@@ -4636,6 +5129,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4659,6 +5153,11 @@
     "path": "/v2/follow_ups",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "incident_id",
+      "incident_mode",
+      "assignee_team_id"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4684,6 +5183,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4712,6 +5212,14 @@
       "status": "outstanding",
       "title": "title-value"
     },
+    "optional_args": [
+      "assignee_id",
+      "assignee_team_id",
+      "description",
+      "follow_up_category_id",
+      "follow_up_priority_option_id",
+      "labels"
+    ],
     "query_keys": [],
     "body_keys": [
       "status",
@@ -4740,6 +5248,9 @@
       "alert_source_config_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [
+      "token"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4765,6 +5276,9 @@
       "alert_source_config_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [
+      "token"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4790,6 +5304,11 @@
     "keyword_args": {
       "incident_id": "incident_id-value"
     },
+    "optional_args": [
+      "id",
+      "page_size",
+      "after"
+    ],
     "query_keys": [
       "incident_id"
     ],
@@ -4817,6 +5336,7 @@
     "keyword_args": {
       "incident_id": "incident_id-value"
     },
+    "optional_args": [],
     "query_keys": [
       "incident_id"
     ],
@@ -4844,6 +5364,7 @@
     "keyword_args": {
       "incident_id": "incident_id-value"
     },
+    "optional_args": [],
     "query_keys": [
       "incident_id"
     ],
@@ -4874,6 +5395,7 @@
       "name": "name-value",
       "shortform": "shortform-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -4904,6 +5426,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4927,6 +5450,7 @@
     "path": "/v2/incident_roles",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4952,6 +5476,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -4982,6 +5507,7 @@
       "name": "name-value",
       "shortform": "shortform-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -5014,6 +5540,10 @@
       "timestamp": "2024-01-01T00:00:00Z",
       "title": "title-value"
     },
+    "optional_args": [
+      "description",
+      "idempotency_key"
+    ],
     "query_keys": [],
     "body_keys": [
       "incident_id",
@@ -5043,6 +5573,10 @@
     "keyword_args": {
       "incident_id": "incident_id-value"
     },
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [
       "incident_id"
     ],
@@ -5070,6 +5604,11 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [
+      "description",
+      "timestamp",
+      "title"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": true,
@@ -5093,6 +5632,7 @@
     "path": "/v2/incident_timestamps",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5118,6 +5658,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5143,6 +5684,12 @@
     "keyword_args": {
       "incident_id": "incident_id-value"
     },
+    "optional_args": [
+      "idempotency_key",
+      "message",
+      "to_incident_status_id",
+      "to_severity_id"
+    ],
     "query_keys": [],
     "body_keys": [
       "incident_id"
@@ -5168,6 +5715,11 @@
     "path": "/v2/incident_updates",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "incident_id",
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5193,6 +5745,21 @@
     "keyword_args": {
       "visibility": "public"
     },
+    "optional_args": [
+      "custom_field_entries",
+      "idempotency_key",
+      "incident_role_assignments",
+      "incident_status_id",
+      "incident_timestamp_values",
+      "incident_type_id",
+      "mode",
+      "name",
+      "retrospective_incident_options",
+      "severity_id",
+      "slack_channel_name_override",
+      "slack_team_id",
+      "summary"
+    ],
     "query_keys": [],
     "body_keys": [
       "visibility"
@@ -5223,6 +5790,7 @@
       "incident": {},
       "notify_incident_channel": true
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "incident",
@@ -5254,6 +5822,7 @@
       "content": "content-value",
       "title": "title-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "content",
@@ -5280,6 +5849,21 @@
     "path": "/v2/incidents",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after",
+      "sort_by",
+      "filter_mode",
+      "status",
+      "status_category",
+      "created_at",
+      "updated_at",
+      "severity",
+      "incident_type",
+      "incident_role",
+      "custom_field",
+      "mode"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5305,6 +5889,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5334,6 +5919,10 @@
       "rate_time_unit": "hour",
       "timezone": "timezone-value"
     },
+    "optional_args": [
+      "one_off_rules",
+      "weekly_rules"
+    ],
     "query_keys": [],
     "body_keys": [
       "base_rate_cents",
@@ -5370,6 +5959,7 @@
       "rate_cents": 1,
       "start_at": "2024-01-01T00:00:00Z"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "end_at",
@@ -5407,6 +5997,7 @@
         "monday"
       ]
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "end_time",
@@ -5437,6 +6028,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5463,6 +6055,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5489,6 +6082,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5512,6 +6106,10 @@
     "path": "/v2/pay_configs",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5537,6 +6135,7 @@
       "pay_config_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5562,6 +6161,7 @@
       "pay_config_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5587,6 +6187,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5613,6 +6214,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5639,6 +6241,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5670,6 +6273,7 @@
       "rate_time_unit": "hour",
       "timezone": "timezone-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "base_rate_cents",
@@ -5707,6 +6311,7 @@
       "rate_cents": 1,
       "start_at": "2024-01-01T00:00:00Z"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "end_at",
@@ -5745,6 +6350,7 @@
         "monday"
       ]
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "end_time",
@@ -5780,6 +6386,13 @@
       ],
       "start_date": "start_date-value"
     },
+    "optional_args": [
+      "overlapping_shifts",
+      "pay_config_expression",
+      "pay_config_id",
+      "rotation_filters",
+      "unpaid_shifts"
+    ],
     "query_keys": [],
     "body_keys": [
       "end_date",
@@ -5810,6 +6423,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5835,6 +6449,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5858,6 +6473,10 @@
     "path": "/v2/pay_reports",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5888,6 +6507,7 @@
       ],
       "send_user_breakdowns": "send"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "cc_emails",
@@ -5916,6 +6536,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -5943,6 +6564,7 @@
     "keyword_args": {
       "unpublish_reason": "unpublish_reason-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "unpublish_reason"
@@ -5975,6 +6597,16 @@
       "name": "name-value",
       "policy_type": "debrief"
     },
+    "optional_args": [
+      "assignment_rules",
+      "debrief",
+      "expressions",
+      "follow_up",
+      "on_call_readiness",
+      "post_mortem",
+      "schedule",
+      "status"
+    ],
     "query_keys": [],
     "body_keys": [
       "conditions",
@@ -6005,6 +6637,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6028,6 +6661,11 @@
     "path": "/v2/policies",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after",
+      "policy_type"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6053,6 +6691,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6085,6 +6724,16 @@
       "name": "name-value",
       "policy_type": "debrief"
     },
+    "optional_args": [
+      "assignment_rules",
+      "debrief",
+      "expressions",
+      "follow_up",
+      "on_call_readiness",
+      "post_mortem",
+      "schedule",
+      "status"
+    ],
     "query_keys": [],
     "body_keys": [
       "conditions",
@@ -6117,6 +6766,7 @@
     "keyword_args": {
       "reason": "reason-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "reason"
@@ -6142,6 +6792,11 @@
     "path": "/v2/policy_findings",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after",
+      "policy_id"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6167,6 +6822,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6192,6 +6848,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6217,6 +6874,7 @@
     "keyword_args": {
       "schedule_sync_target": {}
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "schedule_sync_target"
@@ -6244,6 +6902,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6267,6 +6926,10 @@
     "path": "/v2/schedule_sync_targets",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6292,6 +6955,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6319,6 +6983,9 @@
     "keyword_args": {
       "add_bot_to_group": true
     },
+    "optional_args": [
+      "annotations"
+    ],
     "query_keys": [],
     "body_keys": [
       "add_bot_to_group"
@@ -6346,6 +7013,7 @@
     "keyword_args": {
       "schedule": {}
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "schedule"
@@ -6378,6 +7046,7 @@
       "start_at": "2024-01-01T00:00:00Z",
       "user": {}
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "end_at",
@@ -6412,6 +7081,7 @@
     "keyword_args": {
       "schedule_replica": {}
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "schedule_replica"
@@ -6441,6 +7111,7 @@
     "keyword_args": {
       "schedule_sync_rule": {}
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "schedule_sync_rule"
@@ -6468,6 +7139,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6493,6 +7165,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6519,6 +7192,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6545,6 +7219,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6568,6 +7243,10 @@
     "path": "/v2/schedules",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6593,6 +7272,12 @@
     "keyword_args": {
       "schedule_id": "schedule_id-value"
     },
+    "optional_args": [
+      "rotation_id",
+      "layer_id",
+      "page_size",
+      "after"
+    ],
     "query_keys": [
       "schedule_id"
     ],
@@ -6620,6 +7305,10 @@
     "keyword_args": {
       "schedule_id": "schedule_id-value"
     },
+    "optional_args": [
+      "entry_window_start",
+      "entry_window_end"
+    ],
     "query_keys": [
       "schedule_id"
     ],
@@ -6647,6 +7336,7 @@
       "schedule_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6672,6 +7362,10 @@
       "schedule_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6699,6 +7393,10 @@
     "keyword_args": {
       "schedule": {}
     },
+    "optional_args": [
+      "entry_window_end",
+      "entry_window_start"
+    ],
     "query_keys": [],
     "body_keys": [
       "schedule"
@@ -6726,6 +7424,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6751,6 +7450,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6777,6 +7477,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6803,6 +7504,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6830,6 +7532,7 @@
     "keyword_args": {
       "schedule": {}
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "schedule"
@@ -6863,6 +7566,7 @@
       "start_at": "2024-01-01T00:00:00Z",
       "user": {}
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "end_at",
@@ -6897,6 +7601,10 @@
     "keyword_args": {
       "sync_type": "on_call"
     },
+    "optional_args": [
+      "annotations",
+      "permanent_member_user_ids"
+    ],
     "query_keys": [],
     "body_keys": [
       "sync_type"
@@ -6925,6 +7633,10 @@
       "name": "name-value",
       "value": "value-value"
     },
+    "optional_args": [
+      "description",
+      "owning_team_ids"
+    ],
     "query_keys": [],
     "body_keys": [
       "name",
@@ -6953,6 +7665,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -6976,6 +7689,11 @@
     "path": "/v2/secrets",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after",
+      "team_ids"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7003,6 +7721,7 @@
     "keyword_args": {
       "value": "value-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "value"
@@ -7030,6 +7749,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7057,6 +7777,10 @@
     "keyword_args": {
       "name": "name-value"
     },
+    "optional_args": [
+      "description",
+      "owning_team_ids"
+    ],
     "query_keys": [],
     "body_keys": [
       "name"
@@ -7088,6 +7812,10 @@
       "notify_subscribers": true,
       "status_page_id": "status_page_id-value"
     },
+    "optional_args": [
+      "component_statuses",
+      "idempotency_key"
+    ],
     "query_keys": [],
     "body_keys": [
       "incident_status",
@@ -7121,6 +7849,10 @@
       "notify_subscribers": true,
       "status_page_incident_id": "status_page_incident_id-value"
     },
+    "optional_args": [
+      "component_statuses",
+      "incident_status"
+    ],
     "query_keys": [],
     "body_keys": [
       "message",
@@ -7159,6 +7891,10 @@
       "start_at": "2024-01-01T00:00:00Z",
       "status_page_id": "status_page_id-value"
     },
+    "optional_args": [
+      "automate_maintenance_status",
+      "idempotency_key"
+    ],
     "query_keys": [],
     "body_keys": [
       "affected_component_ids",
@@ -7195,6 +7931,10 @@
       "notify_subscribers": true,
       "status_page_maintenance_id": "status_page_maintenance_id-value"
     },
+    "optional_args": [
+      "component_statuses",
+      "maintenance_status"
+    ],
     "query_keys": [],
     "body_keys": [
       "message",
@@ -7228,6 +7968,9 @@
         {}
       ]
     },
+    "optional_args": [
+      "idempotency_key"
+    ],
     "query_keys": [],
     "body_keys": [
       "name",
@@ -7257,6 +8000,7 @@
       "status_page_maintenance_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7282,6 +8026,15 @@
     "keyword_args": {
       "status_page_id": "status_page_id-value"
     },
+    "optional_args": [
+      "component_id",
+      "group_id",
+      "sub_page_id",
+      "start_at",
+      "end_at",
+      "page_size",
+      "after"
+    ],
     "query_keys": [
       "status_page_id"
     ],
@@ -7309,6 +8062,15 @@
     "keyword_args": {
       "status_page_id": "status_page_id-value"
     },
+    "optional_args": [
+      "component_id",
+      "group_id",
+      "sub_page_id",
+      "start_at",
+      "end_at",
+      "page_size",
+      "after"
+    ],
     "query_keys": [
       "status_page_id"
     ],
@@ -7334,6 +8096,10 @@
     "path": "/v2/status_pages",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7359,6 +8125,7 @@
       "status_page_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7388,6 +8155,7 @@
       "start_at": "2024-01-01T00:00:00Z",
       "end_at": "2024-01-01T00:00:00Z"
     },
+    "optional_args": [],
     "query_keys": [
       "start_at",
       "end_at"
@@ -7416,6 +8184,7 @@
       "status_page_incident_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7441,6 +8210,7 @@
       "status_page_maintenance_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7466,6 +8236,7 @@
       "status_page_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7493,6 +8264,7 @@
     "keyword_args": {
       "name": "name-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "name"
@@ -7524,6 +8296,7 @@
       "name": "name-value",
       "start_at": "2024-01-01T00:00:00Z"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "end_at",
@@ -7553,6 +8326,11 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [
+      "datadog_config",
+      "grafana_config",
+      "name"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": true,
@@ -7576,6 +8354,13 @@
     "path": "/v2/users",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "email",
+      "slack_user_id",
+      "include_inactive",
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7601,6 +8386,7 @@
       "user_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7626,6 +8412,7 @@
       "user_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7651,6 +8438,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7676,6 +8464,7 @@
       "user_id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7703,6 +8492,7 @@
     "keyword_args": {
       "preferred_escalation_provider": "native"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "preferred_escalation_provider"
@@ -7728,6 +8518,13 @@
     "path": "/v2/workflow_runs",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "workflow_id",
+      "incident_id",
+      "created_at",
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7753,6 +8550,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7796,6 +8594,18 @@
       ],
       "trigger": "trigger-value"
     },
+    "optional_args": [
+      "annotations",
+      "delay",
+      "folder",
+      "form_fields",
+      "include_private_escalations",
+      "include_private_incidents",
+      "owning_team_ids",
+      "private_incident_scope",
+      "shortform",
+      "state"
+    ],
     "query_keys": [],
     "body_keys": [
       "condition_groups",
@@ -7831,6 +8641,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7854,6 +8665,7 @@
     "path": "/v2/workflows",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7879,6 +8691,9 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [
+      "skip_step_upgrades"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -7923,6 +8738,19 @@
         {}
       ]
     },
+    "optional_args": [
+      "annotations",
+      "delay",
+      "folder",
+      "form_fields",
+      "include_private_escalations",
+      "include_private_incidents",
+      "owning_team_ids",
+      "private_incident_scope",
+      "shortform",
+      "skip_step_upgrades",
+      "state"
+    ],
     "query_keys": [],
     "body_keys": [
       "condition_groups",
@@ -7958,6 +8786,9 @@
       "description": "description-value",
       "incident_id": "incident_id-value"
     },
+    "optional_args": [
+      "assignee_id"
+    ],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -7986,6 +8817,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -8009,6 +8841,14 @@
     "path": "/v3/actions",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after",
+      "incident_id",
+      "incident_mode",
+      "created_at",
+      "updated_at"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -8034,6 +8874,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -8062,6 +8903,9 @@
       "description": "description-value",
       "status": "outstanding"
     },
+    "optional_args": [
+      "assignee_id"
+    ],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -8105,6 +8949,9 @@
       "message_config": {},
       "name": "name-value"
     },
+    "optional_args": [
+      "owning_team_ids"
+    ],
     "query_keys": [],
     "body_keys": [
       "alert_sources",
@@ -8141,6 +8988,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -8164,6 +9012,10 @@
     "path": "/v3/alert_routes",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -8189,6 +9041,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -8232,6 +9085,9 @@
       "name": "name-value",
       "version": 1
     },
+    "optional_args": [
+      "owning_team_ids"
+    ],
     "query_keys": [],
     "body_keys": [
       "alert_sources",
@@ -8272,6 +9128,9 @@
         {}
       ]
     },
+    "optional_args": [
+      "update_attributes"
+    ],
     "query_keys": [],
     "body_keys": [
       "catalog_type_id",
@@ -8306,6 +9165,11 @@
       "catalog_type_id": "catalog_type_id-value",
       "name": "name-value"
     },
+    "optional_args": [
+      "aliases",
+      "external_id",
+      "rank"
+    ],
     "query_keys": [],
     "body_keys": [
       "attribute_values",
@@ -8336,6 +9200,17 @@
       "description": "description-value",
       "name": "name-value"
     },
+    "optional_args": [
+      "annotations",
+      "categories",
+      "color",
+      "icon",
+      "owning_team_ids",
+      "ranked",
+      "source_repo_url",
+      "type_name",
+      "use_name_as_identifier"
+    ],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -8364,6 +9239,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -8389,6 +9265,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -8415,6 +9292,10 @@
       "catalog_type_id": "catalog_type_id-value",
       "page_size": 1
     },
+    "optional_args": [
+      "after",
+      "identifier"
+    ],
     "query_keys": [
       "catalog_type_id",
       "page_size"
@@ -8441,6 +9322,7 @@
     "path": "/v3/catalog_resources",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -8464,6 +9346,7 @@
     "path": "/v3/catalog_types",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -8489,6 +9372,9 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [
+      "expand"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -8514,6 +9400,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -8546,6 +9433,12 @@
       },
       "name": "name-value"
     },
+    "optional_args": [
+      "aliases",
+      "external_id",
+      "rank",
+      "update_attributes"
+    ],
     "query_keys": [],
     "body_keys": [
       "attribute_values",
@@ -8577,6 +9470,16 @@
       "description": "description-value",
       "name": "name-value"
     },
+    "optional_args": [
+      "annotations",
+      "categories",
+      "color",
+      "icon",
+      "owning_team_ids",
+      "ranked",
+      "source_repo_url",
+      "use_name_as_identifier"
+    ],
     "query_keys": [],
     "body_keys": [
       "description",
@@ -8610,6 +9513,7 @@
       ],
       "version": 1
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "attributes",
@@ -8641,6 +9545,7 @@
       "provider": "asana",
       "url": "url-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "provider",
@@ -8670,6 +9575,15 @@
       "incident_id": "incident_id-value",
       "title": "title-value"
     },
+    "optional_args": [
+      "assignee_id",
+      "assignee_team_id",
+      "description",
+      "external_issue_reference_id",
+      "follow_up_category_id",
+      "follow_up_priority_option_id",
+      "labels"
+    ],
     "query_keys": [],
     "body_keys": [
       "incident_id",
@@ -8699,6 +9613,7 @@
       "incident_id": "incident_id-value",
       "url": "url-value"
     },
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [
       "incident_id",
@@ -8727,6 +9642,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -8750,6 +9666,15 @@
     "path": "/v3/follow_ups",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after",
+      "incident_id",
+      "incident_mode",
+      "assignee_team_id",
+      "created_at",
+      "updated_at"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -8775,6 +9700,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -8803,6 +9729,14 @@
       "status": "outstanding",
       "title": "title-value"
     },
+    "optional_args": [
+      "assignee_id",
+      "assignee_team_id",
+      "description",
+      "follow_up_category_id",
+      "follow_up_priority_option_id",
+      "labels"
+    ],
     "query_keys": [],
     "body_keys": [
       "status",
@@ -8829,6 +9763,10 @@
     "path": "/v3/teams",
     "path_args": [],
     "keyword_args": {},
+    "optional_args": [
+      "page_size",
+      "after"
+    ],
     "query_keys": [],
     "body_keys": [],
     "body": false,
@@ -8854,6 +9792,7 @@
       "id-value"
     ],
     "keyword_args": {},
+    "optional_args": [],
     "query_keys": [],
     "body_keys": [],
     "body": false,

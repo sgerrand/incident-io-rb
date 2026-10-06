@@ -230,7 +230,8 @@ module IncidentIoGenerator
 
     # What each generated resource method should do, for
     # spec/incident_io/generated_operations_spec.rb: how to call it, the
-    # request it should send and what it should return.
+    # request it should send and what it should return. BreakingChanges
+    # reads the arguments from it too.
     def operations_manifest
       api.resources.flat_map do |resource|
         resource.operations.map do |op|
@@ -245,6 +246,7 @@ module IncidentIoGenerator
             "path" => op.path,
             "path_args" => op.path_params.map { |p| "#{p.name}-value" },
             "keyword_args" => keyword_params.to_h { |p| [p.name, Types.sample_value(p.schema, p.name)] },
+            "optional_args" => op.keyword_params.reject(&:required).map(&:name),
             "query_keys" => keyword_params.select { |p| p.location == :query }.map(&:name),
             "body_keys" => keyword_params.select { |p| p.location == :body }.map(&:name),
             "body" => op.body,

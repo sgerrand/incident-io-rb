@@ -123,12 +123,14 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
     expect(manifest["create"]).to include(
       "operation_id" => "Widgets V2#Create", "version" => "v2", "resource" => "widgets",
       "http_method" => "post", "path" => "/v2/widgets", "path_args" => [],
-      "keyword_args" => {"name" => "name-value"}, "body_keys" => ["name"], "body" => true, "null_body_key" => "part",
+      "keyword_args" => {"name" => "name-value"}, "optional_args" => %w[idempotency_key part],
+      "body_keys" => ["name"], "body" => true, "null_body_key" => "part",
       "idempotency_key" => true,
       "result" => {"kind" => "json", "unwrap" => "widget", "items_key" => nil, "model" => "WidgetV2", "depth" => 0}
     )
     expect(manifest["list"]).to include(
-      "keyword_args" => {"kind" => {"one_of" => ["kind-value"]}}, "query_keys" => ["kind"],
+      "keyword_args" => {"kind" => {"one_of" => ["kind-value"]}}, "optional_args" => %w[page_size after],
+      "query_keys" => ["kind"],
       "result" => include("kind" => "paginated", "items_key" => "widgets", "model" => "WidgetV2")
     )
     expect(manifest["show"]).to include("path" => "/v2/widgets/{id}", "path_args" => ["id-value"])
