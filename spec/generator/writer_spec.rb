@@ -28,7 +28,7 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
       "lib/incident_io/resources/v2/widgets.rb", "sig/incident_io/resources/v2/widgets.rbs",
       "lib/incident_io/webhook_events.rb", "sig/incident_io/webhook_events.rbs",
       "lib/incident_io/audit_log_entries.rb", "sig/incident_io/audit_log_entries.rbs",
-      "spec/fixtures/operations.json",
+      "spec/fixtures/operations.json", "spec/fixtures/allowed_values.json",
       *models.map { |m| "lib/incident_io/models/#{m}.rb" },
       *models.map { |m| "sig/incident_io/models/#{m}.rbs" }
     )
@@ -116,6 +116,17 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
       .to include(%(["widget.deleted", 2] => :AuditLogsWidgetDeletedV2\n))
     expect(generated("sig/incident_io/audit_log_entries.rbs")).to include("type entry = Models::AuditLogsWidgetDeletedV2")
   end
+  it "writes the values that fields and arguments are limited to" do
+    spec = mini_spec
+    spec["paths"]["/v2/widgets"]["get"]["parameters"][0]["schema"]["enum"] = [25, 50]
+    described_class.new(IncidentIoGenerator::Api.new(spec), @dir).write
+
+    expect(JSON.parse(generated("spec/fixtures/allowed_values.json"))).to eq(
+      "fields" => {"WidgetV2" => {"kind" => %w[big small]}},
+      "arguments" => {"client.v2.widgets.list" => {"page_size" => [25, 50]}}
+    )
+  end
+
   it "writes a manifest of what each resource method should do" do
     described_class.new(api, @dir).write
     manifest = JSON.parse(generated("spec/fixtures/operations.json")).to_h { |op| [op["method"], op] }

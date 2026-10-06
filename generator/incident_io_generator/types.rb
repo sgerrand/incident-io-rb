@@ -10,6 +10,12 @@ module IncidentIoGenerator
       schema["$ref"]&.split("/")&.last
     end
 
+    # The values a schema is limited to, or nil when it takes any value.
+    # For an array, the values of its items.
+    def allowed_values(schema)
+      schema["enum"] || schema.dig("items", "enum")
+    end
+
     # Ruby source for a field type in `Model.define`. Model references are
     # lazy (`-> { IncidentV2 }`) so models can refer to each other in any
     # order. Written to run inside `IncidentIo::Models`.

@@ -68,7 +68,8 @@ module IncidentIoGenerator
   # An audit log entry type and its schema.
   AuditLogEntry = Data.define(:action, :version, :model)
 
-  Field = Data.define(:api_name, :member, :type, :yard, :rbs, :description)
+  #   values: the values the field is limited to, or nil when it takes any
+  Field = Data.define(:api_name, :member, :type, :yard, :rbs, :description, :values)
   ModelSchema = Data.define(:name, :file_name, :description, :fields)
 
   # Reads the OpenAPI spec into the resources and models to generate.
@@ -134,7 +135,8 @@ module IncidentIoGenerator
             type: Types.model_type(prop),
             yard: Types.yard_type(prop, namespace: ""),
             rbs: Types.rbs_type(prop, namespace: ""),
-            description: describe(prop)
+            description: describe(prop),
+            values: Types.allowed_values(prop)
           )
         end
         ModelSchema.new(name:, file_name: Naming.underscore(name), description: schema["description"], fields:)
@@ -375,7 +377,7 @@ module IncidentIoGenerator
     def describe(schema, fallback = nil)
       text = schema["description"] || fallback
       text = text.to_s.gsub(/\s+/, " ").strip
-      enum = schema["enum"] || schema.dig("items", "enum")
+      enum = Types.allowed_values(schema)
       text = [text, "One of: #{enum.join(", ")}."].reject(&:empty?).join(" ") if enum
       text.empty? ? nil : text
     end

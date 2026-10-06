@@ -92,4 +92,10 @@ RSpec.describe IncidentIoGenerator::Types do
 
     samples.each { |schema, sample| expect(described_class.sample_value(schema, "n")).to eq(sample) }
   end
+
+  it "reads the values a schema is limited to" do
+    expect(described_class.allowed_values({"type" => "string", "enum" => %w[a b]})).to eq(%w[a b])
+    expect(described_class.allowed_values({"type" => "array", "items" => {"type" => "string", "enum" => %w[a b]}})).to eq(%w[a b])
+    expect(described_class.allowed_values({"type" => "string"})).to be_nil
+  end
 end

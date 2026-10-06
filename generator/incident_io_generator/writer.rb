@@ -26,7 +26,8 @@ module IncidentIoGenerator
       "sig/incident_io/models",
       "sig/incident_io/resources",
       *INDEX_FILES.keys,
-      "spec/fixtures/operations.json"
+      "spec/fixtures/operations.json",
+      "spec/fixtures/allowed_values.json"
     ].freeze
     # Keep method signatures on one line up to this width.
     MAX_LINE = 110
@@ -44,6 +45,7 @@ module IncidentIoGenerator
 
       files = INDEX_FILES.transform_values { |template| render(template) }
       files["spec/fixtures/operations.json"] = "#{JSON.pretty_generate(operations_manifest)}\n"
+      files["spec/fixtures/allowed_values.json"] = "#{JSON.pretty_generate(allowed_values_manifest)}\n"
       api.models.each do |model|
         files["lib/incident_io/models/#{model.file_name}.rb"] = render("model.rb", model:)
         files["sig/incident_io/models/#{model.file_name}.rbs"] = render("model.rbs", model:)
@@ -267,6 +269,19 @@ module IncidentIoGenerator
           }
         end
       end
+    end
+
+    # The values each model field and each method argument is limited to,
+    # for BreakingChanges. Those that take any value are left out.
+    def allowed_values_manifest
+      fields = api.models.to_h { |model| [model.name, model.fields.select(&:values).to_h { |f| [f.member, f.values] }] }
+      arguments = api.resources.flat_map do |resource|
+        resource.operations.map do |op|
+          limited = (op.path_params + op.keyword_params).to_h { |p| [p.name, Types.allowed_values(p.schema)] }.compact
+          ["client.#{resource.version.downcase}.#{resource.name}.#{op.method_name}", limited]
+        end
+      end
+      {"fields" => fields.reject { |_, values| values.empty? }, "arguments" => arguments.to_h.reject { |_, values| values.empty? }}
     end
 
     private
