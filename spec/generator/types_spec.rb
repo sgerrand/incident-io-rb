@@ -142,4 +142,12 @@ RSpec.describe IncidentIoGenerator::Types do
       nil => nil
     }.each { |text, operators| expect(described_class.operators(text)).to eq(operators) }
   end
+  it "reads the operators that examples show" do
+    text = "Try `--data 'custom_field[ABC][not_in]=XYZ'` or `tags[all_of]=x`, but not other_custom_field[ABC][gte]=1."
+
+    expect(described_class.example_operators("custom_field", {"01ABC" => {"one_of" => %w[x y]}}, text)).to eq(%w[one_of not_in])
+    expect(described_class.example_operators("tags", {"one_of" => ["x"], "all_of" => ["y"]}, text)).to eq(%w[one_of all_of])
+    expect(described_class.example_operators("role", {"01ABC" => {"01DEF" => {"is_blank" => ["true"]}}}, nil)).to eq(%w[is_blank])
+    expect(described_class.example_operators("query", nil, nil)).to eq([])
+  end
 end

@@ -274,19 +274,30 @@ module IncidentIoGenerator
     # The values each model field and each method argument is limited to,
     # and the operators each filter argument allows, for BreakingChanges.
     # Those without limits are left out.
+    #
+    # The spec names no operators for a filter that is keyed by an ID, like
+    # `custom_field`, because they depend on the custom field. For these,
+    # `example_operators` has the operators that the spec's examples show.
     def allowed_values_manifest
       fields = api.models.to_h { |model| [model.name, model.fields.map(&:limits).reduce({}, :merge)] }
       arguments = {}
       operators = {}
+      example_operators = {}
       api.resources.each do |resource|
         resource.operations.each do |op|
           call = "client.#{resource.version.downcase}.#{resource.name}.#{op.method_name}"
           params = op.path_params + op.keyword_params
           arguments[call] = params.map { |p| Types.limits(p.schema, p.name) }.reduce({}, :merge)
           operators[call] = params.to_h { |p| [p.name, Types.operators(p.description)] }.compact
+          unnamed = op.query_params.select { |p| p.schema["type"] == "object" && !operators[call].key?(p.name) }
+          example_operators[call] = unnamed.to_h do |p|
+            [p.name, Types.example_operators(p.name, p.schema["example"], op.description)]
+          end.reject { |_, shown| shown.empty? }
         end
       end
-      {"fields" => fields, "arguments" => arguments, "operators" => operators}.transform_values do |limits|
+      {
+        "fields" => fields, "arguments" => arguments, "operators" => operators, "example_operators" => example_operators
+      }.transform_values do |limits|
         limits.reject { |_, values| values.empty? }
       end
     end

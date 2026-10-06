@@ -44,6 +44,22 @@ module IncidentIoGenerator
       description.to_s[/accepted operators? (?:is|are)[^.]*/i]&.scan(/'(\w+)/)&.flatten
     end
 
+    # The operators that examples show for a filter argument: the innermost
+    # keys of its example value, like `one_of` in `{"01ABC" => {"one_of" =>
+    # ["x"]}}`, and those in sample query strings in a text, like `not_in`
+    # in `name[01ABC][not_in]=x`.
+    def example_operators(name, example, text)
+      in_text = text.to_s.scan(/\b#{Regexp.escape(name)}(?:\[[^\]=\s]+\])*\[(\w+)\]=/).flatten
+      (innermost_keys(example) + in_text).uniq
+    end
+
+    def innermost_keys(example)
+      return [] unless example.is_a?(Hash)
+
+      inner = example.values.grep(Hash)
+      inner.empty? ? example.keys : inner.flat_map { |hash| innermost_keys(hash) }
+    end
+
     # Ruby source for a field type in `Model.define`. Model references are
     # lazy (`-> { IncidentV2 }`) so models can refer to each other in any
     # order. Written to run inside `IncidentIo::Models`.

@@ -120,6 +120,12 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
     spec = mini_spec
     spec["paths"]["/v2/widgets"]["get"]["parameters"][0]["schema"]["enum"] = [25, 50]
     spec["paths"]["/v2/widgets"]["get"]["parameters"][2]["description"] = "The accepted operators are 'one_of', or 'not_in'."
+    list = spec["paths"]["/v2/widgets"]["get"]
+    list["description"] = "Try `--data 'attrs[ABC][not_in]=x'`."
+    list["parameters"] << {"in" => "query", "name" => "attrs", "style" => "deepObject", "schema" => {
+      "type" => "object", "example" => {"01ABC" => {"one_of" => ["x"]}}
+    }}
+    list["parameters"] << {"in" => "query", "name" => "anything", "style" => "deepObject", "schema" => {"type" => "object"}}
     schemas = spec["components"]["schemas"]
     schemas["WidgetV2"]["properties"]["labels"]["additionalProperties"]["enum"] = %w[hot cold]
     schemas["WidgetV2"]["properties"]["box"] = {"type" => "object", "properties" => {"size" => {"type" => "string", "enum" => %w[s m]}}}
@@ -128,7 +134,8 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
     expect(JSON.parse(generated("spec/fixtures/allowed_values.json"))).to eq(
       "fields" => {"WidgetV2" => {"kind" => %w[big small], "labels" => %w[hot cold], "box.size" => %w[s m]}},
       "arguments" => {"client.v2.widgets.list" => {"page_size" => [25, 50]}},
-      "operators" => {"client.v2.widgets.list" => {"kind" => %w[one_of not_in]}}
+      "operators" => {"client.v2.widgets.list" => {"kind" => %w[one_of not_in]}},
+      "example_operators" => {"client.v2.widgets.list" => {"attrs" => %w[one_of not_in]}}
     )
   end
 

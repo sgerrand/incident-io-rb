@@ -5398,5 +5398,18 @@
         "date_range"
       ]
     }
+  },
+  "example_operators": {
+    "client.v2.alerts.list": {
+      "attributes": [
+        "one_of"
+      ]
+    },
+    "client.v2.incidents.list": {
+      "custom_field": [
+        "one_of",
+        "not_in"
+      ]
+    }
   }
 }
