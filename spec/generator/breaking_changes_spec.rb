@@ -12,14 +12,18 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
   end
 
   # Gives the create payload a `box` with a `size` key inside it, and the
-  # filter arguments of the list method their operators.
-  def with_nested(spec, sizes:, kind:, after: nil)
+  # filter arguments of the list method their operators. `attrs` is a
+  # filter whose operators are only shown in an example.
+  def with_nested(spec, sizes:, kind:, after: nil, attrs: %w[one_of])
     spec["components"]["schemas"]["WidgetsCreatePayloadV2"]["properties"]["box"] = {
       "type" => "object", "properties" => {"size" => {"type" => "string", "enum" => sizes}.compact}
     }
     list = spec["paths"]["/v2/widgets"]["get"]["parameters"]
     list[2]["description"] = "Filter on kind. #{kind}"
     list[1]["description"] = after
+    list << {"in" => "query", "name" => "attrs", "style" => "deepObject", "schema" => {
+      "type" => "object", "example" => {"01ABC" => attrs.to_h { |operator| [operator, ["x"]] }}
+    }}
     spec
   end
 
@@ -44,7 +48,8 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       schemas["PartV2"]["properties"]["id"] = {"type" => "integer"}
       schemas["WidgetsCreatePayloadV2"]["required"] = ["idempotency_key"]
       schemas["WidgetsCreatePayloadV2"]["properties"]["colour"] = {"type" => "string", "description" => "The accepted operator is 'is'."}
-      with_nested(spec, sizes: %w[s m l], kind: "The accepted operators are 'one_of', or 'not_in'.", after: "The accepted operator is 'is'.")
+      with_nested(spec, sizes: %w[s m l], kind: "The accepted operators are 'one_of', or 'not_in'.", after: "The accepted operator is 'is'.",
+        attrs: %w[one_of not_in])
       schemas["WidgetV2"]["properties"]["kind"]["enum"] = %w[big tiny]
       schemas["WidgetV2"]["properties"]["class"]["enum"] = %w[a b]
       schemas["WidgetV2"]["properties"]["labels"]["additionalProperties"]["enum"] = %w[hot cold]
@@ -111,6 +116,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Method `client.v2.widgets.list` now only allows `25`, `50` for `page_size`
       - Method `client.v2.widgets.list` no longer allows `not_in` as an operator for `kind`
       - Method `client.v2.widgets.list` no longer says which operators `after` allows
+      - Method `client.v2.widgets.list` no longer shows `not_in` as an operator for `attrs` in its examples
     MARKDOWN
   end
 
@@ -122,7 +128,8 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       list[1]["schema"]["enum"] = %w[start]
     end
     after = mini_spec.tap do |spec|
-      with_nested(spec, sizes: %w[s m], kind: "The accepted operators are 'one_of', or 'not_in'.", after: "The accepted operator is 'is'.")
+      with_nested(spec, sizes: %w[s m], kind: "The accepted operators are 'one_of', or 'not_in'.", after: "The accepted operator is 'is'.",
+        attrs: %w[one_of not_in])
       schemas = spec["components"]["schemas"]
       schemas["GadgetV1"] = {"type" => "object"}
       schemas["WidgetV2"]["properties"]["colour"] = {"type" => "string"}
@@ -135,6 +142,20 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(described_class.report(generate("before", before), generate("after", after))).to eq("")
   end
 
+  it "leaves out example operators of arguments that are gone or now name their operators" do
+    was = {shown: {"gone" => %w[one_of], "named" => %w[one_of], "kept" => %w[one_of not_in], "bare" => %w[one_of]}}
+    now = {
+      types: {"named" => "Hash", "kept" => "Hash", "bare" => "Hash"},
+      operators: {"named" => %w[is]},
+      shown: {"kept" => %w[one_of]}
+    }
+
+    expect(described_class.example_changes("client.v2.widgets.list", was, now)).to eq([
+      "Method `client.v2.widgets.list` no longer shows `not_in` as an operator for `kept` in its examples",
+      "Method `client.v2.widgets.list` no longer shows `one_of` as an operator for `bare` in its examples"
+    ])
+  end
+
   it "stops at the limit and counts the rest" do
     stub_const("#{described_class}::LIMIT", 2)
 
@@ -143,7 +164,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(report.lines.last(3)).to eq([
       "- Webhook event `public_widget.deleted_v1` was removed\n",
       "- Audit log entry `widget.created` (version 1) was removed\n",
-      "- and 22 more\n"
+      "- and 23 more\n"
     ])
   end
 
@@ -171,7 +192,9 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       expect(allowed.values).to all(satisfy { |limits| !limits.empty? })
       allowed["fields"].each { |model, fields| expect(surface[:models].fetch(model).keys).to include(*owners[fields]) }
       allowed["arguments"].each { |call, args| expect(surface[:methods].fetch(call)[:types].keys).to include(*owners[args]) }
-      allowed["operators"].each { |call, args| expect(surface[:methods].fetch(call)[:types].keys).to include(*args.keys) }
+      allowed.values_at("operators", "example_operators").each do |operators|
+        operators.each { |call, args| expect(surface[:methods].fetch(call)[:types].keys).to include(*args.keys) }
+      end
       expect(surface[:models].values.flat_map(&:values).sum { |field| field[:limits].size }).to eq(allowed["fields"].values.sum(&:size))
     end
 

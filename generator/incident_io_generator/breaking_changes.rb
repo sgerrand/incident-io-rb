@@ -56,11 +56,15 @@ module IncidentIoGenerator
         end,
         # How each method is called, keyed by the call. `limits` has the
         # values its arguments allow, named like those of a field.
-        # `operators` has the operators its filter arguments allow.
+        # `operators` has the operators its filter arguments allow, and
+        # `shown` those that examples show, for filters whose operators the
+        # spec doesn't name.
         methods: JSON.parse(read[OPERATIONS_PATH]).to_h do |op|
           call = "client.#{op["version"]}.#{op["resource"]}.#{op["method"]}"
           [call, signature(op).merge(
-            limits: allowed["arguments"].fetch(call, {}), operators: allowed["operators"].fetch(call, {})
+            limits: allowed["arguments"].fetch(call, {}),
+            operators: allowed["operators"].fetch(call, {}),
+            shown: allowed["example_operators"].fetch(call, {})
           )]
         end
       }
@@ -148,6 +152,20 @@ module IncidentIoGenerator
       end
     end
 
+    # Filter arguments whose examples show fewer operators than before.
+    # The spec names no operators for these, so its examples are all there
+    # is to go on. An operator that is no longer shown may still work.
+    def example_changes(name, was, now)
+      was[:shown].filter_map do |arg, operators|
+        # A removed argument is listed already, and one whose operators the
+        # spec now names is no worse off.
+        next if !now[:types].key?(arg) || now[:operators].key?(arg)
+
+        gone = operators - now[:shown].fetch(arg, [])
+        "Method `#{name}` no longer shows #{quote(gone)} as an operator for `#{arg}` in its examples" if gone.any?
+      end
+    end
+
     def quote(values)
       values.map { |value| "`#{value}`" }.join(", ")
     end
@@ -172,6 +190,7 @@ module IncidentIoGenerator
           end,
           *argument_value_changes(name, was, now),
           *operator_changes(name, was, now),
+          *example_changes(name, was, now),
           *("Method `#{name}` changed what it returns from `#{was[:returns]}` to `#{now[:returns]}`" if was[:returns] != now[:returns])
         ]
       end
