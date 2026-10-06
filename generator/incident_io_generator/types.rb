@@ -11,9 +11,13 @@ module IncidentIoGenerator
     end
 
     # The values a schema is limited to, or nil when it takes any value.
-    # For an array, the values of its items.
+    # For an array, the values of its items; for a map, the values of its
+    # values. These can be nested, like a map of arrays.
     def allowed_values(schema)
-      schema["enum"] || schema.dig("items", "enum")
+      # `additionalProperties` can be true or false as well as a schema.
+      return nil unless schema.is_a?(Hash)
+
+      schema["enum"] || allowed_values(schema["items"]) || allowed_values(schema["additionalProperties"])
     end
 
     # Ruby source for a field type in `Model.define`. Model references are

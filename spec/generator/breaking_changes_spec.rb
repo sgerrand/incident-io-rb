@@ -34,6 +34,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       schemas["WidgetsCreatePayloadV2"]["properties"]["colour"] = {"type" => "string"}
       schemas["WidgetV2"]["properties"]["kind"]["enum"] = %w[big tiny]
       schemas["WidgetV2"]["properties"]["class"]["enum"] = %w[a b]
+      schemas["WidgetV2"]["properties"]["labels"]["additionalProperties"]["enum"] = %w[hot cold]
       schemas["WidgetsCreatePayloadV2"]["properties"]["name"]["enum"] = %w[red green blue]
 
       spec["x-webhooks"]["/x-webhooks/public_widget.deleted_v1"] = event("WidgetDeletedBody", "Widget deleted.")
@@ -53,11 +54,13 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     end
   end
 
-  # The mini spec after the update, with two arguments limited to some
-  # values.
+  # The mini spec after the update, with a field and two arguments limited
+  # to some values.
   def newer_spec
     mini_spec.tap do |spec|
-      spec["components"]["schemas"]["WidgetsCreatePayloadV2"]["properties"]["name"]["enum"] = %w[red green]
+      schemas = spec["components"]["schemas"]
+      schemas["WidgetV2"]["properties"]["labels"]["additionalProperties"]["enum"] = %w[hot]
+      schemas["WidgetsCreatePayloadV2"]["properties"]["name"]["enum"] = %w[red green]
       spec["paths"]["/v2/widgets"]["get"]["parameters"][0]["schema"]["enum"] = [25, 50]
     end
   end
@@ -76,6 +79,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Model `WidgetDeletedBody` was removed
       - Field `PartV2#id` changed type from `Integer` to `String`
       - Field `WidgetV2#class_` now allows any value
+      - Field `WidgetV2#labels` no longer allows `cold`
       - Field `WidgetV2#kind` no longer allows `tiny`
       - Field `WidgetV2#kind` now also allows `small`
       - Field `WidgetV2#colour` was removed
@@ -119,7 +123,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(report.lines.last(3)).to eq([
       "- Webhook event `public_widget.deleted_v1` was removed\n",
       "- Audit log entry `widget.created` (version 1) was removed\n",
-      "- and 17 more\n"
+      "- and 18 more\n"
     ])
   end
 

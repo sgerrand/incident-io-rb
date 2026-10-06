@@ -119,10 +119,11 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
   it "writes the values that fields and arguments are limited to" do
     spec = mini_spec
     spec["paths"]["/v2/widgets"]["get"]["parameters"][0]["schema"]["enum"] = [25, 50]
+    spec["components"]["schemas"]["WidgetV2"]["properties"]["labels"]["additionalProperties"]["enum"] = %w[hot cold]
     described_class.new(IncidentIoGenerator::Api.new(spec), @dir).write
 
     expect(JSON.parse(generated("spec/fixtures/allowed_values.json"))).to eq(
-      "fields" => {"WidgetV2" => {"kind" => %w[big small]}},
+      "fields" => {"WidgetV2" => {"kind" => %w[big small], "labels" => %w[hot cold]}},
       "arguments" => {"client.v2.widgets.list" => {"page_size" => [25, 50]}}
     )
   end

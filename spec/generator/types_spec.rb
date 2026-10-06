@@ -98,4 +98,15 @@ RSpec.describe IncidentIoGenerator::Types do
     expect(described_class.allowed_values({"type" => "array", "items" => {"type" => "string", "enum" => %w[a b]}})).to eq(%w[a b])
     expect(described_class.allowed_values({"type" => "string"})).to be_nil
   end
+
+  it "reads the values of nested arrays and maps" do
+    values = {"type" => "string", "enum" => %w[a b]}
+    array = {"type" => "array", "items" => values}
+
+    expect(described_class.allowed_values({"type" => "array", "items" => array})).to eq(%w[a b])
+    expect(described_class.allowed_values({"type" => "object", "additionalProperties" => values})).to eq(%w[a b])
+    expect(described_class.allowed_values({"type" => "object", "additionalProperties" => array})).to eq(%w[a b])
+    expect(described_class.allowed_values({"type" => "object", "additionalProperties" => true})).to be_nil
+    expect(described_class.allowed_values({"type" => "array", "items" => {"type" => "object"}})).to be_nil
+  end
 end
