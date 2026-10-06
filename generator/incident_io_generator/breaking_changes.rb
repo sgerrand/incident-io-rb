@@ -8,7 +8,7 @@ module IncidentIoGenerator
   # - a webhook event type, audit log entry type, model, model field or
   #   resource method that was removed
   # - a model field that changed type
-  # - a resource method whose arguments changed
+  # - a resource method whose arguments or return type changed
   module BreakingChanges
     EVENTS_PATH = "lib/incident_io/webhook_events.rb"
     ENTRIES_PATH = "lib/incident_io/audit_log_entries.rb"
@@ -45,15 +45,20 @@ module IncidentIoGenerator
           source = read[path]
           [source[MODEL, 1], source.scan(FIELD).to_h]
         end,
-        # Each method's arguments, keyed by how the method is called.
+        # How each method is called, keyed by the call.
         methods: JSON.parse(read[OPERATIONS_PATH]).to_h do |op|
-          ["client.#{op["version"]}.#{op["resource"]}.#{op["method"]}", {
-            positional: op.fetch("path_args").map { |arg| arg.delete_suffix("-value") },
-            required: op.fetch("keyword_args").keys,
-            optional: op.fetch("optional_args")
-          }]
+          ["client.#{op["version"]}.#{op["resource"]}.#{op["method"]}", signature(op)]
         end
       }
+    end
+
+    # A method's arguments, their types and what it returns, from its entry
+    # in the operations manifest.
+    def signature(op)
+      types = op.fetch("arg_types")
+      positional = op.fetch("path_args").map { |arg| arg.delete_suffix("-value") }
+      required = op.fetch("keyword_args").keys
+      {positional:, required:, optional: types.keys - positional - required, types:, returns: op.fetch("returns")}
     end
 
     # The breaking changes from `before` to `after`, one line each. Both
@@ -82,9 +87,10 @@ module IncidentIoGenerator
       end
     end
 
-    # Methods that were removed, and methods that can no longer be called
-    # the same way: their positional arguments changed, they lost a keyword
-    # argument or they need a new one.
+    # Methods that were removed, and methods that can no longer be used the
+    # same way: their positional arguments changed, they lost a keyword
+    # argument, they need a new one, an argument changed type or they
+    # return something else.
     def method_changes(before, after)
       before.flat_map do |name, was|
         now = after[name]
@@ -94,7 +100,12 @@ module IncidentIoGenerator
         [
           *("Method `#{name}` changed its positional arguments from #{positional.first} to #{positional.last}" if positional.uniq.size > 1),
           *(was[:required] + was[:optional] - now[:required] - now[:optional]).map { |arg| "Method `#{name}` no longer takes `#{arg}:`" },
-          *(now[:required] - was[:required]).map { |arg| "Method `#{name}` now needs `#{arg}:`" }
+          *(now[:required] - was[:required]).map { |arg| "Method `#{name}` now needs `#{arg}:`" },
+          *was[:types].filter_map do |arg, type|
+            now_type = now[:types].fetch(arg, type)
+            "Method `#{name}` changed the type of argument `#{arg}` from `#{type}` to `#{now_type}`" if now_type != type
+          end,
+          *("Method `#{name}` changed what it returns from `#{was[:returns]}` to `#{now[:returns]}`" if was[:returns] != now[:returns])
         ]
       end
     end

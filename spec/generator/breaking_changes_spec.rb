@@ -17,8 +17,8 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
   end
 
   # The mini spec before a breaking update. It has an extra event, entry,
-  # model, field and method, a field of another type, and a method with
-  # other arguments.
+  # model, field and method, a field of another type, and methods with
+  # other arguments, argument types and return types.
   def older_spec
     mini_spec.tap do |spec|
       schemas = spec["components"]["schemas"]
@@ -44,6 +44,8 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
           content_type: "text/csv")
       }
       paths.delete("/v2/widgets/{id}/export")
+      paths["/v2/widgets"]["get"]["parameters"][0]["schema"] = {"type" => "string"}
+      paths["/v2/widgets/{id}"]["delete"] = operation("Widgets V2#Destroy", "WidgetsShowResultV2", parameters: [path_param("id")])
     end
   end
 
@@ -65,7 +67,9 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Method `client.v2.widgets.archive` was removed
       - Method `client.v2.widgets.create` no longer takes `colour:`
       - Method `client.v2.widgets.create` now needs `name:`
+      - Method `client.v2.widgets.destroy` changed what it returns from `Models::WidgetV2` to `nil`
       - Method `client.v2.widgets.export` changed its positional arguments from `(shelf_id, id)` to `(id)`
+      - Method `client.v2.widgets.list` changed the type of argument `page_size` from `String` to `Integer`
     MARKDOWN
   end
 
@@ -87,7 +91,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(report.lines.last(3)).to eq([
       "- Webhook event `public_widget.deleted_v1` was removed\n",
       "- Audit log entry `widget.created` (version 1) was removed\n",
-      "- and 9 more\n"
+      "- and 11 more\n"
     ])
   end
 
@@ -117,7 +121,8 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       end
 
       expect(surface[:methods].size).to eq(JSON.parse(File.read(File.join(IncidentIoGenerator::ROOT, described_class::OPERATIONS_PATH))).size)
-      expect(surface[:methods]).to eq(real)
+      expect(surface[:methods].transform_values { |m| m.slice(:positional, :required, :optional) }).to eq(real)
+      expect(surface[:methods].values.flat_map { |m| [m[:returns], *m[:types].values] }).to all(match(/\A[A-Za-z]/))
     end
   end
 end
