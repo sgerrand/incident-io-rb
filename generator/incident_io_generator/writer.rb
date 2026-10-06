@@ -246,7 +246,11 @@ module IncidentIoGenerator
             "path" => op.path,
             "path_args" => op.path_params.map { |p| "#{p.name}-value" },
             "keyword_args" => keyword_params.to_h { |p| [p.name, Types.sample_value(p.schema, p.name)] },
-            "optional_args" => op.keyword_params.reject(&:required).map(&:name),
+            # Every argument, optional ones too, with its YARD type.
+            "arg_types" => (op.path_params + op.keyword_params).to_h do |p|
+              [p.name, Types.yard_type(p.schema, accepts_hash: true)]
+            end,
+            "returns" => op.result.yard,
             "query_keys" => keyword_params.select { |p| p.location == :query }.map(&:name),
             "body_keys" => keyword_params.select { |p| p.location == :body }.map(&:name),
             "body" => op.body,
