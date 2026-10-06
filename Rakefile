@@ -81,15 +81,20 @@ task :generate do
 end
 
 namespace :generate do
-  desc "List the webhook event and audit log entry types removed since the last commit"
+  desc "List what the generated code has lost since the last commit"
   task :removed do
+    require "open3"
+    require "tmpdir"
     require_relative "generator/incident_io_generator"
 
-    paths = IncidentIoGenerator::RemovedTypes::FILES.keys
-    before = paths.to_h { |path| [path, IO.popen(["git", "show", "HEAD:#{path}"], err: File::NULL, &:read)] }
-    after = paths.to_h { |path| [path, File.exist?(path) ? File.read(path) : ""] }
+    Dir.mktmpdir do |dir|
+      # Unpack the generated code as it was at the last commit.
+      paths = IncidentIoGenerator::Removals::PATHS
+      statuses = Open3.pipeline(["git", "archive", "HEAD", "--", *paths], ["tar", "-x", "-C", dir])
+      abort "Could not read the generated code from the last commit." unless statuses.all?(&:success?)
 
-    print IncidentIoGenerator::RemovedTypes.report(before, after)
+      print IncidentIoGenerator::Removals.report(dir, IncidentIoGenerator::ROOT)
+    end
   end
 
   desc "Fail if the generated code does not match #{SPEC_FILE}"
