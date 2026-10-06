@@ -11,7 +11,7 @@ require_relative "../lib/incident_io/namespace"
 require_relative "incident_io_generator/naming"
 require_relative "incident_io_generator/types"
 require_relative "incident_io_generator/api"
-require_relative "incident_io_generator/removals"
+require_relative "incident_io_generator/breaking_changes"
 require_relative "incident_io_generator/writer"
 
 # Generates IncidentIo models and resources from the incident.io OpenAPI spec.

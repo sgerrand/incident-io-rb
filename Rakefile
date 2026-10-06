@@ -81,19 +81,19 @@ task :generate do
 end
 
 namespace :generate do
-  desc "List what the generated code has lost since the last commit"
-  task :removed do
+  desc "List breaking changes in the generated code since the last commit"
+  task :breaking do
     require "open3"
     require "tmpdir"
     require_relative "generator/incident_io_generator"
 
     Dir.mktmpdir do |dir|
       # Unpack the generated code as it was at the last commit.
-      paths = IncidentIoGenerator::Removals::PATHS
+      paths = IncidentIoGenerator::BreakingChanges::PATHS
       statuses = Open3.pipeline(["git", "archive", "HEAD", "--", *paths], ["tar", "-x", "-C", dir])
       abort "Could not read the generated code from the last commit." unless statuses.all?(&:success?)
 
-      print IncidentIoGenerator::Removals.report(dir, IncidentIoGenerator::ROOT)
+      print IncidentIoGenerator::BreakingChanges.report(dir, IncidentIoGenerator::ROOT)
     end
   end
 
