@@ -11,6 +11,18 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     end
   end
 
+  # Gives the create payload a `box` with a `size` key inside it, and the
+  # filter arguments of the list method their operators.
+  def with_nested(spec, sizes:, kind:, after: nil)
+    spec["components"]["schemas"]["WidgetsCreatePayloadV2"]["properties"]["box"] = {
+      "type" => "object", "properties" => {"size" => {"type" => "string", "enum" => sizes}.compact}
+    }
+    list = spec["paths"]["/v2/widgets"]["get"]["parameters"]
+    list[2]["description"] = "Filter on kind. #{kind}"
+    list[1]["description"] = after
+    spec
+  end
+
   # Generates code from a spec into its own root and returns the root.
   def generate(name, spec)
     File.join(@dir, name).tap { |root| IncidentIoGenerator::Writer.new(IncidentIoGenerator::Api.new(spec), root).write }
@@ -31,7 +43,8 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       schemas["WidgetV2"]["properties"]["colour"] = {"type" => "string"}
       schemas["PartV2"]["properties"]["id"] = {"type" => "integer"}
       schemas["WidgetsCreatePayloadV2"]["required"] = ["idempotency_key"]
-      schemas["WidgetsCreatePayloadV2"]["properties"]["colour"] = {"type" => "string"}
+      schemas["WidgetsCreatePayloadV2"]["properties"]["colour"] = {"type" => "string", "description" => "The accepted operator is 'is'."}
+      with_nested(spec, sizes: %w[s m l], kind: "The accepted operators are 'one_of', or 'not_in'.", after: "The accepted operator is 'is'.")
       schemas["WidgetV2"]["properties"]["kind"]["enum"] = %w[big tiny]
       schemas["WidgetV2"]["properties"]["class"]["enum"] = %w[a b]
       schemas["WidgetV2"]["properties"]["labels"]["additionalProperties"]["enum"] = %w[hot cold]
@@ -54,10 +67,11 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     end
   end
 
-  # The mini spec after the update, with a field and two arguments limited
-  # to some values.
+  # The mini spec after the update, with fields and arguments limited to
+  # some values, and one operator fewer.
   def newer_spec
     mini_spec.tap do |spec|
+      with_nested(spec, sizes: %w[s m], kind: "The accepted operator is 'one_of'.")
       schemas = spec["components"]["schemas"]
       schemas["WidgetV2"]["properties"]["labels"]["additionalProperties"]["enum"] = %w[hot]
       schemas["WidgetsCreatePayloadV2"]["properties"]["name"]["enum"] = %w[red green]
@@ -85,24 +99,30 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Field `WidgetV2#colour` was removed
       - Field `WidgetsCreatePayloadV2#name` no longer allows `blue`
       - Field `WidgetsCreatePayloadV2#colour` was removed
+      - Field `WidgetsCreatePayloadV2#box.size` no longer allows `l`
       - Method `client.v2.widgets.archive` was removed
       - Method `client.v2.widgets.create` no longer takes `colour:`
       - Method `client.v2.widgets.create` now needs `name:`
       - Method `client.v2.widgets.create` no longer allows `blue` for `name`
+      - Method `client.v2.widgets.create` no longer allows `l` for `box.size`
       - Method `client.v2.widgets.destroy` changed what it returns from `Models::WidgetV2` to `nil`
       - Method `client.v2.widgets.export` changed its positional arguments from `(shelf_id, id)` to `(id)`
       - Method `client.v2.widgets.list` changed the type of argument `page_size` from `String` to `Integer`
       - Method `client.v2.widgets.list` now only allows `25`, `50` for `page_size`
+      - Method `client.v2.widgets.list` no longer allows `not_in` as an operator for `kind`
+      - Method `client.v2.widgets.list` no longer says which operators `after` allows
     MARKDOWN
   end
 
   it "is empty when things were only added, made optional or allow more" do
     before = mini_spec.tap do |spec|
+      with_nested(spec, sizes: nil, kind: "The accepted operator is 'one_of'.")
       list = spec["paths"]["/v2/widgets"]["get"]["parameters"]
       list[0]["schema"]["enum"] = [25]
       list[1]["schema"]["enum"] = %w[start]
     end
     after = mini_spec.tap do |spec|
+      with_nested(spec, sizes: %w[s m], kind: "The accepted operators are 'one_of', or 'not_in'.", after: "The accepted operator is 'is'.")
       schemas = spec["components"]["schemas"]
       schemas["GadgetV1"] = {"type" => "object"}
       schemas["WidgetV2"]["properties"]["colour"] = {"type" => "string"}
@@ -123,7 +143,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(report.lines.last(3)).to eq([
       "- Webhook event `public_widget.deleted_v1` was removed\n",
       "- Audit log entry `widget.created` (version 1) was removed\n",
-      "- and 18 more\n"
+      "- and 22 more\n"
     ])
   end
 
@@ -142,13 +162,17 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       expect(surface[:models].values.flat_map(&:values).map { |field| field[:type] }).to all(match(/\A[A-Z]/))
     end
 
-    it "has allowed values only for fields and arguments it read" do
+    it "has limits and operators only for fields and arguments it read" do
       allowed = JSON.parse(File.read(File.join(IncidentIoGenerator::ROOT, described_class::VALUES_PATH)))
+      # The field or argument a limit belongs to, e.g. "resource" for
+      # "resource.resource_type".
+      owners = ->(limits) { limits.keys.map { |name| name.split(".").first } }
 
-      expect(allowed["fields"]).not_to be_empty
-      expect(allowed["arguments"]).not_to be_empty
-      allowed["fields"].each { |model, fields| expect(surface[:models].fetch(model).keys).to include(*fields.keys) }
-      allowed["arguments"].each { |call, args| expect(surface[:methods].fetch(call)[:types].keys).to include(*args.keys) }
+      expect(allowed.values).to all(satisfy { |limits| !limits.empty? })
+      allowed["fields"].each { |model, fields| expect(surface[:models].fetch(model).keys).to include(*owners[fields]) }
+      allowed["arguments"].each { |call, args| expect(surface[:methods].fetch(call)[:types].keys).to include(*owners[args]) }
+      allowed["operators"].each { |call, args| expect(surface[:methods].fetch(call)[:types].keys).to include(*args.keys) }
+      expect(surface[:models].values.flat_map(&:values).sum { |field| field[:limits].size }).to eq(allowed["fields"].values.sum(&:size))
     end
 
     # rbs test wraps every method, which hides the arguments it takes.

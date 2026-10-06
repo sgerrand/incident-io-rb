@@ -9,7 +9,7 @@ module IncidentIoGenerator
   #   resource method that was removed
   # - a model field that changed type or allows other values
   # - a resource method whose arguments or return type changed, or with an
-  #   argument that allows fewer values
+  #   argument that allows fewer values or operators
   module BreakingChanges
     EVENTS_PATH = "lib/incident_io/webhook_events.rb"
     ENTRIES_PATH = "lib/incident_io/audit_log_entries.rb"
@@ -44,17 +44,24 @@ module IncidentIoGenerator
         events: read[EVENTS_PATH].scan(EVENT).flatten,
         entries: read[ENTRIES_PATH].scan(ENTRY).map { |action, version| "`#{action}` (version #{version})" },
         # Each model's fields, keyed by the model's name. A field has a type
-        # and the values it is limited to, or nil when it takes any value.
+        # and limits: the values it allows, and the values that keys inside
+        # it allow, under names like "field.key".
         models: Dir.glob("#{MODELS_PATH}/*.rb", base: root).sort.to_h do |path|
           source = read[path]
           model = source[MODEL, 1]
-          [model, source.scan(FIELD).to_h { |field, type| [field, {type:, values: allowed["fields"].dig(model, field)}] }]
+          limits = allowed["fields"].fetch(model, {})
+          [model, source.scan(FIELD).to_h do |field, type|
+            [field, {type:, limits: limits.select { |name, _| name.split(".").first == field }}]
+          end]
         end,
-        # How each method is called, keyed by the call. `values` has the
-        # arguments that are limited to some values.
+        # How each method is called, keyed by the call. `limits` has the
+        # values its arguments allow, named like those of a field.
+        # `operators` has the operators its filter arguments allow.
         methods: JSON.parse(read[OPERATIONS_PATH]).to_h do |op|
           call = "client.#{op["version"]}.#{op["resource"]}.#{op["method"]}"
-          [call, signature(op).merge(values: allowed["arguments"].fetch(call, {}))]
+          [call, signature(op).merge(
+            limits: allowed["arguments"].fetch(call, {}), operators: allowed["operators"].fetch(call, {})
+          )]
         end
       }
     end
@@ -86,23 +93,21 @@ module IncidentIoGenerator
     def field_changes(before, after)
       after.flat_map do |model, fields|
         before.fetch(model, {}).flat_map do |field, was|
-          name = "Field `#{model}##{field}`"
           now = fields[field]
-          next ["#{name} was removed"] unless now
+          next ["Field `#{model}##{field}` was removed"] unless now
 
           [
-            *("#{name} changed type from `#{was[:type]}` to `#{now[:type]}`" if was[:type] != now[:type]),
-            *field_value_changes(name, was[:values], now[:values])
+            *("Field `#{model}##{field}` changed type from `#{was[:type]}` to `#{now[:type]}`" if was[:type] != now[:type]),
+            *was[:limits].flat_map { |name, values| field_value_changes("Field `#{model}##{name}`", values, now[:limits][name]) }
           ]
         end
       end
     end
 
-    # How the values a field allows changed. Code that reads the field can
-    # meet a value it doesn't know, or wait for one that no longer comes. A
-    # field that took any value before can't surprise it.
+    # How the values a field allows changed, for a field that was limited
+    # to some. Code that reads the field can meet a value it doesn't know,
+    # or wait for one that no longer comes.
     def field_value_changes(name, was, now)
-      return [] unless was
       return ["#{name} now allows any value"] unless now
 
       [
@@ -114,14 +119,31 @@ module IncidentIoGenerator
     # Arguments of a method that allow fewer values than before. Allowing
     # more can't break a call, and nor can a limit on a new argument.
     def argument_value_changes(name, was, now)
-      now[:values].filter_map do |arg, values|
-        next unless was[:types].key?(arg)
+      now[:limits].filter_map do |arg, values|
+        next unless was[:types].key?(arg.split(".").first)
 
-        allowed = was[:values][arg]
-        if allowed.nil?
+        allowed = was[:limits][arg]
+        if allowed
+          "Method `#{name}` no longer allows #{quote(allowed - values)} for `#{arg}`" if (allowed - values).any?
+        elsif !arg.include?(".")
+          # A key inside an argument may be new, so its limit isn't listed.
           "Method `#{name}` now only allows #{quote(values)} for `#{arg}`"
-        elsif (allowed - values).any?
-          "Method `#{name}` no longer allows #{quote(allowed - values)} for `#{arg}`"
+        end
+      end
+    end
+
+    # Filter arguments of a method that lost an operator, like `not_in` in
+    # `status: {not_in: [...]}`. The spec only names operators in its text,
+    # so an argument whose text no longer names any is listed too.
+    def operator_changes(name, was, now)
+      was[:operators].filter_map do |arg, operators|
+        next unless now[:types].key?(arg)
+
+        allowed = now[:operators][arg]
+        if allowed.nil?
+          "Method `#{name}` no longer says which operators `#{arg}` allows"
+        elsif (operators - allowed).any?
+          "Method `#{name}` no longer allows #{quote(operators - allowed)} as an operator for `#{arg}`"
         end
       end
     end
@@ -133,7 +155,7 @@ module IncidentIoGenerator
     # Methods that were removed, and methods that can no longer be used the
     # same way: their positional arguments changed, they lost a keyword
     # argument, they need a new one, an argument changed type or allows
-    # fewer values, or they return something else.
+    # fewer values or operators, or they return something else.
     def method_changes(before, after)
       before.flat_map do |name, was|
         now = after[name]
@@ -149,6 +171,7 @@ module IncidentIoGenerator
             "Method `#{name}` changed the type of argument `#{arg}` from `#{type}` to `#{now_type}`" if now_type != type
           end,
           *argument_value_changes(name, was, now),
+          *operator_changes(name, was, now),
           *("Method `#{name}` changed what it returns from `#{was[:returns]}` to `#{now[:returns]}`" if was[:returns] != now[:returns])
         ]
       end
