@@ -51,12 +51,13 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      # Removing a type can break code that uses the gem, so the pull
-      # request lists any type the new spec no longer has. Compares with
-      # the last commit, so it runs before the new code is committed.
-      - name: List removed types
+      # Removing a type, model, field or method can break code that uses
+      # the gem, so the pull request lists any the new spec no longer has.
+      # Compares with the last commit, so it runs before the new code is
+      # committed.
+      - name: List what was removed
         if: steps.changes.outputs.changed == 'true'
-        run: bundle exec rake generate:removed > "$RUNNER_TEMP/removed-types.md"
+        run: bundle exec rake generate:removed > "$RUNNER_TEMP/removed.md"
 
       # Pull requests opened with GITHUB_TOKEN don't trigger the Test
       # workflow, so run the specs here before opening one.
@@ -85,10 +86,10 @@ jobs:
 
           The Test workflow does not run on pull requests opened by GitHub Actions. To run it, close and reopen this pull request.
           BODY
-          { echo; cat "$RUNNER_TEMP/removed-types.md"; } >> "$RUNNER_TEMP/body.md"
+          { echo; cat "$RUNNER_TEMP/removed.md"; } >> "$RUNNER_TEMP/body.md"
 
           # An open pull request gets the new body too, so its list of
-          # removed types stays true.
+          # what was removed stays true.
           if [ "$(gh pr view "$BRANCH" --json state --jq .state 2>/dev/null)" = "OPEN" ]; then
             gh pr edit "$BRANCH" --body-file "$RUNNER_TEMP/body.md"
             echo "Updated the open pull request."
