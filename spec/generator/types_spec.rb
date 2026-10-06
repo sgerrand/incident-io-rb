@@ -120,6 +120,18 @@ RSpec.describe IncidentIoGenerator::Types do
     expect(described_class.limits({"type" => "object", "properties" => {"inner" => box}}, "outer")).to eq("outer.inner.size" => %w[s m])
   end
 
+  it "reads the limits of keys inside nested arrays and maps" do
+    box = {"type" => "object", "properties" => {"size" => {"type" => "string", "enum" => %w[s m]}}}
+    boxes = {"type" => "array", "items" => box}
+
+    expect(described_class.limits({"type" => "array", "items" => boxes}, "rows")).to eq("rows.size" => %w[s m])
+    expect(described_class.limits({"type" => "object", "additionalProperties" => box}, "by_id")).to eq("by_id.size" => %w[s m])
+    expect(described_class.limits({"type" => "object", "additionalProperties" => boxes}, "by_id")).to eq("by_id.size" => %w[s m])
+    expect(described_class.limits({"type" => "array", "items" => {"type" => "object", "additionalProperties" => boxes}}, "rows"))
+      .to eq("rows.size" => %w[s m])
+    expect(described_class.limits({"type" => "object", "additionalProperties" => true}, "anything")).to eq({})
+  end
+
   it "reads the operators a description names" do
     {
       "Filter on status. The accepted operators are 'one_of', or 'not_in'." => %w[one_of not_in],
