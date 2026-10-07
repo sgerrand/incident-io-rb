@@ -154,15 +154,22 @@ module IncidentIoGenerator
 
     # Filter arguments whose examples show fewer operators than before.
     # The spec names no operators for these, so its examples are all there
-    # is to go on. An operator that is no longer shown may still work.
+    # is to go on. An operator that is no longer shown may still work, but
+    # not when the spec now names the operators and leaves it out.
     def example_changes(name, was, now)
       was[:shown].filter_map do |arg, operators|
-        # A removed argument is listed already, and one whose operators the
-        # spec now names is no worse off.
-        next if !now[:types].key?(arg) || now[:operators].key?(arg)
+        # A removed argument is listed already.
+        next unless now[:types].key?(arg)
 
-        gone = operators - now[:shown].fetch(arg, [])
-        "Method `#{name}` no longer shows #{quote(gone)} as an operator for `#{arg}` in its examples" if gone.any?
+        named = now[:operators][arg]
+        gone = operators - (named || now[:shown].fetch(arg, []))
+        next if gone.empty?
+
+        if named
+          "Method `#{name}` no longer allows #{quote(gone)} as an operator for `#{arg}`"
+        else
+          "Method `#{name}` no longer shows #{quote(gone)} as an operator for `#{arg}` in its examples"
+        end
       end
     end
 

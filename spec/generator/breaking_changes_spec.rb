@@ -142,15 +142,19 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(described_class.report(generate("before", before), generate("after", after))).to eq("")
   end
 
-  it "leaves out example operators of arguments that are gone or now name their operators" do
-    was = {shown: {"gone" => %w[one_of], "named" => %w[one_of], "kept" => %w[one_of not_in], "bare" => %w[one_of]}}
+  it "checks example operators against the ones the spec now names or shows" do
+    was = {shown: {
+      "gone" => %w[one_of], "named" => %w[one_of], "narrowed" => %w[one_of not_in],
+      "kept" => %w[one_of not_in], "bare" => %w[one_of]
+    }}
     now = {
-      types: {"named" => "Hash", "kept" => "Hash", "bare" => "Hash"},
-      operators: {"named" => %w[is]},
+      types: {"named" => "Hash", "narrowed" => "Hash", "kept" => "Hash", "bare" => "Hash"},
+      operators: {"named" => %w[one_of is], "narrowed" => %w[one_of]},
       shown: {"kept" => %w[one_of]}
     }
 
     expect(described_class.example_changes("client.v2.widgets.list", was, now)).to eq([
+      "Method `client.v2.widgets.list` no longer allows `not_in` as an operator for `narrowed`",
       "Method `client.v2.widgets.list` no longer shows `not_in` as an operator for `kept` in its examples",
       "Method `client.v2.widgets.list` no longer shows `one_of` as an operator for `bare` in its examples"
     ])
