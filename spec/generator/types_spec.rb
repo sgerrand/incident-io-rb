@@ -138,6 +138,9 @@ RSpec.describe IncidentIoGenerator::Types do
       "Accepted operators are 'gte', 'lte' and 'date_range'." => %w[gte lte date_range],
       "The accepted operator is 'is'." => %w[is],
       "The accepted operators are 'one_of, or 'not_in'." => %w[one_of not_in],
+      "The accepted operators are 'one_of' and 'date-range' on the widget's kind." => %w[one_of date-range],
+      %(The accepted operators are `one_of` and "not_in".) => %w[one_of not_in],
+      "The accepted operators are listed in the guide." => nil,
       "Custom field ID should be sent, followed by the operator and values." => nil,
       nil => nil
     }.each { |text, operators| expect(described_class.operators(text)).to eq(operators) }

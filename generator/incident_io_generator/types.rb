@@ -41,7 +41,12 @@ module IncidentIoGenerator
     # names none. The spec has them only in text like "The accepted
     # operators are 'one_of', or 'not_in'."
     def operators(description)
-      description.to_s[/accepted operators? (?:is|are)[^.]*/i]&.scan(/'(\w+)/)&.flatten
+      sentence = description.to_s[/accepted operators? (?:is|are)[^.]*/i].to_s
+      # A name starts at a quote of any kind. The spec leaves out the odd
+      # closing quote, so none is needed. A quote inside a word, as in
+      # "widget's", doesn't start a name.
+      named = sentence.scan(/(?<![\w-])['"`]([\w-]+)/).flatten
+      named unless named.empty?
     end
 
     # The operators that examples show for a filter argument: the innermost
