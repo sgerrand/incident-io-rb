@@ -8,6 +8,7 @@ module IncidentIoGenerator
   #
   # - a webhook event type, audit log entry type, model, model field or
   #   resource method that was removed
+  # - a webhook event type or audit log entry type with another model
   # - a model field that changed type or allows other values
   # - a resource that `client.<name>` reaches in another API version
   # - a resource method whose arguments or return type changed, or with an
@@ -63,8 +64,12 @@ module IncidentIoGenerator
       # entries, and what methods return.
       handed = events.values + entries.values.flat_map(&:values) + methods.values.map { |method| method[:returns] }
       {
-        events: events.keys,
-        entries: entries.flat_map { |action, versions| versions.keys.map { |version| "`#{action}` (version #{version})" } },
+        # The model of each event and entry type, keyed by how the type is
+        # named in a change.
+        events: events.transform_keys { |type| "`#{type}`" },
+        entries: entries.flat_map do |action, versions|
+          versions.map { |version, model| ["`#{action}` (version #{version})", model] }
+        end.to_h,
         models:,
         methods:,
         # What `client.<resource>` reaches, keyed by resource: the version
@@ -107,8 +112,8 @@ module IncidentIoGenerator
     def changes(before, after)
       limits = kept_limits(before[:models], after[:models])
       [
-        *(before[:events] - after[:events]).map { |type| "Webhook event `#{type}` was removed" },
-        *(before[:entries] - after[:entries]).map { |entry| "Audit log entry #{entry} was removed" },
+        *type_changes("Webhook event", before[:events], after[:events]),
+        *type_changes("Audit log entry", before[:entries], after[:entries]),
         *(before[:models].keys - after[:models].keys).map { |model| "Model `#{model}` was removed" },
         *field_changes(before[:models], after[:models]),
         *together(fewer_values(limits)),
@@ -118,6 +123,20 @@ module IncidentIoGenerator
         # are the first to be left out when the list is too long.
         *together(more_values(limits, after[:read]))
       ]
+    end
+
+    # Event or entry types that were removed, and types that now come with
+    # another model. Code that reads the old model's fields from one of
+    # those can break.
+    def type_changes(kind, before, after)
+      before.filter_map do |type, was|
+        now = after[type]
+        if now.nil?
+          "#{kind} #{type} was removed"
+        elsif now != was
+          "#{kind} #{type} changed its model from `#{was}` to `#{now}`"
+        end
+      end
     end
 
     # Fields that were removed or changed type, in models that both have,

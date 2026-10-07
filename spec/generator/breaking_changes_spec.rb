@@ -63,6 +63,9 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
 
       spec["x-webhooks"]["/x-webhooks/public_widget.deleted_v1"] = event("WidgetDeletedBody", "Widget deleted.")
       spec["x-webhooks"]["/x-audit-logs/widget.created.1"] = event("AuditLogsWidgetDeletedV2", "Widget created.")
+      # An event and an entry type that the newer spec gives another model.
+      schemas["WidgetCreatedBody"]["properties"]["public_widget.created_v1"] = {"$ref" => "#/components/schemas/PartV2"}
+      spec["x-webhooks"]["/x-audit-logs/widget.deleted.2"] = event("PartV2", "Widget deleted.")
 
       paths = spec["paths"]
       paths["/v2/widgets/{id}/archive"] = {
@@ -108,11 +111,14 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
 
       The latest spec removes or changes these. Each one can break code that uses the gem.
 
+      - Webhook event `public_widget.created_v1` changed its model from `PartV2` to `WidgetV2`
       - Webhook event `public_widget.deleted_v1` was removed
       - Audit log entry `widget.created` (version 1) was removed
+      - Audit log entry `widget.deleted` (version 2) changed its model from `PartV2` to `AuditLogsWidgetDeletedV2`
       - Model `GadgetV1` was removed
       - Model `WidgetDeletedBody` was removed
       - Field `PartV2#id` changed type from `Integer` to `String`
+      - Field `WidgetCreatedBody#public_widget_created_v1` changed type from `PartV2` to `WidgetV2`
       - Field `WidgetV2#colour` was removed
       - Field `WidgetV2#box.colour` was removed
       - Field `WidgetV2#box.inner` was removed
@@ -227,18 +233,21 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     report = described_class.report(generate("before", older_spec), generate("after", newer_spec))
 
     expect(report.lines.last(3)).to eq([
+      "- Webhook event `public_widget.created_v1` changed its model from `PartV2` to `WidgetV2`\n",
       "- Webhook event `public_widget.deleted_v1` was removed\n",
-      "- Audit log entry `widget.created` (version 1) was removed\n",
-      "- and 40 more\n"
+      "- and 43 more\n"
     ])
   end
 
   describe "the real generated code" do
     let(:surface) { described_class.surface(IncidentIoGenerator::ROOT) }
 
-    it "has every event and entry type read" do
-      expect(surface[:events]).to match_array(IncidentIo::Webhook::EVENTS.keys)
-      expect(surface[:entries].size).to eq(IncidentIo::AuditLog::ENTRIES.size)
+    it "has every event and entry type read with its model" do
+      events = IncidentIo::Webhook::EVENTS.to_h { |type, model| ["`#{type}`", model.to_s] }
+      entries = IncidentIo::AuditLog::ENTRIES.to_h { |(action, version), model| ["`#{action}` (version #{version})", model.to_s] }
+
+      expect(surface[:events]).to eq(events)
+      expect(surface[:entries]).to eq(entries)
     end
 
     it "has every model and field read" do
