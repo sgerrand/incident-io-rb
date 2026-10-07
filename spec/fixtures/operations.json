@@ -1,6 +1,7 @@
 [
   {
     "operation_id": "Actions V1#List",
+    "call": "client.v1.actions.list",
     "version": "v1",
     "resource": "actions",
     "method": "list",
@@ -30,6 +31,7 @@
   },
   {
     "operation_id": "Actions V1#Show",
+    "call": "client.v1.actions.show",
     "version": "v1",
     "resource": "actions",
     "method": "show",
@@ -59,6 +61,7 @@
   },
   {
     "operation_id": "Alert Notes V1#Create",
+    "call": "client.v1.alert_notes.create",
     "version": "v1",
     "resource": "alert_notes",
     "method": "create",
@@ -92,6 +95,7 @@
   },
   {
     "operation_id": "Alert Notes V1#Delete",
+    "call": "client.v1.alert_notes.delete",
     "version": "v1",
     "resource": "alert_notes",
     "method": "delete",
@@ -121,6 +125,7 @@
   },
   {
     "operation_id": "Alert Notes V1#List",
+    "call": "client.v1.alert_notes.list",
     "version": "v1",
     "resource": "alert_notes",
     "method": "list",
@@ -151,6 +156,7 @@
   },
   {
     "operation_id": "Alert Notes V1#Show",
+    "call": "client.v1.alert_notes.show",
     "version": "v1",
     "resource": "alert_notes",
     "method": "show",
@@ -180,6 +186,7 @@
   },
   {
     "operation_id": "Alert Notes V1#Update",
+    "call": "client.v1.alert_notes.update",
     "version": "v1",
     "resource": "alert_notes",
     "method": "update",
@@ -214,6 +221,7 @@
   },
   {
     "operation_id": "API Keys V1#Create",
+    "call": "client.v1.api_keys.create",
     "version": "v1",
     "resource": "api_keys",
     "method": "create",
@@ -261,6 +269,7 @@
   },
   {
     "operation_id": "API Keys V1#Delete",
+    "call": "client.v1.api_keys.delete",
     "version": "v1",
     "resource": "api_keys",
     "method": "delete",
@@ -290,6 +299,7 @@
   },
   {
     "operation_id": "API Keys V1#List",
+    "call": "client.v1.api_keys.list",
     "version": "v1",
     "resource": "api_keys",
     "method": "list",
@@ -318,6 +328,7 @@
   },
   {
     "operation_id": "API Keys V1#Rotate",
+    "call": "client.v1.api_keys.rotate",
     "version": "v1",
     "resource": "api_keys",
     "method": "rotate",
@@ -352,6 +363,7 @@
   },
   {
     "operation_id": "API Keys V1#Show",
+    "call": "client.v1.api_keys.show",
     "version": "v1",
     "resource": "api_keys",
     "method": "show",
@@ -381,6 +393,7 @@
   },
   {
     "operation_id": "API Keys V1#Update",
+    "call": "client.v1.api_keys.update",
     "version": "v1",
     "resource": "api_keys",
     "method": "update",
@@ -431,6 +444,7 @@
   },
   {
     "operation_id": "Custom Field Options V1#Create",
+    "call": "client.v1.custom_field_options.create",
     "version": "v1",
     "resource": "custom_field_options",
     "method": "create",
@@ -466,6 +480,7 @@
   },
   {
     "operation_id": "Custom Field Options V1#Delete",
+    "call": "client.v1.custom_field_options.delete",
     "version": "v1",
     "resource": "custom_field_options",
     "method": "delete",
@@ -495,6 +510,7 @@
   },
   {
     "operation_id": "Custom Field Options V1#List",
+    "call": "client.v1.custom_field_options.list",
     "version": "v1",
     "resource": "custom_field_options",
     "method": "list",
@@ -528,6 +544,7 @@
   },
   {
     "operation_id": "Custom Field Options V1#Show",
+    "call": "client.v1.custom_field_options.show",
     "version": "v1",
     "resource": "custom_field_options",
     "method": "show",
@@ -557,6 +574,7 @@
   },
   {
     "operation_id": "Custom Field Options V1#Update",
+    "call": "client.v1.custom_field_options.update",
     "version": "v1",
     "resource": "custom_field_options",
     "method": "update",
@@ -594,6 +612,7 @@
   },
   {
     "operation_id": "Custom Fields V1#Create",
+    "call": "client.v1.custom_fields.create",
     "version": "v1",
     "resource": "custom_fields",
     "method": "create",
@@ -643,6 +662,7 @@
   },
   {
     "operation_id": "Custom Fields V1#Delete",
+    "call": "client.v1.custom_fields.delete",
     "version": "v1",
     "resource": "custom_fields",
     "method": "delete",
@@ -672,6 +692,7 @@
   },
   {
     "operation_id": "Custom Fields V1#List",
+    "call": "client.v1.custom_fields.list",
     "version": "v1",
     "resource": "custom_fields",
     "method": "list",
@@ -697,6 +718,7 @@
   },
   {
     "operation_id": "Custom Fields V1#Show",
+    "call": "client.v1.custom_fields.show",
     "version": "v1",
     "resource": "custom_fields",
     "method": "show",
@@ -726,6 +748,7 @@
   },
   {
     "operation_id": "Custom Fields V1#Update",
+    "call": "client.v1.custom_fields.update",
     "version": "v1",
     "resource": "custom_fields",
     "method": "update",
@@ -775,6 +798,7 @@
   },
   {
     "operation_id": "Incident Attachments V1#Create",
+    "call": "client.v1.incident_attachments.create",
     "version": "v1",
     "resource": "incident_attachments",
     "method": "create",
@@ -813,6 +837,7 @@
   },
   {
     "operation_id": "Incident Attachments V1#Delete",
+    "call": "client.v1.incident_attachments.delete",
     "version": "v1",
     "resource": "incident_attachments",
     "method": "delete",
@@ -842,6 +867,7 @@
   },
   {
     "operation_id": "Incident Attachments V1#List",
+    "call": "client.v1.incident_attachments.list",
     "version": "v1",
     "resource": "incident_attachments",
     "method": "list",
@@ -871,6 +897,7 @@
   },
   {
     "operation_id": "Incident Memberships V1#Create",
+    "call": "client.v1.incident_memberships.create",
     "version": "v1",
     "resource": "incident_memberships",
     "method": "create",
@@ -905,6 +932,7 @@
   },
   {
     "operation_id": "Incident Memberships V1#Revoke",
+    "call": "client.v1.incident_memberships.revoke",
     "version": "v1",
     "resource": "incident_memberships",
     "method": "revoke",
@@ -939,6 +967,7 @@
   },
   {
     "operation_id": "Incident Relationships V1#List",
+    "call": "client.v1.incident_relationships.list",
     "version": "v1",
     "resource": "incident_relationships",
     "method": "list",
@@ -972,6 +1001,7 @@
   },
   {
     "operation_id": "Incident Roles V1#Create",
+    "call": "client.v1.incident_roles.create",
     "version": "v1",
     "resource": "incident_roles",
     "method": "create",
@@ -1015,6 +1045,7 @@
   },
   {
     "operation_id": "Incident Roles V1#Delete",
+    "call": "client.v1.incident_roles.delete",
     "version": "v1",
     "resource": "incident_roles",
     "method": "delete",
@@ -1044,6 +1075,7 @@
   },
   {
     "operation_id": "Incident Roles V1#List",
+    "call": "client.v1.incident_roles.list",
     "version": "v1",
     "resource": "incident_roles",
     "method": "list",
@@ -1069,6 +1101,7 @@
   },
   {
     "operation_id": "Incident Roles V1#Show",
+    "call": "client.v1.incident_roles.show",
     "version": "v1",
     "resource": "incident_roles",
     "method": "show",
@@ -1098,6 +1131,7 @@
   },
   {
     "operation_id": "Incident Roles V1#Update",
+    "call": "client.v1.incident_roles.update",
     "version": "v1",
     "resource": "incident_roles",
     "method": "update",
@@ -1142,6 +1176,7 @@
   },
   {
     "operation_id": "Incident Statuses V1#Create",
+    "call": "client.v1.incident_statuses.create",
     "version": "v1",
     "resource": "incident_statuses",
     "method": "create",
@@ -1180,6 +1215,7 @@
   },
   {
     "operation_id": "Incident Statuses V1#Delete",
+    "call": "client.v1.incident_statuses.delete",
     "version": "v1",
     "resource": "incident_statuses",
     "method": "delete",
@@ -1209,6 +1245,7 @@
   },
   {
     "operation_id": "Incident Statuses V1#List",
+    "call": "client.v1.incident_statuses.list",
     "version": "v1",
     "resource": "incident_statuses",
     "method": "list",
@@ -1234,6 +1271,7 @@
   },
   {
     "operation_id": "Incident Statuses V1#Show",
+    "call": "client.v1.incident_statuses.show",
     "version": "v1",
     "resource": "incident_statuses",
     "method": "show",
@@ -1263,6 +1301,7 @@
   },
   {
     "operation_id": "Incident Statuses V1#Update",
+    "call": "client.v1.incident_statuses.update",
     "version": "v1",
     "resource": "incident_statuses",
     "method": "update",
@@ -1301,6 +1340,7 @@
   },
   {
     "operation_id": "Incident Team Memberships V1#Create",
+    "call": "client.v1.incident_team_memberships.create",
     "version": "v1",
     "resource": "incident_team_memberships",
     "method": "create",
@@ -1335,6 +1375,7 @@
   },
   {
     "operation_id": "Incident Team Memberships V1#Revoke",
+    "call": "client.v1.incident_team_memberships.revoke",
     "version": "v1",
     "resource": "incident_team_memberships",
     "method": "revoke",
@@ -1369,6 +1410,7 @@
   },
   {
     "operation_id": "Incident Templates V1#Create",
+    "call": "client.v1.incident_templates.create",
     "version": "v1",
     "resource": "incident_templates",
     "method": "create",
@@ -1404,6 +1446,7 @@
   },
   {
     "operation_id": "Incident Templates V1#Destroy",
+    "call": "client.v1.incident_templates.destroy",
     "version": "v1",
     "resource": "incident_templates",
     "method": "destroy",
@@ -1433,6 +1476,7 @@
   },
   {
     "operation_id": "Incident Templates V1#List",
+    "call": "client.v1.incident_templates.list",
     "version": "v1",
     "resource": "incident_templates",
     "method": "list",
@@ -1461,6 +1505,7 @@
   },
   {
     "operation_id": "Incident Templates V1#Show",
+    "call": "client.v1.incident_templates.show",
     "version": "v1",
     "resource": "incident_templates",
     "method": "show",
@@ -1490,6 +1535,7 @@
   },
   {
     "operation_id": "Incident Templates V1#Update",
+    "call": "client.v1.incident_templates.update",
     "version": "v1",
     "resource": "incident_templates",
     "method": "update",
@@ -1528,6 +1574,7 @@
   },
   {
     "operation_id": "Incident Templates V1#Validate",
+    "call": "client.v1.incident_templates.validate",
     "version": "v1",
     "resource": "incident_templates",
     "method": "validate",
@@ -1563,6 +1610,7 @@
   },
   {
     "operation_id": "Incident Types V1#List",
+    "call": "client.v1.incident_types.list",
     "version": "v1",
     "resource": "incident_types",
     "method": "list",
@@ -1588,6 +1636,7 @@
   },
   {
     "operation_id": "Incident Types V1#Show",
+    "call": "client.v1.incident_types.show",
     "version": "v1",
     "resource": "incident_types",
     "method": "show",
@@ -1617,6 +1666,7 @@
   },
   {
     "operation_id": "Incidents V1#Create",
+    "call": "client.v1.incidents.create",
     "version": "v1",
     "resource": "incidents",
     "method": "create",
@@ -1660,6 +1710,7 @@
   },
   {
     "operation_id": "Incidents V1#List",
+    "call": "client.v1.incidents.list",
     "version": "v1",
     "resource": "incidents",
     "method": "list",
@@ -1689,6 +1740,7 @@
   },
   {
     "operation_id": "Incidents V1#Show",
+    "call": "client.v1.incidents.show",
     "version": "v1",
     "resource": "incidents",
     "method": "show",
@@ -1718,6 +1770,7 @@
   },
   {
     "operation_id": "IPAllowlists V1#ShowIPAllowlist",
+    "call": "client.v1.ip_allowlists.show_ip_allowlist",
     "version": "v1",
     "resource": "ip_allowlists",
     "method": "show_ip_allowlist",
@@ -1743,6 +1796,7 @@
   },
   {
     "operation_id": "IPAllowlists V1#UpdateIPAllowlist",
+    "call": "client.v1.ip_allowlists.update_ip_allowlist",
     "version": "v1",
     "resource": "ip_allowlists",
     "method": "update_ip_allowlist",
@@ -1782,6 +1836,7 @@
   },
   {
     "operation_id": "MaintenanceWindows V1#Create",
+    "call": "client.v1.maintenance_windows.create",
     "version": "v1",
     "resource": "maintenance_windows",
     "method": "create",
@@ -1839,6 +1894,7 @@
   },
   {
     "operation_id": "MaintenanceWindows V1#Delete",
+    "call": "client.v1.maintenance_windows.delete",
     "version": "v1",
     "resource": "maintenance_windows",
     "method": "delete",
@@ -1869,6 +1925,7 @@
   },
   {
     "operation_id": "MaintenanceWindows V1#List",
+    "call": "client.v1.maintenance_windows.list",
     "version": "v1",
     "resource": "maintenance_windows",
     "method": "list",
@@ -1898,6 +1955,7 @@
   },
   {
     "operation_id": "MaintenanceWindows V1#Show",
+    "call": "client.v1.maintenance_windows.show",
     "version": "v1",
     "resource": "maintenance_windows",
     "method": "show",
@@ -1927,6 +1985,7 @@
   },
   {
     "operation_id": "MaintenanceWindows V1#Update",
+    "call": "client.v1.maintenance_windows.update",
     "version": "v1",
     "resource": "maintenance_windows",
     "method": "update",
@@ -1987,6 +2046,7 @@
   },
   {
     "operation_id": "PostmortemDocuments V1#Attach",
+    "call": "client.v1.postmortem_documents.attach",
     "version": "v1",
     "resource": "postmortem_documents",
     "method": "attach",
@@ -2022,6 +2082,7 @@
   },
   {
     "operation_id": "PostmortemDocuments V1#List",
+    "call": "client.v1.postmortem_documents.list",
     "version": "v1",
     "resource": "postmortem_documents",
     "method": "list",
@@ -2052,6 +2113,7 @@
   },
   {
     "operation_id": "PostmortemDocuments V1#Show",
+    "call": "client.v1.postmortem_documents.show",
     "version": "v1",
     "resource": "postmortem_documents",
     "method": "show",
@@ -2081,6 +2143,7 @@
   },
   {
     "operation_id": "PostmortemDocuments V1#ShowContent",
+    "call": "client.v1.postmortem_documents.show_content",
     "version": "v1",
     "resource": "postmortem_documents",
     "method": "show_content",
@@ -2110,6 +2173,7 @@
   },
   {
     "operation_id": "PostmortemDocuments V1#UpdateStatus",
+    "call": "client.v1.postmortem_documents.update_status",
     "version": "v1",
     "resource": "postmortem_documents",
     "method": "update_status",
@@ -2144,6 +2208,7 @@
   },
   {
     "operation_id": "Severities V1#Create",
+    "call": "client.v1.severities.create",
     "version": "v1",
     "resource": "severities",
     "method": "create",
@@ -2179,6 +2244,7 @@
   },
   {
     "operation_id": "Severities V1#Delete",
+    "call": "client.v1.severities.delete",
     "version": "v1",
     "resource": "severities",
     "method": "delete",
@@ -2208,6 +2274,7 @@
   },
   {
     "operation_id": "Severities V1#List",
+    "call": "client.v1.severities.list",
     "version": "v1",
     "resource": "severities",
     "method": "list",
@@ -2233,6 +2300,7 @@
   },
   {
     "operation_id": "Severities V1#Show",
+    "call": "client.v1.severities.show",
     "version": "v1",
     "resource": "severities",
     "method": "show",
@@ -2262,6 +2330,7 @@
   },
   {
     "operation_id": "Severities V1#Update",
+    "call": "client.v1.severities.update",
     "version": "v1",
     "resource": "severities",
     "method": "update",
@@ -2300,6 +2369,7 @@
   },
   {
     "operation_id": "Status Pages V1#ListResponseIncidents",
+    "call": "client.v1.status_pages.list_response_incidents",
     "version": "v1",
     "resource": "status_pages",
     "method": "list_response_incidents",
@@ -2331,6 +2401,7 @@
   },
   {
     "operation_id": "Utilities V1#Identity",
+    "call": "client.v1.utilities.identity",
     "version": "v1",
     "resource": "utilities",
     "method": "identity",
@@ -2356,6 +2427,7 @@
   },
   {
     "operation_id": "Utilities V1#IPRanges",
+    "call": "client.v1.utilities.ip_ranges",
     "version": "v1",
     "resource": "utilities",
     "method": "ip_ranges",
@@ -2381,6 +2453,7 @@
   },
   {
     "operation_id": "Utilities V1#OpenAPIV3",
+    "call": "client.v1.utilities.openapi_spec",
     "version": "v1",
     "resource": "utilities",
     "method": "openapi_spec",
@@ -2406,6 +2479,7 @@
   },
   {
     "operation_id": "Actions V2#Create",
+    "call": "client.v2.actions.create",
     "version": "v2",
     "resource": "actions",
     "method": "create",
@@ -2441,6 +2515,7 @@
   },
   {
     "operation_id": "Actions V2#Delete",
+    "call": "client.v2.actions.delete",
     "version": "v2",
     "resource": "actions",
     "method": "delete",
@@ -2470,6 +2545,7 @@
   },
   {
     "operation_id": "Actions V2#List",
+    "call": "client.v2.actions.list",
     "version": "v2",
     "resource": "actions",
     "method": "list",
@@ -2498,6 +2574,7 @@
   },
   {
     "operation_id": "Actions V2#Show",
+    "call": "client.v2.actions.show",
     "version": "v2",
     "resource": "actions",
     "method": "show",
@@ -2527,6 +2604,7 @@
   },
   {
     "operation_id": "Actions V2#Update",
+    "call": "client.v2.actions.update",
     "version": "v2",
     "resource": "actions",
     "method": "update",
@@ -2565,6 +2643,7 @@
   },
   {
     "operation_id": "Alert Attributes V2#Create",
+    "call": "client.v2.alert_attributes.create",
     "version": "v2",
     "resource": "alert_attributes",
     "method": "create",
@@ -2604,6 +2683,7 @@
   },
   {
     "operation_id": "Alert Attributes V2#Destroy",
+    "call": "client.v2.alert_attributes.destroy",
     "version": "v2",
     "resource": "alert_attributes",
     "method": "destroy",
@@ -2633,6 +2713,7 @@
   },
   {
     "operation_id": "Alert Attributes V2#List",
+    "call": "client.v2.alert_attributes.list",
     "version": "v2",
     "resource": "alert_attributes",
     "method": "list",
@@ -2658,6 +2739,7 @@
   },
   {
     "operation_id": "Alert Attributes V2#Show",
+    "call": "client.v2.alert_attributes.show",
     "version": "v2",
     "resource": "alert_attributes",
     "method": "show",
@@ -2687,6 +2769,7 @@
   },
   {
     "operation_id": "Alert Attributes V2#Update",
+    "call": "client.v2.alert_attributes.update",
     "version": "v2",
     "resource": "alert_attributes",
     "method": "update",
@@ -2729,6 +2812,7 @@
   },
   {
     "operation_id": "Alert Events V2#CreateHTTP",
+    "call": "client.v2.alert_events.create_http",
     "version": "v2",
     "resource": "alert_events",
     "method": "create_http",
@@ -2772,6 +2856,7 @@
   },
   {
     "operation_id": "Alert Routes V2#Create",
+    "call": "client.v2.alert_routes.create",
     "version": "v2",
     "resource": "alert_routes",
     "method": "create",
@@ -2842,6 +2927,7 @@
   },
   {
     "operation_id": "Alert Routes V2#Delete",
+    "call": "client.v2.alert_routes.delete",
     "version": "v2",
     "resource": "alert_routes",
     "method": "delete",
@@ -2871,6 +2957,7 @@
   },
   {
     "operation_id": "Alert Routes V2#List",
+    "call": "client.v2.alert_routes.list",
     "version": "v2",
     "resource": "alert_routes",
     "method": "list",
@@ -2903,6 +2990,7 @@
   },
   {
     "operation_id": "Alert Routes V2#Show",
+    "call": "client.v2.alert_routes.show",
     "version": "v2",
     "resource": "alert_routes",
     "method": "show",
@@ -2932,6 +3020,7 @@
   },
   {
     "operation_id": "Alert Routes V2#Update",
+    "call": "client.v2.alert_routes.update",
     "version": "v2",
     "resource": "alert_routes",
     "method": "update",
@@ -3008,6 +3097,7 @@
   },
   {
     "operation_id": "Alert Sources V2#Create",
+    "call": "client.v2.alert_sources.create",
     "version": "v2",
     "resource": "alert_sources",
     "method": "create",
@@ -3056,6 +3146,7 @@
   },
   {
     "operation_id": "Alert Sources V2#Delete",
+    "call": "client.v2.alert_sources.delete",
     "version": "v2",
     "resource": "alert_sources",
     "method": "delete",
@@ -3085,6 +3176,7 @@
   },
   {
     "operation_id": "Alert Sources V2#List",
+    "call": "client.v2.alert_sources.list",
     "version": "v2",
     "resource": "alert_sources",
     "method": "list",
@@ -3110,6 +3202,7 @@
   },
   {
     "operation_id": "Alert Sources V2#Show",
+    "call": "client.v2.alert_sources.show",
     "version": "v2",
     "resource": "alert_sources",
     "method": "show",
@@ -3139,6 +3232,7 @@
   },
   {
     "operation_id": "Alert Sources V2#Update",
+    "call": "client.v2.alert_sources.update",
     "version": "v2",
     "resource": "alert_sources",
     "method": "update",
@@ -3188,6 +3282,7 @@
   },
   {
     "operation_id": "Alert Sources V2#Validate",
+    "call": "client.v2.alert_sources.validate",
     "version": "v2",
     "resource": "alert_sources",
     "method": "validate",
@@ -3223,6 +3318,7 @@
   },
   {
     "operation_id": "Alerts V2#AddTags",
+    "call": "client.v2.alerts.add_tags",
     "version": "v2",
     "resource": "alerts",
     "method": "add_tags",
@@ -3259,6 +3355,7 @@
   },
   {
     "operation_id": "Alerts V2#CreateIncidentAlert",
+    "call": "client.v2.alerts.create_incident_alert",
     "version": "v2",
     "resource": "alerts",
     "method": "create_incident_alert",
@@ -3294,6 +3391,7 @@
   },
   {
     "operation_id": "Alerts V2#List",
+    "call": "client.v2.alerts.list",
     "version": "v2",
     "resource": "alerts",
     "method": "list",
@@ -3336,6 +3434,7 @@
   },
   {
     "operation_id": "Alerts V2#ListAlertTags",
+    "call": "client.v2.alerts.list_alert_tags",
     "version": "v2",
     "resource": "alerts",
     "method": "list_alert_tags",
@@ -3365,6 +3464,7 @@
   },
   {
     "operation_id": "Alerts V2#ListIncidentAlerts",
+    "call": "client.v2.alerts.list_incident_alerts",
     "version": "v2",
     "resource": "alerts",
     "method": "list_incident_alerts",
@@ -3399,6 +3499,7 @@
   },
   {
     "operation_id": "Alerts V2#RemoveTags",
+    "call": "client.v2.alerts.remove_tags",
     "version": "v2",
     "resource": "alerts",
     "method": "remove_tags",
@@ -3435,6 +3536,7 @@
   },
   {
     "operation_id": "Alerts V2#Resolve",
+    "call": "client.v2.alerts.resolve",
     "version": "v2",
     "resource": "alerts",
     "method": "resolve",
@@ -3464,6 +3566,7 @@
   },
   {
     "operation_id": "Alerts V2#SetTags",
+    "call": "client.v2.alerts.set_tags",
     "version": "v2",
     "resource": "alerts",
     "method": "set_tags",
@@ -3500,6 +3603,7 @@
   },
   {
     "operation_id": "Alerts V2#Show",
+    "call": "client.v2.alerts.show",
     "version": "v2",
     "resource": "alerts",
     "method": "show",
@@ -3529,6 +3633,7 @@
   },
   {
     "operation_id": "Alerts V2#TransitionIncidentAlert",
+    "call": "client.v2.alerts.transition_incident_alert",
     "version": "v2",
     "resource": "alerts",
     "method": "transition_incident_alert",
@@ -3563,6 +3668,7 @@
   },
   {
     "operation_id": "Announcement Rules V2#Create",
+    "call": "client.v2.announcement_rules.create",
     "version": "v2",
     "resource": "announcement_rules",
     "method": "create",
@@ -3611,6 +3717,7 @@
   },
   {
     "operation_id": "Announcement Rules V2#Destroy",
+    "call": "client.v2.announcement_rules.destroy",
     "version": "v2",
     "resource": "announcement_rules",
     "method": "destroy",
@@ -3640,6 +3747,7 @@
   },
   {
     "operation_id": "Announcement Rules V2#List",
+    "call": "client.v2.announcement_rules.list",
     "version": "v2",
     "resource": "announcement_rules",
     "method": "list",
@@ -3668,6 +3776,7 @@
   },
   {
     "operation_id": "Announcement Rules V2#Show",
+    "call": "client.v2.announcement_rules.show",
     "version": "v2",
     "resource": "announcement_rules",
     "method": "show",
@@ -3697,6 +3806,7 @@
   },
   {
     "operation_id": "Announcement Rules V2#Update",
+    "call": "client.v2.announcement_rules.update",
     "version": "v2",
     "resource": "announcement_rules",
     "method": "update",
@@ -3748,6 +3858,7 @@
   },
   {
     "operation_id": "Announcement Templates V2#Create",
+    "call": "client.v2.announcement_templates.create",
     "version": "v2",
     "resource": "announcement_templates",
     "method": "create",
@@ -3782,6 +3893,7 @@
   },
   {
     "operation_id": "Announcement Templates V2#Destroy",
+    "call": "client.v2.announcement_templates.destroy",
     "version": "v2",
     "resource": "announcement_templates",
     "method": "destroy",
@@ -3811,6 +3923,7 @@
   },
   {
     "operation_id": "Announcement Templates V2#List",
+    "call": "client.v2.announcement_templates.list",
     "version": "v2",
     "resource": "announcement_templates",
     "method": "list",
@@ -3836,6 +3949,7 @@
   },
   {
     "operation_id": "Announcement Templates V2#Show",
+    "call": "client.v2.announcement_templates.show",
     "version": "v2",
     "resource": "announcement_templates",
     "method": "show",
@@ -3865,6 +3979,7 @@
   },
   {
     "operation_id": "Announcement Templates V2#Update",
+    "call": "client.v2.announcement_templates.update",
     "version": "v2",
     "resource": "announcement_templates",
     "method": "update",
@@ -3910,6 +4025,7 @@
   },
   {
     "operation_id": "Call Routes V2#CreateAllowedCaller",
+    "call": "client.v2.call_routes.create_allowed_caller",
     "version": "v2",
     "resource": "call_routes",
     "method": "create_allowed_caller",
@@ -3945,6 +4061,7 @@
   },
   {
     "operation_id": "Call Routes V2#CreateOption",
+    "call": "client.v2.call_routes.create_option",
     "version": "v2",
     "resource": "call_routes",
     "method": "create_option",
@@ -3987,6 +4104,7 @@
   },
   {
     "operation_id": "Call Routes V2#DestroyAllowedCaller",
+    "call": "client.v2.call_routes.destroy_allowed_caller",
     "version": "v2",
     "resource": "call_routes",
     "method": "destroy_allowed_caller",
@@ -4018,6 +4136,7 @@
   },
   {
     "operation_id": "Call Routes V2#DestroyOption",
+    "call": "client.v2.call_routes.destroy_option",
     "version": "v2",
     "resource": "call_routes",
     "method": "destroy_option",
@@ -4049,6 +4168,7 @@
   },
   {
     "operation_id": "Call Routes V2#List",
+    "call": "client.v2.call_routes.list",
     "version": "v2",
     "resource": "call_routes",
     "method": "list",
@@ -4077,6 +4197,7 @@
   },
   {
     "operation_id": "Call Routes V2#ListAllowedCallers",
+    "call": "client.v2.call_routes.list_allowed_callers",
     "version": "v2",
     "resource": "call_routes",
     "method": "list_allowed_callers",
@@ -4106,6 +4227,7 @@
   },
   {
     "operation_id": "Call Routes V2#ListOptions",
+    "call": "client.v2.call_routes.list_options",
     "version": "v2",
     "resource": "call_routes",
     "method": "list_options",
@@ -4135,6 +4257,7 @@
   },
   {
     "operation_id": "Call Routes V2#Show",
+    "call": "client.v2.call_routes.show",
     "version": "v2",
     "resource": "call_routes",
     "method": "show",
@@ -4164,6 +4287,7 @@
   },
   {
     "operation_id": "Call Routes V2#ShowAllowedCaller",
+    "call": "client.v2.call_routes.show_allowed_caller",
     "version": "v2",
     "resource": "call_routes",
     "method": "show_allowed_caller",
@@ -4195,6 +4319,7 @@
   },
   {
     "operation_id": "Call Routes V2#ShowOption",
+    "call": "client.v2.call_routes.show_option",
     "version": "v2",
     "resource": "call_routes",
     "method": "show_option",
@@ -4226,6 +4351,7 @@
   },
   {
     "operation_id": "Call Routes V2#Update",
+    "call": "client.v2.call_routes.update",
     "version": "v2",
     "resource": "call_routes",
     "method": "update",
@@ -4274,6 +4400,7 @@
   },
   {
     "operation_id": "Call Routes V2#UpdateAllowedCaller",
+    "call": "client.v2.call_routes.update_allowed_caller",
     "version": "v2",
     "resource": "call_routes",
     "method": "update_allowed_caller",
@@ -4311,6 +4438,7 @@
   },
   {
     "operation_id": "Call Routes V2#UpdateOption",
+    "call": "client.v2.call_routes.update_option",
     "version": "v2",
     "resource": "call_routes",
     "method": "update_option",
@@ -4355,6 +4483,7 @@
   },
   {
     "operation_id": "Call Sessions V2#List",
+    "call": "client.v2.call_sessions.list",
     "version": "v2",
     "resource": "call_sessions",
     "method": "list",
@@ -4388,6 +4517,7 @@
   },
   {
     "operation_id": "Call Transcript Entries V2#List",
+    "call": "client.v2.call_transcript_entries.list",
     "version": "v2",
     "resource": "call_transcript_entries",
     "method": "list",
@@ -4421,6 +4551,7 @@
   },
   {
     "operation_id": "Catalog V2#CreateEntry",
+    "call": "client.v2.catalog.create_entry",
     "version": "v2",
     "resource": "catalog",
     "method": "create_entry",
@@ -4465,6 +4596,7 @@
   },
   {
     "operation_id": "Catalog V2#CreateType",
+    "call": "client.v2.catalog.create_type",
     "version": "v2",
     "resource": "catalog",
     "method": "create_type",
@@ -4506,6 +4638,7 @@
   },
   {
     "operation_id": "Catalog V2#DestroyEntry",
+    "call": "client.v2.catalog.destroy_entry",
     "version": "v2",
     "resource": "catalog",
     "method": "destroy_entry",
@@ -4535,6 +4668,7 @@
   },
   {
     "operation_id": "Catalog V2#DestroyType",
+    "call": "client.v2.catalog.destroy_type",
     "version": "v2",
     "resource": "catalog",
     "method": "destroy_type",
@@ -4564,6 +4698,7 @@
   },
   {
     "operation_id": "Catalog V2#ListEntries",
+    "call": "client.v2.catalog.list_entries",
     "version": "v2",
     "resource": "catalog",
     "method": "list_entries",
@@ -4597,6 +4732,7 @@
   },
   {
     "operation_id": "Catalog V2#ListResources",
+    "call": "client.v2.catalog.list_resources",
     "version": "v2",
     "resource": "catalog",
     "method": "list_resources",
@@ -4622,6 +4758,7 @@
   },
   {
     "operation_id": "Catalog V2#ListTypes",
+    "call": "client.v2.catalog.list_types",
     "version": "v2",
     "resource": "catalog",
     "method": "list_types",
@@ -4647,6 +4784,7 @@
   },
   {
     "operation_id": "Catalog V2#ShowEntry",
+    "call": "client.v2.catalog.show_entry",
     "version": "v2",
     "resource": "catalog",
     "method": "show_entry",
@@ -4676,6 +4814,7 @@
   },
   {
     "operation_id": "Catalog V2#ShowType",
+    "call": "client.v2.catalog.show_type",
     "version": "v2",
     "resource": "catalog",
     "method": "show_type",
@@ -4705,6 +4844,7 @@
   },
   {
     "operation_id": "Catalog V2#UpdateEntry",
+    "call": "client.v2.catalog.update_entry",
     "version": "v2",
     "resource": "catalog",
     "method": "update_entry",
@@ -4749,6 +4889,7 @@
   },
   {
     "operation_id": "Catalog V2#UpdateType",
+    "call": "client.v2.catalog.update_type",
     "version": "v2",
     "resource": "catalog",
     "method": "update_type",
@@ -4792,6 +4933,7 @@
   },
   {
     "operation_id": "Catalog V2#UpdateTypeSchema",
+    "call": "client.v2.catalog.update_type_schema",
     "version": "v2",
     "resource": "catalog",
     "method": "update_type_schema",
@@ -4831,6 +4973,7 @@
   },
   {
     "operation_id": "Custom Fields V2#Create",
+    "call": "client.v2.custom_fields.create",
     "version": "v2",
     "resource": "custom_fields",
     "method": "create",
@@ -4873,6 +5016,7 @@
   },
   {
     "operation_id": "Custom Fields V2#Delete",
+    "call": "client.v2.custom_fields.delete",
     "version": "v2",
     "resource": "custom_fields",
     "method": "delete",
@@ -4902,6 +5046,7 @@
   },
   {
     "operation_id": "Custom Fields V2#List",
+    "call": "client.v2.custom_fields.list",
     "version": "v2",
     "resource": "custom_fields",
     "method": "list",
@@ -4927,6 +5072,7 @@
   },
   {
     "operation_id": "Custom Fields V2#Show",
+    "call": "client.v2.custom_fields.show",
     "version": "v2",
     "resource": "custom_fields",
     "method": "show",
@@ -4956,6 +5102,7 @@
   },
   {
     "operation_id": "Custom Fields V2#Update",
+    "call": "client.v2.custom_fields.update",
     "version": "v2",
     "resource": "custom_fields",
     "method": "update",
@@ -4997,6 +5144,7 @@
   },
   {
     "operation_id": "Escalation Path Templates V2#Create",
+    "call": "client.v2.escalation_path_templates.create",
     "version": "v2",
     "resource": "escalation_path_templates",
     "method": "create",
@@ -5038,6 +5186,7 @@
   },
   {
     "operation_id": "Escalation Path Templates V2#Destroy",
+    "call": "client.v2.escalation_path_templates.destroy",
     "version": "v2",
     "resource": "escalation_path_templates",
     "method": "destroy",
@@ -5067,6 +5216,7 @@
   },
   {
     "operation_id": "Escalation Path Templates V2#List",
+    "call": "client.v2.escalation_path_templates.list",
     "version": "v2",
     "resource": "escalation_path_templates",
     "method": "list",
@@ -5096,6 +5246,7 @@
   },
   {
     "operation_id": "Escalation Path Templates V2#Show",
+    "call": "client.v2.escalation_path_templates.show",
     "version": "v2",
     "resource": "escalation_path_templates",
     "method": "show",
@@ -5125,6 +5276,7 @@
   },
   {
     "operation_id": "Escalation Path Templates V2#Update",
+    "call": "client.v2.escalation_path_templates.update",
     "version": "v2",
     "resource": "escalation_path_templates",
     "method": "update",
@@ -5169,6 +5321,7 @@
   },
   {
     "operation_id": "Escalations V2#CancelEscalation",
+    "call": "client.v2.escalations.cancel_escalation",
     "version": "v2",
     "resource": "escalations",
     "method": "cancel_escalation",
@@ -5198,6 +5351,7 @@
   },
   {
     "operation_id": "Escalations V2#CheckEscalationPermissions",
+    "call": "client.v2.escalations.check_escalation_permissions",
     "version": "v2",
     "resource": "escalations",
     "method": "check_escalation_permissions",
@@ -5234,6 +5388,7 @@
   },
   {
     "operation_id": "Escalations V2#Create",
+    "call": "client.v2.escalations.create",
     "version": "v2",
     "resource": "escalations",
     "method": "create",
@@ -5270,6 +5425,7 @@
   },
   {
     "operation_id": "Escalations V2#CreatePath",
+    "call": "client.v2.escalations.create_path",
     "version": "v2",
     "resource": "escalations",
     "method": "create_path",
@@ -5312,6 +5468,7 @@
   },
   {
     "operation_id": "Escalations V2#DestroyPath",
+    "call": "client.v2.escalations.destroy_path",
     "version": "v2",
     "resource": "escalations",
     "method": "destroy_path",
@@ -5341,6 +5498,7 @@
   },
   {
     "operation_id": "Escalations V2#List",
+    "call": "client.v2.escalations.list",
     "version": "v2",
     "resource": "escalations",
     "method": "list",
@@ -5376,6 +5534,7 @@
   },
   {
     "operation_id": "Escalations V2#ListPaths",
+    "call": "client.v2.escalations.list_paths",
     "version": "v2",
     "resource": "escalations",
     "method": "list_paths",
@@ -5404,6 +5563,7 @@
   },
   {
     "operation_id": "Escalations V2#ReassignEscalation",
+    "call": "client.v2.escalations.reassign_escalation",
     "version": "v2",
     "resource": "escalations",
     "method": "reassign_escalation",
@@ -5438,6 +5598,7 @@
   },
   {
     "operation_id": "Escalations V2#RespondEscalation",
+    "call": "client.v2.escalations.respond_escalation",
     "version": "v2",
     "resource": "escalations",
     "method": "respond_escalation",
@@ -5473,6 +5634,7 @@
   },
   {
     "operation_id": "Escalations V2#Show",
+    "call": "client.v2.escalations.show",
     "version": "v2",
     "resource": "escalations",
     "method": "show",
@@ -5502,6 +5664,7 @@
   },
   {
     "operation_id": "Escalations V2#ShowPath",
+    "call": "client.v2.escalations.show_path",
     "version": "v2",
     "resource": "escalations",
     "method": "show_path",
@@ -5531,6 +5694,7 @@
   },
   {
     "operation_id": "Escalations V2#UpdatePath",
+    "call": "client.v2.escalations.update_path",
     "version": "v2",
     "resource": "escalations",
     "method": "update_path",
@@ -5576,6 +5740,7 @@
   },
   {
     "operation_id": "Follow-ups V2#ConnectExternalIssue",
+    "call": "client.v2.follow_ups.connect_external_issue",
     "version": "v2",
     "resource": "follow_ups",
     "method": "connect_external_issue",
@@ -5613,6 +5778,7 @@
   },
   {
     "operation_id": "Follow-ups V2#Create",
+    "call": "client.v2.follow_ups.create",
     "version": "v2",
     "resource": "follow_ups",
     "method": "create",
@@ -5654,6 +5820,7 @@
   },
   {
     "operation_id": "Follow-ups V2#Delete",
+    "call": "client.v2.follow_ups.delete",
     "version": "v2",
     "resource": "follow_ups",
     "method": "delete",
@@ -5683,6 +5850,7 @@
   },
   {
     "operation_id": "Follow-ups V2#List",
+    "call": "client.v2.follow_ups.list",
     "version": "v2",
     "resource": "follow_ups",
     "method": "list",
@@ -5712,6 +5880,7 @@
   },
   {
     "operation_id": "Follow-ups V2#Show",
+    "call": "client.v2.follow_ups.show",
     "version": "v2",
     "resource": "follow_ups",
     "method": "show",
@@ -5741,6 +5910,7 @@
   },
   {
     "operation_id": "Follow-ups V2#Update",
+    "call": "client.v2.follow_ups.update",
     "version": "v2",
     "resource": "follow_ups",
     "method": "update",
@@ -5784,6 +5954,7 @@
   },
   {
     "operation_id": "Heartbeat V2#Ping",
+    "call": "client.v2.heartbeat.ping",
     "version": "v2",
     "resource": "heartbeat",
     "method": "ping",
@@ -5814,6 +5985,7 @@
   },
   {
     "operation_id": "Heartbeat V2#Ping#1",
+    "call": "client.v2.heartbeat.ping_with_get",
     "version": "v2",
     "resource": "heartbeat",
     "method": "ping_with_get",
@@ -5844,6 +6016,7 @@
   },
   {
     "operation_id": "Incident Activity Log Entries V2#List",
+    "call": "client.v2.incident_activity_log_entries.list",
     "version": "v2",
     "resource": "incident_activity_log_entries",
     "method": "list",
@@ -5878,6 +6051,7 @@
   },
   {
     "operation_id": "IncidentParticipantWorkloads V2#List",
+    "call": "client.v2.incident_participant_workloads.list",
     "version": "v2",
     "resource": "incident_participant_workloads",
     "method": "list",
@@ -5909,6 +6083,7 @@
   },
   {
     "operation_id": "IncidentParticipants V2#List",
+    "call": "client.v2.incident_participants.list",
     "version": "v2",
     "resource": "incident_participants",
     "method": "list",
@@ -5940,6 +6115,7 @@
   },
   {
     "operation_id": "Incident Roles V2#Create",
+    "call": "client.v2.incident_roles.create",
     "version": "v2",
     "resource": "incident_roles",
     "method": "create",
@@ -5980,6 +6156,7 @@
   },
   {
     "operation_id": "Incident Roles V2#Delete",
+    "call": "client.v2.incident_roles.delete",
     "version": "v2",
     "resource": "incident_roles",
     "method": "delete",
@@ -6009,6 +6186,7 @@
   },
   {
     "operation_id": "Incident Roles V2#List",
+    "call": "client.v2.incident_roles.list",
     "version": "v2",
     "resource": "incident_roles",
     "method": "list",
@@ -6034,6 +6212,7 @@
   },
   {
     "operation_id": "Incident Roles V2#Show",
+    "call": "client.v2.incident_roles.show",
     "version": "v2",
     "resource": "incident_roles",
     "method": "show",
@@ -6063,6 +6242,7 @@
   },
   {
     "operation_id": "Incident Roles V2#Update",
+    "call": "client.v2.incident_roles.update",
     "version": "v2",
     "resource": "incident_roles",
     "method": "update",
@@ -6106,6 +6286,7 @@
   },
   {
     "operation_id": "Incident Timeline Items V2#Create",
+    "call": "client.v2.incident_timeline_items.create",
     "version": "v2",
     "resource": "incident_timeline_items",
     "method": "create",
@@ -6145,6 +6326,7 @@
   },
   {
     "operation_id": "Incident Timeline Items V2#List",
+    "call": "client.v2.incident_timeline_items.list",
     "version": "v2",
     "resource": "incident_timeline_items",
     "method": "list",
@@ -6178,6 +6360,7 @@
   },
   {
     "operation_id": "Incident Timeline Items V2#Update",
+    "call": "client.v2.incident_timeline_items.update",
     "version": "v2",
     "resource": "incident_timeline_items",
     "method": "update",
@@ -6210,6 +6393,7 @@
   },
   {
     "operation_id": "Incident Timestamps V2#List",
+    "call": "client.v2.incident_timestamps.list",
     "version": "v2",
     "resource": "incident_timestamps",
     "method": "list",
@@ -6235,6 +6419,7 @@
   },
   {
     "operation_id": "Incident Timestamps V2#Show",
+    "call": "client.v2.incident_timestamps.show",
     "version": "v2",
     "resource": "incident_timestamps",
     "method": "show",
@@ -6264,6 +6449,7 @@
   },
   {
     "operation_id": "Incident Updates V2#Create",
+    "call": "client.v2.incident_updates.create",
     "version": "v2",
     "resource": "incident_updates",
     "method": "create",
@@ -6299,6 +6485,7 @@
   },
   {
     "operation_id": "Incident Updates V2#List",
+    "call": "client.v2.incident_updates.list",
     "version": "v2",
     "resource": "incident_updates",
     "method": "list",
@@ -6328,6 +6515,7 @@
   },
   {
     "operation_id": "Incidents V2#Create",
+    "call": "client.v2.incidents.create",
     "version": "v2",
     "resource": "incidents",
     "method": "create",
@@ -6372,6 +6560,7 @@
   },
   {
     "operation_id": "Incidents V2#Edit",
+    "call": "client.v2.incidents.edit",
     "version": "v2",
     "resource": "incidents",
     "method": "edit",
@@ -6409,6 +6598,7 @@
   },
   {
     "operation_id": "Incidents V2#ImportPostmortemDocument",
+    "call": "client.v2.incidents.import_postmortem_document",
     "version": "v2",
     "resource": "incidents",
     "method": "import_postmortem_document",
@@ -6446,6 +6636,7 @@
   },
   {
     "operation_id": "Incidents V2#List",
+    "call": "client.v2.incidents.list",
     "version": "v2",
     "resource": "incidents",
     "method": "list",
@@ -6485,6 +6676,7 @@
   },
   {
     "operation_id": "Incidents V2#Show",
+    "call": "client.v2.incidents.show",
     "version": "v2",
     "resource": "incidents",
     "method": "show",
@@ -6514,6 +6706,7 @@
   },
   {
     "operation_id": "Pay Configs V2#Create",
+    "call": "client.v2.pay_configs.create",
     "version": "v2",
     "resource": "pay_configs",
     "method": "create",
@@ -6559,6 +6752,7 @@
   },
   {
     "operation_id": "Pay Configs V2#CreateOneOffRule",
+    "call": "client.v2.pay_configs.create_one_off_rule",
     "version": "v2",
     "resource": "pay_configs",
     "method": "create_one_off_rule",
@@ -6602,6 +6796,7 @@
   },
   {
     "operation_id": "Pay Configs V2#CreateWeeklyRule",
+    "call": "client.v2.pay_configs.create_weekly_rule",
     "version": "v2",
     "resource": "pay_configs",
     "method": "create_weekly_rule",
@@ -6647,6 +6842,7 @@
   },
   {
     "operation_id": "Pay Configs V2#Destroy",
+    "call": "client.v2.pay_configs.destroy",
     "version": "v2",
     "resource": "pay_configs",
     "method": "destroy",
@@ -6676,6 +6872,7 @@
   },
   {
     "operation_id": "Pay Configs V2#DestroyOneOffRule",
+    "call": "client.v2.pay_configs.destroy_one_off_rule",
     "version": "v2",
     "resource": "pay_configs",
     "method": "destroy_one_off_rule",
@@ -6707,6 +6904,7 @@
   },
   {
     "operation_id": "Pay Configs V2#DestroyWeeklyRule",
+    "call": "client.v2.pay_configs.destroy_weekly_rule",
     "version": "v2",
     "resource": "pay_configs",
     "method": "destroy_weekly_rule",
@@ -6738,6 +6936,7 @@
   },
   {
     "operation_id": "Pay Configs V2#List",
+    "call": "client.v2.pay_configs.list",
     "version": "v2",
     "resource": "pay_configs",
     "method": "list",
@@ -6766,6 +6965,7 @@
   },
   {
     "operation_id": "Pay Configs V2#ListOneOffRules",
+    "call": "client.v2.pay_configs.list_one_off_rules",
     "version": "v2",
     "resource": "pay_configs",
     "method": "list_one_off_rules",
@@ -6795,6 +6995,7 @@
   },
   {
     "operation_id": "Pay Configs V2#ListWeeklyRules",
+    "call": "client.v2.pay_configs.list_weekly_rules",
     "version": "v2",
     "resource": "pay_configs",
     "method": "list_weekly_rules",
@@ -6824,6 +7025,7 @@
   },
   {
     "operation_id": "Pay Configs V2#Show",
+    "call": "client.v2.pay_configs.show",
     "version": "v2",
     "resource": "pay_configs",
     "method": "show",
@@ -6853,6 +7055,7 @@
   },
   {
     "operation_id": "Pay Configs V2#ShowOneOffRule",
+    "call": "client.v2.pay_configs.show_one_off_rule",
     "version": "v2",
     "resource": "pay_configs",
     "method": "show_one_off_rule",
@@ -6884,6 +7087,7 @@
   },
   {
     "operation_id": "Pay Configs V2#ShowWeeklyRule",
+    "call": "client.v2.pay_configs.show_weekly_rule",
     "version": "v2",
     "resource": "pay_configs",
     "method": "show_weekly_rule",
@@ -6915,6 +7119,7 @@
   },
   {
     "operation_id": "Pay Configs V2#Update",
+    "call": "client.v2.pay_configs.update",
     "version": "v2",
     "resource": "pay_configs",
     "method": "update",
@@ -6961,6 +7166,7 @@
   },
   {
     "operation_id": "Pay Configs V2#UpdateOneOffRule",
+    "call": "client.v2.pay_configs.update_one_off_rule",
     "version": "v2",
     "resource": "pay_configs",
     "method": "update_one_off_rule",
@@ -7006,6 +7212,7 @@
   },
   {
     "operation_id": "Pay Configs V2#UpdateWeeklyRule",
+    "call": "client.v2.pay_configs.update_weekly_rule",
     "version": "v2",
     "resource": "pay_configs",
     "method": "update_weekly_rule",
@@ -7053,6 +7260,7 @@
   },
   {
     "operation_id": "Pay Reports V2#Create",
+    "call": "client.v2.pay_reports.create",
     "version": "v2",
     "resource": "pay_reports",
     "method": "create",
@@ -7100,6 +7308,7 @@
   },
   {
     "operation_id": "Pay Reports V2#Destroy",
+    "call": "client.v2.pay_reports.destroy",
     "version": "v2",
     "resource": "pay_reports",
     "method": "destroy",
@@ -7129,6 +7338,7 @@
   },
   {
     "operation_id": "Pay Reports V2#Download",
+    "call": "client.v2.pay_reports.download",
     "version": "v2",
     "resource": "pay_reports",
     "method": "download",
@@ -7158,6 +7368,7 @@
   },
   {
     "operation_id": "Pay Reports V2#List",
+    "call": "client.v2.pay_reports.list",
     "version": "v2",
     "resource": "pay_reports",
     "method": "list",
@@ -7186,6 +7397,7 @@
   },
   {
     "operation_id": "Pay Reports V2#Publish",
+    "call": "client.v2.pay_reports.publish",
     "version": "v2",
     "resource": "pay_reports",
     "method": "publish",
@@ -7225,6 +7437,7 @@
   },
   {
     "operation_id": "Pay Reports V2#Show",
+    "call": "client.v2.pay_reports.show",
     "version": "v2",
     "resource": "pay_reports",
     "method": "show",
@@ -7254,6 +7467,7 @@
   },
   {
     "operation_id": "Pay Reports V2#Unpublish",
+    "call": "client.v2.pay_reports.unpublish",
     "version": "v2",
     "resource": "pay_reports",
     "method": "unpublish",
@@ -7288,6 +7502,7 @@
   },
   {
     "operation_id": "Policies V2#Create",
+    "call": "client.v2.policies.create",
     "version": "v2",
     "resource": "policies",
     "method": "create",
@@ -7338,6 +7553,7 @@
   },
   {
     "operation_id": "Policies V2#Delete",
+    "call": "client.v2.policies.delete",
     "version": "v2",
     "resource": "policies",
     "method": "delete",
@@ -7367,6 +7583,7 @@
   },
   {
     "operation_id": "Policies V2#List",
+    "call": "client.v2.policies.list",
     "version": "v2",
     "resource": "policies",
     "method": "list",
@@ -7396,6 +7613,7 @@
   },
   {
     "operation_id": "Policies V2#Show",
+    "call": "client.v2.policies.show",
     "version": "v2",
     "resource": "policies",
     "method": "show",
@@ -7425,6 +7643,7 @@
   },
   {
     "operation_id": "Policies V2#Update",
+    "call": "client.v2.policies.update",
     "version": "v2",
     "resource": "policies",
     "method": "update",
@@ -7478,6 +7697,7 @@
   },
   {
     "operation_id": "Policy Findings V2#Dismiss",
+    "call": "client.v2.policy_findings.dismiss",
     "version": "v2",
     "resource": "policy_findings",
     "method": "dismiss",
@@ -7512,6 +7732,7 @@
   },
   {
     "operation_id": "Policy Findings V2#List",
+    "call": "client.v2.policy_findings.list",
     "version": "v2",
     "resource": "policy_findings",
     "method": "list",
@@ -7541,6 +7762,7 @@
   },
   {
     "operation_id": "Policy Findings V2#Restore",
+    "call": "client.v2.policy_findings.restore",
     "version": "v2",
     "resource": "policy_findings",
     "method": "restore",
@@ -7570,6 +7792,7 @@
   },
   {
     "operation_id": "Policy Findings V2#Show",
+    "call": "client.v2.policy_findings.show",
     "version": "v2",
     "resource": "policy_findings",
     "method": "show",
@@ -7599,6 +7822,7 @@
   },
   {
     "operation_id": "Schedule Sync Targets V2#Create",
+    "call": "client.v2.schedule_sync_targets.create",
     "version": "v2",
     "resource": "schedule_sync_targets",
     "method": "create",
@@ -7630,6 +7854,7 @@
   },
   {
     "operation_id": "Schedule Sync Targets V2#Destroy",
+    "call": "client.v2.schedule_sync_targets.destroy",
     "version": "v2",
     "resource": "schedule_sync_targets",
     "method": "destroy",
@@ -7659,6 +7884,7 @@
   },
   {
     "operation_id": "Schedule Sync Targets V2#List",
+    "call": "client.v2.schedule_sync_targets.list",
     "version": "v2",
     "resource": "schedule_sync_targets",
     "method": "list",
@@ -7687,6 +7913,7 @@
   },
   {
     "operation_id": "Schedule Sync Targets V2#Show",
+    "call": "client.v2.schedule_sync_targets.show",
     "version": "v2",
     "resource": "schedule_sync_targets",
     "method": "show",
@@ -7716,6 +7943,7 @@
   },
   {
     "operation_id": "Schedule Sync Targets V2#Update",
+    "call": "client.v2.schedule_sync_targets.update",
     "version": "v2",
     "resource": "schedule_sync_targets",
     "method": "update",
@@ -7751,6 +7979,7 @@
   },
   {
     "operation_id": "Schedules V2#Create",
+    "call": "client.v2.schedules.create",
     "version": "v2",
     "resource": "schedules",
     "method": "create",
@@ -7782,6 +8011,7 @@
   },
   {
     "operation_id": "Schedules V2#CreateOverride",
+    "call": "client.v2.schedules.create_override",
     "version": "v2",
     "resource": "schedules",
     "method": "create_override",
@@ -7828,6 +8058,7 @@
   },
   {
     "operation_id": "Schedules V2#CreateScheduleReplica",
+    "call": "client.v2.schedules.create_schedule_replica",
     "version": "v2",
     "resource": "schedules",
     "method": "create_schedule_replica",
@@ -7862,6 +8093,7 @@
   },
   {
     "operation_id": "Schedules V2#CreateScheduleSyncRule",
+    "call": "client.v2.schedules.create_schedule_sync_rule",
     "version": "v2",
     "resource": "schedules",
     "method": "create_schedule_sync_rule",
@@ -7896,6 +8128,7 @@
   },
   {
     "operation_id": "Schedules V2#Destroy",
+    "call": "client.v2.schedules.destroy",
     "version": "v2",
     "resource": "schedules",
     "method": "destroy",
@@ -7925,6 +8158,7 @@
   },
   {
     "operation_id": "Schedules V2#DestroyOverride",
+    "call": "client.v2.schedules.destroy_override",
     "version": "v2",
     "resource": "schedules",
     "method": "destroy_override",
@@ -7954,6 +8188,7 @@
   },
   {
     "operation_id": "Schedules V2#DestroyScheduleReplica",
+    "call": "client.v2.schedules.destroy_schedule_replica",
     "version": "v2",
     "resource": "schedules",
     "method": "destroy_schedule_replica",
@@ -7985,6 +8220,7 @@
   },
   {
     "operation_id": "Schedules V2#DestroyScheduleSyncRule",
+    "call": "client.v2.schedules.destroy_schedule_sync_rule",
     "version": "v2",
     "resource": "schedules",
     "method": "destroy_schedule_sync_rule",
@@ -8016,6 +8252,7 @@
   },
   {
     "operation_id": "Schedules V2#List",
+    "call": "client.v2.schedules.list",
     "version": "v2",
     "resource": "schedules",
     "method": "list",
@@ -8044,6 +8281,7 @@
   },
   {
     "operation_id": "Schedules V2#ListOverrides",
+    "call": "client.v2.schedules.list_overrides",
     "version": "v2",
     "resource": "schedules",
     "method": "list_overrides",
@@ -8079,6 +8317,7 @@
   },
   {
     "operation_id": "Schedules V2#ListScheduleEntries",
+    "call": "client.v2.schedules.list_schedule_entries",
     "version": "v2",
     "resource": "schedules",
     "method": "list_schedule_entries",
@@ -8112,6 +8351,7 @@
   },
   {
     "operation_id": "Schedules V2#ListScheduleReplicas",
+    "call": "client.v2.schedules.list_schedule_replicas",
     "version": "v2",
     "resource": "schedules",
     "method": "list_schedule_replicas",
@@ -8141,6 +8381,7 @@
   },
   {
     "operation_id": "Schedules V2#ListScheduleSyncRules",
+    "call": "client.v2.schedules.list_schedule_sync_rules",
     "version": "v2",
     "resource": "schedules",
     "method": "list_schedule_sync_rules",
@@ -8172,6 +8413,7 @@
   },
   {
     "operation_id": "Schedules V2#PreviewScheduleEntries",
+    "call": "client.v2.schedules.preview_schedule_entries",
     "version": "v2",
     "resource": "schedules",
     "method": "preview_schedule_entries",
@@ -8208,6 +8450,7 @@
   },
   {
     "operation_id": "Schedules V2#Show",
+    "call": "client.v2.schedules.show",
     "version": "v2",
     "resource": "schedules",
     "method": "show",
@@ -8237,6 +8480,7 @@
   },
   {
     "operation_id": "Schedules V2#ShowOverride",
+    "call": "client.v2.schedules.show_override",
     "version": "v2",
     "resource": "schedules",
     "method": "show_override",
@@ -8266,6 +8510,7 @@
   },
   {
     "operation_id": "Schedules V2#ShowScheduleReplica",
+    "call": "client.v2.schedules.show_schedule_replica",
     "version": "v2",
     "resource": "schedules",
     "method": "show_schedule_replica",
@@ -8297,6 +8542,7 @@
   },
   {
     "operation_id": "Schedules V2#ShowScheduleSyncRule",
+    "call": "client.v2.schedules.show_schedule_sync_rule",
     "version": "v2",
     "resource": "schedules",
     "method": "show_schedule_sync_rule",
@@ -8328,6 +8574,7 @@
   },
   {
     "operation_id": "Schedules V2#Update",
+    "call": "client.v2.schedules.update",
     "version": "v2",
     "resource": "schedules",
     "method": "update",
@@ -8362,6 +8609,7 @@
   },
   {
     "operation_id": "Schedules V2#UpdateOverride",
+    "call": "client.v2.schedules.update_override",
     "version": "v2",
     "resource": "schedules",
     "method": "update_override",
@@ -8408,6 +8656,7 @@
   },
   {
     "operation_id": "Schedules V2#UpdateScheduleSyncRule",
+    "call": "client.v2.schedules.update_schedule_sync_rule",
     "version": "v2",
     "resource": "schedules",
     "method": "update_schedule_sync_rule",
@@ -8446,6 +8695,7 @@
   },
   {
     "operation_id": "Secrets V2#Create",
+    "call": "client.v2.secrets.create",
     "version": "v2",
     "resource": "secrets",
     "method": "create",
@@ -8482,6 +8732,7 @@
   },
   {
     "operation_id": "Secrets V2#Destroy",
+    "call": "client.v2.secrets.destroy",
     "version": "v2",
     "resource": "secrets",
     "method": "destroy",
@@ -8511,6 +8762,7 @@
   },
   {
     "operation_id": "Secrets V2#List",
+    "call": "client.v2.secrets.list",
     "version": "v2",
     "resource": "secrets",
     "method": "list",
@@ -8540,6 +8792,7 @@
   },
   {
     "operation_id": "Secrets V2#Rotate",
+    "call": "client.v2.secrets.rotate",
     "version": "v2",
     "resource": "secrets",
     "method": "rotate",
@@ -8574,6 +8827,7 @@
   },
   {
     "operation_id": "Secrets V2#Show",
+    "call": "client.v2.secrets.show",
     "version": "v2",
     "resource": "secrets",
     "method": "show",
@@ -8603,6 +8857,7 @@
   },
   {
     "operation_id": "Secrets V2#Update",
+    "call": "client.v2.secrets.update",
     "version": "v2",
     "resource": "secrets",
     "method": "update",
@@ -8639,6 +8894,7 @@
   },
   {
     "operation_id": "Status Pages V2#CreateStatusPageIncident",
+    "call": "client.v2.status_pages.create_status_page_incident",
     "version": "v2",
     "resource": "status_pages",
     "method": "create_status_page_incident",
@@ -8684,6 +8940,7 @@
   },
   {
     "operation_id": "Status Pages V2#CreateStatusPageIncidentUpdate",
+    "call": "client.v2.status_pages.create_status_page_incident_update",
     "version": "v2",
     "resource": "status_pages",
     "method": "create_status_page_incident_update",
@@ -8723,6 +8980,7 @@
   },
   {
     "operation_id": "Status Pages V2#CreateStatusPageMaintenance",
+    "call": "client.v2.status_pages.create_status_page_maintenance",
     "version": "v2",
     "resource": "status_pages",
     "method": "create_status_page_maintenance",
@@ -8779,6 +9037,7 @@
   },
   {
     "operation_id": "Status Pages V2#CreateStatusPageMaintenanceUpdate",
+    "call": "client.v2.status_pages.create_status_page_maintenance_update",
     "version": "v2",
     "resource": "status_pages",
     "method": "create_status_page_maintenance_update",
@@ -8818,6 +9077,7 @@
   },
   {
     "operation_id": "Status Pages V2#CreateStatusPageRetrospectiveIncident",
+    "call": "client.v2.status_pages.create_status_page_retrospective_incident",
     "version": "v2",
     "resource": "status_pages",
     "method": "create_status_page_retrospective_incident",
@@ -8858,6 +9118,7 @@
   },
   {
     "operation_id": "Status Pages V2#DeleteStatusPageMaintenance",
+    "call": "client.v2.status_pages.delete_status_page_maintenance",
     "version": "v2",
     "resource": "status_pages",
     "method": "delete_status_page_maintenance",
@@ -8887,6 +9148,7 @@
   },
   {
     "operation_id": "Status Pages V2#ListStatusPageIncidents",
+    "call": "client.v2.status_pages.list_status_page_incidents",
     "version": "v2",
     "resource": "status_pages",
     "method": "list_status_page_incidents",
@@ -8925,6 +9187,7 @@
   },
   {
     "operation_id": "Status Pages V2#ListStatusPageMaintenances",
+    "call": "client.v2.status_pages.list_status_page_maintenances",
     "version": "v2",
     "resource": "status_pages",
     "method": "list_status_page_maintenances",
@@ -8963,6 +9226,7 @@
   },
   {
     "operation_id": "Status Pages V2#ListStatusPages",
+    "call": "client.v2.status_pages.list_status_pages",
     "version": "v2",
     "resource": "status_pages",
     "method": "list_status_pages",
@@ -8991,6 +9255,7 @@
   },
   {
     "operation_id": "Status Pages V2#ShowStatusPage",
+    "call": "client.v2.status_pages.show_status_page",
     "version": "v2",
     "resource": "status_pages",
     "method": "show_status_page",
@@ -9020,6 +9285,7 @@
   },
   {
     "operation_id": "Status Pages V2#ShowStatusPageComponentAvailability",
+    "call": "client.v2.status_pages.show_status_page_component_availability",
     "version": "v2",
     "resource": "status_pages",
     "method": "show_status_page_component_availability",
@@ -9059,6 +9325,7 @@
   },
   {
     "operation_id": "Status Pages V2#ShowStatusPageIncident",
+    "call": "client.v2.status_pages.show_status_page_incident",
     "version": "v2",
     "resource": "status_pages",
     "method": "show_status_page_incident",
@@ -9088,6 +9355,7 @@
   },
   {
     "operation_id": "Status Pages V2#ShowStatusPageMaintenance",
+    "call": "client.v2.status_pages.show_status_page_maintenance",
     "version": "v2",
     "resource": "status_pages",
     "method": "show_status_page_maintenance",
@@ -9117,6 +9385,7 @@
   },
   {
     "operation_id": "Status Pages V2#ShowStatusPageStructure",
+    "call": "client.v2.status_pages.show_status_page_structure",
     "version": "v2",
     "resource": "status_pages",
     "method": "show_status_page_structure",
@@ -9146,6 +9415,7 @@
   },
   {
     "operation_id": "Status Pages V2#UpdateStatusPageIncident",
+    "call": "client.v2.status_pages.update_status_page_incident",
     "version": "v2",
     "resource": "status_pages",
     "method": "update_status_page_incident",
@@ -9180,6 +9450,7 @@
   },
   {
     "operation_id": "Status Pages V2#UpdateStatusPageMaintenance",
+    "call": "client.v2.status_pages.update_status_page_maintenance",
     "version": "v2",
     "resource": "status_pages",
     "method": "update_status_page_maintenance",
@@ -9220,6 +9491,7 @@
   },
   {
     "operation_id": "Telemetry V2#UpdateDataSource",
+    "call": "client.v2.telemetry.update_data_source",
     "version": "v2",
     "resource": "telemetry",
     "method": "update_data_source",
@@ -9252,6 +9524,7 @@
   },
   {
     "operation_id": "Users V2#List",
+    "call": "client.v2.users.list",
     "version": "v2",
     "resource": "users",
     "method": "list",
@@ -9283,6 +9556,7 @@
   },
   {
     "operation_id": "Users V2#ListNotificationMethods",
+    "call": "client.v2.users.list_notification_methods",
     "version": "v2",
     "resource": "users",
     "method": "list_notification_methods",
@@ -9312,6 +9586,7 @@
   },
   {
     "operation_id": "Users V2#ListNotificationRules",
+    "call": "client.v2.users.list_notification_rules",
     "version": "v2",
     "resource": "users",
     "method": "list_notification_rules",
@@ -9341,6 +9616,7 @@
   },
   {
     "operation_id": "Users V2#Show",
+    "call": "client.v2.users.show",
     "version": "v2",
     "resource": "users",
     "method": "show",
@@ -9370,6 +9646,7 @@
   },
   {
     "operation_id": "Users V2#ShowPagingProvider",
+    "call": "client.v2.users.show_paging_provider",
     "version": "v2",
     "resource": "users",
     "method": "show_paging_provider",
@@ -9399,6 +9676,7 @@
   },
   {
     "operation_id": "Users V2#UpdatePagingProvider",
+    "call": "client.v2.users.update_paging_provider",
     "version": "v2",
     "resource": "users",
     "method": "update_paging_provider",
@@ -9433,6 +9711,7 @@
   },
   {
     "operation_id": "WorkflowRuns V2#List",
+    "call": "client.v2.workflow_runs.list",
     "version": "v2",
     "resource": "workflow_runs",
     "method": "list",
@@ -9464,6 +9743,7 @@
   },
   {
     "operation_id": "WorkflowRuns V2#Show",
+    "call": "client.v2.workflow_runs.show",
     "version": "v2",
     "resource": "workflow_runs",
     "method": "show",
@@ -9493,6 +9773,7 @@
   },
   {
     "operation_id": "Workflows V2#CreateWorkflow",
+    "call": "client.v2.workflows.create_workflow",
     "version": "v2",
     "resource": "workflows",
     "method": "create_workflow",
@@ -9568,6 +9849,7 @@
   },
   {
     "operation_id": "Workflows V2#DestroyWorkflow",
+    "call": "client.v2.workflows.destroy_workflow",
     "version": "v2",
     "resource": "workflows",
     "method": "destroy_workflow",
@@ -9597,6 +9879,7 @@
   },
   {
     "operation_id": "Workflows V2#ListWorkflows",
+    "call": "client.v2.workflows.list_workflows",
     "version": "v2",
     "resource": "workflows",
     "method": "list_workflows",
@@ -9622,6 +9905,7 @@
   },
   {
     "operation_id": "Workflows V2#ShowWorkflow",
+    "call": "client.v2.workflows.show_workflow",
     "version": "v2",
     "resource": "workflows",
     "method": "show_workflow",
@@ -9652,6 +9936,7 @@
   },
   {
     "operation_id": "Workflows V2#UpdateWorkflow",
+    "call": "client.v2.workflows.update_workflow",
     "version": "v2",
     "resource": "workflows",
     "method": "update_workflow",
@@ -9728,6 +10013,7 @@
   },
   {
     "operation_id": "Actions V3#Create",
+    "call": "client.v3.actions.create",
     "version": "v3",
     "resource": "actions",
     "method": "create",
@@ -9763,6 +10049,7 @@
   },
   {
     "operation_id": "Actions V3#Delete",
+    "call": "client.v3.actions.delete",
     "version": "v3",
     "resource": "actions",
     "method": "delete",
@@ -9792,6 +10079,7 @@
   },
   {
     "operation_id": "Actions V3#List",
+    "call": "client.v3.actions.list",
     "version": "v3",
     "resource": "actions",
     "method": "list",
@@ -9824,6 +10112,7 @@
   },
   {
     "operation_id": "Actions V3#Show",
+    "call": "client.v3.actions.show",
     "version": "v3",
     "resource": "actions",
     "method": "show",
@@ -9853,6 +10142,7 @@
   },
   {
     "operation_id": "Actions V3#Update",
+    "call": "client.v3.actions.update",
     "version": "v3",
     "resource": "actions",
     "method": "update",
@@ -9891,6 +10181,7 @@
   },
   {
     "operation_id": "Alert Routes V3#Create",
+    "call": "client.v3.alert_routes.create",
     "version": "v3",
     "resource": "alert_routes",
     "method": "create",
@@ -9956,6 +10247,7 @@
   },
   {
     "operation_id": "Alert Routes V3#Delete",
+    "call": "client.v3.alert_routes.delete",
     "version": "v3",
     "resource": "alert_routes",
     "method": "delete",
@@ -9985,6 +10277,7 @@
   },
   {
     "operation_id": "Alert Routes V3#List",
+    "call": "client.v3.alert_routes.list",
     "version": "v3",
     "resource": "alert_routes",
     "method": "list",
@@ -10013,6 +10306,7 @@
   },
   {
     "operation_id": "Alert Routes V3#Show",
+    "call": "client.v3.alert_routes.show",
     "version": "v3",
     "resource": "alert_routes",
     "method": "show",
@@ -10042,6 +10336,7 @@
   },
   {
     "operation_id": "Alert Routes V3#Update",
+    "call": "client.v3.alert_routes.update",
     "version": "v3",
     "resource": "alert_routes",
     "method": "update",
@@ -10113,6 +10408,7 @@
   },
   {
     "operation_id": "Catalog V3#BulkUpdateEntries",
+    "call": "client.v3.catalog.bulk_update_entries",
     "version": "v3",
     "resource": "catalog",
     "method": "bulk_update_entries",
@@ -10150,6 +10446,7 @@
   },
   {
     "operation_id": "Catalog V3#CreateEntry",
+    "call": "client.v3.catalog.create_entry",
     "version": "v3",
     "resource": "catalog",
     "method": "create_entry",
@@ -10194,6 +10491,7 @@
   },
   {
     "operation_id": "Catalog V3#CreateType",
+    "call": "client.v3.catalog.create_type",
     "version": "v3",
     "resource": "catalog",
     "method": "create_type",
@@ -10237,6 +10535,7 @@
   },
   {
     "operation_id": "Catalog V3#DestroyEntry",
+    "call": "client.v3.catalog.destroy_entry",
     "version": "v3",
     "resource": "catalog",
     "method": "destroy_entry",
@@ -10266,6 +10565,7 @@
   },
   {
     "operation_id": "Catalog V3#DestroyType",
+    "call": "client.v3.catalog.destroy_type",
     "version": "v3",
     "resource": "catalog",
     "method": "destroy_type",
@@ -10295,6 +10595,7 @@
   },
   {
     "operation_id": "Catalog V3#ListEntries",
+    "call": "client.v3.catalog.list_entries",
     "version": "v3",
     "resource": "catalog",
     "method": "list_entries",
@@ -10331,6 +10632,7 @@
   },
   {
     "operation_id": "Catalog V3#ListResources",
+    "call": "client.v3.catalog.list_resources",
     "version": "v3",
     "resource": "catalog",
     "method": "list_resources",
@@ -10356,6 +10658,7 @@
   },
   {
     "operation_id": "Catalog V3#ListTypes",
+    "call": "client.v3.catalog.list_types",
     "version": "v3",
     "resource": "catalog",
     "method": "list_types",
@@ -10381,6 +10684,7 @@
   },
   {
     "operation_id": "Catalog V3#ShowEntry",
+    "call": "client.v3.catalog.show_entry",
     "version": "v3",
     "resource": "catalog",
     "method": "show_entry",
@@ -10411,6 +10715,7 @@
   },
   {
     "operation_id": "Catalog V3#ShowType",
+    "call": "client.v3.catalog.show_type",
     "version": "v3",
     "resource": "catalog",
     "method": "show_type",
@@ -10440,6 +10745,7 @@
   },
   {
     "operation_id": "Catalog V3#UpdateEntry",
+    "call": "client.v3.catalog.update_entry",
     "version": "v3",
     "resource": "catalog",
     "method": "update_entry",
@@ -10485,6 +10791,7 @@
   },
   {
     "operation_id": "Catalog V3#UpdateType",
+    "call": "client.v3.catalog.update_type",
     "version": "v3",
     "resource": "catalog",
     "method": "update_type",
@@ -10530,6 +10837,7 @@
   },
   {
     "operation_id": "Catalog V3#UpdateTypeSchema",
+    "call": "client.v3.catalog.update_type_schema",
     "version": "v3",
     "resource": "catalog",
     "method": "update_type_schema",
@@ -10569,6 +10877,7 @@
   },
   {
     "operation_id": "Follow-ups V3#ConnectExternalIssue",
+    "call": "client.v3.follow_ups.connect_external_issue",
     "version": "v3",
     "resource": "follow_ups",
     "method": "connect_external_issue",
@@ -10606,6 +10915,7 @@
   },
   {
     "operation_id": "Follow-ups V3#Create",
+    "call": "client.v3.follow_ups.create",
     "version": "v3",
     "resource": "follow_ups",
     "method": "create",
@@ -10647,6 +10957,7 @@
   },
   {
     "operation_id": "Follow-ups V3#CreateFromLink",
+    "call": "client.v3.follow_ups.create_from_link",
     "version": "v3",
     "resource": "follow_ups",
     "method": "create_from_link",
@@ -10681,6 +10992,7 @@
   },
   {
     "operation_id": "Follow-ups V3#Delete",
+    "call": "client.v3.follow_ups.delete",
     "version": "v3",
     "resource": "follow_ups",
     "method": "delete",
@@ -10710,6 +11022,7 @@
   },
   {
     "operation_id": "Follow-ups V3#List",
+    "call": "client.v3.follow_ups.list",
     "version": "v3",
     "resource": "follow_ups",
     "method": "list",
@@ -10743,6 +11056,7 @@
   },
   {
     "operation_id": "Follow-ups V3#Show",
+    "call": "client.v3.follow_ups.show",
     "version": "v3",
     "resource": "follow_ups",
     "method": "show",
@@ -10772,6 +11086,7 @@
   },
   {
     "operation_id": "Follow-ups V3#Update",
+    "call": "client.v3.follow_ups.update",
     "version": "v3",
     "resource": "follow_ups",
     "method": "update",
@@ -10815,6 +11130,7 @@
   },
   {
     "operation_id": "Teams V3#List",
+    "call": "client.v3.teams.list",
     "version": "v3",
     "resource": "teams",
     "method": "list",
@@ -10843,6 +11159,7 @@
   },
   {
     "operation_id": "Teams V3#Show",
+    "call": "client.v3.teams.show",
     "version": "v3",
     "resource": "teams",
     "method": "show",

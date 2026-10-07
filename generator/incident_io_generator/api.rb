@@ -129,14 +129,15 @@ module IncidentIoGenerator
     def build_models
       models = @schemas.sort.map do |name, schema|
         fields = (schema["properties"] || {}).map do |api_name, prop|
+          member = IncidentIo::Model.member_name(api_name).to_s
           Field.new(
             api_name:,
-            member: IncidentIo::Model.member_name(api_name).to_s,
+            member:,
             type: Types.model_type(prop),
             yard: Types.yard_type(prop, namespace: ""),
             rbs: Types.rbs_type(prop, namespace: ""),
             description: describe(prop),
-            limits: Types.limits(prop, IncidentIo::Model.member_name(api_name).to_s)
+            limits: Types.limits(prop, member)
           )
         end
         ModelSchema.new(name:, file_name: Naming.underscore(name), description: schema["description"], fields:)

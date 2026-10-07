@@ -144,7 +144,7 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
     manifest = JSON.parse(generated("spec/fixtures/operations.json")).to_h { |op| [op["method"], op] }
 
     expect(manifest["create"]).to include(
-      "operation_id" => "Widgets V2#Create", "version" => "v2", "resource" => "widgets",
+      "operation_id" => "Widgets V2#Create", "call" => "client.v2.widgets.create", "version" => "v2", "resource" => "widgets",
       "http_method" => "post", "path" => "/v2/widgets", "path_args" => [],
       "keyword_args" => {"name" => "name-value"},
       "arg_types" => {"name" => "String", "idempotency_key" => "String", "part" => "Models::PartV2, Hash"},

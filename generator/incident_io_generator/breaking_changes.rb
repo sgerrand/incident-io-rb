@@ -60,7 +60,7 @@ module IncidentIoGenerator
         # `shown` those that examples show, for filters whose operators the
         # spec doesn't name.
         methods: JSON.parse(read[OPERATIONS_PATH]).to_h do |op|
-          call = "client.#{op["version"]}.#{op["resource"]}.#{op["method"]}"
+          call = op.fetch("call")
           [call, signature(op).merge(
             limits: allowed["arguments"].fetch(call, {}),
             operators: allowed["operators"].fetch(call, {}),

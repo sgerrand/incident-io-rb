@@ -240,6 +240,8 @@ module IncidentIoGenerator
           keyword_params = op.keyword_params.select(&:required)
           {
             "operation_id" => op.operation_id,
+            # How the method is called, like "client.v2.incidents.list".
+            "call" => op.full_name,
             "version" => resource.version.downcase,
             "resource" => resource.name,
             "method" => op.method_name,
@@ -285,7 +287,7 @@ module IncidentIoGenerator
       example_operators = {}
       api.resources.each do |resource|
         resource.operations.each do |op|
-          call = "client.#{resource.version.downcase}.#{resource.name}.#{op.method_name}"
+          call = op.full_name
           params = op.path_params + op.keyword_params
           arguments[call] = params.map { |p| Types.limits(p.schema, p.name) }.reduce({}, :merge)
           operators[call] = params.to_h { |p| [p.name, Types.operators(p.description)] }.compact
