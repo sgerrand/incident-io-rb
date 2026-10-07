@@ -206,8 +206,9 @@ To rename a generated method, add it to `generator/overrides.yml`.
 your local copy of the spec.
 `bundle exec rake generate:breaking` lists changes to the generated code
 since the last commit that can break code that uses the gem: anything
-removed, fields that changed type or allow other values, and methods whose
-arguments, filter operators or return type changed.
+removed, fields that changed type or allow other values, methods whose
+arguments, filter operators or return type changed, and resources that
+`client.<name>` now reaches in another API version.
 
 ## Releasing
 

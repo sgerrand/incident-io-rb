@@ -244,6 +244,8 @@ module IncidentIoGenerator
             "call" => op.full_name,
             "version" => resource.version.downcase,
             "resource" => resource.name,
+            # Whether `client.<resource>` uses this version.
+            "newest" => api.latest_resources.fetch(resource.name).version == resource.version,
             "method" => op.method_name,
             "deprecated" => op.deprecated,
             "http_method" => op.http_method,

@@ -139,12 +139,22 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
     )
   end
 
+  it "marks the operations of the version that the client uses for each resource" do
+    spec = mini_spec
+    spec["paths"]["/v3/widgets/{id}"] = {"get" => operation("Widgets V3#Show", "WidgetsShowResultV2", parameters: [path_param("id")])}
+    described_class.new(IncidentIoGenerator::Api.new(spec), @dir).write
+    newest = JSON.parse(generated("spec/fixtures/operations.json")).to_h { |op| [op["call"], op["newest"]] }
+
+    expect(newest).to include("client.v3.widgets.show" => true, "client.v2.widgets.show" => false, "client.v2.widgets.list" => false)
+  end
+
   it "writes a manifest of what each resource method should do" do
     described_class.new(api, @dir).write
     manifest = JSON.parse(generated("spec/fixtures/operations.json")).to_h { |op| [op["method"], op] }
 
     expect(manifest["create"]).to include(
       "operation_id" => "Widgets V2#Create", "call" => "client.v2.widgets.create", "version" => "v2", "resource" => "widgets",
+      "newest" => true,
       "http_method" => "post", "path" => "/v2/widgets", "path_args" => [],
       "keyword_args" => {"name" => "name-value"},
       "arg_types" => {"name" => "String", "idempotency_key" => "String", "part" => "Models::PartV2, Hash"},

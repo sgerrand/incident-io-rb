@@ -80,7 +80,8 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
 
   # The mini spec after the update, with fields and arguments limited to
   # some values, and one operator fewer. Its box lost two keys, gained one
-  # and has a limit on another.
+  # and has a limit on another. It has a new version of the widgets
+  # resource with one method.
   def newer_spec
     mini_spec.tap do |spec|
       with_nested(spec, sizes: %w[s m], kind: "The accepted operator is 'one_of'.", keys: {
@@ -93,6 +94,9 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       schemas["WidgetV2"]["properties"]["labels"]["additionalProperties"]["enum"] = %w[hot]
       schemas["WidgetsCreatePayloadV2"]["properties"]["name"]["enum"] = %w[red green]
       spec["paths"]["/v2/widgets"]["get"]["parameters"][0]["schema"]["enum"] = [25, 50]
+      spec["paths"]["/v3/widgets/{uid}"] = {
+        "get" => operation("Widgets V3#Show", "WidgetsShowResultV2", parameters: [path_param("uid")])
+      }
     end
   end
 
@@ -120,6 +124,13 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Field `WidgetV2#kind` no longer allows `tiny`
       - Field `WidgetV2#box.size` no longer allows `l` (same in `WidgetsCreatePayloadV2`)
       - Field `WidgetsCreatePayloadV2#name` no longer allows `blue`
+      - Resource `client.widgets` now uses v3 instead of v2
+      - Method `client.widgets.archive` was removed
+      - Method `client.widgets.create` was removed
+      - Method `client.widgets.destroy` was removed
+      - Method `client.widgets.export` was removed
+      - Method `client.widgets.list` was removed
+      - Method `client.widgets.show` changed its positional arguments from `(id)` to `(uid)`
       - Method `client.v2.widgets.archive` was removed
       - Method `client.v2.widgets.create` no longer takes `colour:`
       - Method `client.v2.widgets.create` no longer takes `box.colour`
@@ -186,6 +197,13 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     ])
   end
 
+  it "leaves out resources that are gone or still use the same version" do
+    before = {"gone" => {version: "v1", methods: {}}, "kept" => {version: "v2", methods: {}}}
+    after = {"kept" => {version: "v2", methods: {}}, "added" => {version: "v1", methods: {}}}
+
+    expect(described_class.accessor_changes(before, after)).to eq([])
+  end
+
   it "names the models that share a change on one line" do
     changes = %w[A B C D E].map { |model| [model, "event_type", "now also allows `x`"] } +
       [["A", "kind", "now also allows `x`"], ["B", "event_type", "no longer allows `y`"]]
@@ -211,7 +229,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(report.lines.last(3)).to eq([
       "- Webhook event `public_widget.deleted_v1` was removed\n",
       "- Audit log entry `widget.created` (version 1) was removed\n",
-      "- and 33 more\n"
+      "- and 40 more\n"
     ])
   end
 
@@ -228,6 +246,19 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
 
       expect(surface[:models].transform_values(&:keys)).to eq(models)
       expect(surface[:models].values.flat_map(&:values).map { |field| field[:type] }).to all(match(/\A[A-Z]/))
+    end
+
+    it "knows which version of each resource the client uses" do
+      client = IncidentIo::Client.new(api_key: "k")
+      # Leaves out the version accessors, and the copies of each method that
+      # rbs test adds, which have "__" in their names.
+      accessors = IncidentIo::Resources::Accessors.public_instance_methods(false).grep_v(/\Av\d+\z|__/)
+
+      expect(surface[:newest].keys).to match_array(accessors.map(&:to_s))
+      surface[:newest].each do |resource, newest|
+        expect(client.public_send(resource)).to be(client.public_send(newest[:version]).public_send(resource))
+        expect(newest[:methods].keys).to all(start_with("client.#{resource}."))
+      end
     end
 
     it "knows which models code can be handed" do

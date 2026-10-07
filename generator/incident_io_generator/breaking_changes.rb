@@ -8,6 +8,7 @@ module IncidentIoGenerator
   # - a webhook event type, audit log entry type, model, model field or
   #   resource method that was removed
   # - a model field that changed type or allows other values
+  # - a resource that `client.<name>` reaches in another API version
   # - a resource method whose arguments or return type changed, or with an
   #   argument that allows fewer values or operators
   module BreakingChanges
@@ -63,7 +64,8 @@ module IncidentIoGenerator
       # `operators` has the operators its filter arguments allow, and
       # `shown` those that examples show, for filters whose operators the
       # spec doesn't name.
-      methods = JSON.parse(read[OPERATIONS_PATH]).to_h do |op|
+      operations = JSON.parse(read[OPERATIONS_PATH])
+      methods = operations.to_h do |op|
         call = op.fetch("call")
         [call, signature(op).merge(
           limits: allowed["arguments"].fetch(call, {}),
@@ -79,6 +81,14 @@ module IncidentIoGenerator
         entries: entries.scan(ENTRY).map { |action, version| "`#{action}` (version #{version})" },
         models:,
         methods:,
+        # What `client.<resource>` reaches, keyed by resource: the version
+        # it uses, and that version's methods as called through it.
+        newest: operations.select { |op| op.fetch("newest") }.group_by { |op| op["resource"] }.transform_values do |ops|
+          {
+            version: ops.first["version"],
+            methods: ops.to_h { |op| ["client.#{op["resource"]}.#{op["method"]}", methods.fetch(op["call"])] }
+          }
+        end,
         read: read_models(models, handed)
       }
     end
@@ -115,6 +125,7 @@ module IncidentIoGenerator
         *(before[:models].keys - after[:models].keys).map { |model| "Model `#{model}` was removed" },
         *field_changes(before[:models], after[:models]),
         *together(fewer_values(limits)),
+        *accessor_changes(before[:newest], after[:newest]),
         *method_changes(before[:methods], after[:methods]),
         # Last, as a new value is the least likely to break anything. These
         # are the first to be left out when the list is too long.
@@ -267,6 +278,23 @@ module IncidentIoGenerator
 
     def quote(values)
       values.map { |value| "`#{value}`" }.join(", ")
+    end
+
+    # Resources that `client.<resource>` reaches in another version than
+    # before, and what that changes for each method called through it.
+    # Changes inside a version are listed under its own calls, like
+    # `client.v2.<resource>.<method>`, and so are the methods of a resource
+    # that is gone.
+    def accessor_changes(before, after)
+      before.flat_map do |resource, was|
+        now = after[resource]
+        next [] if now.nil? || now[:version] == was[:version]
+
+        [
+          "Resource `client.#{resource}` now uses #{now[:version]} instead of #{was[:version]}",
+          *method_changes(was[:methods], now[:methods])
+        ]
+      end
     end
 
     # Methods that were removed, and methods that can no longer be used the
