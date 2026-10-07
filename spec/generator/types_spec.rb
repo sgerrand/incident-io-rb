@@ -115,9 +115,10 @@ RSpec.describe IncidentIoGenerator::Types do
 
     expect(described_class.limits(size, "size")).to eq("size" => %w[s m])
     expect(described_class.limits({"type" => "string"}, "name")).to eq({})
-    expect(described_class.limits(box, "box")).to eq("box.size" => %w[s m])
-    expect(described_class.limits({"type" => "array", "items" => box}, "boxes")).to eq("boxes.size" => %w[s m])
-    expect(described_class.limits({"type" => "object", "properties" => {"inner" => box}}, "outer")).to eq("outer.inner.size" => %w[s m])
+    expect(described_class.limits(box, "box")).to eq("box.size" => %w[s m], "box.label" => nil)
+    expect(described_class.limits({"type" => "array", "items" => box}, "boxes")).to eq("boxes.size" => %w[s m], "boxes.label" => nil)
+    expect(described_class.limits({"type" => "object", "properties" => {"inner" => box}}, "outer"))
+      .to eq("outer.inner" => nil, "outer.inner.size" => %w[s m], "outer.inner.label" => nil)
   end
 
   it "reads the limits of keys inside nested arrays and maps" do

@@ -11,13 +11,13 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     end
   end
 
-  # Gives the create payload a `box` with a `size` key inside it, and the
-  # filter arguments of the list method their operators. `attrs` is a
-  # filter whose operators are only shown in an example.
-  def with_nested(spec, sizes:, kind:, after: nil, attrs: %w[one_of])
-    spec["components"]["schemas"]["WidgetsCreatePayloadV2"]["properties"]["box"] = {
-      "type" => "object", "properties" => {"size" => {"type" => "string", "enum" => sizes}.compact}
-    }
+  # Gives the widget and the create payload a `box` with a `size` key and
+  # the given other keys inside it, and the filter arguments of the list
+  # method their operators. `attrs` is a filter whose operators are only
+  # shown in an example.
+  def with_nested(spec, sizes:, kind:, after: nil, attrs: %w[one_of], keys: {})
+    box = {"type" => "object", "properties" => {"size" => {"type" => "string", "enum" => sizes}.compact, **keys}}
+    %w[WidgetV2 WidgetsCreatePayloadV2].each { |model| spec["components"]["schemas"][model]["properties"]["box"] = box }
     list = spec["paths"]["/v2/widgets"]["get"]["parameters"]
     list[2]["description"] = "Filter on kind. #{kind}"
     list[1]["description"] = after
@@ -34,8 +34,8 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
 
   # The mini spec before a breaking update. It has an extra event, entry,
   # model, field and method, a field of another type, fields and an
-  # argument that allow other values, and methods with other arguments,
-  # argument types and return types.
+  # argument that allow other values, a box with other keys, and methods
+  # with other arguments, argument types and return types.
   def older_spec
     mini_spec.tap do |spec|
       schemas = spec["components"]["schemas"]
@@ -49,7 +49,13 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       schemas["WidgetsCreatePayloadV2"]["required"] = ["idempotency_key"]
       schemas["WidgetsCreatePayloadV2"]["properties"]["colour"] = {"type" => "string", "description" => "The accepted operator is 'is'."}
       with_nested(spec, sizes: %w[s m l], kind: "The accepted operators are 'one_of', or 'not_in'.", after: "The accepted operator is 'is'.",
-        attrs: %w[one_of not_in])
+        attrs: %w[one_of not_in], keys: {
+          "colour" => {"type" => "string", "enum" => %w[red blue]},
+          "inner" => {"type" => "object", "properties" => {"a" => {"type" => "string"}}},
+          "depth" => {"type" => "integer"},
+          "tone" => {"type" => "string", "enum" => %w[warm cool]}
+        })
+      schemas["WidgetsCreatePayloadV2"]["properties"]["crate"] = {"type" => "object", "properties" => {"w" => {"type" => "string"}}}
       schemas["WidgetV2"]["properties"]["kind"]["enum"] = %w[big tiny]
       schemas["WidgetV2"]["properties"]["class"]["enum"] = %w[a b]
       schemas["WidgetV2"]["properties"]["labels"]["additionalProperties"]["enum"] = %w[hot cold]
@@ -73,11 +79,17 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
   end
 
   # The mini spec after the update, with fields and arguments limited to
-  # some values, and one operator fewer.
+  # some values, and one operator fewer. Its box lost two keys, gained one
+  # and has a limit on another.
   def newer_spec
     mini_spec.tap do |spec|
-      with_nested(spec, sizes: %w[s m], kind: "The accepted operator is 'one_of'.")
+      with_nested(spec, sizes: %w[s m], kind: "The accepted operator is 'one_of'.", keys: {
+        "depth" => {"type" => "integer", "enum" => [1, 2]},
+        "tone" => {"type" => "string"},
+        "shape" => {"type" => "string", "enum" => %w[round]}
+      })
       schemas = spec["components"]["schemas"]
+      schemas["WidgetsCreatePayloadV2"]["properties"]["crate"] = {"$ref" => "#/components/schemas/PartV2"}
       schemas["WidgetV2"]["properties"]["labels"]["additionalProperties"]["enum"] = %w[hot]
       schemas["WidgetsCreatePayloadV2"]["properties"]["name"]["enum"] = %w[red green]
       spec["paths"]["/v2/widgets"]["get"]["parameters"][0]["schema"]["enum"] = [25, 50]
@@ -102,14 +114,26 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Field `WidgetV2#kind` no longer allows `tiny`
       - Field `WidgetV2#kind` now also allows `small`
       - Field `WidgetV2#colour` was removed
+      - Field `WidgetV2#box.colour` was removed
+      - Field `WidgetV2#box.inner` was removed
+      - Field `WidgetV2#box.size` no longer allows `l`
+      - Field `WidgetV2#box.tone` now allows any value
       - Field `WidgetsCreatePayloadV2#name` no longer allows `blue`
       - Field `WidgetsCreatePayloadV2#colour` was removed
+      - Field `WidgetsCreatePayloadV2#box.colour` was removed
+      - Field `WidgetsCreatePayloadV2#box.inner` was removed
       - Field `WidgetsCreatePayloadV2#box.size` no longer allows `l`
+      - Field `WidgetsCreatePayloadV2#box.tone` now allows any value
+      - Field `WidgetsCreatePayloadV2#crate` changed type from `Hash` to `PartV2`
       - Method `client.v2.widgets.archive` was removed
       - Method `client.v2.widgets.create` no longer takes `colour:`
+      - Method `client.v2.widgets.create` no longer takes `box.colour`
+      - Method `client.v2.widgets.create` no longer takes `box.inner`
       - Method `client.v2.widgets.create` now needs `name:`
+      - Method `client.v2.widgets.create` changed the type of argument `crate` from `Hash` to `Models::PartV2, Hash`
       - Method `client.v2.widgets.create` no longer allows `blue` for `name`
       - Method `client.v2.widgets.create` no longer allows `l` for `box.size`
+      - Method `client.v2.widgets.create` now only allows `1`, `2` for `box.depth`
       - Method `client.v2.widgets.destroy` changed what it returns from `Models::WidgetV2` to `nil`
       - Method `client.v2.widgets.export` changed its positional arguments from `(shelf_id, id)` to `(id)`
       - Method `client.v2.widgets.list` changed the type of argument `page_size` from `String` to `Integer`
@@ -128,8 +152,8 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       list[1]["schema"]["enum"] = %w[start]
     end
     after = mini_spec.tap do |spec|
-      with_nested(spec, sizes: %w[s m], kind: "The accepted operators are 'one_of', or 'not_in'.", after: "The accepted operator is 'is'.",
-        attrs: %w[one_of not_in])
+      with_nested(spec, sizes: nil, kind: "The accepted operators are 'one_of', or 'not_in'.", after: "The accepted operator is 'is'.",
+        attrs: %w[one_of not_in], keys: {"shape" => {"type" => "string", "enum" => %w[round]}})
       schemas = spec["components"]["schemas"]
       schemas["GadgetV1"] = {"type" => "object"}
       schemas["WidgetV2"]["properties"]["colour"] = {"type" => "string"}
@@ -168,7 +192,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(report.lines.last(3)).to eq([
       "- Webhook event `public_widget.deleted_v1` was removed\n",
       "- Audit log entry `widget.created` (version 1) was removed\n",
-      "- and 23 more\n"
+      "- and 35 more\n"
     ])
   end
 

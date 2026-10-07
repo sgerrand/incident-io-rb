@@ -44,8 +44,9 @@ module IncidentIoGenerator
         events: read[EVENTS_PATH].scan(EVENT).flatten,
         entries: read[ENTRIES_PATH].scan(ENTRY).map { |action, version| "`#{action}` (version #{version})" },
         # Each model's fields, keyed by the model's name. A field has a type
-        # and limits: the values it allows, and the values that keys inside
-        # it allow, under names like "field.key".
+        # and limits: the values it allows, and the values that each key
+        # inside it allows, under names like "field.key". A key that takes
+        # any value has nil.
         models: Dir.glob("#{MODELS_PATH}/*.rb", base: root).sort.to_h do |path|
           source = read[path]
           model = source[MODEL, 1]
@@ -92,47 +93,75 @@ module IncidentIoGenerator
     end
 
     # Fields that were removed, changed type or allow other values, in
-    # models that both have. The fields of a removed model aren't listed one
-    # by one.
+    # models that both have, and keys inside fields that were removed. The
+    # fields of a removed model aren't listed one by one, and a field that
+    # changed type is only listed for that.
     def field_changes(before, after)
       after.flat_map do |model, fields|
         before.fetch(model, {}).flat_map do |field, was|
           now = fields[field]
           next ["Field `#{model}##{field}` was removed"] unless now
+          next ["Field `#{model}##{field}` changed type from `#{was[:type]}` to `#{now[:type]}`"] if was[:type] != now[:type]
 
           [
-            *("Field `#{model}##{field}` changed type from `#{was[:type]}` to `#{now[:type]}`" if was[:type] != now[:type]),
-            *was[:limits].flat_map { |name, values| field_value_changes("Field `#{model}##{name}`", values, now[:limits][name]) }
+            *removed_keys(was[:limits], now[:limits]).map { |name| "Field `#{model}##{name}` was removed" },
+            *was[:limits].flat_map { |name, values| field_value_changes("Field `#{model}##{name}`", values, now[:limits], name) }
           ]
         end
       end
     end
 
-    # How the values a field allows changed, for a field that was limited
-    # to some. Code that reads the field can meet a value it doesn't know,
-    # or wait for one that no longer comes.
-    def field_value_changes(name, was, now)
-      return ["#{name} now allows any value"] unless now
+    # The keys inside a field or an argument that are gone, by names like
+    # "field.key". `was` and `now` are its limits. Keys inside a removed key
+    # aren't listed one by one.
+    def removed_keys(was, now)
+      (was.keys - now.keys).select do |name|
+        parent = name.rpartition(".").first
+        # A name without a dot is the field or argument itself.
+        name.include?(".") && (!parent.include?(".") || now.key?(parent))
+      end
+    end
+
+    # How the values a field or a key inside it allows changed, when it was
+    # limited to some. `was` has those values and `now` the field's limits.
+    # Code that reads the field can meet a value it doesn't know, or wait
+    # for one that no longer comes.
+    def field_value_changes(label, was, now, name)
+      # A key that took any value can't allow more, and one that is gone
+      # is listed as removed.
+      return [] if was.nil? || (name.include?(".") && !now.key?(name))
+
+      allowed = now[name]
+      return ["#{label} now allows any value"] unless allowed
 
       [
-        *("#{name} no longer allows #{quote(was - now)}" if (was - now).any?),
-        *("#{name} now also allows #{quote(now - was)}" if (now - was).any?)
+        *("#{label} no longer allows #{quote(was - allowed)}" if (was - allowed).any?),
+        *("#{label} now also allows #{quote(allowed - was)}" if (allowed - was).any?)
       ]
     end
 
-    # Arguments of a method that allow fewer values than before. Allowing
-    # more can't break a call, and nor can a limit on a new argument.
+    # Arguments of a method, and keys inside them, that allow fewer values
+    # than before. Allowing more can't break a call, and nor can a limit on
+    # a new argument or key.
     def argument_value_changes(name, was, now)
       now[:limits].filter_map do |arg, values|
-        next unless was[:types].key?(arg.split(".").first)
+        next unless values && was[:types].key?(arg.split(".").first)
 
         allowed = was[:limits][arg]
         if allowed
           "Method `#{name}` no longer allows #{quote(allowed - values)} for `#{arg}`" if (allowed - values).any?
-        elsif !arg.include?(".")
-          # A key inside an argument may be new, so its limit isn't listed.
+        elsif !arg.include?(".") || was[:limits].key?(arg)
           "Method `#{name}` now only allows #{quote(values)} for `#{arg}`"
         end
+      end
+    end
+
+    # Keys inside the arguments of a method that are gone, for arguments
+    # that kept their type. A removed argument is listed already.
+    def removed_argument_keys(name, was, now)
+      removed_keys(was[:limits], now[:limits]).filter_map do |key|
+        arg = key.split(".").first
+        "Method `#{name}` no longer takes `#{key}`" if was[:types][arg] == now[:types][arg]
       end
     end
 
@@ -179,8 +208,9 @@ module IncidentIoGenerator
 
     # Methods that were removed, and methods that can no longer be used the
     # same way: their positional arguments changed, they lost a keyword
-    # argument, they need a new one, an argument changed type or allows
-    # fewer values or operators, or they return something else.
+    # argument or a key inside one, they need a new one, an argument changed
+    # type or allows fewer values or operators, or they return something
+    # else.
     def method_changes(before, after)
       before.flat_map do |name, was|
         now = after[name]
@@ -190,6 +220,7 @@ module IncidentIoGenerator
         [
           *("Method `#{name}` changed its positional arguments from #{positional.first} to #{positional.last}" if positional.uniq.size > 1),
           *(was[:required] + was[:optional] - now[:required] - now[:optional]).map { |arg| "Method `#{name}` no longer takes `#{arg}:`" },
+          *removed_argument_keys(name, was, now),
           *(now[:required] - was[:required]).map { |arg| "Method `#{name}` now needs `#{arg}:`" },
           *was[:types].filter_map do |arg, type|
             now_type = now[:types].fetch(arg, type)

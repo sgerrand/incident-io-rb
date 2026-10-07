@@ -21,11 +21,18 @@ module IncidentIoGenerator
     end
 
     # Every limit in a schema, keyed by name: its own allowed values under
-    # the given name, and those of the keys of an inline object under names
-    # like "name.key". The inline object can sit inside arrays and maps.
+    # the given name, when it has any, and those of each key of an inline
+    # object under a name like "name.key". A key that takes any value is
+    # there too, with nil, so a key that is gone can be told from one that
+    # lost its limit. The inline object can sit inside arrays and maps.
     def limits(schema, name)
-      own = {name => allowed_values(schema)}.compact
-      inline_properties(schema).reduce(own) { |all, (key, prop)| all.merge(limits(prop, "#{name}.#{key}")) }
+      {name => allowed_values(schema)}.compact.merge(key_limits(schema, name))
+    end
+
+    def key_limits(schema, name)
+      inline_properties(schema).reduce({}) do |all, (key, prop)|
+        all.merge({"#{name}.#{key}" => allowed_values(prop)}, key_limits(prop, "#{name}.#{key}"))
+      end
     end
 
     # The keys of an inline object and their schemas. For an array or a
