@@ -28,7 +28,7 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
       "lib/incident_io/resources/v2/widgets.rb", "sig/incident_io/resources/v2/widgets.rbs",
       "lib/incident_io/webhook_events.rb", "sig/incident_io/webhook_events.rbs",
       "lib/incident_io/audit_log_entries.rb", "sig/incident_io/audit_log_entries.rbs",
-      "spec/fixtures/operations.json", "spec/fixtures/allowed_values.json",
+      "spec/fixtures/operations.json", "spec/fixtures/allowed_values.json", "spec/fixtures/models.json",
       *models.map { |m| "lib/incident_io/models/#{m}.rb" },
       *models.map { |m| "sig/incident_io/models/#{m}.rbs" }
     )
@@ -116,6 +116,19 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
       .to include(%(["widget.deleted", 2] => :AuditLogsWidgetDeletedV2\n))
     expect(generated("sig/incident_io/audit_log_entries.rbs")).to include("type entry = Models::AuditLogsWidgetDeletedV2")
   end
+  it "writes the type of each model field and the model of each event and entry type" do
+    described_class.new(api, @dir).write
+    manifest = JSON.parse(generated("spec/fixtures/models.json"))
+
+    expect(manifest["models"].keys).to eq(api.models.map(&:name))
+    expect(manifest["models"]["WidgetV2"]).to eq(
+      "id" => "String", "class_" => "String", "created_at" => "Time", "parts" => "Array<PartV2>",
+      "labels" => "Hash{String => String}", "kind" => "String"
+    )
+    expect(manifest["webhook_events"]).to eq("public_widget.created_v1" => "WidgetV2")
+    expect(manifest["audit_log_entries"]).to eq("widget.deleted" => {"2" => "AuditLogsWidgetDeletedV2"})
+  end
+
   it "writes the values and operators that fields and arguments are limited to" do
     spec = mini_spec
     spec["paths"]["/v2/widgets"]["get"]["parameters"][0]["schema"]["enum"] = [25, 50]

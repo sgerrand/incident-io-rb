@@ -27,7 +27,8 @@ module IncidentIoGenerator
       "sig/incident_io/resources",
       *INDEX_FILES.keys,
       "spec/fixtures/operations.json",
-      "spec/fixtures/allowed_values.json"
+      "spec/fixtures/allowed_values.json",
+      "spec/fixtures/models.json"
     ].freeze
     # Keep method signatures on one line up to this width.
     MAX_LINE = 110
@@ -46,6 +47,7 @@ module IncidentIoGenerator
       files = INDEX_FILES.transform_values { |template| render(template) }
       files["spec/fixtures/operations.json"] = "#{JSON.pretty_generate(operations_manifest)}\n"
       files["spec/fixtures/allowed_values.json"] = "#{JSON.pretty_generate(allowed_values_manifest)}\n"
+      files["spec/fixtures/models.json"] = "#{JSON.pretty_generate(models_manifest)}\n"
       api.models.each do |model|
         files["lib/incident_io/models/#{model.file_name}.rb"] = render("model.rb", model:)
         files["sig/incident_io/models/#{model.file_name}.rbs"] = render("model.rbs", model:)
@@ -273,6 +275,19 @@ module IncidentIoGenerator
           }
         end
       end
+    end
+
+    # The YARD type of every field of each model, and the model of each
+    # webhook event type and audit log entry type, for BreakingChanges.
+    # Entry types are keyed by action, then by version.
+    def models_manifest
+      {
+        "models" => api.models.to_h { |model| [model.name, model.fields.to_h { |field| [field.member, field.yard] }] },
+        "webhook_events" => api.webhook_events.to_h { |event| [event.type, event.model] },
+        "audit_log_entries" => api.audit_log_entries.group_by(&:action).transform_values do |entries|
+          entries.to_h { |entry| [entry.version.to_s, entry.model] }
+        end
+      }
     end
 
     # The values each model field and each method argument is limited to,
