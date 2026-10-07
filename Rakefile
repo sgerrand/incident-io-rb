@@ -88,10 +88,10 @@ namespace :generate do
     require_relative "generator/incident_io_generator"
 
     Dir.mktmpdir do |dir|
-      # Unpack the generated code as it was at the last commit.
+      # Unpack the manifests as they were at the last commit.
       paths = IncidentIoGenerator::BreakingChanges::PATHS
       statuses = Open3.pipeline(["git", "archive", "HEAD", "--", *paths], ["tar", "-x", "-C", dir])
-      abort "Could not read the generated code from the last commit." unless statuses.all?(&:success?)
+      abort "Could not read the manifests from the last commit." unless statuses.all?(&:success?)
 
       print IncidentIoGenerator::BreakingChanges.report(dir, IncidentIoGenerator::ROOT)
     end

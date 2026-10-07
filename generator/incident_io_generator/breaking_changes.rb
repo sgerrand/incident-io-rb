@@ -3,7 +3,8 @@
 module IncidentIoGenerator
   # Finds changes in a newer copy of the generated code that can break code
   # that uses the gem, so the update workflow can list them in its pull
-  # request:
+  # request. It reads the manifests that Writer writes next to the code.
+  # It finds:
   #
   # - a webhook event type, audit log entry type, model, model field or
   #   resource method that was removed
@@ -12,27 +13,11 @@ module IncidentIoGenerator
   # - a resource method whose arguments or return type changed, or with an
   #   argument that allows fewer values or operators
   module BreakingChanges
-    EVENTS_PATH = "lib/incident_io/webhook_events.rb"
-    ENTRIES_PATH = "lib/incident_io/audit_log_entries.rb"
-    MODELS_PATH = "lib/incident_io/models"
+    MODELS_PATH = "spec/fixtures/models.json"
     OPERATIONS_PATH = "spec/fixtures/operations.json"
     VALUES_PATH = "spec/fixtures/allowed_values.json"
-    # The generated code that is read, relative to the repository root.
-    PATHS = [EVENTS_PATH, ENTRIES_PATH, MODELS_PATH, OPERATIONS_PATH, VALUES_PATH].freeze
-
-    # A line of the webhook event map, like
-    # `"schedule.deleted_v1" => :ScheduleSlimV2,`.
-    EVENT = /^\s+"([^"]+)" => :\w+,?$/
-    # A line of the audit log entry map, like
-    # `["alert_route.created", 1] => :AuditLogsAlertRouteCreatedV1,`.
-    ENTRY = /^\s+\["([^"]+)", (\d+)\] => :\w+,?$/
-    # The model in a line of either map.
-    MAPPED = /=> :(\w+)/
-    # The line of a model file that names the model.
-    MODEL = /^\s+class (\w+)$/
-    # The YARD lines of a model file for one field: its name, its summary
-    # and its type, like "Time" or "Array<UserV2>".
-    FIELD = /^\s+# @!attribute \[r\] (\S+)\n.*\n\s+#   @return \[(.+), nil\]$/
+    # The manifests that are read, relative to the repository root.
+    PATHS = [MODELS_PATH, OPERATIONS_PATH, VALUES_PATH].freeze
 
     # The most changes to list. A pull request body can't hold many more.
     LIMIT = 100
@@ -41,21 +26,22 @@ module IncidentIoGenerator
 
     module_function
 
-    # What the generated code under a root offers.
+    # What the generated code under a root offers, from its manifests.
     def surface(root)
-      read = ->(path) { File.read(File.join(root, path)) }
-      allowed = JSON.parse(read[VALUES_PATH])
-      events = read[EVENTS_PATH]
-      entries = read[ENTRIES_PATH]
-      # Each model's fields, keyed by the model's name. A field has a type
-      # and limits: the values it allows, and the values that each key
-      # inside it allows, under names like "field.key". A key that takes
-      # any value has nil.
-      models = Dir.glob("#{MODELS_PATH}/*.rb", base: root).sort.to_h do |path|
-        source = read[path]
-        model = source[MODEL, 1]
+      read = ->(path) { JSON.parse(File.read(File.join(root, path))) }
+      allowed = read[VALUES_PATH]
+      manifest = read[MODELS_PATH]
+      # The model of each webhook event type, and of each audit log entry
+      # type by action, then by version.
+      events = manifest.fetch("webhook_events")
+      entries = manifest.fetch("audit_log_entries")
+      # Each model's fields, keyed by the model's name. A field has a type,
+      # like "Time" or "Array<UserV2>", and limits: the values it allows,
+      # and the values that each key inside it allows, under names like
+      # "field.key". A key that takes any value has nil.
+      models = manifest.fetch("models").to_h do |model, fields|
         limits = allowed["fields"].fetch(model, {})
-        [model, source.scan(FIELD).to_h do |field, type|
+        [model, fields.to_h do |field, type|
           [field, {type:, limits: limits.select { |name, _| name.split(".").first == field }}]
         end]
       end
@@ -64,7 +50,7 @@ module IncidentIoGenerator
       # `operators` has the operators its filter arguments allow, and
       # `shown` those that examples show, for filters whose operators the
       # spec doesn't name.
-      operations = JSON.parse(read[OPERATIONS_PATH])
+      operations = read[OPERATIONS_PATH]
       methods = operations.to_h do |op|
         call = op.fetch("call")
         [call, signature(op).merge(
@@ -75,10 +61,10 @@ module IncidentIoGenerator
       end
       # What the gem hands to code that uses it: the models of events and
       # entries, and what methods return.
-      handed = (events + entries).scan(MAPPED).flatten + methods.values.map { |method| method[:returns] }
+      handed = events.values + entries.values.flat_map(&:values) + methods.values.map { |method| method[:returns] }
       {
-        events: events.scan(EVENT).flatten,
-        entries: entries.scan(ENTRY).map { |action, version| "`#{action}` (version #{version})" },
+        events: events.keys,
+        entries: entries.flat_map { |action, versions| versions.keys.map { |version| "`#{action}` (version #{version})" } },
         models:,
         methods:,
         # What `client.<resource>` reaches, keyed by resource: the version
@@ -110,7 +96,8 @@ module IncidentIoGenerator
     # in the operations manifest.
     def signature(op)
       types = op.fetch("arg_types")
-      positional = op.fetch("path_args").map { |arg| arg.delete_suffix("-value") }
+      # The manifest has the positional arguments first.
+      positional = types.keys.first(op.fetch("path_args").size)
       required = op.fetch("keyword_args").keys
       {positional:, required:, optional: types.keys - positional - required, types:, returns: op.fetch("returns")}
     end
