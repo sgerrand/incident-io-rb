@@ -109,22 +109,17 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Model `GadgetV1` was removed
       - Model `WidgetDeletedBody` was removed
       - Field `PartV2#id` changed type from `Integer` to `String`
-      - Field `WidgetV2#class_` now allows any value
-      - Field `WidgetV2#labels` no longer allows `cold`
-      - Field `WidgetV2#kind` no longer allows `tiny`
-      - Field `WidgetV2#kind` now also allows `small`
       - Field `WidgetV2#colour` was removed
       - Field `WidgetV2#box.colour` was removed
       - Field `WidgetV2#box.inner` was removed
-      - Field `WidgetV2#box.size` no longer allows `l`
-      - Field `WidgetV2#box.tone` now allows any value
-      - Field `WidgetsCreatePayloadV2#name` no longer allows `blue`
       - Field `WidgetsCreatePayloadV2#colour` was removed
       - Field `WidgetsCreatePayloadV2#box.colour` was removed
       - Field `WidgetsCreatePayloadV2#box.inner` was removed
-      - Field `WidgetsCreatePayloadV2#box.size` no longer allows `l`
-      - Field `WidgetsCreatePayloadV2#box.tone` now allows any value
       - Field `WidgetsCreatePayloadV2#crate` changed type from `Hash` to `PartV2`
+      - Field `WidgetV2#labels` no longer allows `cold`
+      - Field `WidgetV2#kind` no longer allows `tiny`
+      - Field `WidgetV2#box.size` no longer allows `l` (same in `WidgetsCreatePayloadV2`)
+      - Field `WidgetsCreatePayloadV2#name` no longer allows `blue`
       - Method `client.v2.widgets.archive` was removed
       - Method `client.v2.widgets.create` no longer takes `colour:`
       - Method `client.v2.widgets.create` no longer takes `box.colour`
@@ -141,6 +136,9 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Method `client.v2.widgets.list` no longer allows `not_in` as an operator for `kind`
       - Method `client.v2.widgets.list` no longer says which operators `after` allows
       - Method `client.v2.widgets.list` no longer shows `not_in` as an operator for `attrs` in its examples
+      - Field `WidgetV2#class_` now allows any value
+      - Field `WidgetV2#kind` now also allows `small`
+      - Field `WidgetV2#box.tone` now allows any value
     MARKDOWN
   end
 
@@ -150,6 +148,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       list = spec["paths"]["/v2/widgets"]["get"]["parameters"]
       list[0]["schema"]["enum"] = [25]
       list[1]["schema"]["enum"] = %w[start]
+      spec["components"]["schemas"]["WidgetsCreatePayloadV2"]["properties"]["name"]["enum"] = %w[red]
     end
     after = mini_spec.tap do |spec|
       with_nested(spec, sizes: nil, kind: "The accepted operators are 'one_of', or 'not_in'.", after: "The accepted operator is 'is'.",
@@ -160,6 +159,9 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       schemas["WidgetV2"]["properties"]["class"]["enum"] = %w[a b]
       schemas["WidgetsCreatePayloadV2"]["required"] = ["idempotency_key"]
       schemas["WidgetsCreatePayloadV2"]["properties"]["colour"] = {"type" => "string", "enum" => %w[red]}
+      # Code can't be handed a payload, so more values for its fields
+      # can't break anything.
+      schemas["WidgetsCreatePayloadV2"]["properties"]["name"]["enum"] = %w[red green]
       spec["paths"]["/v2/widgets"]["get"]["parameters"][0]["schema"]["enum"] = [25, 50]
     end
 
@@ -184,6 +186,23 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     ])
   end
 
+  it "names the models that share a change on one line" do
+    changes = %w[A B C D E].map { |model| [model, "event_type", "now also allows `x`"] } +
+      [["A", "kind", "now also allows `x`"], ["B", "event_type", "no longer allows `y`"]]
+
+    expect(described_class.together(changes)).to eq([
+      "Field `A#event_type` now also allows `x` (same in `B`, `C`, `D` and 1 more)",
+      "Field `A#kind` now also allows `x`",
+      "Field `B#event_type` no longer allows `y`"
+    ])
+  end
+
+  it "knows which models code can be handed" do
+    surface = described_class.surface(generate("code", mini_spec))
+
+    expect(surface[:read]).to match_array(%w[WidgetV2 PartV2 AuditLogsWidgetDeletedV2])
+  end
+
   it "stops at the limit and counts the rest" do
     stub_const("#{described_class}::LIMIT", 2)
 
@@ -192,7 +211,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(report.lines.last(3)).to eq([
       "- Webhook event `public_widget.deleted_v1` was removed\n",
       "- Audit log entry `widget.created` (version 1) was removed\n",
-      "- and 35 more\n"
+      "- and 33 more\n"
     ])
   end
 
@@ -209,6 +228,12 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
 
       expect(surface[:models].transform_values(&:keys)).to eq(models)
       expect(surface[:models].values.flat_map(&:values).map { |field| field[:type] }).to all(match(/\A[A-Z]/))
+    end
+
+    it "knows which models code can be handed" do
+      expect(surface[:read]).to include("IncidentV2", "UserV2", "WebhookPrivateResourceV2", "AuditLogsAlertRouteCreatedV1")
+      expect(surface[:read]).not_to include("IncidentsCreatePayloadV2", "WebhooksPrivateAlertCreatedV1ResponseBody")
+      expect(surface[:models].keys).to include(*surface[:read])
     end
 
     it "has limits and operators only for fields and arguments it read" do

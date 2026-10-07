@@ -25,6 +25,8 @@ module IncidentIoGenerator
     # A line of the audit log entry map, like
     # `["alert_route.created", 1] => :AuditLogsAlertRouteCreatedV1,`.
     ENTRY = /^\s+\["([^"]+)", (\d+)\] => :\w+,?$/
+    # The model in a line of either map.
+    MAPPED = /=> :(\w+)/
     # The line of a model file that names the model.
     MODEL = /^\s+class (\w+)$/
     # The YARD lines of a model file for one field: its name, its summary
@@ -33,6 +35,8 @@ module IncidentIoGenerator
 
     # The most changes to list. A pull request body can't hold many more.
     LIMIT = 100
+    # The most other models to name on the line of a change they share.
+    SAME = 3
 
     module_function
 
@@ -40,35 +44,56 @@ module IncidentIoGenerator
     def surface(root)
       read = ->(path) { File.read(File.join(root, path)) }
       allowed = JSON.parse(read[VALUES_PATH])
+      events = read[EVENTS_PATH]
+      entries = read[ENTRIES_PATH]
+      # Each model's fields, keyed by the model's name. A field has a type
+      # and limits: the values it allows, and the values that each key
+      # inside it allows, under names like "field.key". A key that takes
+      # any value has nil.
+      models = Dir.glob("#{MODELS_PATH}/*.rb", base: root).sort.to_h do |path|
+        source = read[path]
+        model = source[MODEL, 1]
+        limits = allowed["fields"].fetch(model, {})
+        [model, source.scan(FIELD).to_h do |field, type|
+          [field, {type:, limits: limits.select { |name, _| name.split(".").first == field }}]
+        end]
+      end
+      # How each method is called, keyed by the call. `limits` has the
+      # values its arguments allow, named like those of a field.
+      # `operators` has the operators its filter arguments allow, and
+      # `shown` those that examples show, for filters whose operators the
+      # spec doesn't name.
+      methods = JSON.parse(read[OPERATIONS_PATH]).to_h do |op|
+        call = op.fetch("call")
+        [call, signature(op).merge(
+          limits: allowed["arguments"].fetch(call, {}),
+          operators: allowed["operators"].fetch(call, {}),
+          shown: allowed["example_operators"].fetch(call, {})
+        )]
+      end
+      # What the gem hands to code that uses it: the models of events and
+      # entries, and what methods return.
+      handed = (events + entries).scan(MAPPED).flatten + methods.values.map { |method| method[:returns] }
       {
-        events: read[EVENTS_PATH].scan(EVENT).flatten,
-        entries: read[ENTRIES_PATH].scan(ENTRY).map { |action, version| "`#{action}` (version #{version})" },
-        # Each model's fields, keyed by the model's name. A field has a type
-        # and limits: the values it allows, and the values that each key
-        # inside it allows, under names like "field.key". A key that takes
-        # any value has nil.
-        models: Dir.glob("#{MODELS_PATH}/*.rb", base: root).sort.to_h do |path|
-          source = read[path]
-          model = source[MODEL, 1]
-          limits = allowed["fields"].fetch(model, {})
-          [model, source.scan(FIELD).to_h do |field, type|
-            [field, {type:, limits: limits.select { |name, _| name.split(".").first == field }}]
-          end]
-        end,
-        # How each method is called, keyed by the call. `limits` has the
-        # values its arguments allow, named like those of a field.
-        # `operators` has the operators its filter arguments allow, and
-        # `shown` those that examples show, for filters whose operators the
-        # spec doesn't name.
-        methods: JSON.parse(read[OPERATIONS_PATH]).to_h do |op|
-          call = op.fetch("call")
-          [call, signature(op).merge(
-            limits: allowed["arguments"].fetch(call, {}),
-            operators: allowed["operators"].fetch(call, {}),
-            shown: allowed["example_operators"].fetch(call, {})
-          )]
-        end
+        events: events.scan(EVENT).flatten,
+        entries: entries.scan(ENTRY).map { |action, version| "`#{action}` (version #{version})" },
+        models:,
+        methods:,
+        read: read_models(models, handed)
       }
+    end
+
+    # The models that code using the gem can be handed: those named in the
+    # given texts, and every model that a field of one of them can hold.
+    def read_models(models, texts)
+      found = []
+      loop do
+        names = texts.flat_map { |text| text.scan(/\w+/) }.uniq & (models.keys - found)
+        return found if names.empty?
+
+        found += names
+        texts = names.flat_map { |name| models[name].values.map { |field| field[:type] } }
+      end
     end
 
     # A method's arguments, their types and what it returns, from its entry
@@ -83,19 +108,23 @@ module IncidentIoGenerator
     # The breaking changes from `before` to `after`, one line each. Both
     # come from #surface.
     def changes(before, after)
+      limits = kept_limits(before[:models], after[:models])
       [
         *(before[:events] - after[:events]).map { |type| "Webhook event `#{type}` was removed" },
         *(before[:entries] - after[:entries]).map { |entry| "Audit log entry #{entry} was removed" },
         *(before[:models].keys - after[:models].keys).map { |model| "Model `#{model}` was removed" },
         *field_changes(before[:models], after[:models]),
-        *method_changes(before[:methods], after[:methods])
+        *together(fewer_values(limits)),
+        *method_changes(before[:methods], after[:methods]),
+        # Last, as a new value is the least likely to break anything. These
+        # are the first to be left out when the list is too long.
+        *together(more_values(limits, after[:read]))
       ]
     end
 
-    # Fields that were removed, changed type or allow other values, in
-    # models that both have, and keys inside fields that were removed. The
-    # fields of a removed model aren't listed one by one, and a field that
-    # changed type is only listed for that.
+    # Fields that were removed or changed type, in models that both have,
+    # and keys inside fields that were removed. The fields of a removed
+    # model aren't listed one by one.
     def field_changes(before, after)
       after.flat_map do |model, fields|
         before.fetch(model, {}).flat_map do |field, was|
@@ -103,10 +132,7 @@ module IncidentIoGenerator
           next ["Field `#{model}##{field}` was removed"] unless now
           next ["Field `#{model}##{field}` changed type from `#{was[:type]}` to `#{now[:type]}`"] if was[:type] != now[:type]
 
-          [
-            *removed_keys(was[:limits], now[:limits]).map { |name| "Field `#{model}##{name}` was removed" },
-            *was[:limits].flat_map { |name, values| field_value_changes("Field `#{model}##{name}`", values, now[:limits], name) }
-          ]
+          removed_keys(was[:limits], now[:limits]).map { |name| "Field `#{model}##{name}` was removed" }
         end
       end
     end
@@ -122,22 +148,59 @@ module IncidentIoGenerator
       end
     end
 
-    # How the values a field or a key inside it allows changed, when it was
-    # limited to some. `was` has those values and `now` the field's limits.
-    # Code that reads the field can meet a value it doesn't know, or wait
-    # for one that no longer comes.
-    def field_value_changes(label, was, now, name)
-      # A key that took any value can't allow more, and one that is gone
-      # is listed as removed.
-      return [] if was.nil? || (name.include?(".") && !now.key?(name))
+    # The limits to compare, as [model, name, was, now]: one for each field,
+    # and each key inside a field, that was limited to some values and is
+    # still there. `now` is nil when it allows any value. A field that
+    # changed type is left out, as its old and new values can't be compared.
+    def kept_limits(before, after)
+      after.flat_map do |model, fields|
+        before.fetch(model, {}).flat_map do |field, was|
+          now = fields[field]
+          next [] if now.nil? || now[:type] != was[:type]
 
-      allowed = now[name]
-      return ["#{label} now allows any value"] unless allowed
+          was[:limits].filter_map do |name, values|
+            # A key that is gone is listed as removed.
+            [model, name, values, now[:limits][name]] if values && (!name.include?(".") || now[:limits].key?(name))
+          end
+        end
+      end
+    end
 
-      [
-        *("#{label} no longer allows #{quote(was - allowed)}" if (was - allowed).any?),
-        *("#{label} now also allows #{quote(allowed - was)}" if (allowed - was).any?)
-      ]
+    # Fields that allow fewer values than before, as [model, name, change].
+    # Code that sends the field can no longer send a value, and code that
+    # reads it waits for a value that no longer comes.
+    def fewer_values(limits)
+      limits.filter_map do |model, name, was, now|
+        gone = was - (now || was)
+        [model, name, "no longer allows #{quote(gone)}"] if gone.any?
+      end
+    end
+
+    # Fields that allow more values than before, as [model, name, change].
+    # Code that reads the field can meet a value it doesn't know. Only
+    # models that code can be handed are listed, as a new value can't break
+    # code that only sends the field.
+    def more_values(limits, read)
+      limits.filter_map do |model, name, was, now|
+        next unless read.include?(model)
+
+        if now.nil?
+          [model, name, "now allows any value"]
+        elsif (now - was).any?
+          [model, name, "now also allows #{quote(now - was)}"]
+        end
+      end
+    end
+
+    # One line for each change. Models that repeat a field share a change
+    # to it, so they are named on the same line.
+    def together(changes)
+      changes.group_by { |_, name, change| [name, change] }.map do |(name, change), same|
+        model, *others = same.map(&:first)
+        more = " and #{others.size - SAME} more" if others.size > SAME
+        also = " (same in #{quote(others.first(SAME))}#{more})" if others.any?
+        "Field `#{model}##{name}` #{change}#{also}"
+      end
     end
 
     # Arguments of a method, and keys inside them, that allow fewer values
