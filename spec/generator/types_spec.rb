@@ -133,6 +133,14 @@ RSpec.describe IncidentIoGenerator::Types do
     expect(described_class.limits({"type" => "object", "additionalProperties" => true}, "anything")).to eq({})
   end
 
+  it "reads the limits of an object that names keys and is a map too" do
+    size = {"type" => "string", "enum" => %w[s m]}
+    held = {"type" => "object", "properties" => {"size" => {"type" => "string"}, "shape" => {"type" => "string", "enum" => %w[round]}}}
+    box = {"type" => "object", "properties" => {"size" => size}, "additionalProperties" => held}
+
+    expect(described_class.limits(box, "box")).to eq("box.size" => %w[s m], "box.shape" => %w[round])
+  end
+
   it "reads the operators a description names" do
     {
       "Filter on status. The accepted operators are 'one_of', or 'not_in'." => %w[one_of not_in],

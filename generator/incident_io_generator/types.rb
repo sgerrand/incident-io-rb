@@ -36,12 +36,15 @@ module IncidentIoGenerator
     end
 
     # The keys of an inline object and their schemas. For an array or a
-    # map, those of the objects it holds, however deep they are nested.
+    # map, those of the objects it holds, however deep they are nested. An
+    # object can name keys and be a map of other objects too, so both are
+    # read. A named key wins over one of the same name in a held object.
     def inline_properties(schema)
       # `additionalProperties` can be true or false as well as a schema.
       return {} unless schema.is_a?(Hash)
 
-      schema["properties"] || inline_properties(schema["items"]).merge(inline_properties(schema["additionalProperties"]))
+      held = inline_properties(schema["items"]).merge(inline_properties(schema["additionalProperties"]))
+      held.merge(schema["properties"] || {})
     end
 
     # The operators a filter argument's description names, or nil when it
