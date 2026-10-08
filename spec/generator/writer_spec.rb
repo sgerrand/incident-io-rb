@@ -129,6 +129,18 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
     expect(manifest["audit_log_entries"]).to eq("widget.deleted" => {"2" => "AuditLogsWidgetDeletedV2"})
   end
 
+  it "writes the type of each key inside a field or an argument" do
+    spec = mini_spec
+    box = {"type" => "object", "properties" => {"size" => {"type" => "integer"}, "part" => {"$ref" => "#/components/schemas/PartV2"}}}
+    %w[WidgetV2 WidgetsCreatePayloadV2].each { |model| spec["components"]["schemas"][model]["properties"]["box"] = box }
+    described_class.new(IncidentIoGenerator::Api.new(spec), @dir).write
+    create = JSON.parse(generated("spec/fixtures/operations.json")).find { |op| op["method"] == "create" }
+
+    expect(JSON.parse(generated("spec/fixtures/models.json"))["models"]["WidgetV2"])
+      .to include("box" => "Hash", "box.size" => "Integer", "box.part" => "PartV2")
+    expect(create["arg_types"]).to include("box" => "Hash", "box.size" => "Integer", "box.part" => "Models::PartV2, Hash")
+  end
+
   it "writes the values and operators that fields and arguments are limited to" do
     spec = mini_spec
     spec["paths"]["/v2/widgets"]["get"]["parameters"][0]["schema"]["enum"] = [25, 50]

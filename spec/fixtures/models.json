@@ -4741,7 +4741,12 @@
     },
     "IncidentAttachmentsCreatePayloadV1": {
       "incident_id": "String",
-      "resource": "Hash"
+      "resource": "Hash",
+      "resource.emoji": "String",
+      "resource.external_id": "String",
+      "resource.resource_type": "String",
+      "resource.title": "String",
+      "resource.url": "String"
     },
     "IncidentAttachmentsCreateResultV1": {
       "incident_attachment": "IncidentAttachmentV1"

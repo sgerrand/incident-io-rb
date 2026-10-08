@@ -2023,8 +2023,6 @@
       ]
     },
     "IncidentAttachmentsCreatePayloadV1": {
-      "resource.emoji": null,
-      "resource.external_id": null,
       "resource.resource_type": [
         "pager_duty_incident",
         "opsgenie_alert",
@@ -2043,9 +2041,7 @@
         "arbitrary_url",
         "scrubbed",
         "statuspage_incident"
-      ],
-      "resource.title": null,
-      "resource.url": null
+      ]
     },
     "IncidentDurationMetricWithValueV2": {
       "status": [
@@ -4411,8 +4407,6 @@
       ]
     },
     "client.v1.incident_attachments.create": {
-      "resource.emoji": null,
-      "resource.external_id": null,
       "resource.resource_type": [
         "pager_duty_incident",
         "opsgenie_alert",
@@ -4431,9 +4425,7 @@
         "arbitrary_url",
         "scrubbed",
         "statuspage_incident"
-      ],
-      "resource.title": null,
-      "resource.url": null
+      ]
     },
     "client.v1.incident_attachments.list": {
       "resource_type": [

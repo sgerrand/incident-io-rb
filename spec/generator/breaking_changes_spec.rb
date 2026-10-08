@@ -34,8 +34,9 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
 
   # The mini spec before a breaking update. It has an extra event, entry,
   # model, field and method, a field of another type, fields and an
-  # argument that allow other values, a box with other keys, and methods
-  # with other arguments, argument types and return types.
+  # argument that allow other values, a box with other keys and a key of
+  # another type, and methods with other arguments, argument types and
+  # return types.
   def older_spec
     mini_spec.tap do |spec|
       schemas = spec["components"]["schemas"]
@@ -53,7 +54,8 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
           "colour" => {"type" => "string", "enum" => %w[red blue]},
           "inner" => {"type" => "object", "properties" => {"a" => {"type" => "string"}}},
           "depth" => {"type" => "integer"},
-          "tone" => {"type" => "string", "enum" => %w[warm cool]}
+          "tone" => {"type" => "string", "enum" => %w[warm cool]},
+          "lid" => {"type" => "object", "properties" => {"hinge" => {"type" => "string", "enum" => %w[left right]}}}
         })
       schemas["WidgetsCreatePayloadV2"]["properties"]["crate"] = {"type" => "object", "properties" => {"w" => {"type" => "string"}}}
       schemas["WidgetV2"]["properties"]["kind"]["enum"] = %w[big tiny]
@@ -82,14 +84,15 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
   end
 
   # The mini spec after the update, with fields and arguments limited to
-  # some values, and one operator fewer. Its box lost two keys, gained one
-  # and has a limit on another. It has a new version of the widgets
-  # resource with one method.
+  # some values, and one operator fewer. Its box lost two keys, gained one,
+  # has a limit on another and one of another type. It has a new version
+  # of the widgets resource with one method.
   def newer_spec
     mini_spec.tap do |spec|
       with_nested(spec, sizes: %w[s m], kind: "The accepted operator is 'one_of'.", keys: {
         "depth" => {"type" => "integer", "enum" => [1, 2]},
         "tone" => {"type" => "string"},
+        "lid" => {"type" => "integer"},
         "shape" => {"type" => "string", "enum" => %w[round]}
       })
       schemas = spec["components"]["schemas"]
@@ -122,9 +125,11 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Field `WidgetV2#colour` was removed
       - Field `WidgetV2#box.colour` was removed
       - Field `WidgetV2#box.inner` was removed
+      - Field `WidgetV2#box.lid` changed type from `Hash` to `Integer`
       - Field `WidgetsCreatePayloadV2#colour` was removed
       - Field `WidgetsCreatePayloadV2#box.colour` was removed
       - Field `WidgetsCreatePayloadV2#box.inner` was removed
+      - Field `WidgetsCreatePayloadV2#box.lid` changed type from `Hash` to `Integer`
       - Field `WidgetsCreatePayloadV2#crate` changed type from `Hash` to `PartV2`
       - Field `WidgetV2#labels` no longer allows `cold`
       - Field `WidgetV2#kind` no longer allows `tiny`
@@ -142,6 +147,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Method `client.v2.widgets.create` no longer takes `box.colour`
       - Method `client.v2.widgets.create` no longer takes `box.inner`
       - Method `client.v2.widgets.create` now needs `name:`
+      - Method `client.v2.widgets.create` changed the type of argument `box.lid` from `Hash` to `Integer`
       - Method `client.v2.widgets.create` changed the type of argument `crate` from `Hash` to `Models::PartV2, Hash`
       - Method `client.v2.widgets.create` no longer allows `blue` for `name`
       - Method `client.v2.widgets.create` no longer allows `l` for `box.size`
@@ -235,7 +241,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(report.lines.last(3)).to eq([
       "- Webhook event `public_widget.created_v1` changed its model from `PartV2` to `WidgetV2`\n",
       "- Webhook event `public_widget.deleted_v1` was removed\n",
-      "- and 43 more\n"
+      "- and 46 more\n"
     ])
   end
 
@@ -252,9 +258,23 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
 
     it "has every model and field read" do
       models = IncidentIo::Models.constants.to_h { |name| [name.to_s, IncidentIo::Models.const_get(name).members.map(&:to_s)] }
+      # A name with a dot is a key inside a field.
+      fields = surface[:models].transform_values { |model| model[:types].keys.reject { |name| name.include?(".") } }
 
-      expect(surface[:models].transform_values(&:keys)).to eq(models)
-      expect(surface[:models].values.flat_map(&:values).map { |field| field[:type] }).to all(match(/\A[A-Z]/))
+      expect(fields).to eq(models)
+      expect(surface[:models].values.flat_map { |model| model[:types].values }).to all(match(/\A[A-Z]/))
+    end
+
+    it "has the type of every key inside a field or an argument" do
+      attachment = surface[:models].fetch("IncidentAttachmentsCreatePayloadV1")[:types]
+      create = surface[:methods].fetch("client.v1.incident_attachments.create")[:types]
+
+      expect(attachment).to include("resource" => "Hash", "resource.resource_type" => "String", "resource.url" => "String")
+      expect(create).to include("resource" => "Hash", "resource.resource_type" => "String", "resource.url" => "String")
+      # Each key sits in a field or a key that is read too.
+      [*surface[:models].values, *surface[:methods].values].each do |owner|
+        expect(described_class.comparable(owner[:types], owner[:types])).to eq(owner[:types].keys)
+      end
     end
 
     it "knows which version of each resource the client uses" do
@@ -278,17 +298,14 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
 
     it "has limits and operators only for fields and arguments it read" do
       allowed = JSON.parse(File.read(File.join(IncidentIoGenerator::ROOT, described_class::VALUES_PATH)))
-      # The field or argument a limit belongs to, e.g. "resource" for
-      # "resource.resource_type".
-      owners = ->(limits) { limits.keys.map { |name| name.split(".").first } }
-
       expect(allowed.values).to all(satisfy { |limits| !limits.empty? })
-      allowed["fields"].each { |model, fields| expect(surface[:models].fetch(model).keys).to include(*owners[fields]) }
-      allowed["arguments"].each { |call, args| expect(surface[:methods].fetch(call)[:types].keys).to include(*owners[args]) }
-      allowed.values_at("operators", "example_operators").each do |operators|
-        operators.each { |call, args| expect(surface[:methods].fetch(call)[:types].keys).to include(*args.keys) }
+      # A limit has the same name as the field, argument or key it is on,
+      # e.g. "resource.resource_type".
+      allowed["fields"].each { |model, fields| expect(surface[:models].fetch(model)[:types].keys).to include(*fields.keys) }
+      allowed.values_at("arguments", "operators", "example_operators").each do |limits|
+        limits.each { |call, args| expect(surface[:methods].fetch(call)[:types].keys).to include(*args.keys) }
       end
-      expect(surface[:models].values.flat_map(&:values).sum { |field| field[:limits].size }).to eq(allowed["fields"].values.sum(&:size))
+      expect(surface[:models].values.sum { |model| model[:limits].size }).to eq(allowed["fields"].values.sum(&:size))
     end
 
     # rbs test wraps every method, which hides the arguments it takes.

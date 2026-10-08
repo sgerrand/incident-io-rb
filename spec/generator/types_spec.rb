@@ -115,10 +115,22 @@ RSpec.describe IncidentIoGenerator::Types do
 
     expect(described_class.limits(size, "size")).to eq("size" => %w[s m])
     expect(described_class.limits({"type" => "string"}, "name")).to eq({})
-    expect(described_class.limits(box, "box")).to eq("box.size" => %w[s m], "box.label" => nil)
-    expect(described_class.limits({"type" => "array", "items" => box}, "boxes")).to eq("boxes.size" => %w[s m], "boxes.label" => nil)
-    expect(described_class.limits({"type" => "object", "properties" => {"inner" => box}}, "outer"))
-      .to eq("outer.inner" => nil, "outer.inner.size" => %w[s m], "outer.inner.label" => nil)
+    expect(described_class.limits(box, "box")).to eq("box.size" => %w[s m])
+    expect(described_class.limits({"type" => "array", "items" => box}, "boxes")).to eq("boxes.size" => %w[s m])
+    expect(described_class.limits({"type" => "object", "properties" => {"inner" => box}}, "outer")).to eq("outer.inner.size" => %w[s m])
+  end
+
+  it "reads the type of a schema and of the keys inside it" do
+    part = {"$ref" => "#/c/PartV2"}
+    box = {"type" => "object", "properties" => {"size" => {"type" => "integer"}, "part" => part}}
+
+    expect(described_class.yard_types({"type" => "string"}, "name")).to eq("name" => "String")
+    expect(described_class.yard_types(box, "box")).to eq("box" => "Hash", "box.size" => "Integer", "box.part" => "Models::PartV2")
+    expect(described_class.yard_types({"type" => "array", "items" => box}, "boxes", namespace: ""))
+      .to eq("boxes" => "Array<Hash>", "boxes.size" => "Integer", "boxes.part" => "PartV2")
+    expect(described_class.yard_types({"type" => "object", "properties" => {"inner" => box}}, "outer", accepts_hash: true)).to eq(
+      "outer" => "Hash", "outer.inner" => "Hash", "outer.inner.size" => "Integer", "outer.inner.part" => "Models::PartV2, Hash"
+    )
   end
 
   it "reads the limits of keys inside nested arrays and maps" do

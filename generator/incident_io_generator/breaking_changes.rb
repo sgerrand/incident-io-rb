@@ -9,10 +9,12 @@ module IncidentIoGenerator
   # - a webhook event type, audit log entry type, model, model field or
   #   resource method that was removed
   # - a webhook event type or audit log entry type with another model
-  # - a model field that changed type or allows other values
+  # - a model field, or a key inside one, that changed type or allows other
+  #   values
   # - a resource that `client.<name>` reaches in another API version
   # - a resource method whose arguments or return type changed, or with an
-  #   argument that allows fewer values or operators
+  #   argument, or a key inside one, that changed type or allows fewer
+  #   values or operators
   module BreakingChanges
     MODELS_PATH = "spec/fixtures/models.json"
     OPERATIONS_PATH = "spec/fixtures/operations.json"
@@ -36,18 +38,15 @@ module IncidentIoGenerator
       # type by action, then by version.
       events = manifest.fetch("webhook_events")
       entries = manifest.fetch("audit_log_entries")
-      # Each model's fields, keyed by the model's name. A field has a type,
-      # like "Time" or "Array<UserV2>", and limits: the values it allows,
-      # and the values that each key inside it allows, under names like
-      # "field.key". A key that takes any value has nil.
-      models = manifest.fetch("models").to_h do |model, fields|
-        limits = allowed["fields"].fetch(model, {})
-        [model, fields.to_h do |field, type|
-          [field, {type:, limits: limits.select { |name, _| name.split(".").first == field }}]
-        end]
+      # Each model, keyed by its name. `types` has the type of each field,
+      # like "Time" or "Array<UserV2>", and of each key inside a field,
+      # under a name like "field.key". `limits` has the values that each
+      # of those allows. One that allows any value isn't in it.
+      models = manifest.fetch("models").to_h do |model, types|
+        [model, {types:, limits: allowed["fields"].fetch(model, {})}]
       end
-      # How each method is called, keyed by the call. `limits` has the
-      # values its arguments allow, named like those of a field.
+      # How each method is called, keyed by the call. `types` and `limits`
+      # are those of its arguments, named like those of a model's fields.
       # `operators` has the operators its filter arguments allow, and
       # `shown` those that examples show, for filters whose operators the
       # spec doesn't name.
@@ -93,7 +92,7 @@ module IncidentIoGenerator
         return found if names.empty?
 
         found += names
-        texts = names.flat_map { |name| models[name].values.map { |field| field[:type] } }
+        texts = names.flat_map { |name| models[name][:types].values }
       end
     end
 
@@ -101,10 +100,26 @@ module IncidentIoGenerator
     # in the operations manifest.
     def signature(op)
       types = op.fetch("arg_types")
+      # A name with a dot is a key inside an argument.
+      args = types.keys.reject { |name| name.include?(".") }
       # The manifest has the positional arguments first.
-      positional = types.keys.first(op.fetch("path_args").size)
+      positional = args.first(op.fetch("path_args").size)
       required = op.fetch("keyword_args").keys
-      {positional:, required:, optional: types.keys - positional - required, types:, returns: op.fetch("returns")}
+      {positional:, required:, optional: args - positional - required, types:, returns: op.fetch("returns")}
+    end
+
+    # The names in `was` to compare with `now`: fields or arguments, and
+    # each key inside one whose parents all kept their type. Both map names
+    # to types. What is inside something that was removed or changed type
+    # isn't compared, as that is listed already.
+    def comparable(was, now)
+      was.keys.select do |name|
+        parts = name.split(".")
+        (1...parts.size).all? do |size|
+          parent = parts.first(size).join(".")
+          now[parent] == was[parent]
+        end
+      end
     end
 
     # The breaking changes from `before` to `after`, one line each. Both
@@ -139,46 +154,34 @@ module IncidentIoGenerator
       end
     end
 
-    # Fields that were removed or changed type, in models that both have,
-    # and keys inside fields that were removed. The fields of a removed
-    # model aren't listed one by one.
+    # Fields, and keys inside fields, that were removed or changed type, in
+    # models that both have. The fields of a removed model aren't listed
+    # one by one.
     def field_changes(before, after)
-      after.flat_map do |model, fields|
-        before.fetch(model, {}).flat_map do |field, was|
-          now = fields[field]
-          next ["Field `#{model}##{field}` was removed"] unless now
-          next ["Field `#{model}##{field}` changed type from `#{was[:type]}` to `#{now[:type]}`"] if was[:type] != now[:type]
-
-          removed_keys(was[:limits], now[:limits]).map { |name| "Field `#{model}##{name}` was removed" }
+      before.slice(*after.keys).flat_map do |model, was|
+        now = after[model][:types]
+        comparable(was[:types], now).filter_map do |name|
+          type = was[:types][name]
+          if !now.key?(name)
+            "Field `#{model}##{name}` was removed"
+          elsif now[name] != type
+            "Field `#{model}##{name}` changed type from `#{type}` to `#{now[name]}`"
+          end
         end
-      end
-    end
-
-    # The keys inside a field or an argument that are gone, by names like
-    # "field.key". `was` and `now` are its limits. Keys inside a removed key
-    # aren't listed one by one.
-    def removed_keys(was, now)
-      (was.keys - now.keys).select do |name|
-        parent = name.rpartition(".").first
-        # A name without a dot is the field or argument itself.
-        name.include?(".") && (!parent.include?(".") || now.key?(parent))
       end
     end
 
     # The limits to compare, as [model, name, was, now]: one for each field,
     # and each key inside a field, that was limited to some values and is
-    # still there. `now` is nil when it allows any value. A field that
-    # changed type is left out, as its old and new values can't be compared.
+    # still there with the same type. `now` is nil when it allows any
+    # value. The old and new values of one that changed type can't be
+    # compared.
     def kept_limits(before, after)
-      after.flat_map do |model, fields|
-        before.fetch(model, {}).flat_map do |field, was|
-          now = fields[field]
-          next [] if now.nil? || now[:type] != was[:type]
-
-          was[:limits].filter_map do |name, values|
-            # A key that is gone is listed as removed.
-            [model, name, values, now[:limits][name]] if values && (!name.include?(".") || now[:limits].key?(name))
-          end
+      before.slice(*after.keys).flat_map do |model, was|
+        now = after[model]
+        comparable(was[:types], now[:types]).filter_map do |name|
+          values = was[:limits][name]
+          [model, name, values, now[:limits][name]] if values && now[:types][name] == was[:types][name]
         end
       end
     end
@@ -225,23 +228,31 @@ module IncidentIoGenerator
     # a new argument or key.
     def argument_value_changes(name, was, now)
       now[:limits].filter_map do |arg, values|
-        next unless values && was[:types].key?(arg.split(".").first)
+        next unless was[:types].key?(arg)
 
         allowed = was[:limits][arg]
-        if allowed
-          "Method `#{name}` no longer allows #{quote(allowed - values)} for `#{arg}`" if (allowed - values).any?
-        elsif !arg.include?(".") || was[:limits].key?(arg)
+        if allowed.nil?
           "Method `#{name}` now only allows #{quote(values)} for `#{arg}`"
+        elsif (allowed - values).any?
+          "Method `#{name}` no longer allows #{quote(allowed - values)} for `#{arg}`"
         end
       end
     end
 
-    # Keys inside the arguments of a method that are gone, for arguments
-    # that kept their type. A removed argument is listed already.
+    # Keys inside the arguments of a method that are gone. A removed
+    # argument is listed already.
     def removed_argument_keys(name, was, now)
-      removed_keys(was[:limits], now[:limits]).filter_map do |key|
-        arg = key.split(".").first
-        "Method `#{name}` no longer takes `#{key}`" if was[:types][arg] == now[:types][arg]
+      (comparable(was[:types], now[:types]) - now[:types].keys).filter_map do |key|
+        "Method `#{name}` no longer takes `#{key}`" if key.include?(".")
+      end
+    end
+
+    # Arguments of a method, and keys inside them, that changed type.
+    def argument_type_changes(name, was, now)
+      comparable(was[:types], now[:types]).filter_map do |arg|
+        type = was[:types][arg]
+        now_type = now[:types].fetch(arg, type)
+        "Method `#{name}` changed the type of argument `#{arg}` from `#{type}` to `#{now_type}`" if now_type != type
       end
     end
 
@@ -305,9 +316,9 @@ module IncidentIoGenerator
 
     # Methods that were removed, and methods that can no longer be used the
     # same way: their positional arguments changed, they lost a keyword
-    # argument or a key inside one, they need a new one, an argument changed
-    # type or allows fewer values or operators, or they return something
-    # else.
+    # argument or a key inside one, they need a new one, an argument or a
+    # key inside one changed type or allows fewer values or operators, or
+    # they return something else.
     def method_changes(before, after)
       before.flat_map do |name, was|
         now = after[name]
@@ -319,10 +330,7 @@ module IncidentIoGenerator
           *(was[:required] + was[:optional] - now[:required] - now[:optional]).map { |arg| "Method `#{name}` no longer takes `#{arg}:`" },
           *removed_argument_keys(name, was, now),
           *(now[:required] - was[:required]).map { |arg| "Method `#{name}` now needs `#{arg}:`" },
-          *was[:types].filter_map do |arg, type|
-            now_type = now[:types].fetch(arg, type)
-            "Method `#{name}` changed the type of argument `#{arg}` from `#{type}` to `#{now_type}`" if now_type != type
-          end,
+          *argument_type_changes(name, was, now),
           *argument_value_changes(name, was, now),
           *operator_changes(name, was, now),
           *example_changes(name, was, now),

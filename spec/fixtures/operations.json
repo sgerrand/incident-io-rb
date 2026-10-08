@@ -840,7 +840,12 @@
     },
     "arg_types": {
       "incident_id": "String",
-      "resource": "Hash"
+      "resource": "Hash",
+      "resource.emoji": "String",
+      "resource.external_id": "String",
+      "resource.resource_type": "String",
+      "resource.title": "String",
+      "resource.url": "String"
     },
     "returns": "Models::IncidentAttachmentV1",
     "query_keys": [],

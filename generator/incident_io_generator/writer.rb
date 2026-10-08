@@ -254,9 +254,10 @@ module IncidentIoGenerator
             "path" => op.path,
             "path_args" => op.path_params.map { |p| "#{p.name}-value" },
             "keyword_args" => keyword_params.to_h { |p| [p.name, Types.sample_value(p.schema, p.name)] },
-            # Every argument, optional ones too, with its YARD type.
-            "arg_types" => (op.path_params + op.keyword_params).to_h do |p|
-              [p.name, Types.yard_type(p.schema, accepts_hash: true)]
+            # Every argument, optional ones too, with its YARD type. A key
+            # inside an argument is there too, under a name like "arg.key".
+            "arg_types" => (op.path_params + op.keyword_params).reduce({}) do |types, p|
+              types.merge(Types.yard_types(p.schema, p.name, accepts_hash: true))
             end,
             "returns" => op.result.yard,
             "query_keys" => keyword_params.select { |p| p.location == :query }.map(&:name),
@@ -278,11 +279,12 @@ module IncidentIoGenerator
     end
 
     # The YARD type of every field of each model, and the model of each
-    # webhook event type and audit log entry type, for BreakingChanges.
+    # webhook event type and audit log entry type, for BreakingChanges. A
+    # key inside a field is there too, under a name like "field.key".
     # Entry types are keyed by action, then by version.
     def models_manifest
       {
-        "models" => api.models.to_h { |model| [model.name, model.fields.to_h { |field| [field.member, field.yard] }] },
+        "models" => api.models.to_h { |model| [model.name, model.fields.map(&:yard_types).reduce({}, :merge)] },
         "webhook_events" => api.webhook_events.to_h { |event| [event.type, event.model] },
         "audit_log_entries" => api.audit_log_entries.group_by(&:action).transform_values do |entries|
           entries.to_h { |entry| [entry.version.to_s, entry.model] }

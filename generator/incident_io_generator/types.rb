@@ -21,17 +21,25 @@ module IncidentIoGenerator
     end
 
     # Every limit in a schema, keyed by name: its own allowed values under
-    # the given name, when it has any, and those of each key of an inline
-    # object under a name like "name.key". A key that takes any value is
-    # there too, with nil, so a key that is gone can be told from one that
-    # lost its limit. The inline object can sit inside arrays and maps.
+    # the given name, and those of each key inside it under a name like
+    # "name.key". Those that take any value are left out.
     def limits(schema, name)
-      {name => allowed_values(schema)}.compact.merge(key_limits(schema, name))
+      named_schemas(schema, name).transform_values { |inner| allowed_values(inner) }.compact
     end
 
-    def key_limits(schema, name)
-      inline_properties(schema).reduce({}) do |all, (key, prop)|
-        all.merge({"#{name}.#{key}" => allowed_values(prop)}, key_limits(prop, "#{name}.#{key}"))
+    # The YARD type of a schema under the given name, and of each key
+    # inside it under a name like "name.key". Takes the options of
+    # #yard_type.
+    def yard_types(schema, name, **)
+      named_schemas(schema, name).transform_values { |inner| yard_type(inner, **) }
+    end
+
+    # A schema under the given name, then the schema of each key of an
+    # inline object in it under a name like "name.key", and of each key
+    # inside those. The inline object can sit inside arrays and maps.
+    def named_schemas(schema, name)
+      inline_properties(schema).reduce({name => schema}) do |all, (key, prop)|
+        all.merge(named_schemas(prop, "#{name}.#{key}"))
       end
     end
 
