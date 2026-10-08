@@ -78,21 +78,54 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch --force-create "$BRANCH"
           git commit --message "feat: update generated code from the latest OpenAPI spec"
-          git push --force origin "$BRANCH"
 
-          cat > "$RUNNER_TEMP/body.md" <<'BODY'
+          # The part of the pull request's text that every run rewrites. It
+          # names its commit, so a list that is out of date is easy to spot.
+          {
+            echo "<!-- breaking-changes:start -->"
+            echo "<!-- The update workflow rewrites this part on every run. Write your notes outside it. -->"
+            if [ -s "$RUNNER_TEMP/breaking.md" ]; then
+              cat "$RUNNER_TEMP/breaking.md"
+              echo
+              echo "This list is for commit $(git rev-parse HEAD)."
+            else
+              echo "No breaking changes were found in commit $(git rev-parse HEAD)."
+            fi
+            echo "<!-- breaking-changes:end -->"
+          } > "$RUNNER_TEMP/section.md"
+
+          # An open pull request keeps its text, so anything a person
+          # added to it is kept too.
+          state="$(gh pr view "$BRANCH" --json state --jq .state 2>/dev/null || true)"
+          if [ "$state" = "OPEN" ]; then
+            gh pr view "$BRANCH" --json body --jq .body > "$RUNNER_TEMP/text.md"
+          else
+            cat > "$RUNNER_TEMP/text.md" <<'BODY'
           :tipping_hand_person: These changes update the generated models, resources and signatures from the latest incident.io OpenAPI spec.
 
-          The spec itself is not stored in git, so review the changes to the generated code. The specs passed in the workflow run that opened this pull request.
+          The spec itself is not stored in git, so review the changes to the generated code. The workflow ran the specs before it pushed this code, and they passed.
 
           The Test workflow does not run on pull requests opened by GitHub Actions. To run it, close and reopen this pull request.
           BODY
-          { echo; cat "$RUNNER_TEMP/breaking.md"; } >> "$RUNNER_TEMP/body.md"
+          fi
 
-          # An open pull request gets the new body too, so its list of
-          # breaking changes stays true.
-          if [ "$(gh pr view "$BRANCH" --json state --jq .state 2>/dev/null)" = "OPEN" ]; then
-            gh pr edit "$BRANCH" --body-file "$RUNNER_TEMP/body.md"
+          # Puts the new part in place of the old one, or at the end of a
+          # text that has none.
+          ruby -e '
+            text, section = ARGV.map { |path| File.read(path) }
+            marked = /<!-- breaking-changes:start -->.*<!-- breaking-changes:end -->\r?\n?/m
+            print text.match?(marked) ? text.sub(marked) { section } : "#{text.rstrip}\n\n#{section}"
+          ' "$RUNNER_TEMP/text.md" "$RUNNER_TEMP/section.md" > "$RUNNER_TEMP/body.md"
+
+          # Everything that can fail before the push has run by now. The
+          # text is written last, as it describes the pushed code.
+          git push --force origin "$BRANCH"
+
+          if [ "$state" = "OPEN" ]; then
+            if ! gh pr edit "$BRANCH" --body-file "$RUNNER_TEMP/body.md"; then
+              echo "::error::The text of the pull request was not updated, so its list of breaking changes is out of date. Run this workflow again to fix it."
+              exit 1
+            fi
             echo "Updated the open pull request."
           else
             gh pr create \
