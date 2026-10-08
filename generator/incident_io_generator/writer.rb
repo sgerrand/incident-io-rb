@@ -299,6 +299,8 @@ module IncidentIoGenerator
     # The spec names no operators for a filter that is keyed by an ID, like
     # `custom_field`, because they depend on the custom field. For these,
     # `example_operators` has the operators that the spec's examples show.
+    # Only an argument whose schema is that of a filter has any, see
+    # Types.filter_depth.
     def allowed_values_manifest
       fields = api.models.to_h { |model| [model.name, model.fields.map(&:limits).reduce({}, :merge)] }
       arguments = {}
@@ -310,9 +312,9 @@ module IncidentIoGenerator
           params = op.path_params + op.keyword_params
           arguments[call] = params.map { |p| Types.limits(p.schema, p.name) }.reduce({}, :merge)
           operators[call] = params.to_h { |p| [p.name, Types.operators(p.description)] }.compact
-          unnamed = op.query_params.select { |p| p.schema["type"] == "object" && !operators[call].key?(p.name) }
+          unnamed = op.query_params.reject { |p| operators[call].key?(p.name) }
           example_operators[call] = unnamed.to_h do |p|
-            [p.name, Types.example_operators(p.name, p.schema["example"], op.description)]
+            [p.name, Types.example_operators(p.name, p.schema, op.description)]
           end.reject { |_, shown| shown.empty? }
         end
       end

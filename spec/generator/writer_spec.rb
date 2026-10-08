@@ -148,9 +148,13 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
     list = spec["paths"]["/v2/widgets"]["get"]
     list["description"] = "Try `--data 'attrs[ABC][not_in]=x'`."
     list["parameters"] << {"in" => "query", "name" => "attrs", "style" => "deepObject", "schema" => {
-      "type" => "object", "example" => {"01ABC" => {"one_of" => ["x"]}}
+      "type" => "object", "additionalProperties" => {"additionalProperties" => {"type" => "array"}},
+      "example" => {"01ABC" => {"one_of" => ["x"]}}
     }}
-    list["parameters"] << {"in" => "query", "name" => "anything", "style" => "deepObject", "schema" => {"type" => "object"}}
+    # Not a filter, so its example shows no operators.
+    list["parameters"] << {"in" => "query", "name" => "anything", "style" => "deepObject", "schema" => {
+      "type" => "object", "example" => {"team" => "x"}
+    }}
     schemas = spec["components"]["schemas"]
     schemas["WidgetV2"]["properties"]["labels"]["additionalProperties"]["enum"] = %w[hot cold]
     schemas["WidgetV2"]["properties"]["box"] = {"type" => "object", "properties" => {"size" => {"type" => "string", "enum" => %w[s m]}}}

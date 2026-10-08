@@ -166,12 +166,40 @@ RSpec.describe IncidentIoGenerator::Types do
       nil => nil
     }.each { |text, operators| expect(described_class.operators(text)).to eq(operators) }
   end
-  it "reads the operators that examples show" do
-    text = "Try `--data 'custom_field[ABC][not_in]=XYZ'` or `tags[all_of]=x`, but not other_custom_field[ABC][gte]=1."
 
-    expect(described_class.example_operators("custom_field", {"01ABC" => {"one_of" => %w[x y]}}, text)).to eq(%w[one_of not_in])
-    expect(described_class.example_operators("tags", {"one_of" => ["x"], "all_of" => ["y"]}, text)).to eq(%w[one_of all_of])
-    expect(described_class.example_operators("role", {"01ABC" => {"01DEF" => {"is_blank" => ["true"]}}}, nil)).to eq(%w[is_blank])
-    expect(described_class.example_operators("query", nil, nil)).to eq([])
+  describe "the operators that examples show" do
+    values = {"type" => "array", "items" => {"type" => "string"}}
+    # A filter like `{"one_of" => ["x"]}`.
+    let(:filter) { ->(example) { {"type" => "object", "additionalProperties" => values, "example" => example} } }
+    # A filter keyed by an ID, like `{"01ABC" => {"one_of" => ["x"]}}`.
+    let(:by_id) { ->(example) { filter[example].merge("additionalProperties" => {"additionalProperties" => values}) } }
+
+    it "reads them from the example and from sample query strings" do
+      text = "Try `--data 'custom_field[ABC][not_in]=XYZ'` or `tags[all_of]=x`, but not other_custom_field[ABC][gte]=1."
+
+      expect(described_class.example_operators("custom_field", by_id[{"01ABC" => {"one_of" => %w[x y]}}], text)).to eq(%w[one_of not_in])
+      expect(described_class.example_operators("tags", filter[{"one_of" => ["x"], "all_of" => ["y"]}], text)).to eq(%w[one_of all_of])
+      expect(described_class.example_operators("tags", filter[nil], text)).to eq(%w[all_of])
+    end
+
+    it "reads them only where the schema puts them" do
+      text = "Not `custom_field[01ABC]=x` or `custom_field[A][B][is]=x`."
+      mixed = {"one_of" => ["x"], "between" => {"gte" => ["1"]}}
+
+      expect(described_class.example_operators("custom_field", by_id[{"01ABC" => {"one_of" => ["x"]}, "01DEF" => "x"}], text)).to eq(%w[one_of])
+      expect(described_class.example_operators("size", filter[mixed], nil)).to eq(%w[one_of between])
+      expect(described_class.example_operators("size", {"additionalProperties" => by_id[nil], "example" => {"A" => {"B" => mixed}}}, nil))
+        .to eq(%w[one_of between])
+    end
+
+    it "finds none for an argument that isn't a filter" do
+      example = {"team" => "x", "region" => "eu"}
+
+      expect(described_class.example_operators("meta", {"type" => "object", "example" => example}, "Try `meta[team]=x`.")).to eq([])
+      expect(described_class.example_operators("meta", {"type" => "object", "additionalProperties" => true, "example" => example}, nil)).to eq([])
+      expect(described_class.example_operators("meta", {"type" => "object", "additionalProperties" => {"type" => "string"}, "example" => example}, nil))
+        .to eq([])
+      expect(described_class.example_operators("page_size", {"type" => "integer"}, nil)).to eq([])
+    end
   end
 end

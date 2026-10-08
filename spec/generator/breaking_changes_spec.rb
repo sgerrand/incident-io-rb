@@ -22,7 +22,8 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     list[2]["description"] = "Filter on kind. #{kind}"
     list[1]["description"] = after
     list << {"in" => "query", "name" => "attrs", "style" => "deepObject", "schema" => {
-      "type" => "object", "example" => {"01ABC" => attrs.to_h { |operator| [operator, ["x"]] }}
+      "type" => "object", "additionalProperties" => {"additionalProperties" => {"type" => "array"}},
+      "example" => {"01ABC" => attrs.to_h { |operator| [operator, ["x"]] }}
     }}
     spec
   end

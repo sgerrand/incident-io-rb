@@ -67,20 +67,38 @@ module IncidentIoGenerator
       named unless named.empty?
     end
 
-    # The operators that examples show for a filter argument: the innermost
-    # keys of its example value, like `one_of` in `{"01ABC" => {"one_of" =>
-    # ["x"]}}`, and those in sample query strings in a text, like `not_in`
-    # in `name[01ABC][not_in]=x`.
-    def example_operators(name, example, text)
-      in_text = text.to_s.scan(/\b#{Regexp.escape(name)}(?:\[[^\]=\s]+\])*\[(\w+)\]=/).flatten
-      (innermost_keys(example) + in_text).uniq
+    # How deep the operators sit in the value of a filter argument: 1 for a
+    # filter like `{"one_of" => ["x"]}`, and 2 for one keyed by an ID, like
+    # `{"01ABC" => {"one_of" => ["x"]}}`. Nil when the schema isn't that of
+    # a filter, which is a map of lists of values, or a map of such maps.
+    def filter_depth(schema)
+      values = schema["additionalProperties"]
+      # `additionalProperties` can be true or false as well as a schema.
+      return nil unless values.is_a?(Hash)
+
+      (values["type"] == "array") ? 1 : filter_depth(values)&.succ
     end
 
-    def innermost_keys(example)
-      return [] unless example.is_a?(Hash)
+    # The operators that examples show for a filter argument: the keys of
+    # its example value, like `one_of` in `{"01ABC" => {"one_of" => ["x"]}}`,
+    # and those in sample query strings in a text, like `not_in` in
+    # `name[01ABC][not_in]=x`. The schema says how deep the operators sit,
+    # so an ID is never read as one. Empty for an argument that isn't a
+    # filter.
+    def example_operators(name, schema, text)
+      depth = filter_depth(schema)
+      return [] unless depth
 
-      inner = example.values.grep(Hash)
-      inner.empty? ? example.keys : inner.flat_map { |hash| innermost_keys(hash) }
+      ids = "(?:\\[[^\\]=\\s]+\\]){#{depth - 1}}"
+      in_text = text.to_s.scan(/\b#{Regexp.escape(name)}#{ids}\[(\w+)\]=/).flatten
+      (keys_at(schema["example"], depth) + in_text).uniq
+    end
+
+    # The keys that sit at the given depth in a value made of nested hashes.
+    def keys_at(value, depth)
+      return [] unless value.is_a?(Hash)
+
+      (depth == 1) ? value.keys : value.values.flat_map { |inner| keys_at(inner, depth - 1) }
     end
 
     # Ruby source for a field type in `Model.define`. Model references are
