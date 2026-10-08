@@ -134,6 +134,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Field `WidgetV2#labels` no longer allows `cold`
       - Field `WidgetV2#kind` no longer allows `tiny`
       - Field `WidgetV2#box.size` no longer allows `l` (same in `WidgetsCreatePayloadV2`)
+      - Field `WidgetV2#box.depth` now only allows `1`, `2` (same in `WidgetsCreatePayloadV2`)
       - Field `WidgetsCreatePayloadV2#name` no longer allows `blue`
       - Resource `client.widgets` now uses v3 instead of v2
       - Method `client.widgets.archive` was removed
@@ -179,7 +180,6 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       schemas = spec["components"]["schemas"]
       schemas["GadgetV1"] = {"type" => "object"}
       schemas["WidgetV2"]["properties"]["colour"] = {"type" => "string"}
-      schemas["WidgetV2"]["properties"]["class"]["enum"] = %w[a b]
       schemas["WidgetsCreatePayloadV2"]["required"] = ["idempotency_key"]
       schemas["WidgetsCreatePayloadV2"]["properties"]["colour"] = {"type" => "string", "enum" => %w[red]}
       # Code can't be handed a payload, so more values for its fields
@@ -241,7 +241,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(report.lines.last(3)).to eq([
       "- Webhook event `public_widget.created_v1` changed its model from `PartV2` to `WidgetV2`\n",
       "- Webhook event `public_widget.deleted_v1` was removed\n",
-      "- and 46 more\n"
+      "- and 47 more\n"
     ])
   end
 

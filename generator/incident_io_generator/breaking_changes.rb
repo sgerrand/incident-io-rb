@@ -172,27 +172,33 @@ module IncidentIoGenerator
     end
 
     # The limits to compare, as [model, name, was, now]: one for each field,
-    # and each key inside a field, that was limited to some values and is
-    # still there with the same type. `now` is nil when it allows any
-    # value. The old and new values of one that changed type can't be
-    # compared.
+    # and each key inside a field, that is still there with the same type,
+    # and was or is limited to some values. `was` or `now` is nil when it
+    # allows any value. The old and new values of one that changed type
+    # can't be compared.
     def kept_limits(before, after)
       before.slice(*after.keys).flat_map do |model, was|
         now = after[model]
         comparable(was[:types], now[:types]).filter_map do |name|
-          values = was[:limits][name]
-          [model, name, values, now[:limits][name]] if values && now[:types][name] == was[:types][name]
+          next unless now[:types][name] == was[:types][name]
+
+          values = [was, now].map { |side| side[:limits][name] }
+          [model, name, *values] if values.any?
         end
       end
     end
 
     # Fields that allow fewer values than before, as [model, name, change].
+    # One that allowed any value and is now limited to some is listed too.
     # Code that sends the field can no longer send a value, and code that
     # reads it waits for a value that no longer comes.
     def fewer_values(limits)
       limits.filter_map do |model, name, was, now|
-        gone = was - (now || was)
-        [model, name, "no longer allows #{quote(gone)}"] if gone.any?
+        if was.nil?
+          [model, name, "now only allows #{quote(now)}"]
+        elsif (was - (now || was)).any?
+          [model, name, "no longer allows #{quote(was - now)}"]
+        end
       end
     end
 
@@ -202,7 +208,8 @@ module IncidentIoGenerator
     # code that only sends the field.
     def more_values(limits, read)
       limits.filter_map do |model, name, was, now|
-        next unless read.include?(model)
+        # A field that allowed any value before can't allow more.
+        next unless was && read.include?(model)
 
         if now.nil?
           [model, name, "now allows any value"]
