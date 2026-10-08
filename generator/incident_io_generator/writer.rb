@@ -26,7 +26,9 @@ module IncidentIoGenerator
       "sig/incident_io/models",
       "sig/incident_io/resources",
       *INDEX_FILES.keys,
-      "spec/fixtures/operations.json"
+      "spec/fixtures/operations.json",
+      "spec/fixtures/allowed_values.json",
+      "spec/fixtures/models.json"
     ].freeze
     # Keep method signatures on one line up to this width.
     MAX_LINE = 110
@@ -44,6 +46,8 @@ module IncidentIoGenerator
 
       files = INDEX_FILES.transform_values { |template| render(template) }
       files["spec/fixtures/operations.json"] = "#{JSON.pretty_generate(operations_manifest)}\n"
+      files["spec/fixtures/allowed_values.json"] = "#{JSON.pretty_generate(allowed_values_manifest)}\n"
+      files["spec/fixtures/models.json"] = "#{JSON.pretty_generate(models_manifest)}\n"
       api.models.each do |model|
         files["lib/incident_io/models/#{model.file_name}.rb"] = render("model.rb", model:)
         files["sig/incident_io/models/#{model.file_name}.rbs"] = render("model.rbs", model:)
@@ -230,21 +234,32 @@ module IncidentIoGenerator
 
     # What each generated resource method should do, for
     # spec/incident_io/generated_operations_spec.rb: how to call it, the
-    # request it should send and what it should return.
+    # request it should send and what it should return. BreakingChanges
+    # reads the arguments from it too.
     def operations_manifest
       api.resources.flat_map do |resource|
         resource.operations.map do |op|
           keyword_params = op.keyword_params.select(&:required)
           {
             "operation_id" => op.operation_id,
+            # How the method is called, like "client.v2.incidents.list".
+            "call" => op.full_name,
             "version" => resource.version.downcase,
             "resource" => resource.name,
+            # Whether `client.<resource>` uses this version.
+            "newest" => api.latest_resources.fetch(resource.name).version == resource.version,
             "method" => op.method_name,
             "deprecated" => op.deprecated,
             "http_method" => op.http_method,
             "path" => op.path,
             "path_args" => op.path_params.map { |p| "#{p.name}-value" },
             "keyword_args" => keyword_params.to_h { |p| [p.name, Types.sample_value(p.schema, p.name)] },
+            # Every argument, optional ones too, with its YARD type. A key
+            # inside an argument is there too, under a name like "arg.key".
+            "arg_types" => (op.path_params + op.keyword_params).reduce({}) do |types, p|
+              types.merge(Types.yard_types(p.schema, p.name, accepts_hash: true))
+            end,
+            "returns" => op.result.yard,
             "query_keys" => keyword_params.select { |p| p.location == :query }.map(&:name),
             "body_keys" => keyword_params.select { |p| p.location == :body }.map(&:name),
             "body" => op.body,
@@ -260,6 +275,53 @@ module IncidentIoGenerator
             }
           }
         end
+      end
+    end
+
+    # The YARD type of every field of each model, and the model of each
+    # webhook event type and audit log entry type, for BreakingChanges. A
+    # key inside a field is there too, under a name like "field.key".
+    # Entry types are keyed by action, then by version.
+    def models_manifest
+      {
+        "models" => api.models.to_h { |model| [model.name, model.fields.map(&:yard_types).reduce({}, :merge)] },
+        "webhook_events" => api.webhook_events.to_h { |event| [event.type, event.model] },
+        "audit_log_entries" => api.audit_log_entries.group_by(&:action).transform_values do |entries|
+          entries.to_h { |entry| [entry.version.to_s, entry.model] }
+        end
+      }
+    end
+
+    # The values each model field and each method argument is limited to,
+    # and the operators each filter argument allows, for BreakingChanges.
+    # Those without limits are left out.
+    #
+    # The spec names no operators for a filter that is keyed by an ID, like
+    # `custom_field`, because they depend on the custom field. For these,
+    # `example_operators` has the operators that the spec's examples show.
+    # Only an argument whose schema is that of a filter has any, see
+    # Types.filter_depth.
+    def allowed_values_manifest
+      fields = api.models.to_h { |model| [model.name, model.fields.map(&:limits).reduce({}, :merge)] }
+      arguments = {}
+      operators = {}
+      example_operators = {}
+      api.resources.each do |resource|
+        resource.operations.each do |op|
+          call = op.full_name
+          params = op.path_params + op.keyword_params
+          arguments[call] = params.map { |p| Types.limits(p.schema, p.name) }.reduce({}, :merge)
+          operators[call] = params.to_h { |p| [p.name, Types.operators(p.description)] }.compact
+          unnamed = op.query_params.reject { |p| operators[call].key?(p.name) }
+          example_operators[call] = unnamed.to_h do |p|
+            [p.name, Types.example_operators(p.name, p.schema, op.description)]
+          end.reject { |_, shown| shown.empty? }
+        end
+      end
+      {
+        "fields" => fields, "arguments" => arguments, "operators" => operators, "example_operators" => example_operators
+      }.transform_values do |limits|
+        limits.reject { |_, values| values.empty? }
       end
     end
 

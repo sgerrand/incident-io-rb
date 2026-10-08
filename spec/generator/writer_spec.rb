@@ -28,7 +28,7 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
       "lib/incident_io/resources/v2/widgets.rb", "sig/incident_io/resources/v2/widgets.rbs",
       "lib/incident_io/webhook_events.rb", "sig/incident_io/webhook_events.rbs",
       "lib/incident_io/audit_log_entries.rb", "sig/incident_io/audit_log_entries.rbs",
-      "spec/fixtures/operations.json",
+      "spec/fixtures/operations.json", "spec/fixtures/allowed_values.json", "spec/fixtures/models.json",
       *models.map { |m| "lib/incident_io/models/#{m}.rb" },
       *models.map { |m| "sig/incident_io/models/#{m}.rbs" }
     )
@@ -116,22 +116,90 @@ RSpec.describe IncidentIoGenerator::Writer, :generator do
       .to include(%(["widget.deleted", 2] => :AuditLogsWidgetDeletedV2\n))
     expect(generated("sig/incident_io/audit_log_entries.rbs")).to include("type entry = Models::AuditLogsWidgetDeletedV2")
   end
+  it "writes the type of each model field and the model of each event and entry type" do
+    described_class.new(api, @dir).write
+    manifest = JSON.parse(generated("spec/fixtures/models.json"))
+
+    expect(manifest["models"].keys).to eq(api.models.map(&:name))
+    expect(manifest["models"]["WidgetV2"]).to eq(
+      "id" => "String", "class_" => "String", "created_at" => "Time", "parts" => "Array<PartV2>",
+      "labels" => "Hash{String => String}", "kind" => "String"
+    )
+    expect(manifest["webhook_events"]).to eq("public_widget.created_v1" => "WidgetV2")
+    expect(manifest["audit_log_entries"]).to eq("widget.deleted" => {"2" => "AuditLogsWidgetDeletedV2"})
+  end
+
+  it "writes the type of each key inside a field or an argument" do
+    spec = mini_spec
+    box = {"type" => "object", "properties" => {"size" => {"type" => "integer"}, "part" => {"$ref" => "#/components/schemas/PartV2"}}}
+    %w[WidgetV2 WidgetsCreatePayloadV2].each { |model| spec["components"]["schemas"][model]["properties"]["box"] = box }
+    described_class.new(IncidentIoGenerator::Api.new(spec), @dir).write
+    create = JSON.parse(generated("spec/fixtures/operations.json")).find { |op| op["method"] == "create" }
+
+    expect(JSON.parse(generated("spec/fixtures/models.json"))["models"]["WidgetV2"])
+      .to include("box" => "Hash", "box.size" => "Integer", "box.part" => "PartV2")
+    expect(create["arg_types"]).to include("box" => "Hash", "box.size" => "Integer", "box.part" => "Models::PartV2, Hash")
+  end
+
+  it "writes the values and operators that fields and arguments are limited to" do
+    spec = mini_spec
+    spec["paths"]["/v2/widgets"]["get"]["parameters"][0]["schema"]["enum"] = [25, 50]
+    spec["paths"]["/v2/widgets"]["get"]["parameters"][2]["description"] = "The accepted operators are 'one_of', or 'not_in'."
+    list = spec["paths"]["/v2/widgets"]["get"]
+    list["description"] = "Try `--data 'attrs[ABC][not_in]=x'`."
+    list["parameters"] << {"in" => "query", "name" => "attrs", "style" => "deepObject", "schema" => {
+      "type" => "object", "additionalProperties" => {"additionalProperties" => {"type" => "array"}},
+      "example" => {"01ABC" => {"one_of" => ["x"]}}
+    }}
+    # Not a filter, so its example shows no operators.
+    list["parameters"] << {"in" => "query", "name" => "anything", "style" => "deepObject", "schema" => {
+      "type" => "object", "example" => {"team" => "x"}
+    }}
+    schemas = spec["components"]["schemas"]
+    schemas["WidgetV2"]["properties"]["labels"]["additionalProperties"]["enum"] = %w[hot cold]
+    schemas["WidgetV2"]["properties"]["box"] = {"type" => "object", "properties" => {"size" => {"type" => "string", "enum" => %w[s m]}}}
+    described_class.new(IncidentIoGenerator::Api.new(spec), @dir).write
+
+    expect(JSON.parse(generated("spec/fixtures/allowed_values.json"))).to eq(
+      "fields" => {"WidgetV2" => {"kind" => %w[big small], "labels" => %w[hot cold], "box.size" => %w[s m]}},
+      "arguments" => {"client.v2.widgets.list" => {"page_size" => [25, 50]}},
+      "operators" => {"client.v2.widgets.list" => {"kind" => %w[one_of not_in]}},
+      "example_operators" => {"client.v2.widgets.list" => {"attrs" => %w[one_of not_in]}}
+    )
+  end
+
+  it "marks the operations of the version that the client uses for each resource" do
+    spec = mini_spec
+    spec["paths"]["/v3/widgets/{id}"] = {"get" => operation("Widgets V3#Show", "WidgetsShowResultV2", parameters: [path_param("id")])}
+    described_class.new(IncidentIoGenerator::Api.new(spec), @dir).write
+    newest = JSON.parse(generated("spec/fixtures/operations.json")).to_h { |op| [op["call"], op["newest"]] }
+
+    expect(newest).to include("client.v3.widgets.show" => true, "client.v2.widgets.show" => false, "client.v2.widgets.list" => false)
+  end
+
   it "writes a manifest of what each resource method should do" do
     described_class.new(api, @dir).write
     manifest = JSON.parse(generated("spec/fixtures/operations.json")).to_h { |op| [op["method"], op] }
 
     expect(manifest["create"]).to include(
-      "operation_id" => "Widgets V2#Create", "version" => "v2", "resource" => "widgets",
+      "operation_id" => "Widgets V2#Create", "call" => "client.v2.widgets.create", "version" => "v2", "resource" => "widgets",
+      "newest" => true,
       "http_method" => "post", "path" => "/v2/widgets", "path_args" => [],
-      "keyword_args" => {"name" => "name-value"}, "body_keys" => ["name"], "body" => true, "null_body_key" => "part",
+      "keyword_args" => {"name" => "name-value"},
+      "arg_types" => {"name" => "String", "idempotency_key" => "String", "part" => "Models::PartV2, Hash"},
+      "returns" => "Models::WidgetV2",
+      "body_keys" => ["name"], "body" => true, "null_body_key" => "part",
       "idempotency_key" => true,
       "result" => {"kind" => "json", "unwrap" => "widget", "items_key" => nil, "model" => "WidgetV2", "depth" => 0}
     )
     expect(manifest["list"]).to include(
-      "keyword_args" => {"kind" => {"one_of" => ["kind-value"]}}, "query_keys" => ["kind"],
+      "keyword_args" => {"kind" => {"one_of" => ["kind-value"]}},
+      "arg_types" => {"kind" => "Hash", "page_size" => "Integer", "after" => "String"},
+      "returns" => "IncidentIo::Pager<Models::WidgetV2>",
+      "query_keys" => ["kind"],
       "result" => include("kind" => "paginated", "items_key" => "widgets", "model" => "WidgetV2")
     )
-    expect(manifest["show"]).to include("path" => "/v2/widgets/{id}", "path_args" => ["id-value"])
+    expect(manifest["show"]).to include("path" => "/v2/widgets/{id}", "path_args" => ["id-value"], "arg_types" => {"id" => "String"})
     expect(manifest["destroy"]).to include("deprecated" => true, "body" => false, "result" => include("kind" => "none"))
     expect(manifest["export"]["result"]).to include("kind" => "text")
   end

@@ -68,7 +68,10 @@ module IncidentIoGenerator
   # An audit log entry type and its schema.
   AuditLogEntry = Data.define(:action, :version, :model)
 
-  Field = Data.define(:api_name, :member, :type, :yard, :rbs, :description)
+  #   yard_types: the YARD type of the field and of keys inside it, see
+  #     Types.yard_types
+  #   limits: the values the field and keys inside it allow, see Types.limits
+  Field = Data.define(:api_name, :member, :type, :yard, :rbs, :description, :yard_types, :limits)
   ModelSchema = Data.define(:name, :file_name, :description, :fields)
 
   # Reads the OpenAPI spec into the resources and models to generate.
@@ -128,13 +131,16 @@ module IncidentIoGenerator
     def build_models
       models = @schemas.sort.map do |name, schema|
         fields = (schema["properties"] || {}).map do |api_name, prop|
+          member = IncidentIo::Model.member_name(api_name).to_s
           Field.new(
             api_name:,
-            member: IncidentIo::Model.member_name(api_name).to_s,
+            member:,
             type: Types.model_type(prop),
             yard: Types.yard_type(prop, namespace: ""),
             rbs: Types.rbs_type(prop, namespace: ""),
-            description: describe(prop)
+            description: describe(prop),
+            yard_types: Types.yard_types(prop, member, namespace: ""),
+            limits: Types.limits(prop, member)
           )
         end
         ModelSchema.new(name:, file_name: Naming.underscore(name), description: schema["description"], fields:)
@@ -173,6 +179,10 @@ module IncidentIoGenerator
           raise Error, "unknown x-webhooks entry: #{key}"
         end
       end
+
+      # An empty list means the spec moved them, not that there are none.
+      raise Error, "x-webhooks: no webhook events" if webhook_events.empty?
+      raise Error, "x-webhooks: no audit log entries" if audit_log_entries.empty?
 
       [webhook_events, audit_log_entries]
     end
@@ -371,7 +381,7 @@ module IncidentIoGenerator
     def describe(schema, fallback = nil)
       text = schema["description"] || fallback
       text = text.to_s.gsub(/\s+/, " ").strip
-      enum = schema["enum"] || schema.dig("items", "enum")
+      enum = Types.allowed_values(schema)
       text = [text, "One of: #{enum.join(", ")}."].reject(&:empty?).join(" ") if enum
       text.empty? ? nil : text
     end

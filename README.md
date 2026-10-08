@@ -204,6 +204,12 @@ It is saved to `openapi/openapi.json`, which git ignores.
 To rename a generated method, add it to `generator/overrides.yml`.
 `bundle exec rake generate:check` fails if the generated code does not match
 your local copy of the spec.
+`bundle exec rake generate:breaking` lists changes to the generated code
+since the last commit that can break code that uses the gem: anything
+removed, fields that changed type or allow other values, webhook events
+and audit log entries that come with another model, methods whose
+arguments, filter operators or return type changed, and resources that
+`client.<name>` now reaches in another API version.
 
 ## Releasing
 

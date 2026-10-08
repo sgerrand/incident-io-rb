@@ -1,0 +1,5415 @@
+{
+  "fields": {
+    "APIKeyRoleV1": {
+      "name": [
+        "viewer",
+        "incident_creator",
+        "incident_editor",
+        "manage_settings",
+        "global_access",
+        "catalog_viewer",
+        "catalog_editor",
+        "incident_memberships_editor",
+        "schedules_editor",
+        "schedules_reader",
+        "schedule_overrides_editor",
+        "workflows_editor",
+        "workflows_viewer",
+        "private_workflows_editor",
+        "private_escalation_workflows_editor",
+        "on_call_editor",
+        "on_call_viewer",
+        "escalation_creator",
+        "post_incident_flow_opt_out",
+        "security_settings_editor",
+        "investigation_download",
+        "team_memberships_manage",
+        "status_page_publisher",
+        "status_page_viewer",
+        "postmortems_manage",
+        "api_keys_manage",
+        "notification_methods_manage",
+        "notification_methods_unredacted_viewer",
+        "incident_workload_viewer",
+        "incident_workload_private_viewer",
+        "act_on_behalf_of_users",
+        "secrets_manage",
+        "secrets_use",
+        "call_transcripts_viewer",
+        "heartbeats_ping",
+        "telemetry_query_restricted",
+        "telemetry_data_source_update",
+        "policies_viewer",
+        "policy_findings_manage",
+        "pay_reports_viewer",
+        "pay_reports_editor",
+        "pay_configs_viewer",
+        "pay_configs_editor",
+        "investigations_editor",
+        "telemetry_viewer",
+        "documents_viewer"
+      ]
+    },
+    "APIKeyTeamRoleV1": {
+      "name": [
+        "catalog_editor",
+        "schedules_editor",
+        "schedules_reader",
+        "schedule_overrides_editor",
+        "on_call_editor",
+        "escalation_creator",
+        "api_keys_manage",
+        "workflows_editor",
+        "private_workflows_editor",
+        "secrets_manage",
+        "secrets_use",
+        "heartbeats_ping",
+        "telemetry_query_restricted",
+        "telemetry_data_source_update"
+      ]
+    },
+    "APIKeysCreatePayloadV1": {
+      "role_names": [
+        "viewer",
+        "incident_creator",
+        "incident_editor",
+        "manage_settings",
+        "global_access",
+        "catalog_viewer",
+        "catalog_editor",
+        "incident_memberships_editor",
+        "schedules_editor",
+        "schedules_reader",
+        "schedule_overrides_editor",
+        "workflows_editor",
+        "workflows_viewer",
+        "private_workflows_editor",
+        "private_escalation_workflows_editor",
+        "on_call_editor",
+        "on_call_viewer",
+        "escalation_creator",
+        "post_incident_flow_opt_out",
+        "security_settings_editor",
+        "investigation_download",
+        "team_memberships_manage",
+        "status_page_publisher",
+        "status_page_viewer",
+        "postmortems_manage",
+        "api_keys_manage",
+        "notification_methods_manage",
+        "notification_methods_unredacted_viewer",
+        "incident_workload_viewer",
+        "incident_workload_private_viewer",
+        "act_on_behalf_of_users",
+        "secrets_manage",
+        "secrets_use",
+        "call_transcripts_viewer",
+        "heartbeats_ping",
+        "telemetry_query_restricted",
+        "telemetry_data_source_update",
+        "policies_viewer",
+        "policy_findings_manage",
+        "pay_reports_viewer",
+        "pay_reports_editor",
+        "pay_configs_viewer",
+        "pay_configs_editor",
+        "investigations_editor",
+        "telemetry_viewer",
+        "documents_viewer"
+      ],
+      "team_role_names": [
+        "catalog_editor",
+        "schedules_editor",
+        "schedules_reader",
+        "schedule_overrides_editor",
+        "on_call_editor",
+        "escalation_creator",
+        "api_keys_manage",
+        "workflows_editor",
+        "private_workflows_editor",
+        "secrets_manage",
+        "secrets_use",
+        "heartbeats_ping",
+        "telemetry_query_restricted",
+        "telemetry_data_source_update"
+      ]
+    },
+    "APIKeysUpdatePayloadV1": {
+      "role_names": [
+        "viewer",
+        "incident_creator",
+        "incident_editor",
+        "manage_settings",
+        "global_access",
+        "catalog_viewer",
+        "catalog_editor",
+        "incident_memberships_editor",
+        "schedules_editor",
+        "schedules_reader",
+        "schedule_overrides_editor",
+        "workflows_editor",
+        "workflows_viewer",
+        "private_workflows_editor",
+        "private_escalation_workflows_editor",
+        "on_call_editor",
+        "on_call_viewer",
+        "escalation_creator",
+        "post_incident_flow_opt_out",
+        "security_settings_editor",
+        "investigation_download",
+        "team_memberships_manage",
+        "status_page_publisher",
+        "status_page_viewer",
+        "postmortems_manage",
+        "api_keys_manage",
+        "notification_methods_manage",
+        "notification_methods_unredacted_viewer",
+        "incident_workload_viewer",
+        "incident_workload_private_viewer",
+        "act_on_behalf_of_users",
+        "secrets_manage",
+        "secrets_use",
+        "call_transcripts_viewer",
+        "heartbeats_ping",
+        "telemetry_query_restricted",
+        "telemetry_data_source_update",
+        "policies_viewer",
+        "policy_findings_manage",
+        "pay_reports_viewer",
+        "pay_reports_editor",
+        "pay_configs_viewer",
+        "pay_configs_editor",
+        "investigations_editor",
+        "telemetry_viewer",
+        "documents_viewer"
+      ],
+      "team_role_names": [
+        "catalog_editor",
+        "schedules_editor",
+        "schedules_reader",
+        "schedule_overrides_editor",
+        "on_call_editor",
+        "escalation_creator",
+        "api_keys_manage",
+        "workflows_editor",
+        "private_workflows_editor",
+        "secrets_manage",
+        "secrets_use",
+        "heartbeats_ping",
+        "telemetry_query_restricted",
+        "telemetry_data_source_update"
+      ]
+    },
+    "ActionV1": {
+      "status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ]
+    },
+    "ActionV2": {
+      "status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ]
+    },
+    "ActionV3": {
+      "status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ]
+    },
+    "ActionsUpdatePayloadV2": {
+      "status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ]
+    },
+    "ActionsUpdatePayloadV3": {
+      "status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ]
+    },
+    "ActivityActionUpdatedV2": {
+      "new_status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ],
+      "previous_status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ]
+    },
+    "ActivityFollowUpUpdatedV2": {
+      "new_status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ],
+      "previous_status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ]
+    },
+    "ActivityIncidentVisibilityChangedV2": {
+      "new_visibility": [
+        "public",
+        "private"
+      ],
+      "previous_visibility": [
+        "public",
+        "private"
+      ]
+    },
+    "AlertEventsCreateHTTPPayloadV2": {
+      "status": [
+        "firing",
+        "resolved"
+      ]
+    },
+    "AlertRouteChannelTargetPayloadV3": {
+      "channel_visibility": [
+        "public",
+        "private",
+        "dm",
+        "group_chat",
+        "assistant"
+      ]
+    },
+    "AlertRouteCustomFieldBindingPayloadV2": {
+      "merge_strategy": [
+        "first-wins",
+        "last-wins",
+        "append"
+      ]
+    },
+    "AlertRouteCustomFieldBindingPayloadV3": {
+      "merge_strategy": [
+        "first-wins",
+        "last-wins",
+        "append"
+      ]
+    },
+    "AlertRouteCustomFieldBindingV2": {
+      "merge_strategy": [
+        "first-wins",
+        "last-wins",
+        "append"
+      ]
+    },
+    "AlertRouteCustomFieldBindingV3": {
+      "merge_strategy": [
+        "first-wins",
+        "last-wins",
+        "append"
+      ]
+    },
+    "AlertRouteSeverityBindingPayloadV2": {
+      "merge_strategy": [
+        "first-wins",
+        "max"
+      ]
+    },
+    "AlertRouteSeverityBindingPayloadV3": {
+      "merge_strategy": [
+        "first-wins",
+        "max"
+      ]
+    },
+    "AlertRouteSeverityBindingV2": {
+      "merge_strategy": [
+        "first-wins",
+        "max"
+      ]
+    },
+    "AlertRouteSeverityBindingV3": {
+      "merge_strategy": [
+        "first-wins",
+        "max"
+      ]
+    },
+    "AlertRouteWhenAlertJoinsGroupPayloadV3": {
+      "mode": [
+        "on_priority_increase",
+        "on_each_new_alert"
+      ]
+    },
+    "AlertRouteWhenAlertJoinsGroupV3": {
+      "mode": [
+        "on_priority_increase",
+        "on_each_new_alert"
+      ]
+    },
+    "AlertSlimV2": {
+      "status": [
+        "firing",
+        "resolved"
+      ]
+    },
+    "AlertSourceEmailOptionsPayloadV2": {
+      "redactions": [
+        "credit_card_numbers",
+        "us_social_security_numbers",
+        "phone_numbers"
+      ]
+    },
+    "AlertSourceEmailOptionsV2": {
+      "redactions": [
+        "credit_card_numbers",
+        "us_social_security_numbers",
+        "phone_numbers"
+      ]
+    },
+    "AlertSourceV2": {
+      "source_type": [
+        "alertmanager",
+        "app_optics",
+        "azure_monitor",
+        "azure_devops",
+        "big_panda",
+        "bugsnag",
+        "checkly",
+        "chronosphere",
+        "cloudwatch",
+        "cloudflare",
+        "coralogix",
+        "cronitor",
+        "crowdstrike_falcon",
+        "dash0",
+        "datadog",
+        "dynatrace",
+        "elasticsearch",
+        "email",
+        "expel",
+        "github_issue",
+        "google_cloud",
+        "google_secops",
+        "grafana",
+        "heartbeat",
+        "http",
+        "http_custom",
+        "honeycomb",
+        "icinga2",
+        "incoming_calls",
+        "jira",
+        "jsm",
+        "logzio",
+        "monte_carlo",
+        "nagios",
+        "new_relic",
+        "opsgenie",
+        "prtg",
+        "pager_duty",
+        "panther",
+        "pingdom",
+        "posthog",
+        "runscope",
+        "sns",
+        "salesforce_case",
+        "sentry",
+        "sentry_metric",
+        "service_now",
+        "splunk",
+        "status_cake",
+        "status_page_views",
+        "sumo_logic",
+        "uptime",
+        "vercel",
+        "wiz",
+        "zendesk"
+      ]
+    },
+    "AlertSourcesCreatePayloadV2": {
+      "source_type": [
+        "alertmanager",
+        "app_optics",
+        "azure_monitor",
+        "azure_devops",
+        "big_panda",
+        "bugsnag",
+        "checkly",
+        "chronosphere",
+        "cloudwatch",
+        "cloudflare",
+        "coralogix",
+        "cronitor",
+        "crowdstrike_falcon",
+        "dash0",
+        "datadog",
+        "dynatrace",
+        "elasticsearch",
+        "email",
+        "expel",
+        "github_issue",
+        "google_cloud",
+        "google_secops",
+        "grafana",
+        "heartbeat",
+        "http",
+        "http_custom",
+        "honeycomb",
+        "icinga2",
+        "incoming_calls",
+        "jira",
+        "jsm",
+        "logzio",
+        "monte_carlo",
+        "nagios",
+        "new_relic",
+        "opsgenie",
+        "prtg",
+        "pager_duty",
+        "panther",
+        "pingdom",
+        "posthog",
+        "runscope",
+        "sns",
+        "salesforce_case",
+        "sentry",
+        "sentry_metric",
+        "service_now",
+        "splunk",
+        "status_cake",
+        "status_page_views",
+        "sumo_logic",
+        "uptime",
+        "vercel",
+        "wiz",
+        "zendesk"
+      ]
+    },
+    "AlertSourcesValidatePayloadV2": {
+      "source_type": [
+        "alertmanager",
+        "app_optics",
+        "azure_monitor",
+        "azure_devops",
+        "big_panda",
+        "bugsnag",
+        "checkly",
+        "chronosphere",
+        "cloudwatch",
+        "cloudflare",
+        "coralogix",
+        "cronitor",
+        "crowdstrike_falcon",
+        "dash0",
+        "datadog",
+        "dynatrace",
+        "elasticsearch",
+        "email",
+        "expel",
+        "github_issue",
+        "google_cloud",
+        "google_secops",
+        "grafana",
+        "heartbeat",
+        "http",
+        "http_custom",
+        "honeycomb",
+        "icinga2",
+        "incoming_calls",
+        "jira",
+        "jsm",
+        "logzio",
+        "monte_carlo",
+        "nagios",
+        "new_relic",
+        "opsgenie",
+        "prtg",
+        "pager_duty",
+        "panther",
+        "pingdom",
+        "posthog",
+        "runscope",
+        "sns",
+        "salesforce_case",
+        "sentry",
+        "sentry_metric",
+        "service_now",
+        "splunk",
+        "status_cake",
+        "status_page_views",
+        "sumo_logic",
+        "uptime",
+        "vercel",
+        "wiz",
+        "zendesk"
+      ]
+    },
+    "AlertTemplateAttributeBindingPayloadV2": {
+      "merge_strategy": [
+        "first_wins",
+        "last_wins",
+        "append",
+        "max",
+        "min"
+      ]
+    },
+    "AlertTemplateAttributeBindingV2": {
+      "merge_strategy": [
+        "first_wins",
+        "last_wins",
+        "append",
+        "max",
+        "min"
+      ]
+    },
+    "AlertV2": {
+      "status": [
+        "firing",
+        "resolved"
+      ]
+    },
+    "AlertsTransitionIncidentAlertPayloadV2": {
+      "state": [
+        "related",
+        "unrelated"
+      ]
+    },
+    "AnnouncementRuleV2": {
+      "conditions_no_longer_apply_behaviour": [
+        "leave_in_place",
+        "remove"
+      ],
+      "mode": [
+        "live_and_closed",
+        "include_triage",
+        "include_triage_and_merged",
+        "include_declined_and_merged",
+        "include_all"
+      ],
+      "private_incident_scope": [
+        "all",
+        "owning_teams",
+        "none"
+      ],
+      "update_sharing_mode": [
+        "none",
+        "thread",
+        "thread_and_channel"
+      ]
+    },
+    "AnnouncementRulesCreatePayloadV2": {
+      "conditions_no_longer_apply_behaviour": [
+        "leave_in_place",
+        "remove"
+      ],
+      "mode": [
+        "live_and_closed",
+        "include_triage",
+        "include_triage_and_merged",
+        "include_declined_and_merged",
+        "include_all"
+      ],
+      "private_incident_scope": [
+        "all",
+        "owning_teams",
+        "none"
+      ],
+      "update_sharing_mode": [
+        "none",
+        "thread",
+        "thread_and_channel"
+      ]
+    },
+    "AnnouncementRulesUpdatePayloadV2": {
+      "conditions_no_longer_apply_behaviour": [
+        "leave_in_place",
+        "remove"
+      ],
+      "mode": [
+        "live_and_closed",
+        "include_triage",
+        "include_triage_and_merged",
+        "include_declined_and_merged",
+        "include_all"
+      ],
+      "private_incident_scope": [
+        "all",
+        "owning_teams",
+        "none"
+      ],
+      "update_sharing_mode": [
+        "none",
+        "thread",
+        "thread_and_channel"
+      ]
+    },
+    "AnnouncementTemplateActionPayloadV2": {
+      "action_type": [
+        "announcement_post_actions_homepage",
+        "announcement_post_actions_subscribe",
+        "announcement_post_actions_join_call",
+        "announcement_post_actions_jira_ticket",
+        "announcement_post_actions_internal_status_page",
+        "announcement_post_actions_public_status_page",
+        "announcement_post_actions_postmortem",
+        "announcement_post_actions_create_channel",
+        "announcement_post_actions_view_alert",
+        "announcement_post_actions_triage",
+        "announcement_post_actions_escalate",
+        "announcement_post_actions_share_update",
+        "announcement_post_actions_update_status",
+        "announcement_post_actions_request_access"
+      ]
+    },
+    "AnnouncementTemplateActionV2": {
+      "action_type": [
+        "announcement_post_actions_homepage",
+        "announcement_post_actions_subscribe",
+        "announcement_post_actions_join_call",
+        "announcement_post_actions_jira_ticket",
+        "announcement_post_actions_internal_status_page",
+        "announcement_post_actions_public_status_page",
+        "announcement_post_actions_postmortem",
+        "announcement_post_actions_create_channel",
+        "announcement_post_actions_view_alert",
+        "announcement_post_actions_triage",
+        "announcement_post_actions_escalate",
+        "announcement_post_actions_share_update",
+        "announcement_post_actions_update_status",
+        "announcement_post_actions_request_access"
+      ]
+    },
+    "AnnouncementTemplateFieldPayloadV2": {
+      "field_type": [
+        "announcement_post_fields_status",
+        "announcement_post_fields_incident_type",
+        "announcement_post_fields_severity",
+        "announcement_post_fields_role",
+        "announcement_post_fields_description",
+        "announcement_post_fields_custom_field",
+        "announcement_post_fields_timestamp",
+        "announcement_post_fields_creator",
+        "announcement_post_fields_slack",
+        "announcement_post_fields_rich_text"
+      ]
+    },
+    "AnnouncementTemplateFieldV2": {
+      "field_type": [
+        "announcement_post_fields_status",
+        "announcement_post_fields_incident_type",
+        "announcement_post_fields_severity",
+        "announcement_post_fields_role",
+        "announcement_post_fields_description",
+        "announcement_post_fields_custom_field",
+        "announcement_post_fields_timestamp",
+        "announcement_post_fields_creator",
+        "announcement_post_fields_slack",
+        "announcement_post_fields_rich_text"
+      ]
+    },
+    "AnnouncementTemplateRichTextV2": {
+      "type": [
+        "markdown"
+      ]
+    },
+    "AuditLogActorV2": {
+      "type": [
+        "user",
+        "system",
+        "api_key",
+        "workflow",
+        "external_resource"
+      ]
+    },
+    "AuditLogPrivateAlertAccessAttemptedMetadataV2": {
+      "outcome": [
+        "granted",
+        "denied"
+      ]
+    },
+    "AuditLogPrivateEscalationAccessAttemptedMetadataV2": {
+      "outcome": [
+        "granted",
+        "denied"
+      ]
+    },
+    "AuditLogPrivateIncidentAccessAttemptedMetadataV2": {
+      "outcome": [
+        "granted",
+        "denied"
+      ]
+    },
+    "AuditLogPrivateIncidentAccessAttemptedMetadataV2V2": {
+      "access_type": [
+        "N/A",
+        "global_access",
+        "direct_membership",
+        "team_membership"
+      ],
+      "outcome": [
+        "granted",
+        "denied"
+      ]
+    },
+    "AuditLogPrivateInsightsExportedMetadataV2": {
+      "outcome": [
+        "granted",
+        "denied"
+      ]
+    },
+    "AuditLogPrivateInsightsMeasureQueriedMetadataV2": {
+      "outcome": [
+        "granted",
+        "denied"
+      ]
+    },
+    "AuditLogPrivateInsightsUnderlyingDataQueriedMetadataV2": {
+      "outcome": [
+        "granted",
+        "denied"
+      ]
+    },
+    "AuditLogTargetV2": {
+      "type": [
+        "api_key",
+        "alert",
+        "alert_chat_message_template",
+        "alert_route",
+        "alert_schema",
+        "alert_source",
+        "alert_priority",
+        "announcement_rule",
+        "announcement_post_template",
+        "catalog_type",
+        "catalog_entry",
+        "catalog_attribute",
+        "connector_config",
+        "custom_field",
+        "debrief_invite_rule",
+        "escalation",
+        "escalation_path",
+        "escalation_path_template",
+        "extension_connector",
+        "extension_connector_tool",
+        "follow_up_category",
+        "follow_up_priority",
+        "holiday_user_feed",
+        "hris_time_off_policy",
+        "incident",
+        "incident_call_transcription_session",
+        "incident_call_setting",
+        "incident_duration_metric",
+        "incident_template",
+        "maintenance_window",
+        "incident_role",
+        "incident_status",
+        "incident_timestamp",
+        "incident_timestamp_set_by_rule",
+        "incident_type",
+        "integration",
+        "internal_status_page",
+        "ip_allowlist",
+        "nudge",
+        "on_call_notification_method",
+        "on_call_notification_pause",
+        "organisation",
+        "organisation_settings",
+        "schedule_override",
+        "schedule_sync_rule",
+        "schedule_sync_target",
+        "policy",
+        "policy_report_schedule",
+        "post_incident_task",
+        "postmortem_template",
+        "postmortem_template_section",
+        "private_incident_membership",
+        "rbac_role",
+        "scim_group",
+        "schedule",
+        "team_role",
+        "secret",
+        "severity",
+        "status_page",
+        "status_page_sub_page",
+        "status_page_template",
+        "team_settings",
+        "telemetry_data_source",
+        "twilio_connection",
+        "user",
+        "user_api_key",
+        "workflow",
+        "activity_log",
+        "timeline_item",
+        "on_call_upsell_request"
+      ]
+    },
+    "CallRouteOptionV2": {
+      "digit": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "CallRoutePathNodePayloadV2": {
+      "type": [
+        "level",
+        "voicemail"
+      ]
+    },
+    "CallRoutePathNodeV2": {
+      "type": [
+        "level",
+        "voicemail"
+      ]
+    },
+    "CallRouteTargetV2": {
+      "schedule_mode": [
+        "currently_on_call",
+        "all_users_for_rota",
+        "all_users",
+        "currently_on_call_for_rota",
+        "next_on_call_for_rota",
+        "next_on_call",
+        ""
+      ],
+      "type": [
+        "user",
+        "schedule"
+      ],
+      "urgency": [
+        "high",
+        "low"
+      ]
+    },
+    "CallRouteV2": {
+      "current_state": [
+        "pending",
+        "pending_regulatory_information",
+        "pending_number",
+        "active"
+      ],
+      "custom_language": [
+        "en-US",
+        "en-GB",
+        "fr-FR",
+        "es-ES",
+        "pt-PT",
+        "pt-BR",
+        "de-DE",
+        "nl-NL"
+      ],
+      "phone_number_type": [
+        "toll_free",
+        "mobile",
+        "national",
+        "local"
+      ],
+      "responder_caller_id": [
+        "route_number",
+        "oncall_number"
+      ]
+    },
+    "CallRoutesCreateOptionPayloadV2": {
+      "digit": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "CallRoutesUpdateOptionPayloadV2": {
+      "digit": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "CallRoutesUpdatePayloadV2": {
+      "custom_language": [
+        "en-US",
+        "en-GB",
+        "fr-FR",
+        "es-ES",
+        "pt-PT",
+        "pt-BR",
+        "de-DE",
+        "nl-NL"
+      ],
+      "responder_caller_id": [
+        "route_number",
+        "oncall_number"
+      ]
+    },
+    "CallTranscriptEntryV2": {
+      "medium": [
+        "spoken",
+        "call_chat"
+      ]
+    },
+    "CatalogCreateTypePayloadV2": {
+      "categories": [
+        "customer",
+        "issue-tracker",
+        "product-feature",
+        "service",
+        "on-call",
+        "team",
+        "user"
+      ],
+      "color": [
+        "yellow",
+        "green",
+        "blue",
+        "violet",
+        "pink",
+        "cyan",
+        "orange"
+      ],
+      "icon": [
+        "alert",
+        "bolt",
+        "box",
+        "briefcase",
+        "browser",
+        "bulb",
+        "calendar",
+        "clock",
+        "cog",
+        "components",
+        "database",
+        "doc",
+        "email",
+        "escalation-path",
+        "files",
+        "flag",
+        "folder",
+        "globe",
+        "incident-template",
+        "money",
+        "server",
+        "severity",
+        "status-page",
+        "store",
+        "star",
+        "tag",
+        "user",
+        "users"
+      ]
+    },
+    "CatalogCreateTypePayloadV3": {
+      "categories": [
+        "customer",
+        "issue-tracker",
+        "product-feature",
+        "service",
+        "on-call",
+        "team",
+        "user"
+      ],
+      "color": [
+        "yellow",
+        "green",
+        "blue",
+        "violet",
+        "pink",
+        "cyan",
+        "orange"
+      ],
+      "icon": [
+        "alert",
+        "bolt",
+        "box",
+        "briefcase",
+        "browser",
+        "bulb",
+        "calendar",
+        "clock",
+        "cog",
+        "components",
+        "database",
+        "doc",
+        "email",
+        "escalation-path",
+        "files",
+        "flag",
+        "folder",
+        "globe",
+        "incident-template",
+        "money",
+        "server",
+        "severity",
+        "status-page",
+        "store",
+        "star",
+        "tag",
+        "user",
+        "users"
+      ]
+    },
+    "CatalogResourceV2": {
+      "category": [
+        "primitive",
+        "custom",
+        "external"
+      ]
+    },
+    "CatalogResourceV3": {
+      "category": [
+        "primitive",
+        "custom",
+        "external"
+      ]
+    },
+    "CatalogTypeAttributePayloadV2": {
+      "mode": [
+        "",
+        "manual",
+        "external",
+        "internal",
+        "dynamic",
+        "backlink",
+        "path"
+      ]
+    },
+    "CatalogTypeAttributePayloadV3": {
+      "mode": [
+        "",
+        "api",
+        "dashboard",
+        "external",
+        "internal",
+        "dynamic",
+        "backlink",
+        "path"
+      ]
+    },
+    "CatalogTypeAttributeV2": {
+      "mode": [
+        "",
+        "manual",
+        "external",
+        "internal",
+        "dynamic",
+        "backlink",
+        "path"
+      ]
+    },
+    "CatalogTypeAttributeV3": {
+      "mode": [
+        "",
+        "api",
+        "dashboard",
+        "external",
+        "internal",
+        "dynamic",
+        "backlink",
+        "path"
+      ]
+    },
+    "CatalogTypeV2": {
+      "categories": [
+        "customer",
+        "issue-tracker",
+        "product-feature",
+        "service",
+        "on-call",
+        "team",
+        "user"
+      ],
+      "color": [
+        "yellow",
+        "green",
+        "blue",
+        "violet",
+        "pink",
+        "cyan",
+        "orange"
+      ],
+      "icon": [
+        "alert",
+        "bolt",
+        "box",
+        "briefcase",
+        "browser",
+        "bulb",
+        "calendar",
+        "clock",
+        "cog",
+        "components",
+        "database",
+        "doc",
+        "email",
+        "escalation-path",
+        "files",
+        "flag",
+        "folder",
+        "globe",
+        "incident-template",
+        "money",
+        "server",
+        "severity",
+        "status-page",
+        "store",
+        "star",
+        "tag",
+        "user",
+        "users"
+      ]
+    },
+    "CatalogTypeV3": {
+      "categories": [
+        "customer",
+        "issue-tracker",
+        "product-feature",
+        "service",
+        "on-call",
+        "team",
+        "user"
+      ],
+      "color": [
+        "yellow",
+        "green",
+        "blue",
+        "violet",
+        "pink",
+        "cyan",
+        "orange"
+      ],
+      "icon": [
+        "alert",
+        "bolt",
+        "box",
+        "briefcase",
+        "browser",
+        "bulb",
+        "calendar",
+        "clock",
+        "cog",
+        "components",
+        "database",
+        "doc",
+        "email",
+        "escalation-path",
+        "files",
+        "flag",
+        "folder",
+        "globe",
+        "incident-template",
+        "money",
+        "server",
+        "severity",
+        "status-page",
+        "store",
+        "star",
+        "tag",
+        "user",
+        "users"
+      ]
+    },
+    "CatalogUpdateTypePayloadV2": {
+      "categories": [
+        "customer",
+        "issue-tracker",
+        "product-feature",
+        "service",
+        "on-call",
+        "team",
+        "user"
+      ],
+      "color": [
+        "yellow",
+        "green",
+        "blue",
+        "violet",
+        "pink",
+        "cyan",
+        "orange"
+      ],
+      "icon": [
+        "alert",
+        "bolt",
+        "box",
+        "briefcase",
+        "browser",
+        "bulb",
+        "calendar",
+        "clock",
+        "cog",
+        "components",
+        "database",
+        "doc",
+        "email",
+        "escalation-path",
+        "files",
+        "flag",
+        "folder",
+        "globe",
+        "incident-template",
+        "money",
+        "server",
+        "severity",
+        "status-page",
+        "store",
+        "star",
+        "tag",
+        "user",
+        "users"
+      ]
+    },
+    "CatalogUpdateTypePayloadV3": {
+      "categories": [
+        "customer",
+        "issue-tracker",
+        "product-feature",
+        "service",
+        "on-call",
+        "team",
+        "user"
+      ],
+      "color": [
+        "yellow",
+        "green",
+        "blue",
+        "violet",
+        "pink",
+        "cyan",
+        "orange"
+      ],
+      "icon": [
+        "alert",
+        "bolt",
+        "box",
+        "briefcase",
+        "browser",
+        "bulb",
+        "calendar",
+        "clock",
+        "cog",
+        "components",
+        "database",
+        "doc",
+        "email",
+        "escalation-path",
+        "files",
+        "flag",
+        "folder",
+        "globe",
+        "incident-template",
+        "money",
+        "server",
+        "severity",
+        "status-page",
+        "store",
+        "star",
+        "tag",
+        "user",
+        "users"
+      ]
+    },
+    "CustomFieldTypeInfoV1": {
+      "field_type": [
+        "single_select",
+        "multi_select",
+        "text",
+        "link",
+        "numeric"
+      ]
+    },
+    "CustomFieldTypeInfoV2": {
+      "field_type": [
+        "single_select",
+        "multi_select",
+        "text",
+        "link",
+        "numeric"
+      ]
+    },
+    "CustomFieldV1": {
+      "field_type": [
+        "single_select",
+        "multi_select",
+        "text",
+        "link",
+        "numeric"
+      ],
+      "required": [
+        "never",
+        "before_closure",
+        "always"
+      ],
+      "required_v2": [
+        "never",
+        "before_resolution",
+        "always"
+      ]
+    },
+    "CustomFieldV2": {
+      "field_type": [
+        "single_select",
+        "multi_select",
+        "text",
+        "link",
+        "numeric"
+      ]
+    },
+    "CustomFieldsCreatePayloadV1": {
+      "field_type": [
+        "single_select",
+        "multi_select",
+        "text",
+        "link",
+        "numeric"
+      ],
+      "required": [
+        "never",
+        "before_closure",
+        "always"
+      ],
+      "required_v2": [
+        "never",
+        "before_resolution",
+        "always"
+      ]
+    },
+    "CustomFieldsCreatePayloadV2": {
+      "field_type": [
+        "single_select",
+        "multi_select",
+        "text",
+        "link",
+        "numeric"
+      ]
+    },
+    "CustomFieldsUpdatePayloadV1": {
+      "required": [
+        "never",
+        "before_closure",
+        "always"
+      ],
+      "required_v2": [
+        "never",
+        "before_resolution",
+        "always"
+      ]
+    },
+    "EmbeddedIncidentRoleV2": {
+      "role_type": [
+        "lead",
+        "reporter",
+        "custom"
+      ]
+    },
+    "EngineParamV2": {
+      "allowed_value_types": [
+        "literal",
+        "reference",
+        "expression"
+      ]
+    },
+    "ErrorResponse": {
+      "type": [
+        "invalid_request_error",
+        "authentication_error",
+        "resource_forbidden",
+        "not_found",
+        "not_acceptable",
+        "method_not_allowed",
+        "request_timeout",
+        "conflict",
+        "precondition_failed",
+        "payload_too_large",
+        "validation_error",
+        "too_many_requests",
+        "api_error",
+        "rate_limit_reached",
+        "client_timeout"
+      ]
+    },
+    "EscalationEventV2": {
+      "event": [
+        "entered_grace_period",
+        "triggered",
+        "notified_users",
+        "notified_channels",
+        "acked",
+        "cancelled",
+        "resolved",
+        "expired"
+      ],
+      "urgency": [
+        "high",
+        "low"
+      ]
+    },
+    "EscalationPathNodeDelayV2": {
+      "delay_interval_condition": [
+        "active",
+        "inactive"
+      ]
+    },
+    "EscalationPathNodeLevelV2": {
+      "ack_mode": [
+        "all",
+        "first"
+      ],
+      "time_to_ack_interval_condition": [
+        "active",
+        "inactive"
+      ]
+    },
+    "EscalationPathNodeLevelWithBindingPayloadV2": {
+      "ack_mode": [
+        "all",
+        "first"
+      ],
+      "time_to_ack_interval_condition": [
+        "active",
+        "inactive"
+      ]
+    },
+    "EscalationPathNodeLevelWithBindingV2": {
+      "ack_mode": [
+        "all",
+        "first"
+      ],
+      "time_to_ack_interval_condition": [
+        "active",
+        "inactive"
+      ]
+    },
+    "EscalationPathNodeNotifyChannelV2": {
+      "time_to_ack_interval_condition": [
+        "active",
+        "inactive"
+      ]
+    },
+    "EscalationPathNodeNotifyChannelWithBindingPayloadV2": {
+      "time_to_ack_interval_condition": [
+        "active",
+        "inactive"
+      ]
+    },
+    "EscalationPathNodeNotifyChannelWithBindingV2": {
+      "time_to_ack_interval_condition": [
+        "active",
+        "inactive"
+      ]
+    },
+    "EscalationPathNodePayloadV2": {
+      "type": [
+        "if_else",
+        "repeat",
+        "level",
+        "notify_channel",
+        "delay",
+        "voicemail",
+        "escalation_path"
+      ]
+    },
+    "EscalationPathNodeV2": {
+      "type": [
+        "if_else",
+        "repeat",
+        "level",
+        "notify_channel",
+        "delay",
+        "voicemail",
+        "escalation_path"
+      ]
+    },
+    "EscalationPathTargetV2": {
+      "schedule_mode": [
+        "currently_on_call",
+        "all_users_for_rota",
+        "all_users",
+        "currently_on_call_for_rota",
+        "next_on_call_for_rota",
+        "next_on_call",
+        ""
+      ],
+      "type": [
+        "schedule",
+        "user",
+        "slack_channel",
+        "msteams_channel"
+      ],
+      "urgency": [
+        "high",
+        "low"
+      ]
+    },
+    "EscalationPathTargetWithBindingPayloadV2": {
+      "schedule_mode": [
+        "currently_on_call",
+        "all_users_for_rota",
+        "all_users",
+        "currently_on_call_for_rota",
+        "next_on_call_for_rota",
+        "next_on_call",
+        ""
+      ],
+      "type": [
+        "schedule",
+        "user",
+        "slack_channel",
+        "msteams_channel"
+      ],
+      "urgency": [
+        "high",
+        "low"
+      ]
+    },
+    "EscalationPathTargetWithBindingV2": {
+      "schedule_mode": [
+        "currently_on_call",
+        "all_users_for_rota",
+        "all_users",
+        "currently_on_call_for_rota",
+        "next_on_call_for_rota",
+        "next_on_call",
+        ""
+      ],
+      "type": [
+        "schedule",
+        "user",
+        "slack_channel",
+        "msteams_channel"
+      ],
+      "urgency": [
+        "high",
+        "low"
+      ]
+    },
+    "EscalationPathTemplateNodePayloadV2": {
+      "type": [
+        "if_else",
+        "repeat",
+        "level",
+        "notify_channel",
+        "delay",
+        "voicemail",
+        "escalation_path"
+      ]
+    },
+    "EscalationPathTemplateNodeV2": {
+      "type": [
+        "if_else",
+        "repeat",
+        "level",
+        "notify_channel",
+        "delay",
+        "voicemail",
+        "escalation_path"
+      ]
+    },
+    "EscalationPathV2": {
+      "kind": [
+        "standalone",
+        "templated"
+      ]
+    },
+    "EscalationUserResponseOptionsV2": {
+      "available_actions": [
+        "ack",
+        "nack",
+        "snooze"
+      ]
+    },
+    "EscalationV2": {
+      "status": [
+        "pending",
+        "triggered",
+        "acked",
+        "resolved",
+        "expired",
+        "cancelled",
+        "snoozed",
+        "delayed",
+        "pending_repeat"
+      ]
+    },
+    "EscalationWithStatusChangeV2": {
+      "new_status": [
+        "pending",
+        "triggered",
+        "acked",
+        "resolved",
+        "expired",
+        "cancelled",
+        "snoozed",
+        "delayed",
+        "pending_repeat"
+      ],
+      "previous_status": [
+        "pending",
+        "triggered",
+        "acked",
+        "resolved",
+        "expired",
+        "cancelled",
+        "snoozed",
+        "delayed",
+        "pending_repeat"
+      ]
+    },
+    "EscalationsCreatePathPayloadV2": {
+      "kind": [
+        "standalone",
+        "templated"
+      ]
+    },
+    "EscalationsRespondEscalationPayloadV2": {
+      "response": [
+        "ack",
+        "nack",
+        "snooze"
+      ]
+    },
+    "EscalationsUpdatePathPayloadV2": {
+      "kind": [
+        "standalone",
+        "templated"
+      ]
+    },
+    "ExpressionOperationPayloadV2": {
+      "operation_type": [
+        "navigate",
+        "filter",
+        "concatenate",
+        "count",
+        "min",
+        "max",
+        "sum",
+        "random",
+        "first",
+        "parse",
+        "branches",
+        "cast"
+      ]
+    },
+    "ExpressionOperationPayloadV3": {
+      "operation_type": [
+        "navigate",
+        "filter",
+        "concatenate",
+        "count",
+        "min",
+        "max",
+        "sum",
+        "random",
+        "first",
+        "parse",
+        "branches",
+        "cast"
+      ]
+    },
+    "ExpressionOperationV2": {
+      "operation_type": [
+        "navigate",
+        "filter",
+        "concatenate",
+        "count",
+        "min",
+        "max",
+        "sum",
+        "random",
+        "first",
+        "parse",
+        "branches",
+        "cast"
+      ]
+    },
+    "ExpressionOperationV3": {
+      "operation_type": [
+        "navigate",
+        "filter",
+        "concatenate",
+        "count",
+        "min",
+        "max",
+        "sum",
+        "random",
+        "first",
+        "parse",
+        "branches",
+        "cast"
+      ]
+    },
+    "ExternalIssueReferenceV1": {
+      "provider": [
+        "asana",
+        "azure_devops",
+        "click_up",
+        "freshservice",
+        "linear",
+        "jira",
+        "salesforce",
+        "jira_server",
+        "github",
+        "gitlab",
+        "service_now",
+        "shortcut",
+        "notion"
+      ]
+    },
+    "ExternalIssueReferenceV2": {
+      "provider": [
+        "asana",
+        "azure_devops",
+        "click_up",
+        "freshservice",
+        "linear",
+        "jira",
+        "salesforce",
+        "jira_server",
+        "github",
+        "gitlab",
+        "service_now",
+        "shortcut",
+        "notion"
+      ]
+    },
+    "ExternalResourceV1": {
+      "resource_type": [
+        "pager_duty_incident",
+        "opsgenie_alert",
+        "datadog_monitor_alert",
+        "github_pull_request",
+        "gitlab_merge_request",
+        "sentry_issue",
+        "jira_issue",
+        "jsm_alert",
+        "atlassian_statuspage_incident",
+        "zendesk_ticket",
+        "google_calendar_event",
+        "outlook_calendar_event",
+        "slack_file",
+        "salesforce_case",
+        "arbitrary_url",
+        "scrubbed",
+        "statuspage_incident"
+      ]
+    },
+    "FollowUpV2": {
+      "status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ]
+    },
+    "FollowUpV3": {
+      "status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ]
+    },
+    "FollowUpsConnectExternalIssuePayloadV2": {
+      "provider": [
+        "asana",
+        "azure_devops",
+        "click_up",
+        "freshservice",
+        "linear",
+        "jira",
+        "salesforce",
+        "jira_server",
+        "github",
+        "gitlab",
+        "service_now",
+        "shortcut",
+        "notion"
+      ]
+    },
+    "FollowUpsConnectExternalIssuePayloadV3": {
+      "provider": [
+        "asana",
+        "azure_devops",
+        "click_up",
+        "freshservice",
+        "linear",
+        "jira",
+        "salesforce",
+        "jira_server",
+        "github",
+        "gitlab",
+        "service_now",
+        "shortcut",
+        "notion"
+      ]
+    },
+    "FollowUpsUpdatePayloadV2": {
+      "status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ]
+    },
+    "FollowUpsUpdatePayloadV3": {
+      "status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ]
+    },
+    "GroupingSettingsV3": {
+      "window_type": [
+        "rolling",
+        "fixed"
+      ]
+    },
+    "IdentityV1": {
+      "roles": [
+        "viewer",
+        "incident_creator",
+        "incident_editor",
+        "manage_settings",
+        "global_access",
+        "catalog_viewer",
+        "catalog_editor",
+        "incident_memberships_editor",
+        "schedules_editor",
+        "schedules_reader",
+        "schedule_overrides_editor",
+        "workflows_editor",
+        "workflows_viewer",
+        "private_workflows_editor",
+        "private_escalation_workflows_editor",
+        "on_call_editor",
+        "on_call_viewer",
+        "escalation_creator",
+        "post_incident_flow_opt_out",
+        "security_settings_editor",
+        "investigation_download",
+        "team_memberships_manage",
+        "status_page_publisher",
+        "status_page_viewer",
+        "postmortems_manage",
+        "api_keys_manage",
+        "notification_methods_manage",
+        "notification_methods_unredacted_viewer",
+        "incident_workload_viewer",
+        "incident_workload_private_viewer",
+        "act_on_behalf_of_users",
+        "secrets_manage",
+        "secrets_use",
+        "call_transcripts_viewer",
+        "heartbeats_ping",
+        "telemetry_query_restricted",
+        "telemetry_data_source_update",
+        "policies_viewer",
+        "policy_findings_manage",
+        "pay_reports_viewer",
+        "pay_reports_editor",
+        "pay_configs_viewer",
+        "pay_configs_editor",
+        "investigations_editor",
+        "telemetry_viewer",
+        "documents_viewer"
+      ],
+      "team_roles": [
+        "catalog_editor",
+        "schedules_editor",
+        "schedules_reader",
+        "schedule_overrides_editor",
+        "on_call_editor",
+        "escalation_creator",
+        "api_keys_manage",
+        "workflows_editor",
+        "private_workflows_editor",
+        "secrets_manage",
+        "secrets_use",
+        "heartbeats_ping",
+        "telemetry_query_restricted",
+        "telemetry_data_source_update"
+      ]
+    },
+    "IncidentActivityLogEntryV2": {
+      "type": [
+        "slack_pin",
+        "microsoft_teams_pinned_channel_message",
+        "summary_update",
+        "role_update",
+        "handover",
+        "slack_infer_sentry",
+        "slack_image",
+        "microsoft_teams_image",
+        "slack_message",
+        "incident_channel_join",
+        "incident_channel_leave",
+        "incident_escalate",
+        "action_created",
+        "action_updated",
+        "follow_up_created",
+        "follow_up_updated",
+        "actions_shared_in_channel",
+        "follow_ups_shared_in_channel",
+        "status_change",
+        "atlassian_statuspage_update",
+        "incident_update",
+        "custom_field_value_update",
+        "incident_membership_revoked",
+        "incident_visibility_changed",
+        "incident_rename",
+        "incident_attachment_added",
+        "incident_attachment_removed",
+        "alert_attached_to_incident",
+        "alert_group_attached_to_incident",
+        "alert_group_detached_from_incident",
+        "pagerduty_incident_triggered",
+        "pagerduty_incident_acknowledged",
+        "pagerduty_incident_resolved",
+        "incident_timestamp_set",
+        "incident_timestamp_occurred",
+        "incident_merged",
+        "incident_type_changed",
+        "status_page_incident_linked",
+        "status_page_incident_updated",
+        "user_intent_declared",
+        "call_url_changed",
+        "postmortem_changed",
+        "postmortem_document_v2_changed",
+        "incident_channel_created",
+        "scrub",
+        "escalation_created",
+        "escalation_acknowledged",
+        "incident_call_created",
+        "incident_call_started",
+        "incident_call_ended",
+        "incident_call_participants_updated",
+        "microsoft_teams_message",
+        "microsoft_teams_announcement_reply",
+        "incident_call_transcript_message",
+        "incident_call_transcript_summary_generated",
+        "incident_call_transcript_key_moment_generated",
+        "incident_call_transcript_current_topic_generated",
+        "incident_call_recall_bot_status_changed",
+        "scribe_added",
+        "scribe_removed",
+        "external_issue_comment_synced",
+        "investigation_hypothesis_update",
+        "workflow_ran"
+      ]
+    },
+    "IncidentAttachmentsCreatePayloadV1": {
+      "resource.resource_type": [
+        "pager_duty_incident",
+        "opsgenie_alert",
+        "datadog_monitor_alert",
+        "github_pull_request",
+        "gitlab_merge_request",
+        "sentry_issue",
+        "jira_issue",
+        "jsm_alert",
+        "atlassian_statuspage_incident",
+        "zendesk_ticket",
+        "google_calendar_event",
+        "outlook_calendar_event",
+        "slack_file",
+        "salesforce_case",
+        "arbitrary_url",
+        "scrubbed",
+        "statuspage_incident"
+      ]
+    },
+    "IncidentDurationMetricWithValueV2": {
+      "status": [
+        "success",
+        "timestamps_missing",
+        "calculating",
+        "invalid_timestamps"
+      ]
+    },
+    "IncidentParticipantV2": {
+      "participant_type": [
+        "observer",
+        "collaborator",
+        "responder"
+      ]
+    },
+    "IncidentParticipantWorkloadV2": {
+      "participant_type": [
+        "observer",
+        "collaborator",
+        "responder"
+      ]
+    },
+    "IncidentRoleV1": {
+      "role_type": [
+        "lead",
+        "reporter",
+        "custom"
+      ]
+    },
+    "IncidentRoleV2": {
+      "role_type": [
+        "lead",
+        "reporter",
+        "custom"
+      ]
+    },
+    "IncidentSlimV2": {
+      "status_category": [
+        "triage",
+        "declined",
+        "merged",
+        "canceled",
+        "active",
+        "post-incident",
+        "closed",
+        "paused"
+      ],
+      "visibility": [
+        "public",
+        "private"
+      ]
+    },
+    "IncidentStatusV1": {
+      "category": [
+        "triage",
+        "declined",
+        "merged",
+        "canceled",
+        "live",
+        "learning",
+        "closed",
+        "paused"
+      ]
+    },
+    "IncidentStatusV2": {
+      "category": [
+        "triage",
+        "declined",
+        "merged",
+        "canceled",
+        "live",
+        "learning",
+        "closed",
+        "paused"
+      ]
+    },
+    "IncidentStatusesCreatePayloadV1": {
+      "category": [
+        "live",
+        "learning",
+        "closed"
+      ]
+    },
+    "IncidentTemplateCustomFieldBindingPayloadV1": {
+      "merge_strategy": [
+        "first-wins",
+        "last-wins",
+        "append"
+      ]
+    },
+    "IncidentTemplateCustomFieldBindingV1": {
+      "merge_strategy": [
+        "first-wins",
+        "last-wins",
+        "append"
+      ]
+    },
+    "IncidentTemplateSeverityBindingPayloadV1": {
+      "merge_strategy": [
+        "first-wins",
+        "max"
+      ]
+    },
+    "IncidentTemplateSeverityBindingV1": {
+      "merge_strategy": [
+        "first-wins",
+        "max"
+      ]
+    },
+    "IncidentTypeV1": {
+      "create_in_triage": [
+        "always",
+        "optional"
+      ]
+    },
+    "IncidentTypeV2": {
+      "create_in_triage": [
+        "always",
+        "optional"
+      ]
+    },
+    "IncidentV1": {
+      "mode": [
+        "real",
+        "test",
+        "tutorial"
+      ],
+      "status": [
+        "triage",
+        "investigating",
+        "fixing",
+        "monitoring",
+        "closed",
+        "declined"
+      ],
+      "visibility": [
+        "public",
+        "private"
+      ]
+    },
+    "IncidentV2": {
+      "mode": [
+        "standard",
+        "retrospective",
+        "test",
+        "tutorial"
+      ],
+      "visibility": [
+        "public",
+        "private"
+      ]
+    },
+    "IncidentsCreatePayloadV1": {
+      "mode": [
+        "real",
+        "test"
+      ],
+      "status": [
+        "triage",
+        "investigating",
+        "fixing",
+        "monitoring",
+        "closed",
+        "declined"
+      ],
+      "visibility": [
+        "public",
+        "private"
+      ]
+    },
+    "IncidentsCreatePayloadV2": {
+      "mode": [
+        "standard",
+        "retrospective",
+        "test",
+        "tutorial"
+      ],
+      "visibility": [
+        "public",
+        "private"
+      ]
+    },
+    "ManagementMetaV2": {
+      "managed_by": [
+        "dashboard",
+        "terraform",
+        "external"
+      ]
+    },
+    "OnCallNotificationMethodPublicV2": {
+      "method_type": [
+        "app",
+        "email",
+        "microsoft_teams",
+        "phone",
+        "slack",
+        "whatsapp_message"
+      ]
+    },
+    "OnCallNotificationRuleAppDetailsPublicV2": {
+      "push_notification_criticality": [
+        "critical",
+        "active"
+      ]
+    },
+    "OnCallNotificationRuleMethodTargetPublicV2": {
+      "type": [
+        "specific",
+        "all"
+      ]
+    },
+    "OnCallNotificationRulePhoneDetailsPublicV2": {
+      "channel": [
+        "sms",
+        "voice"
+      ]
+    },
+    "OnCallNotificationRulePublicV2": {
+      "method_type": [
+        "app",
+        "email",
+        "microsoft_teams",
+        "phone",
+        "slack",
+        "whatsapp_message"
+      ],
+      "rule_type": [
+        "high_urgency",
+        "low_urgency"
+      ]
+    },
+    "PayConfigV2": {
+      "rate_time_unit": [
+        "hour",
+        "day"
+      ]
+    },
+    "PayConfigWeeklyRulePayloadV2": {
+      "weekdays": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+      ]
+    },
+    "PayConfigWeeklyRuleV2": {
+      "weekdays": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+      ]
+    },
+    "PayConfigsCreatePayloadV2": {
+      "rate_time_unit": [
+        "hour",
+        "day"
+      ]
+    },
+    "PayConfigsCreateWeeklyRulePayloadV2": {
+      "weekdays": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+      ]
+    },
+    "PayConfigsUpdatePayloadV2": {
+      "rate_time_unit": [
+        "hour",
+        "day"
+      ]
+    },
+    "PayConfigsUpdateWeeklyRulePayloadV2": {
+      "weekdays": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+      ]
+    },
+    "PayReportV2": {
+      "error_code": [
+        "invalid_request",
+        "timed_out"
+      ],
+      "overlapping_shifts": [
+        "paid_once",
+        "paid_per_schedule"
+      ],
+      "status": [
+        "pending",
+        "generating",
+        "complete",
+        "failed"
+      ],
+      "unpaid_shifts": [
+        "included",
+        "excluded"
+      ]
+    },
+    "PayReportsCreatePayloadV2": {
+      "overlapping_shifts": [
+        "paid_once",
+        "paid_per_schedule"
+      ],
+      "unpaid_shifts": [
+        "included",
+        "excluded"
+      ]
+    },
+    "PayReportsPublishPayloadV2": {
+      "send_user_breakdowns": [
+        "send",
+        "skip"
+      ]
+    },
+    "PoliciesCreatePayloadV2": {
+      "policy_type": [
+        "debrief",
+        "follow_up",
+        "on_call_readiness",
+        "post_mortem",
+        "schedule",
+        "shift_conflict",
+        "vacation_conflict"
+      ],
+      "status": [
+        "enabled",
+        "disabled"
+      ]
+    },
+    "PoliciesUpdatePayloadV2": {
+      "policy_type": [
+        "debrief",
+        "follow_up",
+        "on_call_readiness",
+        "post_mortem",
+        "schedule",
+        "shift_conflict",
+        "vacation_conflict"
+      ],
+      "status": [
+        "enabled",
+        "disabled"
+      ]
+    },
+    "PolicyDueDateConfigPayloadV2": {
+      "calculation_type": [
+        "seven_days",
+        "weekdays"
+      ]
+    },
+    "PolicyDueDateConfigV2": {
+      "calculation_type": [
+        "seven_days",
+        "weekdays"
+      ]
+    },
+    "PolicyFindingReadinessRuleV2": {
+      "method_types": [
+        "slack",
+        "email",
+        "app",
+        "sms",
+        "phone",
+        "live_call",
+        "slack_channel",
+        "microsoft_teams",
+        "microsoft_teams_channel",
+        "whatsapp_message"
+      ]
+    },
+    "PolicyFindingScheduleImpactedUserV2": {
+      "cause": [
+        "no_on_call_seat",
+        "user_deactivated",
+        "notifications_paused"
+      ]
+    },
+    "PolicyFindingScheduleV2": {
+      "cause": [
+        "nobody_scheduled",
+        "no_on_call_seat",
+        "user_deactivated",
+        "notifications_paused"
+      ]
+    },
+    "PolicyFindingV2": {
+      "policy_type": [
+        "debrief",
+        "follow_up",
+        "on_call_readiness",
+        "post_mortem",
+        "schedule",
+        "shift_conflict",
+        "vacation_conflict"
+      ],
+      "state": [
+        "pending",
+        "active",
+        "resolved",
+        "cancelled",
+        "dismissed"
+      ]
+    },
+    "PolicyOnCallReadinessV2": {
+      "enforcement": [
+        "advisory",
+        "blocking"
+      ]
+    },
+    "PolicyReadinessRuleV2": {
+      "method_types": [
+        "slack",
+        "email",
+        "app",
+        "sms",
+        "phone",
+        "live_call",
+        "slack_channel",
+        "microsoft_teams",
+        "microsoft_teams_channel",
+        "whatsapp_message"
+      ]
+    },
+    "PolicyReminderCadenceV2": {
+      "interval": [
+        "daily",
+        "weekly"
+      ]
+    },
+    "PolicyScheduleV2": {
+      "evaluation_level": [
+        "schedule",
+        "rotation"
+      ],
+      "requirement_type": [
+        "contiguous"
+      ]
+    },
+    "PolicyV2": {
+      "policy_type": [
+        "debrief",
+        "follow_up",
+        "on_call_readiness",
+        "post_mortem",
+        "schedule",
+        "shift_conflict",
+        "vacation_conflict"
+      ],
+      "status": [
+        "enabled",
+        "disabled"
+      ]
+    },
+    "PostmortemDocumentV1": {
+      "status": [
+        "in_progress",
+        "in_review",
+        "completed"
+      ],
+      "type": [
+        "in_app",
+        "external"
+      ]
+    },
+    "PostmortemDocumentWithStatusChangeV1": {
+      "new_status": [
+        "not_started",
+        "created",
+        "review",
+        "complete"
+      ],
+      "previous_status": [
+        "not_started",
+        "created",
+        "review",
+        "complete"
+      ]
+    },
+    "PostmortemDocumentsAttachPayloadV1": {
+      "document_provider": [
+        "",
+        "confluence",
+        "google_docs",
+        "notion",
+        "sharepoint",
+        "incident_io",
+        "copy_paste_basecamp",
+        "copy_paste_confluence",
+        "copy_paste_github_wiki",
+        "copy_paste_google_docs",
+        "copy_paste_notion",
+        "copy_paste_quip"
+      ]
+    },
+    "PostmortemDocumentsUpdateStatusPayloadV1": {
+      "status": [
+        "in_progress",
+        "in_review",
+        "completed"
+      ]
+    },
+    "ScheduleReplicaCreatePayloadV2": {
+      "replica_provider": [
+        "native",
+        "pagerduty",
+        "opsgenie",
+        "jsm"
+      ]
+    },
+    "ScheduleReplicaV2": {
+      "replica_provider": [
+        "native",
+        "pagerduty",
+        "opsgenie",
+        "jsm"
+      ]
+    },
+    "ScheduleRotationCreatePayloadV2": {
+      "scheduling_mode": [
+        "fair",
+        "sequential"
+      ]
+    },
+    "ScheduleRotationHandoverV2": {
+      "interval_type": [
+        "hourly",
+        "daily",
+        "weekly"
+      ]
+    },
+    "ScheduleRotationUpdatePayloadV2": {
+      "scheduling_mode": [
+        "fair",
+        "sequential"
+      ]
+    },
+    "ScheduleRotationV2": {
+      "scheduling_mode": [
+        "fair",
+        "sequential"
+      ]
+    },
+    "ScheduleRotationWorkingIntervalCreatePayloadV2": {
+      "weekday": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+      ]
+    },
+    "ScheduleRotationWorkingIntervalV2": {
+      "weekday": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+      ]
+    },
+    "ScheduleSyncRuleCreatePayloadV2": {
+      "sync_type": [
+        "on_call",
+        "all_users",
+        "next_on_call"
+      ]
+    },
+    "ScheduleSyncRuleV2": {
+      "sync_type": [
+        "on_call",
+        "all_users",
+        "next_on_call"
+      ]
+    },
+    "SchedulesUpdateScheduleSyncRulePayloadV2": {
+      "sync_type": [
+        "on_call",
+        "all_users",
+        "next_on_call"
+      ]
+    },
+    "StatusPageIncidentAffectedComponentV2": {
+      "component_status": [
+        "operational",
+        "degraded_performance",
+        "partial_outage",
+        "full_outage"
+      ]
+    },
+    "StatusPageIncidentComponentImpactV2": {
+      "component_status": [
+        "degraded_performance",
+        "partial_outage",
+        "full_outage"
+      ]
+    },
+    "StatusPageIncidentUpdateV2": {
+      "incident_status": [
+        "investigating",
+        "identified",
+        "monitoring",
+        "resolved"
+      ]
+    },
+    "StatusPageIncidentV2": {
+      "incident_status": [
+        "investigating",
+        "identified",
+        "monitoring",
+        "resolved"
+      ]
+    },
+    "StatusPageMaintenanceAffectedComponentV2": {
+      "component_status": [
+        "operational",
+        "under_maintenance"
+      ]
+    },
+    "StatusPageMaintenanceUpdateV2": {
+      "maintenance_status": [
+        "maintenance_scheduled",
+        "maintenance_in_progress",
+        "maintenance_complete"
+      ]
+    },
+    "StatusPageMaintenanceV2": {
+      "maintenance_status": [
+        "maintenance_scheduled",
+        "maintenance_in_progress",
+        "maintenance_complete"
+      ]
+    },
+    "StatusPageRetrospectiveIncidentUpdateV2": {
+      "incident_status": [
+        "investigating",
+        "identified",
+        "monitoring",
+        "resolved"
+      ]
+    },
+    "StatusPagesCreateStatusPageIncidentPayloadV2": {
+      "incident_status": [
+        "investigating",
+        "identified",
+        "monitoring",
+        "resolved"
+      ]
+    },
+    "StatusPagesCreateStatusPageIncidentUpdatePayloadV2": {
+      "incident_status": [
+        "investigating",
+        "identified",
+        "monitoring",
+        "resolved"
+      ]
+    },
+    "StatusPagesCreateStatusPageMaintenancePayloadV2": {
+      "maintenance_status": [
+        "maintenance_scheduled",
+        "maintenance_in_progress",
+        "maintenance_complete"
+      ]
+    },
+    "StatusPagesCreateStatusPageMaintenanceUpdatePayloadV2": {
+      "maintenance_status": [
+        "maintenance_scheduled",
+        "maintenance_in_progress",
+        "maintenance_complete"
+      ]
+    },
+    "StepProgressSlimV2": {
+      "status": [
+        "complete",
+        "pending",
+        "error"
+      ],
+      "webhook_delivery_state": [
+        "available",
+        "expired",
+        "unavailable"
+      ]
+    },
+    "StepProgressV2": {
+      "status": [
+        "complete",
+        "pending",
+        "error"
+      ],
+      "webhook_delivery_state": [
+        "available",
+        "expired",
+        "unavailable"
+      ]
+    },
+    "UserSeatsV2": {
+      "on_call": [
+        "full_access",
+        "viewer_only",
+        "none"
+      ],
+      "response": [
+        "full_access",
+        "viewer_only",
+        "none"
+      ]
+    },
+    "UserV1": {
+      "role": [
+        "viewer",
+        "responder",
+        "administrator",
+        "owner",
+        "unset"
+      ]
+    },
+    "UserV2": {
+      "role": [
+        "viewer",
+        "responder",
+        "administrator",
+        "owner",
+        "unset"
+      ]
+    },
+    "UserWithRolesV2": {
+      "role": [
+        "viewer",
+        "responder",
+        "administrator",
+        "owner",
+        "unset"
+      ]
+    },
+    "UsersShowPagingProviderResultV2": {
+      "preferred_escalation_provider": [
+        "native",
+        "opsgenie",
+        "pagerduty",
+        "splunk_on_call"
+      ]
+    },
+    "UsersUpdatePagingProviderPayloadV2": {
+      "preferred_escalation_provider": [
+        "native",
+        "opsgenie",
+        "pagerduty",
+        "splunk_on_call"
+      ]
+    },
+    "WebhookDeliverySlimV2": {
+      "outcome": [
+        "success",
+        "non_2xx",
+        "timeout",
+        "unreachable",
+        "network_error",
+        "tls_error"
+      ]
+    },
+    "WebhookDeliveryV2": {
+      "outcome": [
+        "success",
+        "non_2xx",
+        "timeout",
+        "unreachable",
+        "network_error",
+        "tls_error"
+      ]
+    },
+    "WebhookIncidentV2": {
+      "mode": [
+        "standard",
+        "retrospective",
+        "test",
+        "tutorial"
+      ],
+      "visibility": [
+        "public",
+        "private"
+      ]
+    },
+    "WebhooksPrivateAlertCreatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPrivateAlertResolvedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPrivateEscalationCreatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPrivateEscalationStatusUpdatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPrivateIncidentActionCreatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPrivateIncidentActionUpdatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPrivateIncidentFollowUpCreatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPrivateIncidentFollowUpCreatedV2ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPrivateIncidentFollowUpUpdatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPrivateIncidentFollowUpUpdatedV2ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPrivateIncidentIncidentCreatedV2ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPrivateIncidentIncidentUpdatedV2ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPrivateIncidentMembershipGrantedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPrivateIncidentMembershipRevokedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPrivateIncidentPostmortemDocumentStatusUpdatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPublicAlertCreatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPublicAlertResolvedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPublicEscalationCreatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPublicEscalationStatusUpdatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPublicIncidentActionCreatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPublicIncidentActionUpdatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPublicIncidentFollowUpCreatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPublicIncidentFollowUpCreatedV2ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPublicIncidentFollowUpUpdatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPublicIncidentFollowUpUpdatedV2ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPublicIncidentIncidentCreatedV2ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPublicIncidentIncidentStatusUpdatedV2ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPublicIncidentIncidentUpdatedV2ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksPublicIncidentPostmortemDocumentStatusUpdatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksScheduleCreatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksScheduleDeletedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksScheduleShiftChangeV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksScheduleUpdatedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WebhooksStatusPageIncidentUpdateSharedV1ResponseBody": {
+      "event_type": [
+        "public_incident.incident_created_v2",
+        "private_incident.incident_created_v2",
+        "public_incident.incident_updated_v2",
+        "private_incident.incident_updated_v2",
+        "public_incident.incident_status_updated_v2",
+        "public_incident.follow_up_created_v1",
+        "private_incident.follow_up_created_v1",
+        "public_incident.follow_up_updated_v1",
+        "private_incident.follow_up_updated_v1",
+        "public_incident.follow_up_created_v2",
+        "private_incident.follow_up_created_v2",
+        "public_incident.follow_up_updated_v2",
+        "private_incident.follow_up_updated_v2",
+        "public_incident.action_created_v1",
+        "private_incident.action_created_v1",
+        "public_incident.action_updated_v1",
+        "private_incident.action_updated_v1",
+        "public_alert.alert_created_v1",
+        "private_alert.alert_created_v1",
+        "public_alert.alert_resolved_v1",
+        "private_alert.alert_resolved_v1",
+        "public_escalation.escalation_created_v1",
+        "private_escalation.escalation_created_v1",
+        "public_escalation.escalation_status_updated_v1",
+        "private_escalation.escalation_status_updated_v1",
+        "private_incident.membership_granted_v1",
+        "private_incident.membership_revoked_v1",
+        "public_incident.postmortem_document_status_updated_v1",
+        "private_incident.postmortem_document_status_updated_v1",
+        "schedule.shift_change_v1",
+        "schedule.created_v1",
+        "schedule.updated_v1",
+        "schedule.deleted_v1",
+        "status_page_incident.update_shared_v1"
+      ]
+    },
+    "WeekdayIntervalV2": {
+      "weekday": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+      ]
+    },
+    "WorkflowSlimV2": {
+      "private_incident_scope": [
+        "all",
+        "owning_teams",
+        "none"
+      ],
+      "runs_on_incident_modes": [
+        "standard",
+        "test",
+        "retrospective"
+      ],
+      "runs_on_incidents": [
+        "newly_created",
+        "newly_created_and_active"
+      ],
+      "state": [
+        "active",
+        "disabled",
+        "draft",
+        "error"
+      ]
+    },
+    "WorkflowV2": {
+      "private_incident_scope": [
+        "all",
+        "owning_teams",
+        "none"
+      ],
+      "runs_on_incident_modes": [
+        "standard",
+        "test",
+        "retrospective"
+      ],
+      "runs_on_incidents": [
+        "newly_created",
+        "newly_created_and_active"
+      ],
+      "state": [
+        "active",
+        "disabled",
+        "draft",
+        "error"
+      ]
+    },
+    "WorkflowsCreateWorkflowPayloadV2": {
+      "private_incident_scope": [
+        "all",
+        "owning_teams",
+        "none"
+      ],
+      "runs_on_incident_modes": [
+        "standard",
+        "test",
+        "retrospective"
+      ],
+      "runs_on_incidents": [
+        "newly_created",
+        "newly_created_and_active"
+      ],
+      "state": [
+        "active",
+        "disabled",
+        "draft",
+        "error"
+      ]
+    },
+    "WorkflowsUpdateWorkflowPayloadV2": {
+      "private_incident_scope": [
+        "all",
+        "owning_teams",
+        "none"
+      ],
+      "runs_on_incident_modes": [
+        "standard",
+        "test",
+        "retrospective"
+      ],
+      "runs_on_incidents": [
+        "newly_created",
+        "newly_created_and_active"
+      ],
+      "state": [
+        "active",
+        "disabled",
+        "draft",
+        "error"
+      ]
+    }
+  },
+  "arguments": {
+    "client.v1.actions.list": {
+      "incident_mode": [
+        "real",
+        "test",
+        "tutorial"
+      ]
+    },
+    "client.v1.api_keys.create": {
+      "role_names": [
+        "viewer",
+        "incident_creator",
+        "incident_editor",
+        "manage_settings",
+        "global_access",
+        "catalog_viewer",
+        "catalog_editor",
+        "incident_memberships_editor",
+        "schedules_editor",
+        "schedules_reader",
+        "schedule_overrides_editor",
+        "workflows_editor",
+        "workflows_viewer",
+        "private_workflows_editor",
+        "private_escalation_workflows_editor",
+        "on_call_editor",
+        "on_call_viewer",
+        "escalation_creator",
+        "post_incident_flow_opt_out",
+        "security_settings_editor",
+        "investigation_download",
+        "team_memberships_manage",
+        "status_page_publisher",
+        "status_page_viewer",
+        "postmortems_manage",
+        "api_keys_manage",
+        "notification_methods_manage",
+        "notification_methods_unredacted_viewer",
+        "incident_workload_viewer",
+        "incident_workload_private_viewer",
+        "act_on_behalf_of_users",
+        "secrets_manage",
+        "secrets_use",
+        "call_transcripts_viewer",
+        "heartbeats_ping",
+        "telemetry_query_restricted",
+        "telemetry_data_source_update",
+        "policies_viewer",
+        "policy_findings_manage",
+        "pay_reports_viewer",
+        "pay_reports_editor",
+        "pay_configs_viewer",
+        "pay_configs_editor",
+        "investigations_editor",
+        "telemetry_viewer",
+        "documents_viewer"
+      ],
+      "team_role_names": [
+        "catalog_editor",
+        "schedules_editor",
+        "schedules_reader",
+        "schedule_overrides_editor",
+        "on_call_editor",
+        "escalation_creator",
+        "api_keys_manage",
+        "workflows_editor",
+        "private_workflows_editor",
+        "secrets_manage",
+        "secrets_use",
+        "heartbeats_ping",
+        "telemetry_query_restricted",
+        "telemetry_data_source_update"
+      ]
+    },
+    "client.v1.api_keys.update": {
+      "role_names": [
+        "viewer",
+        "incident_creator",
+        "incident_editor",
+        "manage_settings",
+        "global_access",
+        "catalog_viewer",
+        "catalog_editor",
+        "incident_memberships_editor",
+        "schedules_editor",
+        "schedules_reader",
+        "schedule_overrides_editor",
+        "workflows_editor",
+        "workflows_viewer",
+        "private_workflows_editor",
+        "private_escalation_workflows_editor",
+        "on_call_editor",
+        "on_call_viewer",
+        "escalation_creator",
+        "post_incident_flow_opt_out",
+        "security_settings_editor",
+        "investigation_download",
+        "team_memberships_manage",
+        "status_page_publisher",
+        "status_page_viewer",
+        "postmortems_manage",
+        "api_keys_manage",
+        "notification_methods_manage",
+        "notification_methods_unredacted_viewer",
+        "incident_workload_viewer",
+        "incident_workload_private_viewer",
+        "act_on_behalf_of_users",
+        "secrets_manage",
+        "secrets_use",
+        "call_transcripts_viewer",
+        "heartbeats_ping",
+        "telemetry_query_restricted",
+        "telemetry_data_source_update",
+        "policies_viewer",
+        "policy_findings_manage",
+        "pay_reports_viewer",
+        "pay_reports_editor",
+        "pay_configs_viewer",
+        "pay_configs_editor",
+        "investigations_editor",
+        "telemetry_viewer",
+        "documents_viewer"
+      ],
+      "team_role_names": [
+        "catalog_editor",
+        "schedules_editor",
+        "schedules_reader",
+        "schedule_overrides_editor",
+        "on_call_editor",
+        "escalation_creator",
+        "api_keys_manage",
+        "workflows_editor",
+        "private_workflows_editor",
+        "secrets_manage",
+        "secrets_use",
+        "heartbeats_ping",
+        "telemetry_query_restricted",
+        "telemetry_data_source_update"
+      ]
+    },
+    "client.v1.custom_fields.create": {
+      "field_type": [
+        "single_select",
+        "multi_select",
+        "text",
+        "link",
+        "numeric"
+      ],
+      "required": [
+        "never",
+        "before_closure",
+        "always"
+      ],
+      "required_v2": [
+        "never",
+        "before_resolution",
+        "always"
+      ]
+    },
+    "client.v1.custom_fields.update": {
+      "required": [
+        "never",
+        "before_closure",
+        "always"
+      ],
+      "required_v2": [
+        "never",
+        "before_resolution",
+        "always"
+      ]
+    },
+    "client.v1.incident_attachments.create": {
+      "resource.resource_type": [
+        "pager_duty_incident",
+        "opsgenie_alert",
+        "datadog_monitor_alert",
+        "github_pull_request",
+        "gitlab_merge_request",
+        "sentry_issue",
+        "jira_issue",
+        "jsm_alert",
+        "atlassian_statuspage_incident",
+        "zendesk_ticket",
+        "google_calendar_event",
+        "outlook_calendar_event",
+        "slack_file",
+        "salesforce_case",
+        "arbitrary_url",
+        "scrubbed",
+        "statuspage_incident"
+      ]
+    },
+    "client.v1.incident_attachments.list": {
+      "resource_type": [
+        "pager_duty_incident",
+        "opsgenie_alert",
+        "datadog_monitor_alert",
+        "github_pull_request",
+        "gitlab_merge_request",
+        "sentry_issue",
+        "jira_issue",
+        "jsm_alert",
+        "atlassian_statuspage_incident",
+        "zendesk_ticket",
+        "google_calendar_event",
+        "outlook_calendar_event",
+        "slack_file",
+        "salesforce_case",
+        "arbitrary_url",
+        "scrubbed",
+        "statuspage_incident"
+      ]
+    },
+    "client.v1.incident_statuses.create": {
+      "category": [
+        "live",
+        "learning",
+        "closed"
+      ]
+    },
+    "client.v1.incidents.create": {
+      "visibility": [
+        "public",
+        "private"
+      ],
+      "mode": [
+        "real",
+        "test"
+      ],
+      "status": [
+        "triage",
+        "investigating",
+        "fixing",
+        "monitoring",
+        "closed",
+        "declined"
+      ]
+    },
+    "client.v1.maintenance_windows.list": {
+      "status": [
+        "active",
+        "upcoming",
+        "past"
+      ]
+    },
+    "client.v1.postmortem_documents.attach": {
+      "document_provider": [
+        "",
+        "confluence",
+        "google_docs",
+        "notion",
+        "sharepoint",
+        "incident_io",
+        "copy_paste_basecamp",
+        "copy_paste_confluence",
+        "copy_paste_github_wiki",
+        "copy_paste_google_docs",
+        "copy_paste_notion",
+        "copy_paste_quip"
+      ]
+    },
+    "client.v1.postmortem_documents.list": {
+      "sort_by": [
+        "created_at_newest_first",
+        "created_at_oldest_first"
+      ]
+    },
+    "client.v1.postmortem_documents.update_status": {
+      "status": [
+        "in_progress",
+        "in_review",
+        "completed"
+      ]
+    },
+    "client.v2.actions.list": {
+      "incident_mode": [
+        "standard",
+        "retrospective",
+        "test",
+        "tutorial",
+        "stream"
+      ]
+    },
+    "client.v2.actions.update": {
+      "status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ]
+    },
+    "client.v2.alert_events.create_http": {
+      "status": [
+        "firing",
+        "resolved"
+      ]
+    },
+    "client.v2.alert_sources.create": {
+      "source_type": [
+        "alertmanager",
+        "app_optics",
+        "azure_monitor",
+        "azure_devops",
+        "big_panda",
+        "bugsnag",
+        "checkly",
+        "chronosphere",
+        "cloudwatch",
+        "cloudflare",
+        "coralogix",
+        "cronitor",
+        "crowdstrike_falcon",
+        "dash0",
+        "datadog",
+        "dynatrace",
+        "elasticsearch",
+        "email",
+        "expel",
+        "github_issue",
+        "google_cloud",
+        "google_secops",
+        "grafana",
+        "heartbeat",
+        "http",
+        "http_custom",
+        "honeycomb",
+        "icinga2",
+        "incoming_calls",
+        "jira",
+        "jsm",
+        "logzio",
+        "monte_carlo",
+        "nagios",
+        "new_relic",
+        "opsgenie",
+        "prtg",
+        "pager_duty",
+        "panther",
+        "pingdom",
+        "posthog",
+        "runscope",
+        "sns",
+        "salesforce_case",
+        "sentry",
+        "sentry_metric",
+        "service_now",
+        "splunk",
+        "status_cake",
+        "status_page_views",
+        "sumo_logic",
+        "uptime",
+        "vercel",
+        "wiz",
+        "zendesk"
+      ]
+    },
+    "client.v2.alert_sources.validate": {
+      "source_type": [
+        "alertmanager",
+        "app_optics",
+        "azure_monitor",
+        "azure_devops",
+        "big_panda",
+        "bugsnag",
+        "checkly",
+        "chronosphere",
+        "cloudwatch",
+        "cloudflare",
+        "coralogix",
+        "cronitor",
+        "crowdstrike_falcon",
+        "dash0",
+        "datadog",
+        "dynatrace",
+        "elasticsearch",
+        "email",
+        "expel",
+        "github_issue",
+        "google_cloud",
+        "google_secops",
+        "grafana",
+        "heartbeat",
+        "http",
+        "http_custom",
+        "honeycomb",
+        "icinga2",
+        "incoming_calls",
+        "jira",
+        "jsm",
+        "logzio",
+        "monte_carlo",
+        "nagios",
+        "new_relic",
+        "opsgenie",
+        "prtg",
+        "pager_duty",
+        "panther",
+        "pingdom",
+        "posthog",
+        "runscope",
+        "sns",
+        "salesforce_case",
+        "sentry",
+        "sentry_metric",
+        "service_now",
+        "splunk",
+        "status_cake",
+        "status_page_views",
+        "sumo_logic",
+        "uptime",
+        "vercel",
+        "wiz",
+        "zendesk"
+      ]
+    },
+    "client.v2.alerts.transition_incident_alert": {
+      "state": [
+        "related",
+        "unrelated"
+      ]
+    },
+    "client.v2.announcement_rules.create": {
+      "mode": [
+        "live_and_closed",
+        "include_triage",
+        "include_triage_and_merged",
+        "include_declined_and_merged",
+        "include_all"
+      ],
+      "update_sharing_mode": [
+        "none",
+        "thread",
+        "thread_and_channel"
+      ],
+      "conditions_no_longer_apply_behaviour": [
+        "leave_in_place",
+        "remove"
+      ],
+      "private_incident_scope": [
+        "all",
+        "owning_teams",
+        "none"
+      ]
+    },
+    "client.v2.announcement_rules.update": {
+      "mode": [
+        "live_and_closed",
+        "include_triage",
+        "include_triage_and_merged",
+        "include_declined_and_merged",
+        "include_all"
+      ],
+      "update_sharing_mode": [
+        "none",
+        "thread",
+        "thread_and_channel"
+      ],
+      "conditions_no_longer_apply_behaviour": [
+        "leave_in_place",
+        "remove"
+      ],
+      "private_incident_scope": [
+        "all",
+        "owning_teams",
+        "none"
+      ]
+    },
+    "client.v2.call_routes.create_option": {
+      "digit": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "client.v2.call_routes.update": {
+      "custom_language": [
+        "en-US",
+        "en-GB",
+        "fr-FR",
+        "es-ES",
+        "pt-PT",
+        "pt-BR",
+        "de-DE",
+        "nl-NL"
+      ],
+      "responder_caller_id": [
+        "route_number",
+        "oncall_number"
+      ]
+    },
+    "client.v2.call_routes.update_option": {
+      "digit": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "client.v2.catalog.create_type": {
+      "categories": [
+        "customer",
+        "issue-tracker",
+        "product-feature",
+        "service",
+        "on-call",
+        "team",
+        "user"
+      ],
+      "color": [
+        "yellow",
+        "green",
+        "blue",
+        "violet",
+        "pink",
+        "cyan",
+        "orange"
+      ],
+      "icon": [
+        "alert",
+        "bolt",
+        "box",
+        "briefcase",
+        "browser",
+        "bulb",
+        "calendar",
+        "clock",
+        "cog",
+        "components",
+        "database",
+        "doc",
+        "email",
+        "escalation-path",
+        "files",
+        "flag",
+        "folder",
+        "globe",
+        "incident-template",
+        "money",
+        "server",
+        "severity",
+        "status-page",
+        "store",
+        "star",
+        "tag",
+        "user",
+        "users"
+      ]
+    },
+    "client.v2.catalog.update_type": {
+      "categories": [
+        "customer",
+        "issue-tracker",
+        "product-feature",
+        "service",
+        "on-call",
+        "team",
+        "user"
+      ],
+      "color": [
+        "yellow",
+        "green",
+        "blue",
+        "violet",
+        "pink",
+        "cyan",
+        "orange"
+      ],
+      "icon": [
+        "alert",
+        "bolt",
+        "box",
+        "briefcase",
+        "browser",
+        "bulb",
+        "calendar",
+        "clock",
+        "cog",
+        "components",
+        "database",
+        "doc",
+        "email",
+        "escalation-path",
+        "files",
+        "flag",
+        "folder",
+        "globe",
+        "incident-template",
+        "money",
+        "server",
+        "severity",
+        "status-page",
+        "store",
+        "star",
+        "tag",
+        "user",
+        "users"
+      ]
+    },
+    "client.v2.custom_fields.create": {
+      "field_type": [
+        "single_select",
+        "multi_select",
+        "text",
+        "link",
+        "numeric"
+      ]
+    },
+    "client.v2.escalations.create_path": {
+      "kind": [
+        "standalone",
+        "templated"
+      ]
+    },
+    "client.v2.escalations.respond_escalation": {
+      "response": [
+        "ack",
+        "nack",
+        "snooze"
+      ]
+    },
+    "client.v2.escalations.update_path": {
+      "kind": [
+        "standalone",
+        "templated"
+      ]
+    },
+    "client.v2.follow_ups.connect_external_issue": {
+      "provider": [
+        "asana",
+        "azure_devops",
+        "click_up",
+        "freshservice",
+        "linear",
+        "jira",
+        "salesforce",
+        "jira_server",
+        "github",
+        "gitlab",
+        "service_now",
+        "shortcut",
+        "notion"
+      ]
+    },
+    "client.v2.follow_ups.list": {
+      "incident_mode": [
+        "standard",
+        "retrospective",
+        "test",
+        "tutorial",
+        "stream"
+      ]
+    },
+    "client.v2.follow_ups.update": {
+      "status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ]
+    },
+    "client.v2.incidents.create": {
+      "visibility": [
+        "public",
+        "private"
+      ],
+      "mode": [
+        "standard",
+        "retrospective",
+        "test",
+        "tutorial"
+      ]
+    },
+    "client.v2.incidents.list": {
+      "sort_by": [
+        "created_at_newest_first",
+        "created_at_oldest_first"
+      ],
+      "filter_mode": [
+        "all",
+        "any"
+      ]
+    },
+    "client.v2.pay_configs.create": {
+      "rate_time_unit": [
+        "hour",
+        "day"
+      ]
+    },
+    "client.v2.pay_configs.create_weekly_rule": {
+      "weekdays": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+      ]
+    },
+    "client.v2.pay_configs.update": {
+      "rate_time_unit": [
+        "hour",
+        "day"
+      ]
+    },
+    "client.v2.pay_configs.update_weekly_rule": {
+      "weekdays": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+      ]
+    },
+    "client.v2.pay_reports.create": {
+      "overlapping_shifts": [
+        "paid_once",
+        "paid_per_schedule"
+      ],
+      "unpaid_shifts": [
+        "included",
+        "excluded"
+      ]
+    },
+    "client.v2.pay_reports.publish": {
+      "send_user_breakdowns": [
+        "send",
+        "skip"
+      ]
+    },
+    "client.v2.policies.create": {
+      "policy_type": [
+        "debrief",
+        "follow_up",
+        "on_call_readiness",
+        "post_mortem",
+        "schedule",
+        "shift_conflict",
+        "vacation_conflict"
+      ],
+      "status": [
+        "enabled",
+        "disabled"
+      ]
+    },
+    "client.v2.policies.list": {
+      "policy_type": [
+        "debrief",
+        "follow_up",
+        "on_call_readiness",
+        "post_mortem",
+        "schedule",
+        "shift_conflict",
+        "vacation_conflict"
+      ]
+    },
+    "client.v2.policies.update": {
+      "policy_type": [
+        "debrief",
+        "follow_up",
+        "on_call_readiness",
+        "post_mortem",
+        "schedule",
+        "shift_conflict",
+        "vacation_conflict"
+      ],
+      "status": [
+        "enabled",
+        "disabled"
+      ]
+    },
+    "client.v2.schedules.update_schedule_sync_rule": {
+      "sync_type": [
+        "on_call",
+        "all_users",
+        "next_on_call"
+      ]
+    },
+    "client.v2.status_pages.create_status_page_incident": {
+      "incident_status": [
+        "investigating",
+        "identified",
+        "monitoring",
+        "resolved"
+      ]
+    },
+    "client.v2.status_pages.create_status_page_incident_update": {
+      "incident_status": [
+        "investigating",
+        "identified",
+        "monitoring",
+        "resolved"
+      ]
+    },
+    "client.v2.status_pages.create_status_page_maintenance": {
+      "maintenance_status": [
+        "maintenance_scheduled",
+        "maintenance_in_progress",
+        "maintenance_complete"
+      ]
+    },
+    "client.v2.status_pages.create_status_page_maintenance_update": {
+      "maintenance_status": [
+        "maintenance_scheduled",
+        "maintenance_in_progress",
+        "maintenance_complete"
+      ]
+    },
+    "client.v2.users.update_paging_provider": {
+      "preferred_escalation_provider": [
+        "native",
+        "opsgenie",
+        "pagerduty",
+        "splunk_on_call"
+      ]
+    },
+    "client.v2.workflows.create_workflow": {
+      "runs_on_incident_modes": [
+        "standard",
+        "test",
+        "retrospective"
+      ],
+      "runs_on_incidents": [
+        "newly_created",
+        "newly_created_and_active"
+      ],
+      "private_incident_scope": [
+        "all",
+        "owning_teams",
+        "none"
+      ],
+      "state": [
+        "active",
+        "disabled",
+        "draft",
+        "error"
+      ]
+    },
+    "client.v2.workflows.update_workflow": {
+      "runs_on_incident_modes": [
+        "standard",
+        "test",
+        "retrospective"
+      ],
+      "runs_on_incidents": [
+        "newly_created",
+        "newly_created_and_active"
+      ],
+      "private_incident_scope": [
+        "all",
+        "owning_teams",
+        "none"
+      ],
+      "state": [
+        "active",
+        "disabled",
+        "draft",
+        "error"
+      ]
+    },
+    "client.v3.actions.list": {
+      "incident_mode": [
+        "standard",
+        "retrospective",
+        "test",
+        "tutorial",
+        "stream"
+      ]
+    },
+    "client.v3.actions.update": {
+      "status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ]
+    },
+    "client.v3.catalog.create_type": {
+      "categories": [
+        "customer",
+        "issue-tracker",
+        "product-feature",
+        "service",
+        "on-call",
+        "team",
+        "user"
+      ],
+      "color": [
+        "yellow",
+        "green",
+        "blue",
+        "violet",
+        "pink",
+        "cyan",
+        "orange"
+      ],
+      "icon": [
+        "alert",
+        "bolt",
+        "box",
+        "briefcase",
+        "browser",
+        "bulb",
+        "calendar",
+        "clock",
+        "cog",
+        "components",
+        "database",
+        "doc",
+        "email",
+        "escalation-path",
+        "files",
+        "flag",
+        "folder",
+        "globe",
+        "incident-template",
+        "money",
+        "server",
+        "severity",
+        "status-page",
+        "store",
+        "star",
+        "tag",
+        "user",
+        "users"
+      ]
+    },
+    "client.v3.catalog.update_type": {
+      "categories": [
+        "customer",
+        "issue-tracker",
+        "product-feature",
+        "service",
+        "on-call",
+        "team",
+        "user"
+      ],
+      "color": [
+        "yellow",
+        "green",
+        "blue",
+        "violet",
+        "pink",
+        "cyan",
+        "orange"
+      ],
+      "icon": [
+        "alert",
+        "bolt",
+        "box",
+        "briefcase",
+        "browser",
+        "bulb",
+        "calendar",
+        "clock",
+        "cog",
+        "components",
+        "database",
+        "doc",
+        "email",
+        "escalation-path",
+        "files",
+        "flag",
+        "folder",
+        "globe",
+        "incident-template",
+        "money",
+        "server",
+        "severity",
+        "status-page",
+        "store",
+        "star",
+        "tag",
+        "user",
+        "users"
+      ]
+    },
+    "client.v3.follow_ups.connect_external_issue": {
+      "provider": [
+        "asana",
+        "azure_devops",
+        "click_up",
+        "freshservice",
+        "linear",
+        "jira",
+        "salesforce",
+        "jira_server",
+        "github",
+        "gitlab",
+        "service_now",
+        "shortcut",
+        "notion"
+      ]
+    },
+    "client.v3.follow_ups.list": {
+      "incident_mode": [
+        "standard",
+        "retrospective",
+        "test",
+        "tutorial",
+        "stream"
+      ]
+    },
+    "client.v3.follow_ups.update": {
+      "status": [
+        "outstanding",
+        "completed",
+        "deleted",
+        "not_doing"
+      ]
+    }
+  },
+  "operators": {
+    "client.v2.alerts.list": {
+      "deduplication_key": [
+        "is"
+      ],
+      "status": [
+        "one_of",
+        "not_in"
+      ],
+      "alert_source": [
+        "one_of",
+        "not_in"
+      ],
+      "alert_group_id": [
+        "one_of"
+      ],
+      "created_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ],
+      "updated_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ],
+      "has_notes": [
+        "is"
+      ],
+      "tags": [
+        "one_of",
+        "all_of",
+        "not_in"
+      ],
+      "include_maintenance_window": [
+        "is"
+      ]
+    },
+    "client.v2.escalations.list": {
+      "escalation_path": [
+        "one_of",
+        "not_in"
+      ],
+      "status": [
+        "one_of",
+        "not_in"
+      ],
+      "alert": [
+        "one_of",
+        "not_in"
+      ],
+      "incident": [
+        "one_of",
+        "not_in"
+      ],
+      "created_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ],
+      "updated_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ],
+      "idempotency_key": [
+        "is",
+        "starts_with"
+      ]
+    },
+    "client.v2.incidents.list": {
+      "status": [
+        "one_of",
+        "not_in"
+      ],
+      "status_category": [
+        "one_of",
+        "not_in"
+      ],
+      "created_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ],
+      "updated_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ],
+      "severity": [
+        "one_of",
+        "not_in",
+        "gte",
+        "lte"
+      ],
+      "incident_type": [
+        "one_of",
+        "not_in"
+      ],
+      "incident_role": [
+        "one_of",
+        "is_blank"
+      ],
+      "mode": [
+        "one_of"
+      ]
+    },
+    "client.v2.workflow_runs.list": {
+      "created_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ]
+    },
+    "client.v3.actions.list": {
+      "created_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ],
+      "updated_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ]
+    },
+    "client.v3.follow_ups.list": {
+      "created_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ],
+      "updated_at": [
+        "gte",
+        "lte",
+        "date_range"
+      ]
+    }
+  },
+  "example_operators": {
+    "client.v2.alerts.list": {
+      "attributes": [
+        "one_of"
+      ]
+    },
+    "client.v2.incidents.list": {
+      "custom_field": [
+        "one_of",
+        "not_in"
+      ]
+    }
+  }
+}

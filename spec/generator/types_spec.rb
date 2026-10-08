@@ -92,4 +92,114 @@ RSpec.describe IncidentIoGenerator::Types do
 
     samples.each { |schema, sample| expect(described_class.sample_value(schema, "n")).to eq(sample) }
   end
+
+  it "reads the values a schema is limited to" do
+    expect(described_class.allowed_values({"type" => "string", "enum" => %w[a b]})).to eq(%w[a b])
+    expect(described_class.allowed_values({"type" => "array", "items" => {"type" => "string", "enum" => %w[a b]}})).to eq(%w[a b])
+    expect(described_class.allowed_values({"type" => "string"})).to be_nil
+  end
+
+  it "reads the values of nested arrays and maps" do
+    values = {"type" => "string", "enum" => %w[a b]}
+    array = {"type" => "array", "items" => values}
+
+    expect(described_class.allowed_values({"type" => "array", "items" => array})).to eq(%w[a b])
+    expect(described_class.allowed_values({"type" => "object", "additionalProperties" => values})).to eq(%w[a b])
+    expect(described_class.allowed_values({"type" => "object", "additionalProperties" => array})).to eq(%w[a b])
+    expect(described_class.allowed_values({"type" => "object", "additionalProperties" => true})).to be_nil
+    expect(described_class.allowed_values({"type" => "array", "items" => {"type" => "object"}})).to be_nil
+  end
+  it "reads the limits of a schema and of the keys inside it" do
+    size = {"type" => "string", "enum" => %w[s m]}
+    box = {"type" => "object", "properties" => {"size" => size, "label" => {"type" => "string"}}}
+
+    expect(described_class.limits(size, "size")).to eq("size" => %w[s m])
+    expect(described_class.limits({"type" => "string"}, "name")).to eq({})
+    expect(described_class.limits(box, "box")).to eq("box.size" => %w[s m])
+    expect(described_class.limits({"type" => "array", "items" => box}, "boxes")).to eq("boxes.size" => %w[s m])
+    expect(described_class.limits({"type" => "object", "properties" => {"inner" => box}}, "outer")).to eq("outer.inner.size" => %w[s m])
+  end
+
+  it "reads the type of a schema and of the keys inside it" do
+    part = {"$ref" => "#/c/PartV2"}
+    box = {"type" => "object", "properties" => {"size" => {"type" => "integer"}, "part" => part}}
+
+    expect(described_class.yard_types({"type" => "string"}, "name")).to eq("name" => "String")
+    expect(described_class.yard_types(box, "box")).to eq("box" => "Hash", "box.size" => "Integer", "box.part" => "Models::PartV2")
+    expect(described_class.yard_types({"type" => "array", "items" => box}, "boxes", namespace: ""))
+      .to eq("boxes" => "Array<Hash>", "boxes.size" => "Integer", "boxes.part" => "PartV2")
+    expect(described_class.yard_types({"type" => "object", "properties" => {"inner" => box}}, "outer", accepts_hash: true)).to eq(
+      "outer" => "Hash", "outer.inner" => "Hash", "outer.inner.size" => "Integer", "outer.inner.part" => "Models::PartV2, Hash"
+    )
+  end
+
+  it "reads the limits of keys inside nested arrays and maps" do
+    box = {"type" => "object", "properties" => {"size" => {"type" => "string", "enum" => %w[s m]}}}
+    boxes = {"type" => "array", "items" => box}
+
+    expect(described_class.limits({"type" => "array", "items" => boxes}, "rows")).to eq("rows.size" => %w[s m])
+    expect(described_class.limits({"type" => "object", "additionalProperties" => box}, "by_id")).to eq("by_id.size" => %w[s m])
+    expect(described_class.limits({"type" => "object", "additionalProperties" => boxes}, "by_id")).to eq("by_id.size" => %w[s m])
+    expect(described_class.limits({"type" => "array", "items" => {"type" => "object", "additionalProperties" => boxes}}, "rows"))
+      .to eq("rows.size" => %w[s m])
+    expect(described_class.limits({"type" => "object", "additionalProperties" => true}, "anything")).to eq({})
+  end
+
+  it "reads the limits of an object that names keys and is a map too" do
+    size = {"type" => "string", "enum" => %w[s m]}
+    held = {"type" => "object", "properties" => {"size" => {"type" => "string"}, "shape" => {"type" => "string", "enum" => %w[round]}}}
+    box = {"type" => "object", "properties" => {"size" => size}, "additionalProperties" => held}
+
+    expect(described_class.limits(box, "box")).to eq("box.size" => %w[s m], "box.shape" => %w[round])
+  end
+
+  it "reads the operators a description names" do
+    {
+      "Filter on status. The accepted operators are 'one_of', or 'not_in'." => %w[one_of not_in],
+      "Accepted operators are 'gte', 'lte' and 'date_range'." => %w[gte lte date_range],
+      "The accepted operator is 'is'." => %w[is],
+      "The accepted operators are 'one_of, or 'not_in'." => %w[one_of not_in],
+      "The accepted operators are 'one_of' and 'date-range' on the widget's kind." => %w[one_of date-range],
+      %(The accepted operators are `one_of` and "not_in".) => %w[one_of not_in],
+      "The accepted operators are listed in the guide." => nil,
+      "Custom field ID should be sent, followed by the operator and values." => nil,
+      nil => nil
+    }.each { |text, operators| expect(described_class.operators(text)).to eq(operators) }
+  end
+
+  describe "the operators that examples show" do
+    values = {"type" => "array", "items" => {"type" => "string"}}
+    # A filter like `{"one_of" => ["x"]}`.
+    let(:filter) { ->(example) { {"type" => "object", "additionalProperties" => values, "example" => example} } }
+    # A filter keyed by an ID, like `{"01ABC" => {"one_of" => ["x"]}}`.
+    let(:by_id) { ->(example) { filter[example].merge("additionalProperties" => {"additionalProperties" => values}) } }
+
+    it "reads them from the example and from sample query strings" do
+      text = "Try `--data 'custom_field[ABC][not_in]=XYZ'` or `tags[all_of]=x`, but not other_custom_field[ABC][gte]=1."
+
+      expect(described_class.example_operators("custom_field", by_id[{"01ABC" => {"one_of" => %w[x y]}}], text)).to eq(%w[one_of not_in])
+      expect(described_class.example_operators("tags", filter[{"one_of" => ["x"], "all_of" => ["y"]}], text)).to eq(%w[one_of all_of])
+      expect(described_class.example_operators("tags", filter[nil], text)).to eq(%w[all_of])
+    end
+
+    it "reads them only where the schema puts them" do
+      text = "Not `custom_field[01ABC]=x` or `custom_field[A][B][is]=x`."
+      mixed = {"one_of" => ["x"], "between" => {"gte" => ["1"]}}
+
+      expect(described_class.example_operators("custom_field", by_id[{"01ABC" => {"one_of" => ["x"]}, "01DEF" => "x"}], text)).to eq(%w[one_of])
+      expect(described_class.example_operators("size", filter[mixed], nil)).to eq(%w[one_of between])
+      expect(described_class.example_operators("size", {"additionalProperties" => by_id[nil], "example" => {"A" => {"B" => mixed}}}, nil))
+        .to eq(%w[one_of between])
+    end
+
+    it "finds none for an argument that isn't a filter" do
+      example = {"team" => "x", "region" => "eu"}
+
+      expect(described_class.example_operators("meta", {"type" => "object", "example" => example}, "Try `meta[team]=x`.")).to eq([])
+      expect(described_class.example_operators("meta", {"type" => "object", "additionalProperties" => true, "example" => example}, nil)).to eq([])
+      expect(described_class.example_operators("meta", {"type" => "object", "additionalProperties" => {"type" => "string"}, "example" => example}, nil))
+        .to eq([])
+      expect(described_class.example_operators("page_size", {"type" => "integer"}, nil)).to eq([])
+    end
+  end
 end

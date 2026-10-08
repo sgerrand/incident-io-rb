@@ -10,6 +10,97 @@ module IncidentIoGenerator
       schema["$ref"]&.split("/")&.last
     end
 
+    # The values a schema is limited to, or nil when it takes any value.
+    # For an array, the values of its items; for a map, the values of its
+    # values. These can be nested, like a map of arrays.
+    def allowed_values(schema)
+      # `additionalProperties` can be true or false as well as a schema.
+      return nil unless schema.is_a?(Hash)
+
+      schema["enum"] || allowed_values(schema["items"]) || allowed_values(schema["additionalProperties"])
+    end
+
+    # Every limit in a schema, keyed by name: its own allowed values under
+    # the given name, and those of each key inside it under a name like
+    # "name.key". Those that take any value are left out.
+    def limits(schema, name)
+      named_schemas(schema, name).transform_values { |inner| allowed_values(inner) }.compact
+    end
+
+    # The YARD type of a schema under the given name, and of each key
+    # inside it under a name like "name.key". Takes the options of
+    # #yard_type.
+    def yard_types(schema, name, **)
+      named_schemas(schema, name).transform_values { |inner| yard_type(inner, **) }
+    end
+
+    # A schema under the given name, then the schema of each key of an
+    # inline object in it under a name like "name.key", and of each key
+    # inside those. The inline object can sit inside arrays and maps.
+    def named_schemas(schema, name)
+      inline_properties(schema).reduce({name => schema}) do |all, (key, prop)|
+        all.merge(named_schemas(prop, "#{name}.#{key}"))
+      end
+    end
+
+    # The keys of an inline object and their schemas. For an array or a
+    # map, those of the objects it holds, however deep they are nested. An
+    # object can name keys and be a map of other objects too, so both are
+    # read. A named key wins over one of the same name in a held object.
+    def inline_properties(schema)
+      # `additionalProperties` can be true or false as well as a schema.
+      return {} unless schema.is_a?(Hash)
+
+      held = inline_properties(schema["items"]).merge(inline_properties(schema["additionalProperties"]))
+      held.merge(schema["properties"] || {})
+    end
+
+    # The operators a filter argument's description names, or nil when it
+    # names none. The spec has them only in text like "The accepted
+    # operators are 'one_of', or 'not_in'."
+    def operators(description)
+      sentence = description.to_s[/accepted operators? (?:is|are)[^.]*/i].to_s
+      # A name starts at a quote of any kind. The spec leaves out the odd
+      # closing quote, so none is needed. A quote inside a word, as in
+      # "widget's", doesn't start a name.
+      named = sentence.scan(/(?<![\w-])['"`]([\w-]+)/).flatten
+      named unless named.empty?
+    end
+
+    # How deep the operators sit in the value of a filter argument: 1 for a
+    # filter like `{"one_of" => ["x"]}`, and 2 for one keyed by an ID, like
+    # `{"01ABC" => {"one_of" => ["x"]}}`. Nil when the schema isn't that of
+    # a filter, which is a map of lists of values, or a map of such maps.
+    def filter_depth(schema)
+      values = schema["additionalProperties"]
+      # `additionalProperties` can be true or false as well as a schema.
+      return nil unless values.is_a?(Hash)
+
+      (values["type"] == "array") ? 1 : filter_depth(values)&.succ
+    end
+
+    # The operators that examples show for a filter argument: the keys of
+    # its example value, like `one_of` in `{"01ABC" => {"one_of" => ["x"]}}`,
+    # and those in sample query strings in a text, like `not_in` in
+    # `name[01ABC][not_in]=x`. The schema says how deep the operators sit,
+    # so an ID is never read as one. Empty for an argument that isn't a
+    # filter.
+    def example_operators(name, schema, text)
+      depth = filter_depth(schema)
+      return [] unless depth
+
+      ids = "(?:\\[[^\\]=\\s]+\\]){#{depth - 1}}"
+      in_text = text.to_s.scan(/\b#{Regexp.escape(name)}#{ids}\[(\w+)\]=/).flatten
+      (keys_at(schema["example"], depth) + in_text).uniq
+    end
+
+    # The keys that sit at the given depth in a value made of nested hashes.
+    def keys_at(value, depth)
+      return [] unless value.is_a?(Hash)
+
+      (depth == 1) ? value.keys : value.values.flat_map { |inner| keys_at(inner, depth - 1) }
+    end
+
     # Ruby source for a field type in `Model.define`. Model references are
     # lazy (`-> { IncidentV2 }`) so models can refer to each other in any
     # order. Written to run inside `IncidentIo::Models`.

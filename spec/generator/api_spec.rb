@@ -84,6 +84,8 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
       %w[kind kind :string]
     ])
     expect(widget.fields.last.description).to eq("One of: big, small.")
+    expect(widget.fields.map(&:limits)).to eq([{}, {}, {}, {}, {}, {"kind" => %w[big small]}])
+    expect(widget.fields.map(&:yard_types)).to eq(widget.fields.map { |f| {f.member => f.yard} })
   end
 
   it "reads webhook events and audit log entries" do
@@ -145,6 +147,12 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
       }],
       "a webhook body without its payload" => [/body has no public_widget.created_v1 payload/, ->(s) {
         s["components"]["schemas"]["WidgetCreatedBody"]["properties"].delete("public_widget.created_v1")
+      }],
+      "a spec without x-webhooks" => [/x-webhooks: no webhook events/, ->(s) {
+        s.delete("x-webhooks")
+      }],
+      "a spec without audit log entries" => [/x-webhooks: no audit log entries/, ->(s) {
+        s["x-webhooks"].delete("/x-audit-logs/widget.deleted.2")
       }],
       "a resource named like a Client method" => [/resource name request clashes with a Client method/, ->(s) {
         s["paths"]["/v1/request"] = {"get" => operation("Request V1#Show", "WidgetsShowResultV2")}
