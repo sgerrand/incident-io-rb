@@ -7,6 +7,7 @@ module IncidentIo
   module Models
     WorkflowsCreateWorkflowPayloadV2 = Model.define(
       annotations: Model.map_of(:string),
+      auto_run_mode: :string,
       condition_groups: [-> { ConditionGroupPayloadV2 }],
       continue_on_step_error: :boolean,
       delay: -> { WorkflowDelayV2 },
@@ -31,6 +32,9 @@ module IncidentIo
       # @!attribute [r] annotations
       #   Annotations that track metadata about this resource
       #   @return [Hash{String => String}, nil]
+      # @!attribute [r] auto_run_mode
+      #   Whether the workflow runs immediately, or asks for confirmation in the…
+      #   @return [String, nil]
       # @!attribute [r] condition_groups
       #   Conditions that apply to the workflow trigger
       #   @return [Array<ConditionGroupPayloadV2>, nil]
@@ -47,7 +51,7 @@ module IncidentIo
       #   Folder to display the workflow in
       #   @return [String, nil]
       # @!attribute [r] form_fields
-      #   User-configured form fields available in the workflow scope (manual triggers…
+      #   User-configured form fields available in the workflow scope
       #   @return [Array<WorkflowFormFieldPayloadV2>, nil]
       # @!attribute [r] include_private_escalations
       #   Whether to include private escalations
