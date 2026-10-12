@@ -94,11 +94,15 @@ jobs:
             echo "<!-- breaking-changes:end -->"
           } > "$RUNNER_TEMP/section.md"
 
+          # The number of the open pull request, or nothing when there is
+          # none. If GitHub can't be asked, the run stops here, before
+          # anything is pushed.
+          number="$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')"
+
           # An open pull request keeps its text, so anything a person
           # added to it is kept too.
-          state="$(gh pr view "$BRANCH" --json state --jq .state 2>/dev/null || true)"
-          if [ "$state" = "OPEN" ]; then
-            gh pr view "$BRANCH" --json body --jq .body > "$RUNNER_TEMP/text.md"
+          if [ -n "$number" ]; then
+            gh pr view "$number" --json body --jq .body > "$RUNNER_TEMP/text.md"
           else
             cat > "$RUNNER_TEMP/text.md" <<'BODY'
           :tipping_hand_person: These changes update the generated models, resources and signatures from the latest incident.io OpenAPI spec.
@@ -125,8 +129,8 @@ jobs:
           # text is written last, as it describes the pushed code.
           git push --force origin "$BRANCH"
 
-          if [ "$state" = "OPEN" ]; then
-            if ! gh pr edit "$BRANCH" --body-file "$RUNNER_TEMP/body.md"; then
+          if [ -n "$number" ]; then
+            if ! gh pr edit "$number" --body-file "$RUNNER_TEMP/body.md"; then
               echo "::error::The text of the pull request was not updated, so its list of breaking changes is out of date. Run this workflow again to fix it."
               exit 1
             fi
