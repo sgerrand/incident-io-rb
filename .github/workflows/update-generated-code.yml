@@ -110,10 +110,14 @@ jobs:
           fi
 
           # Puts the new part in place of the old one, or at the end of a
-          # text that has none.
+          # text that has none. The old part runs from a start mark to the
+          # next end mark, with no other start mark between them. So a
+          # mark that lost its pair, or a second marked part, can't make
+          # the text around it go away.
           ruby -e '
             text, section = ARGV.map { |path| File.read(path) }
-            marked = /<!-- breaking-changes:start -->.*<!-- breaking-changes:end -->\r?\n?/m
+            start = "<!-- breaking-changes:start -->"
+            marked = /#{start}(?:(?!#{start}).)*?<!-- breaking-changes:end -->\r?\n?/m
             print text.match?(marked) ? text.sub(marked) { section } : "#{text.rstrip}\n\n#{section}"
           ' "$RUNNER_TEMP/text.md" "$RUNNER_TEMP/section.md" > "$RUNNER_TEMP/body.md"
 
