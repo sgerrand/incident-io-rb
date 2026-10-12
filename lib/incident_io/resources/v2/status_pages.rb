@@ -472,19 +472,18 @@ module IncidentIo
         #
         # Show the structure of a status page.
         #
-        # This endpoint requires a valid API key but no specific scopes. Returns the components and component groups configured on a status page. Use this to find component IDs when specifying affected components for incidents or maintenance windows.
+        # This endpoint requires a valid API key but no specific scopes. Returns the components and component groups configured on a status page, with their display settings, and how the page shows uptime. Use this to find component IDs when specifying affected components for incidents or maintenance windows.
         #
         # Endpoint: `GET /v2/status_page_structures/{status_page_id}`.
         #
         # @param status_page_id [String] ID of the status page.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
-        # @return [Models::StatusPageStructureV2]
+        # @return [Models::StatusPagesShowStatusPageStructureResultV2]
         def show_status_page_structure(status_page_id, request_options: {})
           request(
             :get,
             path("/v2/status_page_structures/%s", status_page_id),
-            unwrap: "current_structure",
-            model: Models::StatusPageStructureV2,
+            model: Models::StatusPagesShowStatusPageStructureResultV2,
             request_options:
           )
         end

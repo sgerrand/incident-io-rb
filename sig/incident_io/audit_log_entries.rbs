@@ -62,12 +62,18 @@ module IncidentIo
                | Models::AuditLogsExtensionConnectorCalledV1
                | Models::AuditLogsExtensionConnectorCalledV2
                | Models::AuditLogsExtensionConnectorCalledV3
+               | Models::AuditLogsExtensionPluginCreatedV1
+               | Models::AuditLogsExtensionPluginDeletedV1
+               | Models::AuditLogsExtensionPluginUpdatedV1
                | Models::AuditLogsFollowUpCategoryCreatedV1
                | Models::AuditLogsFollowUpCategoryDeletedV1
                | Models::AuditLogsFollowUpCategoryUpdatedV1
                | Models::AuditLogsFollowUpPriorityCreatedV1
                | Models::AuditLogsFollowUpPriorityDeletedV1
                | Models::AuditLogsFollowUpPriorityUpdatedV1
+               | Models::AuditLogsGlossaryEntryCreatedV1
+               | Models::AuditLogsGlossaryEntryDeletedV1
+               | Models::AuditLogsGlossaryEntryUpdatedV1
                | Models::AuditLogsHolidayUserFeedCreatedV1
                | Models::AuditLogsHolidayUserFeedDeletedV1
                | Models::AuditLogsHolidayUserFeedUpdatedV1
@@ -105,6 +111,9 @@ module IncidentIo
                | Models::AuditLogsInternalStatusPageCreatedV1
                | Models::AuditLogsInternalStatusPageDeletedV1
                | Models::AuditLogsInternalStatusPageUpdatedV1
+               | Models::AuditLogsInvestigationTriggerCreatedV1
+               | Models::AuditLogsInvestigationTriggerDeletedV1
+               | Models::AuditLogsInvestigationTriggerUpdatedV1
                | Models::AuditLogsMaintenanceWindowCreatedV1
                | Models::AuditLogsMaintenanceWindowDeletedV1
                | Models::AuditLogsMaintenanceWindowUpdatedV1
