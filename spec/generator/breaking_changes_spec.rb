@@ -157,7 +157,6 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Method `client.v2.widgets.destroy` changed what it returns from `Models::WidgetV2` to `nil`
       - Method `client.v2.widgets.export` changed its positional arguments from `(shelf_id, id)` to `(id)`
       - Method `client.v2.widgets.list` changed the type of argument `page_size` from `String` to `Integer`
-      - Method `client.v2.widgets.list` now only allows `25`, `50` for `page_size`
       - Method `client.v2.widgets.list` no longer allows `not_in` as an operator for `kind`
       - Method `client.v2.widgets.list` no longer says which operators `after` allows
       - Method `client.v2.widgets.list` no longer shows `not_in` as an operator for `attrs` in its examples
@@ -228,6 +227,19 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     ])
   end
 
+  it "does not compare the values of an argument that changed type" do
+    was = {
+      types: {"page_size" => "String", "box" => "Hash", "box.size" => "String", "kind" => "String"},
+      limits: {"page_size" => %w[25 50], "kind" => %w[a b]}
+    }
+    now = {
+      types: {"page_size" => "Integer", "box" => "Array<Hash>", "box.size" => "String", "kind" => "String"},
+      limits: {"page_size" => [25, 50], "box.size" => %w[s m], "kind" => %w[a]}
+    }
+
+    expect(described_class.argument_value_changes("call", was, now)).to eq(["Method `call` no longer allows `b` for `kind`"])
+  end
+
   it "lists values that are false or null" do
     limits = [
       ["A", "on", [true, false], [true]], ["A", "kind", ["a", nil], ["a"]],
@@ -255,7 +267,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(report.lines.last(3)).to eq([
       "- Webhook event `public_widget.created_v1` changed its model from `PartV2` to `WidgetV2`\n",
       "- Webhook event `public_widget.deleted_v1` was removed\n",
-      "- and 47 more\n"
+      "- and 46 more\n"
     ])
   end
 

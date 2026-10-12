@@ -122,6 +122,13 @@ module IncidentIoGenerator
       end
     end
 
+    # The names in `was` that are still there in `now` with the same type,
+    # and whose parents all kept their type too. Only the values of these
+    # can be compared.
+    def unchanged(was, now)
+      comparable(was, now).select { |name| now[name] == was[name] }
+    end
+
     # The breaking changes from `before` to `after`, one line each. Both
     # come from #surface.
     def changes(before, after)
@@ -179,9 +186,7 @@ module IncidentIoGenerator
     def kept_limits(before, after)
       before.slice(*after.keys).flat_map do |model, was|
         now = after[model]
-        comparable(was[:types], now[:types]).filter_map do |name|
-          next unless now[:types][name] == was[:types][name]
-
+        unchanged(was[:types], now[:types]).filter_map do |name|
           values = [was, now].map { |side| side[:limits][name] }
           [model, name, *values] if values.any?
         end
@@ -232,10 +237,12 @@ module IncidentIoGenerator
 
     # Arguments of a method, and keys inside them, that allow fewer values
     # than before. Allowing more can't break a call, and nor can a limit on
-    # a new argument or key.
+    # a new argument or key. One that changed type is listed for that. Its
+    # old and new values can't be compared.
     def argument_value_changes(name, was, now)
-      now[:limits].filter_map do |arg, values|
-        next unless was[:types].key?(arg)
+      unchanged(was[:types], now[:types]).filter_map do |arg|
+        values = now[:limits][arg]
+        next unless values
 
         allowed = was[:limits][arg]
         if allowed.nil?
