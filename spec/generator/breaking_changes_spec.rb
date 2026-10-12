@@ -228,6 +228,19 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     ])
   end
 
+  it "lists values that are false or null" do
+    limits = [
+      ["A", "on", [true, false], [true]], ["A", "kind", ["a", nil], ["a"]],
+      ["A", "off", [true], [true, false]], ["A", "tone", ["a"], ["a", nil]]
+    ]
+    was = {types: {"on" => "Boolean"}, limits: {"on" => [true, false]}}
+    now = {types: {"on" => "Boolean"}, limits: {"on" => [true]}}
+
+    expect(described_class.fewer_values(limits)).to eq([["A", "on", "no longer allows `false`"], ["A", "kind", "no longer allows `null`"]])
+    expect(described_class.more_values(limits, ["A"])).to eq([["A", "off", "now also allows `false`"], ["A", "tone", "now also allows `null`"]])
+    expect(described_class.argument_value_changes("call", was, now)).to eq(["Method `call` no longer allows `false` for `on`"])
+  end
+
   it "knows which models code can be handed" do
     surface = described_class.surface(generate("code", mini_spec))
 

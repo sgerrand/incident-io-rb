@@ -196,7 +196,7 @@ module IncidentIoGenerator
       limits.filter_map do |model, name, was, now|
         if was.nil?
           [model, name, "now only allows #{quote(now)}"]
-        elsif (was - (now || was)).any?
+        elsif !(was - (now || was)).empty?
           [model, name, "no longer allows #{quote(was - now)}"]
         end
       end
@@ -213,7 +213,7 @@ module IncidentIoGenerator
 
         if now.nil?
           [model, name, "now allows any value"]
-        elsif (now - was).any?
+        elsif !(now - was).empty?
           [model, name, "now also allows #{quote(now - was)}"]
         end
       end
@@ -240,7 +240,7 @@ module IncidentIoGenerator
         allowed = was[:limits][arg]
         if allowed.nil?
           "Method `#{name}` now only allows #{quote(values)} for `#{arg}`"
-        elsif (allowed - values).any?
+        elsif !(allowed - values).empty?
           "Method `#{name}` no longer allows #{quote(allowed - values)} for `#{arg}`"
         end
       end
@@ -300,8 +300,10 @@ module IncidentIoGenerator
       end
     end
 
+    # The values as they are named in a change. A value can be false or
+    # nil, which the spec writes as null.
     def quote(values)
-      values.map { |value| "`#{value}`" }.join(", ")
+      values.map { |value| "`#{value.nil? ? "null" : value}`" }.join(", ")
     end
 
     # Resources that `client.<resource>` reaches in another version than
