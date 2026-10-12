@@ -30,8 +30,8 @@ module IncidentIoGenerator
     # The YARD type of a schema under the given name, and of each key
     # inside it under a name like "name.key". Takes the options of
     # #yard_type.
-    def yard_types(schema, name, **)
-      named_schemas(schema, name).transform_values { |inner| yard_type(inner, **) }
+    def yard_types(schema, name, **options)
+      named_schemas(schema, name).transform_values { |inner| yard_type(inner, **options) }
     end
 
     # A schema under the given name, then the schema of each key of an
