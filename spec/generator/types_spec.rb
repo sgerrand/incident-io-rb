@@ -182,6 +182,14 @@ RSpec.describe IncidentIoGenerator::Types do
       expect(described_class.example_operators("tags", filter[nil], text)).to eq(%w[all_of])
     end
 
+    it "reads them from examples on the argument too" do
+      examples = [{"01ABC" => {"not_in" => ["x"]}}, {"01DEF" => {"one_of" => ["y"], "is" => ["z"]}}]
+
+      expect(described_class.example_operators("custom_field", by_id[{"01ABC" => {"one_of" => ["x"]}}], nil, examples:))
+        .to eq(%w[one_of not_in is])
+      expect(described_class.example_operators("custom_field", by_id[nil], nil, examples:)).to eq(%w[not_in one_of is])
+    end
+
     it "reads them only where the schema puts them" do
       text = "Not `custom_field[01ABC]=x` or `custom_field[A][B][is]=x`."
       mixed = {"one_of" => ["x"], "between" => {"gte" => ["1"]}}

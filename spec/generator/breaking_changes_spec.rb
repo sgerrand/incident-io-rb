@@ -186,6 +186,9 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       # can't break anything.
       schemas["WidgetsCreatePayloadV2"]["properties"]["name"]["enum"] = %w[red green]
       spec["paths"]["/v2/widgets"]["get"]["parameters"][0]["schema"]["enum"] = [25, 50]
+      # The spec can give an example on the argument instead of its schema.
+      attrs = spec["paths"]["/v2/widgets"]["get"]["parameters"].last
+      attrs["example"] = attrs["schema"].delete("example")
     end
 
     expect(described_class.report(generate("before", before), generate("after", after))).to eq("")

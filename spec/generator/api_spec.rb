@@ -130,6 +130,18 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
     expect { described_class.new(spec) }.to raise_error(IncidentIoGenerator::Error, /"end" is not a safe Ruby name/)
   end
 
+  it "reads the examples given on a parameter" do
+    spec = mini_spec
+    spec["paths"]["/v2/widgets/{id}"]["get"]["parameters"] << {
+      "in" => "query", "name" => "tags", "schema" => {"example" => "a"},
+      "example" => "b", "examples" => {"one" => {"value" => "c"}, "linked" => {"$ref" => "#/components/examples/D"}}
+    }
+    show = described_class.new(spec).resources.first.operations.find { |op| op.method_name == "show" }
+
+    expect(show.query_params.last.examples).to eq(%w[b c])
+    expect(show.path_params.first.examples).to eq([])
+  end
+
   it "picks the newest version of each resource" do
     spec = mini_spec
     spec["paths"]["/v3/widgets/{id}"] = {"delete" => operation("Widgets V3#Destroy", nil, code: "204", parameters: [path_param("id")])}

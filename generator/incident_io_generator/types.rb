@@ -80,18 +80,19 @@ module IncidentIoGenerator
     end
 
     # The operators that examples show for a filter argument: the keys of
-    # its example value, like `one_of` in `{"01ABC" => {"one_of" => ["x"]}}`,
+    # its example values, like `one_of` in `{"01ABC" => {"one_of" => ["x"]}}`,
     # and those in sample query strings in a text, like `not_in` in
-    # `name[01ABC][not_in]=x`. The schema says how deep the operators sit,
-    # so an ID is never read as one. Empty for an argument that isn't a
-    # filter.
-    def example_operators(name, schema, text)
+    # `name[01ABC][not_in]=x`. The example values are that of the schema
+    # and the given ones, which the spec can put on the argument itself.
+    # The schema says how deep the operators sit, so an ID is never read as
+    # one. Empty for an argument that isn't a filter.
+    def example_operators(name, schema, text, examples: [])
       depth = filter_depth(schema)
       return [] unless depth
 
       ids = "(?:\\[[^\\]=\\s]+\\]){#{depth - 1}}"
       in_text = text.to_s.scan(/\b#{Regexp.escape(name)}#{ids}\[(\w+)\]=/).flatten
-      (keys_at(schema["example"], depth) + in_text).uniq
+      ([schema["example"], *examples].flat_map { |example| keys_at(example, depth) } + in_text).uniq
     end
 
     # The keys that sit at the given depth in a value made of nested hashes.

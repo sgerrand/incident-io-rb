@@ -314,7 +314,7 @@ module IncidentIoGenerator
           operators[call] = params.to_h { |p| [p.name, Types.operators(p.description)] }.compact
           unnamed = op.query_params.reject { |p| operators[call].key?(p.name) }
           example_operators[call] = unnamed.to_h do |p|
-            [p.name, Types.example_operators(p.name, p.schema, op.description)]
+            [p.name, Types.example_operators(p.name, p.schema, op.description, examples: p.examples)]
           end.reject { |_, shown| shown.empty? }
         end
       end

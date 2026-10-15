@@ -6,7 +6,9 @@ module IncidentIoGenerator
   # A keyword or positional argument of a generated method.
   #   location: :path, :query or :body
   #   default: Ruby source for a generated default, e.g. "SecureRandom.uuid"
-  Param = Data.define(:name, :location, :required, :schema, :description, :default) do
+  #   examples: example values the spec gives on the argument itself, not
+  #     on its schema
+  Param = Data.define(:name, :location, :required, :schema, :description, :default, :examples) do
     # Optional body arguments default to NOT_GIVEN so that nil can be sent as
     # null; optional query arguments default to nil, which is left out.
     def not_given? = location == :body && !required && !default
@@ -278,7 +280,9 @@ module IncidentIoGenerator
         required:,
         schema:,
         description: describe(schema, param["description"]),
-        default: nil
+        default: nil,
+        # A parameter can have one example, or several by name.
+        examples: [param["example"], *param.fetch("examples", {}).values.map { |example| example["value"] }].compact
       )
     end
 
@@ -292,7 +296,7 @@ module IncidentIoGenerator
         idempotency_key = name == "idempotency_key"
         Param.new(
           name:, location: :body, required: !idempotency_key && required.include?(name), schema: prop,
-          description: describe(prop), default: ("SecureRandom.uuid" if idempotency_key)
+          description: describe(prop), default: ("SecureRandom.uuid" if idempotency_key), examples: []
         )
       end
     end
