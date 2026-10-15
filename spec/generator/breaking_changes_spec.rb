@@ -234,6 +234,15 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     ])
   end
 
+  it "does not read a key with a dot as a key inside another" do
+    box = ->(keys) { IncidentIoGenerator::Types.yard_types({"type" => "object", "properties" => keys}, "box") }
+    inner = {"type" => "object", "properties" => {"c" => {"type" => "string"}}}
+    was = box[{"a" => inner, "a.b" => {"type" => "string"}}]
+    now = box[{"a" => {"type" => "string"}}]
+
+    expect(described_class.retyped(was, now)).to eq([["box.a", "Hash", "String"], ['box."a.b"', "String", nil]])
+  end
+
   it "does not compare the values of an argument that changed type" do
     was = {
       types: {"page_size" => "String", "box" => "Hash", "box.size" => "String", "kind" => "String"},

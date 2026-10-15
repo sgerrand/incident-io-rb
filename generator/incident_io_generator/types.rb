@@ -39,8 +39,22 @@ module IncidentIoGenerator
     # inside those. The inline object can sit inside arrays and maps.
     def named_schemas(schema, name)
       inline_properties(schema).reduce({name => schema}) do |all, (key, prop)|
-        all.merge(named_schemas(prop, "#{name}.#{key}"))
+        all.merge(named_schemas(prop, "#{name}.#{key_name(key)}"))
       end
+    end
+
+    # A key as it is named after what holds it, like "key" in "name.key".
+    # A key with a dot, or one that is empty or starts with a quote, is
+    # written as a JSON string, like `name."a.b"`, so it can't be read as
+    # two keys.
+    def key_name(key)
+      (key.empty? || key.include?(".") || key.start_with?('"')) ? key.to_json : key
+    end
+
+    # The parts of a name like `name.key."a.b"`, split at the dots between
+    # them. See #key_name.
+    def name_parts(name)
+      name.scan(/"(?:[^"\\]|\\.)*"|[^.]+/)
     end
 
     # The keys of an inline object and their schemas. For an array or a

@@ -133,6 +133,16 @@ RSpec.describe IncidentIoGenerator::Types do
     )
   end
 
+  it "names keys with a dot so they can't be read as two keys" do
+    box = {"type" => "object", "properties" => {"a.b" => {"type" => "string"}, "" => {}, '"q' => {}, 'x"y' => {}}}
+    names = described_class.yard_types(box, "box").keys
+
+    expect(names).to eq(["box", 'box."a.b"', 'box.""', 'box."\"q"', 'box.x"y'])
+    expect(names.map { |name| described_class.name_parts(name) }).to eq([
+      ["box"], ["box", '"a.b"'], ["box", '""'], ["box", '"\"q"'], ["box", 'x"y']
+    ])
+  end
+
   it "reads the limits of keys inside nested arrays and maps" do
     box = {"type" => "object", "properties" => {"size" => {"type" => "string", "enum" => %w[s m]}}}
     boxes = {"type" => "array", "items" => box}

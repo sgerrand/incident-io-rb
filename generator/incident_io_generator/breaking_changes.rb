@@ -120,7 +120,7 @@ module IncidentIoGenerator
     # isn't compared, as that is listed already.
     def comparable(was, now)
       was.keys.select do |name|
-        parts = name.split(".")
+        parts = Types.name_parts(name)
         (1...parts.size).all? do |size|
           parent = parts.first(size).join(".")
           now[parent] == was[parent]
