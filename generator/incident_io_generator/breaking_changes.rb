@@ -318,7 +318,25 @@ module IncidentIoGenerator
     # The values as they are named in a change. A value can be false or
     # nil, which the spec writes as null.
     def quote(values)
-      values.map { |value| "`#{value.nil? ? "null" : value}`" }.join(", ")
+      values.map { |value| code(value.nil? ? "null" : value.to_s) }.join(", ")
+    end
+
+    # Text as inline code. Its fence of backticks is longer than any run of
+    # backticks in the text, so none of those can end it. Text with a
+    # backtick gets a space at each end, which Markdown takes off, so one
+    # at the start or end can't join the fence.
+    def code(text)
+      fence = "`" * (text.scan(/`+/).map(&:size).max.to_i + 1)
+      text = " #{text} " if text.include?("`")
+      "#{fence}#{text}#{fence}"
+    end
+
+    # A change as one line of Markdown. A line break in a name or value
+    # would end the list, so it becomes a space. A `-->` would end a mark
+    # like `<!-- breaking-changes:end -->` that the update workflow puts
+    # around the list, so a zero-width space goes inside it.
+    def one_line(change)
+      change.gsub(/\R/, " ").gsub("-->", "--​>")
     end
 
     # Resources that `client.<resource>` reaches in another version than
@@ -367,7 +385,7 @@ module IncidentIoGenerator
     # code under before_root to the code under after_root, or an empty
     # string when there are none.
     def report(before_root, after_root)
-      lines = changes(surface(before_root), surface(after_root))
+      lines = changes(surface(before_root), surface(after_root)).map { |change| one_line(change) }
       return "" if lines.empty?
 
       shown = lines.first(LIMIT)

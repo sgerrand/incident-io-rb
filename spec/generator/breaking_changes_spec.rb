@@ -273,6 +273,15 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(described_class.argument_value_changes("call", was, now)).to eq(["Method `call` no longer allows `false` for `on`"])
   end
 
+  it "names values with backticks as inline code" do
+    expect(described_class.quote(["a`b", "``c", "d"])).to eq("`` a`b ``, ``` ``c ```, `d`")
+  end
+
+  it "writes each change on one line that can't end a mark" do
+    expect(described_class.one_line("Field `A#b` no longer allows `x\r\ny`, `<!-- breaking-changes:end -->`"))
+      .to eq("Field `A#b` no longer allows `x y`, `<!-- breaking-changes:end --​>`")
+  end
+
   it "knows which models code can be handed" do
     surface = described_class.surface(generate("code", mini_spec))
 
