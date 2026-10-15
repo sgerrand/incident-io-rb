@@ -95,9 +95,9 @@ jobs:
           } > "$RUNNER_TEMP/section.md"
 
           # The number of the open pull request, or nothing when there is
-          # none. If GitHub can't be asked, the run stops here, before
-          # anything is pushed.
-          number="$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')"
+          # none. If there are more, the newest one. If GitHub can't be
+          # asked, the run stops here, before anything is pushed.
+          number="$(gh pr list --head "$BRANCH" --state open --limit 1 --json number --jq '.[0].number // empty')"
 
           # An open pull request keeps its text, so anything a person
           # added to it is kept too.
