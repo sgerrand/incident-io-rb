@@ -90,11 +90,12 @@ module IncidentIoGenerator
 
     # The models that code using the gem can be handed: those named in the
     # given texts, and every model that a field of one of them can hold.
+    # A Set, as it is looked up for every limit of every field.
     def read_models(models, texts)
       found = []
       loop do
         names = texts.flat_map { |text| text.scan(/\w+/) }.uniq & (models.keys - found)
-        return found if names.empty?
+        return found.to_set if names.empty?
 
         found += names
         texts = names.flat_map { |name| models[name][:types].values }
