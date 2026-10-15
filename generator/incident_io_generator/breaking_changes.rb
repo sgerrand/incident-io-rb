@@ -283,7 +283,7 @@ module IncidentIoGenerator
         if allowed.nil?
           "Method `#{name}` no longer says which operators `#{arg}` allows"
         elsif (operators - allowed).any?
-          "Method `#{name}` no longer allows #{quote(operators - allowed)} as an operator for `#{arg}`"
+          "Method `#{name}` no longer allows #{quote(operators - allowed)} #{as_operators(operators - allowed)} for `#{arg}`"
         end
       end
     end
@@ -303,11 +303,16 @@ module IncidentIoGenerator
         next if gone.empty?
 
         if named
-          "Method `#{name}` no longer allows #{quote(gone)} as an operator for `#{arg}`"
+          "Method `#{name}` no longer allows #{quote(gone)} #{as_operators(gone)} for `#{arg}`"
         else
-          "Method `#{name}` no longer shows #{quote(gone)} as an operator for `#{arg}` in its examples"
+          "Method `#{name}` no longer shows #{quote(gone)} #{as_operators(gone)} for `#{arg}` in its examples"
         end
       end
+    end
+
+    # How a change names the operators it lists.
+    def as_operators(operators)
+      (operators.size > 1) ? "as operators" : "as an operator"
     end
 
     # The values as they are named in a change. A value can be false or
