@@ -146,9 +146,9 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Method `client.widgets.show` changed its positional arguments from `(id)` to `(uid)`
       - Method `client.v2.widgets.archive` was removed
       - Method `client.v2.widgets.create` no longer takes `colour:`
+      - Method `client.v2.widgets.create` now needs `name:`
       - Method `client.v2.widgets.create` no longer takes `box.colour`
       - Method `client.v2.widgets.create` no longer takes `box.inner`
-      - Method `client.v2.widgets.create` now needs `name:`
       - Method `client.v2.widgets.create` changed the type of argument `box.lid` from `Hash` to `Integer`
       - Method `client.v2.widgets.create` changed the type of argument `crate` from `Hash` to `Models::PartV2, Hash`
       - Method `client.v2.widgets.create` no longer allows `blue` for `name`

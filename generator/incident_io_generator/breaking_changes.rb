@@ -129,15 +129,24 @@ module IncidentIoGenerator
 
     # The names in `was` that are still there in `now` with the same type,
     # and whose parents all kept their type too. Only the values of these
-    # can be compared.
-    def unchanged(was, now)
-      comparable(was, now).select { |name| now[name] == was[name] }
+    # can be compared. Takes the names from #comparable when the caller has
+    # them already.
+    def unchanged(was, now, names = comparable(was, now))
+      names.select { |name| now[name] == was[name] }
+    end
+
+    # The names in `was` that were removed or changed type, and whose
+    # parents all kept their type, as [name, type, type now]. The type now
+    # is nil for one that was removed. Takes the names from #comparable
+    # when the caller has them already.
+    def retyped(was, now, names = comparable(was, now))
+      names.filter_map { |name| [name, was[name], now[name]] if now[name] != was[name] }
     end
 
     # The breaking changes from `before` to `after`, one line each. Both
     # come from #surface.
     def changes(before, after)
-      limits = kept_limits(before[:models], after[:models])
+      limits = field_limits(before[:models], after[:models])
       [
         *type_changes("Webhook event", before[:events], after[:events]),
         *type_changes("Audit log entry", before[:entries], after[:entries]),
@@ -171,44 +180,50 @@ module IncidentIoGenerator
     # one by one.
     def field_changes(before, after)
       before.slice(*after.keys).flat_map do |model, was|
-        now = after[model][:types]
-        comparable(was[:types], now).filter_map do |name|
-          type = was[:types][name]
-          if !now.key?(name)
-            "Field `#{model}##{name}` was removed"
-          elsif now[name] != type
-            "Field `#{model}##{name}` changed type from `#{type}` to `#{now[name]}`"
-          end
+        retyped(was[:types], after[model][:types]).map do |name, type, now|
+          now ? "Field `#{model}##{name}` changed type from `#{type}` to `#{now}`" : "Field `#{model}##{name}` was removed"
         end
       end
     end
 
-    # The limits to compare, as [model, name, was, now]: one for each field,
-    # and each key inside a field, that is still there with the same type,
-    # and was or is limited to some values. `was` or `now` is nil when it
-    # allows any value. The old and new values of one that changed type
-    # can't be compared.
-    def kept_limits(before, after)
+    # The limits to compare in a model or a method, as [name, was, now]:
+    # one for each field or argument, and each key inside one, that is
+    # still there with the same type, and was or is limited to some values.
+    # `was` or `now` is nil when it allows any value. The old and new values
+    # of one that changed type can't be compared. Takes the names from
+    # #unchanged when the caller has them already.
+    def kept_limits(was, now, kept = unchanged(was[:types], now[:types]))
+      kept.filter_map do |name|
+        values = [was, now].map { |side| side[:limits][name] }
+        [name, *values] if values.any?
+      end
+    end
+
+    # The limits to compare for fields, as [model, name, was, now], in
+    # models that both have.
+    def field_limits(before, after)
       before.slice(*after.keys).flat_map do |model, was|
-        now = after[model]
-        unchanged(was[:types], now[:types]).filter_map do |name|
-          values = [was, now].map { |side| side[:limits][name] }
-          [model, name, *values] if values.any?
-        end
+        kept_limits(was, after[model]).map { |limit| [model, *limit] }
+      end
+    end
+
+    # How a field or argument that allows fewer values than before changed,
+    # or nil when it doesn't. One that allowed any value and is now limited
+    # to some is listed too. Code that sends it can no longer send a value,
+    # and code that reads it waits for a value that no longer comes.
+    def fewer(was, now)
+      if was.nil?
+        "now only allows #{quote(now)}"
+      elsif !(was - (now || was)).empty?
+        "no longer allows #{quote(was - now)}"
       end
     end
 
     # Fields that allow fewer values than before, as [model, name, change].
-    # One that allowed any value and is now limited to some is listed too.
-    # Code that sends the field can no longer send a value, and code that
-    # reads it waits for a value that no longer comes.
     def fewer_values(limits)
       limits.filter_map do |model, name, was, now|
-        if was.nil?
-          [model, name, "now only allows #{quote(now)}"]
-        elsif !(was - (now || was)).empty?
-          [model, name, "no longer allows #{quote(was - now)}"]
-        end
+        change = fewer(was, now)
+        [model, name, change] if change
       end
     end
 
@@ -243,35 +258,25 @@ module IncidentIoGenerator
     # Arguments of a method, and keys inside them, that allow fewer values
     # than before. Allowing more can't break a call, and nor can a limit on
     # a new argument or key. One that changed type is listed for that. Its
-    # old and new values can't be compared.
-    def argument_value_changes(name, was, now)
-      unchanged(was[:types], now[:types]).filter_map do |arg|
-        values = now[:limits][arg]
-        next unless values
+    # old and new values can't be compared. Takes the names from #unchanged
+    # when the caller has them already, as do the checks of operators.
+    def argument_value_changes(name, was, now, kept = unchanged(was[:types], now[:types]))
+      kept_limits(was, now, kept).filter_map do |arg, allowed, values|
+        change = fewer(allowed, values)
+        "Method `#{name}` #{change} for `#{arg}`" if change
+      end
+    end
 
-        allowed = was[:limits][arg]
-        if allowed.nil?
-          "Method `#{name}` now only allows #{quote(values)} for `#{arg}`"
-        elsif !(allowed - values).empty?
-          "Method `#{name}` no longer allows #{quote(allowed - values)} for `#{arg}`"
+    # Arguments of a method, and keys inside them, that changed type, and
+    # keys inside them that are gone, from #retyped. A removed argument is
+    # listed already.
+    def argument_type_changes(name, retyped)
+      retyped.filter_map do |arg, type, now|
+        if now
+          "Method `#{name}` changed the type of argument `#{arg}` from `#{type}` to `#{now}`"
+        elsif arg.include?(".")
+          "Method `#{name}` no longer takes `#{arg}`"
         end
-      end
-    end
-
-    # Keys inside the arguments of a method that are gone. A removed
-    # argument is listed already.
-    def removed_argument_keys(name, was, now)
-      (comparable(was[:types], now[:types]) - now[:types].keys).filter_map do |key|
-        "Method `#{name}` no longer takes `#{key}`" if key.include?(".")
-      end
-    end
-
-    # Arguments of a method, and keys inside them, that changed type.
-    def argument_type_changes(name, was, now)
-      comparable(was[:types], now[:types]).filter_map do |arg|
-        type = was[:types][arg]
-        now_type = now[:types].fetch(arg, type)
-        "Method `#{name}` changed the type of argument `#{arg}` from `#{type}` to `#{now_type}`" if now_type != type
       end
     end
 
@@ -279,8 +284,7 @@ module IncidentIoGenerator
     # `status: {not_in: [...]}`. The spec only names operators in its text,
     # so an argument whose text no longer names any is listed too. One that
     # was removed or changed type is listed for that already.
-    def operator_changes(name, was, now)
-      kept = unchanged(was[:types], now[:types])
+    def operator_changes(name, was, now, kept = unchanged(was[:types], now[:types]))
       was[:operators].filter_map do |arg, operators|
         next unless kept.include?(arg)
 
@@ -297,8 +301,7 @@ module IncidentIoGenerator
     # The spec names no operators for these, so its examples are all there
     # is to go on. An operator that is no longer shown may still work, but
     # not when the spec now names the operators and leaves it out.
-    def example_changes(name, was, now)
-      kept = unchanged(was[:types], now[:types])
+    def example_changes(name, was, now, kept = unchanged(was[:types], now[:types]))
       was[:shown].filter_map do |arg, operators|
         # One that was removed or changed type is listed already.
         next unless kept.include?(arg)
@@ -375,15 +378,16 @@ module IncidentIoGenerator
         next ["Method `#{name}` was removed"] unless now
 
         positional = [was, now].map { |args| "`(#{args[:positional].join(", ")})`" }
+        names = comparable(was[:types], now[:types])
+        kept = unchanged(was[:types], now[:types], names)
         [
           *("Method `#{name}` changed its positional arguments from #{positional.first} to #{positional.last}" if positional.uniq.size > 1),
           *(was[:required] + was[:optional] - now[:required] - now[:optional]).map { |arg| "Method `#{name}` no longer takes `#{arg}:`" },
-          *removed_argument_keys(name, was, now),
           *(now[:required] - was[:required]).map { |arg| "Method `#{name}` now needs `#{arg}:`" },
-          *argument_type_changes(name, was, now),
-          *argument_value_changes(name, was, now),
-          *operator_changes(name, was, now),
-          *example_changes(name, was, now),
+          *argument_type_changes(name, retyped(was[:types], now[:types], names)),
+          *argument_value_changes(name, was, now, kept),
+          *operator_changes(name, was, now, kept),
+          *example_changes(name, was, now, kept),
           *("Method `#{name}` changed what it returns from `#{was[:returns]}` to `#{now[:returns]}`" if was[:returns] != now[:returns])
         ]
       end
