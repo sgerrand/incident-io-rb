@@ -282,7 +282,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
 
   it "writes each change on one line that can't end a mark" do
     expect(described_class.one_line("Field `A#b` no longer allows `x\r\ny`, `<!-- breaking-changes:end -->`"))
-      .to eq("Field `A#b` no longer allows `x y`, `<!-- breaking-changes:end --​>`")
+      .to eq("Field `A#b` no longer allows `x y`, `<!-- breaking-changes:end --\u200B>`")
   end
 
   it "knows which models code can be handed" do

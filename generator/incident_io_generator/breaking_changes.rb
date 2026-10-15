@@ -348,7 +348,7 @@ module IncidentIoGenerator
     # like `<!-- breaking-changes:end -->` that the update workflow puts
     # around the list, so a zero-width space goes inside it.
     def one_line(change)
-      change.gsub(/\R/, " ").gsub("-->", "--​>")
+      change.gsub(/\R/, " ").gsub("-->", "--\u200B>")
     end
 
     # Resources that `client.<resource>` reaches in another version than
