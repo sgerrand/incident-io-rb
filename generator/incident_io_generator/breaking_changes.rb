@@ -22,8 +22,13 @@ module IncidentIoGenerator
     # The manifests that are read, relative to the repository root.
     PATHS = [MODELS_PATH, OPERATIONS_PATH, VALUES_PATH].freeze
 
-    # The most changes to list. A pull request body can't hold many more.
+    # The most changes to list, and the most characters they can take up. A
+    # pull request body holds 65,536 characters, and needs room for the
+    # rest of its text too.
     LIMIT = 100
+    SIZE = 50_000
+    # The most values to name in one change.
+    VALUES = 20
     # The most other models to name on the line of a change they share.
     SAME = 3
 
@@ -316,9 +321,12 @@ module IncidentIoGenerator
     end
 
     # The values as they are named in a change. A value can be false or
-    # nil, which the spec writes as null.
+    # nil, which the spec writes as null. Past the first few, they are only
+    # counted.
     def quote(values)
-      values.map { |value| code(value.nil? ? "null" : value.to_s) }.join(", ")
+      named = values.first(VALUES).map { |value| code(value.nil? ? "null" : value.to_s) }
+      more = " and #{values.size - VALUES} more" if values.size > VALUES
+      "#{named.join(", ")}#{more}"
     end
 
     # Text as inline code. Its fence of backticks is longer than any run of
@@ -388,8 +396,11 @@ module IncidentIoGenerator
       lines = changes(surface(before_root), surface(after_root)).map { |change| one_line(change) }
       return "" if lines.empty?
 
-      shown = lines.first(LIMIT)
-      shown << "and #{lines.size - LIMIT} more" if lines.size > LIMIT
+      # Each line takes up its change, with "- " before it and a line break
+      # after it.
+      size = 0
+      shown = lines.first(LIMIT).take_while { |line| (size += line.size + 3) <= SIZE }
+      shown << "and #{lines.size - shown.size} more" if shown.size < lines.size
 
       <<~MARKDOWN
         ## Breaking changes

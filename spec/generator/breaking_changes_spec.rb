@@ -300,6 +300,21 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     ])
   end
 
+  it "stops before the changes take up too many characters" do
+    first = "Webhook event `public_widget.created_v1` changed its model from `PartV2` to `WidgetV2`"
+    stub_const("#{described_class}::SIZE", first.size + 3)
+
+    report = described_class.report(generate("before", older_spec), generate("after", newer_spec))
+
+    expect(report.lines.last(2)).to eq(["- #{first}\n", "- and 47 more\n"])
+  end
+
+  it "only counts the values past the first few" do
+    stub_const("#{described_class}::VALUES", 2)
+
+    expect(described_class.quote(%w[a b c d])).to eq("`a`, `b` and 2 more")
+  end
+
   describe "the real generated code" do
     let(:surface) { described_class.surface(IncidentIoGenerator::ROOT) }
 
