@@ -272,10 +272,12 @@ module IncidentIoGenerator
 
     # Filter arguments of a method that lost an operator, like `not_in` in
     # `status: {not_in: [...]}`. The spec only names operators in its text,
-    # so an argument whose text no longer names any is listed too.
+    # so an argument whose text no longer names any is listed too. One that
+    # was removed or changed type is listed for that already.
     def operator_changes(name, was, now)
+      kept = unchanged(was[:types], now[:types])
       was[:operators].filter_map do |arg, operators|
-        next unless now[:types].key?(arg)
+        next unless kept.include?(arg)
 
         allowed = now[:operators][arg]
         if allowed.nil?
@@ -291,9 +293,10 @@ module IncidentIoGenerator
     # is to go on. An operator that is no longer shown may still work, but
     # not when the spec now names the operators and leaves it out.
     def example_changes(name, was, now)
+      kept = unchanged(was[:types], now[:types])
       was[:shown].filter_map do |arg, operators|
-        # A removed argument is listed already.
-        next unless now[:types].key?(arg)
+        # One that was removed or changed type is listed already.
+        next unless kept.include?(arg)
 
         named = now[:operators][arg]
         gone = operators - (named || now[:shown].fetch(arg, []))

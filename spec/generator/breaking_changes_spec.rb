@@ -192,10 +192,13 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
   end
 
   it "checks example operators against the ones the spec now names or shows" do
-    was = {shown: {
-      "gone" => %w[one_of], "named" => %w[one_of], "narrowed" => %w[one_of not_in],
-      "kept" => %w[one_of not_in], "bare" => %w[one_of]
-    }}
+    was = {
+      types: {"gone" => "Hash", "named" => "Hash", "narrowed" => "Hash", "kept" => "Hash", "bare" => "Hash"},
+      shown: {
+        "gone" => %w[one_of], "named" => %w[one_of], "narrowed" => %w[one_of not_in],
+        "kept" => %w[one_of not_in], "bare" => %w[one_of]
+      }
+    }
     now = {
       types: {"named" => "Hash", "narrowed" => "Hash", "kept" => "Hash", "bare" => "Hash"},
       operators: {"named" => %w[one_of is], "narrowed" => %w[one_of]},
@@ -238,6 +241,22 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     }
 
     expect(described_class.argument_value_changes("call", was, now)).to eq(["Method `call` no longer allows `b` for `kind`"])
+  end
+
+  it "does not compare the operators of an argument that changed type" do
+    was = {
+      types: {"status" => "Hash{String => Array<String>}", "kind" => "Hash{String => Array<String>}"},
+      operators: {"status" => %w[one_of not_in], "kind" => %w[one_of not_in]},
+      shown: {"status" => %w[one_of], "kind" => %w[one_of]}
+    }
+    now = {
+      types: {"status" => "String", "kind" => "Hash{String => Array<String>}"},
+      operators: {"kind" => %w[one_of]},
+      shown: {}
+    }
+
+    expect(described_class.operator_changes("call", was, now)).to eq(["Method `call` no longer allows `not_in` as an operator for `kind`"])
+    expect(described_class.example_changes("call", was, now)).to eq([])
   end
 
   it "lists values that are false or null" do
