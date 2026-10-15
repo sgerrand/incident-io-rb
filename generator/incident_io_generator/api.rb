@@ -8,7 +8,11 @@ module IncidentIoGenerator
   #   default: Ruby source for a generated default, e.g. "SecureRandom.uuid"
   #   examples: example values the spec gives on the argument itself, not
   #     on its schema
-  Param = Data.define(:name, :location, :required, :schema, :description, :default, :examples) do
+  #   yard_types: the YARD type of the argument and of keys inside it, see
+  #     Types.yard_types
+  #   limits: the values the argument and keys inside it allow, see
+  #     Types.limits
+  Param = Data.define(:name, :location, :required, :schema, :description, :default, :examples, :yard_types, :limits) do
     # Optional body arguments default to NOT_GIVEN so that nil can be sent as
     # null; optional query arguments default to nil, which is left out.
     def not_given? = location == :body && !required && !default
@@ -274,7 +278,7 @@ module IncidentIoGenerator
 
     def build_param(param, location:, required:)
       schema = param["schema"] || {}
-      Param.new(
+      new_param(
         name: param.fetch("name"),
         location:,
         required:,
@@ -286,6 +290,15 @@ module IncidentIoGenerator
       )
     end
 
+    # A Param, with the YARD types and limits of its schema, as a Field has
+    # them. An argument can be a model or a Hash.
+    def new_param(name:, schema:, **fields)
+      Param.new(
+        name:, schema:, **fields,
+        yard_types: Types.yard_types(schema, name, accepts_hash: true), limits: Types.limits(schema, name)
+      )
+    end
+
     def body_params(schema)
       return [] if schema.nil?
 
@@ -294,7 +307,7 @@ module IncidentIoGenerator
         # The idempotency key is generated per call so retries of the same
         # call reuse it.
         idempotency_key = name == "idempotency_key"
-        Param.new(
+        new_param(
           name:, location: :body, required: !idempotency_key && required.include?(name), schema: prop,
           description: describe(prop), default: ("SecureRandom.uuid" if idempotency_key), examples: []
         )

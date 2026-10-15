@@ -256,9 +256,7 @@ module IncidentIoGenerator
             "keyword_args" => keyword_params.to_h { |p| [p.name, Types.sample_value(p.schema, p.name)] },
             # Every argument, optional ones too, with its YARD type. A key
             # inside an argument is there too, under a name like "arg.key".
-            "arg_types" => (op.path_params + op.keyword_params).reduce({}) do |types, p|
-              types.merge(Types.yard_types(p.schema, p.name, accepts_hash: true))
-            end,
+            "arg_types" => (op.path_params + op.keyword_params).map(&:yard_types).reduce({}, :merge),
             "returns" => op.result.yard,
             "query_keys" => keyword_params.select { |p| p.location == :query }.map(&:name),
             "body_keys" => keyword_params.select { |p| p.location == :body }.map(&:name),
@@ -310,7 +308,7 @@ module IncidentIoGenerator
         resource.operations.each do |op|
           call = op.full_name
           params = op.path_params + op.keyword_params
-          arguments[call] = params.map { |p| Types.limits(p.schema, p.name) }.reduce({}, :merge)
+          arguments[call] = params.map(&:limits).reduce({}, :merge)
           operators[call] = params.to_h { |p| [p.name, Types.operators(p.description)] }.compact
           unnamed = op.query_params.reject { |p| operators[call].key?(p.name) }
           example_operators[call] = unnamed.to_h do |p|
