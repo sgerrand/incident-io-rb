@@ -159,7 +159,6 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Method `client.widgets.destroy` was removed
       - Method `client.widgets.export` was removed
       - Method `client.widgets.list` was removed
-      - Method `client.widgets.show` changed its positional arguments from `(id)` to `(uid)`
       - Field `WidgetV2#class_` now allows any value
       - Field `WidgetV2#kind` now also allows `small`
       - Field `WidgetV2#box.tone` now allows any value
@@ -244,6 +243,28 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(described_class.retyped(was, now)).to eq([["box.a", "Hash", "String"], ['box."a.b"', "String", nil]])
   end
 
+  it "compares positional arguments by their place" do
+    method = ->(positional, types) { {positional:, required: [], optional: [], types:, limits: {}, operators: {}, shown: {}, returns: "nil"} }
+    before = {
+      "renamed" => method[%w[id], {"id" => "String"}],
+      "retyped" => method[%w[shelf_id id], {"shelf_id" => "String", "id" => "String"}],
+      "moved" => method[%w[shelf_id id], {"shelf_id" => "String", "id" => "String"}],
+      "fewer" => method[%w[shelf_id id], {"shelf_id" => "String", "id" => "String"}]
+    }
+    after = {
+      "renamed" => method[%w[uid], {"uid" => "String"}],
+      "retyped" => method[%w[shelf_id uid], {"shelf_id" => "String", "uid" => "Integer"}],
+      "moved" => method[%w[id shelf_id], {"shelf_id" => "String", "id" => "String"}],
+      "fewer" => method[%w[id], {"id" => "String"}]
+    }
+
+    expect(described_class.method_changes(before, after)).to eq([
+      "Method `retyped` changed the type of argument `uid` from `String` to `Integer`",
+      "Method `moved` changed its positional arguments from `(shelf_id, id)` to `(id, shelf_id)`",
+      "Method `fewer` changed its positional arguments from `(shelf_id, id)` to `(id)`"
+    ])
+  end
+
   it "does not compare the values of an argument that changed type" do
     was = {
       types: {"page_size" => "String", "box" => "Hash", "box.size" => "String", "kind" => "String"},
@@ -309,7 +330,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(report.lines.last(3)).to eq([
       "- Webhook event `public_widget.created_v1` changed its model from `PartV2` to `WidgetV2`\n",
       "- Webhook event `public_widget.deleted_v1` was removed\n",
-      "- and 46 more\n"
+      "- and 45 more\n"
     ])
   end
 
@@ -319,7 +340,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
 
     report = described_class.report(generate("before", older_spec), generate("after", newer_spec))
 
-    expect(report.lines.last(2)).to eq(["- #{first}\n", "- and 47 more\n"])
+    expect(report.lines.last(2)).to eq(["- #{first}\n", "- and 46 more\n"])
   end
 
   it "only counts the values past the first few" do

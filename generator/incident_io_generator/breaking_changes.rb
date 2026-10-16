@@ -389,10 +389,14 @@ module IncidentIoGenerator
         next ["Method `#{name}` was removed"] unless now
 
         positional = [was, now].map { |args| "`(#{args[:positional].join(", ")})`" }
+        # Calls pass these by place, so one that was only renamed is
+        # compared under its new name.
+        renames = renamed_positional(was[:positional], now[:positional])
+        was = with_names(was, renames) if renames
         names = comparable(was[:types], now[:types])
         kept = unchanged(was[:types], now[:types], names)
         [
-          *("Method `#{name}` changed its positional arguments from #{positional.first} to #{positional.last}" if positional.uniq.size > 1),
+          *("Method `#{name}` changed its positional arguments from #{positional.first} to #{positional.last}" unless renames),
           *(was[:required] + was[:optional] - now[:required] - now[:optional]).map { |arg| "Method `#{name}` no longer takes `#{arg}:`" },
           *(now[:required] - was[:required]).map { |arg| "Method `#{name}` now needs `#{arg}:`" },
           *argument_type_changes(name, retyped(was[:types], now[:types], names)),
@@ -402,6 +406,28 @@ module IncidentIoGenerator
           *("Method `#{name}` changed what it returns from `#{was[:returns]}` to `#{now[:returns]}`" if was[:returns] != now[:returns])
         ]
       end
+    end
+
+    # How the positional arguments of a method were renamed, from each old
+    # name to its new one, when calls still work: there are as many as
+    # before, and none that kept its name moved to another place. Empty
+    # when none were renamed. Nil when calls can break.
+    def renamed_positional(was, now)
+      return nil if was.size != now.size || (was & now).any? { |arg| was.index(arg) != now.index(arg) }
+
+      was.zip(now).to_h.reject { |old, new| old == new }
+    end
+
+    # A method from #surface, with its arguments, and the keys inside them,
+    # named after the given renames.
+    def with_names(method, renames)
+      rename = lambda do |name|
+        # An argument's own name never has a dot. See #signature.
+        arg, key = name.split(".", 2)
+        [renames.fetch(arg, arg), *key].join(".")
+      end
+      renamed = %i[types limits operators shown].to_h { |part| [part, method[part].transform_keys(&rename)] }
+      method.merge(renamed, positional: method[:positional].map(&rename))
     end
 
     # A Markdown section listing the breaking changes from the generated
