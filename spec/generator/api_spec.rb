@@ -134,11 +134,12 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
     spec = mini_spec
     spec["paths"]["/v2/widgets/{id}"]["get"]["parameters"] << {
       "in" => "query", "name" => "tags", "schema" => {"example" => "a"},
-      "example" => "b", "examples" => {"one" => {"value" => "c"}, "linked" => {"$ref" => "#/components/examples/D"}}
+      "example" => "b", "examples" => {"one" => {"value" => "c"}, "linked" => {"$ref" => "#/components/examples/D"}, "none" => nil}
     }
+    spec["paths"]["/v2/widgets/{id}"]["get"]["parameters"] << {"in" => "query", "name" => "notes", "schema" => {}, "examples" => nil}
     show = described_class.new(spec).resources.first.operations.find { |op| op.method_name == "show" }
 
-    expect(show.query_params.last.examples).to eq(%w[b c])
+    expect(show.query_params.map(&:examples).last(2)).to eq([%w[b c], []])
     expect(show.path_params.first.examples).to eq([])
   end
 

@@ -285,8 +285,9 @@ module IncidentIoGenerator
         schema:,
         description: describe(schema, param["description"]),
         default: nil,
-        # A parameter can have one example, or several by name.
-        examples: [param["example"], *param.fetch("examples", {}).values.map { |example| example["value"] }].compact
+        # A parameter can have one example, or several by name. The spec can
+        # write null for either.
+        examples: [param["example"], *(param["examples"] || {}).values.grep(Hash).map { |example| example["value"] }].compact
       )
     end
 
