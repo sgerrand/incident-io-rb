@@ -295,7 +295,7 @@ module IncidentIoGenerator
         if allowed.nil?
           "Method `#{name}` no longer says which operators `#{arg}` allows"
         elsif (operators - allowed).any?
-          "Method `#{name}` no longer allows #{quote(operators - allowed)} #{as_operators(operators - allowed)} for `#{arg}`"
+          lost_operators(name, arg, operators - allowed)
         end
       end
     end
@@ -314,11 +314,17 @@ module IncidentIoGenerator
         next if gone.empty?
 
         if named
-          "Method `#{name}` no longer allows #{quote(gone)} #{as_operators(gone)} for `#{arg}`"
+          lost_operators(name, arg, gone)
         else
           "Method `#{name}` no longer shows #{quote(gone)} #{as_operators(gone)} for `#{arg}` in its examples"
         end
       end
+    end
+
+    # The change for a filter argument of a method that no longer allows
+    # some operators.
+    def lost_operators(name, arg, gone)
+      "Method `#{name}` no longer allows #{quote(gone)} #{as_operators(gone)} for `#{arg}`"
     end
 
     # How a change names the operators it lists.
