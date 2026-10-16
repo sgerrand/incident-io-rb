@@ -137,13 +137,6 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Field `WidgetV2#box.size` no longer allows `l` (same in `WidgetsCreatePayloadV2`)
       - Field `WidgetV2#box.depth` now only allows `1`, `2` (same in `WidgetsCreatePayloadV2`)
       - Field `WidgetsCreatePayloadV2#name` no longer allows `blue`
-      - Resource `client.widgets` now uses v3 instead of v2
-      - Method `client.widgets.archive` was removed
-      - Method `client.widgets.create` was removed
-      - Method `client.widgets.destroy` was removed
-      - Method `client.widgets.export` was removed
-      - Method `client.widgets.list` was removed
-      - Method `client.widgets.show` changed its positional arguments from `(id)` to `(uid)`
       - Method `client.v2.widgets.archive` was removed
       - Method `client.v2.widgets.create` no longer takes `colour:`
       - Method `client.v2.widgets.create` now needs `name:`
@@ -160,6 +153,13 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Method `client.v2.widgets.list` no longer allows `not_in` as an operator for `kind`
       - Method `client.v2.widgets.list` no longer says which operators `after` allows
       - Method `client.v2.widgets.list` no longer shows `not_in` as an operator for `attrs` in its examples
+      - Resource `client.widgets` now uses v3 instead of v2
+      - Method `client.widgets.archive` was removed
+      - Method `client.widgets.create` was removed
+      - Method `client.widgets.destroy` was removed
+      - Method `client.widgets.export` was removed
+      - Method `client.widgets.list` was removed
+      - Method `client.widgets.show` changed its positional arguments from `(id)` to `(uid)`
       - Field `WidgetV2#class_` now allows any value
       - Field `WidgetV2#kind` now also allows `small`
       - Field `WidgetV2#box.tone` now allows any value

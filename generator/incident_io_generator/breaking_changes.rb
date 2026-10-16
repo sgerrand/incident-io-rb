@@ -154,8 +154,10 @@ module IncidentIoGenerator
         *(before[:models].keys - after[:models].keys).map { |model| "Model `#{model}` was removed" },
         *field_changes(before[:models], after[:models]),
         *together(fewer_values(limits)),
-        *accessor_changes(before[:newest], after[:newest]),
         *method_changes(before[:methods], after[:methods]),
+        # After the methods, as a new version can add a line for each of
+        # its methods, which would push their own changes out of the list.
+        *accessor_changes(before[:newest], after[:newest]),
         # Last, as a new value is the least likely to break anything. These
         # are the first to be left out when the list is too long.
         *together(more_values(limits, after[:read]))
