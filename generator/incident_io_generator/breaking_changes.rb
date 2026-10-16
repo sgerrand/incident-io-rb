@@ -407,7 +407,7 @@ module IncidentIoGenerator
         # Calls pass these by place, so one that was only renamed is
         # compared under its new name.
         renames = renamed_positional(was[:positional], now[:positional])
-        was = with_names(was, renames) if renames
+        was = with_names(was, renames) if renames&.any?
         names = comparable(was[:types], now[:types])
         kept = unchanged(was[:types], now[:types], names)
         [
