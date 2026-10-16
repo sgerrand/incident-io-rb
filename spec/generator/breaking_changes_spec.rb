@@ -216,11 +216,12 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     ])
   end
 
-  it "leaves out resources that are gone or still use the same version" do
-    before = {"gone" => {version: "v1", methods: {}}, "kept" => {version: "v2", methods: {}}}
+  it "names a resource that is gone, but not its methods, and leaves out one that still uses the same version" do
+    gone = {"client.gone.list" => {}}
+    before = {"gone" => {version: "v1", methods: gone}, "kept" => {version: "v2", methods: {}}}
     after = {"kept" => {version: "v2", methods: {}}, "added" => {version: "v1", methods: {}}}
 
-    expect(described_class.accessor_changes(before, after)).to eq([])
+    expect(described_class.accessor_changes(before, after)).to eq(["Resource `client.gone` was removed"])
   end
 
   it "names the models that share a change on one line" do

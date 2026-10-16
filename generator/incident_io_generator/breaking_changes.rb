@@ -351,15 +351,17 @@ module IncidentIoGenerator
       change.gsub(/\R/, " ").gsub("-->", "--\u200B>")
     end
 
-    # Resources that `client.<resource>` reaches in another version than
-    # before, and what that changes for each method called through it.
-    # Changes inside a version are listed under its own calls, like
+    # Resources that are gone in every version, and resources that
+    # `client.<resource>` reaches in another version than before, with what
+    # that changes for each method called through it. Changes inside a
+    # version are listed under its own calls, like
     # `client.v2.<resource>.<method>`, and so are the methods of a resource
     # that is gone.
     def accessor_changes(before, after)
       before.flat_map do |resource, was|
         now = after[resource]
-        next [] if now.nil? || now[:version] == was[:version]
+        next ["Resource `client.#{resource}` was removed"] if now.nil?
+        next [] if now[:version] == was[:version]
 
         [
           "Resource `client.#{resource}` now uses #{now[:version]} instead of #{was[:version]}",
