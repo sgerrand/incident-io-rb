@@ -129,9 +129,10 @@ jobs:
           # text that has none. The old part runs from a start mark to the
           # next end mark, with no other start mark between them. So a
           # mark that lost its pair, or a second marked part, can't make
-          # the text around it go away.
+          # the text around it go away. Both files are read as UTF-8,
+          # whatever the runner's locale is.
           ruby -e '
-            text, section = ARGV.map { |path| File.read(path) }
+            text, section = ARGV.map { |path| File.read(path, encoding: "UTF-8") }
             start = "<!-- breaking-changes:start -->"
             marked = /#{start}(?:(?!#{start}).)*?<!-- breaking-changes:end -->\r?\n?/m
             print text.match?(marked) ? text.sub(marked) { section } : "#{text.rstrip}\n\n#{section}"
