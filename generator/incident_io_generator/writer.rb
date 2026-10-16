@@ -312,7 +312,7 @@ module IncidentIoGenerator
           call = op.full_name
           params = op.path_params + op.keyword_params
           arguments[call] = params.map(&:limits).reduce({}, :merge)
-          operators[call] = params.to_h { |p| [p.name, Types.operators(p.description)] }.compact
+          operators[call] = params.to_h { |p| [p.name, p.operators] }.compact
           unnamed = op.query_params.reject { |p| operators[call].key?(p.name) }
           example_operators[call] = unnamed.to_h do |p|
             [p.name, Types.example_operators(p.name, p.schema, op.description, examples: p.examples)]

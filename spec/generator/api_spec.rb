@@ -143,6 +143,24 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
     expect(show.path_params.first.examples).to eq([])
   end
 
+  it "reads the operators that the schema or the parameter itself names" do
+    spec = mini_spec
+    params = spec["paths"]["/v2/widgets/{id}"]["get"]["parameters"]
+    params << {
+      "in" => "query", "name" => "tags", "description" => "The accepted operators are 'one_of'.",
+      "schema" => {"description" => "Filter by tags."}
+    }
+    params << {
+      "in" => "query", "name" => "kind", "description" => "The accepted operators are 'one_of'.",
+      "schema" => {"description" => "The accepted operators are 'is'."}
+    }
+    params << {"in" => "query", "name" => "notes", "schema" => {}}
+    show = described_class.new(spec).resources.first.operations.find { |op| op.method_name == "show" }
+
+    expect(show.query_params.map(&:operators).last(3)).to eq([%w[one_of], %w[is], nil])
+    expect(show.query_params.find { |p| p.name == "tags" }.description).to eq("Filter by tags.")
+  end
+
   it "picks the newest version of each resource" do
     spec = mini_spec
     spec["paths"]["/v3/widgets/{id}"] = {"delete" => operation("Widgets V3#Destroy", nil, code: "204", parameters: [path_param("id")])}

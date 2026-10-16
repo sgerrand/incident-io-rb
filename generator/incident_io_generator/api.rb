@@ -14,8 +14,10 @@ module IncidentIoGenerator
   #     Types.limits
   #   required_keys: the keys inside the argument that must be sent with
   #     it, see Types.required_keys
+  #   operators: the operators a filter argument allows, as its schema's
+  #     description or its own names them, see Types.operators
   Param = Data.define(
-    :name, :location, :required, :schema, :description, :default, :examples, :yard_types, :limits, :required_keys
+    :name, :location, :required, :schema, :description, :default, :examples, :yard_types, :limits, :required_keys, :operators
   ) do
     # Optional body arguments default to NOT_GIVEN so that nil can be sent as
     # null; optional query arguments default to nil, which is left out.
@@ -288,6 +290,7 @@ module IncidentIoGenerator
         required:,
         schema:,
         description: describe(schema, param["description"]),
+        own_description: param["description"],
         default: nil,
         # A parameter can have one example, or several by name. The spec can
         # write null for either.
@@ -296,13 +299,16 @@ module IncidentIoGenerator
     end
 
     # A Param, with the YARD types and limits of its schema, as a Field has
-    # them, and the keys inside it that it requires. An argument can be a
-    # model or a Hash.
-    def new_param(name:, schema:, **fields)
+    # them, the keys inside it that it requires, and the operators it
+    # allows. An argument can be a model or a Hash. The spec can name the
+    # operators in the description of the schema or of the argument itself,
+    # so both are read.
+    def new_param(name:, schema:, own_description: nil, **fields)
       Param.new(
         name:, schema:, **fields,
         yard_types: Types.yard_types(schema, name, accepts_hash: true), limits: Types.limits(schema, name),
-        required_keys: Types.required_keys(schema, name)
+        required_keys: Types.required_keys(schema, name),
+        operators: Types.operators(schema["description"]) || Types.operators(own_description)
       )
     end
 
