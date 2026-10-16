@@ -131,9 +131,9 @@ module IncidentIoGenerator
     # The names in `was` that are still there in `now` with the same type,
     # and whose parents all kept their type too. Only the values of these
     # can be compared. Takes the names from #comparable when the caller has
-    # them already.
+    # them already. A Set, as the checks of operators look names up in it.
     def unchanged(was, now, names = comparable(was, now))
-      names.select { |name| now[name] == was[name] }
+      names.select { |name| now[name] == was[name] }.to_set
     end
 
     # The names in `was` that were removed or changed type, and whose
