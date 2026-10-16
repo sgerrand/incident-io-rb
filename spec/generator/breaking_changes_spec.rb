@@ -159,6 +159,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       - Method `client.widgets.destroy` was removed
       - Method `client.widgets.export` was removed
       - Method `client.widgets.list` was removed
+      - Method `client.widgets.show` renamed its positional argument `id` to `uid`. Calls still work, but check that it takes the same value
       - Field `WidgetV2#class_` now allows any value
       - Field `WidgetV2#kind` now also allows `small`
       - Field `WidgetV2#box.tone` now allows any value
@@ -261,6 +262,8 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     }
 
     expect(described_class.method_changes(before, after)).to eq([
+      "Method `renamed` renamed its positional argument `id` to `uid`. Calls still work, but check that it takes the same value",
+      "Method `retyped` renamed its positional argument `id` to `uid`. Calls still work, but check that it takes the same value",
       "Method `retyped` changed the type of argument `uid` from `String` to `Integer`",
       "Method `moved` changed its positional arguments from `(shelf_id, id)` to `(id, shelf_id)`",
       "Method `fewer` changed its positional arguments from `(shelf_id, id)` to `(id)`"
@@ -347,7 +350,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(report.lines.last(3)).to eq([
       "- Webhook event `public_widget.created_v1` changed its model from `PartV2` to `WidgetV2`\n",
       "- Webhook event `public_widget.deleted_v1` was removed\n",
-      "- and 45 more\n"
+      "- and 46 more\n"
     ])
   end
 
@@ -357,7 +360,7 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
 
     report = described_class.report(generate("before", older_spec), generate("after", newer_spec))
 
-    expect(report.lines.last(2)).to eq(["- #{first}\n", "- and 46 more\n"])
+    expect(report.lines.last(2)).to eq(["- #{first}\n", "- and 47 more\n"])
   end
 
   it "only counts the values past the first few" do

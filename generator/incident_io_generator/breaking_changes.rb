@@ -397,7 +397,9 @@ module IncidentIoGenerator
     # same way: their positional arguments changed, they lost a keyword
     # argument or a key inside one, they need a new one or a new key inside
     # one, an argument or a key inside one changed type or allows fewer
-    # values or operators, or they return something else.
+    # values or operators, or they return something else. Also positional
+    # arguments that were only renamed, as the new name can mean another
+    # value.
     def method_changes(before, after)
       before.flat_map do |name, was|
         now = after[name]
@@ -411,6 +413,7 @@ module IncidentIoGenerator
         names = comparable(was[:types], now[:types])
         kept = unchanged(was[:types], now[:types], names)
         [
+          *renames&.map { |old, new| "Method `#{name}` renamed its positional argument `#{old}` to `#{new}`. Calls still work, but check that it takes the same value" },
           *("Method `#{name}` changed its positional arguments from #{positional.first} to #{positional.last}" unless renames),
           *(was[:required] + was[:optional] - now[:required] - now[:optional]).map { |arg| "Method `#{name}` no longer takes `#{arg}:`" },
           *(now[:required] - was[:required]).map { |arg| "Method `#{name}` now needs `#{arg}:`" },
