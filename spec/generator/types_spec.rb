@@ -133,6 +133,15 @@ RSpec.describe IncidentIoGenerator::Types do
     )
   end
 
+  it "reads the keys that inline objects require, however deep they sit" do
+    inner = {"type" => "object", "required" => %w[a.b], "properties" => {"a.b" => {}, "c" => {}}}
+    box = {"type" => "object", "required" => %w[size], "properties" => {"size" => {}, "lid" => {"type" => "array", "items" => inner}}}
+
+    expect(described_class.required_keys(box, "box")).to eq(["box.size", 'box.lid."a.b"'])
+    expect(described_class.required_keys({"type" => "object", "additionalProperties" => box}, "by_id")).to eq(["by_id.size", 'by_id.lid."a.b"'])
+    expect(described_class.required_keys({"type" => "string"}, "name")).to eq([])
+  end
+
   it "names keys with a dot so they can't be read as two keys" do
     box = {"type" => "object", "properties" => {"a.b" => {"type" => "string"}, "" => {}, '"q' => {}, 'x"y' => {}}}
     names = described_class.yard_types(box, "box").keys

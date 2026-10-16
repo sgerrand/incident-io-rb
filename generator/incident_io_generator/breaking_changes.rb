@@ -12,9 +12,9 @@ module IncidentIoGenerator
   # - a model field, or a key inside one, that changed type or allows other
   #   values
   # - a resource that `client.<name>` reaches in another API version
-  # - a resource method whose arguments or return type changed, or with an
-  #   argument, or a key inside one, that changed type or allows fewer
-  #   values or operators
+  # - a resource method whose arguments or return type changed, that needs
+  #   a new key inside an argument, or with an argument, or a key inside
+  #   one, that changed type or allows fewer values or operators
   module BreakingChanges
     MODELS_PATH = "spec/fixtures/models.json"
     OPERATIONS_PATH = "spec/fixtures/operations.json"
@@ -102,8 +102,9 @@ module IncidentIoGenerator
       end
     end
 
-    # A method's arguments, their types and what it returns, from its entry
-    # in the operations manifest.
+    # A method's arguments, their types, the keys inside them that must be
+    # sent with them, and what it returns, from its entry in the operations
+    # manifest.
     def signature(op)
       types = op.fetch("arg_types")
       # A name with a dot is a key inside an argument.
@@ -111,7 +112,10 @@ module IncidentIoGenerator
       # The manifest has the positional arguments first.
       positional = args.first(op.fetch("path_args").size)
       required = op.fetch("keyword_args").keys
-      {positional:, required:, optional: args - positional - required, types:, returns: op.fetch("returns")}
+      {
+        positional:, required:, optional: args - positional - required, types:,
+        required_keys: op.fetch("required_keys"), returns: op.fetch("returns")
+      }
     end
 
     # The names in `was` to compare with `now`: fields or arguments, and
@@ -270,6 +274,17 @@ module IncidentIoGenerator
       end
     end
 
+    # Keys inside the arguments of a method that must now be sent with
+    # them. Only those inside something that is still there with the same
+    # type are listed. Code that leaves out a key inside a new argument, or
+    # inside one that changed type, wasn't sending that anyway.
+    def new_required_keys(name, was, now, kept)
+      (now[:required_keys] - was[:required_keys]).filter_map do |key|
+        parent = Types.name_parts(key)[0...-1].join(".")
+        "Method `#{name}` now needs `#{key}`" if kept.include?(parent)
+      end
+    end
+
     # Arguments of a method, and keys inside them, that changed type, and
     # keys inside them that are gone, from #retyped. A removed argument is
     # listed already.
@@ -380,9 +395,9 @@ module IncidentIoGenerator
 
     # Methods that were removed, and methods that can no longer be used the
     # same way: their positional arguments changed, they lost a keyword
-    # argument or a key inside one, they need a new one, an argument or a
-    # key inside one changed type or allows fewer values or operators, or
-    # they return something else.
+    # argument or a key inside one, they need a new one or a new key inside
+    # one, an argument or a key inside one changed type or allows fewer
+    # values or operators, or they return something else.
     def method_changes(before, after)
       before.flat_map do |name, was|
         now = after[name]
@@ -399,6 +414,7 @@ module IncidentIoGenerator
           *("Method `#{name}` changed its positional arguments from #{positional.first} to #{positional.last}" unless renames),
           *(was[:required] + was[:optional] - now[:required] - now[:optional]).map { |arg| "Method `#{name}` no longer takes `#{arg}:`" },
           *(now[:required] - was[:required]).map { |arg| "Method `#{name}` now needs `#{arg}:`" },
+          *new_required_keys(name, was, now, kept),
           *argument_type_changes(name, retyped(was[:types], now[:types], names)),
           *argument_value_changes(name, was, now, kept),
           *operator_changes(name, was, now, kept),
@@ -427,7 +443,7 @@ module IncidentIoGenerator
         [renames.fetch(arg, arg), *key].join(".")
       end
       renamed = %i[types limits operators shown].to_h { |part| [part, method[part].transform_keys(&rename)] }
-      method.merge(renamed, positional: method[:positional].map(&rename))
+      method.merge(renamed, positional: method[:positional].map(&rename), required_keys: method[:required_keys].map(&rename))
     end
 
     # A Markdown section listing the breaking changes from the generated

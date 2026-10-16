@@ -244,7 +244,9 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
   end
 
   it "compares positional arguments by their place" do
-    method = ->(positional, types) { {positional:, required: [], optional: [], types:, limits: {}, operators: {}, shown: {}, returns: "nil"} }
+    method = lambda do |positional, types|
+      {positional:, required: [], optional: [], types:, required_keys: [], limits: {}, operators: {}, shown: {}, returns: "nil"}
+    end
     before = {
       "renamed" => method[%w[id], {"id" => "String"}],
       "retyped" => method[%w[shelf_id id], {"shelf_id" => "String", "id" => "String"}],
@@ -262,6 +264,21 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       "Method `retyped` changed the type of argument `uid` from `String` to `Integer`",
       "Method `moved` changed its positional arguments from `(shelf_id, id)` to `(id, shelf_id)`",
       "Method `fewer` changed its positional arguments from `(shelf_id, id)` to `(id)`"
+    ])
+  end
+
+  it "lists keys inside an argument that must now be sent with it" do
+    types = {"box" => "Hash", "box.size" => "String", "box.lid" => "Hash", "box.lid.hinge" => "String", "crate" => "Hash", "crate.id" => "String"}
+    was = {positional: [], required: [], optional: %w[box crate], types:, required_keys: %w[box.lid.hinge], limits: {}, operators: {}, shown: {}, returns: "nil"}
+    now = was.merge(
+      optional: %w[box crate tray],
+      types: types.merge("crate" => "Array<Hash>", "tray" => "Hash", "tray.id" => "String"),
+      required_keys: %w[box.size box.lid.hinge crate.id tray.id]
+    )
+
+    expect(described_class.method_changes({"call" => was}, {"call" => now})).to eq([
+      "Method `call` now needs `box.size`",
+      "Method `call` changed the type of argument `crate` from `Hash` to `Array<Hash>`"
     ])
   end
 
@@ -378,6 +395,15 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
       # Each key sits in a field or a key that is read too.
       [*surface[:models].values, *surface[:methods].values].each do |owner|
         expect(described_class.comparable(owner[:types], owner[:types])).to eq(owner[:types].keys)
+      end
+    end
+
+    it "has the keys that arguments require" do
+      expect(surface[:methods].fetch("client.v1.incident_attachments.create")[:required_keys]).to eq(["resource.resource_type"])
+      # Each one is a key inside an argument that is read too.
+      surface[:methods].each_value do |method|
+        expect(method[:required_keys] - method[:types].keys).to eq([])
+        expect(method[:required_keys]).to all(include("."))
       end
     end
 

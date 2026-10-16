@@ -16,6 +16,7 @@
       "is_follow_up": "Boolean",
       "incident_mode": "String"
     },
+    "required_keys": [],
     "returns": "Array<Models::ActionV1>",
     "query_keys": [],
     "body_keys": [],
@@ -47,6 +48,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::ActionV1",
     "query_keys": [],
     "body_keys": [],
@@ -80,6 +82,7 @@
       "alert_group_id": "String",
       "alert_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::AlertNoteV1",
     "query_keys": [],
     "body_keys": [
@@ -113,6 +116,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -145,6 +149,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::AlertNoteV1>",
     "query_keys": [],
     "body_keys": [],
@@ -176,6 +181,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::AlertNoteV1",
     "query_keys": [],
     "body_keys": [],
@@ -210,6 +216,7 @@
       "id": "String",
       "content": "String"
     },
+    "required_keys": [],
     "returns": "Models::AlertNoteV1",
     "query_keys": [],
     "body_keys": [
@@ -256,6 +263,7 @@
       "team_role_names": "Array<String>",
       "comments": "String"
     },
+    "required_keys": [],
     "returns": "Models::APIKeysCreateResultV1",
     "query_keys": [],
     "body_keys": [
@@ -292,6 +300,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -322,6 +331,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::APIKeyV1>",
     "query_keys": [],
     "body_keys": [],
@@ -356,6 +366,7 @@
       "id": "String",
       "grace_period_minutes": "Integer"
     },
+    "required_keys": [],
     "returns": "Models::APIKeysRotateResultV1",
     "query_keys": [],
     "body_keys": [
@@ -389,6 +400,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::APIKeyV1",
     "query_keys": [],
     "body_keys": [],
@@ -436,6 +448,7 @@
       "team_role_names": "Array<String>",
       "comments": "String"
     },
+    "required_keys": [],
     "returns": "Models::APIKeyV1",
     "query_keys": [],
     "body_keys": [
@@ -475,6 +488,7 @@
       "value": "String",
       "sort_key": "Integer"
     },
+    "required_keys": [],
     "returns": "Models::CustomFieldOptionV1",
     "query_keys": [],
     "body_keys": [
@@ -509,6 +523,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -542,6 +557,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::CustomFieldOptionV1>",
     "query_keys": [
       "custom_field_id"
@@ -575,6 +591,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::CustomFieldOptionV1",
     "query_keys": [],
     "body_keys": [],
@@ -611,6 +628,7 @@
       "sort_key": "Integer",
       "value": "String"
     },
+    "required_keys": [],
     "returns": "Models::CustomFieldOptionV1",
     "query_keys": [],
     "body_keys": [
@@ -658,6 +676,7 @@
       "required_v2": "String",
       "show_in_announcement_post": "Boolean"
     },
+    "required_keys": [],
     "returns": "Models::CustomFieldV1",
     "query_keys": [],
     "body_keys": [
@@ -696,6 +715,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -723,6 +743,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::CustomFieldV1>",
     "query_keys": [],
     "body_keys": [],
@@ -754,6 +775,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::CustomFieldV1",
     "query_keys": [],
     "body_keys": [],
@@ -799,6 +821,7 @@
       "required_v2": "String",
       "show_in_announcement_post": "Boolean"
     },
+    "required_keys": [],
     "returns": "Models::CustomFieldV1",
     "query_keys": [],
     "body_keys": [
@@ -847,6 +870,9 @@
       "resource.title": "String",
       "resource.url": "String"
     },
+    "required_keys": [
+      "resource.resource_type"
+    ],
     "returns": "Models::IncidentAttachmentV1",
     "query_keys": [],
     "body_keys": [
@@ -881,6 +907,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -912,6 +939,7 @@
       "external_id": "String",
       "resource_type": "String"
     },
+    "required_keys": [],
     "returns": "Array<Models::IncidentAttachmentV1>",
     "query_keys": [],
     "body_keys": [],
@@ -945,6 +973,7 @@
       "incident_id": "String",
       "user_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentMembershipV1",
     "query_keys": [],
     "body_keys": [
@@ -981,6 +1010,7 @@
       "incident_id": "String",
       "user_id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [
@@ -1017,6 +1047,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::IncidentRelationshipV1>",
     "query_keys": [
       "incident_id"
@@ -1058,6 +1089,7 @@
       "required": "Boolean",
       "shortform": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentRoleV1",
     "query_keys": [],
     "body_keys": [
@@ -1095,6 +1127,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -1122,6 +1155,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::IncidentRoleV1>",
     "query_keys": [],
     "body_keys": [],
@@ -1153,6 +1187,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentRoleV1",
     "query_keys": [],
     "body_keys": [],
@@ -1194,6 +1229,7 @@
       "shortform": "String",
       "required": "Boolean"
     },
+    "required_keys": [],
     "returns": "Models::IncidentRoleV1",
     "query_keys": [],
     "body_keys": [
@@ -1235,6 +1271,7 @@
       "name": "String",
       "rank": "Integer"
     },
+    "required_keys": [],
     "returns": "Models::IncidentStatusV1",
     "query_keys": [],
     "body_keys": [
@@ -1270,6 +1307,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -1297,6 +1335,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::IncidentStatusV1>",
     "query_keys": [],
     "body_keys": [],
@@ -1328,6 +1367,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentStatusV1",
     "query_keys": [],
     "body_keys": [],
@@ -1365,6 +1405,7 @@
       "name": "String",
       "rank": "Integer"
     },
+    "required_keys": [],
     "returns": "Models::IncidentStatusV1",
     "query_keys": [],
     "body_keys": [
@@ -1401,6 +1442,7 @@
       "incident_id": "String",
       "team_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentTeamMembershipV1",
     "query_keys": [],
     "body_keys": [
@@ -1437,6 +1479,7 @@
       "incident_id": "String",
       "team_id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [
@@ -1474,6 +1517,7 @@
       "template": "Models::IncidentTemplateConfigPayloadV1, Hash",
       "expressions": "Array<Models::ExpressionPayloadV3, Hash>"
     },
+    "required_keys": [],
     "returns": "Models::IncidentTemplateV1",
     "query_keys": [],
     "body_keys": [
@@ -1508,6 +1552,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -1538,6 +1583,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::IncidentTemplateV1>",
     "query_keys": [],
     "body_keys": [],
@@ -1569,6 +1615,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentTemplateV1",
     "query_keys": [],
     "body_keys": [],
@@ -1606,6 +1653,7 @@
       "template": "Models::IncidentTemplateConfigPayloadV1, Hash",
       "expressions": "Array<Models::ExpressionPayloadV3, Hash>"
     },
+    "required_keys": [],
     "returns": "Models::IncidentTemplateV1",
     "query_keys": [],
     "body_keys": [
@@ -1643,6 +1691,7 @@
       "template": "Models::IncidentTemplateConfigPayloadV1, Hash",
       "expressions": "Array<Models::ExpressionPayloadV3, Hash>"
     },
+    "required_keys": [],
     "returns": "Array<Models::IncidentTemplateValidateWarningV1>",
     "query_keys": [],
     "body_keys": [
@@ -1673,6 +1722,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::IncidentTypeV1>",
     "query_keys": [],
     "body_keys": [],
@@ -1704,6 +1754,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentTypeV1",
     "query_keys": [],
     "body_keys": [],
@@ -1747,6 +1798,7 @@
       "status": "String",
       "summary": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentV1",
     "query_keys": [],
     "body_keys": [
@@ -1780,6 +1832,7 @@
       "after": "String",
       "status": "Array<String>"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::IncidentV1>",
     "query_keys": [],
     "body_keys": [],
@@ -1811,6 +1864,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentV1",
     "query_keys": [],
     "body_keys": [],
@@ -1838,6 +1892,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Models::IPAllowlistV1",
     "query_keys": [],
     "body_keys": [],
@@ -1875,6 +1930,7 @@
       "enabled": "Boolean",
       "version": "Integer"
     },
+    "required_keys": [],
     "returns": "Models::IPAllowlistV1",
     "query_keys": [],
     "body_keys": [
@@ -1931,6 +1987,7 @@
       "reroute_on_end": "Boolean",
       "resolve_on_end": "Boolean"
     },
+    "required_keys": [],
     "returns": "Models::MaintenanceWindowV1",
     "query_keys": [],
     "body_keys": [
@@ -1970,6 +2027,7 @@
       "id": "String",
       "force": "Boolean"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -2001,6 +2059,7 @@
       "after": "String",
       "status": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::MaintenanceWindowV1>",
     "query_keys": [],
     "body_keys": [],
@@ -2032,6 +2091,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::MaintenanceWindowV1",
     "query_keys": [],
     "body_keys": [],
@@ -2087,6 +2147,7 @@
       "reroute_on_end": "Boolean",
       "resolve_on_end": "Boolean"
     },
+    "required_keys": [],
     "returns": "Models::MaintenanceWindowV1",
     "query_keys": [],
     "body_keys": [
@@ -2128,6 +2189,7 @@
       "permalink": "String",
       "document_provider": "String"
     },
+    "required_keys": [],
     "returns": "Models::PostmortemDocumentV1",
     "query_keys": [],
     "body_keys": [
@@ -2163,6 +2225,7 @@
       "incident_id": "String",
       "sort_by": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::PostmortemDocumentV1>",
     "query_keys": [],
     "body_keys": [],
@@ -2194,6 +2257,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::PostmortemDocumentV1",
     "query_keys": [],
     "body_keys": [],
@@ -2225,6 +2289,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "String",
     "query_keys": [],
     "body_keys": [],
@@ -2259,6 +2324,7 @@
       "id": "String",
       "status": "String"
     },
+    "required_keys": [],
     "returns": "Models::PostmortemDocumentV1",
     "query_keys": [],
     "body_keys": [
@@ -2295,6 +2361,7 @@
       "name": "String",
       "rank": "Integer"
     },
+    "required_keys": [],
     "returns": "Models::SeverityV1",
     "query_keys": [],
     "body_keys": [
@@ -2329,6 +2396,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -2356,6 +2424,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::SeverityV1>",
     "query_keys": [],
     "body_keys": [],
@@ -2387,6 +2456,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::SeverityV1",
     "query_keys": [],
     "body_keys": [],
@@ -2424,6 +2494,7 @@
       "name": "String",
       "rank": "Integer"
     },
+    "required_keys": [],
     "returns": "Models::SeverityV1",
     "query_keys": [],
     "body_keys": [
@@ -2460,6 +2531,7 @@
       "id": "String",
       "incident_id": "String"
     },
+    "required_keys": [],
     "returns": "Array<Models::StatusPageLinkedResponseIncidentV1>",
     "query_keys": [],
     "body_keys": [],
@@ -2487,6 +2559,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Models::IdentityV1",
     "query_keys": [],
     "body_keys": [],
@@ -2514,6 +2587,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::IPRangeV1>",
     "query_keys": [],
     "body_keys": [],
@@ -2541,6 +2615,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "String",
     "query_keys": [],
     "body_keys": [],
@@ -2575,6 +2650,7 @@
       "incident_id": "String",
       "assignee_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::ActionV2",
     "query_keys": [],
     "body_keys": [
@@ -2609,6 +2685,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -2639,6 +2716,7 @@
       "incident_id": "String",
       "incident_mode": "String"
     },
+    "required_keys": [],
     "returns": "Array<Models::ActionV2>",
     "query_keys": [],
     "body_keys": [],
@@ -2670,6 +2748,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::ActionV2",
     "query_keys": [],
     "body_keys": [],
@@ -2707,6 +2786,7 @@
       "status": "String",
       "assignee_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::ActionV2",
     "query_keys": [],
     "body_keys": [
@@ -2747,6 +2827,7 @@
       "emoji": "String",
       "required": "Boolean"
     },
+    "required_keys": [],
     "returns": "Models::AlertAttributeV2",
     "query_keys": [],
     "body_keys": [
@@ -2782,6 +2863,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -2809,6 +2891,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::AlertAttributeV2>",
     "query_keys": [],
     "body_keys": [],
@@ -2840,6 +2923,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::AlertAttributeV2",
     "query_keys": [],
     "body_keys": [],
@@ -2880,6 +2964,7 @@
       "emoji": "String",
       "required": "Boolean"
     },
+    "required_keys": [],
     "returns": "Models::AlertAttributeV2",
     "query_keys": [],
     "body_keys": [
@@ -2926,6 +3011,7 @@
       "metadata": "Hash",
       "source_url": "String"
     },
+    "required_keys": [],
     "returns": "Models::AlertEventsCreateHTTPResultV2",
     "query_keys": [],
     "body_keys": [
@@ -2990,6 +3076,7 @@
       "owning_team_ids": "Array<String>",
       "updated_at": "Time"
     },
+    "required_keys": [],
     "returns": "Models::AlertRouteV2",
     "query_keys": [],
     "body_keys": [
@@ -3032,6 +3119,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -3064,6 +3152,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::AlertRouteSlimV2>",
     "query_keys": [
       "page_size"
@@ -3097,6 +3186,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::AlertRouteV2",
     "query_keys": [],
     "body_keys": [],
@@ -3163,6 +3253,7 @@
       "owning_team_ids": "Array<String>",
       "updated_at": "Time"
     },
+    "required_keys": [],
     "returns": "Models::AlertRouteV2",
     "query_keys": [],
     "body_keys": [
@@ -3221,6 +3312,7 @@
       "owning_team_ids": "Array<String>",
       "rate_limit_sharding": "Models::AlertSourceRateLimitShardingV2, Hash"
     },
+    "required_keys": [],
     "returns": "Models::AlertSourceV2",
     "query_keys": [],
     "body_keys": [
@@ -3256,6 +3348,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -3283,6 +3376,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::AlertSourceV2>",
     "query_keys": [],
     "body_keys": [],
@@ -3314,6 +3408,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::AlertSourceV2",
     "query_keys": [],
     "body_keys": [],
@@ -3362,6 +3457,7 @@
       "owning_team_ids": "Array<String>",
       "rate_limit_sharding": "Models::AlertSourceRateLimitShardingV2, Hash"
     },
+    "required_keys": [],
     "returns": "Models::AlertSourceV2",
     "query_keys": [],
     "body_keys": [
@@ -3399,6 +3495,7 @@
       "template": "Models::AlertTemplatePayloadV2, Hash",
       "owning_team_ids": "Array<String>"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [
@@ -3438,6 +3535,7 @@
       "id": "String",
       "tags": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::AlertV2",
     "query_keys": [],
     "body_keys": [
@@ -3474,6 +3572,7 @@
       "incident_id": "String",
       "re_relate": "Boolean"
     },
+    "required_keys": [],
     "returns": "Models::IncidentAlertV2",
     "query_keys": [],
     "body_keys": [
@@ -3519,6 +3618,7 @@
       "tags": "Hash{String => Array<String>}",
       "include_maintenance_window": "Hash{String => Array<String>}"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::AlertV2>",
     "query_keys": [
       "page_size"
@@ -3552,6 +3652,7 @@
       "after": "String",
       "search": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::AlertTagV2>",
     "query_keys": [],
     "body_keys": [],
@@ -3586,6 +3687,7 @@
       "alert_id": "String",
       "incident_id": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::IncidentAlertV2>",
     "query_keys": [
       "page_size"
@@ -3624,6 +3726,7 @@
       "id": "String",
       "tags": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::AlertV2",
     "query_keys": [],
     "body_keys": [
@@ -3657,6 +3760,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::AlertV2",
     "query_keys": [],
     "body_keys": [],
@@ -3693,6 +3797,7 @@
       "id": "String",
       "tags": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::AlertV2",
     "query_keys": [],
     "body_keys": [
@@ -3726,6 +3831,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::AlertV2",
     "query_keys": [],
     "body_keys": [],
@@ -3760,6 +3866,7 @@
       "id": "String",
       "state": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentAlertV2",
     "query_keys": [],
     "body_keys": [
@@ -3807,6 +3914,7 @@
       "slack_channel_ids": "Array<String>",
       "template_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::AnnouncementRuleV2",
     "query_keys": [],
     "body_keys": [
@@ -3843,6 +3951,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -3873,6 +3982,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::AnnouncementRuleV2>",
     "query_keys": [],
     "body_keys": [],
@@ -3904,6 +4014,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::AnnouncementRuleV2",
     "query_keys": [],
     "body_keys": [],
@@ -3952,6 +4063,7 @@
       "slack_channel_ids": "Array<String>",
       "template_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::AnnouncementRuleV2",
     "query_keys": [],
     "body_keys": [
@@ -3991,6 +4103,7 @@
       "fields": "Array<Models::AnnouncementTemplateFieldPayloadV2, Hash>",
       "owning_team_ids": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::AnnouncementTemplateV2",
     "query_keys": [],
     "body_keys": [
@@ -4024,6 +4137,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -4051,6 +4165,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::AnnouncementTemplateV2>",
     "query_keys": [],
     "body_keys": [],
@@ -4082,6 +4197,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::AnnouncementTemplateV2",
     "query_keys": [],
     "body_keys": [],
@@ -4125,6 +4241,7 @@
       "name": "String",
       "owning_team_ids": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::AnnouncementTemplateV2",
     "query_keys": [],
     "body_keys": [
@@ -4164,6 +4281,7 @@
       "phone_number": "String",
       "name": "String"
     },
+    "required_keys": [],
     "returns": "Models::CallRouteAllowedCallerV2",
     "query_keys": [],
     "body_keys": [
@@ -4206,6 +4324,7 @@
       "path": "Array<Models::CallRoutePathNodePayloadV2, Hash>",
       "prompt": "String"
     },
+    "required_keys": [],
     "returns": "Models::CallRouteOptionV2",
     "query_keys": [],
     "body_keys": [
@@ -4243,6 +4362,7 @@
       "call_route_id": "String",
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -4276,6 +4396,7 @@
       "call_route_id": "String",
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -4306,6 +4427,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::CallRouteV2>",
     "query_keys": [],
     "body_keys": [],
@@ -4337,6 +4459,7 @@
     "arg_types": {
       "call_route_id": "String"
     },
+    "required_keys": [],
     "returns": "Array<Models::CallRouteAllowedCallerV2>",
     "query_keys": [],
     "body_keys": [],
@@ -4368,6 +4491,7 @@
     "arg_types": {
       "call_route_id": "String"
     },
+    "required_keys": [],
     "returns": "Array<Models::CallRouteOptionV2>",
     "query_keys": [],
     "body_keys": [],
@@ -4399,6 +4523,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::CallRouteV2",
     "query_keys": [],
     "body_keys": [],
@@ -4432,6 +4557,7 @@
       "call_route_id": "String",
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::CallRouteAllowedCallerV2",
     "query_keys": [],
     "body_keys": [],
@@ -4465,6 +4591,7 @@
       "call_route_id": "String",
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::CallRouteOptionV2",
     "query_keys": [],
     "body_keys": [],
@@ -4509,6 +4636,7 @@
       "responder_caller_id": "String",
       "use_caller_allowlist": "Boolean"
     },
+    "required_keys": [],
     "returns": "Models::CallRouteV2",
     "query_keys": [],
     "body_keys": [
@@ -4552,6 +4680,7 @@
       "phone_number": "String",
       "name": "String"
     },
+    "required_keys": [],
     "returns": "Models::CallRouteAllowedCallerV2",
     "query_keys": [],
     "body_keys": [
@@ -4596,6 +4725,7 @@
       "path": "Array<Models::CallRoutePathNodePayloadV2, Hash>",
       "prompt": "String"
     },
+    "required_keys": [],
     "returns": "Models::CallRouteOptionV2",
     "query_keys": [],
     "body_keys": [
@@ -4633,6 +4763,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::CallSessionV2>",
     "query_keys": [
       "incident_id"
@@ -4668,6 +4799,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::CallTranscriptEntryV2>",
     "query_keys": [
       "call_session_id"
@@ -4712,6 +4844,7 @@
       "external_id": "String",
       "rank": "Integer"
     },
+    "required_keys": [],
     "returns": "Models::CatalogEntryV2",
     "query_keys": [],
     "body_keys": [
@@ -4756,6 +4889,7 @@
       "source_repo_url": "String",
       "type_name": "String"
     },
+    "required_keys": [],
     "returns": "Models::CatalogTypeV2",
     "query_keys": [],
     "body_keys": [
@@ -4790,6 +4924,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -4821,6 +4956,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -4854,6 +4990,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::CatalogEntryV2>",
     "query_keys": [
       "catalog_type_id"
@@ -4883,6 +5020,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::CatalogResourceV2>",
     "query_keys": [],
     "body_keys": [],
@@ -4910,6 +5048,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::CatalogTypeV2>",
     "query_keys": [],
     "body_keys": [],
@@ -4941,6 +5080,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::CatalogShowEntryResultV2",
     "query_keys": [],
     "body_keys": [],
@@ -4972,6 +5112,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::CatalogTypeV2",
     "query_keys": [],
     "body_keys": [],
@@ -5015,6 +5156,7 @@
       "external_id": "String",
       "rank": "Integer"
     },
+    "required_keys": [],
     "returns": "Models::CatalogUpdateEntryResultV2",
     "query_keys": [],
     "body_keys": [
@@ -5060,6 +5202,7 @@
       "ranked": "Boolean",
       "source_repo_url": "String"
     },
+    "required_keys": [],
     "returns": "Models::CatalogTypeV2",
     "query_keys": [],
     "body_keys": [
@@ -5101,6 +5244,7 @@
       "attributes": "Array<Models::CatalogTypeAttributePayloadV2, Hash>",
       "version": "Integer"
     },
+    "required_keys": [],
     "returns": "Models::CatalogTypeV2",
     "query_keys": [],
     "body_keys": [
@@ -5144,6 +5288,7 @@
       "group_by_catalog_attribute_id": "String",
       "helptext_catalog_attribute_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::CustomFieldV2",
     "query_keys": [],
     "body_keys": [
@@ -5179,6 +5324,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -5206,6 +5352,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::CustomFieldV2>",
     "query_keys": [],
     "body_keys": [],
@@ -5237,6 +5384,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::CustomFieldV2",
     "query_keys": [],
     "body_keys": [],
@@ -5277,6 +5425,7 @@
       "group_by_catalog_attribute_id": "String",
       "helptext_catalog_attribute_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::CustomFieldV2",
     "query_keys": [],
     "body_keys": [
@@ -5320,6 +5469,7 @@
       "repeat_config": "Models::EscalationPathRepeatConfigV2, Hash",
       "working_hours": "Array<Models::WeekdayIntervalConfigV2, Hash>"
     },
+    "required_keys": [],
     "returns": "Models::EscalationPathTemplateV2",
     "query_keys": [],
     "body_keys": [
@@ -5354,6 +5504,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -5385,6 +5536,7 @@
       "after": "String",
       "search": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::EscalationPathTemplateV2>",
     "query_keys": [],
     "body_keys": [],
@@ -5416,6 +5568,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::EscalationPathTemplateV2",
     "query_keys": [],
     "body_keys": [],
@@ -5459,6 +5612,7 @@
       "repeat_config": "Models::EscalationPathRepeatConfigV2, Hash",
       "working_hours": "Array<Models::WeekdayIntervalConfigV2, Hash>"
     },
+    "required_keys": [],
     "returns": "Models::EscalationPathTemplateV2",
     "query_keys": [],
     "body_keys": [
@@ -5493,6 +5647,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -5529,6 +5684,7 @@
       "escalation_id": "String",
       "user_ids": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Array<Models::EscalationUserResponseOptionsV2>",
     "query_keys": [],
     "body_keys": [
@@ -5567,6 +5723,7 @@
       "incident_id": "String",
       "user_ids": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::EscalationV2",
     "query_keys": [],
     "body_keys": [
@@ -5610,6 +5767,7 @@
       "template_id": "String",
       "working_hours": "Array<Models::WeekdayIntervalConfigV2, Hash>"
     },
+    "required_keys": [],
     "returns": "Models::EscalationPathV2",
     "query_keys": [],
     "body_keys": [
@@ -5644,6 +5802,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -5681,6 +5840,7 @@
       "updated_at": "Hash{String => Array<String>}",
       "idempotency_key": "Hash{String => Array<String>}"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::EscalationV2>",
     "query_keys": [],
     "body_keys": [],
@@ -5711,6 +5871,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::EscalationPathV2>",
     "query_keys": [],
     "body_keys": [],
@@ -5747,6 +5908,7 @@
       "title": "String",
       "user_ids": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::EscalationV2",
     "query_keys": [],
     "body_keys": [],
@@ -5782,6 +5944,7 @@
       "response": "String",
       "snooze_details": "Models::EscalationRespondSnoozeDetailsPayloadV2, Hash"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [
@@ -5815,6 +5978,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::EscalationV2",
     "query_keys": [],
     "body_keys": [],
@@ -5846,6 +6010,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::EscalationPathV2",
     "query_keys": [],
     "body_keys": [],
@@ -5890,6 +6055,7 @@
       "template_id": "String",
       "working_hours": "Array<Models::WeekdayIntervalConfigV2, Hash>"
     },
+    "required_keys": [],
     "returns": "Models::EscalationPathV2",
     "query_keys": [],
     "body_keys": [
@@ -5929,6 +6095,7 @@
       "provider": "String",
       "url": "String"
     },
+    "required_keys": [],
     "returns": "Models::FollowUpV2",
     "query_keys": [],
     "body_keys": [
@@ -5972,6 +6139,7 @@
       "follow_up_priority_option_id": "String",
       "labels": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::FollowUpV2",
     "query_keys": [],
     "body_keys": [
@@ -6006,6 +6174,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -6037,6 +6206,7 @@
       "incident_mode": "String",
       "assignee_team_id": "String"
     },
+    "required_keys": [],
     "returns": "Array<Models::FollowUpV2>",
     "query_keys": [],
     "body_keys": [],
@@ -6068,6 +6238,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::FollowUpV2",
     "query_keys": [],
     "body_keys": [],
@@ -6110,6 +6281,7 @@
       "follow_up_priority_option_id": "String",
       "labels": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::FollowUpV2",
     "query_keys": [],
     "body_keys": [
@@ -6145,6 +6317,7 @@
       "alert_source_config_id": "String",
       "token": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -6177,6 +6350,7 @@
       "alert_source_config_id": "String",
       "token": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -6211,6 +6385,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::IncidentActivityLogEntryV2>",
     "query_keys": [
       "incident_id"
@@ -6244,6 +6419,7 @@
     "arg_types": {
       "incident_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentParticipantWorkloadsListResultV2",
     "query_keys": [
       "incident_id"
@@ -6277,6 +6453,7 @@
     "arg_types": {
       "incident_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentParticipantsV2",
     "query_keys": [
       "incident_id"
@@ -6316,6 +6493,7 @@
       "name": "String",
       "shortform": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentRoleV2",
     "query_keys": [],
     "body_keys": [
@@ -6352,6 +6530,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -6379,6 +6558,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::IncidentRoleV2>",
     "query_keys": [],
     "body_keys": [],
@@ -6410,6 +6590,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentRoleV2",
     "query_keys": [],
     "body_keys": [],
@@ -6450,6 +6631,7 @@
       "name": "String",
       "shortform": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentRoleV2",
     "query_keys": [],
     "body_keys": [
@@ -6492,6 +6674,7 @@
       "description": "String",
       "idempotency_key": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentTimelineItemV2",
     "query_keys": [],
     "body_keys": [
@@ -6529,6 +6712,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::IncidentTimelineItemV2>",
     "query_keys": [
       "incident_id"
@@ -6565,6 +6749,7 @@
       "timestamp": "Time",
       "title": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentTimelineItemV2",
     "query_keys": [],
     "body_keys": [],
@@ -6592,6 +6777,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::IncidentTimestampV2>",
     "query_keys": [],
     "body_keys": [],
@@ -6623,6 +6809,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentTimestampV2",
     "query_keys": [],
     "body_keys": [],
@@ -6658,6 +6845,7 @@
       "to_incident_status_id": "String",
       "to_severity_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentUpdateV2",
     "query_keys": [],
     "body_keys": [
@@ -6691,6 +6879,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::IncidentUpdateV2>",
     "query_keys": [],
     "body_keys": [],
@@ -6735,6 +6924,7 @@
       "slack_team_id": "String",
       "summary": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentV2",
     "query_keys": [],
     "body_keys": [
@@ -6773,6 +6963,7 @@
       "incident": "Models::IncidentEditPayloadV2, Hash",
       "notify_incident_channel": "Boolean"
     },
+    "required_keys": [],
     "returns": "Models::IncidentV2",
     "query_keys": [],
     "body_keys": [
@@ -6812,6 +7003,7 @@
       "content": "String",
       "title": "String"
     },
+    "required_keys": [],
     "returns": "Models::PostmortemDocumentV1",
     "query_keys": [],
     "body_keys": [
@@ -6856,6 +7048,7 @@
       "custom_field": "Hash{String => Hash{String => Array<String>}}",
       "mode": "Hash{String => Array<String>}"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::IncidentV2>",
     "query_keys": [],
     "body_keys": [],
@@ -6887,6 +7080,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::IncidentV2",
     "query_keys": [],
     "body_keys": [],
@@ -6928,6 +7122,7 @@
       "one_off_rules": "Array<Models::PayConfigOneOffRulePayloadV2, Hash>",
       "weekly_rules": "Array<Models::PayConfigWeeklyRulePayloadV2, Hash>"
     },
+    "required_keys": [],
     "returns": "Models::PayConfigV2",
     "query_keys": [],
     "body_keys": [
@@ -6974,6 +7169,7 @@
       "rate_cents": "Integer",
       "start_at": "Time"
     },
+    "required_keys": [],
     "returns": "Models::PayConfigOneOffRuleV2",
     "query_keys": [],
     "body_keys": [
@@ -7021,6 +7217,7 @@
       "start_time": "String",
       "weekdays": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::PayConfigWeeklyRuleV2",
     "query_keys": [],
     "body_keys": [
@@ -7057,6 +7254,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -7090,6 +7288,7 @@
       "pay_config_id": "String",
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -7123,6 +7322,7 @@
       "pay_config_id": "String",
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -7153,6 +7353,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::PayConfigV2>",
     "query_keys": [],
     "body_keys": [],
@@ -7184,6 +7385,7 @@
     "arg_types": {
       "pay_config_id": "String"
     },
+    "required_keys": [],
     "returns": "Array<Models::PayConfigOneOffRuleV2>",
     "query_keys": [],
     "body_keys": [],
@@ -7215,6 +7417,7 @@
     "arg_types": {
       "pay_config_id": "String"
     },
+    "required_keys": [],
     "returns": "Array<Models::PayConfigWeeklyRuleV2>",
     "query_keys": [],
     "body_keys": [],
@@ -7246,6 +7449,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::PayConfigV2",
     "query_keys": [],
     "body_keys": [],
@@ -7279,6 +7483,7 @@
       "pay_config_id": "String",
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::PayConfigOneOffRuleV2",
     "query_keys": [],
     "body_keys": [],
@@ -7312,6 +7517,7 @@
       "pay_config_id": "String",
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::PayConfigWeeklyRuleV2",
     "query_keys": [],
     "body_keys": [],
@@ -7354,6 +7560,7 @@
       "rate_time_unit": "String",
       "timezone": "String"
     },
+    "required_keys": [],
     "returns": "Models::PayConfigV2",
     "query_keys": [],
     "body_keys": [
@@ -7402,6 +7609,7 @@
       "rate_cents": "Integer",
       "start_at": "Time"
     },
+    "required_keys": [],
     "returns": "Models::PayConfigOneOffRuleV2",
     "query_keys": [],
     "body_keys": [
@@ -7451,6 +7659,7 @@
       "start_time": "String",
       "weekdays": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::PayConfigWeeklyRuleV2",
     "query_keys": [],
     "body_keys": [
@@ -7500,6 +7709,7 @@
       "rotation_filters": "Array<Models::PayReportRotationFilterV2, Hash>",
       "unpaid_shifts": "String"
     },
+    "required_keys": [],
     "returns": "Models::PayReportV2",
     "query_keys": [],
     "body_keys": [
@@ -7536,6 +7746,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -7567,6 +7778,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "String",
     "query_keys": [],
     "body_keys": [],
@@ -7597,6 +7809,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::PayReportV2>",
     "query_keys": [],
     "body_keys": [],
@@ -7635,6 +7848,7 @@
       "cc_emails": "Array<String>",
       "send_user_breakdowns": "String"
     },
+    "required_keys": [],
     "returns": "Models::PayReportV2",
     "query_keys": [],
     "body_keys": [
@@ -7669,6 +7883,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::PayReportV2",
     "query_keys": [],
     "body_keys": [],
@@ -7703,6 +7918,7 @@
       "id": "String",
       "unpublish_reason": "String"
     },
+    "required_keys": [],
     "returns": "Models::PayReportV2",
     "query_keys": [],
     "body_keys": [
@@ -7752,6 +7968,7 @@
       "schedule": "Models::PolicyScheduleV2, Hash",
       "status": "String"
     },
+    "required_keys": [],
     "returns": "Models::PolicyV2",
     "query_keys": [],
     "body_keys": [
@@ -7788,6 +8005,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -7819,6 +8037,7 @@
       "after": "String",
       "policy_type": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::PolicyV2>",
     "query_keys": [],
     "body_keys": [],
@@ -7850,6 +8069,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::PolicyV2",
     "query_keys": [],
     "body_keys": [],
@@ -7900,6 +8120,7 @@
       "schedule": "Models::PolicyScheduleV2, Hash",
       "status": "String"
     },
+    "required_keys": [],
     "returns": "Models::PolicyV2",
     "query_keys": [],
     "body_keys": [
@@ -7939,6 +8160,7 @@
       "id": "String",
       "reason": "String"
     },
+    "required_keys": [],
     "returns": "Models::PolicyFindingV2",
     "query_keys": [],
     "body_keys": [
@@ -7972,6 +8194,7 @@
       "after": "String",
       "policy_id": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::PolicyFindingV2>",
     "query_keys": [],
     "body_keys": [],
@@ -8003,6 +8226,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::PolicyFindingV2",
     "query_keys": [],
     "body_keys": [],
@@ -8034,6 +8258,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::PolicyFindingV2",
     "query_keys": [],
     "body_keys": [],
@@ -8065,6 +8290,7 @@
     "arg_types": {
       "schedule_sync_target": "Models::ScheduleSyncTargetCreatePayloadV2, Hash"
     },
+    "required_keys": [],
     "returns": "Models::ScheduleSyncTargetResourceV2",
     "query_keys": [],
     "body_keys": [
@@ -8098,6 +8324,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -8128,6 +8355,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::ScheduleSyncTargetResourceV2>",
     "query_keys": [],
     "body_keys": [],
@@ -8159,6 +8387,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::ScheduleSyncTargetResourceV2",
     "query_keys": [],
     "body_keys": [],
@@ -8194,6 +8423,7 @@
       "add_bot_to_group": "Boolean",
       "annotations": "Hash{String => String}"
     },
+    "required_keys": [],
     "returns": "Models::ScheduleSyncTargetResourceV2",
     "query_keys": [],
     "body_keys": [
@@ -8227,6 +8457,7 @@
     "arg_types": {
       "schedule": "Models::ScheduleCreatePayloadV2, Hash"
     },
+    "required_keys": [],
     "returns": "Models::ScheduleV2",
     "query_keys": [],
     "body_keys": [
@@ -8270,6 +8501,7 @@
       "start_at": "Time",
       "user": "Models::UserReferencePayloadV2, Hash"
     },
+    "required_keys": [],
     "returns": "Models::ScheduleOverrideV2",
     "query_keys": [],
     "body_keys": [
@@ -8311,6 +8543,7 @@
       "schedule_id": "String",
       "schedule_replica": "Models::ScheduleReplicaCreatePayloadV2, Hash"
     },
+    "required_keys": [],
     "returns": "Models::ScheduleReplicaV2",
     "query_keys": [],
     "body_keys": [
@@ -8347,6 +8580,7 @@
       "schedule_id": "String",
       "schedule_sync_rule": "Models::ScheduleSyncRuleCreatePayloadV2, Hash"
     },
+    "required_keys": [],
     "returns": "Models::ScheduleSyncRuleV2",
     "query_keys": [],
     "body_keys": [
@@ -8380,6 +8614,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -8411,6 +8646,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -8444,6 +8680,7 @@
       "schedule_id": "String",
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -8477,6 +8714,7 @@
       "schedule_id": "String",
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -8507,6 +8745,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::ScheduleV2>",
     "query_keys": [],
     "body_keys": [],
@@ -8542,6 +8781,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::ScheduleOverrideV2>",
     "query_keys": [
       "schedule_id"
@@ -8577,6 +8817,7 @@
       "entry_window_start": "String",
       "entry_window_end": "Time"
     },
+    "required_keys": [],
     "returns": "Models::SchedulesListScheduleEntriesResultV2",
     "query_keys": [
       "schedule_id"
@@ -8610,6 +8851,7 @@
     "arg_types": {
       "schedule_id": "String"
     },
+    "required_keys": [],
     "returns": "Array<Models::ScheduleReplicaV2>",
     "query_keys": [],
     "body_keys": [],
@@ -8643,6 +8885,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::ScheduleSyncRuleV2>",
     "query_keys": [],
     "body_keys": [],
@@ -8679,6 +8922,7 @@
       "entry_window_end": "Time",
       "entry_window_start": "Time"
     },
+    "required_keys": [],
     "returns": "Models::ScheduleEntriesListPayloadV2",
     "query_keys": [],
     "body_keys": [
@@ -8712,6 +8956,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::ScheduleV2",
     "query_keys": [],
     "body_keys": [],
@@ -8743,6 +8988,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::ScheduleOverrideV2",
     "query_keys": [],
     "body_keys": [],
@@ -8776,6 +9022,7 @@
       "schedule_id": "String",
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::ScheduleReplicaV2",
     "query_keys": [],
     "body_keys": [],
@@ -8809,6 +9056,7 @@
       "schedule_id": "String",
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::ScheduleSyncRuleV2",
     "query_keys": [],
     "body_keys": [],
@@ -8843,6 +9091,7 @@
       "id": "String",
       "schedule": "Models::ScheduleUpdatePayloadV2, Hash"
     },
+    "required_keys": [],
     "returns": "Models::ScheduleV2",
     "query_keys": [],
     "body_keys": [
@@ -8887,6 +9136,7 @@
       "start_at": "Time",
       "user": "Models::UserReferencePayloadV2, Hash"
     },
+    "required_keys": [],
     "returns": "Models::ScheduleOverrideV2",
     "query_keys": [],
     "body_keys": [
@@ -8931,6 +9181,7 @@
       "annotations": "Hash{String => String}",
       "permanent_member_user_ids": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::ScheduleSyncRuleV2",
     "query_keys": [],
     "body_keys": [
@@ -8968,6 +9219,7 @@
       "description": "String",
       "owning_team_ids": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::SecretV2",
     "query_keys": [],
     "body_keys": [
@@ -9002,6 +9254,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -9033,6 +9286,7 @@
       "after": "String",
       "team_ids": "Array<String>"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::SecretV2>",
     "query_keys": [],
     "body_keys": [],
@@ -9067,6 +9321,7 @@
       "id": "String",
       "value": "String"
     },
+    "required_keys": [],
     "returns": "Models::SecretV2",
     "query_keys": [],
     "body_keys": [
@@ -9100,6 +9355,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::SecretsShowResultV2",
     "query_keys": [],
     "body_keys": [],
@@ -9136,6 +9392,7 @@
       "description": "String",
       "owning_team_ids": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::SecretV2",
     "query_keys": [],
     "body_keys": [
@@ -9179,6 +9436,7 @@
       "component_statuses": "Array<Models::StatusPageIncidentAffectedComponentV2, Hash>",
       "idempotency_key": "String"
     },
+    "required_keys": [],
     "returns": "Models::StatusPageIncidentV2",
     "query_keys": [],
     "body_keys": [
@@ -9222,6 +9480,7 @@
       "component_statuses": "Array<Models::StatusPageIncidentAffectedComponentV2, Hash>",
       "incident_status": "String"
     },
+    "required_keys": [],
     "returns": "Models::StatusPageIncidentUpdateV2",
     "query_keys": [],
     "body_keys": [
@@ -9275,6 +9534,7 @@
       "automate_maintenance_status": "Boolean",
       "idempotency_key": "String"
     },
+    "required_keys": [],
     "returns": "Models::StatusPageMaintenanceV2",
     "query_keys": [],
     "body_keys": [
@@ -9321,6 +9581,7 @@
       "component_statuses": "Array<Models::StatusPageMaintenanceAffectedComponentV2, Hash>",
       "maintenance_status": "String"
     },
+    "required_keys": [],
     "returns": "Models::StatusPageMaintenanceUpdateV2",
     "query_keys": [],
     "body_keys": [
@@ -9363,6 +9624,7 @@
       "updates": "Array<Models::StatusPageRetrospectiveIncidentUpdateV2, Hash>",
       "idempotency_key": "String"
     },
+    "required_keys": [],
     "returns": "Models::StatusPageIncidentV2",
     "query_keys": [],
     "body_keys": [
@@ -9398,6 +9660,7 @@
     "arg_types": {
       "status_page_maintenance_id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -9436,6 +9699,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::StatusPageIncidentV2>",
     "query_keys": [
       "status_page_id"
@@ -9476,6 +9740,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::StatusPageMaintenanceV2>",
     "query_keys": [
       "status_page_id"
@@ -9508,6 +9773,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::StatusPageV2>",
     "query_keys": [],
     "body_keys": [],
@@ -9539,6 +9805,7 @@
     "arg_types": {
       "status_page_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::StatusPageV2",
     "query_keys": [],
     "body_keys": [],
@@ -9577,6 +9844,7 @@
       "start_at": "Time",
       "end_at": "Time"
     },
+    "required_keys": [],
     "returns": "Models::StatusPageComponentAvailabilityV2",
     "query_keys": [
       "start_at",
@@ -9611,6 +9879,7 @@
     "arg_types": {
       "status_page_incident_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::StatusPageIncidentV2",
     "query_keys": [],
     "body_keys": [],
@@ -9642,6 +9911,7 @@
     "arg_types": {
       "status_page_maintenance_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::StatusPageMaintenanceV2",
     "query_keys": [],
     "body_keys": [],
@@ -9673,6 +9943,7 @@
     "arg_types": {
       "status_page_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::StatusPageStructureV2",
     "query_keys": [],
     "body_keys": [],
@@ -9707,6 +9978,7 @@
       "status_page_incident_id": "String",
       "name": "String"
     },
+    "required_keys": [],
     "returns": "Models::StatusPageIncidentV2",
     "query_keys": [],
     "body_keys": [
@@ -9747,6 +10019,7 @@
       "name": "String",
       "start_at": "Time"
     },
+    "required_keys": [],
     "returns": "Models::StatusPageMaintenanceV2",
     "query_keys": [],
     "body_keys": [
@@ -9785,6 +10058,7 @@
       "grafana_config": "Models::TelemetryGrafanaUpdateConfigV2, Hash",
       "name": "String"
     },
+    "required_keys": [],
     "returns": "Models::TelemetryDataSourceV2",
     "query_keys": [],
     "body_keys": [],
@@ -9818,6 +10092,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::UserWithRolesV2>",
     "query_keys": [],
     "body_keys": [],
@@ -9849,6 +10124,7 @@
     "arg_types": {
       "user_id": "String"
     },
+    "required_keys": [],
     "returns": "Array<Models::OnCallNotificationMethodPublicV2>",
     "query_keys": [],
     "body_keys": [],
@@ -9880,6 +10156,7 @@
     "arg_types": {
       "user_id": "String"
     },
+    "required_keys": [],
     "returns": "Array<Models::OnCallNotificationRulePublicV2>",
     "query_keys": [],
     "body_keys": [],
@@ -9911,6 +10188,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::UserWithRolesV2",
     "query_keys": [],
     "body_keys": [],
@@ -9942,6 +10220,7 @@
     "arg_types": {
       "user_id": "String"
     },
+    "required_keys": [],
     "returns": "String",
     "query_keys": [],
     "body_keys": [],
@@ -9976,6 +10255,7 @@
       "user_id": "String",
       "preferred_escalation_provider": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [
@@ -10011,6 +10291,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::WorkflowRunSlimV2>",
     "query_keys": [],
     "body_keys": [],
@@ -10042,6 +10323,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::WorkflowRunV2",
     "query_keys": [],
     "body_keys": [],
@@ -10109,6 +10391,7 @@
       "shortform": "String",
       "state": "String"
     },
+    "required_keys": [],
     "returns": "Models::WorkflowsCreateWorkflowResultV2",
     "query_keys": [],
     "body_keys": [
@@ -10150,6 +10433,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -10177,6 +10461,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::WorkflowSlimV2>",
     "query_keys": [],
     "body_keys": [],
@@ -10209,6 +10494,7 @@
       "id": "String",
       "skip_step_upgrades": "Boolean"
     },
+    "required_keys": [],
     "returns": "Models::WorkflowsShowWorkflowResultV2",
     "query_keys": [],
     "body_keys": [],
@@ -10278,6 +10564,7 @@
       "skip_step_upgrades": "Boolean",
       "state": "String"
     },
+    "required_keys": [],
     "returns": "Models::WorkflowsUpdateWorkflowResultV2",
     "query_keys": [],
     "body_keys": [
@@ -10321,6 +10608,7 @@
       "incident_id": "String",
       "assignee_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::ActionV3",
     "query_keys": [],
     "body_keys": [
@@ -10355,6 +10643,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -10389,6 +10678,7 @@
       "created_at": "Hash{String => Array<String>}",
       "updated_at": "Hash{String => Array<String>}"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::ActionV3>",
     "query_keys": [],
     "body_keys": [],
@@ -10420,6 +10710,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::ActionV3",
     "query_keys": [],
     "body_keys": [],
@@ -10457,6 +10748,7 @@
       "status": "String",
       "assignee_id": "String"
     },
+    "required_keys": [],
     "returns": "Models::ActionV3",
     "query_keys": [],
     "body_keys": [
@@ -10516,6 +10808,7 @@
       "name": "String",
       "owning_team_ids": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::AlertRouteV3",
     "query_keys": [],
     "body_keys": [
@@ -10558,6 +10851,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -10588,6 +10882,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::AlertRouteSlimV3>",
     "query_keys": [],
     "body_keys": [],
@@ -10619,6 +10914,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::AlertRouteV3",
     "query_keys": [],
     "body_keys": [],
@@ -10680,6 +10976,7 @@
       "version": "Integer",
       "owning_team_ids": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::AlertRouteV3",
     "query_keys": [],
     "body_keys": [
@@ -10728,6 +11025,7 @@
       "entries": "Array<Models::PartialEntryPayloadV3, Hash>",
       "update_attributes": "Array<String>"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [
@@ -10773,6 +11071,7 @@
       "external_id": "String",
       "rank": "Integer"
     },
+    "required_keys": [],
     "returns": "Models::CatalogEntryV3",
     "query_keys": [],
     "body_keys": [
@@ -10819,6 +11118,7 @@
       "type_name": "String",
       "use_name_as_identifier": "Boolean"
     },
+    "required_keys": [],
     "returns": "Models::CatalogTypeV3",
     "query_keys": [],
     "body_keys": [
@@ -10853,6 +11153,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -10884,6 +11185,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -10919,6 +11221,7 @@
       "after": "String",
       "identifier": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::CatalogEntryV3>",
     "query_keys": [
       "catalog_type_id",
@@ -10949,6 +11252,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::CatalogResourceV3>",
     "query_keys": [],
     "body_keys": [],
@@ -10976,6 +11280,7 @@
     "path_args": [],
     "keyword_args": {},
     "arg_types": {},
+    "required_keys": [],
     "returns": "Array<Models::CatalogTypeV3>",
     "query_keys": [],
     "body_keys": [],
@@ -11008,6 +11313,7 @@
       "id": "String",
       "expand": "Boolean"
     },
+    "required_keys": [],
     "returns": "Models::CatalogShowEntryResultV3",
     "query_keys": [],
     "body_keys": [],
@@ -11039,6 +11345,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::CatalogTypeV3",
     "query_keys": [],
     "body_keys": [],
@@ -11083,6 +11390,7 @@
       "rank": "Integer",
       "update_attributes": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::CatalogUpdateEntryResultV3",
     "query_keys": [],
     "body_keys": [
@@ -11130,6 +11438,7 @@
       "source_repo_url": "String",
       "use_name_as_identifier": "Boolean"
     },
+    "required_keys": [],
     "returns": "Models::CatalogTypeV3",
     "query_keys": [],
     "body_keys": [
@@ -11171,6 +11480,7 @@
       "attributes": "Array<Models::CatalogTypeAttributePayloadV3, Hash>",
       "version": "Integer"
     },
+    "required_keys": [],
     "returns": "Models::CatalogTypeV3",
     "query_keys": [],
     "body_keys": [
@@ -11210,6 +11520,7 @@
       "provider": "String",
       "url": "String"
     },
+    "required_keys": [],
     "returns": "Models::FollowUpV3",
     "query_keys": [],
     "body_keys": [
@@ -11253,6 +11564,7 @@
       "follow_up_priority_option_id": "String",
       "labels": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::FollowUpV3",
     "query_keys": [],
     "body_keys": [
@@ -11289,6 +11601,7 @@
       "incident_id": "String",
       "url": "String"
     },
+    "required_keys": [],
     "returns": "Models::FollowUpV3",
     "query_keys": [],
     "body_keys": [
@@ -11323,6 +11636,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "nil",
     "query_keys": [],
     "body_keys": [],
@@ -11358,6 +11672,7 @@
       "created_at": "Hash{String => Array<String>}",
       "updated_at": "Hash{String => Array<String>}"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::FollowUpV3>",
     "query_keys": [],
     "body_keys": [],
@@ -11389,6 +11704,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::FollowUpV3",
     "query_keys": [],
     "body_keys": [],
@@ -11431,6 +11747,7 @@
       "follow_up_priority_option_id": "String",
       "labels": "Array<String>"
     },
+    "required_keys": [],
     "returns": "Models::FollowUpV3",
     "query_keys": [],
     "body_keys": [
@@ -11464,6 +11781,7 @@
       "page_size": "Integer",
       "after": "String"
     },
+    "required_keys": [],
     "returns": "IncidentIo::Pager<Models::TeamV3>",
     "query_keys": [],
     "body_keys": [],
@@ -11495,6 +11813,7 @@
     "arg_types": {
       "id": "String"
     },
+    "required_keys": [],
     "returns": "Models::TeamV3",
     "query_keys": [],
     "body_keys": [],

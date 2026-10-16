@@ -12,7 +12,11 @@ module IncidentIoGenerator
   #     Types.yard_types
   #   limits: the values the argument and keys inside it allow, see
   #     Types.limits
-  Param = Data.define(:name, :location, :required, :schema, :description, :default, :examples, :yard_types, :limits) do
+  #   required_keys: the keys inside the argument that must be sent with
+  #     it, see Types.required_keys
+  Param = Data.define(
+    :name, :location, :required, :schema, :description, :default, :examples, :yard_types, :limits, :required_keys
+  ) do
     # Optional body arguments default to NOT_GIVEN so that nil can be sent as
     # null; optional query arguments default to nil, which is left out.
     def not_given? = location == :body && !required && !default
@@ -292,11 +296,13 @@ module IncidentIoGenerator
     end
 
     # A Param, with the YARD types and limits of its schema, as a Field has
-    # them. An argument can be a model or a Hash.
+    # them, and the keys inside it that it requires. An argument can be a
+    # model or a Hash.
     def new_param(name:, schema:, **fields)
       Param.new(
         name:, schema:, **fields,
-        yard_types: Types.yard_types(schema, name, accepts_hash: true), limits: Types.limits(schema, name)
+        yard_types: Types.yard_types(schema, name, accepts_hash: true), limits: Types.limits(schema, name),
+        required_keys: Types.required_keys(schema, name)
       )
     end
 

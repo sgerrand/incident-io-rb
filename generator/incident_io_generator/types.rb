@@ -57,6 +57,25 @@ module IncidentIoGenerator
       name.scan(/"(?:[^"\\]|\\.)*"|[^.]+/)
     end
 
+    # The keys inside a schema that an inline object in it requires, named
+    # like those of #named_schemas.
+    def required_keys(schema, name)
+      required = inline_required(schema)
+      inline_properties(schema).flat_map do |key, prop|
+        inner = "#{name}.#{key_name(key)}"
+        [*(inner if required.include?(key)), *required_keys(prop, inner)]
+      end
+    end
+
+    # The keys that an inline object requires, read the same way as
+    # #inline_properties.
+    def inline_required(schema)
+      # `additionalProperties` can be true or false as well as a schema.
+      return [] unless schema.is_a?(Hash)
+
+      inline_required(schema["items"]) | inline_required(schema["additionalProperties"]) | (schema["required"] || [])
+    end
+
     # The keys of an inline object and their schemas. For an array or a
     # map, those of the objects it holds, however deep they are nested. An
     # object can name keys and be a map of other objects too, so both are

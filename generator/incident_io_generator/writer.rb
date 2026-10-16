@@ -257,6 +257,9 @@ module IncidentIoGenerator
             # Every argument, optional ones too, with its YARD type. A key
             # inside an argument is there too, under a name like "arg.key".
             "arg_types" => (op.path_params + op.keyword_params).map(&:yard_types).reduce({}, :merge),
+            # The keys inside arguments that must be sent with them, named
+            # like those in "arg_types".
+            "required_keys" => (op.path_params + op.keyword_params).flat_map(&:required_keys),
             "returns" => op.result.yard,
             "query_keys" => keyword_params.select { |p| p.location == :query }.map(&:name),
             "body_keys" => keyword_params.select { |p| p.location == :body }.map(&:name),
