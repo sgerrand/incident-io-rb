@@ -215,6 +215,9 @@ commit. It lists:
 - methods whose arguments, filter operators or return type changed
 - resources that `client.<name>` now reaches in another API version
 
+The weekly update workflow puts this list in its pull request. If the list
+can't be made, the update still goes ahead, and the pull request says so.
+
 ## Releasing
 
 Releases are automated. Use [Conventional Commits](https://www.conventionalcommits.org/)

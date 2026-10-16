@@ -55,9 +55,12 @@ jobs:
       # the gem: anything removed, fields that changed type or allow other
       # values, and methods whose arguments or return type changed.
       # Compares with the last commit, so it runs before the new code is
-      # committed.
+      # committed. The list only helps a person review the update, so if it
+      # can't be made, the update goes ahead and its pull request says so.
       - name: List breaking changes
+        id: breaking
         if: steps.changes.outputs.changed == 'true'
+        continue-on-error: true
         run: bundle exec rake generate:breaking > "$RUNNER_TEMP/breaking.md"
 
       # Pull requests opened with GITHUB_TOKEN don't trigger the Test
@@ -70,6 +73,8 @@ jobs:
         if: steps.changes.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
+          BREAKING: ${{ steps.breaking.outcome }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         # The write token is only handed to git here, after the code from
         # the repo and the spec has run.
         run: |
@@ -79,12 +84,19 @@ jobs:
           git switch --force-create "$BRANCH"
           git commit --message "feat: update generated code from the latest OpenAPI spec"
 
+          if [ "$BREAKING" != success ]; then
+            echo "::warning::The list of breaking changes could not be made. The pull request says so."
+          fi
+
           # The part of the pull request's text that every run rewrites. It
           # names its commit, so a list that is out of date is easy to spot.
           {
             echo "<!-- breaking-changes:start -->"
             echo "<!-- The update workflow rewrites this part on every run. Write your notes outside it. -->"
-            if [ -s "$RUNNER_TEMP/breaking.md" ]; then
+            if [ "$BREAKING" != success ]; then
+              echo "> [!WARNING]"
+              echo "> The list of breaking changes could not be made for commit $(git rev-parse HEAD). See [the run]($RUN_URL) for why, and check the changes by hand."
+            elif [ -s "$RUNNER_TEMP/breaking.md" ]; then
               cat "$RUNNER_TEMP/breaking.md"
               echo
               echo "This list is for commit $(git rev-parse HEAD)."
