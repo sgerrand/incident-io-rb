@@ -63,17 +63,21 @@ module IncidentIoGenerator
       required = inline_required(schema)
       inline_properties(schema).flat_map do |key, prop|
         inner = "#{name}.#{key_name(key)}"
-        [*(inner if required.include?(key)), *required_keys(prop, inner)]
+        [*(inner if required[key]), *required_keys(prop, inner)]
       end
     end
 
-    # The keys that an inline object requires, read the same way as
-    # #inline_properties.
+    # Whether an inline object requires each of its keys, read the same way
+    # as #inline_properties. A key is required by the object that names it,
+    # so a named key wins over one of the same name in a held object here
+    # too.
     def inline_required(schema)
       # `additionalProperties` can be true or false as well as a schema.
-      return [] unless schema.is_a?(Hash)
+      return {} unless schema.is_a?(Hash)
 
-      inline_required(schema["items"]) | inline_required(schema["additionalProperties"]) | (schema["required"] || [])
+      held = inline_required(schema["items"]).merge(inline_required(schema["additionalProperties"]))
+      required = schema["required"] || []
+      held.merge((schema["properties"] || {}).to_h { |key, _| [key, required.include?(key)] })
     end
 
     # The keys of an inline object and their schemas. For an array or a

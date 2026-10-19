@@ -142,6 +142,19 @@ RSpec.describe IncidentIoGenerator::Types do
     expect(described_class.required_keys({"type" => "string"}, "name")).to eq([])
   end
 
+  it "reads whether a key is required from the object that names it" do
+    held = {"type" => "object", "required" => %w[size tone], "properties" => {"size" => {}, "tone" => {}}}
+    # The map names its own `size`, which it doesn't require. That wins
+    # over the held `size`, which is required.
+    map = {"type" => "object", "required" => %w[shape], "properties" => {"size" => {}, "shape" => {}}, "additionalProperties" => held}
+    # The map's `required` names `tone`, but only the held object has a
+    # `tone`, and it doesn't require it.
+    lone = {"type" => "object", "required" => %w[tone], "additionalProperties" => {"type" => "object", "properties" => {"tone" => {}}}}
+
+    expect(described_class.required_keys(map, "by_id")).to eq(["by_id.tone", "by_id.shape"])
+    expect(described_class.required_keys(lone, "by_id")).to eq([])
+  end
+
   it "names keys with a dot so they can't be read as two keys" do
     box = {"type" => "object", "properties" => {"a.b" => {"type" => "string"}, "" => {}, '"q' => {}, 'x"y' => {}}}
     names = described_class.yard_types(box, "box").keys
