@@ -51,6 +51,18 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
+      # The pull request lists the changes that can break code that uses
+      # the gem: anything removed, fields that changed type or allow other
+      # values, and methods whose arguments or return type changed.
+      # Compares with the last commit, so it runs before the new code is
+      # committed. The list only helps a person review the update, so if it
+      # can't be made, the update goes ahead and its pull request says so.
+      - name: List breaking changes
+        id: breaking
+        if: steps.changes.outputs.changed == 'true'
+        continue-on-error: true
+        run: bundle exec rake generate:breaking > "$RUNNER_TEMP/breaking.md"
+
       # Pull requests opened with GITHUB_TOKEN don't trigger the Test
       # workflow, so run the specs here before opening one.
       - name: Run specs and type check
@@ -61,6 +73,8 @@ jobs:
         if: steps.changes.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
+          BREAKING: ${{ steps.breaking.outcome }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         # The write token is only handed to git here, after the code from
         # the repo and the spec has run.
         run: |
@@ -69,20 +83,78 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch --force-create "$BRANCH"
           git commit --message "feat: update generated code from the latest OpenAPI spec"
+
+          if [ "$BREAKING" != success ]; then
+            echo "::warning::The list of breaking changes could not be made. The pull request says so."
+          fi
+
+          # The part of the pull request's text that every run rewrites. It
+          # names its commit, so a list that is out of date is easy to spot.
+          {
+            echo "<!-- breaking-changes:start -->"
+            echo "<!-- The update workflow rewrites this part on every run. Write your notes outside it. -->"
+            if [ "$BREAKING" != success ]; then
+              echo "> [!WARNING]"
+              echo "> The list of breaking changes could not be made for commit $(git rev-parse HEAD). See [the run]($RUN_URL) for why, and check the changes by hand."
+            elif [ -s "$RUNNER_TEMP/breaking.md" ]; then
+              cat "$RUNNER_TEMP/breaking.md"
+              echo
+              echo "This list is for commit $(git rev-parse HEAD)."
+            else
+              echo "No breaking changes were found in commit $(git rev-parse HEAD)."
+            fi
+            echo "<!-- breaking-changes:end -->"
+          } > "$RUNNER_TEMP/section.md"
+
+          # The number of the open pull request, or nothing when there is
+          # none. If there are more, the newest one. If GitHub can't be
+          # asked, the run stops here, before anything is pushed.
+          number="$(gh pr list --head "$BRANCH" --state open --limit 1 --json number --jq '.[0].number // empty')"
+
+          # An open pull request keeps its text, so anything a person
+          # added to it is kept too.
+          if [ -n "$number" ]; then
+            gh pr view "$number" --json body --jq .body > "$RUNNER_TEMP/text.md"
+          else
+            cat > "$RUNNER_TEMP/text.md" <<'BODY'
+          :tipping_hand_person: These changes update the generated models, resources and signatures from the latest incident.io OpenAPI spec.
+
+          The spec itself is not stored in git, so review the changes to the generated code. The workflow ran the specs before it pushed this code, and they passed.
+
+          The Test workflow does not run on pull requests opened by GitHub Actions. To run it, close and reopen this pull request.
+          BODY
+          fi
+
+          # Puts the new part in place of the old one, or at the end of a
+          # text that has none. The old part runs from a start mark to the
+          # next end mark, with no other start mark between them. So a
+          # mark that lost its pair can't make the text around it go away.
+          # Any later marked part is an old copy of the list, so it is
+          # taken out. Both files are read as UTF-8, whatever the runner's
+          # locale is.
+          ruby -e '
+            text, section = ARGV.map { |path| File.read(path, encoding: "UTF-8") }
+            start = "<!-- breaking-changes:start -->"
+            marked = /#{start}(?:(?!#{start}).)*?<!-- breaking-changes:end -->\r?\n?/m
+            parts = 0
+            body = text.gsub(marked) { (parts += 1) == 1 ? section : "" }
+            print parts.zero? ? "#{text.rstrip}\n\n#{section}" : body
+          ' "$RUNNER_TEMP/text.md" "$RUNNER_TEMP/section.md" > "$RUNNER_TEMP/body.md"
+
+          # Everything that can fail before the push has run by now. The
+          # text is written last, as it describes the pushed code.
           git push --force origin "$BRANCH"
 
-          if [ "$(gh pr view "$BRANCH" --json state --jq .state 2>/dev/null)" = "OPEN" ]; then
+          if [ -n "$number" ]; then
+            if ! gh pr edit "$number" --body-file "$RUNNER_TEMP/body.md"; then
+              echo "::error::The text of the pull request was not updated, so its list of breaking changes is out of date. Run this workflow again to fix it."
+              exit 1
+            fi
             echo "Updated the open pull request."
           else
             gh pr create \
               --base "$GITHUB_REF_NAME" \
               --head "$BRANCH" \
               --title "feat: update generated code from the latest OpenAPI spec" \
-              --body-file - <<'BODY'
-          :tipping_hand_person: These changes update the generated models, resources and signatures from the latest incident.io OpenAPI spec.
-
-          The spec itself is not stored in git, so review the changes to the generated code. The specs passed in the workflow run that opened this pull request.
-
-          The Test workflow does not run on pull requests opened by GitHub Actions. To run it, close and reopen this pull request.
-          BODY
+              --body-file "$RUNNER_TEMP/body.md"
           fi

@@ -84,6 +84,8 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
       %w[kind kind :string]
     ])
     expect(widget.fields.last.description).to eq("One of: big, small.")
+    expect(widget.fields.map(&:limits)).to eq([{}, {}, {}, {}, {}, {"kind" => %w[big small]}])
+    expect(widget.fields.map(&:yard_types)).to eq(widget.fields.map { |f| {f.member => f.yard} })
   end
 
   it "reads webhook events and audit log entries" do
@@ -128,6 +130,37 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
     expect { described_class.new(spec) }.to raise_error(IncidentIoGenerator::Error, /"end" is not a safe Ruby name/)
   end
 
+  it "reads the examples given on a parameter" do
+    spec = mini_spec
+    spec["paths"]["/v2/widgets/{id}"]["get"]["parameters"] << {
+      "in" => "query", "name" => "tags", "schema" => {"example" => "a"},
+      "example" => "b", "examples" => {"one" => {"value" => "c"}, "linked" => {"$ref" => "#/components/examples/D"}, "none" => nil}
+    }
+    spec["paths"]["/v2/widgets/{id}"]["get"]["parameters"] << {"in" => "query", "name" => "notes", "schema" => {}, "examples" => nil}
+    show = described_class.new(spec).resources.first.operations.find { |op| op.method_name == "show" }
+
+    expect(show.query_params.map(&:examples).last(2)).to eq([%w[b c], []])
+    expect(show.path_params.first.examples).to eq([])
+  end
+
+  it "reads the operators that the schema or the parameter itself names" do
+    spec = mini_spec
+    params = spec["paths"]["/v2/widgets/{id}"]["get"]["parameters"]
+    params << {
+      "in" => "query", "name" => "tags", "description" => "The accepted operators are 'one_of'.",
+      "schema" => {"description" => "Filter by tags."}
+    }
+    params << {
+      "in" => "query", "name" => "kind", "description" => "The accepted operators are 'one_of'.",
+      "schema" => {"description" => "The accepted operators are 'is'."}
+    }
+    params << {"in" => "query", "name" => "notes", "schema" => {}}
+    show = described_class.new(spec).resources.first.operations.find { |op| op.method_name == "show" }
+
+    expect(show.query_params.map(&:operators).last(3)).to eq([%w[one_of], %w[is], nil])
+    expect(show.query_params.find { |p| p.name == "tags" }.description).to eq("Filter by tags.")
+  end
+
   it "picks the newest version of each resource" do
     spec = mini_spec
     spec["paths"]["/v3/widgets/{id}"] = {"delete" => operation("Widgets V3#Destroy", nil, code: "204", parameters: [path_param("id")])}
@@ -145,6 +178,12 @@ RSpec.describe IncidentIoGenerator::Api, :generator do
       }],
       "a webhook body without its payload" => [/body has no public_widget.created_v1 payload/, ->(s) {
         s["components"]["schemas"]["WidgetCreatedBody"]["properties"].delete("public_widget.created_v1")
+      }],
+      "a spec without x-webhooks" => [/x-webhooks: no webhook events/, ->(s) {
+        s.delete("x-webhooks")
+      }],
+      "a spec without audit log entries" => [/x-webhooks: no audit log entries/, ->(s) {
+        s["x-webhooks"].delete("/x-audit-logs/widget.deleted.2")
       }],
       "a resource named like a Client method" => [/resource name request clashes with a Client method/, ->(s) {
         s["paths"]["/v1/request"] = {"get" => operation("Request V1#Show", "WidgetsShowResultV2")}

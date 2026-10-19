@@ -6,7 +6,19 @@ module IncidentIoGenerator
   # A keyword or positional argument of a generated method.
   #   location: :path, :query or :body
   #   default: Ruby source for a generated default, e.g. "SecureRandom.uuid"
-  Param = Data.define(:name, :location, :required, :schema, :description, :default) do
+  #   examples: example values the spec gives on the argument itself, not
+  #     on its schema
+  #   yard_types: the YARD type of the argument and of keys inside it, see
+  #     Types.yard_types
+  #   limits: the values the argument and keys inside it allow, see
+  #     Types.limits
+  #   required_keys: the keys inside the argument that must be sent with
+  #     it, see Types.required_keys
+  #   operators: the operators a filter argument allows, as its schema's
+  #     description or its own names them, see Types.operators
+  Param = Data.define(
+    :name, :location, :required, :schema, :description, :default, :examples, :yard_types, :limits, :required_keys, :operators
+  ) do
     # Optional body arguments default to NOT_GIVEN so that nil can be sent as
     # null; optional query arguments default to nil, which is left out.
     def not_given? = location == :body && !required && !default
@@ -68,7 +80,10 @@ module IncidentIoGenerator
   # An audit log entry type and its schema.
   AuditLogEntry = Data.define(:action, :version, :model)
 
-  Field = Data.define(:api_name, :member, :type, :yard, :rbs, :description)
+  #   yard_types: the YARD type of the field and of keys inside it, see
+  #     Types.yard_types
+  #   limits: the values the field and keys inside it allow, see Types.limits
+  Field = Data.define(:api_name, :member, :type, :yard, :rbs, :description, :yard_types, :limits)
   ModelSchema = Data.define(:name, :file_name, :description, :fields)
 
   # Reads the OpenAPI spec into the resources and models to generate.
@@ -128,13 +143,16 @@ module IncidentIoGenerator
     def build_models
       models = @schemas.sort.map do |name, schema|
         fields = (schema["properties"] || {}).map do |api_name, prop|
+          member = IncidentIo::Model.member_name(api_name).to_s
           Field.new(
             api_name:,
-            member: IncidentIo::Model.member_name(api_name).to_s,
+            member:,
             type: Types.model_type(prop),
             yard: Types.yard_type(prop, namespace: ""),
             rbs: Types.rbs_type(prop, namespace: ""),
-            description: describe(prop)
+            description: describe(prop),
+            yard_types: Types.yard_types(prop, member, namespace: ""),
+            limits: Types.limits(prop, member)
           )
         end
         ModelSchema.new(name:, file_name: Naming.underscore(name), description: schema["description"], fields:)
@@ -173,6 +191,10 @@ module IncidentIoGenerator
           raise Error, "unknown x-webhooks entry: #{key}"
         end
       end
+
+      # An empty list means the spec moved them, not that there are none.
+      raise Error, "x-webhooks: no webhook events" if webhook_events.empty?
+      raise Error, "x-webhooks: no audit log entries" if audit_log_entries.empty?
 
       [webhook_events, audit_log_entries]
     end
@@ -262,13 +284,31 @@ module IncidentIoGenerator
 
     def build_param(param, location:, required:)
       schema = param["schema"] || {}
-      Param.new(
+      new_param(
         name: param.fetch("name"),
         location:,
         required:,
         schema:,
         description: describe(schema, param["description"]),
-        default: nil
+        own_description: param["description"],
+        default: nil,
+        # A parameter can have one example, or several by name. The spec can
+        # write null for either.
+        examples: [param["example"], *(param["examples"] || {}).values.grep(Hash).map { |example| example["value"] }].compact
+      )
+    end
+
+    # A Param, with the YARD types and limits of its schema, as a Field has
+    # them, the keys inside it that it requires, and the operators it
+    # allows. An argument can be a model or a Hash. The spec can name the
+    # operators in the description of the schema or of the argument itself,
+    # so both are read.
+    def new_param(name:, schema:, own_description: nil, **fields)
+      Param.new(
+        name:, schema:, **fields,
+        yard_types: Types.yard_types(schema, name, accepts_hash: true), limits: Types.limits(schema, name),
+        required_keys: Types.required_keys(schema, name),
+        operators: Types.operators(schema["description"]) || Types.operators(own_description)
       )
     end
 
@@ -280,9 +320,9 @@ module IncidentIoGenerator
         # The idempotency key is generated per call so retries of the same
         # call reuse it.
         idempotency_key = name == "idempotency_key"
-        Param.new(
+        new_param(
           name:, location: :body, required: !idempotency_key && required.include?(name), schema: prop,
-          description: describe(prop), default: ("SecureRandom.uuid" if idempotency_key)
+          description: describe(prop), default: ("SecureRandom.uuid" if idempotency_key), examples: []
         )
       end
     end
@@ -371,7 +411,7 @@ module IncidentIoGenerator
     def describe(schema, fallback = nil)
       text = schema["description"] || fallback
       text = text.to_s.gsub(/\s+/, " ").strip
-      enum = schema["enum"] || schema.dig("items", "enum")
+      enum = Types.allowed_values(schema)
       text = [text, "One of: #{enum.join(", ")}."].reject(&:empty?).join(" ") if enum
       text.empty? ? nil : text
     end

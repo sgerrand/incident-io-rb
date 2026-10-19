@@ -81,6 +81,22 @@ task :generate do
 end
 
 namespace :generate do
+  desc "List breaking changes in the generated code since the last commit"
+  task :breaking do
+    require "open3"
+    require "tmpdir"
+    require_relative "generator/incident_io_generator"
+
+    Dir.mktmpdir do |dir|
+      # Unpack the manifests as they were at the last commit.
+      paths = IncidentIoGenerator::BreakingChanges::PATHS
+      statuses = Open3.pipeline(["git", "archive", "HEAD", "--", *paths], ["tar", "-x", "-C", dir])
+      abort "Could not read the manifests from the last commit." unless statuses.all?(&:success?)
+
+      print IncidentIoGenerator::BreakingChanges.report(dir, IncidentIoGenerator::ROOT)
+    end
+  end
+
   desc "Fail if the generated code does not match #{SPEC_FILE}"
   task :check do
     require_spec!
