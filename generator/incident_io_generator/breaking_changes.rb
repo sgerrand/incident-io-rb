@@ -70,9 +70,9 @@ module IncidentIoGenerator
       {
         # The model of each event and entry type, keyed by how the type is
         # named in a change.
-        events: events.transform_keys { |type| "`#{type}`" },
+        events: events.transform_keys { |type| code(type) },
         entries: entries.flat_map do |action, versions|
-          versions.map { |version, model| ["`#{action}` (version #{version})", model] }
+          versions.map { |version, model| ["#{code(action)} (version #{version})", model] }
         end.to_h,
         models:,
         methods:,
@@ -155,7 +155,7 @@ module IncidentIoGenerator
       [
         *type_changes("Webhook event", before[:events], after[:events]),
         *type_changes("Audit log entry", before[:entries], after[:entries]),
-        *(before[:models].keys - after[:models].keys).map { |model| "Model `#{model}` was removed" },
+        *(before[:models].keys - after[:models].keys).map { |model| "Model #{code(model)} was removed" },
         *field_changes(before[:models], after[:models]),
         *together(fewer_values(limits)),
         *method_changes(before[:methods], after[:methods]),
@@ -177,7 +177,7 @@ module IncidentIoGenerator
         if now.nil?
           "#{kind} #{type} was removed"
         elsif now != was
-          "#{kind} #{type} changed its model from `#{was}` to `#{now}`"
+          "#{kind} #{type} changed its model from #{code(was)} to #{code(now)}"
         end
       end
     end
@@ -188,7 +188,7 @@ module IncidentIoGenerator
     def field_changes(before, after)
       before.slice(*after.keys).flat_map do |model, was|
         retyped(was[:types], after[model][:types]).map do |name, type, now|
-          now ? "Field `#{model}##{name}` changed type from `#{type}` to `#{now}`" : "Field `#{model}##{name}` was removed"
+          now ? "Field #{code("#{model}##{name}")} changed type from #{code(type)} to #{code(now)}" : "Field #{code("#{model}##{name}")} was removed"
         end
       end
     end
@@ -258,7 +258,7 @@ module IncidentIoGenerator
         model, *others = same.map(&:first)
         more = " and #{others.size - SAME} more" if others.size > SAME
         also = " (same in #{quote(others.first(SAME))}#{more})" if others.any?
-        "Field `#{model}##{name}` #{change}#{also}"
+        "Field #{code("#{model}##{name}")} #{change}#{also}"
       end
     end
 
@@ -270,7 +270,7 @@ module IncidentIoGenerator
     def argument_value_changes(name, was, now, kept = unchanged(was[:types], now[:types]))
       kept_limits(was, now, kept).filter_map do |arg, allowed, values|
         change = fewer(allowed, values)
-        "Method `#{name}` #{change} for `#{arg}`" if change
+        "Method #{code(name)} #{change} for #{code(arg)}" if change
       end
     end
 
@@ -281,7 +281,7 @@ module IncidentIoGenerator
     def new_required_keys(name, was, now, kept)
       (now[:required_keys] - was[:required_keys]).filter_map do |key|
         parent = Types.name_parts(key)[0...-1].join(".")
-        "Method `#{name}` now needs `#{key}`" if kept.include?(parent)
+        "Method #{code(name)} now needs #{code(key)}" if kept.include?(parent)
       end
     end
 
@@ -291,9 +291,9 @@ module IncidentIoGenerator
     def argument_type_changes(name, retyped)
       retyped.filter_map do |arg, type, now|
         if now
-          "Method `#{name}` changed the type of argument `#{arg}` from `#{type}` to `#{now}`"
+          "Method #{code(name)} changed the type of argument #{code(arg)} from #{code(type)} to #{code(now)}"
         elsif arg.include?(".")
-          "Method `#{name}` no longer takes `#{arg}`"
+          "Method #{code(name)} no longer takes #{code(arg)}"
         end
       end
     end
@@ -308,7 +308,7 @@ module IncidentIoGenerator
 
         allowed = now[:operators][arg]
         if allowed.nil?
-          "Method `#{name}` no longer says which operators `#{arg}` allows"
+          "Method #{code(name)} no longer says which operators #{code(arg)} allows"
         elsif (operators - allowed).any?
           lost_operators(name, arg, operators - allowed)
         end
@@ -331,7 +331,7 @@ module IncidentIoGenerator
         if named
           lost_operators(name, arg, gone)
         else
-          "Method `#{name}` no longer shows #{quote(gone)} #{as_operators(gone)} for `#{arg}` in its examples"
+          "Method #{code(name)} no longer shows #{quote(gone)} #{as_operators(gone)} for #{code(arg)} in its examples"
         end
       end
     end
@@ -339,7 +339,7 @@ module IncidentIoGenerator
     # The change for a filter argument of a method that no longer allows
     # some operators.
     def lost_operators(name, arg, gone)
-      "Method `#{name}` no longer allows #{quote(gone)} #{as_operators(gone)} for `#{arg}`"
+      "Method #{code(name)} no longer allows #{quote(gone)} #{as_operators(gone)} for #{code(arg)}"
     end
 
     # How a change names the operators it lists.
@@ -383,11 +383,11 @@ module IncidentIoGenerator
     def accessor_changes(before, after)
       before.flat_map do |resource, was|
         now = after[resource]
-        next ["Resource `client.#{resource}` was removed"] if now.nil?
+        next ["Resource #{code("client.#{resource}")} was removed"] if now.nil?
         next [] if now[:version] == was[:version]
 
         [
-          "Resource `client.#{resource}` now uses #{now[:version]} instead of #{was[:version]}",
+          "Resource #{code("client.#{resource}")} now uses #{now[:version]} instead of #{was[:version]}",
           *method_changes(was[:methods], now[:methods])
         ]
       end
@@ -403,9 +403,9 @@ module IncidentIoGenerator
     def method_changes(before, after)
       before.flat_map do |name, was|
         now = after[name]
-        next ["Method `#{name}` was removed"] unless now
+        next ["Method #{code(name)} was removed"] unless now
 
-        positional = [was, now].map { |args| "`(#{args[:positional].join(", ")})`" }
+        positional = [was, now].map { |args| code("(#{args[:positional].join(", ")})") }
         # Calls pass these by place, so one that was only renamed is
         # compared under its new name.
         renames = renamed_positional(was[:positional], now[:positional])
@@ -413,16 +413,16 @@ module IncidentIoGenerator
         names = comparable(was[:types], now[:types])
         kept = unchanged(was[:types], now[:types], names)
         [
-          *renames&.map { |old, new| "Method `#{name}` renamed its positional argument `#{old}` to `#{new}`. Calls still work, but check that it takes the same value" },
-          *("Method `#{name}` changed its positional arguments from #{positional.first} to #{positional.last}" unless renames),
-          *(was[:required] + was[:optional] - now[:required] - now[:optional]).map { |arg| "Method `#{name}` no longer takes `#{arg}:`" },
-          *(now[:required] - was[:required]).map { |arg| "Method `#{name}` now needs `#{arg}:`" },
+          *renames&.map { |old, new| "Method #{code(name)} renamed its positional argument #{code(old)} to #{code(new)}. Calls still work, but check that it takes the same value" },
+          *("Method #{code(name)} changed its positional arguments from #{positional.first} to #{positional.last}" unless renames),
+          *(was[:required] + was[:optional] - now[:required] - now[:optional]).map { |arg| "Method #{code(name)} no longer takes #{code("#{arg}:")}" },
+          *(now[:required] - was[:required]).map { |arg| "Method #{code(name)} now needs #{code("#{arg}:")}" },
           *new_required_keys(name, was, now, kept),
           *argument_type_changes(name, retyped(was[:types], now[:types], names)),
           *argument_value_changes(name, was, now, kept),
           *operator_changes(name, was, now, kept),
           *example_changes(name, was, now, kept),
-          *("Method `#{name}` changed what it returns from `#{was[:returns]}` to `#{now[:returns]}`" if was[:returns] != now[:returns])
+          *("Method #{code(name)} changed what it returns from #{code(was[:returns])} to #{code(now[:returns])}" if was[:returns] != now[:returns])
         ]
       end
     end

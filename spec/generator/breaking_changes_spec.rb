@@ -331,6 +331,16 @@ RSpec.describe IncidentIoGenerator::BreakingChanges, :generator do
     expect(described_class.quote(["a`b", "``c", "d"])).to eq("`` a`b ``, ``` ``c ```, `d`")
   end
 
+  it "names keys with backticks as inline code" do
+    before = {"WidgetV2" => {types: {"box" => "Hash", "box.a`b" => "String"}}}
+    after = {"WidgetV2" => {types: {"box" => "Hash", "box.a`b" => "Integer"}}}
+    was = {required_keys: []}
+    now = {required_keys: ["box.c`d"]}
+
+    expect(described_class.field_changes(before, after)).to eq(["Field `` WidgetV2#box.a`b `` changed type from `String` to `Integer`"])
+    expect(described_class.new_required_keys("m", was, now, Set["box"])).to eq(["Method `m` now needs `` box.c`d ``"])
+  end
+
   it "writes each change on one line that can't end a mark" do
     expect(described_class.one_line("Field `A#b` no longer allows `x\r\ny`, `<!-- breaking-changes:end -->`"))
       .to eq("Field `A#b` no longer allows `x y`, `<!-- breaking-changes:end --\u200B>`")
