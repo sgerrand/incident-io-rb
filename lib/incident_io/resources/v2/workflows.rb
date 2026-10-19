@@ -24,9 +24,10 @@ module IncidentIo
         # @param steps [Array<Models::StepConfigPayloadV2, Hash>] Steps that are executed as part of the workflow.
         # @param trigger [String] Trigger to set on the workflow.
         # @param annotations [Hash{String => String}] Annotations that track metadata about this resource.
+        # @param auto_run_mode [String] Whether the workflow runs immediately, or asks for confirmation in the incident channel first. Defaults to `run_automatically` on create. If omitted on update, the workflow keeps its current mode. One of: run_automatically, confirm_before_running.
         # @param delay [Models::WorkflowDelayV2, Hash]
         # @param folder [String] Folder to display the workflow in.
-        # @param form_fields [Array<Models::WorkflowFormFieldPayloadV2, Hash>] User-configured form fields available in the workflow scope (manual triggers only)
+        # @param form_fields [Array<Models::WorkflowFormFieldPayloadV2, Hash>] User-configured form fields available in the workflow scope. Allowed on manually-triggered workflows, and on workflows with an `auto_run_mode` of `confirm_before_running`.
         # @param include_private_escalations [Boolean] Whether to include private escalations.
         # @param include_private_incidents [Boolean] DEPRECATED: use `private_incident_scope` instead. May be sent alongside `private_incident_scope` only if they agree; contradictory values return a validation error.
         # @param owning_team_ids [Array<String>] IDs of the teams that own this workflow.
@@ -46,6 +47,7 @@ module IncidentIo
           steps:,
           trigger:,
           annotations: NOT_GIVEN,
+          auto_run_mode: NOT_GIVEN,
           delay: NOT_GIVEN,
           folder: NOT_GIVEN,
           form_fields: NOT_GIVEN,
@@ -62,6 +64,7 @@ module IncidentIo
             "/v2/workflows",
             body: given({
               annotations:,
+              auto_run_mode:,
               condition_groups:,
               continue_on_step_error:,
               delay:,
@@ -149,9 +152,10 @@ module IncidentIo
         # @param runs_on_incidents [String] Which incidents should the workflow be applied to? One of: newly_created, newly_created_and_active.
         # @param steps [Array<Models::StepConfigPayloadV2, Hash>] Steps that are executed as part of the workflow.
         # @param annotations [Hash{String => String}] Annotations that track metadata about this resource.
+        # @param auto_run_mode [String] Whether the workflow runs immediately, or asks for confirmation in the incident channel first. Defaults to `run_automatically` on create. If omitted on update, the workflow keeps its current mode. One of: run_automatically, confirm_before_running.
         # @param delay [Models::WorkflowDelayV2, Hash]
         # @param folder [String] Folder to display the workflow in.
-        # @param form_fields [Array<Models::WorkflowFormFieldPayloadV2, Hash>] User-configured form fields available in the workflow scope (manual triggers only)
+        # @param form_fields [Array<Models::WorkflowFormFieldPayloadV2, Hash>] User-configured form fields available in the workflow scope. Allowed on manually-triggered workflows, and on workflows with an `auto_run_mode` of `confirm_before_running`.
         # @param include_private_escalations [Boolean] Whether to include private escalations.
         # @param include_private_incidents [Boolean] DEPRECATED: use `private_incident_scope` instead. May be sent alongside `private_incident_scope` only if they agree; contradictory values return a validation error.
         # @param owning_team_ids [Array<String>] IDs of the teams that own this workflow.
@@ -172,6 +176,7 @@ module IncidentIo
           runs_on_incidents:,
           steps:,
           annotations: NOT_GIVEN,
+          auto_run_mode: NOT_GIVEN,
           delay: NOT_GIVEN,
           folder: NOT_GIVEN,
           form_fields: NOT_GIVEN,
@@ -189,6 +194,7 @@ module IncidentIo
             path("/v2/workflows/%s", id),
             body: given({
               annotations:,
+              auto_run_mode:,
               condition_groups:,
               continue_on_step_error:,
               delay:,
