@@ -128,14 +128,17 @@ jobs:
           # Puts the new part in place of the old one, or at the end of a
           # text that has none. The old part runs from a start mark to the
           # next end mark, with no other start mark between them. So a
-          # mark that lost its pair, or a second marked part, can't make
-          # the text around it go away. Both files are read as UTF-8,
-          # whatever the runner's locale is.
+          # mark that lost its pair can't make the text around it go away.
+          # Any later marked part is an old copy of the list, so it is
+          # taken out. Both files are read as UTF-8, whatever the runner's
+          # locale is.
           ruby -e '
             text, section = ARGV.map { |path| File.read(path, encoding: "UTF-8") }
             start = "<!-- breaking-changes:start -->"
             marked = /#{start}(?:(?!#{start}).)*?<!-- breaking-changes:end -->\r?\n?/m
-            print text.match?(marked) ? text.sub(marked) { section } : "#{text.rstrip}\n\n#{section}"
+            parts = 0
+            body = text.gsub(marked) { (parts += 1) == 1 ? section : "" }
+            print parts.zero? ? "#{text.rstrip}\n\n#{section}" : body
           ' "$RUNNER_TEMP/text.md" "$RUNNER_TEMP/section.md" > "$RUNNER_TEMP/body.md"
 
           # Everything that can fail before the push has run by now. The
