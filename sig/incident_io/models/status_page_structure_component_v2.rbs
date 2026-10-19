@@ -9,14 +9,30 @@ module IncidentIo
 
       # The ID of the affected component.
       attr_reader component_id: String?
+      # Whether the page shows this component's uptime
+      attr_reader display_uptime: bool?
+      # Whether the component is hidden from the page
+      attr_reader hidden: bool?
       # The name of this component
       attr_reader name: String?
 
-      def self.new: (?component_id: String?, ?name: String?, ?raw: Hash[String, untyped]?) -> instance
+      def self.new: (
+        ?component_id: String?,
+        ?display_uptime: bool?,
+        ?hidden: bool?,
+        ?name: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
-      def initialize: (?component_id: String?, ?name: String?, ?raw: Hash[String, untyped]?) -> void
+      def initialize: (
+        ?component_id: String?,
+        ?display_uptime: bool?,
+        ?hidden: bool?,
+        ?name: String?,
+        ?raw: Hash[String, untyped]?
+      ) -> void
 
-      def with: (?component_id: String?, ?name: String?) -> instance
+      def with: (?component_id: String?, ?display_uptime: bool?, ?hidden: bool?, ?name: String?) -> instance
 
       def self.from_api: (nil) -> nil
                        | (Hash[String, untyped] | StatusPageStructureComponentV2) -> StatusPageStructureComponentV2

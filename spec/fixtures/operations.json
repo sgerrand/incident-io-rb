@@ -5319,6 +5319,54 @@
     }
   },
   {
+    "operation_id": "On-call Notification Pauses V2#List",
+    "version": "v2",
+    "resource": "on_call_notification_pauses",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/on_call_notification_pauses",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "on_call_notification_pauses",
+      "model": "OnCallNotificationPauseV2",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "On-call Notification Pauses V2#Show",
+    "version": "v2",
+    "resource": "on_call_notification_pauses",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/on_call_notification_pauses/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "on_call_notification_pause",
+      "items_key": null,
+      "model": "OnCallNotificationPauseV2",
+      "depth": 0
+    }
+  },
+  {
     "operation_id": "Pay Configs V2#Create",
     "version": "v2",
     "resource": "pay_configs",
@@ -7073,6 +7121,135 @@
     }
   },
   {
+    "operation_id": "Status Page Components V2#Create",
+    "version": "v2",
+    "resource": "status_page_components",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/status_page_components",
+    "path_args": [],
+    "keyword_args": {
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name"
+    ],
+    "body": true,
+    "null_body_key": "description",
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_component",
+      "items_key": null,
+      "model": "StatusPageComponentV2",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Status Page Components V2#Destroy",
+    "version": "v2",
+    "resource": "status_page_components",
+    "method": "destroy",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/status_page_components/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Status Page Components V2#List",
+    "version": "v2",
+    "resource": "status_page_components",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/status_page_components",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_components",
+      "items_key": null,
+      "model": "StatusPageComponentV2",
+      "depth": 1
+    }
+  },
+  {
+    "operation_id": "Status Page Components V2#Show",
+    "version": "v2",
+    "resource": "status_page_components",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/status_page_components/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_component",
+      "items_key": null,
+      "model": "StatusPageComponentV2",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Status Page Components V2#Update",
+    "version": "v2",
+    "resource": "status_page_components",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/status_page_components/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name"
+    ],
+    "body": true,
+    "null_body_key": "description",
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_component",
+      "items_key": null,
+      "model": "StatusPageComponentV2",
+      "depth": 0
+    }
+  },
+  {
     "operation_id": "Status Pages V2#CreateStatusPageIncident",
     "version": "v2",
     "resource": "status_pages",
@@ -7473,9 +7650,9 @@
     "idempotency_key": false,
     "result": {
       "kind": "json",
-      "unwrap": "current_structure",
+      "unwrap": null,
       "items_key": null,
-      "model": "StatusPageStructureV2",
+      "model": "StatusPagesShowStatusPageStructureResultV2",
       "depth": 0
     }
   },
@@ -8816,6 +8993,143 @@
       "unwrap": "follow_up",
       "items_key": null,
       "model": "FollowUpV3",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Incident Forms V3#Create",
+    "version": "v3",
+    "resource": "incident_forms",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v3/incident_forms",
+    "path_args": [],
+    "keyword_args": {
+      "expressions": [
+        {}
+      ],
+      "form_type": "declare"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "expressions",
+      "form_type"
+    ],
+    "body": true,
+    "null_body_key": "incident_type_id",
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_form",
+      "items_key": null,
+      "model": "IncidentFormV3",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Incident Forms V3#Delete",
+    "version": "v3",
+    "resource": "incident_forms",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v3/incident_forms/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Incident Forms V3#List",
+    "version": "v3",
+    "resource": "incident_forms",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/incident_forms",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "incident_forms",
+      "model": "IncidentFormV3",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Incident Forms V3#Show",
+    "version": "v3",
+    "resource": "incident_forms",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/incident_forms/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_form",
+      "items_key": null,
+      "model": "IncidentFormV3",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Incident Forms V3#Update",
+    "version": "v3",
+    "resource": "incident_forms",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v3/incident_forms/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "expressions": [
+        {}
+      ],
+      "form_type": "declare"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "expressions",
+      "form_type"
+    ],
+    "body": true,
+    "null_body_key": "incident_type_id",
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_form",
+      "items_key": null,
+      "model": "IncidentFormV3",
       "depth": 0
     }
   },

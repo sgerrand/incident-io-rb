@@ -101,6 +101,8 @@ module IncidentIo
 
         def incidents: () -> Incidents
 
+        def on_call_notification_pauses: () -> OnCallNotificationPauses
+
         def pay_configs: () -> PayConfigs
 
         def pay_reports: () -> PayReports
@@ -114,6 +116,8 @@ module IncidentIo
         def schedules: () -> Schedules
 
         def secrets: () -> Secrets
+
+        def status_page_components: () -> StatusPageComponents
 
         def status_pages: () -> StatusPages
 
@@ -137,6 +141,8 @@ module IncidentIo
         def catalog: () -> Catalog
 
         def follow_ups: () -> FollowUps
+
+        def incident_forms: () -> IncidentForms
 
         def teams: () -> Teams
       end
@@ -194,6 +200,8 @@ module IncidentIo
 
       def incident_attachments: () -> V1::IncidentAttachments
 
+      def incident_forms: () -> V3::IncidentForms
+
       def incident_memberships: () -> V1::IncidentMemberships
 
       def incident_participant_workloads: () -> V2::IncidentParticipantWorkloads
@@ -224,6 +232,8 @@ module IncidentIo
 
       def maintenance_windows: () -> V1::MaintenanceWindows
 
+      def on_call_notification_pauses: () -> V2::OnCallNotificationPauses
+
       def pay_configs: () -> V2::PayConfigs
 
       def pay_reports: () -> V2::PayReports
@@ -241,6 +251,8 @@ module IncidentIo
       def secrets: () -> V2::Secrets
 
       def severities: () -> V1::Severities
+
+      def status_page_components: () -> V2::StatusPageComponents
 
       def status_pages: () -> V2::StatusPages
 
