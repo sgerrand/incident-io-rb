@@ -7,6 +7,9 @@ module IncidentIo
   module Models
     StatusPageStructureGroupV2 = Model.define(
       components: [-> { StatusPageStructureComponentV2 }],
+      description: :string,
+      display_aggregated_uptime: :boolean,
+      hidden: :boolean,
       id: :string,
       name: :string
     )
@@ -15,6 +18,15 @@ module IncidentIo
       # @!attribute [r] components
       #   Array of components belonging to this group
       #   @return [Array<StatusPageStructureComponentV2>, nil]
+      # @!attribute [r] description
+      #   A description shown under the group's name
+      #   @return [String, nil]
+      # @!attribute [r] display_aggregated_uptime
+      #   Whether the page shows uptime aggregated across the group's components
+      #   @return [Boolean, nil]
+      # @!attribute [r] hidden
+      #   Whether the group is hidden from the page
+      #   @return [Boolean, nil]
       # @!attribute [r] id
       #   Unique ID of this component group
       #   @return [String, nil]

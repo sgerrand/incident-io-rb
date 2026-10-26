@@ -23,7 +23,7 @@ module IncidentIo
         # @param incident_status [String] Current status for this status page incident One of: investigating, identified, monitoring, resolved.
         # @param message [String] Markdown initial update on this status page incident.
         # @param name [String] A title for the incident.
-        # @param notify_subscribers [Boolean] Whether to notify subscribers about this status page incident. This will not work if your status page has more than 1000 subscribers.
+        # @param notify_subscribers [Boolean] Whether to notify subscribers about this status page incident. If your status page has more than 1000 subscribers, requests that set this to true are rejected. This limit applies only to the public API: publishing from the incident.io dashboard or Slack always notifies every subscriber.
         # @param status_page_id [String] ID of the status page. You can find this by calling the ListStatusPages endpoint.
         # @param component_statuses [Array<Models::StatusPageIncidentAffectedComponentV2, Hash>] An array of mappings from component ID to current component status.
         # @param idempotency_key [String] A unique key to de-duplicate requests. If you send a request with an idempotency_key that was already used, the original response will be returned. Generated when not given.
@@ -69,7 +69,7 @@ module IncidentIo
         # Endpoint: `POST /v2/status_page_incident_updates`. Scopes: status_pages.publish_updates.
         #
         # @param message [String] Markdown update on what's changed about this status page incident.
-        # @param notify_subscribers [Boolean] Whether to notify subscribers about this incident update. This will not work if your status page has more than 1000 subscribers.
+        # @param notify_subscribers [Boolean] Whether to notify subscribers about this incident update. If your status page has more than 1000 subscribers, requests that set this to true are rejected. This limit applies only to the public API: publishing from the incident.io dashboard or Slack always notifies every subscriber.
         # @param status_page_incident_id [String] ID of the status page incident.
         # @param component_statuses [Array<Models::StatusPageIncidentAffectedComponentV2, Hash>] An array of mappings from component ID to component status. This must not be set if the status page incident status is being set to "resolved", as all components statuses will update to "operational".
         # @param incident_status [String] Optional new status for this status page incident. If not provided, the status will remain unchanged. Setting to "resolved" will end the incident and all component statuses will update to "operational". One of: investigating, identified, monitoring, resolved.
@@ -112,7 +112,7 @@ module IncidentIo
         # @param maintenance_status [String] Current status for this status page maintenance window One of: maintenance_scheduled, maintenance_in_progress, maintenance_complete.
         # @param message [String] Markdown initial update on this status page maintenance window.
         # @param name [String] A title for the maintenance window.
-        # @param notify_subscribers [Boolean] Whether to notify subscribers about this status page maintenance. This will not work if your status page has more than 1000 subscribers.
+        # @param notify_subscribers [Boolean] Whether to notify subscribers about this status page maintenance. If your status page has more than 1000 subscribers, requests that set this to true are rejected. This limit applies only to the public API: publishing from the incident.io dashboard or Slack always notifies every subscriber.
         # @param start_at [Time] The time the maintenance window starts.
         # @param status_page_id [String] ID of the status page. You can find this by calling the ListStatusPages endpoint.
         # @param automate_maintenance_status [Boolean] Whether to publish updates automatically, moving this maintenance window to in progress at start_at and to complete at end_at. Defaults to false, which means you publish those updates yourself. When notify_subscribers is true, the automated updates notify subscribers too. Publishing your own update that sets maintenance_status turns automation off.
@@ -165,7 +165,7 @@ module IncidentIo
         # Endpoint: `POST /v2/status_page_maintenance_updates`. Scopes: status_pages.publish_updates.
         #
         # @param message [String] Markdown update on what's changed about this status page maintenance window.
-        # @param notify_subscribers [Boolean] Whether to notify subscribers about this status page maintenance update. This will not work if your status page has more than 1000 subscribers.
+        # @param notify_subscribers [Boolean] Whether to notify subscribers about this status page maintenance update. If your status page has more than 1000 subscribers, requests that set this to true are rejected. This limit applies only to the public API: publishing from the incident.io dashboard or Slack always notifies every subscriber.
         # @param status_page_maintenance_id [String] ID of the status page maintenance window.
         # @param component_statuses [Array<Models::StatusPageMaintenanceAffectedComponentV2, Hash>] An array of mappings from component ID to component status. This must not be set if the status page maintenance window status is being set to "maintenance_complete", as all components statuses will update to "operational".
         # @param maintenance_status [String] Optional new status for this status page maintenance window. If not provided, the status will remain unchanged. Setting to "maintenance_complete" will end the maintenance window and all component statuses will update to "operational". One of: maintenance_scheduled, maintenance_in_progress, maintenance_complete.
@@ -472,19 +472,18 @@ module IncidentIo
         #
         # Show the structure of a status page.
         #
-        # This endpoint requires a valid API key but no specific scopes. Returns the components and component groups configured on a status page. Use this to find component IDs when specifying affected components for incidents or maintenance windows.
+        # This endpoint requires a valid API key but no specific scopes. Returns the components and component groups configured on a status page, with their display settings, and how the page shows uptime. Use this to find component IDs when specifying affected components for incidents or maintenance windows.
         #
         # Endpoint: `GET /v2/status_page_structures/{status_page_id}`.
         #
         # @param status_page_id [String] ID of the status page.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
-        # @return [Models::StatusPageStructureV2]
+        # @return [Models::StatusPagesShowStatusPageStructureResultV2]
         def show_status_page_structure(status_page_id, request_options: {})
           request(
             :get,
             path("/v2/status_page_structures/%s", status_page_id),
-            unwrap: "current_structure",
-            model: Models::StatusPageStructureV2,
+            model: Models::StatusPagesShowStatusPageStructureResultV2,
             request_options:
           )
         end

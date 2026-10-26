@@ -4729,6 +4729,168 @@
     }
   },
   {
+    "operation_id": "Glossary Entries V2#Create",
+    "version": "v2",
+    "resource": "glossary_entries",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/glossary_entries",
+    "path_args": [],
+    "keyword_args": {
+      "description": "description-value",
+      "item": "item-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "item"
+    ],
+    "body": true,
+    "null_body_key": "after",
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "glossary_entry",
+      "items_key": null,
+      "model": "GlossaryEntryV2",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Glossary Entries V2#Destroy",
+    "version": "v2",
+    "resource": "glossary_entries",
+    "method": "destroy",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/glossary_entries/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Glossary Entries V2#List",
+    "version": "v2",
+    "resource": "glossary_entries",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/glossary_entries",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "glossary_entries",
+      "model": "GlossaryEntryV2",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Glossary Entries V2#Show",
+    "version": "v2",
+    "resource": "glossary_entries",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/glossary_entries/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "glossary_entry",
+      "items_key": null,
+      "model": "GlossaryEntryV2",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Glossary Entries V2#Update",
+    "version": "v2",
+    "resource": "glossary_entries",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/glossary_entries/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "description": "description-value",
+      "item": "item-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "description",
+      "item"
+    ],
+    "body": true,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "glossary_entry",
+      "items_key": null,
+      "model": "GlossaryEntryV2",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Glossary Entries V2#UpdateRanks",
+    "version": "v2",
+    "resource": "glossary_entries",
+    "method": "update_ranks",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/glossary_entries/actions/update_ranks",
+    "path_args": [],
+    "keyword_args": {
+      "rank_updates": [
+        {}
+      ]
+    },
+    "query_keys": [],
+    "body_keys": [
+      "rank_updates"
+    ],
+    "body": true,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "glossary_entries",
+      "items_key": null,
+      "model": "GlossaryEntryV2",
+      "depth": 1
+    }
+  },
+  {
     "operation_id": "Heartbeat V2#Ping",
     "version": "v2",
     "resource": "heartbeat",
@@ -5182,6 +5344,39 @@
     }
   },
   {
+    "operation_id": "Incidents V2#ConnectExternalIssue",
+    "version": "v2",
+    "resource": "incidents",
+    "method": "connect_external_issue",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/incidents/{id}/actions/connect_external_issue",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "issue_template_id": "issue_template_id-value",
+      "provider": "asana",
+      "url": "url-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "issue_template_id",
+      "provider",
+      "url"
+    ],
+    "body": true,
+    "null_body_key": "replace",
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "depth": 0
+    }
+  },
+  {
     "operation_id": "Incidents V2#Create",
     "version": "v2",
     "resource": "incidents",
@@ -5315,6 +5510,89 @@
       "unwrap": "incident",
       "items_key": null,
       "model": "IncidentV2",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Managed Resources V2#CreateManagedResource",
+    "version": "v2",
+    "resource": "managed_resources",
+    "method": "create_managed_resource",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/managed_resources",
+    "path_args": [],
+    "keyword_args": {
+      "annotations": {
+        "one_of": [
+          "annotations-value"
+        ]
+      },
+      "resource_id": "resource_id-value",
+      "resource_type": "alert_route"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "annotations",
+      "resource_id",
+      "resource_type"
+    ],
+    "body": true,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "managed_resource",
+      "items_key": null,
+      "model": "ManagedResourceV2",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "On-call Notification Pauses V2#List",
+    "version": "v2",
+    "resource": "on_call_notification_pauses",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/on_call_notification_pauses",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "on_call_notification_pauses",
+      "model": "OnCallNotificationPauseV2",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "On-call Notification Pauses V2#Show",
+    "version": "v2",
+    "resource": "on_call_notification_pauses",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/on_call_notification_pauses/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "on_call_notification_pause",
+      "items_key": null,
+      "model": "OnCallNotificationPauseV2",
       "depth": 0
     }
   },
@@ -7073,6 +7351,135 @@
     }
   },
   {
+    "operation_id": "Status Page Components V2#Create",
+    "version": "v2",
+    "resource": "status_page_components",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v2/status_page_components",
+    "path_args": [],
+    "keyword_args": {
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name"
+    ],
+    "body": true,
+    "null_body_key": "description",
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_component",
+      "items_key": null,
+      "model": "StatusPageComponentV2",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Status Page Components V2#Destroy",
+    "version": "v2",
+    "resource": "status_page_components",
+    "method": "destroy",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v2/status_page_components/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Status Page Components V2#List",
+    "version": "v2",
+    "resource": "status_page_components",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/status_page_components",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_components",
+      "items_key": null,
+      "model": "StatusPageComponentV2",
+      "depth": 1
+    }
+  },
+  {
+    "operation_id": "Status Page Components V2#Show",
+    "version": "v2",
+    "resource": "status_page_components",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v2/status_page_components/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_component",
+      "items_key": null,
+      "model": "StatusPageComponentV2",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Status Page Components V2#Update",
+    "version": "v2",
+    "resource": "status_page_components",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v2/status_page_components/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "name": "name-value"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "name"
+    ],
+    "body": true,
+    "null_body_key": "description",
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "status_page_component",
+      "items_key": null,
+      "model": "StatusPageComponentV2",
+      "depth": 0
+    }
+  },
+  {
     "operation_id": "Status Pages V2#CreateStatusPageIncident",
     "version": "v2",
     "resource": "status_pages",
@@ -7473,9 +7880,9 @@
     "idempotency_key": false,
     "result": {
       "kind": "json",
-      "unwrap": "current_structure",
+      "unwrap": null,
       "items_key": null,
-      "model": "StatusPageStructureV2",
+      "model": "StatusPagesShowStatusPageStructureResultV2",
       "depth": 0
     }
   },
@@ -8816,6 +9223,143 @@
       "unwrap": "follow_up",
       "items_key": null,
       "model": "FollowUpV3",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Incident Forms V3#Create",
+    "version": "v3",
+    "resource": "incident_forms",
+    "method": "create",
+    "deprecated": false,
+    "http_method": "post",
+    "path": "/v3/incident_forms",
+    "path_args": [],
+    "keyword_args": {
+      "expressions": [
+        {}
+      ],
+      "form_type": "declare"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "expressions",
+      "form_type"
+    ],
+    "body": true,
+    "null_body_key": "incident_type_id",
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_form",
+      "items_key": null,
+      "model": "IncidentFormV3",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Incident Forms V3#Delete",
+    "version": "v3",
+    "resource": "incident_forms",
+    "method": "delete",
+    "deprecated": false,
+    "http_method": "delete",
+    "path": "/v3/incident_forms/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "none",
+      "unwrap": null,
+      "items_key": null,
+      "model": null,
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Incident Forms V3#List",
+    "version": "v3",
+    "resource": "incident_forms",
+    "method": "list",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/incident_forms",
+    "path_args": [],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "paginated",
+      "unwrap": null,
+      "items_key": "incident_forms",
+      "model": "IncidentFormV3",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Incident Forms V3#Show",
+    "version": "v3",
+    "resource": "incident_forms",
+    "method": "show",
+    "deprecated": false,
+    "http_method": "get",
+    "path": "/v3/incident_forms/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {},
+    "query_keys": [],
+    "body_keys": [],
+    "body": false,
+    "null_body_key": null,
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_form",
+      "items_key": null,
+      "model": "IncidentFormV3",
+      "depth": 0
+    }
+  },
+  {
+    "operation_id": "Incident Forms V3#Update",
+    "version": "v3",
+    "resource": "incident_forms",
+    "method": "update",
+    "deprecated": false,
+    "http_method": "put",
+    "path": "/v3/incident_forms/{id}",
+    "path_args": [
+      "id-value"
+    ],
+    "keyword_args": {
+      "expressions": [
+        {}
+      ],
+      "form_type": "declare"
+    },
+    "query_keys": [],
+    "body_keys": [
+      "expressions",
+      "form_type"
+    ],
+    "body": true,
+    "null_body_key": "incident_type_id",
+    "idempotency_key": false,
+    "result": {
+      "kind": "json",
+      "unwrap": "incident_form",
+      "items_key": null,
+      "model": "IncidentFormV3",
       "depth": 0
     }
   },
