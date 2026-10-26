@@ -15,7 +15,7 @@ module IncidentIo
       attr_reader incident_id: String?
       # If this step ran for a specific incident (e.g.
       attr_reader incident_reference: String?
-      # Status of the step One of: complete, pending, error.
+      # Status of the step One of: complete, pending, error, suspended, skipped.
       attr_reader status: String?
       # Name of the step
       attr_reader step: String?
