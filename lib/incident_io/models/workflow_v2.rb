@@ -6,6 +6,7 @@
 module IncidentIo
   module Models
     WorkflowV2 = Model.define(
+      auto_run_mode: :string,
       condition_groups: [-> { ConditionGroupV2 }],
       continue_on_step_error: :boolean,
       delay: -> { WorkflowDelayV2 },
@@ -30,6 +31,9 @@ module IncidentIo
     )
 
     class WorkflowV2
+      # @!attribute [r] auto_run_mode
+      #   Whether the workflow is configured to run immediately or ask for confirmation…
+      #   @return [String, nil]
       # @!attribute [r] condition_groups
       #   Conditions that apply to the workflow trigger
       #   @return [Array<ConditionGroupV2>, nil]
@@ -46,7 +50,7 @@ module IncidentIo
       #   Folder to display the workflow in
       #   @return [String, nil]
       # @!attribute [r] form_fields
-      #   User-configured form fields available in the workflow scope (manual triggers…
+      #   User-configured form fields available in the workflow scope
       #   @return [Array<WorkflowFormFieldV2>, nil]
       # @!attribute [r] id
       #   Unique identifier for the workflow

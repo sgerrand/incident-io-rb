@@ -7,6 +7,8 @@ module IncidentIo
       extend Model::ClassMethods
       include Model::InstanceMethods
 
+      # Whether the workflow is configured to run immediately or ask for confirmation in the incident channel One of: run_automatically, confirm_before_running.
+      attr_reader auto_run_mode: String?
       # Conditions that apply to the workflow trigger
       attr_reader condition_groups: Array[ConditionGroupV2]?
       # Whether to continue executing the workflow if a step fails
@@ -16,7 +18,7 @@ module IncidentIo
       attr_reader expressions: Array[ExpressionV2]?
       # Folder to display the workflow in
       attr_reader folder: String?
-      # User-configured form fields available in the workflow scope (manual triggers only)
+      # User-configured form fields available in the workflow scope.
       attr_reader form_fields: Array[WorkflowFormFieldV2]?
       # Unique identifier for the workflow
       attr_reader id: String?
@@ -49,6 +51,7 @@ module IncidentIo
       attr_reader version: Integer?
 
       def self.new: (
+        ?auto_run_mode: String?,
         ?condition_groups: Array[ConditionGroupV2]?,
         ?continue_on_step_error: bool?,
         ?delay: WorkflowDelayV2?,
@@ -74,6 +77,7 @@ module IncidentIo
       ) -> instance
 
       def initialize: (
+        ?auto_run_mode: String?,
         ?condition_groups: Array[ConditionGroupV2]?,
         ?continue_on_step_error: bool?,
         ?delay: WorkflowDelayV2?,
@@ -99,6 +103,7 @@ module IncidentIo
       ) -> void
 
       def with: (
+        ?auto_run_mode: String?,
         ?condition_groups: Array[ConditionGroupV2]?,
         ?continue_on_step_error: bool?,
         ?delay: WorkflowDelayV2?,

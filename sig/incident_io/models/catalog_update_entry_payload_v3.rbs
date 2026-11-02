@@ -11,6 +11,8 @@ module IncidentIo
       attr_reader aliases: Array[String]?
       # Values of this entry
       attr_reader attribute_values: Hash[String, CatalogEngineParamBindingPayloadV3]?
+      # Aliases your organisation has added to an entry of a catalog type that incident.io syncs, such as a schedule or escalation path, which you can't change aliases on directly.
+      attr_reader custom_aliases: Array[String]?
       # An optional alternative ID for this entry, which is ensured to be unique for the type
       attr_reader external_id: String?
       # Name is the human readable name of this entry
@@ -23,6 +25,7 @@ module IncidentIo
       def self.new: (
         ?aliases: Array[String]?,
         ?attribute_values: Hash[String, CatalogEngineParamBindingPayloadV3]?,
+        ?custom_aliases: Array[String]?,
         ?external_id: String?,
         ?name: String?,
         ?rank: Integer?,
@@ -33,6 +36,7 @@ module IncidentIo
       def initialize: (
         ?aliases: Array[String]?,
         ?attribute_values: Hash[String, CatalogEngineParamBindingPayloadV3]?,
+        ?custom_aliases: Array[String]?,
         ?external_id: String?,
         ?name: String?,
         ?rank: Integer?,
@@ -43,6 +47,7 @@ module IncidentIo
       def with: (
         ?aliases: Array[String]?,
         ?attribute_values: Hash[String, CatalogEngineParamBindingPayloadV3]?,
+        ?custom_aliases: Array[String]?,
         ?external_id: String?,
         ?name: String?,
         ?rank: Integer?,

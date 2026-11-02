@@ -9,6 +9,8 @@ module IncidentIo
 
       # Annotations that track metadata about this resource
       attr_reader annotations: Hash[String, String]?
+      # Whether the workflow runs immediately, or asks for confirmation in the incident channel first.
+      attr_reader auto_run_mode: String?
       # Conditions that apply to the workflow trigger
       attr_reader condition_groups: Array[ConditionGroupPayloadV2]?
       # Whether to continue executing the workflow if a step fails
@@ -18,7 +20,7 @@ module IncidentIo
       attr_reader expressions: Array[ExpressionPayloadV2]?
       # Folder to display the workflow in
       attr_reader folder: String?
-      # User-configured form fields available in the workflow scope (manual triggers only)
+      # User-configured form fields available in the workflow scope.
       attr_reader form_fields: Array[WorkflowFormFieldPayloadV2]?
       # Whether to include private escalations
       attr_reader include_private_escalations: bool?
@@ -47,6 +49,7 @@ module IncidentIo
 
       def self.new: (
         ?annotations: Hash[String, String]?,
+        ?auto_run_mode: String?,
         ?condition_groups: Array[ConditionGroupPayloadV2]?,
         ?continue_on_step_error: bool?,
         ?delay: WorkflowDelayV2?,
@@ -70,6 +73,7 @@ module IncidentIo
 
       def initialize: (
         ?annotations: Hash[String, String]?,
+        ?auto_run_mode: String?,
         ?condition_groups: Array[ConditionGroupPayloadV2]?,
         ?continue_on_step_error: bool?,
         ?delay: WorkflowDelayV2?,
@@ -93,6 +97,7 @@ module IncidentIo
 
       def with: (
         ?annotations: Hash[String, String]?,
+        ?auto_run_mode: String?,
         ?condition_groups: Array[ConditionGroupPayloadV2]?,
         ?continue_on_step_error: bool?,
         ?delay: WorkflowDelayV2?,
