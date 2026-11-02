@@ -13,6 +13,51 @@ module IncidentIo
       # Care should be taken around these endpoints, as automation that creates duplicate
       # incidents can be distracting, and impact reporting.
       class Incidents < Resource
+        # Connect an existing issue in an issue tracker to an incident, as its external…
+        #
+        # Connect an existing issue in an issue tracker to an incident, as its external issue.
+        #
+        # The issue is synced using the given incident ticket template, as if incident.io had
+        # created it from that template. The next sync writes the incident's fields into the issue.
+        #
+        # This works whether or not automatic incident ticket creation is turned on. While it is
+        # off, no tickets are created for other incidents, and the incident's fields are not
+        # written into this issue until it is turned on.
+        #
+        # This needs the incidents.connect_external_issue scope, either across the organisation or
+        # from an incident role on this incident.
+        #
+        # This fails if the incident already has a different external issue (unless replace is
+        # true), or if the issue is already linked to another incident or follow-up.
+        #
+        # The ID supplied can be either the incident's full ID, or the numeric part of its
+        # reference.
+        #
+        # Endpoint: `POST /v2/incidents/{id}/actions/connect_external_issue`.
+        #
+        # @param id [String] The unique identifier of the incident.
+        # @param issue_template_id [String] ID of the incident ticket template to sync the issue with.
+        # @param provider [String] The issue tracker provider the issue belongs to. It must match the provider of the incident ticket template. One of: asana, azure_devops, click_up, freshservice, linear, jira, salesforce, jira_server, github, gitlab, service_now, shortcut, notion.
+        # @param url [String] URL of the issue in the issue tracker.
+        # @param replace [Boolean] Whether to replace the incident's current external issue, if it has a different one.
+        # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
+        # @return [nil]
+        def connect_external_issue(
+          id,
+          issue_template_id:,
+          provider:,
+          url:,
+          replace: NOT_GIVEN,
+          request_options: {}
+        )
+          request(
+            :post,
+            path("/v2/incidents/%s/actions/connect_external_issue", id),
+            body: given({issue_template_id:, provider:, replace:, url:}),
+            request_options:
+          )
+        end
+
         # Create a new incident
         #
         # Create a new incident.
@@ -90,9 +135,9 @@ module IncidentIo
         # When using this endpoint, only fields that are provided will be edited (omitted fields
         # will be ignored).
         #
-        # The API key must have the scope corresponding to each property it changes:
+        # The API key must have `incidents.view`, and the scope corresponding to each property it changes:
         #
-        # - `incidents.update_name` for the name
+        # - `incidents.update_name` for the name or the Slack channel name override
         # - `incidents.update_summary` for the summary
         # - `incidents.update_severity` for the severity
         # - `incidents.update_status` for the status

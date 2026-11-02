@@ -131,7 +131,7 @@ module IncidentIo
         def show_status_page_structure: (
           String status_page_id,
           ?request_options: request_options
-        ) -> Models::StatusPageStructureV2
+        ) -> Models::StatusPagesShowStatusPageStructureResultV2
 
         # Update a status page incident
         def update_status_page_incident: (
