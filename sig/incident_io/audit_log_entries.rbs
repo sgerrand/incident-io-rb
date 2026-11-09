@@ -7,230 +7,470 @@ module IncidentIo
 
     # Any known audit log entry.
     type entry = Models::AuditLogsAPIKeyCreatedV1
+               | Models::AuditLogsAPIKeyCreatedV2
                | Models::AuditLogsAPIKeyDeletedV1
+               | Models::AuditLogsAPIKeyDeletedV2
                | Models::AuditLogsAPIKeyRotatedV1
+               | Models::AuditLogsAPIKeyRotatedV2
                | Models::AuditLogsAPIKeyUpdatedV1
+               | Models::AuditLogsAPIKeyUpdatedV2
                | Models::AuditLogsActivityLogScrubbedV1
+               | Models::AuditLogsActivityLogScrubbedV2
                | Models::AuditLogsAlertChatMessageTemplateCreatedV1
+               | Models::AuditLogsAlertChatMessageTemplateCreatedV2
                | Models::AuditLogsAlertChatMessageTemplateDeletedV1
+               | Models::AuditLogsAlertChatMessageTemplateDeletedV2
                | Models::AuditLogsAlertChatMessageTemplateUpdatedV1
+               | Models::AuditLogsAlertChatMessageTemplateUpdatedV2
                | Models::AuditLogsAlertPriorityCreatedV1
+               | Models::AuditLogsAlertPriorityCreatedV2
                | Models::AuditLogsAlertPriorityDeletedV1
+               | Models::AuditLogsAlertPriorityDeletedV2
                | Models::AuditLogsAlertPrioritySetAsDefaultV1
+               | Models::AuditLogsAlertPrioritySetAsDefaultV2
                | Models::AuditLogsAlertPriorityUpdatedV1
+               | Models::AuditLogsAlertPriorityUpdatedV2
                | Models::AuditLogsAlertRouteCreatedV1
+               | Models::AuditLogsAlertRouteCreatedV2
                | Models::AuditLogsAlertRouteDeletedV1
+               | Models::AuditLogsAlertRouteDeletedV2
                | Models::AuditLogsAlertRouteUpdatedV1
+               | Models::AuditLogsAlertRouteUpdatedV2
                | Models::AuditLogsAlertSchemaUpdatedV1
+               | Models::AuditLogsAlertSchemaUpdatedV2
                | Models::AuditLogsAlertScrubbedV1
+               | Models::AuditLogsAlertScrubbedV2
                | Models::AuditLogsAlertSourceConfigCreatedV1
+               | Models::AuditLogsAlertSourceConfigCreatedV2
                | Models::AuditLogsAlertSourceConfigDeletedV1
+               | Models::AuditLogsAlertSourceConfigDeletedV2
                | Models::AuditLogsAlertSourceConfigUpdatedV1
+               | Models::AuditLogsAlertSourceConfigUpdatedV2
                | Models::AuditLogsAnnouncementPostTemplateCreatedV1
                | Models::AuditLogsAnnouncementPostTemplateCreatedV2
+               | Models::AuditLogsAnnouncementPostTemplateCreatedV3
                | Models::AuditLogsAnnouncementPostTemplateDeletedV1
+               | Models::AuditLogsAnnouncementPostTemplateDeletedV2
                | Models::AuditLogsAnnouncementPostTemplateSetAsDefaultV1
+               | Models::AuditLogsAnnouncementPostTemplateSetAsDefaultV2
                | Models::AuditLogsAnnouncementPostTemplateUpdatedV1
                | Models::AuditLogsAnnouncementPostTemplateUpdatedV2
+               | Models::AuditLogsAnnouncementPostTemplateUpdatedV3
                | Models::AuditLogsAnnouncementRuleCreatedV1
                | Models::AuditLogsAnnouncementRuleCreatedV2
+               | Models::AuditLogsAnnouncementRuleCreatedV3
                | Models::AuditLogsAnnouncementRuleDeletedV1
+               | Models::AuditLogsAnnouncementRuleDeletedV2
                | Models::AuditLogsAnnouncementRuleUpdatedV1
                | Models::AuditLogsAnnouncementRuleUpdatedV2
+               | Models::AuditLogsAnnouncementRuleUpdatedV3
                | Models::AuditLogsCatalogEntryAttributeUpdatedV1
                | Models::AuditLogsCatalogEntryAttributeUpdatedV2
+               | Models::AuditLogsCatalogEntryAttributeUpdatedV3
                | Models::AuditLogsCatalogTypeCreatedV1
+               | Models::AuditLogsCatalogTypeCreatedV2
                | Models::AuditLogsCatalogTypeDeletedV1
+               | Models::AuditLogsCatalogTypeDeletedV2
                | Models::AuditLogsCatalogTypeUpdatedV1
+               | Models::AuditLogsCatalogTypeUpdatedV2
+               | Models::AuditLogsCodeRepositoryAccessedV1
+               | Models::AuditLogsConnectorConfigArchivedV1
                | Models::AuditLogsConnectorConfigCreatedV1
+               | Models::AuditLogsConnectorConfigCreatedV2
+               | Models::AuditLogsConnectorConfigPreviousTokenRevokedV1
                | Models::AuditLogsConnectorConfigTokenGeneratedV1
+               | Models::AuditLogsConnectorConfigTokenGeneratedV2
                | Models::AuditLogsConnectorConfigUpdatedV1
+               | Models::AuditLogsConnectorConfigUpdatedV2
                | Models::AuditLogsCustomFieldCreatedV1
+               | Models::AuditLogsCustomFieldCreatedV2
                | Models::AuditLogsCustomFieldDeletedV1
+               | Models::AuditLogsCustomFieldDeletedV2
                | Models::AuditLogsCustomFieldUpdatedV1
+               | Models::AuditLogsCustomFieldUpdatedV2
                | Models::AuditLogsDebriefInviteRuleCreatedV1
+               | Models::AuditLogsDebriefInviteRuleCreatedV2
                | Models::AuditLogsDebriefInviteRuleDeletedV1
+               | Models::AuditLogsDebriefInviteRuleDeletedV2
                | Models::AuditLogsDebriefInviteRuleUpdatedV1
+               | Models::AuditLogsDebriefInviteRuleUpdatedV2
                | Models::AuditLogsEmailOtpLoginSettingUpdatedV1
+               | Models::AuditLogsEmailOtpLoginSettingUpdatedV2
                | Models::AuditLogsEscalationPathCreatedV1
+               | Models::AuditLogsEscalationPathCreatedV2
                | Models::AuditLogsEscalationPathDeletedV1
+               | Models::AuditLogsEscalationPathDeletedV2
                | Models::AuditLogsEscalationPathTemplateCreatedV1
+               | Models::AuditLogsEscalationPathTemplateCreatedV2
                | Models::AuditLogsEscalationPathTemplateDeletedV1
+               | Models::AuditLogsEscalationPathTemplateDeletedV2
                | Models::AuditLogsEscalationPathTemplateUpdatedV1
+               | Models::AuditLogsEscalationPathTemplateUpdatedV2
                | Models::AuditLogsEscalationPathUpdatedV1
+               | Models::AuditLogsEscalationPathUpdatedV2
                | Models::AuditLogsEscalationScrubbedV1
+               | Models::AuditLogsEscalationScrubbedV2
                | Models::AuditLogsExtensionConnectorCalledV1
                | Models::AuditLogsExtensionConnectorCalledV2
                | Models::AuditLogsExtensionConnectorCalledV3
+               | Models::AuditLogsExtensionConnectorCalledV4
+               | Models::AuditLogsExtensionConnectorCalledV5
+               | Models::AuditLogsExtensionConnectorCalledV6
+               | Models::AuditLogsExtensionPluginCreatedV1
+               | Models::AuditLogsExtensionPluginCreatedV2
+               | Models::AuditLogsExtensionPluginDeletedV1
+               | Models::AuditLogsExtensionPluginDeletedV2
+               | Models::AuditLogsExtensionPluginUpdatedV1
+               | Models::AuditLogsExtensionPluginUpdatedV2
                | Models::AuditLogsFollowUpCategoryCreatedV1
+               | Models::AuditLogsFollowUpCategoryCreatedV2
                | Models::AuditLogsFollowUpCategoryDeletedV1
+               | Models::AuditLogsFollowUpCategoryDeletedV2
                | Models::AuditLogsFollowUpCategoryUpdatedV1
+               | Models::AuditLogsFollowUpCategoryUpdatedV2
                | Models::AuditLogsFollowUpPriorityCreatedV1
+               | Models::AuditLogsFollowUpPriorityCreatedV2
                | Models::AuditLogsFollowUpPriorityDeletedV1
+               | Models::AuditLogsFollowUpPriorityDeletedV2
                | Models::AuditLogsFollowUpPriorityUpdatedV1
+               | Models::AuditLogsFollowUpPriorityUpdatedV2
+               | Models::AuditLogsGlossaryEntryCreatedV1
+               | Models::AuditLogsGlossaryEntryCreatedV2
+               | Models::AuditLogsGlossaryEntryDeletedV1
+               | Models::AuditLogsGlossaryEntryDeletedV2
+               | Models::AuditLogsGlossaryEntryUpdatedV1
+               | Models::AuditLogsGlossaryEntryUpdatedV2
                | Models::AuditLogsHolidayUserFeedCreatedV1
+               | Models::AuditLogsHolidayUserFeedCreatedV2
                | Models::AuditLogsHolidayUserFeedDeletedV1
+               | Models::AuditLogsHolidayUserFeedDeletedV2
                | Models::AuditLogsHolidayUserFeedUpdatedV1
+               | Models::AuditLogsHolidayUserFeedUpdatedV2
                | Models::AuditLogsHrisTimeOffPolicyUpdatedV1
+               | Models::AuditLogsHrisTimeOffPolicyUpdatedV2
                | Models::AuditLogsIPAllowlistUpdatedV1
+               | Models::AuditLogsIPAllowlistUpdatedV2
                | Models::AuditLogsIncidentCallSettingUpdatedV1
+               | Models::AuditLogsIncidentCallSettingUpdatedV2
                | Models::AuditLogsIncidentCallTranscriptionSessionDeletedV1
+               | Models::AuditLogsIncidentCallTranscriptionSessionDeletedV2
                | Models::AuditLogsIncidentDurationMetricCreatedV1
+               | Models::AuditLogsIncidentDurationMetricCreatedV2
                | Models::AuditLogsIncidentDurationMetricDeletedV1
+               | Models::AuditLogsIncidentDurationMetricDeletedV2
                | Models::AuditLogsIncidentDurationMetricUpdatedV1
+               | Models::AuditLogsIncidentDurationMetricUpdatedV2
                | Models::AuditLogsIncidentRoleCreatedV1
+               | Models::AuditLogsIncidentRoleCreatedV2
                | Models::AuditLogsIncidentRoleDeletedV1
+               | Models::AuditLogsIncidentRoleDeletedV2
                | Models::AuditLogsIncidentRoleUpdatedV1
+               | Models::AuditLogsIncidentRoleUpdatedV2
                | Models::AuditLogsIncidentScrubbedV1
+               | Models::AuditLogsIncidentScrubbedV2
                | Models::AuditLogsIncidentStatusCreatedV1
+               | Models::AuditLogsIncidentStatusCreatedV2
                | Models::AuditLogsIncidentStatusDeletedV1
+               | Models::AuditLogsIncidentStatusDeletedV2
                | Models::AuditLogsIncidentStatusUpdatedV1
+               | Models::AuditLogsIncidentStatusUpdatedV2
+               | Models::AuditLogsIncidentSummaryConfigUpdatedV1
                | Models::AuditLogsIncidentTemplateCreatedV1
+               | Models::AuditLogsIncidentTemplateCreatedV2
                | Models::AuditLogsIncidentTemplateDeletedV1
+               | Models::AuditLogsIncidentTemplateDeletedV2
                | Models::AuditLogsIncidentTemplateSetAsDefaultV1
+               | Models::AuditLogsIncidentTemplateSetAsDefaultV2
                | Models::AuditLogsIncidentTemplateUpdatedV1
+               | Models::AuditLogsIncidentTemplateUpdatedV2
                | Models::AuditLogsIncidentTimestampCreatedV1
+               | Models::AuditLogsIncidentTimestampCreatedV2
                | Models::AuditLogsIncidentTimestampDeletedV1
+               | Models::AuditLogsIncidentTimestampDeletedV2
                | Models::AuditLogsIncidentTimestampSetByRuleCreatedV1
+               | Models::AuditLogsIncidentTimestampSetByRuleCreatedV2
                | Models::AuditLogsIncidentTimestampSetByRuleDeletedV1
+               | Models::AuditLogsIncidentTimestampSetByRuleDeletedV2
                | Models::AuditLogsIncidentTimestampSetByRuleUpdatedV1
+               | Models::AuditLogsIncidentTimestampSetByRuleUpdatedV2
                | Models::AuditLogsIncidentTimestampUpdatedV1
+               | Models::AuditLogsIncidentTimestampUpdatedV2
                | Models::AuditLogsIncidentTypeCreatedV1
                | Models::AuditLogsIncidentTypeCreatedV2
+               | Models::AuditLogsIncidentTypeCreatedV3
                | Models::AuditLogsIncidentTypeDeletedV1
+               | Models::AuditLogsIncidentTypeDeletedV2
                | Models::AuditLogsIncidentTypeUpdatedV1
                | Models::AuditLogsIncidentTypeUpdatedV2
+               | Models::AuditLogsIncidentTypeUpdatedV3
+               | Models::AuditLogsIncidentUpdateConfigUpdatedV1
                | Models::AuditLogsIntegrationInstalledV1
+               | Models::AuditLogsIntegrationInstalledV2
                | Models::AuditLogsIntegrationUninstalledV1
+               | Models::AuditLogsIntegrationUninstalledV2
+               | Models::AuditLogsIntegrationUpdatedV1
                | Models::AuditLogsInternalStatusPageCreatedV1
+               | Models::AuditLogsInternalStatusPageCreatedV2
                | Models::AuditLogsInternalStatusPageDeletedV1
+               | Models::AuditLogsInternalStatusPageDeletedV2
                | Models::AuditLogsInternalStatusPageUpdatedV1
+               | Models::AuditLogsInternalStatusPageUpdatedV2
+               | Models::AuditLogsInvestigationConfigUpdatedV1
+               | Models::AuditLogsInvestigationConfigUpdatedV2
+               | Models::AuditLogsInvestigationTriggerCreatedV1
+               | Models::AuditLogsInvestigationTriggerCreatedV2
+               | Models::AuditLogsInvestigationTriggerDeletedV1
+               | Models::AuditLogsInvestigationTriggerDeletedV2
+               | Models::AuditLogsInvestigationTriggerUpdatedV1
+               | Models::AuditLogsInvestigationTriggerUpdatedV2
                | Models::AuditLogsMaintenanceWindowCreatedV1
+               | Models::AuditLogsMaintenanceWindowCreatedV2
                | Models::AuditLogsMaintenanceWindowDeletedV1
+               | Models::AuditLogsMaintenanceWindowDeletedV2
                | Models::AuditLogsMaintenanceWindowUpdatedV1
+               | Models::AuditLogsMaintenanceWindowUpdatedV2
                | Models::AuditLogsMicrosoftEntraTenantLinkedV1
+               | Models::AuditLogsMicrosoftEntraTenantLinkedV2
                | Models::AuditLogsMobileIntuneEnabledSettingUpdatedV1
+               | Models::AuditLogsMobileIntuneEnabledSettingUpdatedV2
                | Models::AuditLogsNudgeCreatedV1
+               | Models::AuditLogsNudgeCreatedV2
                | Models::AuditLogsNudgeDeletedV1
+               | Models::AuditLogsNudgeDeletedV2
                | Models::AuditLogsNudgeUpdatedV1
+               | Models::AuditLogsNudgeUpdatedV2
                | Models::AuditLogsOnCallNotificationMethodCreatedV1
                | Models::AuditLogsOnCallNotificationMethodCreatedV2
+               | Models::AuditLogsOnCallNotificationMethodCreatedV3
                | Models::AuditLogsOnCallNotificationMethodDestroyedV1
                | Models::AuditLogsOnCallNotificationMethodDestroyedV2
+               | Models::AuditLogsOnCallNotificationMethodDestroyedV3
                | Models::AuditLogsOnCallNotificationPauseCreatedV1
                | Models::AuditLogsOnCallNotificationPauseCreatedV2
+               | Models::AuditLogsOnCallNotificationPauseCreatedV3
                | Models::AuditLogsOnCallNotificationPauseDeletedV1
                | Models::AuditLogsOnCallNotificationPauseDeletedV2
+               | Models::AuditLogsOnCallNotificationPauseDeletedV3
                | Models::AuditLogsOnCallNotificationPauseResumedV1
+               | Models::AuditLogsOnCallNotificationPauseResumedV2
                | Models::AuditLogsOnCallNotificationPauseUpdatedV1
                | Models::AuditLogsOnCallNotificationPauseUpdatedV2
+               | Models::AuditLogsOnCallNotificationPauseUpdatedV3
                | Models::AuditLogsOnCallUpsellRequestedV1
+               | Models::AuditLogsOnCallUpsellRequestedV2
                | Models::AuditLogsOrganisationSettingsUpdatedV1
+               | Models::AuditLogsOrganisationSettingsUpdatedV2
+               | Models::AuditLogsOrganisationSettingsUpdatedV3
                | Models::AuditLogsPolicyCreatedV1
                | Models::AuditLogsPolicyCreatedV2
+               | Models::AuditLogsPolicyCreatedV3
                | Models::AuditLogsPolicyDeletedV1
+               | Models::AuditLogsPolicyDeletedV2
                | Models::AuditLogsPolicyReportScheduleCreatedV1
+               | Models::AuditLogsPolicyReportScheduleCreatedV2
                | Models::AuditLogsPolicyReportScheduleDeletedV1
+               | Models::AuditLogsPolicyReportScheduleDeletedV2
                | Models::AuditLogsPolicyReportScheduleUpdatedV1
+               | Models::AuditLogsPolicyReportScheduleUpdatedV2
                | Models::AuditLogsPolicyUpdatedV1
                | Models::AuditLogsPolicyUpdatedV2
+               | Models::AuditLogsPolicyUpdatedV3
                | Models::AuditLogsPostIncidentTaskCreatedV1
+               | Models::AuditLogsPostIncidentTaskCreatedV2
                | Models::AuditLogsPostIncidentTaskDeletedV1
+               | Models::AuditLogsPostIncidentTaskDeletedV2
                | Models::AuditLogsPostIncidentTaskUpdatedV1
+               | Models::AuditLogsPostIncidentTaskUpdatedV2
                | Models::AuditLogsPostmortemSectionCreatedV1
                | Models::AuditLogsPostmortemSectionCreatedV2
+               | Models::AuditLogsPostmortemSectionCreatedV3
                | Models::AuditLogsPostmortemSectionDeletedV1
                | Models::AuditLogsPostmortemSectionDeletedV2
+               | Models::AuditLogsPostmortemSectionDeletedV3
                | Models::AuditLogsPostmortemSectionUpdatedV1
                | Models::AuditLogsPostmortemSectionUpdatedV2
+               | Models::AuditLogsPostmortemSectionUpdatedV3
                | Models::AuditLogsPostmortemTemplateCreatedV1
                | Models::AuditLogsPostmortemTemplateCreatedV2
+               | Models::AuditLogsPostmortemTemplateCreatedV3
                | Models::AuditLogsPostmortemTemplateDeletedV1
                | Models::AuditLogsPostmortemTemplateDeletedV2
+               | Models::AuditLogsPostmortemTemplateDeletedV3
                | Models::AuditLogsPostmortemTemplateUpdatedV1
                | Models::AuditLogsPostmortemTemplateUpdatedV2
+               | Models::AuditLogsPostmortemTemplateUpdatedV3
                | Models::AuditLogsPrivateAlertAccessAttemptedV1
+               | Models::AuditLogsPrivateAlertAccessAttemptedV2
                | Models::AuditLogsPrivateEscalationAccessAttemptedV1
+               | Models::AuditLogsPrivateEscalationAccessAttemptedV2
                | Models::AuditLogsPrivateIncidentAccessAttemptedV1
                | Models::AuditLogsPrivateIncidentAccessAttemptedV2
+               | Models::AuditLogsPrivateIncidentAccessAttemptedV3
                | Models::AuditLogsPrivateIncidentAccessRequestedV1
+               | Models::AuditLogsPrivateIncidentAccessRequestedV2
                | Models::AuditLogsPrivateIncidentAccessedViaBotV1
+               | Models::AuditLogsPrivateIncidentAccessedViaBotV2
                | Models::AuditLogsPrivateIncidentMembershipGrantedV1
+               | Models::AuditLogsPrivateIncidentMembershipGrantedV2
                | Models::AuditLogsPrivateIncidentMembershipRevokedV1
+               | Models::AuditLogsPrivateIncidentMembershipRevokedV2
                | Models::AuditLogsPrivateIncidentMembershipUpgradedToDirectV1
+               | Models::AuditLogsPrivateIncidentMembershipUpgradedToDirectV2
                | Models::AuditLogsPrivateIncidentTeamMembershipGrantedV1
+               | Models::AuditLogsPrivateIncidentTeamMembershipGrantedV2
                | Models::AuditLogsPrivateIncidentTeamMembershipRevokedV1
+               | Models::AuditLogsPrivateIncidentTeamMembershipRevokedV2
                | Models::AuditLogsPrivateInsightsExportedV1
+               | Models::AuditLogsPrivateInsightsExportedV2
                | Models::AuditLogsPrivateInsightsMeasureQueriedV1
+               | Models::AuditLogsPrivateInsightsMeasureQueriedV2
                | Models::AuditLogsPrivateInsightsUnderlyingDataQueriedV1
+               | Models::AuditLogsPrivateInsightsUnderlyingDataQueriedV2
                | Models::AuditLogsQrCodeMobileLoginSettingUpdatedV1
+               | Models::AuditLogsQrCodeMobileLoginSettingUpdatedV2
                | Models::AuditLogsRbacRoleCreatedV1
+               | Models::AuditLogsRbacRoleCreatedV2
                | Models::AuditLogsRbacRoleDeletedV1
+               | Models::AuditLogsRbacRoleDeletedV2
                | Models::AuditLogsRbacRoleUpdatedV1
+               | Models::AuditLogsRbacRoleUpdatedV2
+               | Models::AuditLogsReliabilityReviewRepositoryUpdatedV1
+               | Models::AuditLogsReliabilityReviewRepositoryUpdatedV2
+               | Models::AuditLogsReliabilityReviewSettingsUpdatedV1
+               | Models::AuditLogsReliabilityReviewSettingsUpdatedV2
+               | Models::AuditLogsReliabilityReviewSpendLimitUpdatedV1
+               | Models::AuditLogsReliabilityReviewSpendLimitUpdatedV2
                | Models::AuditLogsScheduleCreatedV1
+               | Models::AuditLogsScheduleCreatedV2
                | Models::AuditLogsScheduleDeletedV1
+               | Models::AuditLogsScheduleDeletedV2
                | Models::AuditLogsScheduleOverrideCreatedV1
                | Models::AuditLogsScheduleOverrideCreatedV2
+               | Models::AuditLogsScheduleOverrideCreatedV3
                | Models::AuditLogsScheduleOverrideDeletedV1
                | Models::AuditLogsScheduleOverrideDeletedV2
+               | Models::AuditLogsScheduleOverrideDeletedV3
                | Models::AuditLogsScheduleOverrideUpdatedV1
                | Models::AuditLogsScheduleOverrideUpdatedV2
+               | Models::AuditLogsScheduleOverrideUpdatedV3
                | Models::AuditLogsScheduleSyncRuleCreatedV1
+               | Models::AuditLogsScheduleSyncRuleCreatedV2
                | Models::AuditLogsScheduleSyncRuleDeletedV1
+               | Models::AuditLogsScheduleSyncRuleDeletedV2
                | Models::AuditLogsScheduleSyncRuleUpdatedV1
+               | Models::AuditLogsScheduleSyncRuleUpdatedV2
                | Models::AuditLogsScheduleSyncTargetCreatedV1
+               | Models::AuditLogsScheduleSyncTargetCreatedV2
                | Models::AuditLogsScheduleSyncTargetDeletedV1
+               | Models::AuditLogsScheduleSyncTargetDeletedV2
                | Models::AuditLogsScheduleSyncTargetUpdatedV1
+               | Models::AuditLogsScheduleSyncTargetUpdatedV2
                | Models::AuditLogsScheduleUpdatedV1
+               | Models::AuditLogsScheduleUpdatedV2
                | Models::AuditLogsScimGroupRoleMappingsUpdatedV1
+               | Models::AuditLogsScimGroupRoleMappingsUpdatedV2
                | Models::AuditLogsScimGroupSeatMappingsUpdatedV1
+               | Models::AuditLogsScimGroupSeatMappingsUpdatedV2
                | Models::AuditLogsSecretCreatedV1
+               | Models::AuditLogsSecretCreatedV2
                | Models::AuditLogsSecretDeletedV1
+               | Models::AuditLogsSecretDeletedV2
                | Models::AuditLogsSecretReferenceAddedV1
+               | Models::AuditLogsSecretReferenceAddedV2
                | Models::AuditLogsSecretReferenceRemovedV1
+               | Models::AuditLogsSecretReferenceRemovedV2
                | Models::AuditLogsSecretRotatedV1
+               | Models::AuditLogsSecretRotatedV2
                | Models::AuditLogsSecretUpdatedV1
+               | Models::AuditLogsSecretUpdatedV2
                | Models::AuditLogsSeverityCreatedV1
+               | Models::AuditLogsSeverityCreatedV2
                | Models::AuditLogsSeverityDeletedV1
+               | Models::AuditLogsSeverityDeletedV2
                | Models::AuditLogsSeverityUpdatedV1
+               | Models::AuditLogsSeverityUpdatedV2
                | Models::AuditLogsStatusPageCreatedV1
+               | Models::AuditLogsStatusPageCreatedV2
                | Models::AuditLogsStatusPageDeletedV1
+               | Models::AuditLogsStatusPageDeletedV2
                | Models::AuditLogsStatusPageSubPageCreatedV1
+               | Models::AuditLogsStatusPageSubPageCreatedV2
                | Models::AuditLogsStatusPageSubPageDeletedV1
+               | Models::AuditLogsStatusPageSubPageDeletedV2
                | Models::AuditLogsStatusPageSubPageUpdatedV1
+               | Models::AuditLogsStatusPageSubPageUpdatedV2
                | Models::AuditLogsStatusPageTemplateCreatedV1
+               | Models::AuditLogsStatusPageTemplateCreatedV2
                | Models::AuditLogsStatusPageTemplateDeletedV1
+               | Models::AuditLogsStatusPageTemplateDeletedV2
                | Models::AuditLogsStatusPageTemplateUpdatedV1
+               | Models::AuditLogsStatusPageTemplateUpdatedV2
                | Models::AuditLogsStatusPageUpdatedV1
+               | Models::AuditLogsStatusPageUpdatedV2
                | Models::AuditLogsTeamRoleCreatedV1
+               | Models::AuditLogsTeamRoleCreatedV2
                | Models::AuditLogsTeamRoleDeletedV1
+               | Models::AuditLogsTeamRoleDeletedV2
                | Models::AuditLogsTeamRoleUpdatedV1
+               | Models::AuditLogsTeamRoleUpdatedV2
                | Models::AuditLogsTeamSettingsUpdatedV1
+               | Models::AuditLogsTeamSettingsUpdatedV2
+               | Models::AuditLogsTelemetryDataSourceAccessInheritanceChangedV1
                | Models::AuditLogsTelemetryDataSourceAccessModeChangedV1
+               | Models::AuditLogsTelemetryDataSourceAccessModeChangedV2
                | Models::AuditLogsTelemetryDataSourceAccessPolicyChangedV1
+               | Models::AuditLogsTelemetryDataSourceAccessPolicyChangedV2
+               | Models::AuditLogsTelemetryDataSourceAccessPolicyChangedV3
+               | Models::AuditLogsTelemetryDataSourceCallerIdentitySharingChangedV1
+               | Models::AuditLogsTelemetryDataSourceCallerIdentitySharingChangedV2
                | Models::AuditLogsTelemetryDataSourceInstalledV1
+               | Models::AuditLogsTelemetryDataSourceInstalledV2
+               | Models::AuditLogsTelemetryDataSourcePassthroughChangedV1
+               | Models::AuditLogsTelemetryDataSourcePassthroughChangedV2
                | Models::AuditLogsTelemetryDataSourceQueriedV1
                | Models::AuditLogsTelemetryDataSourceQueriedV2
+               | Models::AuditLogsTelemetryDataSourceQueriedV3
                | Models::AuditLogsTelemetryDataSourceRequestedV1
+               | Models::AuditLogsTelemetryDataSourceRequestedV2
                | Models::AuditLogsTelemetryDataSourceToolAccessChangedV1
+               | Models::AuditLogsTelemetryDataSourceToolAccessChangedV2
                | Models::AuditLogsTelemetryDataSourceToolOverridesChangedV1
+               | Models::AuditLogsTelemetryDataSourceToolOverridesChangedV2
                | Models::AuditLogsTelemetryDataSourceUninstalledV1
+               | Models::AuditLogsTelemetryDataSourceUninstalledV2
                | Models::AuditLogsTelemetryDataSourceWriteAccessGrantedV1
+               | Models::AuditLogsTelemetryDataSourceWriteAccessGrantedV2
                | Models::AuditLogsTelemetryDataSourceWriteAccessRevokedV1
+               | Models::AuditLogsTelemetryDataSourceWriteAccessRevokedV2
                | Models::AuditLogsTimelineItemDeletedV1
+               | Models::AuditLogsTimelineItemDeletedV2
                | Models::AuditLogsTwilioConnectionCreatedV1
+               | Models::AuditLogsTwilioConnectionCreatedV2
                | Models::AuditLogsTwilioConnectionDeletedV1
+               | Models::AuditLogsTwilioConnectionDeletedV2
                | Models::AuditLogsTwilioConnectionUpdatedV1
+               | Models::AuditLogsTwilioConnectionUpdatedV2
                | Models::AuditLogsUserAPIKeyCreatedV1
+               | Models::AuditLogsUserAPIKeyCreatedV2
                | Models::AuditLogsUserAPIKeyDeletedV1
+               | Models::AuditLogsUserAPIKeyDeletedV2
                | Models::AuditLogsUserCreatedV1
+               | Models::AuditLogsUserCreatedV2
                | Models::AuditLogsUserDeactivatedV1
+               | Models::AuditLogsUserDeactivatedV2
                | Models::AuditLogsUserLoggedInV1
+               | Models::AuditLogsUserLoggedInV2
                | Models::AuditLogsUserReinstatedV1
+               | Models::AuditLogsUserReinstatedV2
                | Models::AuditLogsUserRoleMembershipsUpdatedV1
+               | Models::AuditLogsUserRoleMembershipsUpdatedV2
                | Models::AuditLogsUserUpdatedV1
+               | Models::AuditLogsUserUpdatedV2
                | Models::AuditLogsWorkflowCreatedV1
+               | Models::AuditLogsWorkflowCreatedV2
                | Models::AuditLogsWorkflowDeletedV1
+               | Models::AuditLogsWorkflowDeletedV2
                | Models::AuditLogsWorkflowUpdatedV1
+               | Models::AuditLogsWorkflowUpdatedV2
   end
 end

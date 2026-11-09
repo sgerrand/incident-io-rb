@@ -271,6 +271,7 @@ module IncidentIo
         # @param attribute_values [Hash{String => Models::CatalogEngineParamBindingPayloadV3}] Values of this entry.
         # @param name [String] Name is the human readable name of this entry.
         # @param aliases [Array<String>] Optional aliases that can be used to reference this entry.
+        # @param custom_aliases [Array<String>] Aliases your organisation has added to an entry of a catalog type that incident.io syncs, such as a schedule or escalation path, which you can't change aliases on directly. Syncs keep them, and they are also listed in aliases. When you update an entry, omit this or send null to keep its current custom aliases, send an empty list to clear them, or send a list to replace them.
         # @param external_id [String] An optional alternative ID for this entry, which is ensured to be unique for the type.
         # @param rank [Integer] When catalog type is ranked, this is used to help order things.
         # @param update_attributes [Array<String>] If provided, only update these attribute_values keys. If not provided, update all attribute values. If you specify an attribute key that's not in your payload, the associated attribute value will be cleared.
@@ -281,6 +282,7 @@ module IncidentIo
           attribute_values:,
           name:,
           aliases: NOT_GIVEN,
+          custom_aliases: NOT_GIVEN,
           external_id: NOT_GIVEN,
           rank: NOT_GIVEN,
           update_attributes: NOT_GIVEN,
@@ -289,7 +291,15 @@ module IncidentIo
           request(
             :put,
             path("/v3/catalog_entries/%s", id),
-            body: given({aliases:, attribute_values:, external_id:, name:, rank:, update_attributes:}),
+            body: given({
+              aliases:,
+              attribute_values:,
+              custom_aliases:,
+              external_id:,
+              name:,
+              rank:,
+              update_attributes:
+            }),
             model: Models::CatalogUpdateEntryResultV3,
             request_options:
           )

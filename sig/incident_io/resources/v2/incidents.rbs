@@ -5,6 +5,16 @@ module IncidentIo
   module Resources
     module V2
       class Incidents < Resource
+        # Connect an existing issue in an issue tracker to an incident, as its external…
+        def connect_external_issue: (
+          String id,
+          issue_template_id: String,
+          provider: String,
+          url: String,
+          ?replace: (bool | NotGiven)?,
+          ?request_options: request_options
+        ) -> nil
+
         # Create a new incident
         def create: (
           visibility: String,

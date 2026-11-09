@@ -175,6 +175,7 @@ module IncidentIo
 
     module V2
       autoload :Actions, "#{__dir__}/resources/v2/actions"
+      autoload :AlertAttachments, "#{__dir__}/resources/v2/alert_attachments"
       autoload :AlertAttributes, "#{__dir__}/resources/v2/alert_attributes"
       autoload :AlertEvents, "#{__dir__}/resources/v2/alert_events"
       autoload :AlertRoutes, "#{__dir__}/resources/v2/alert_routes"
@@ -190,6 +191,7 @@ module IncidentIo
       autoload :EscalationPathTemplates, "#{__dir__}/resources/v2/escalation_path_templates"
       autoload :Escalations, "#{__dir__}/resources/v2/escalations"
       autoload :FollowUps, "#{__dir__}/resources/v2/follow_ups"
+      autoload :GlossaryEntries, "#{__dir__}/resources/v2/glossary_entries"
       autoload :Heartbeat, "#{__dir__}/resources/v2/heartbeat"
       autoload :IncidentActivityLogEntries, "#{__dir__}/resources/v2/incident_activity_log_entries"
       autoload :IncidentParticipantWorkloads, "#{__dir__}/resources/v2/incident_participant_workloads"
@@ -199,6 +201,8 @@ module IncidentIo
       autoload :IncidentTimestamps, "#{__dir__}/resources/v2/incident_timestamps"
       autoload :IncidentUpdates, "#{__dir__}/resources/v2/incident_updates"
       autoload :Incidents, "#{__dir__}/resources/v2/incidents"
+      autoload :ManagedResources, "#{__dir__}/resources/v2/managed_resources"
+      autoload :OnCallNotificationPauses, "#{__dir__}/resources/v2/on_call_notification_pauses"
       autoload :PayConfigs, "#{__dir__}/resources/v2/pay_configs"
       autoload :PayReports, "#{__dir__}/resources/v2/pay_reports"
       autoload :Policies, "#{__dir__}/resources/v2/policies"
@@ -206,6 +210,7 @@ module IncidentIo
       autoload :ScheduleSyncTargets, "#{__dir__}/resources/v2/schedule_sync_targets"
       autoload :Schedules, "#{__dir__}/resources/v2/schedules"
       autoload :Secrets, "#{__dir__}/resources/v2/secrets"
+      autoload :StatusPageComponents, "#{__dir__}/resources/v2/status_page_components"
       autoload :StatusPages, "#{__dir__}/resources/v2/status_pages"
       autoload :Telemetry, "#{__dir__}/resources/v2/telemetry"
       autoload :Users, "#{__dir__}/resources/v2/users"
@@ -219,6 +224,13 @@ module IncidentIo
         # @return [Actions]
         def actions
           resource(Actions)
+        end
+
+        # The v2 alert attachments resource
+        #
+        # @return [AlertAttachments]
+        def alert_attachments
+          resource(AlertAttachments)
         end
 
         # The v2 alert attributes resource
@@ -326,6 +338,13 @@ module IncidentIo
           resource(FollowUps)
         end
 
+        # The v2 glossary entries resource
+        #
+        # @return [GlossaryEntries]
+        def glossary_entries
+          resource(GlossaryEntries)
+        end
+
         # The v2 heartbeat resource
         #
         # @return [Heartbeat]
@@ -389,6 +408,20 @@ module IncidentIo
           resource(Incidents)
         end
 
+        # The v2 managed resources resource
+        #
+        # @return [ManagedResources]
+        def managed_resources
+          resource(ManagedResources)
+        end
+
+        # The v2 on call notification pauses resource
+        #
+        # @return [OnCallNotificationPauses]
+        def on_call_notification_pauses
+          resource(OnCallNotificationPauses)
+        end
+
         # The v2 pay configs resource
         #
         # @return [PayConfigs]
@@ -438,6 +471,13 @@ module IncidentIo
           resource(Secrets)
         end
 
+        # The v2 status page components resource
+        #
+        # @return [StatusPageComponents]
+        def status_page_components
+          resource(StatusPageComponents)
+        end
+
         # The v2 status pages resource
         #
         # @return [StatusPages]
@@ -480,6 +520,7 @@ module IncidentIo
       autoload :AlertRoutes, "#{__dir__}/resources/v3/alert_routes"
       autoload :Catalog, "#{__dir__}/resources/v3/catalog"
       autoload :FollowUps, "#{__dir__}/resources/v3/follow_ups"
+      autoload :IncidentForms, "#{__dir__}/resources/v3/incident_forms"
       autoload :Teams, "#{__dir__}/resources/v3/teams"
 
       # Every v3 resource, e.g. `client.v3.actions`.
@@ -510,6 +551,13 @@ module IncidentIo
         # @return [FollowUps]
         def follow_ups
           resource(FollowUps)
+        end
+
+        # The v3 incident forms resource
+        #
+        # @return [IncidentForms]
+        def incident_forms
+          resource(IncidentForms)
         end
 
         # The v3 teams resource
@@ -551,6 +599,13 @@ module IncidentIo
       # @return [V3::Actions]
       def actions
         v3.actions
+      end
+
+      # The alert attachments resource, using its newest version (v2)
+      #
+      # @return [V2::AlertAttachments]
+      def alert_attachments
+        v2.alert_attachments
       end
 
       # The alert attributes resource, using its newest version (v2)
@@ -679,6 +734,13 @@ module IncidentIo
         v3.follow_ups
       end
 
+      # The glossary entries resource, using its newest version (v2)
+      #
+      # @return [V2::GlossaryEntries]
+      def glossary_entries
+        v2.glossary_entries
+      end
+
       # The heartbeat resource, using its newest version (v2)
       #
       # @return [V2::Heartbeat]
@@ -698,6 +760,13 @@ module IncidentIo
       # @return [V1::IncidentAttachments]
       def incident_attachments
         v1.incident_attachments
+      end
+
+      # The incident forms resource, using its newest version (v3)
+      #
+      # @return [V3::IncidentForms]
+      def incident_forms
+        v3.incident_forms
       end
 
       # The incident memberships resource, using its newest version (v1)
@@ -805,6 +874,20 @@ module IncidentIo
         v1.maintenance_windows
       end
 
+      # The managed resources resource, using its newest version (v2)
+      #
+      # @return [V2::ManagedResources]
+      def managed_resources
+        v2.managed_resources
+      end
+
+      # The on call notification pauses resource, using its newest version (v2)
+      #
+      # @return [V2::OnCallNotificationPauses]
+      def on_call_notification_pauses
+        v2.on_call_notification_pauses
+      end
+
       # The pay configs resource, using its newest version (v2)
       #
       # @return [V2::PayConfigs]
@@ -866,6 +949,13 @@ module IncidentIo
       # @return [V1::Severities]
       def severities
         v1.severities
+      end
+
+      # The status page components resource, using its newest version (v2)
+      #
+      # @return [V2::StatusPageComponents]
+      def status_page_components
+        v2.status_page_components
       end
 
       # The status pages resource, using its newest version (v2)
