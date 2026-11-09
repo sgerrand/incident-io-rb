@@ -26,6 +26,7 @@ module IncidentIo
       required_integrations: [:string],
       schema: -> { CatalogTypeSchemaV3 },
       source_repo_url: :string,
+      supports_custom_aliases: :boolean,
       type_name: :string,
       updated_at: :time,
       use_name_as_identifier: :boolean
@@ -92,6 +93,9 @@ module IncidentIo
       # @!attribute [r] source_repo_url
       #   The url of the external repository where this type is managed
       #   @return [String, nil]
+      # @!attribute [r] supports_custom_aliases
+      #   Whether entries of this type take custom_aliases
+      #   @return [Boolean, nil]
       # @!attribute [r] type_name
       #   The type name of this catalog type, to be used when defining attributes
       #   @return [String, nil]

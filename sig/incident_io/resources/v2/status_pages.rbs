@@ -115,6 +115,13 @@ module IncidentIo
           ?request_options: request_options
         ) -> Models::StatusPageComponentAvailabilityV2
 
+        # Show one customer's page on a customer status page: its current status, its…
+        def show_status_page_customer_page: (
+          String status_page_id,
+          String customer_id,
+          ?request_options: request_options
+        ) -> Models::StatusPageCustomerPageV2
+
         # Show a status page incident
         def show_status_page_incident: (
           String status_page_incident_id,
@@ -131,7 +138,7 @@ module IncidentIo
         def show_status_page_structure: (
           String status_page_id,
           ?request_options: request_options
-        ) -> Models::StatusPageStructureV2
+        ) -> Models::StatusPagesShowStatusPageStructureResultV2
 
         # Update a status page incident
         def update_status_page_incident: (

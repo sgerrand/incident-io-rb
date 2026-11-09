@@ -6,13 +6,21 @@
 module IncidentIo
   module Models
     StatusPagesShowStatusPageStructureResultV2 = Model.define(
-      current_structure: -> { StatusPageStructureV2 }
+      current_structure: -> { StatusPageStructureV2 },
+      display_uptime_mode: :string,
+      management_meta: -> { ManagementMetaV2 }
     )
 
     class StatusPagesShowStatusPageStructureResultV2
       # @!attribute [r] current_structure
       #   The current_structure field
       #   @return [StatusPageStructureV2, nil]
+      # @!attribute [r] display_uptime_mode
+      #   How the page shows uptime against its components One of:…
+      #   @return [String, nil]
+      # @!attribute [r] management_meta
+      #   The management_meta field
+      #   @return [ManagementMetaV2, nil]
     end
   end
 end
