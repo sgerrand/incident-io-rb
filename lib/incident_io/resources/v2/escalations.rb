@@ -353,7 +353,7 @@ module IncidentIo
         # To use this API, you will need an API key with the "Create and manage escalations"
         # permission. The reassignment is attributed to the key; to attribute it to one of your
         # users instead, set the X-Incident-User header, which needs the
-        # "api_keys.act_on_behalf_of_users" scope.
+        # "api_keys.act_on_behalf_of_users" scope and no team permissions on the key.
         #
         # If your API key's permissions are scoped to teams, the escalation you're reassigning
         # must be owned by one of those teams, and you can only reassign via an escalation path

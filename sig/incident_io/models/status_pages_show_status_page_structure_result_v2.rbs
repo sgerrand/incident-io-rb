@@ -8,12 +8,29 @@ module IncidentIo
       include Model::InstanceMethods
 
       attr_reader current_structure: StatusPageStructureV2?
+      # How the page shows uptime against its components One of: chart_and_percentage, chart_only, nothing.
+      attr_reader display_uptime_mode: String?
+      attr_reader management_meta: ManagementMetaV2?
 
-      def self.new: (?current_structure: StatusPageStructureV2?, ?raw: Hash[String, untyped]?) -> instance
+      def self.new: (
+        ?current_structure: StatusPageStructureV2?,
+        ?display_uptime_mode: String?,
+        ?management_meta: ManagementMetaV2?,
+        ?raw: Hash[String, untyped]?
+      ) -> instance
 
-      def initialize: (?current_structure: StatusPageStructureV2?, ?raw: Hash[String, untyped]?) -> void
+      def initialize: (
+        ?current_structure: StatusPageStructureV2?,
+        ?display_uptime_mode: String?,
+        ?management_meta: ManagementMetaV2?,
+        ?raw: Hash[String, untyped]?
+      ) -> void
 
-      def with: (?current_structure: StatusPageStructureV2?) -> instance
+      def with: (
+        ?current_structure: StatusPageStructureV2?,
+        ?display_uptime_mode: String?,
+        ?management_meta: ManagementMetaV2?
+      ) -> instance
 
       def self.from_api: (nil) -> nil
                        | (Hash[String, untyped] | StatusPagesShowStatusPageStructureResultV2) -> StatusPagesShowStatusPageStructureResultV2

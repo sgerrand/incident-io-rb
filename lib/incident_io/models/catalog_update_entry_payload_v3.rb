@@ -8,6 +8,7 @@ module IncidentIo
     CatalogUpdateEntryPayloadV3 = Model.define(
       aliases: [:string],
       attribute_values: Model.map_of(-> { CatalogEngineParamBindingPayloadV3 }),
+      custom_aliases: [:string],
       external_id: :string,
       name: :string,
       rank: :integer,
@@ -21,6 +22,9 @@ module IncidentIo
       # @!attribute [r] attribute_values
       #   Values of this entry
       #   @return [Hash{String => CatalogEngineParamBindingPayloadV3}, nil]
+      # @!attribute [r] custom_aliases
+      #   Aliases your organisation has added to an entry of a catalog type that…
+      #   @return [Array<String>, nil]
       # @!attribute [r] external_id
       #   An optional alternative ID for this entry, which is ensured to be unique for…
       #   @return [String, nil]

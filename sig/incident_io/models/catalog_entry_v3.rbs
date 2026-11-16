@@ -17,6 +17,8 @@ module IncidentIo
       attr_reader catalog_type_id: String?
       # When this entry was created
       attr_reader created_at: Time?
+      # Aliases your organisation has added to an entry of a catalog type that incident.io syncs, such as a schedule or escalation path, which you can't change aliases on directly.
+      attr_reader custom_aliases: Array[String]?
       # An optional alternative ID for this entry, which is ensured to be unique for the type
       attr_reader external_id: String?
       # ID of this catalog entry
@@ -34,6 +36,7 @@ module IncidentIo
         ?attribute_values: Hash[String, CatalogEntryEngineParamBindingV3]?,
         ?catalog_type_id: String?,
         ?created_at: Time?,
+        ?custom_aliases: Array[String]?,
         ?external_id: String?,
         ?id: String?,
         ?name: String?,
@@ -48,6 +51,7 @@ module IncidentIo
         ?attribute_values: Hash[String, CatalogEntryEngineParamBindingV3]?,
         ?catalog_type_id: String?,
         ?created_at: Time?,
+        ?custom_aliases: Array[String]?,
         ?external_id: String?,
         ?id: String?,
         ?name: String?,
@@ -62,6 +66,7 @@ module IncidentIo
         ?attribute_values: Hash[String, CatalogEntryEngineParamBindingV3]?,
         ?catalog_type_id: String?,
         ?created_at: Time?,
+        ?custom_aliases: Array[String]?,
         ?external_id: String?,
         ?id: String?,
         ?name: String?,

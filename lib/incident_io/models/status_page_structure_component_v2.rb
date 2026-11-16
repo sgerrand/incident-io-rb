@@ -7,6 +7,8 @@ module IncidentIo
   module Models
     StatusPageStructureComponentV2 = Model.define(
       component_id: :string,
+      display_uptime: :boolean,
+      hidden: :boolean,
       name: :string
     )
 
@@ -14,6 +16,12 @@ module IncidentIo
       # @!attribute [r] component_id
       #   The ID of the affected component
       #   @return [String, nil]
+      # @!attribute [r] display_uptime
+      #   Whether the page shows this component's uptime
+      #   @return [Boolean, nil]
+      # @!attribute [r] hidden
+      #   Whether the component is hidden from the page
+      #   @return [Boolean, nil]
       # @!attribute [r] name
       #   The name of this component
       #   @return [String, nil]
