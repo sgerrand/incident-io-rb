@@ -17,10 +17,10 @@ module IncidentIo
         #
         # Endpoint: `POST /v2/pay_configs`. Scopes: schedule_pay_configs.create.
         #
-        # @param base_rate_cents [Integer] Rate paid for any time no rule covers, in the lowest denomination of the currency.
+        # @param base_rate_cents [Integer] Rate paid for one unit of rate_time_unit, for any time no rule covers, in the lowest denomination of the currency.
         # @param currency [String] Currency this config pays in, in ISO 4217 format.
         # @param name [String] Human readable name for this pay config.
-        # @param rate_time_unit [String] The unit of time every rate on this config is quoted per One of: hour, day.
+        # @param rate_time_unit [String] The unit of time every rate on this config is quoted per: hour, day, or week. A day is 24 hours of shift time and a week is 7 days. Pay is pro-rated by the second. One of: hour, day, week.
         # @param timezone [String] IANA timezone this config's rules are interpreted in.
         # @param one_off_rules [Array<Models::PayConfigOneOffRulePayloadV2, Hash>] Rules that apply over a single window of time.
         # @param weekly_rules [Array<Models::PayConfigWeeklyRulePayloadV2, Hash>] Rules that apply every week, in the order they should be evaluated.
@@ -302,10 +302,10 @@ module IncidentIo
         # Endpoint: `PUT /v2/pay_configs/{id}`. Scopes: schedule_pay_configs.update.
         #
         # @param id [String] Unique identifier for this pay config.
-        # @param base_rate_cents [Integer] Rate paid for any time no rule covers, in the lowest denomination of the currency.
+        # @param base_rate_cents [Integer] Rate paid for one unit of rate_time_unit, for any time no rule covers, in the lowest denomination of the currency.
         # @param currency [String] Currency this config pays in, in ISO 4217 format.
         # @param name [String] Human readable name for this pay config.
-        # @param rate_time_unit [String] The unit of time every rate on this config is quoted per. Pay is pro-rated by the second either way. One of: hour, day.
+        # @param rate_time_unit [String] The unit of time every rate on this config is quoted per: hour, day, or week. A day is 24 hours of shift time and a week is 7 days. Pay is pro-rated by the second. One of: hour, day, week.
         # @param timezone [String] IANA timezone this config's rules are interpreted in.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::PayConfigV2]

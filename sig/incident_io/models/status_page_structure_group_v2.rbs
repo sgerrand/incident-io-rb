@@ -9,6 +9,12 @@ module IncidentIo
 
       # Array of components belonging to this group
       attr_reader components: Array[StatusPageStructureComponentV2]?
+      # A description shown under the group's name
+      attr_reader description: String?
+      # Whether the page shows uptime aggregated across the group's components
+      attr_reader display_aggregated_uptime: bool?
+      # Whether the group is hidden from the page
+      attr_reader hidden: bool?
       # Unique ID of this component group
       attr_reader id: String?
       # The name of this component group
@@ -16,6 +22,9 @@ module IncidentIo
 
       def self.new: (
         ?components: Array[StatusPageStructureComponentV2]?,
+        ?description: String?,
+        ?display_aggregated_uptime: bool?,
+        ?hidden: bool?,
         ?id: String?,
         ?name: String?,
         ?raw: Hash[String, untyped]?
@@ -23,6 +32,9 @@ module IncidentIo
 
       def initialize: (
         ?components: Array[StatusPageStructureComponentV2]?,
+        ?description: String?,
+        ?display_aggregated_uptime: bool?,
+        ?hidden: bool?,
         ?id: String?,
         ?name: String?,
         ?raw: Hash[String, untyped]?
@@ -30,6 +42,9 @@ module IncidentIo
 
       def with: (
         ?components: Array[StatusPageStructureComponentV2]?,
+        ?description: String?,
+        ?display_aggregated_uptime: bool?,
+        ?hidden: bool?,
         ?id: String?,
         ?name: String?
       ) -> instance

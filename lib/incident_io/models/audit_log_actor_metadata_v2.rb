@@ -11,7 +11,8 @@ module IncidentIo
       external_resource_external_id: :string,
       external_resource_type: :string,
       user_base_role_slug: :string,
-      user_custom_role_slugs: :string
+      user_custom_role_slugs: :string,
+      via: :string
     )
 
     class AuditLogActorMetadataV2
@@ -32,6 +33,9 @@ module IncidentIo
       #   @return [String, nil]
       # @!attribute [r] user_custom_role_slugs
       #   The custom role slugs of the user, separated by commas (if it's a user actor)
+      #   @return [String, nil]
+      # @!attribute [r] via
+      #   How the user made the change, when it wasn't directly (if it's a user actor)
       #   @return [String, nil]
     end
   end

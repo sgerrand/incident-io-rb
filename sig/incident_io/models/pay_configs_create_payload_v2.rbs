@@ -7,7 +7,7 @@ module IncidentIo
       extend Model::ClassMethods
       include Model::InstanceMethods
 
-      # Rate paid for any time no rule covers, in the lowest denomination of the currency
+      # Rate paid for one unit of rate_time_unit, for any time no rule covers, in the lowest denomination of the currency
       attr_reader base_rate_cents: Integer?
       # Currency this config pays in, in ISO 4217 format
       attr_reader currency: String?
@@ -15,7 +15,7 @@ module IncidentIo
       attr_reader name: String?
       # Rules that apply over a single window of time
       attr_reader one_off_rules: Array[PayConfigOneOffRulePayloadV2]?
-      # The unit of time every rate on this config is quoted per One of: hour, day.
+      # The unit of time every rate on this config is quoted per: hour, day, or week.
       attr_reader rate_time_unit: String?
       # IANA timezone this config's rules are interpreted in
       attr_reader timezone: String?

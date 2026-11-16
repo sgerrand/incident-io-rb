@@ -15,7 +15,7 @@ module IncidentIo
 
     class PayConfigsUpdatePayloadV2
       # @!attribute [r] base_rate_cents
-      #   Rate paid for any time no rule covers, in the lowest denomination of the…
+      #   Rate paid for one unit of rate_time_unit, for any time no rule covers, in the…
       #   @return [Integer, nil]
       # @!attribute [r] currency
       #   Currency this config pays in, in ISO 4217 format
@@ -24,7 +24,7 @@ module IncidentIo
       #   Human readable name for this pay config
       #   @return [String, nil]
       # @!attribute [r] rate_time_unit
-      #   The unit of time every rate on this config is quoted per
+      #   The unit of time every rate on this config is quoted per: hour, day, or week
       #   @return [String, nil]
       # @!attribute [r] timezone
       #   IANA timezone this config's rules are interpreted in

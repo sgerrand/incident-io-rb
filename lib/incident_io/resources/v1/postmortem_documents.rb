@@ -30,7 +30,7 @@ module IncidentIo
         #
         # @param incident_id [String] The unique identifier of the incident to attach the post-mortem document to.
         # @param permalink [String] A URL pointing to the externally-hosted post-mortem document.
-        # @param document_provider [String] The provider hosting the document. Set this when it can't be inferred from the permalink so the link renders correctly. One of: , confluence, google_docs, notion, sharepoint, incident_io, copy_paste_basecamp, copy_paste_confluence, copy_paste_github_wiki, copy_paste_google_docs, copy_paste_notion, copy_paste_quip.
+        # @param document_provider [String] The provider hosting the document. This is informational only: the document is always stored as a link to the permalink. One of: , confluence, google_docs, notion, sharepoint, incident_io, copy_paste_basecamp, copy_paste_confluence, copy_paste_github_wiki, copy_paste_google_docs, copy_paste_notion, copy_paste_quip.
         # @param request_options [Hash] Per-call options, see IncidentIo::Client#request.
         # @return [Models::PostmortemDocumentV1]
         def attach(incident_id:, permalink:, document_provider: NOT_GIVEN, request_options: {})

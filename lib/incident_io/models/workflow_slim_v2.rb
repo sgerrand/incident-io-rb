@@ -6,6 +6,7 @@
 module IncidentIo
   module Models
     WorkflowSlimV2 = Model.define(
+      auto_run_mode: :string,
       condition_groups: [-> { ConditionGroupV2 }],
       continue_on_step_error: :boolean,
       delay: -> { WorkflowDelayV2 },
@@ -29,6 +30,9 @@ module IncidentIo
     )
 
     class WorkflowSlimV2
+      # @!attribute [r] auto_run_mode
+      #   Whether the workflow is configured to run immediately or ask for confirmation…
+      #   @return [String, nil]
       # @!attribute [r] condition_groups
       #   Conditions that apply to the workflow trigger
       #   @return [Array<ConditionGroupV2>, nil]

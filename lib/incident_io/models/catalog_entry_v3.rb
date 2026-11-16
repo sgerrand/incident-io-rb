@@ -11,6 +11,7 @@ module IncidentIo
       attribute_values: Model.map_of(-> { CatalogEntryEngineParamBindingV3 }),
       catalog_type_id: :string,
       created_at: :time,
+      custom_aliases: [:string],
       external_id: :string,
       id: :string,
       name: :string,
@@ -34,6 +35,9 @@ module IncidentIo
       # @!attribute [r] created_at
       #   When this entry was created
       #   @return [Time, nil]
+      # @!attribute [r] custom_aliases
+      #   Aliases your organisation has added to an entry of a catalog type that…
+      #   @return [Array<String>, nil]
       # @!attribute [r] external_id
       #   An optional alternative ID for this entry, which is ensured to be unique for…
       #   @return [String, nil]

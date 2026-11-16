@@ -30,7 +30,7 @@ module IncidentIo
       #   If this step ran for a specific incident (e.g
       #   @return [String, nil]
       # @!attribute [r] status
-      #   Status of the step One of: complete, pending, error
+      #   Status of the step One of: complete, pending, error, suspended, skipped
       #   @return [String, nil]
       # @!attribute [r] step
       #   Name of the step

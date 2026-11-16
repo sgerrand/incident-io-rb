@@ -27,7 +27,7 @@ module IncidentIo
     # covers a shift wins. Any time no rule covers is paid at the base rate.
     class PayConfigV2
       # @!attribute [r] base_rate_cents
-      #   Rate paid for any time no rule covers, in the lowest denomination of the…
+      #   Rate paid for one unit of rate_time_unit, for any time no rule covers, in the…
       #   @return [Integer, nil]
       # @!attribute [r] created_at
       #   The created_at field
@@ -48,7 +48,7 @@ module IncidentIo
       #   When a published report first priced against this config
       #   @return [Time, nil]
       # @!attribute [r] rate_time_unit
-      #   The unit of time every rate on this config is quoted per
+      #   The unit of time every rate on this config is quoted per: hour, day, or week
       #   @return [String, nil]
       # @!attribute [r] timezone
       #   IANA timezone this config's rules are interpreted in
